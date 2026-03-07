@@ -26,8 +26,8 @@ export default function Slide01Title() {
             <span className="text-[hsl(var(--slide-gold))] text-[20px] font-semibold">MB</span>
           </div>
           <div>
-            <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Михаэль Барбарич</p>
-            <p className="text-[18px] text-[hsl(var(--slide-text-muted))]">Предприниматель · 15 лет в бизнесе · 3 экзита</p>
+            <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Michael Barbarich</p>
+            <p className="text-[18px] text-[hsl(var(--slide-text-muted))]">Предприниматель · 16 лет в бизнесе · 2 экзита</p>
           </div>
         </div>
       </div>
