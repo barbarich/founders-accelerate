@@ -33,7 +33,7 @@ const timelineSlides = [
   { period: "2020–2022", title: "RunEverywhere", subtitle: "Health & Fitness · B2C · Экзит", description: "От идеи до прибыли с первого месяца. Глобальный продукт в 107 странах. 50,000+ платящих клиентов. Команда 60 человек.", highlight: "50K+ клиентов · 107 стран", image: runeverywhere1 },
   { period: "2023–2024", title: "ForexTester", subtitle: "FinTech · B2C · CEO", description: "Кризис-менеджмент компании с $3M ARR и 16 годами на рынке. Создал 3 новых продукта с нуля — +$1M ARR за 4 месяца.", highlight: "+$1M ARR за 4 месяца", image: forextester1, imageContain: true },
   { period: "2024–н.в.", title: "MetaMinder", subtitle: "B2B SaaS · EdTech · CEO", description: "Платформа для обучения сотрудников через AI. От идеи до первых платящих B2B клиентов за 7 месяцев. 30% рост продаж ежемесячно.", highlight: "0 → платящие клиенты за 7 мес.", image: metaminder1 },
-  { period: "2025–н.в.", title: "mymikey.ai", subtitle: "AI · Dating · Стартап", description: "AI-матчмейкер нового поколения. Строю прямо сейчас с помощью AI-инструментов. Один человек = полная разработка продукта.", highlight: "Строю прямо сейчас", image: mymikey1 },
+  { period: "2025–н.в.", title: "mymikey.ai", subtitle: "AI · Dating · Стартап", description: "AI-матчмейкер нового поколения. Строю прямо сейчас с помощью AI-инструментов. Один человек = полная разработка продукта.", highlight: "Строю прямо сейчас", image: mymikey1, imageContain: true },
 ];
 
 const slideNames = [
