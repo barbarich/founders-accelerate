@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X, ChevronsRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import ScaledSlide from "./ScaledSlide";
 
 // Slides
