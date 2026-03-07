@@ -28,7 +28,7 @@ export default function Slide02WhoAmI() {
           Кто я
         </h2>
         <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[48px] italic">
-          Не коуч. Предприниматель, который строит прямо сейчас.
+          Действующий предприниматель. Строю продукты и сейчас.
         </p>
 
         <div className="space-y-[20px]">
