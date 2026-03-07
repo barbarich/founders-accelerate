@@ -11,7 +11,7 @@ export default function Slide20CTA() {
           </p>
 
           <h2 className="text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px]">
-            Начни сейчас
+            Как присоединиться
           </h2>
 
           <p className="text-[26px] text-[hsl(var(--slide-text-muted))] mb-[48px] leading-[1.5]">
