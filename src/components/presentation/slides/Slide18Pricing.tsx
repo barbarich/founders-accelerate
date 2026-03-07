@@ -30,14 +30,15 @@ export default function Slide18Pricing() {
             ))}
           </div>
 
-          <div className="border-t border-[hsl(var(--slide-border)/0.4)] pt-[28px] flex items-end gap-[24px]">
-            <div>
+          <div className="border-t border-[hsl(var(--slide-border)/0.4)] pt-[28px]">
+            <div className="flex items-baseline gap-[16px] mb-[8px]">
               <span className="text-[44px] font-bold text-[hsl(var(--slide-gold))]">₪4,500</span>
-              <span className="text-[20px] text-[hsl(var(--slide-text-muted))]"> за программу</span>
+              <span className="text-[20px] text-[hsl(var(--slide-text-muted))]">за программу</span>
             </div>
-            <p className="text-[18px] text-[hsl(var(--slide-text)/0.4)] pb-[6px]">
-              или ₪2,000 / мес × 3
-            </p>
+            <div className="flex items-baseline gap-[16px]">
+              <span className="text-[36px] font-bold text-[hsl(var(--slide-gold)/0.8)]">₪2,000</span>
+              <span className="text-[20px] text-[hsl(var(--slide-text-muted))]">/ мес × 3</span>
+            </div>
           </div>
         </div>
 
