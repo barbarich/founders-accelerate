@@ -41,7 +41,7 @@ const slideNames = [
   "Кто я",
   "B-rich Education",
   "Sky Room",
-  "SI DI Perapuff",
+  "פופים PERA",
   "RunEverywhere",
   "ForexTester",
   "MetaMinder",
