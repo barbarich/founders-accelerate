@@ -1,7 +1,7 @@
 import photo from "@/assets/slides/photo-michael.jpg";
 
 const bullets = [
-  "16 лет в бизнесе, 6 из них в tech",
+  "16 лет в бизнесе, 7 из них в tech",
   "2 экзита (tech-продукты + ресторанный бизнес)",
   "Опыт CEO в международных компаниях",
   "Построил продукты от $0 до $8M ARR",
