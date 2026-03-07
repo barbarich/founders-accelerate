@@ -1,86 +1,97 @@
-const blocks = [
-  {
-    icon: "📅",
-    title: "Еженедельные встречи · 2 часа",
-    items: [
-      "Разбор прогресса — что сделали за неделю",
-      "Теория + практика: инструменты, методологии, кейсы",
-      "Планирование следующего шага",
-      "Домашнее задание на неделю",
-    ],
-  },
-  {
-    icon: "🧭",
-    title: "Менторство без ограничений",
-    items: [
-      "Доступ ко мне лично — по любым вопросам",
-      "Не только на встречах, но и между ними",
-      "Telegram-группа для быстрых вопросов",
-      "Вы никогда не остаётесь один на один с проблемой",
-    ],
-  },
-  {
-    icon: "🎤",
-    title: "Эксперты · раз в месяц",
-    items: [
-      "Приглашённые специалисты: маркетинг, продажи, AI, legal, стратегия",
-      "Живой Q&A с экспертом по вашему проекту",
-    ],
-  },
-];
-
 export default function Slide13Format() {
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex">
-      {/* Left — title */}
-      <div className="w-[560px] h-full flex flex-col justify-center px-[80px] border-r border-[hsl(var(--slide-border)/0.3)]">
-        <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">
-          Формат
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col">
+      {/* Header */}
+      <div className="px-[120px] pt-[80px] pb-[48px]">
+        <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
+          Формат программы
         </p>
-        <h2 className="text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px]">
+        <h2 className="text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1]">
           The Founders Circle
         </h2>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[40px]">
-          12 недель. Маленькая группа 5–7 человек. Чёткий флоу от идеи до продукта с первыми пользователями.
-        </p>
-        <div className="w-[60px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[32px]" />
-        <p className="text-[20px] text-[hsl(var(--slide-gold)/0.8)] leading-[1.5] italic">
-          Вы не одни. Группа, ментор и система — всё работает на ваш результат.
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[12px]">
+          12 недель · группа 5–7 человек · от идеи до продукта с первыми пользователями
         </p>
       </div>
 
-      {/* Right — content blocks */}
-      <div className="flex-1 flex flex-col justify-center px-[80px] gap-[28px]">
-        {blocks.map((block, i) => (
-          <div
-            key={i}
-            className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[8px] px-[44px] py-[32px]"
-          >
-            <div className="flex items-center gap-[16px] mb-[16px]">
-              <span className="text-[28px]">{block.icon}</span>
-              <h3 className="text-[26px] font-semibold text-[hsl(var(--slide-text))]">
-                {block.title}
-              </h3>
-            </div>
-            <div className="grid grid-cols-2 gap-x-[40px] gap-y-[10px]">
-              {block.items.map((item, j) => (
-                <div key={j} className="flex items-start gap-[12px]">
-                  <div className="w-[6px] h-[6px] rounded-full bg-[hsl(var(--slide-gold)/0.5)] mt-[10px] shrink-0" />
-                  <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">
-                    {item}
-                  </p>
-                </div>
-              ))}
+      {/* Three columns */}
+      <div className="flex-1 flex px-[120px] pb-[80px] gap-[40px]">
+        {/* Column 1 — Weekly */}
+        <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[44px] flex flex-col">
+          <div className="flex items-center gap-[14px] mb-[28px]">
+            <span className="text-[32px]">📅</span>
+            <h3 className="text-[26px] font-semibold text-[hsl(var(--slide-text))]">Каждую неделю</h3>
+          </div>
+          <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Встреча 2 часа</p>
+          <div className="space-y-[16px] flex-1">
+            {[
+              "Разбор прогресса за неделю",
+              "Теория + практика",
+              "Новые инструменты и методологии",
+              "Разбор кейсов",
+              "Планирование следующего шага",
+              "Домашнее задание",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-[12px]">
+                <div className="w-[5px] h-[5px] rounded-full bg-[hsl(var(--slide-gold)/0.5)] mt-[10px] shrink-0" />
+                <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Column 2 — Mentorship */}
+        <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[44px] flex flex-col">
+          <div className="flex items-center gap-[14px] mb-[28px]">
+            <span className="text-[32px]">🧭</span>
+            <h3 className="text-[26px] font-semibold text-[hsl(var(--slide-text))]">Менторство</h3>
+          </div>
+          <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Без ограничений</p>
+          <div className="space-y-[16px] flex-1">
+            {[
+              "Доступ ко мне лично — по любым вопросам",
+              "Не только на встречах, но и между ними",
+              "Telegram-группа для быстрой связи",
+              "Вы никогда не один на один с проблемой",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-[12px]">
+                <div className="w-[5px] h-[5px] rounded-full bg-[hsl(var(--slide-gold)/0.5)] mt-[10px] shrink-0" />
+                <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Column 3 — Experts */}
+        <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[44px] flex flex-col">
+          <div className="flex items-center gap-[14px] mb-[28px]">
+            <span className="text-[32px]">🎤</span>
+            <h3 className="text-[26px] font-semibold text-[hsl(var(--slide-text))]">Эксперты</h3>
+          </div>
+          <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Раз в месяц</p>
+          <div className="space-y-[16px] flex-1">
+            {[
+              "Маркетинг и продажи",
+              "Искусственный интеллект",
+              "Legal и финансы",
+              "Стратегия и рост",
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-[12px]">
+                <div className="w-[5px] h-[5px] rounded-full bg-[hsl(var(--slide-gold)/0.5)] mt-[10px] shrink-0" />
+                <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{item}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Goal accent */}
+          <div className="mt-[28px] pt-[24px] border-t border-[hsl(var(--slide-border)/0.3)]">
+            <div className="flex items-center gap-[10px]">
+              <span className="text-[22px]">🎯</span>
+              <p className="text-[18px] text-[hsl(var(--slide-gold))] font-medium leading-[1.4]">
+                Цель — готовый продукт с первыми пользователями
+              </p>
             </div>
           </div>
-        ))}
-
-        {/* Goal */}
-        <div className="flex items-center gap-[16px] px-[44px] py-[24px] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] bg-[hsl(var(--slide-gold)/0.05)]">
-          <span className="text-[28px]">🎯</span>
-          <p className="text-[22px] text-[hsl(var(--slide-gold))] font-medium">
-            Цель — готовый продукт с первыми пользователями через 12 недель
-          </p>
         </div>
       </div>
     </div>
