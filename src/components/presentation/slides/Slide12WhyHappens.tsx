@@ -14,6 +14,11 @@ const problems = [
     title: "Нет обратной связи",
     text: "Строите в вакууме. Не понимаете, правильно ли идёте.",
   },
+  {
+    num: "04",
+    title: "Нет ментора",
+    text: "Нет того, кто уже прошёл этот путь и знает, как делать правильно. Ментор, который всегда рядом — на расстоянии сообщения.",
+  },
 ];
 
 export default function Slide12WhyHappens() {
@@ -24,18 +29,18 @@ export default function Slide12WhyHappens() {
         Почему так происходит
       </h2>
 
-      <div className="flex gap-[48px] mb-[64px]">
+      <div className="grid grid-cols-2 gap-[36px] mb-[56px]">
         {problems.map((p) => (
-          <div key={p.num} className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border))] rounded-[8px] p-[48px]">
-            <span className="text-[48px] font-bold text-[hsl(var(--slide-gold)/0.2)] font-mono">{p.num}</span>
-            <h3 className="text-[28px] font-semibold text-[hsl(var(--slide-text))] mt-[16px] mb-[16px]">{p.title}</h3>
+          <div key={p.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border))] rounded-[8px] p-[44px]">
+            <span className="text-[44px] font-bold text-[hsl(var(--slide-gold)/0.2)] font-mono">{p.num}</span>
+            <h3 className="text-[28px] font-semibold text-[hsl(var(--slide-text))] mt-[12px] mb-[12px]">{p.title}</h3>
             <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">{p.text}</p>
           </div>
         ))}
       </div>
 
       <p className="text-[24px] text-[hsl(var(--slide-gold))] font-medium text-center">
-        The Founders Circle решает все три.
+        The Founders Circle решает все четыре.
       </p>
     </div>
   );
