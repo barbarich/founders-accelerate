@@ -1,25 +1,62 @@
 const results = [
-  { icon: "✅", text: "Проверенная идея с понятной целевой аудиторией" },
-  { icon: "👤", text: "Первые пользователи или клиенты" },
-  { icon: "🚀", text: "Рабочий MVP или прототип" },
-  { icon: "🤖", text: "Навык использования AI для разработки" },
-  { icon: "💰", text: "Стратегия монетизации" },
-  { icon: "🌐", text: "Нетворк и комьюнити, которое остаётся после программы" },
+  {
+    before: "«Не знаю с чего начать»",
+    after: "Чёткий план и понимание каждого шага",
+    icon: "🗺️",
+  },
+  {
+    before: "«Делаю один — нет мотивации»",
+    after: "Группа, ментор и система, которые не дадут остановиться",
+    icon: "🔥",
+  },
+  {
+    before: "«Не могу сделать продукт без разработчика»",
+    after: "Навык создания продуктов с помощью AI — без единой строчки кода",
+    icon: "🤖",
+  },
+  {
+    before: "«Не понимаю как монетизировать»",
+    after: "Рабочая бизнес-модель, проверенная на реальных клиентах",
+    icon: "💰",
+  },
+  {
+    before: "«Не знаю как найти первых клиентов»",
+    after: "Первые пользователи и понятная стратегия привлечения",
+    icon: "👥",
+  },
+  {
+    before: "«Нет нетворка и поддержки»",
+    after: "Комьюнити 170+ фаундеров, которое остаётся навсегда",
+    icon: "🌐",
+  },
 ];
 
 export default function Slide14Results() {
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[16px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Результаты</p>
-      <h2 className="text-[64px] font-bold text-[hsl(var(--slide-text))] leading-tight mb-[72px]">
-        Что получите за 12 недель
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px]">
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
+        Через 12 недель
+      </p>
+      <h2 className="text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px]">
+        От «не знаю с чего начать» — к готовому продукту
       </h2>
+      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[64px]">
+        Вот что изменится за 3 месяца работы в программе
+      </p>
 
-      <div className="grid grid-cols-2 gap-x-[80px] gap-y-[40px] max-w-[1400px]">
+      <div className="grid grid-cols-3 gap-[24px]">
         {results.map((r, i) => (
-          <div key={i} className="flex items-start gap-[20px]">
-            <span className="text-[32px] mt-[-4px]">{r.icon}</span>
-            <p className="text-[24px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{r.text}</p>
+          <div
+            key={i}
+            className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[36px] flex flex-col"
+          >
+            <span className="text-[32px] mb-[16px]">{r.icon}</span>
+            <p className="text-[18px] text-[hsl(var(--slide-text)/0.4)] line-through mb-[12px] leading-[1.4]">
+              {r.before}
+            </p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] font-medium leading-[1.4]">
+              {r.after}
+            </p>
           </div>
         ))}
       </div>
