@@ -3,7 +3,7 @@ import demoImg from "@/assets/slides/demo.jpg";
 export default function Slide17Demo() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center relative">
-      <img src={demoImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-8" />
+      <img src={demoImg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-[0.06]" />
       <div className="absolute inset-0 bg-[hsl(var(--slide-bg)/0.85)]" />
 
       <div className="relative z-10 text-center max-w-[900px]">
