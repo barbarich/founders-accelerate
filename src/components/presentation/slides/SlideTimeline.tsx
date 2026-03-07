@@ -7,6 +7,7 @@ interface SlideTimelineProps {
   image: string;
   index: number;
   imageContain?: boolean;
+  bottomBanner?: string;
 }
 
 export default function SlideTimeline({ period, title, subtitle, description, highlight, image, index, imageContain }: SlideTimelineProps) {
