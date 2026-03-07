@@ -1,42 +1,39 @@
 const phases = [
   {
     num: "01",
-    title: "Фундамент",
     weeks: "Недели 1–4",
-    subtitle: "Превращаем идею в план",
+    title: "Фундамент",
     items: [
-      "Валидация идеи — проверяем, есть ли спрос",
+      "Валидация идеи — проверяем спрос",
       "Исследование рынка и конкурентов",
       "Формируем бизнес-модель",
       "Определяем MVP — что строить первым",
     ],
-    result: "Вы точно знаете, что строить и для кого",
+    result: "Понимание, что строить и для кого",
   },
   {
     num: "02",
-    title: "Создание продукта",
     weeks: "Недели 5–8",
-    subtitle: "Строим MVP с помощью AI",
+    title: "Продукт",
     items: [
-      "Осваиваем AI-инструменты для разработки",
-      "Создаём рабочий прототип — без навыков кода",
-      "Еженедельные демо и обратная связь",
-      "Быстрые итерации — улучшаем каждую неделю",
+      "AI-инструменты для создания продукта",
+      "Рабочий прототип — без навыков кода",
+      "Демо и обратная связь каждую неделю",
+      "Быстрые итерации и улучшения",
     ],
-    result: "У вас есть работающий продукт",
+    result: "Работающий MVP",
   },
   {
     num: "03",
-    title: "Запуск в рынок",
     weeks: "Недели 9–12",
-    subtitle: "Находим первых клиентов",
+    title: "Запуск",
     items: [
       "Стратегия выхода на рынок",
-      "Маркетинг, продажи, первые касания",
+      "Маркетинг и первые касания",
       "Привлечение первых пользователей",
-      "План роста на следующие 3–6 месяцев",
+      "План роста на 3–6 месяцев",
     ],
-    result: "Продукт в рынке с первыми клиентами",
+    result: "Продукт в рынке",
   },
 ];
 
@@ -49,53 +46,39 @@ export default function Slide15Phases() {
       <h2 className="text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px]">
         Как устроена программа
       </h2>
-      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[64px]">
-        Пошаговый путь. Не нужен опыт в разработке, маркетинге или продажах — мы пройдём это вместе.
+      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[60px]">
+        Не нужен опыт в разработке, маркетинге или продажах — мы пройдём это вместе, шаг за шагом.
       </p>
 
-      <div className="flex gap-[32px]">
-        {phases.map((p, idx) => (
-          <div key={p.num} className="flex-1 flex flex-col">
-            {/* Phase card */}
-            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[40px] flex-1 flex flex-col">
-              {/* Header */}
-              <div className="flex items-center gap-[16px] mb-[8px]">
-                <span className="text-[48px] font-bold text-[hsl(var(--slide-gold)/0.15)] font-mono leading-none">
-                  {p.num}
-                </span>
-                <div>
-                  <p className="text-[16px] font-mono text-[hsl(var(--slide-gold))]">{p.weeks}</p>
-                  <h3 className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.2]">{p.title}</h3>
-                </div>
-              </div>
-              <p className="text-[18px] text-[hsl(var(--slide-text-muted))] italic mb-[24px]">{p.subtitle}</p>
+      <div className="flex gap-[32px] mb-[48px]">
+        {phases.map((p) => (
+          <div
+            key={p.num}
+            className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[40px] flex flex-col"
+          >
+            <p className="text-[16px] font-mono text-[hsl(var(--slide-gold)/0.6)] mb-[6px]">{p.weeks}</p>
+            <h3 className="text-[32px] font-bold text-[hsl(var(--slide-text))] mb-[28px]">{p.title}</h3>
 
-              {/* Items */}
-              <div className="space-y-[14px] flex-1">
-                {p.items.map((item, i) => (
-                  <div key={i} className="flex items-start gap-[12px]">
-                    <div className="w-[6px] h-[6px] rounded-full bg-[hsl(var(--slide-gold)/0.4)] mt-[9px] shrink-0" />
-                    <p className="text-[19px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{item}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Result */}
-              <div className="mt-[24px] pt-[20px] border-t border-[hsl(var(--slide-border)/0.3)]">
-                <div className="flex items-center gap-[10px]">
-                  <span className="text-[20px]">✅</span>
-                  <p className="text-[19px] text-[hsl(var(--slide-gold))] font-medium">{p.result}</p>
+            <div className="space-y-[14px] flex-1">
+              {p.items.map((item, i) => (
+                <div key={i} className="flex items-start gap-[12px]">
+                  <div className="w-[6px] h-[6px] rounded-full bg-[hsl(var(--slide-gold)/0.4)] mt-[9px] shrink-0" />
+                  <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{item}</p>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* Arrow connector */}
-            {idx < phases.length - 1 && (
-              <div className="hidden" />
-            )}
+            <div className="mt-[24px] pt-[20px] border-t border-[hsl(var(--slide-border)/0.3)] flex items-center gap-[10px]">
+              <span className="text-[18px]">→</span>
+              <p className="text-[19px] text-[hsl(var(--slide-gold))] font-medium">{p.result}</p>
+            </div>
           </div>
         ))}
       </div>
+
+      <p className="text-[20px] text-[hsl(var(--slide-text)/0.5)] text-center italic">
+        Путь у каждого свой — иногда нужен пивот, иногда новая идея. Программа адаптируется под вас.
+      </p>
     </div>
   );
 }
