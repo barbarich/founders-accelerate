@@ -27,7 +27,7 @@ import metaminder1 from "@/assets/slides/metaminder-1.jpg";
 import mymikey1 from "@/assets/slides/mymikey-1.jpg";
 
 const timelineSlides = [
-  { period: "2009–2013", title: "B-rich Education", subtitle: "EdTech · Первый бизнес", description: "Школа подготовки к университету — языковые курсы. Построил с $10. 1000+ студентов, 20 преподавателей.", highlight: "С $10 до 1000+ студентов", image: brich1 },
+  { period: "2009–2013", title: "B-rich Education", subtitle: "EdTech · Первый бизнес · 18 лет", description: "В 18 лет создал первый бизнес с бюджетом $10. Из одной комнаты и двух групп построил одну из крупнейших школ в городе — 2000+ студентов, 20 преподавателей.", highlight: "С $10 до 2000+ студентов", image: brich1 },
   { period: "2013–2016", title: "Sky Room", subtitle: "HoReCa · Ресторан · Экзит", description: "2 ресторана в Чернигове, построенных с нуля. Полный цикл: концепция, ремонт, запуск, управление. Продал и уехал в Израиль.", highlight: "2 ресторана с нуля → экзит", image: skyroom1 },
   { period: "2018–2021", title: "פופים PERA", subtitle: "E-commerce · Экзит", description: "Нашёл нишу для уникального продукта в Израиле. Анализ рынка, построение онлайн-продаж. 5000+ товаров за 1.5 года. Продал как готовый бизнес.", highlight: "5000+ продаж → экзит", image: perapuff1, imageContain: true },
   { period: "2020–2022", title: "RunEverywhere", subtitle: "Health & Fitness · B2C · Экзит", description: "От идеи до прибыли с первого месяца. Глобальный продукт в 107 странах. 50,000+ платящих клиентов. Команда 60 человек.", highlight: "50K+ клиентов · 107 стран", image: runeverywhere1 },
