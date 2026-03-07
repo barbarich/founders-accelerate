@@ -6,20 +6,23 @@ interface SlideTimelineProps {
   highlight: string;
   image: string;
   index: number;
+  imageContain?: boolean;
 }
 
-export default function SlideTimeline({ period, title, subtitle, description, highlight, image, index }: SlideTimelineProps) {
+export default function SlideTimeline({ period, title, subtitle, description, highlight, image, index, imageContain }: SlideTimelineProps) {
   const isEven = index % 2 === 0;
-  
+  const imgClass = imageContain
+    ? "w-full h-full object-contain"
+    : "w-full h-full object-cover";
+
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex">
       {isEven ? (
         <>
-          {/* Image left */}
-          <div className="w-[820px] h-full relative">
-            <img src={image} alt={title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
-            <div className="absolute inset-0 bg-[hsl(var(--slide-bg)/0.3)]" />
+          <div className="w-[820px] h-full relative flex items-center justify-center overflow-hidden">
+            {imageContain && <div className="absolute inset-0 bg-[hsl(var(--slide-bg-alt))]" />}
+            <img src={image} alt={title} className={`relative z-[1] ${imgClass}`} />
+            <div className="absolute inset-0 z-[2] bg-gradient-to-r from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
           </div>
           <div className="flex-1 flex flex-col justify-center px-[100px]">
             <TimelineContent period={period} title={title} subtitle={subtitle} description={description} highlight={highlight} />
@@ -30,10 +33,10 @@ export default function SlideTimeline({ period, title, subtitle, description, hi
           <div className="flex-1 flex flex-col justify-center px-[100px]">
             <TimelineContent period={period} title={title} subtitle={subtitle} description={description} highlight={highlight} />
           </div>
-          <div className="w-[820px] h-full relative">
-            <img src={image} alt={title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
-            <div className="absolute inset-0 bg-[hsl(var(--slide-bg)/0.3)]" />
+          <div className="w-[820px] h-full relative flex items-center justify-center overflow-hidden">
+            {imageContain && <div className="absolute inset-0 bg-[hsl(var(--slide-bg-alt))]" />}
+            <img src={image} alt={title} className={`relative z-[1] ${imgClass}`} />
+            <div className="absolute inset-0 z-[2] bg-gradient-to-l from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
           </div>
         </>
       )}
@@ -41,7 +44,7 @@ export default function SlideTimeline({ period, title, subtitle, description, hi
   );
 }
 
-function TimelineContent({ period, title, subtitle, description, highlight }: Omit<SlideTimelineProps, 'image' | 'index'>) {
+function TimelineContent({ period, title, subtitle, description, highlight }: Omit<SlideTimelineProps, 'image' | 'index' | 'imageContain'>) {
   return (
     <>
       <p className="text-[18px] font-mono tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[16px]">{period}</p>
