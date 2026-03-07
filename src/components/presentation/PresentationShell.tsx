@@ -206,8 +206,36 @@ export default function PresentationShell() {
       {/* Main canvas */}
       <div className="flex-1 relative flex flex-col">
         {/* Slide */}
-        <div className="flex-1 relative" onClick={next}>
+        <div
+          className="flex-1 relative"
+          onClick={next}
+          onTouchStart={(e) => {
+            const t = e.touches[0];
+            touchStartRef.current = { x: t.clientX, y: t.clientY };
+          }}
+          onTouchEnd={(e) => {
+            if (!touchStartRef.current) return;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - touchStartRef.current.x;
+            const dy = t.clientY - touchStartRef.current.y;
+            touchStartRef.current = null;
+            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+              if (dx < 0) next();
+              else prev();
+            }
+          }}
+        >
           <ScaledSlide key={current}>{getSlideContent(current)}</ScaledSlide>
+
+          {/* Swipe hint for mobile on first slide */}
+          {isMobile && current === 0 && swipeHintVisible && (
+            <div className="absolute bottom-20 inset-x-0 flex justify-center animate-pulse pointer-events-none">
+              <div className="flex items-center gap-2 bg-[hsl(var(--card)/0.8)] backdrop-blur-sm rounded-full px-4 py-2">
+                <span className="text-xs text-muted-foreground">Свайпните</span>
+                <ChevronsRight size={16} className="text-muted-foreground animate-bounce-x" />
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Bottom controls */}
