@@ -5,7 +5,7 @@ export default function Slide01Title() {
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex relative overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img src={titleBg} alt="" className="w-full h-full object-cover opacity-20" />
+        <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
       </div>
 
