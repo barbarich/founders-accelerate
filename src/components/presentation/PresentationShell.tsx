@@ -84,13 +84,20 @@ function getSlideContent(index: number) {
 const TOTAL = 20;
 
 export default function PresentationShell() {
+  const isMobile = useIsMobile();
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
+  const [swipeHintVisible, setSwipeHintVisible] = useState(true);
 
-  const next = useCallback(() => setCurrent((c) => Math.min(c + 1, TOTAL - 1)), []);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const next = useCallback(() => {
+    setCurrent((c) => Math.min(c + 1, TOTAL - 1));
+    setSwipeHintVisible(false);
+  }, []);
   const prev = useCallback(() => setCurrent((c) => Math.max(c - 1, 0)), []);
 
   useEffect(() => {
