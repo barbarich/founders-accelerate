@@ -83,10 +83,10 @@ export default function Register() {
               </div>
             </div>
             <div className="space-y-1.5">
-              <CopyField label="בנק" value="בנק לאומי" />
-              <CopyField label="סניף" value="999" />
-              <CopyField label="מספר חשבון" value="5054163" />
-              <CopyField label="שם בעל החשבון" value="ברבריצ׳י מיכאל" />
+              <CopyField label="Банк" value="בנק לאומי" />
+              <CopyField label="Отделение" value="999" />
+              <CopyField label="Номер счёта" value="5054163" />
+              <CopyField label="Имя владельца" value="ברבריצ׳י מיכאל" />
             </div>
           </div>
 
