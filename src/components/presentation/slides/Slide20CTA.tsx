@@ -1,4 +1,3 @@
-import qrRegister from "@/assets/slides/qr-register.png";
 import { QRCodeSVG } from "qrcode.react";
 
 const REGISTER_URL = "https://founders-accelerate.lovable.app/register";
