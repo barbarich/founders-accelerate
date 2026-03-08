@@ -1,3 +1,7 @@
+import { QRCodeSVG } from "qrcode.react";
+
+const REGISTER_URL = "https://founders-accelerate.lovable.app/register";
+
 export default function Slide20CTA() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center relative">
@@ -23,22 +27,22 @@ export default function Slide20CTA() {
             <div className="flex items-start gap-[20px]">
               <span className="text-[28px] font-bold text-[hsl(var(--slide-gold)/0.3)] font-mono mt-[-2px]">01</span>
               <div>
-                <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Заполните анкету</p>
-                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">Это займёт 3 минуты. Я лично прочитаю каждую.</p>
+                <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Отсканируйте QR-код</p>
+                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">Откроется страница с реквизитами для оплаты</p>
               </div>
             </div>
             <div className="flex items-start gap-[20px]">
               <span className="text-[28px] font-bold text-[hsl(var(--slide-gold)/0.3)] font-mono mt-[-2px]">02</span>
               <div>
                 <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Оплатите участие</p>
-                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">Bit · перевод на счёт в Израиле · оплата картой</p>
+                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">Bit · перевод на счёт в Израиле</p>
               </div>
             </div>
             <div className="flex items-start gap-[20px]">
               <span className="text-[28px] font-bold text-[hsl(var(--slide-gold)/0.3)] font-mono mt-[-2px]">03</span>
               <div>
-                <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Начинаем работать</p>
-                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">Добро пожаловать в The Founders Circle</p>
+                <p className="text-[24px] text-[hsl(var(--slide-text))] font-medium">Отправьте скриншот в Telegram</p>
+                <p className="text-[18px] text-[hsl(var(--slide-text)/0.5)]">И получите доступ в закрытый чат участников</p>
               </div>
             </div>
           </div>
@@ -50,15 +54,17 @@ export default function Slide20CTA() {
 
         {/* Right — QR code */}
         <div className="flex flex-col items-center">
-          <div className="w-[320px] h-[320px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[16px] flex items-center justify-center mb-[24px]">
-            <div className="text-center">
-              <div className="w-[240px] h-[240px] bg-[hsl(var(--slide-border)/0.15)] rounded-[8px] flex items-center justify-center">
-                <span className="text-[64px] text-[hsl(var(--slide-text)/0.15)]">QR</span>
-              </div>
-            </div>
+          <div className="w-[320px] h-[320px] bg-white rounded-[16px] flex items-center justify-center mb-[24px] p-[20px]">
+            <QRCodeSVG
+              value={REGISTER_URL}
+              size={280}
+              level="H"
+              bgColor="white"
+              fgColor="#1a1a1a"
+            />
           </div>
           <p className="text-[20px] text-[hsl(var(--slide-text-muted))] text-center">
-            Отсканируйте для<br />заполнения анкеты
+            Сканируйте для<br />регистрации
           </p>
         </div>
       </div>
