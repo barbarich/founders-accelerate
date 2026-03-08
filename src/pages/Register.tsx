@@ -44,26 +44,28 @@ export default function Register() {
         </div>
 
         {/* Pricing */}
-        <div className="grid grid-cols-2 gap-4 mb-5">
+        <div className="grid grid-cols-3 gap-3 mb-5">
           <div className="border border-accent/30 rounded-xl p-4 bg-accent/[0.03]">
-            <h3 className="text-lg font-bold mb-0.5">Акселератор</h3>
-            <p className="text-xs text-muted-foreground mb-3">Полная программа · 3 месяца</p>
-            <div className="flex items-baseline gap-2">
+            <p className="text-xs text-muted-foreground mb-2">Помесячная оплата</p>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-2xl font-bold text-accent">₪2,000</span>
+              <span className="text-xs text-muted-foreground">/ мес</span>
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">3 платежа за программу</p>
+          </div>
+          <div className="border border-accent/30 rounded-xl p-4 bg-accent/[0.03]">
+            <p className="text-xs text-muted-foreground mb-2">Вся программа сразу</p>
+            <div className="flex items-baseline gap-1.5">
               <span className="text-2xl font-bold text-accent">₪4,500</span>
-              <span className="text-xs text-muted-foreground">за программу</span>
             </div>
-            <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="text-lg font-bold text-accent/80">₪2,000</span>
-              <span className="text-xs text-muted-foreground">/ мес × 3</span>
-            </div>
+            <p className="text-xs text-muted-foreground mt-1">3 месяца · экономия ₪1,500</p>
           </div>
           <div className="border border-border rounded-xl p-4 bg-secondary/50">
-            <h3 className="text-lg font-bold mb-0.5">Консультация</h3>
-            <p className="text-xs text-muted-foreground mb-3">Разовая сессия · 60 минут</p>
-            <div className="flex items-baseline gap-2">
+            <p className="text-xs text-muted-foreground mb-2">Разовая консультация</p>
+            <div className="flex items-baseline gap-1.5">
               <span className="text-2xl font-bold">₪600</span>
-              <span className="text-xs text-muted-foreground">/ сессия</span>
             </div>
+            <p className="text-xs text-muted-foreground mt-1">60 минут · 1 сессия</p>
           </div>
         </div>
 
