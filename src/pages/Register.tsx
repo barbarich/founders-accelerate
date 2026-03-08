@@ -102,7 +102,7 @@ export default function Register() {
               </div>
             </div>
             <div className="space-y-1.5 mb-3">
-              <CopyField label="מספר טלפון" value="0552221422" />
+              <CopyField label="Номер телефона" value="0552221422" />
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
               Откройте приложение Bit и переведите на указанный номер
