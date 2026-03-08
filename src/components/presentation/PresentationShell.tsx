@@ -18,6 +18,7 @@ import Slide17Demo from "./slides/Slide17Demo";
 import Slide18Pricing from "./slides/Slide18Pricing";
 import Slide19QA from "./slides/Slide19QA";
 import Slide20CTA from "./slides/Slide20CTA";
+import Slide21Registration from "./slides/Slide21Registration";
 
 import brich1 from "@/assets/slides/brich-1.jpg";
 import skyroom1 from "@/assets/slides/skyroom-1.jpg";
