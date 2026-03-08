@@ -58,7 +58,6 @@ const slideNames = [
   "Форматы участия",
   "Q&A",
   "Регистрация",
-  "Оплата",
 ];
 
 function getSlideContent(index: number) {
