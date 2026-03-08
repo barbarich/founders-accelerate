@@ -18,6 +18,7 @@ import Slide17Demo from "./slides/Slide17Demo";
 import Slide18Pricing from "./slides/Slide18Pricing";
 import Slide19QA from "./slides/Slide19QA";
 import Slide20CTA from "./slides/Slide20CTA";
+import Slide21Registration from "./slides/Slide21Registration";
 
 import brich1 from "@/assets/slides/brich-1.jpg";
 import skyroom1 from "@/assets/slides/skyroom-1.jpg";
@@ -58,6 +59,7 @@ const slideNames = [
   "Форматы участия",
   "Q&A",
   "Регистрация",
+  "Оплата",
 ];
 
 function getSlideContent(index: number) {
@@ -78,10 +80,11 @@ function getSlideContent(index: number) {
   if (index === 17) return <Slide18Pricing />;
   if (index === 18) return <Slide19QA />;
   if (index === 19) return <Slide20CTA />;
+  if (index === 20) return <Slide21Registration />;
   return null;
 }
 
-const TOTAL = 20;
+const TOTAL = 21;
 
 export default function PresentationShell() {
   const isMobile = useIsMobile();
