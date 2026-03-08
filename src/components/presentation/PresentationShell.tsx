@@ -80,10 +80,11 @@ function getSlideContent(index: number) {
   if (index === 17) return <Slide18Pricing />;
   if (index === 18) return <Slide19QA />;
   if (index === 19) return <Slide20CTA />;
+  if (index === 20) return <Slide21Registration />;
   return null;
 }
 
-const TOTAL = 20;
+const TOTAL = 21;
 
 export default function PresentationShell() {
   const isMobile = useIsMobile();
