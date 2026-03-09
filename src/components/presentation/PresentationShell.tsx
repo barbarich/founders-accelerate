@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X, ChevronsRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ScaledSlide from "./ScaledSlide";
@@ -86,6 +86,8 @@ const TOTAL = 20;
 export default function PresentationShell() {
   const isMobile = useIsMobile();
   const [current, setCurrent] = useState(0);
+  const [displayed, setDisplayed] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
@@ -94,11 +96,27 @@ export default function PresentationShell() {
 
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  const next = useCallback(() => {
-    setCurrent((c) => Math.min(c + 1, TOTAL - 1));
+  const goTo = useCallback((index: number) => {
+    if (index === displayed || transitioning) return;
+    setTransitioning(true);
+    // After fade out, swap slide and fade in
+    setTimeout(() => {
+      setDisplayed(index);
+      setCurrent(index);
+      // Small delay to let new content mount before fading in
+      requestAnimationFrame(() => {
+        setTransitioning(false);
+      });
+    }, 200);
     setSwipeHintVisible(false);
-  }, []);
-  const prev = useCallback(() => setCurrent((c) => Math.max(c - 1, 0)), []);
+  }, [displayed, transitioning]);
+
+  const next = useCallback(() => {
+    goTo(Math.min(current + 1, TOTAL - 1));
+  }, [current, goTo]);
+  const prev = useCallback(() => {
+    goTo(Math.max(current - 1, 0));
+  }, [current, goTo]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -159,7 +177,7 @@ export default function PresentationShell() {
           {Array.from({ length: TOTAL }, (_, i) => (
             <button
               key={i}
-              onClick={() => { setCurrent(i); setShowGrid(false); }}
+              onClick={() => { setCurrent(i); setDisplayed(i); setShowGrid(false); }}
               className={`aspect-video relative rounded-lg overflow-hidden border-2 transition-all hover:border-primary ${
                 i === current ? "border-primary ring-2 ring-primary/30" : "border-border"
               }`}
@@ -231,7 +249,9 @@ export default function PresentationShell() {
             }
           }}
         >
-          <ScaledSlide key={current}>{getSlideContent(current)}</ScaledSlide>
+          <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+          </div>
 
           {/* Swipe hint for mobile on first slide */}
           {isMobile && current === 0 && swipeHintVisible && (
