@@ -249,7 +249,9 @@ export default function PresentationShell() {
             }
           }}
         >
-          <ScaledSlide key={current}>{getSlideContent(current)}</ScaledSlide>
+          <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+          </div>
 
           {/* Swipe hint for mobile on first slide */}
           {isMobile && current === 0 && swipeHintVisible && (
