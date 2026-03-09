@@ -92,7 +92,13 @@ export default function Slide20CTA() {
           <div className="w-[320px] h-[320px] bg-white rounded-[16px] flex items-center justify-center mb-[24px] p-[20px]">
             <QRCodeSVG value={REGISTER_URL} size={280} level="H" bgColor="white" fgColor="#1a1a1a" />
           </div>
-          <p className="text-[20px] text-[hsl(var(--slide-text-muted))] text-center">Сканируйте для<br />регистрации</p>
+          <p className="text-[20px] text-[hsl(var(--slide-text-muted))] text-center mb-[24px]">Сканируйте для<br />регистрации</p>
+          <a
+            href="/register"
+            className="inline-block bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] text-[22px] font-semibold px-[48px] py-[16px] rounded-[10px] transition-opacity hover:opacity-90"
+          >
+            Присоединиться
+          </a>
         </div>
       </div>
     </div>
