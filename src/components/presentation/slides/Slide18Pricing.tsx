@@ -62,7 +62,7 @@ export default function Slide18Pricing() {
           </div>
 
           <div className="border-t border-[hsl(var(--slide-border)/0.4)] pt-[28px]">
-            <span className="text-[44px] font-bold text-[hsl(var(--slide-text))]">₪600</span>
+             <span className="text-[44px] font-bold text-[hsl(var(--slide-text))]">₪1,200</span>
             <span className="text-[20px] text-[hsl(var(--slide-text-muted))]"> / сессия</span>
           </div>
         </div>
