@@ -177,8 +177,8 @@ export default function PresentationShell() {
 
   return (
     <div className="w-full h-screen bg-[hsl(var(--background))] flex overflow-hidden relative">
-      {/* Sidebar */}
-      {showSidebar && (
+      {/* Sidebar - desktop only */}
+      {!isMobile && showSidebar && (
         <div className="w-[220px] h-full bg-[hsl(var(--card))] border-r border-border overflow-y-auto shrink-0 flex flex-col">
           <div className="p-3 border-b border-border flex items-center justify-between">
             <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Слайды</span>
