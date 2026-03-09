@@ -45,7 +45,7 @@ export default function Slide18Pricing() {
         {/* Consultation */}
         <div className="flex-1 border border-[hsl(var(--slide-border))] rounded-[12px] p-[52px] bg-[hsl(var(--slide-bg-alt))]">
           <h3 className="text-[36px] font-bold text-[hsl(var(--slide-text))] mb-[8px]">Консультация</h3>
-          <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[36px]">Разовая сессия · 60 минут</p>
+          <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[36px]">Разовая сессия · 2 часа</p>
 
           <div className="space-y-[14px] mb-[40px]">
             {[
