@@ -35,8 +35,14 @@ export default function Slide20CTA() {
             <div className="w-[140px] h-[140px] bg-white rounded-[10px] flex items-center justify-center mb-[8px] p-[8px]">
               <QRCodeSVG value={REGISTER_URL} size={124} level="H" bgColor="white" fgColor="#1a1a1a" />
             </div>
-            <p className="text-[10px] text-[hsl(var(--slide-text-muted))]">Сканируйте для регистрации</p>
-          </div>
+             <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">Сканируйте для регистрации</p>
+            </div>
+            <a
+              href="/register"
+              className="inline-block bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] text-[14px] font-semibold px-[32px] py-[12px] rounded-[8px] transition-opacity hover:opacity-90"
+            >
+              Присоединиться
+            </a>
           <p className="text-[10px] text-[hsl(var(--slide-gold)/0.7)] italic mt-[12px]">
             Количество мест ограничено — 5–7 человек в группе
           </p>
