@@ -18,7 +18,7 @@ export default function Slide02WhoAmI() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col">
         <div className="h-[260px] relative shrink-0">
-          <img src={photo} alt="Михаэль Барбарич" className="w-full h-full object-cover object-center" />
+          <img src={photo} alt="Михаэль Барбарич" className="w-full h-full object-cover object-[center_30%]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
         </div>
         <div className="flex-1 flex flex-col px-[28px] -mt-[30px] relative z-10">
