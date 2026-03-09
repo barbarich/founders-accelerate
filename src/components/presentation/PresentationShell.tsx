@@ -177,7 +177,7 @@ export default function PresentationShell() {
           {Array.from({ length: TOTAL }, (_, i) => (
             <button
               key={i}
-              onClick={() => { setCurrent(i); setShowGrid(false); }}
+              onClick={() => { setCurrent(i); setDisplayed(i); setShowGrid(false); }}
               className={`aspect-video relative rounded-lg overflow-hidden border-2 transition-all hover:border-primary ${
                 i === current ? "border-primary ring-2 ring-primary/30" : "border-border"
               }`}
