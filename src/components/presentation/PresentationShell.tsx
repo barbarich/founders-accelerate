@@ -253,9 +253,9 @@ export default function PresentationShell() {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between px-6 py-3 bg-[hsl(var(--card)/0.9)] backdrop-blur-sm">
+          <div className={`flex items-center justify-between ${isMobile ? 'px-3 py-2' : 'px-6 py-3'} bg-[hsl(var(--card)/0.9)] backdrop-blur-sm`}>
             <div className="flex items-center gap-3">
-              {!showSidebar && (
+              {!isMobile && !showSidebar && (
                 <button
                   onClick={(e) => { e.stopPropagation(); setShowSidebar(true); }}
                   className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded"
@@ -269,7 +269,7 @@ export default function PresentationShell() {
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded"
                 title="Все слайды (G)"
               >
-                <Grid3X3 size={16} />
+                <Grid3X3 size={isMobile ? 14 : 16} />
               </button>
             </div>
 
