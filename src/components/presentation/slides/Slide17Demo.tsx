@@ -30,13 +30,13 @@ export default function Slide17Demo() {
           {/* Current project */}
           <div className="flex-1 border border-[hsl(var(--slide-gold)/0.4)] rounded-[12px] p-[28px] bg-[hsl(var(--slide-gold)/0.05)]">
             <div className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[12px]">
-              Строю сейчас
+              Успех
             </div>
             <div className="text-[28px] font-bold text-[hsl(var(--slide-text))] mb-[12px]">
-              Mikey AI
+              RunEverywhere
             </div>
             <p className="text-[18px] text-[hsl(var(--slide-text)/0.6)] leading-[1.5]">
-              Флоу от идеи до продукта, которым пользуются и покупают
+              От идеи до MVP за 3 месяца, стали прибыльными с первой рекламной кампании
             </p>
           </div>
         </div>
