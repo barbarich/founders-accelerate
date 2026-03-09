@@ -86,6 +86,8 @@ const TOTAL = 20;
 export default function PresentationShell() {
   const isMobile = useIsMobile();
   const [current, setCurrent] = useState(0);
+  const [displayed, setDisplayed] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
@@ -94,11 +96,27 @@ export default function PresentationShell() {
 
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  const next = useCallback(() => {
-    setCurrent((c) => Math.min(c + 1, TOTAL - 1));
+  const goTo = useCallback((index: number) => {
+    if (index === displayed || transitioning) return;
+    setTransitioning(true);
+    // After fade out, swap slide and fade in
+    setTimeout(() => {
+      setDisplayed(index);
+      setCurrent(index);
+      // Small delay to let new content mount before fading in
+      requestAnimationFrame(() => {
+        setTransitioning(false);
+      });
+    }, 200);
     setSwipeHintVisible(false);
-  }, []);
-  const prev = useCallback(() => setCurrent((c) => Math.max(c - 1, 0)), []);
+  }, [displayed, transitioning]);
+
+  const next = useCallback(() => {
+    goTo(Math.min(current + 1, TOTAL - 1));
+  }, [current, goTo]);
+  const prev = useCallback(() => {
+    goTo(Math.max(current - 1, 0));
+  }, [current, goTo]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
