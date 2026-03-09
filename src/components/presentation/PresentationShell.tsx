@@ -155,7 +155,7 @@ export default function PresentationShell() {
             <X size={24} />
           </button>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>
           {Array.from({ length: TOTAL }, (_, i) => (
             <button
               key={i}
@@ -177,8 +177,8 @@ export default function PresentationShell() {
 
   return (
     <div className="w-full h-screen bg-[hsl(var(--background))] flex overflow-hidden relative">
-      {/* Sidebar */}
-      {showSidebar && (
+      {/* Sidebar - desktop only */}
+      {!isMobile && showSidebar && (
         <div className="w-[220px] h-full bg-[hsl(var(--card))] border-r border-border overflow-y-auto shrink-0 flex flex-col">
           <div className="p-3 border-b border-border flex items-center justify-between">
             <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Слайды</span>
@@ -253,9 +253,9 @@ export default function PresentationShell() {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between px-6 py-3 bg-[hsl(var(--card)/0.9)] backdrop-blur-sm">
+          <div className={`flex items-center justify-between ${isMobile ? 'px-3 py-2' : 'px-6 py-3'} bg-[hsl(var(--card)/0.9)] backdrop-blur-sm`}>
             <div className="flex items-center gap-3">
-              {!showSidebar && (
+              {!isMobile && !showSidebar && (
                 <button
                   onClick={(e) => { e.stopPropagation(); setShowSidebar(true); }}
                   className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded"
@@ -269,7 +269,7 @@ export default function PresentationShell() {
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded"
                 title="Все слайды (G)"
               >
-                <Grid3X3 size={16} />
+                <Grid3X3 size={isMobile ? 14 : 16} />
               </button>
             </div>
 
