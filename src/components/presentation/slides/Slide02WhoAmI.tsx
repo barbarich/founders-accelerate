@@ -17,21 +17,21 @@ export default function Slide02WhoAmI() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col">
-        <div className="h-[200px] relative">
-          <img src={photo} alt="Михаэль Барбарич" className="w-full h-full object-cover object-top" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[hsl(var(--slide-bg))]" />
+        <div className="h-[260px] relative shrink-0">
+          <img src={photo} alt="Михаэль Барбарич" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
         </div>
-        <div className="flex-1 flex flex-col justify-center px-[28px] -mt-[20px]">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">О себе</p>
-          <h2 className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-tight mb-[4px]">Кто я</h2>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mb-[20px] italic">
+        <div className="flex-1 flex flex-col px-[28px] -mt-[30px] relative z-10">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">О себе</p>
+          <h2 className="text-[26px] font-bold text-[hsl(var(--slide-text))] leading-tight mb-[4px]">Кто я</h2>
+          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[14px] italic">
             Действующий предприниматель. Строю продукты и сейчас.
           </p>
-          <div className="space-y-[10px]">
+          <div className="space-y-[8px]">
             {bullets.map((b, i) => (
               <div key={i} className="flex items-start gap-[8px]">
                 <div className="w-[4px] h-[4px] rounded-full bg-[hsl(var(--slide-gold))] mt-[6px] shrink-0" />
-                <p className="text-[13px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{b}</p>
+                <p className="text-[12px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{b}</p>
               </div>
             ))}
           </div>
