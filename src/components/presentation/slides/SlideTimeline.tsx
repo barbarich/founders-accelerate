@@ -1,3 +1,5 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+
 interface SlideTimelineProps {
   period: string;
   title: string;
@@ -11,10 +13,37 @@ interface SlideTimelineProps {
 }
 
 export default function SlideTimeline({ period, title, subtitle, description, highlight, image, index, imageContain, bottomBanner }: SlideTimelineProps) {
+  const isMobile = useIsMobile();
   const isEven = index % 2 === 0;
-  const imgClass = imageContain
-    ? "w-full h-full object-contain"
-    : "w-full h-full object-cover";
+  const imgClass = imageContain ? "w-full h-full object-contain" : "w-full h-full object-cover";
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col">
+        <div className="h-[240px] relative flex items-center justify-center overflow-hidden shrink-0">
+          {imageContain && <div className="absolute inset-0 bg-[hsl(var(--slide-bg-alt))]" />}
+          <img src={image} alt={title} className={`relative z-[1] ${imgClass}`} />
+          <div className="absolute inset-0 z-[2] bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
+        </div>
+        <div className="flex-1 flex flex-col justify-center px-[28px]">
+          <p className="text-[10px] font-mono tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[6px]">{period}</p>
+          <h2 className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[4px]">{title}</h2>
+          <p className="text-[12px] text-[hsl(var(--slide-gold)/0.8)] font-medium mb-[16px]">{subtitle}</p>
+          <div className="w-[30px] h-[1px] bg-[hsl(var(--slide-border))] mb-[12px]" />
+          <p className="text-[13px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5] mb-[16px]">{description}</p>
+          <div className="inline-flex items-center gap-[8px] px-[12px] py-[8px] border border-[hsl(var(--slide-gold)/0.3)] rounded-[4px] bg-[hsl(var(--slide-gold)/0.05)] self-start">
+            <div className="w-[4px] h-[4px] rounded-full bg-[hsl(var(--slide-gold))]" />
+            <span className="text-[12px] text-[hsl(var(--slide-gold))] font-medium">{highlight}</span>
+          </div>
+        </div>
+        {bottomBanner && (
+          <div className="w-full py-[10px] bg-[hsl(var(--slide-gold))] text-center shrink-0">
+            <span className="text-[14px] font-bold text-[hsl(var(--slide-bg))] tracking-wide">{bottomBanner}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col">

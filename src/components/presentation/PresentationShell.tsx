@@ -155,7 +155,7 @@ export default function PresentationShell() {
             <X size={24} />
           </button>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>
           {Array.from({ length: TOTAL }, (_, i) => (
             <button
               key={i}
