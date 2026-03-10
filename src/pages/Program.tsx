@@ -1,11 +1,10 @@
-import { ArrowLeft, Target, Users, Lightbulb, Rocket, CheckCircle2, MessageSquare, Zap, Calendar } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const weeks = [
   {
     number: 1,
     title: "Кто ваш клиент и зачем ему ваш продукт",
-    icon: <Target className="w-5 h-5" />,
     teach: [
       "Как определить кто заплатит за продукт (а не кому он «может быть полезен»)",
       "Как провести customer-интервью за 15 минут — 5 правильных вопросов",
@@ -20,13 +19,12 @@ const weeks = [
     homework: [
       "5 интервью с потенциальными клиентами (шаблон вопросов готов с встречи)",
       "AI-анализ 5 конкурентов по промптам с встречи",
-      'Одно предложение: "[продукт] помогает [кому] решить [что]"',
+      '"[продукт] помогает [кому] решить [что]" — сформулировать одно предложение',
     ],
   },
   {
     number: 2,
     title: "Позиционирование, цена и что должен делать ваш MVP",
-    icon: <Lightbulb className="w-5 h-5" />,
     teach: [
       "Как упаковать продукт: позиционирование в одно предложение, которое продаёт",
       "Как выбрать модель монетизации и определить цену (с примерами из моих продуктов)",
@@ -48,7 +46,6 @@ const weeks = [
   {
     number: 3,
     title: "Доработка продукта и создание лендинга",
-    icon: <Zap className="w-5 h-5" />,
     teach: [
       "Как дорабатывать продукт с помощью AI — живое демо: Claude Code, Cursor, Lovable",
       "Как построить лендинг за 30 минут в Lovable (строю на экране от промпта до готовой страницы)",
@@ -70,7 +67,6 @@ const weeks = [
   {
     number: 4,
     title: "Демо-день и подготовка к запуску",
-    icon: <Rocket className="w-5 h-5" />,
     teach: [
       "Как найти первых клиентов без бюджета: cold outreach, комьюнити, контент",
       "Как написать сообщение которое не игнорируют (шаблоны, примеры, промпты для AI)",
@@ -103,74 +99,60 @@ const outcomes = [
   "Обратная связь от ментора и группы каждую неделю",
 ];
 
-function SectionLabel({ children, color }: { children: React.ReactNode; color: "gold" | "blue" | "green" }) {
-  const colors = {
-    gold: "bg-primary/15 text-primary border-primary/20",
-    blue: "bg-blue-500/15 text-blue-400 border-blue-500/20",
-    green: "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
+function SectionBlock({ label, color, items }: { label: string; color: "gold" | "blue" | "green"; items: string[] }) {
+  const labelColors = {
+    gold: "text-primary",
+    blue: "text-blue-400",
+    green: "text-emerald-400",
   };
+  const dotColors = {
+    gold: "bg-primary",
+    blue: "bg-blue-400",
+    green: "bg-emerald-400",
+  };
+
   return (
-    <span className={`inline-flex items-center text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${colors[color]}`}>
-      {children}
-    </span>
+    <div>
+      <p className={`text-xs font-semibold uppercase tracking-wider mb-2.5 ${labelColors[color]}`}>{label}</p>
+      <ul className="space-y-1.5">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-foreground/80">
+            <span className={`w-1 h-1 rounded-full ${dotColors[color]} mt-[7px] shrink-0`} />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
 function WeekCard({ week }: { week: typeof weeks[0] }) {
   return (
-    <div className="border border-border rounded-2xl overflow-hidden bg-card">
-      {/* Header */}
-      <div className="px-6 py-5 border-b border-border bg-secondary/30 flex items-start gap-4">
-        <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center text-primary shrink-0 mt-0.5">
-          {week.icon}
-        </div>
-        <div>
-          <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">Неделя {week.number}</p>
-          <h3 className="text-lg font-semibold text-foreground leading-snug">{week.title}</h3>
-        </div>
+    <div className="border border-border rounded-xl overflow-hidden bg-card">
+      <div className="px-5 py-4 border-b border-border bg-secondary/30">
+        <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider mb-0.5">Неделя {week.number}</p>
+        <h3 className="text-[15px] font-semibold text-foreground leading-snug">{week.title}</h3>
       </div>
 
-      <div className="p-6 space-y-6">
-        {/* Teach */}
-        <div>
-          <SectionLabel color="gold">Учу и показываю</SectionLabel>
-          <ul className="mt-3 space-y-2">
-            {week.teach.map((item, i) => (
-              <li key={i} className="flex gap-3 text-sm text-foreground/85 leading-relaxed">
-                <span className="text-primary mt-0.5 shrink-0">▸</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Together */}
-        <div>
-          <SectionLabel color="blue">Делаем вместе</SectionLabel>
-          <ul className="mt-3 space-y-2">
-            {week.together.map((item, i) => (
-              <li key={i} className="flex gap-3 text-sm text-foreground/85 leading-relaxed">
-                <Users className="w-3.5 h-3.5 text-blue-400 mt-1 shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Homework */}
-        <div className="bg-secondary/40 rounded-xl p-4">
-          <SectionLabel color="green">Задание на неделю</SectionLabel>
-          <ul className="mt-3 space-y-2">
-            {week.homework.map((item, i) => (
-              <li key={i} className="flex gap-3 text-sm text-foreground/85 leading-relaxed">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-1 shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
+      <div className="px-5 py-4 space-y-5">
+        <SectionBlock label="Учу и показываю" color="gold" items={week.teach} />
+        <SectionBlock label="Делаем вместе" color="blue" items={week.together} />
+        <div className="bg-secondary/40 rounded-lg p-4 -mx-1">
+          <SectionBlock label="Задание на неделю" color="green" items={week.homework} />
         </div>
       </div>
     </div>
+  );
+}
+
+function CTAButton({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href="/register"
+      className={`inline-block bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-colors ${className}`}
+    >
+      Присоединиться
+    </a>
   );
 }
 
@@ -181,85 +163,69 @@ export default function Program() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
             <ArrowLeft className="w-4 h-4" />
             Назад
           </a>
-          <a
-            href="/register"
-            className="bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
-          >
-            Присоединиться
-          </a>
+          <CTAButton className="text-sm px-4 py-2 rounded-lg" />
         </div>
       </nav>
 
-      <main className={`max-w-4xl mx-auto ${isMobile ? 'px-4 py-8' : 'px-6 py-16'}`}>
+      <main className={`max-w-3xl mx-auto ${isMobile ? 'px-4 py-8' : 'px-6 py-16'}`}>
         {/* Hero */}
-        <header className={`${isMobile ? 'mb-10' : 'mb-16'} text-center`}>
-          <p className="text-primary text-sm font-semibold uppercase tracking-widest mb-3">The Founders Circle</p>
-          <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl'} font-bold text-foreground mb-4 font-['Playfair_Display']`}>
+        <header className={`${isMobile ? 'mb-8' : 'mb-14'} text-center`}>
+          <p className="text-primary text-xs font-semibold uppercase tracking-widest mb-2">The Founders Circle</p>
+          <h1 className={`${isMobile ? 'text-2xl' : 'text-4xl'} font-bold text-foreground mb-3 font-['Playfair_Display']`}>
             Программа. Месяц 1
           </h1>
-          <p className={`${isMobile ? 'text-lg' : 'text-xl'} text-foreground/70 max-w-2xl mx-auto leading-relaxed`}>
+          <p className={`${isMobile ? 'text-base' : 'text-lg'} text-foreground/60 max-w-xl mx-auto`}>
             От сырой идеи к готовности запуска
           </p>
         </header>
 
         {/* Who & Result */}
-        <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 gap-6'} mb-12`}>
-          <div className="border border-border rounded-2xl p-6 bg-card">
-            <div className="flex items-center gap-3 mb-3">
-              <MessageSquare className="w-5 h-5 text-primary" />
-              <h2 className="font-semibold text-foreground">Для кого</h2>
-            </div>
-            <p className="text-sm text-foreground/70 leading-relaxed">
+        <div className={`grid ${isMobile ? 'grid-cols-1 gap-3' : 'grid-cols-2 gap-5'} mb-10`}>
+          <div className="border border-border rounded-xl p-5 bg-card">
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Для кого</p>
+            <p className="text-[13px] text-foreground/75 leading-relaxed">
               Есть идея, базовый прототип, общее понимание рынка. Нет чёткого позиционирования, нет клиентов, нет уверенности что всё правильно.
             </p>
           </div>
-          <div className="border border-primary/30 rounded-2xl p-6 bg-primary/5">
-            <div className="flex items-center gap-3 mb-3">
-              <Calendar className="w-5 h-5 text-primary" />
-              <h2 className="font-semibold text-foreground">Результат месяца</h2>
-            </div>
-            <p className="text-sm text-foreground/70 leading-relaxed">
+          <div className="border border-primary/25 rounded-xl p-5 bg-primary/5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">Результат месяца</p>
+            <p className="text-[13px] text-foreground/75 leading-relaxed">
               Понятный продукт, понятный клиент, доработанный MVP, лендинг, первые контакты с реальными людьми.
             </p>
           </div>
         </div>
 
         {/* Weeks */}
-        <div className="space-y-8 mb-16">
+        <div className={`${isMobile ? 'space-y-5' : 'space-y-6'} mb-12`}>
           {weeks.map((week) => (
             <WeekCard key={week.number} week={week} />
           ))}
         </div>
 
         {/* Outcomes */}
-        <section className="border border-primary/30 rounded-2xl p-8 bg-primary/5 mb-16">
-          <h2 className={`${isMobile ? 'text-xl' : 'text-2xl'} font-bold text-foreground mb-6 text-center font-['Playfair_Display']`}>
+        <section className="border border-primary/25 rounded-xl p-6 bg-primary/5 mb-12">
+          <p className={`${isMobile ? 'text-base' : 'text-lg'} font-bold text-foreground mb-4 text-center`}>
             Что получает каждый участник за месяц 1
-          </h2>
-          <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-2'} gap-3`}>
+          </p>
+          <ul className="space-y-2">
             {outcomes.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 text-sm text-foreground/85">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <li key={i} className="flex items-start gap-2.5 text-[13px] text-foreground/80">
+                <span className="w-1 h-1 rounded-full bg-primary mt-[7px] shrink-0" />
                 {item}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
 
-        {/* CTA */}
-        <div className="text-center pb-8">
-          <a
-            href="/register"
-            className={`inline-block bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-colors ${isMobile ? 'px-8 py-3.5 text-base' : 'px-10 py-4 text-lg'}`}
-          >
-            Присоединиться
-          </a>
-          <p className="text-muted-foreground text-sm mt-4">Старт 16 марта 2026 · Группа 5–7 человек</p>
+        {/* Bottom CTA */}
+        <div className="text-center pb-10">
+          <CTAButton className={isMobile ? 'px-8 py-3.5 text-base' : 'px-10 py-4 text-lg'} />
+          <p className="text-muted-foreground text-xs mt-3">Старт 16 марта 2026 · Группа 5–7 человек</p>
         </div>
       </main>
     </div>
