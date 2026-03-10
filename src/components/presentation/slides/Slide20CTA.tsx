@@ -105,6 +105,12 @@ export default function Slide20CTA() {
           >
             Присоединиться
           </a>
+          <a
+            href="/program"
+            className="inline-block border border-[hsl(var(--slide-gold)/0.5)] text-[hsl(var(--slide-gold))] text-[18px] font-medium px-[40px] py-[14px] rounded-[10px] transition-opacity hover:opacity-80 mt-[16px]"
+          >
+            Программа 1-го месяца
+          </a>
         </div>
       </div>
     </div>
