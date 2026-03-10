@@ -43,6 +43,12 @@ export default function Slide20CTA() {
             >
               Присоединиться
             </a>
+            <a
+              href="/program"
+              className="inline-block border border-[hsl(var(--slide-gold)/0.5)] text-[hsl(var(--slide-gold))] text-[13px] font-medium px-[28px] py-[10px] rounded-[8px] transition-opacity hover:opacity-80 mt-[10px]"
+            >
+              Программа 1-го месяца
+            </a>
           <p className="text-[10px] text-[hsl(var(--slide-gold)/0.7)] italic mt-[12px]">
             Количество мест ограничено — 5–7 человек в группе
           </p>
@@ -98,6 +104,12 @@ export default function Slide20CTA() {
             className="inline-block bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] text-[22px] font-semibold px-[48px] py-[16px] rounded-[10px] transition-opacity hover:opacity-90"
           >
             Присоединиться
+          </a>
+          <a
+            href="/program"
+            className="inline-block border border-[hsl(var(--slide-gold)/0.5)] text-[hsl(var(--slide-gold))] text-[18px] font-medium px-[40px] py-[14px] rounded-[10px] transition-opacity hover:opacity-80 mt-[16px]"
+          >
+            Программа 1-го месяца
           </a>
         </div>
       </div>
