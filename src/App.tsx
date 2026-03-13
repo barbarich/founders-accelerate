@@ -55,6 +55,7 @@ const App = () => (
           <Route path="/" element={<Navigate to="/en" replace />} />
           <Route path="/:lang" element={<LangLanding />} />
           <Route path="/:lang/apply" element={<LangApply />} />
+          <Route path="/:lang/mentor" element={<LangMentor />} />
           <Route path="/pitch" element={<PresentationShell />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />

@@ -275,6 +275,16 @@ export default function Landing() {
                   </Reveal>
                 ))}
               </div>
+
+              <Reveal delay={900}>
+                <Link
+                  to={`/${lang}/mentor`}
+                  className="inline-flex items-center gap-2 mt-8 text-sm text-primary font-medium hover:text-primary/80 transition-colors group"
+                >
+                  {t.trackTitle}
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Reveal>
             </div>
           </div>
         </div>
