@@ -125,7 +125,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
       {menuOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border px-6 pb-5 space-y-4">
           <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navProgram}</a>
-          <a href="#mentor" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navMentor}</a>
+          <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navMentor}</Link>
           <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navPricing}</a>
           <Link to={applyUrl} className="block bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-semibold text-center">
             {t.navApply}
