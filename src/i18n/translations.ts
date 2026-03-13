@@ -24,6 +24,12 @@ export interface Translations {
   heroCTA: string;
   heroGroup: string;
 
+  // Stats
+  statProducts: string;
+  statExits: string;
+  statUsers: string;
+  statCountries: string;
+
   // Problem
   problemTag: string;
   problemTitle: string;
@@ -60,14 +66,13 @@ export interface Translations {
   resultsTag: string;
   resultsTitle: string;
   resultsSubtitle: string;
-  resultsItems: { icon: string; title: string; desc: string }[];
+  resultsItems: { title: string; desc: string }[];
 
   // Format
   formatTag: string;
   formatTitle: string;
   formatSubtitle: string;
   formatColumns: {
-    icon: string;
     title: string;
     sub: string;
     items: string[];
@@ -129,6 +134,11 @@ export const translations: Record<Lang, Translations> = {
     heroCTA: "Apply Now",
     heroGroup: "Group of 5–7 founders",
 
+    statProducts: "Products Built",
+    statExits: "Successful Exits",
+    statUsers: "Paying Users",
+    statCountries: "Countries",
+
     problemTag: "The Problem",
     problemTitle: "Sound familiar?",
     problemItems: [
@@ -177,21 +187,21 @@ export const translations: Record<Lang, Translations> = {
     resultsTitle: "What You'll Achieve in 12 Weeks",
     resultsSubtitle: "No matter your stage — the program accelerates your path to results.",
     resultsItems: [
-      { icon: "🗺️", title: "Clear Action Plan", desc: "Understanding every step — from idea to product in the market" },
-      { icon: "🔥", title: "Motivation & Discipline", desc: "A group, mentor, and system that keep you going" },
-      { icon: "🤖", title: "AI as a Superpower", desc: "Build products with AI — without a dev team" },
-      { icon: "💰", title: "Working Business Model", desc: "Clear monetization, tested with real customers" },
-      { icon: "👥", title: "First Users", desc: "Acquisition strategy and first paying customers" },
-      { icon: "🌐", title: "Community of 170+ Founders", desc: "Network, support, and connections that last forever" },
+      { title: "Clear Action Plan", desc: "Understanding every step — from idea to product in the market" },
+      { title: "Motivation & Discipline", desc: "A group, mentor, and system that keep you going" },
+      { title: "AI as a Superpower", desc: "Build products with AI — without a dev team" },
+      { title: "Working Business Model", desc: "Clear monetization, tested with real customers" },
+      { title: "First Users", desc: "Acquisition strategy and first paying customers" },
+      { title: "Community of 170+ Founders", desc: "Network, support, and connections that last forever" },
     ],
 
     formatTag: "Format",
     formatTitle: "The Founders Circle",
     formatSubtitle: "12 weeks · group of 5–7 · from idea to product",
     formatColumns: [
-      { icon: "📅", title: "Every Week", sub: "2-hour session", items: ["Progress review", "Theory + practice", "New tools & methodologies", "Case studies", "Next steps planning", "Homework"] },
-      { icon: "🧭", title: "Mentorship", sub: "Unlimited access", items: ["Direct access to me — any question", "Not just during sessions, but between them", "Telegram group for quick communication", "You're never alone with a problem"] },
-      { icon: "🎤", title: "Expert Sessions", sub: "Monthly", items: ["Marketing & sales", "Artificial intelligence", "Legal & finance", "Strategy & growth"] },
+      { title: "Every Week", sub: "2-hour session", items: ["Progress review", "Theory + practice", "New tools & methodologies", "Case studies", "Next steps planning", "Homework"] },
+      { title: "Mentorship", sub: "Unlimited access", items: ["Direct access to me — any question", "Not just during sessions, but between them", "Telegram group for quick communication", "You're never alone with a problem"] },
+      { title: "Expert Sessions", sub: "Monthly", items: ["Marketing & sales", "Artificial intelligence", "Legal & finance", "Strategy & growth"] },
     ],
 
     pricingTag: "Pricing",
@@ -245,6 +255,11 @@ export const translations: Record<Lang, Translations> = {
     heroCTA: "Подать заявку",
     heroGroup: "Группа 5–7 фаундеров",
 
+    statProducts: "Продуктов",
+    statExits: "Экзитов",
+    statUsers: "Пользователей",
+    statCountries: "Стран",
+
     problemTag: "Проблема",
     problemTitle: "Знакомо?",
     problemItems: [
@@ -293,21 +308,21 @@ export const translations: Record<Lang, Translations> = {
     resultsTitle: "Что вы получите за 12 недель",
     resultsSubtitle: "Неважно, на какой вы стадии — программа ускорит ваш путь к результату.",
     resultsItems: [
-      { icon: "🗺️", title: "Чёткий план действий", desc: "Понимание каждого шага — от идеи до продукта в рынке" },
-      { icon: "🔥", title: "Мотивация и дисциплина", desc: "Группа, ментор и система, которые не дадут остановиться" },
-      { icon: "🤖", title: "AI как суперсила", desc: "Навык создания продуктов с помощью AI — без команды разработчиков" },
-      { icon: "💰", title: "Рабочая бизнес-модель", desc: "Понятная монетизация, проверенная на реальных клиентах" },
-      { icon: "👥", title: "Первые пользователи", desc: "Стратегия привлечения и первые платящие клиенты" },
-      { icon: "🌐", title: "Комьюнити 170+ фаундеров", desc: "Нетворк, поддержка и связи, которые остаются навсегда" },
+      { title: "Чёткий план действий", desc: "Понимание каждого шага — от идеи до продукта в рынке" },
+      { title: "Мотивация и дисциплина", desc: "Группа, ментор и система, которые не дадут остановиться" },
+      { title: "AI как суперсила", desc: "Навык создания продуктов с помощью AI — без команды разработчиков" },
+      { title: "Рабочая бизнес-модель", desc: "Понятная монетизация, проверенная на реальных клиентах" },
+      { title: "Первые пользователи", desc: "Стратегия привлечения и первые платящие клиенты" },
+      { title: "Комьюнити 170+ фаундеров", desc: "Нетворк, поддержка и связи, которые остаются навсегда" },
     ],
 
     formatTag: "Формат программы",
     formatTitle: "The Founders Circle",
     formatSubtitle: "12 недель · группа 5–7 человек · от идеи до продукта",
     formatColumns: [
-      { icon: "📅", title: "Каждую неделю", sub: "Встреча 2 часа", items: ["Разбор прогресса за неделю", "Теория + практика", "Новые инструменты и методологии", "Разбор кейсов", "Планирование следующего шага", "Домашнее задание"] },
-      { icon: "🧭", title: "Менторство", sub: "Без ограничений", items: ["Доступ ко мне лично — по любым вопросам", "Не только на встречах, но и между ними", "Telegram-группа для быстрой связи", "Вы никогда не один на один с проблемой"] },
-      { icon: "🎤", title: "Эксперты", sub: "Раз в месяц", items: ["Маркетинг и продажи", "Искусственный интеллект", "Legal и финансы", "Стратегия и рост"] },
+      { title: "Каждую неделю", sub: "Встреча 2 часа", items: ["Разбор прогресса за неделю", "Теория + практика", "Новые инструменты и методологии", "Разбор кейсов", "Планирование следующего шага", "Домашнее задание"] },
+      { title: "Менторство", sub: "Без ограничений", items: ["Доступ ко мне лично — по любым вопросам", "Не только на встречах, но и между ними", "Telegram-группа для быстрой связи", "Вы никогда не один на один с проблемой"] },
+      { title: "Эксперты", sub: "Раз в месяц", items: ["Маркетинг и продажи", "Искусственный интеллект", "Legal и финансы", "Стратегия и рост"] },
     ],
 
     pricingTag: "Участие",
@@ -361,6 +376,11 @@ export const translations: Record<Lang, Translations> = {
     heroCTA: "Подати заявку",
     heroGroup: "Група 5–7 фаундерів",
 
+    statProducts: "Продуктів",
+    statExits: "Екзітів",
+    statUsers: "Користувачів",
+    statCountries: "Країн",
+
     problemTag: "Проблема",
     problemTitle: "Знайоме?",
     problemItems: [
@@ -409,21 +429,21 @@ export const translations: Record<Lang, Translations> = {
     resultsTitle: "Що ви отримаєте за 12 тижнів",
     resultsSubtitle: "Неважливо, на якій ви стадії — програма прискорить ваш шлях до результату.",
     resultsItems: [
-      { icon: "🗺️", title: "Чіткий план дій", desc: "Розуміння кожного кроку — від ідеї до продукту на ринку" },
-      { icon: "🔥", title: "Мотивація та дисципліна", desc: "Група, ментор і система, які не дадуть зупинитися" },
-      { icon: "🤖", title: "AI як суперсила", desc: "Навичка створення продуктів за допомогою AI — без команди розробників" },
-      { icon: "💰", title: "Робоча бізнес-модель", desc: "Зрозуміла монетизація, перевірена на реальних клієнтах" },
-      { icon: "👥", title: "Перші користувачі", desc: "Стратегія залучення та перші клієнти, що платять" },
-      { icon: "🌐", title: "Спільнота 170+ фаундерів", desc: "Нетворк, підтримка та зв'язки, що залишаються назавжди" },
+      { title: "Чіткий план дій", desc: "Розуміння кожного кроку — від ідеї до продукту на ринку" },
+      { title: "Мотивація та дисципліна", desc: "Група, ментор і система, які не дадуть зупинитися" },
+      { title: "AI як суперсила", desc: "Навичка створення продуктів за допомогою AI — без команди розробників" },
+      { title: "Робоча бізнес-модель", desc: "Зрозуміла монетизація, перевірена на реальних клієнтах" },
+      { title: "Перші користувачі", desc: "Стратегія залучення та перші клієнти, що платять" },
+      { title: "Спільнота 170+ фаундерів", desc: "Нетворк, підтримка та зв'язки, що залишаються назавжди" },
     ],
 
     formatTag: "Формат програми",
     formatTitle: "The Founders Circle",
     formatSubtitle: "12 тижнів · група 5–7 осіб · від ідеї до продукту",
     formatColumns: [
-      { icon: "📅", title: "Щотижня", sub: "Зустріч 2 години", items: ["Розбір прогресу за тиждень", "Теорія + практика", "Нові інструменти та методології", "Розбір кейсів", "Планування наступного кроку", "Домашнє завдання"] },
-      { icon: "🧭", title: "Менторство", sub: "Без обмежень", items: ["Доступ до мене особисто — з будь-яких питань", "Не тільки на зустрічах, але й між ними", "Telegram-група для швидкого зв'язку", "Ви ніколи не сам на сам із проблемою"] },
-      { icon: "🎤", title: "Експерти", sub: "Раз на місяць", items: ["Маркетинг і продажі", "Штучний інтелект", "Legal і фінанси", "Стратегія та зростання"] },
+      { title: "Щотижня", sub: "Зустріч 2 години", items: ["Розбір прогресу за тиждень", "Теорія + практика", "Нові інструменти та методології", "Розбір кейсів", "Планування наступного кроку", "Домашнє завдання"] },
+      { title: "Менторство", sub: "Без обмежень", items: ["Доступ до мене особисто — з будь-яких питань", "Не тільки на зустрічах, але й між ними", "Telegram-група для швидкого зв'язку", "Ви ніколи не сам на сам із проблемою"] },
+      { title: "Експерти", sub: "Раз на місяць", items: ["Маркетинг і продажі", "Штучний інтелект", "Legal і фінанси", "Стратегія та зростання"] },
     ],
 
     pricingTag: "Участь",
@@ -477,6 +497,11 @@ export const translations: Record<Lang, Translations> = {
     heroCTA: "הגש מועמדות",
     heroGroup: "קבוצה של 5–7 יזמים",
 
+    statProducts: "מוצרים",
+    statExits: "אקזיטים",
+    statUsers: "משתמשים",
+    statCountries: "מדינות",
+
     problemTag: "הבעיה",
     problemTitle: "מוכר?",
     problemItems: [
@@ -525,21 +550,21 @@ export const translations: Record<Lang, Translations> = {
     resultsTitle: "מה תשיגו ב-12 שבועות",
     resultsSubtitle: "לא משנה באיזה שלב אתם — התוכנית תאיץ את הדרך לתוצאות.",
     resultsItems: [
-      { icon: "🗺️", title: "תוכנית פעולה ברורה", desc: "הבנה של כל שלב — מרעיון למוצר בשוק" },
-      { icon: "🔥", title: "מוטיבציה ומשמעת", desc: "קבוצה, מנטור ומערכת שלא נותנים לעצור" },
-      { icon: "🤖", title: "AI ככוח-על", desc: "היכולת לבנות מוצרים עם AI — בלי צוות פיתוח" },
-      { icon: "💰", title: "מודל עסקי עובד", desc: "מונטיזציה ברורה, נבדקה על לקוחות אמיתיים" },
-      { icon: "👥", title: "משתמשים ראשונים", desc: "אסטרטגיית גיוס ולקוחות משלמים ראשונים" },
-      { icon: "🌐", title: "קהילה של 170+ יזמים", desc: "נטוורק, תמיכה וקשרים שנשארים לתמיד" },
+      { title: "תוכנית פעולה ברורה", desc: "הבנה של כל שלב — מרעיון למוצר בשוק" },
+      { title: "מוטיבציה ומשמעת", desc: "קבוצה, מנטור ומערכת שלא נותנים לעצור" },
+      { title: "AI ככוח-על", desc: "היכולת לבנות מוצרים עם AI — בלי צוות פיתוח" },
+      { title: "מודל עסקי עובד", desc: "מונטיזציה ברורה, נבדקה על לקוחות אמיתיים" },
+      { title: "משתמשים ראשונים", desc: "אסטרטגיית גיוס ולקוחות משלמים ראשונים" },
+      { title: "קהילה של 170+ יזמים", desc: "נטוורק, תמיכה וקשרים שנשארים לתמיד" },
     ],
 
     formatTag: "פורמט התוכנית",
     formatTitle: "The Founders Circle",
     formatSubtitle: "12 שבועות · קבוצה של 5–7 · מרעיון למוצר",
     formatColumns: [
-      { icon: "📅", title: "כל שבוע", sub: "מפגש של שעתיים", items: ["סקירת התקדמות", "תיאוריה + פרקטיקה", "כלים ומתודולוגיות חדשות", "ניתוח מקרים", "תכנון הצעד הבא", "שיעורי בית"] },
-      { icon: "🧭", title: "מנטורינג", sub: "גישה ללא הגבלה", items: ["גישה ישירה אלי — כל שאלה", "לא רק במפגשים, אלא גם ביניהם", "קבוצת Telegram לתקשורת מהירה", "אתם לעולם לא לבד עם בעיה"] },
-      { icon: "🎤", title: "מומחים אורחים", sub: "פעם בחודש", items: ["שיווק ומכירות", "בינה מלאכותית", "משפט וכספים", "אסטרטגיה וצמיחה"] },
+      { title: "כל שבוע", sub: "מפגש של שעתיים", items: ["סקירת התקדמות", "תיאוריה + פרקטיקה", "כלים ומתודולוגיות חדשות", "ניתוח מקרים", "תכנון הצעד הבא", "שיעורי בית"] },
+      { title: "מנטורינג", sub: "גישה ללא הגבלה", items: ["גישה ישירה אלי — כל שאלה", "לא רק במפגשים, אלא גם ביניהם", "קבוצת Telegram לתקשורת מהירה", "אתם לעולם לא לבד עם בעיה"] },
+      { title: "מומחים אורחים", sub: "פעם בחודש", items: ["שיווק ומכירות", "בינה מלאכותית", "משפט וכספים", "אסטרטגיה וצמיחה"] },
     ],
 
     pricingTag: "מחירון",
