@@ -74,7 +74,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#program" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navProgram}</a>
-          <a href="#mentor" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navMentor}</a>
+          <Link to={`/${lang}/mentor`} className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navMentor}</Link>
           <a href="#pricing" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navPricing}</a>
 
           <div className="flex items-center gap-0.5 ml-2">
