@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import { supportedLangs, type Lang } from "@/i18n/translations";
 import Landing from "./pages/Landing";
 import Apply from "./pages/Apply";
+import Mentor from "./pages/Mentor";
 import PresentationShell from "@/components/presentation/PresentationShell";
 import Register from "./pages/Register";
 import Program from "./pages/Program";
