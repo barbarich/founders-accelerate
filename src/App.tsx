@@ -35,6 +35,16 @@ function LangApply() {
   );
 }
 
+function LangMentor() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <Mentor />
+    </LanguageProvider>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
