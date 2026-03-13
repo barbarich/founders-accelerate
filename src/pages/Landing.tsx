@@ -280,48 +280,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══════════════ TRACK RECORD — HORIZONTAL SCROLL ═══════════════ */}
-      <section className="py-24 md:py-40 border-t border-border/30 relative grain">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-          <Reveal>
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4">{t.trackTag}</p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-16 font-display">{t.trackTitle}</h2>
-          </Reveal>
-        </div>
-
-        {/* Horizontal scroll */}
-        <div className="horizontal-scroll-container px-6 lg:px-10">
-          {t.trackItems.map((item: any, i: number) => (
-            <div
-              key={i}
-              className="horizontal-scroll-card w-[320px] md:w-[400px] group"
-            >
-              <div className="glass glass-hover rounded-xl overflow-hidden transition-all duration-500 h-full">
-                <div className="h-48 md:h-56 overflow-hidden relative">
-                  <img
-                    src={trackImages[i]}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-xs font-mono text-primary/60">{item.period}</span>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">{item.subtitle}</p>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/[0.08] border border-primary/20">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span className="text-xs text-primary font-medium">{item.highlight}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ═══════════════ PROGRAM PHASES — TIMELINE ═══════════════ */}
       <section id="program" className="py-24 md:py-40 border-t border-border/30 relative">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
