@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import { supportedLangs, type Lang } from "@/i18n/translations";
 import Landing from "./pages/Landing";
 import Apply from "./pages/Apply";
+import Mentor from "./pages/Mentor";
 import PresentationShell from "@/components/presentation/PresentationShell";
 import Register from "./pages/Register";
 import Program from "./pages/Program";
@@ -34,6 +35,16 @@ function LangApply() {
   );
 }
 
+function LangMentor() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <Mentor />
+    </LanguageProvider>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -44,6 +55,7 @@ const App = () => (
           <Route path="/" element={<Navigate to="/en" replace />} />
           <Route path="/:lang" element={<LangLanding />} />
           <Route path="/:lang/apply" element={<LangApply />} />
+          <Route path="/:lang/mentor" element={<LangMentor />} />
           <Route path="/pitch" element={<PresentationShell />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
