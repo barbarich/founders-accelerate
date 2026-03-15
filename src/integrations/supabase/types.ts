@@ -14,13 +14,166 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          email: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          email: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      meeting_materials: {
+        Row: {
+          created_at: string
+          id: string
+          meeting_id: string
+          sort_order: number | null
+          title: string
+          type: string
+          url: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          meeting_id: string
+          sort_order?: number | null
+          title: string
+          type?: string
+          url: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          meeting_id?: string
+          sort_order?: number | null
+          title?: string
+          type?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meeting_materials_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "meetings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      meetings: {
+        Row: {
+          agenda: string | null
+          created_at: string
+          id: string
+          month_id: string | null
+          presentation_url: string | null
+          title: string
+          updated_at: string
+          week_number: number | null
+        }
+        Insert: {
+          agenda?: string | null
+          created_at?: string
+          id?: string
+          month_id?: string | null
+          presentation_url?: string | null
+          title: string
+          updated_at?: string
+          week_number?: number | null
+        }
+        Update: {
+          agenda?: string | null
+          created_at?: string
+          id?: string
+          month_id?: string | null
+          presentation_url?: string | null
+          title?: string
+          updated_at?: string
+          week_number?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meetings_month_id_fkey"
+            columns: ["month_id"]
+            isOneToOne: false
+            referencedRelation: "monthly_plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      monthly_plans: {
+        Row: {
+          content: string | null
+          created_at: string
+          id: string
+          month_number: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string | null
+          created_at?: string
+          id?: string
+          month_number: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string | null
+          created_at?: string
+          id?: string
+          month_number?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      presentations: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          sort_order: number | null
+          title: string
+          url: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          sort_order?: number | null
+          title: string
+          url?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          sort_order?: number | null
+          title?: string
+          url?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
