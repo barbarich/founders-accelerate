@@ -161,9 +161,15 @@ export default function AdminMeetings() {
                   )}
                   {m.presentation_url && (
                     <div className="mb-4">
-                      <a href={m.presentation_url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
-                        <ExternalLink className="w-3.5 h-3.5" /> Презентация
-                      </a>
+                      {m.presentation_url.startsWith("/admin/meeting/") ? (
+                        <button onClick={() => navigate(m.presentation_url!)} className="text-sm text-primary hover:underline flex items-center gap-1">
+                          <Presentation className="w-3.5 h-3.5" /> Открыть презентацию
+                        </button>
+                      ) : (
+                        <a href={m.presentation_url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
+                          <ExternalLink className="w-3.5 h-3.5" /> Презентация
+                        </a>
+                      )}
                     </div>
                   )}
 
