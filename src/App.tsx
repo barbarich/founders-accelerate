@@ -75,6 +75,11 @@ const App = () => (
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
           </Route>
+          <Route path="/admin/meeting/:id" element={
+            <AdminGuard fallback={<AdminLogin />}>
+              <Meeting1PresentationShell />
+            </AdminGuard>
+          } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
