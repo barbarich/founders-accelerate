@@ -12,6 +12,12 @@ import PresentationShell from "@/components/presentation/PresentationShell";
 import Register from "./pages/Register";
 import Program from "./pages/Program";
 import NotFound from "./pages/NotFound";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminPresentations from "./pages/admin/AdminPresentations";
+import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
+import AdminMeetings from "./pages/admin/AdminMeetings";
+import AdminUsers from "./pages/admin/AdminUsers";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +65,13 @@ const App = () => (
           <Route path="/pitch" element={<PresentationShell />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="presentations" element={<AdminPresentations />} />
+            <Route path="plans" element={<AdminMonthlyPlans />} />
+            <Route path="meetings" element={<AdminMeetings />} />
+            <Route path="users" element={<AdminUsers />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
