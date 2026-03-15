@@ -16,6 +16,7 @@ type Material = Database["public"]["Tables"]["meeting_materials"]["Row"];
 type MonthlyPlan = Database["public"]["Tables"]["monthly_plans"]["Row"];
 
 export default function AdminMeetings() {
+  const navigate = useNavigate();
   const [meetings, setMeetings] = useState<Meeting[]>([]);
   const [months, setMonths] = useState<MonthlyPlan[]>([]);
   const [materials, setMaterials] = useState<Record<string, Material[]>>({});
