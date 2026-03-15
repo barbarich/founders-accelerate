@@ -18,8 +18,23 @@ export default function AdminLogin() {
     setLoading(true);
     setError("");
 
+    const normalizedEmail = email.trim().toLowerCase();
+
     if (mode === "signup") {
-      const { error } = await supabase.auth.signUp({ email, password });
+      if (normalizedEmail !== "barbarych@gmail.com") {
+        setError("Регистрация доступна только для barbarych@gmail.com");
+        setLoading(false);
+        return;
+      }
+
+      const { error } = await supabase.auth.signUp({
+        email: normalizedEmail,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/admin`,
+        },
+      });
+
       if (error) {
         setError(error.message);
       } else {
@@ -28,11 +43,12 @@ export default function AdminLogin() {
         alert("Проверьте почту для подтверждения аккаунта");
       }
     } else {
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      const { error } = await supabase.auth.signInWithPassword({ email: normalizedEmail, password });
       if (error) {
         setError(error.message);
       }
     }
+
     setLoading(false);
   };
 
