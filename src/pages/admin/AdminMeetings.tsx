@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Plus, Pencil, Trash2, Link as LinkIcon, FileText, ExternalLink } from "lucide-react";
+import { Plus, Pencil, Trash2, Link as LinkIcon, FileText, ExternalLink, Presentation } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import type { Database } from "@/integrations/supabase/types";
 
@@ -15,6 +16,7 @@ type Material = Database["public"]["Tables"]["meeting_materials"]["Row"];
 type MonthlyPlan = Database["public"]["Tables"]["monthly_plans"]["Row"];
 
 export default function AdminMeetings() {
+  const navigate = useNavigate();
   const [meetings, setMeetings] = useState<Meeting[]>([]);
   const [months, setMonths] = useState<MonthlyPlan[]>([]);
   const [materials, setMaterials] = useState<Record<string, Material[]>>({});
@@ -159,9 +161,15 @@ export default function AdminMeetings() {
                   )}
                   {m.presentation_url && (
                     <div className="mb-4">
-                      <a href={m.presentation_url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
-                        <ExternalLink className="w-3.5 h-3.5" /> Презентация
-                      </a>
+                      {m.presentation_url.startsWith("/admin/meeting/") ? (
+                        <button onClick={() => navigate(m.presentation_url!)} className="text-sm text-primary hover:underline flex items-center gap-1">
+                          <Presentation className="w-3.5 h-3.5" /> Открыть презентацию
+                        </button>
+                      ) : (
+                        <a href={m.presentation_url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline flex items-center gap-1">
+                          <ExternalLink className="w-3.5 h-3.5" /> Презентация
+                        </a>
+                      )}
                     </div>
                   )}
 

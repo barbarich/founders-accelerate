@@ -18,6 +18,9 @@ import AdminPresentations from "./pages/admin/AdminPresentations";
 import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
 import AdminMeetings from "./pages/admin/AdminMeetings";
 import AdminUsers from "./pages/admin/AdminUsers";
+import { AdminGuard } from "@/components/admin/AdminGuard";
+import AdminLogin from "./pages/admin/AdminLogin";
+import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +75,11 @@ const App = () => (
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
           </Route>
+          <Route path="/admin/meeting/:id" element={
+            <AdminGuard fallback={<AdminLogin />}>
+              <Meeting1PresentationShell />
+            </AdminGuard>
+          } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
