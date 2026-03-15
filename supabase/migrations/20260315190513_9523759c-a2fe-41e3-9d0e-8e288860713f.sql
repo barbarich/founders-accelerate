@@ -1,0 +1,1 @@
+UPDATE public.meetings SET presentation_url = '/admin/meeting/1' WHERE id = '2c6f0220-3613-4d09-8086-2d8c4bb0d004';
