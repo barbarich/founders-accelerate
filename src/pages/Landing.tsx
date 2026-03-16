@@ -76,6 +76,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
           <a href="#program" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navMentor}</Link>
           <a href="#pricing" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">{t.navPricing}</a>
+          <Link to="/login" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors tracking-wide uppercase">Вход</Link>
 
           <div className="flex items-center gap-0.5 ml-2">
             {supportedLangs.map((l) => (
