@@ -126,7 +126,7 @@ function getSlideContent(index: number) {
 
 const TOTAL = 38;
 
-export default function Meeting1PresentationShell() {
+export default function Meeting1PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
@@ -248,7 +248,7 @@ export default function Meeting1PresentationShell() {
           </div>
           <div className={`flex items-center justify-between ${isMobile ? 'px-3 py-2' : 'px-6 py-3'} bg-[hsl(var(--card)/0.9)] backdrop-blur-sm`}>
             <div className="flex items-center gap-3">
-              <button onClick={(e) => { e.stopPropagation(); navigate("/admin/meetings"); }}
+              <button onClick={(e) => { e.stopPropagation(); navigate(backTo); }}
                 className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded" title="Назад">
                 <ArrowLeft size={16} />
               </button>
