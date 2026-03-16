@@ -55,6 +55,8 @@ export default function M1Slide08PerplexityPrompts() {
           </p>
         </div>
         <button
+          onPointerDown={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
           onClick={handleCopy}
           className="shrink-0 ml-[24px] px-[28px] py-[14px] rounded-[10px] font-semibold text-[18px] transition-all duration-200"
           style={{
