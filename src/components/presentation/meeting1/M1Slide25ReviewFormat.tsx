@@ -20,7 +20,7 @@ export default function M1Slide25ReviewFormat() {
             <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Что за продукт и для кого</p>
             <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Какую проблему решает</p>
             <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Чем отличается от конкурентов</p>
-            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Показать экран (если есть)</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ На какой стадии сейчас</p>
           </div>
         </div>
 
