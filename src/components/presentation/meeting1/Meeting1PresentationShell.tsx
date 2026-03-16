@@ -41,6 +41,7 @@ import M1Slide31Closing from "./M1Slide31Closing";
 
 const slideNames = [
   "Добро пожаловать",
+  "Знакомство: питч идей",
   "Главная ошибка",
   "Три вещи",
   "Блок 1: Конкуренты",
@@ -67,16 +68,14 @@ const slideNames = [
   "Три теста",
   "Блок 4: Практика",
   "Шаг 1: Конкуренты",
-  "Шаг 2: Custdev-форма",
+  "Шаг 2: Вопросы для custdev",
   "Шаг 3: Позиционирование",
-  "Блок 5: Разбор",
-  "Формат разбора",
-  "Блок 6: Задание",
+  "Блок 5: Задание",
   "ДЗ: Конкуренты",
   "ДЗ: Custdev",
   "ДЗ: Позиционирование",
   "Следующая встреча",
-  "Блок 7: Инструменты",
+  "Блок 6: Инструменты",
   "Набор инструментов",
   "Закрытие",
 ];
@@ -84,49 +83,48 @@ const slideNames = [
 function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M1Slide01Welcome />;
-    case 1: return <M1Slide02MainMistake />;
-    case 2: return <M1Slide03ThreeThings />;
-    case 3: return <M1BlockHeader blockNumber={1} title="Конкурентный анализ" />;
-    case 4: return <M1Slide04CompetitorLevels />;
-    case 5: return <M1Slide05WhatToCheck />;
-    case 6: return <M1Slide06MetaMinder />;
-    case 7: return <M1Slide07Perplexity />;
-    case 8: return <M1Slide08PerplexityPrompts />;
-    case 9: return <M1Slide09SimilarWeb />;
-    case 10: return <M1Slide10MetaAdLibrary />;
-    case 11: return <M1Slide10bGoogleTrends />;
-    case 12: return <M1Slide11Reviews />;
-    case 13: return <M1Slide12Teardown />;
-    case 14: return <M1Slide13BusinessModel />;
-    case 15: return <M1BlockHeader blockNumber={2} title="Целевая аудитория" />;
-    case 16: return <M1Slide14WhoWillPay />;
-    case 17: return <M1Slide15Interview />;
-    case 18: return <M1Slide15bHypothesis />;
-    case 19: return <M1Slide16FindPeople />;
-    case 20: return <M1Slide17Tldv />;
-    case 21: return <M1Slide18Tally />;
-    case 22: return <M1BlockHeader blockNumber={3} title="Позиционирование" />;
-    case 23: return <M1Slide19Formula />;
-    case 24: return <M1Slide20ThreeTests />;
-    case 25: return <M1BlockHeader blockNumber={4} title="Делаем вместе" subtitle="30 минут" />;
-    case 26: return <M1Slide22Step1 />;
-    case 27: return <M1Slide23Step2 />;
-    case 28: return <M1Slide24Step3 />;
-    case 29: return <M1BlockHeader blockNumber={5} title="Разбор участников" subtitle="35 минут" />;
-    case 30: return <M1Slide25ReviewFormat />;
-    case 31: return <M1BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 32: return <M1Slide26HWCompetitors />;
-    case 33: return <M1Slide27HWCustdev />;
-    case 34: return <M1Slide28HWPositioning />;
-    case 35: return <M1Slide29NextMeeting />;
-    case 36: return <M1BlockHeader blockNumber={7} title="Набор инструментов" />;
-    case 37: return <M1Slide30Toolkit />;
-    case 38: return <M1Slide31Closing />;
+    case 1: return <M1Slide25ReviewFormat />;
+    case 2: return <M1Slide02MainMistake />;
+    case 3: return <M1Slide03ThreeThings />;
+    case 4: return <M1BlockHeader blockNumber={1} title="Конкурентный анализ" />;
+    case 5: return <M1Slide04CompetitorLevels />;
+    case 6: return <M1Slide05WhatToCheck />;
+    case 7: return <M1Slide06MetaMinder />;
+    case 8: return <M1Slide07Perplexity />;
+    case 9: return <M1Slide08PerplexityPrompts />;
+    case 10: return <M1Slide09SimilarWeb />;
+    case 11: return <M1Slide10MetaAdLibrary />;
+    case 12: return <M1Slide10bGoogleTrends />;
+    case 13: return <M1Slide11Reviews />;
+    case 14: return <M1Slide12Teardown />;
+    case 15: return <M1Slide13BusinessModel />;
+    case 16: return <M1BlockHeader blockNumber={2} title="Целевая аудитория" />;
+    case 17: return <M1Slide14WhoWillPay />;
+    case 18: return <M1Slide15Interview />;
+    case 19: return <M1Slide15bHypothesis />;
+    case 20: return <M1Slide16FindPeople />;
+    case 21: return <M1Slide17Tldv />;
+    case 22: return <M1Slide18Tally />;
+    case 23: return <M1BlockHeader blockNumber={3} title="Позиционирование" />;
+    case 24: return <M1Slide19Formula />;
+    case 25: return <M1Slide20ThreeTests />;
+    case 26: return <M1BlockHeader blockNumber={4} title="Делаем вместе" subtitle="30 минут" />;
+    case 27: return <M1Slide22Step1 />;
+    case 28: return <M1Slide23Step2 />;
+    case 29: return <M1Slide24Step3 />;
+    case 30: return <M1BlockHeader blockNumber={5} title="Задание на неделю" />;
+    case 31: return <M1Slide26HWCompetitors />;
+    case 32: return <M1Slide27HWCustdev />;
+    case 33: return <M1Slide28HWPositioning />;
+    case 34: return <M1Slide29NextMeeting />;
+    case 35: return <M1BlockHeader blockNumber={6} title="Набор инструментов" />;
+    case 36: return <M1Slide30Toolkit />;
+    case 37: return <M1Slide31Closing />;
     default: return null;
   }
 }
 
-const TOTAL = 39;
+const TOTAL = 38;
 
 export default function Meeting1PresentationShell() {
   const isMobile = useIsMobile();
