@@ -23,6 +23,11 @@ export default function M1Slide05WhatToCheck() {
           </div>
         ))}
       </div>
+      <div className="mt-[48px] bg-[hsl(var(--slide-gold)/0.05)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[32px] py-[20px]">
+        <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium leading-[1.6]">
+          💡 web.archive.org — машина времени для сайтов. Смотрите, как конкуренты менялись: какие фичи добавляли, как переписывали лендинг, как трансформировали позиционирование. История изменений — это карта их стратегии.
+        </p>
+      </div>
     </div>
   );
 }
