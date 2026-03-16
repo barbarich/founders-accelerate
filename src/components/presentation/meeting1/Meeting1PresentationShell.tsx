@@ -126,7 +126,11 @@ function getSlideContent(index: number) {
 
 const TOTAL = 38;
 
-export default function Meeting1PresentationShell() {
+interface Meeting1Props {
+  backUrl?: string;
+}
+
+export default function Meeting1PresentationShell({ backUrl = "/admin/meetings" }: Meeting1Props) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
