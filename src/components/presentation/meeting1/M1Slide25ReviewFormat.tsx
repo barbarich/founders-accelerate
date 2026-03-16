@@ -19,17 +19,31 @@ export default function M1Slide25ReviewFormat() {
         У каждого 5 минут. Свободный рассказ — без оценок и вопросов. Просто знакомимся.
       </p>
 
-      <div className="grid grid-cols-2 gap-x-[32px] gap-y-[16px] max-w-[1100px]">
-        {points.map((p, i) => (
-          <div key={i} className="flex items-start gap-[14px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[16px]">
-            <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[30px] h-[30px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 1}</span>
-            <span className="text-[28px] shrink-0">{p.emoji}</span>
-            <div>
-              <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.3]">{p.label}</p>
-              <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.hint}</p>
+      <div className="flex gap-[32px] max-w-[1100px]">
+        <div className="flex-1 flex flex-col gap-[16px]">
+          {points.slice(0, 4).map((p, i) => (
+            <div key={i} className="flex items-start gap-[14px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[16px]">
+              <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[30px] h-[30px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 1}</span>
+              <span className="text-[28px] shrink-0">{p.emoji}</span>
+              <div>
+                <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.3]">{p.label}</p>
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.hint}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="flex-1 flex flex-col gap-[16px]">
+          {points.slice(4).map((p, i) => (
+            <div key={i} className="flex items-start gap-[14px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[16px]">
+              <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[30px] h-[30px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 5}</span>
+              <span className="text-[28px] shrink-0">{p.emoji}</span>
+              <div>
+                <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.3]">{p.label}</p>
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.hint}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="mt-[36px] flex items-center gap-[12px]">
