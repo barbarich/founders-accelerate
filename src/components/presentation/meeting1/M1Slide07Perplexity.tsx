@@ -12,21 +12,21 @@ export default function M1Slide07Perplexity() {
       </p>
       <div className="grid grid-cols-2 gap-[32px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[36px]">
-          <h3 className="text-[22px] font-semibold text-[hsl(var(--slide-text))] mb-[16px]">Что это</h3>
+          <h3 className="text-[22px] font-semibold text-[hsl(var(--slide-text))] mb-[16px]">Что это и чем отличается от GPT</h3>
           <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">
-            AI research-движок с источниками. Не ChatGPT — даёт ссылки на реальные данные.
+            Perplexity — это AI-поисковик. GPT генерирует текст из памяти и часто выдумывает факты. Perplexity ищет в реальном интернете прямо сейчас и даёт ссылки на источники. Для ресёрча конкурентов — это критично.
           </p>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[36px]">
-          <h3 className="text-[22px] font-semibold text-[hsl(var(--slide-text))] mb-[16px]">Живое демо</h3>
+          <h3 className="text-[22px] font-semibold text-[hsl(var(--slide-text))] mb-[16px]">Пробуем вживую</h3>
           <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">
-            Открываю, ввожу запрос для своего продукта, показываю результат. Комментирую: "вот это — правда, вот это — AI выдумал, вот так проверяю."
+            Сейчас дам готовый промпт — каждый вводит его для своего продукта. Смотрим результаты вместе и разбираем, что полезно, а что нет.
           </p>
         </div>
       </div>
       <div className="mt-[32px] bg-[hsl(var(--slide-gold)/0.05)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[32px] py-[20px]">
         <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium">
-          ⚠️ Всегда открывайте источники. AI врёт в цифрах — источники не врут.
+          💡 Используйте режим Pro Search — он задаёт уточняющие вопросы и копает глубже. Всегда проверяйте источники: кликайте по ссылкам, AI может неверно интерпретировать данные.
         </p>
       </div>
     </div>
