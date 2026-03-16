@@ -61,11 +61,10 @@ const slideNames = [
   "Гипотеза для custdev",
   "Где найти людей",
   "tl;dv",
-  "Tally.so",
+  "Google Docs & Forms",
   "Блок 3: Позиционирование",
   "Формула",
   "Три теста",
-  "Napkin.ai",
   "Блок 4: Практика",
   "Шаг 1: Конкуренты",
   "Шаг 2: Custdev-форма",
@@ -109,26 +108,25 @@ function getSlideContent(index: number) {
     case 22: return <M1BlockHeader blockNumber={3} title="Позиционирование" />;
     case 23: return <M1Slide19Formula />;
     case 24: return <M1Slide20ThreeTests />;
-    case 25: return <M1Slide21Napkin />;
-    case 26: return <M1BlockHeader blockNumber={4} title="Делаем вместе" subtitle="30 минут" />;
-    case 27: return <M1Slide22Step1 />;
-    case 28: return <M1Slide23Step2 />;
-    case 29: return <M1Slide24Step3 />;
-    case 30: return <M1BlockHeader blockNumber={5} title="Разбор участников" subtitle="35 минут" />;
-    case 31: return <M1Slide25ReviewFormat />;
-    case 32: return <M1BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 33: return <M1Slide26HWCompetitors />;
-    case 34: return <M1Slide27HWCustdev />;
-    case 35: return <M1Slide28HWPositioning />;
-    case 36: return <M1Slide29NextMeeting />;
-    case 37: return <M1BlockHeader blockNumber={7} title="Набор инструментов" />;
-    case 38: return <M1Slide30Toolkit />;
-    case 39: return <M1Slide31Closing />;
+    case 25: return <M1BlockHeader blockNumber={4} title="Делаем вместе" subtitle="30 минут" />;
+    case 26: return <M1Slide22Step1 />;
+    case 27: return <M1Slide23Step2 />;
+    case 28: return <M1Slide24Step3 />;
+    case 29: return <M1BlockHeader blockNumber={5} title="Разбор участников" subtitle="35 минут" />;
+    case 30: return <M1Slide25ReviewFormat />;
+    case 31: return <M1BlockHeader blockNumber={6} title="Задание на неделю" />;
+    case 32: return <M1Slide26HWCompetitors />;
+    case 33: return <M1Slide27HWCustdev />;
+    case 34: return <M1Slide28HWPositioning />;
+    case 35: return <M1Slide29NextMeeting />;
+    case 36: return <M1BlockHeader blockNumber={7} title="Набор инструментов" />;
+    case 37: return <M1Slide30Toolkit />;
+    case 38: return <M1Slide31Closing />;
     default: return null;
   }
 }
 
-const TOTAL = 40;
+const TOTAL = 39;
 
 export default function Meeting1PresentationShell() {
   const isMobile = useIsMobile();
