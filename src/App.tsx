@@ -19,6 +19,7 @@ import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
 import AdminMeetings from "./pages/admin/AdminMeetings";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminParticipants from "./pages/admin/AdminParticipants";
+import AdminInviteCodes from "./pages/admin/AdminInviteCodes";
 import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
@@ -90,6 +91,7 @@ const App = () => (
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
             <Route path="participants" element={<AdminParticipants />} />
+            <Route path="invite-codes" element={<AdminInviteCodes />} />
           </Route>
           <Route path="/admin/meeting/:id" element={
             <AdminGuard fallback={<AdminLogin />}>

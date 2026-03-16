@@ -28,13 +28,28 @@ export default function ParticipantGuard({ children }: Props) {
         .maybeSingle();
 
       if (!existing) {
-        // Auto-create participant record on first login
-        await supabase.from("participants").insert({
+        // Read invite_code_id from localStorage (set during login flow)
+        const inviteCodeId = localStorage.getItem("invite_code_id");
+
+        const insertPayload: Record<string, unknown> = {
           user_id: session.user.id,
           email: session.user.email ?? "",
           full_name: session.user.user_metadata?.full_name ?? session.user.user_metadata?.name ?? null,
           avatar_url: session.user.user_metadata?.avatar_url ?? null,
-        });
+        };
+
+        if (inviteCodeId) {
+          insertPayload.invite_code_id = inviteCodeId;
+        }
+
+        await supabase.from("participants").insert(insertPayload as any);
+
+        // Increment used_count atomically
+        if (inviteCodeId) {
+          await supabase.rpc("use_invite_code", { _code_id: inviteCodeId });
+          localStorage.removeItem("invite_code_id");
+        }
+
         if (mounted) setStatus("active");
         return;
       }

@@ -35,6 +35,36 @@ export type Database = {
         }
         Relationships: []
       }
+      invite_codes: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          is_active: boolean
+          label: string | null
+          max_uses: number | null
+          used_count: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          label?: string | null
+          max_uses?: number | null
+          used_count?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          label?: string | null
+          max_uses?: number | null
+          used_count?: number
+        }
+        Relationships: []
+      }
       meeting_materials: {
         Row: {
           created_at: string
@@ -184,6 +214,7 @@ export type Database = {
           email: string
           full_name: string | null
           id: string
+          invite_code_id: string | null
           is_active: boolean
           user_id: string
         }
@@ -193,6 +224,7 @@ export type Database = {
           email: string
           full_name?: string | null
           id?: string
+          invite_code_id?: string | null
           is_active?: boolean
           user_id: string
         }
@@ -202,10 +234,19 @@ export type Database = {
           email?: string
           full_name?: string | null
           id?: string
+          invite_code_id?: string | null
           is_active?: boolean
           user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "participants_invite_code_id_fkey"
+            columns: ["invite_code_id"]
+            isOneToOne: false
+            referencedRelation: "invite_codes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       presentations: {
         Row: {
@@ -240,6 +281,7 @@ export type Database = {
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
+      use_invite_code: { Args: { _code_id: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
