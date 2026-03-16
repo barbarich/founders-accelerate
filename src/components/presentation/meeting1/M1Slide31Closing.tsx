@@ -1,18 +1,24 @@
 export default function M1Slide31Closing() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mx-auto mb-[48px]" />
-        <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-tight mb-[32px]">
-          Одним предложением
+      <div className="text-center max-w-[1000px]">
+        <p className="text-[64px] mb-[40px]">🚀</p>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[24px]">
+          Вы уже впереди 90% фаундеров
         </h2>
-        <p className="text-[28px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[800px] mx-auto mb-[48px]">
-          Каждый: "Что было самым полезным<br />и что сделаю первым."
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[48px]">
+          Большинство строят продукт, не поговорив ни с одним клиентом.<br />
+          Вы за одну неделю сделаете то, на что у других уходят месяцы.
         </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[16px] px-[48px] py-[32px] mb-[48px] inline-block">
+          <p className="text-[28px] text-[hsl(var(--slide-text))] font-semibold leading-[1.5]">
+            Исследуйте конкурентов. Поговорите с людьми.<br />
+            Сформулируйте позиционирование.
+          </p>
+        </div>
         <p className="text-[24px] text-[hsl(var(--slide-gold))] font-medium">
-          До следующей встречи.
+          Увидимся на следующей встрече с результатами 💪
         </p>
-        <div className="w-[60px] h-[2px] bg-[hsl(var(--slide-gold))] mx-auto mt-[48px]" />
       </div>
     </div>
   );
