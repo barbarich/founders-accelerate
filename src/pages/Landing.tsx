@@ -128,6 +128,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
           <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navMentor}</Link>
           <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">{t.navPricing}</a>
+          <Link to="/login" onClick={() => setMenuOpen(false)} className="block text-sm text-muted-foreground">Вход для студентов</Link>
           <Link to={applyUrl} className="block bg-primary text-primary-foreground px-5 py-3 rounded-md text-sm font-semibold text-center">
             {t.navApply}
           </Link>
