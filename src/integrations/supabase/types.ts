@@ -35,36 +35,6 @@ export type Database = {
         }
         Relationships: []
       }
-      invite_codes: {
-        Row: {
-          code: string
-          created_at: string
-          id: string
-          is_active: boolean
-          label: string | null
-          max_uses: number | null
-          used_count: number
-        }
-        Insert: {
-          code: string
-          created_at?: string
-          id?: string
-          is_active?: boolean
-          label?: string | null
-          max_uses?: number | null
-          used_count?: number
-        }
-        Update: {
-          code?: string
-          created_at?: string
-          id?: string
-          is_active?: boolean
-          label?: string | null
-          max_uses?: number | null
-          used_count?: number
-        }
-        Relationships: []
-      }
       meeting_materials: {
         Row: {
           created_at: string
@@ -171,83 +141,6 @@ export type Database = {
         }
         Relationships: []
       }
-      participant_meetings: {
-        Row: {
-          created_at: string
-          id: string
-          meeting_id: string
-          participant_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          meeting_id: string
-          participant_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          meeting_id?: string
-          participant_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "participant_meetings_meeting_id_fkey"
-            columns: ["meeting_id"]
-            isOneToOne: false
-            referencedRelation: "meetings"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "participant_meetings_participant_id_fkey"
-            columns: ["participant_id"]
-            isOneToOne: false
-            referencedRelation: "participants"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      participants: {
-        Row: {
-          avatar_url: string | null
-          created_at: string
-          email: string
-          full_name: string | null
-          id: string
-          invite_code_id: string | null
-          is_active: boolean
-          user_id: string
-        }
-        Insert: {
-          avatar_url?: string | null
-          created_at?: string
-          email: string
-          full_name?: string | null
-          id?: string
-          invite_code_id?: string | null
-          is_active?: boolean
-          user_id: string
-        }
-        Update: {
-          avatar_url?: string | null
-          created_at?: string
-          email?: string
-          full_name?: string | null
-          id?: string
-          invite_code_id?: string | null
-          is_active?: boolean
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "participants_invite_code_id_fkey"
-            columns: ["invite_code_id"]
-            isOneToOne: false
-            referencedRelation: "invite_codes"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       presentations: {
         Row: {
           created_at: string
@@ -281,7 +174,6 @@ export type Database = {
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
-      use_invite_code: { Args: { _code_id: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

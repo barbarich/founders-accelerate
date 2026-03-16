@@ -18,14 +18,9 @@ import AdminPresentations from "./pages/admin/AdminPresentations";
 import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
 import AdminMeetings from "./pages/admin/AdminMeetings";
 import AdminUsers from "./pages/admin/AdminUsers";
-import AdminParticipants from "./pages/admin/AdminParticipants";
-import AdminInviteCodes from "./pages/admin/AdminInviteCodes";
 import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
-import ParticipantLogin from "./pages/ParticipantLogin";
-import Cabinet from "./pages/Cabinet";
-import ParticipantGuard from "@/components/participant/ParticipantGuard";
 
 const queryClient = new QueryClient();
 
@@ -73,25 +68,12 @@ const App = () => (
           <Route path="/pitch" element={<PresentationShell />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
-          <Route path="/login" element={<ParticipantLogin />} />
-          <Route path="/cabinet" element={
-            <ParticipantGuard>
-              <Cabinet />
-            </ParticipantGuard>
-          } />
-          <Route path="/cabinet/meeting/:id" element={
-            <ParticipantGuard>
-              <Meeting1PresentationShell backUrl="/cabinet" />
-            </ParticipantGuard>
-          } />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="presentations" element={<AdminPresentations />} />
             <Route path="plans" element={<AdminMonthlyPlans />} />
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
-            <Route path="participants" element={<AdminParticipants />} />
-            <Route path="invite-codes" element={<AdminInviteCodes />} />
           </Route>
           <Route path="/admin/meeting/:id" element={
             <AdminGuard fallback={<AdminLogin />}>
