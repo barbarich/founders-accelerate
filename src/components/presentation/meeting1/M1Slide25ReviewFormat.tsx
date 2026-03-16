@@ -1,12 +1,12 @@
 export default function M1Slide25ReviewFormat() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Формат питча</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Первая встреча</p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px]">
-        1 идея — 5 минут
+        Знакомство: питч идей
       </h2>
       <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[56px]">
-        5 участников × 5 минут = 25 минут. Каждый питчит свою идею.
+        5 участников × 5 минут = 25 минут
       </p>
 
       <div className="flex gap-[32px] max-w-[1100px]">
@@ -17,9 +17,9 @@ export default function M1Slide25ReviewFormat() {
             <h3 className="text-[28px] font-bold text-[hsl(var(--slide-text))]">Питч</h3>
           </div>
           <div className="space-y-[16px]">
-            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Что за продукт и для кого</p>
-            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Какую проблему решает</p>
-            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Чем отличается от конкурентов</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Кто вы и чем занимаетесь</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Что за продукт / идея</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ Какую проблему решает и для кого</p>
             <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">→ На какой стадии сейчас</p>
           </div>
         </div>
