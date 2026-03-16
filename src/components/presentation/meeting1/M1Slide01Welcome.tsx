@@ -17,22 +17,8 @@ export default function M1Slide01Welcome() {
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[800px]">
           Следующие 2 часа — максимум практики, минимум теории.<br />
-          Каждый уйдёт с конкретным результатом.
+          Каждый уйдёт с конкретными навыками и знаниями.
         </p>
-        <div className="mt-[64px] space-y-[12px]">
-          {[
-            { time: "0:00–0:20", label: "Учу и показываю на своём опыте" },
-            { time: "0:20–0:50", label: "Делаем вместе" },
-            { time: "0:50–1:30", label: "Разбор каждого участника (по 5 мин)" },
-            { time: "1:30–1:50", label: "Планирование на неделю" },
-            { time: "1:50–2:00", label: "Закрытие" },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center gap-[16px]">
-              <span className="font-mono text-[18px] text-[hsl(var(--slide-gold))] w-[140px] shrink-0">{item.time}</span>
-              <span className="text-[20px] text-[hsl(var(--slide-text)/0.8)]">{item.label}</span>
-            </div>
-          ))}
-        </div>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
     </div>
