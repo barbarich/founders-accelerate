@@ -22,6 +22,7 @@ import M1Slide13BusinessModel from "./M1Slide13BusinessModel";
 import M1Slide14WhoWillPay from "./M1Slide14WhoWillPay";
 import M1Slide15Interview from "./M1Slide15Interview";
 import M1Slide16FindPeople from "./M1Slide16FindPeople";
+import M1Slide15bHypothesis from "./M1Slide15bHypothesis";
 import M1Slide17Tldv from "./M1Slide17Tldv";
 import M1Slide18Tally from "./M1Slide18Tally";
 import M1Slide19Formula from "./M1Slide19Formula";
