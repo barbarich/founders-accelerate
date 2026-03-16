@@ -125,7 +125,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 38;
+const TOTAL = 39;
 
 export default function Meeting1PresentationShell() {
   const isMobile = useIsMobile();
