@@ -21,6 +21,7 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
+import PublicMeeting1Shell from "@/components/presentation/meeting1/PublicMeeting1Shell";
 
 const queryClient = new QueryClient();
 
