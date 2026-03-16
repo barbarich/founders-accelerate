@@ -50,7 +50,7 @@ export default function M1Slide08PerplexityPrompts() {
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[16px] p-[28px] flex items-center justify-between">
         <div>
           <p className="text-[22px] font-semibold text-[hsl(var(--slide-text))] mb-[6px]">
-            📄 Документ с промптами — скопируйте ссылку и отправьте в чат
+            📄 Документ с готовыми промптами
           </p>
           <p className="text-[17px] text-[hsl(var(--slide-text-muted))]">
             Все 5 шаблонов с пояснениями, готовы к использованию в любом ИИ
