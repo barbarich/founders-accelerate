@@ -8,13 +8,12 @@ export default function M1Slide05WhatToCheck() {
     { icon: "📱", title: "Соцсети и комьюнити", text: "О чём жалуются и что хвалят пользователи" },
     { icon: "📊", title: "Трафик и каналы привлечения", text: "Откуда приходят клиенты (SimilarWeb)" },
     { icon: "🔄", title: "Частота обновлений", text: "Как быстро развивают продукт" },
+    { icon: "🎯", title: "Value Proposition", text: "Почему, что и кому продают — разберите их обещание" },
+    { icon: "👥", title: "Юзкейсы и аудитория", text: "Для кого работают — найдите кейсы на сайте и в отзывах" },
   ];
-
-  return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Что смотреть у конкурентов</p>
+...
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">
-        8 вещей, а не всё подряд
+        10 вещей, а не всё подряд
       </h2>
       <div className="grid grid-cols-4 gap-[24px]">
         {items.map((item, i) => (
