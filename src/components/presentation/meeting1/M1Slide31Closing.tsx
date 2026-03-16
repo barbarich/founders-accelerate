@@ -1,4 +1,32 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+
 export default function M1Slide31Closing() {
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center">
+        <div className="text-center px-[28px]">
+          <p className="text-[32px] mb-[16px]">🚀</p>
+          <h2 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[12px]">
+            Вы уже впереди 90% фаундеров
+          </h2>
+          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[18px]">
+            Большинство строят продукт, не поговорив ни с одним клиентом. Вы за неделю сделаете то, на что у других уходят месяцы.
+          </p>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[10px] px-[18px] py-[14px] mb-[16px]">
+            <p className="text-[13px] text-[hsl(var(--slide-text))] font-semibold leading-[1.5]">
+              Исследуйте конкурентов.<br />Поговорите с людьми.<br />Сформулируйте позиционирование.
+            </p>
+          </div>
+          <p className="text-[13px] text-[hsl(var(--slide-gold))] font-medium">
+            Увидимся на следующей встрече 💪
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center">
       <div className="text-center max-w-[1000px]">
