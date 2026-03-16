@@ -1,9 +1,35 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+
 export default function M1Slide03ThreeThings() {
   const items = [
     { num: "01", icon: "🔍", title: "Разберём конкурентов", text: "Не поверхностно, а глубоко: их продукты, бизнес-модели, слабые места" },
     { num: "02", icon: "👤", title: "Поймём кто ваш клиент", text: 'Не "все люди", а конкретный человек с конкретной болью' },
     { num: "03", icon: "🎯", title: "Сформулируем позиционирование", text: "Одно предложение, которое продаёт" },
   ];
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[28px]">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">План на сегодня</p>
+        <h2 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[24px]">
+          Три вещи которые мы сделаем
+        </h2>
+        <div className="space-y-[14px]">
+          {items.map((item, i) => (
+            <div key={i} className="border-t border-[hsl(var(--slide-gold)/0.2)] pt-[12px]">
+              <div className="flex items-center gap-[8px] mb-[6px]">
+                <span className="font-mono text-[10px] text-[hsl(var(--slide-gold)/0.5)]">{item.num}</span>
+                <span className="text-[18px]">{item.icon}</span>
+                <h3 className="text-[15px] font-semibold text-[hsl(var(--slide-text))]">{item.title}</h3>
+              </div>
+              <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
