@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
 
@@ -10,42 +10,46 @@ interface AdminGuardProps {
 export function AdminGuard({ children, fallback }: AdminGuardProps) {
   const [session, setSession] = useState<Session | null>(null);
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [initialized, setInitialized] = useState(false);
+  const checkingRef = useRef(false);
 
+  // 1. Auth listener — sync only, no async work
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+      (_event, session) => {
         setSession(session);
-        if (session) {
-          // Check admin status by querying admin_users (RLS will handle it)
-          const { data, error } = await supabase
-            .from("admin_users")
-            .select("id")
-            .limit(1);
-          setIsAdmin(!error && !!data && data.length > 0);
-        } else {
+        if (!session) {
           setIsAdmin(false);
         }
-        setLoading(false);
+        setInitialized(true);
       }
     );
-
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session);
-      if (session) {
-        const { data, error } = await supabase
-          .from("admin_users")
-          .select("id")
-          .limit(1);
-        setIsAdmin(!error && !!data && data.length > 0);
-      } else {
-        setIsAdmin(false);
-      }
-      setLoading(false);
-    });
-
     return () => subscription.unsubscribe();
   }, []);
+
+  // 2. Admin check — runs when session changes
+  useEffect(() => {
+    if (!initialized) return;
+
+    if (!session) {
+      setIsAdmin(false);
+      return;
+    }
+
+    if (checkingRef.current) return;
+    checkingRef.current = true;
+
+    supabase
+      .from("admin_users")
+      .select("id")
+      .limit(1)
+      .then(({ data, error }) => {
+        setIsAdmin(!error && !!data && data.length > 0);
+        checkingRef.current = false;
+      });
+  }, [session, initialized]);
+
+  const loading = !initialized || (!!session && isAdmin === null);
 
   if (loading) {
     return (
@@ -69,7 +73,6 @@ export function useAdminSession() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (_event, session) => setSession(session)
     );
-    supabase.auth.getSession().then(({ data: { session } }) => setSession(session));
     return () => subscription.unsubscribe();
   }, []);
 
