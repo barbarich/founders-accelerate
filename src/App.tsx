@@ -19,6 +19,7 @@ import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
 import AdminMeetings from "./pages/admin/AdminMeetings";
 import AdminUsers from "./pages/admin/AdminUsers";
 import AdminParticipants from "./pages/admin/AdminParticipants";
+import AdminInviteCodes from "./pages/admin/AdminInviteCodes";
 import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
