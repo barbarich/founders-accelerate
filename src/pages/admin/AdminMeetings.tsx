@@ -7,13 +7,17 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Plus, Pencil, Trash2, Link as LinkIcon, FileText, ExternalLink, Presentation } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Plus, Pencil, Trash2, Link as LinkIcon, FileText, ExternalLink, Presentation, Send } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { toast } from "@/hooks/use-toast";
 import type { Database } from "@/integrations/supabase/types";
 
 type Meeting = Database["public"]["Tables"]["meetings"]["Row"];
 type Material = Database["public"]["Tables"]["meeting_materials"]["Row"];
 type MonthlyPlan = Database["public"]["Tables"]["monthly_plans"]["Row"];
+type Participant = Database["public"]["Tables"]["participants"]["Row"];
 
 export default function AdminMeetings() {
   const navigate = useNavigate();
@@ -29,6 +33,14 @@ export default function AdminMeetings() {
   const [matOpen, setMatOpen] = useState(false);
   const [matMeetingId, setMatMeetingId] = useState<string | null>(null);
   const [matForm, setMatForm] = useState({ title: "", type: "link", url: "" });
+
+  // Send to participants
+  const [sendOpen, setSendOpen] = useState(false);
+  const [sendMeetingId, setSendMeetingId] = useState<string | null>(null);
+  const [participants, setParticipants] = useState<Participant[]>([]);
+  const [alreadySent, setAlreadySent] = useState<Set<string>>(new Set());
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [sending, setSending] = useState(false);
 
   const load = async () => {
     const [{ data: mData }, { data: moData }] = await Promise.all([
@@ -113,6 +125,57 @@ export default function AdminMeetings() {
     return m ? `М${m.month_number}` : "";
   };
 
+  // Send to participants
+  const openSendDialog = async (meetingId: string) => {
+    setSendMeetingId(meetingId);
+    setSending(false);
+
+    const [{ data: parts }, { data: existing }] = await Promise.all([
+      supabase.from("participants").select("*").eq("is_active", true).order("created_at"),
+      supabase.from("participant_meetings").select("participant_id").eq("meeting_id", meetingId),
+    ]);
+
+    const activeParticipants = parts || [];
+    setParticipants(activeParticipants);
+
+    const alreadySet = new Set((existing || []).map(e => e.participant_id));
+    setAlreadySent(alreadySet);
+    setSelected(new Set());
+    setSendOpen(true);
+  };
+
+  const toggleParticipant = (id: string) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const selectAll = () => {
+    const notSent = participants.filter(p => !alreadySent.has(p.id)).map(p => p.id);
+    setSelected(prev => prev.size === notSent.length ? new Set() : new Set(notSent));
+  };
+
+  const sendToParticipants = async () => {
+    if (!sendMeetingId || selected.size === 0) return;
+    setSending(true);
+    const rows = Array.from(selected).map(pid => ({
+      participant_id: pid,
+      meeting_id: sendMeetingId,
+    }));
+    const { error } = await supabase.from("participant_meetings").insert(rows);
+    setSending(false);
+    if (error) {
+      toast({ title: "Ошибка", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Отправлено", description: `Презентация отправлена ${selected.size} участникам` });
+      setSendOpen(false);
+    }
+  };
+
+  const notSentCount = participants.filter(p => !alreadySent.has(p.id)).length;
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -141,6 +204,9 @@ export default function AdminMeetings() {
                     <p className="font-medium text-foreground truncate">{m.title}</p>
                   </div>
                   <div className="flex items-center gap-1 ml-2 shrink-0" onClick={(e) => e.stopPropagation()}>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" title="Отправить участникам" onClick={() => openSendDialog(m.id)}>
+                      <Send className="w-4 h-4" />
+                    </Button>
                     <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => openEdit(m)}>
                       <Pencil className="w-4 h-4" />
                     </Button>
@@ -280,6 +346,59 @@ export default function AdminMeetings() {
           </div>
         </SheetContent>
       </Sheet>
+
+      {/* Send to participants dialog */}
+      <Dialog open={sendOpen} onOpenChange={setSendOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Отправить участникам</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3 max-h-[400px] overflow-y-auto">
+            {participants.length === 0 ? (
+              <p className="text-sm text-muted-foreground py-4 text-center">Нет активных участников</p>
+            ) : (
+              <>
+                {notSentCount > 0 && (
+                  <div className="flex items-center gap-2 pb-2 border-b border-border">
+                    <Checkbox
+                      checked={selected.size === notSentCount && notSentCount > 0}
+                      onCheckedChange={selectAll}
+                    />
+                    <span className="text-sm font-medium text-foreground">Выбрать всех</span>
+                  </div>
+                )}
+                {participants.map((p) => {
+                  const already = alreadySent.has(p.id);
+                  return (
+                    <label key={p.id} className={`flex items-center gap-3 py-1.5 ${already ? "opacity-50" : "cursor-pointer"}`}>
+                      <Checkbox
+                        checked={already || selected.has(p.id)}
+                        disabled={already}
+                        onCheckedChange={() => toggleParticipant(p.id)}
+                      />
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-foreground truncate">
+                          {p.full_name || "Без имени"}
+                        </p>
+                        <p className="text-xs text-muted-foreground truncate">{p.email}</p>
+                      </div>
+                      {already && (
+                        <span className="text-xs text-muted-foreground ml-auto shrink-0">уже отправлено</span>
+                      )}
+                    </label>
+                  );
+                })}
+              </>
+            )}
+          </div>
+          <DialogFooter>
+            <Button onClick={sendToParticipants} disabled={selected.size === 0 || sending}>
+              <Send className="w-4 h-4 mr-1" />
+              Отправить {selected.size > 0 && `(${selected.size})`}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
