@@ -4,10 +4,12 @@ export default function M1Slide08PerplexityPrompts() {
   const [copied, setCopied] = useState(false);
   const docLink = "https://docs.google.com/document/d/1QXfWLylXNDEWcsMxq3Qx5ydOA0qtpqE2UOKNPlwdAGk/edit?usp=sharing";
 
-  const handleCopy = () => {
+  const handleCopy = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
     navigator.clipboard.writeText(docLink);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 3000);
   };
 
   const prompts = [
@@ -55,6 +57,8 @@ export default function M1Slide08PerplexityPrompts() {
           </p>
         </div>
         <button
+          onPointerDown={(e) => e.stopPropagation()}
+          onMouseDown={(e) => e.stopPropagation()}
           onClick={handleCopy}
           className="shrink-0 ml-[24px] px-[28px] py-[14px] rounded-[10px] font-semibold text-[18px] transition-all duration-200"
           style={{
