@@ -1,9 +1,9 @@
 export default function M1Slide11Reviews() {
   const sources = ["G2", "Trustpilot", "Product Hunt (комменты)", "Reddit", "App Store / Google Play"];
   const examples = [
-    { complaint: '"terrible onboarding"', action: "→ сделай простой онбординг" },
-    { complaint: '"too complex for small teams"', action: "→ сделай версию для маленьких команд" },
-    { complaint: '"no mobile app"', action: "→ начни с мобайла" },
+    { complaint: '"terrible onboarding"', action: "→ Кластеризуй: это UX-проблема или проблема ценностного предложения? Если 30%+ жалоб на онбординг — это точка входа для disruption." },
+    { complaint: '"too expensive for what it does"', action: "→ Разбери unit-экономику конкурента: где маржа, за что переплачивают. Твой pricing может стать оружием." },
+    { complaint: '"works fine but no integrations"', action: "→ Это сигнал зрелости рынка. Пользователи переросли продукт — строй платформу, не фичу." },
   ];
 
   return (
