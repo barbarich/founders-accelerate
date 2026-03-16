@@ -8,6 +8,7 @@ import {
   Video,
   LogOut,
   UserCheck,
+  KeyRound,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
