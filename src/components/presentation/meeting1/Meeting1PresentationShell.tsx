@@ -27,7 +27,7 @@ import M1Slide17Tldv from "./M1Slide17Tldv";
 import M1Slide18Tally from "./M1Slide18Tally";
 import M1Slide19Formula from "./M1Slide19Formula";
 import M1Slide20ThreeTests from "./M1Slide20ThreeTests";
-import M1Slide21Napkin from "./M1Slide21Napkin";
+
 import M1Slide22Step1 from "./M1Slide22Step1";
 import M1Slide23Step2 from "./M1Slide23Step2";
 import M1Slide24Step3 from "./M1Slide24Step3";
