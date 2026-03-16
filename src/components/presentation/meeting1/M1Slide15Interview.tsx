@@ -19,9 +19,12 @@ export default function M1Slide15Interview() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[100px]">
       <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">Customer Development</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[44px]">
+      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
         Правила custdev-интервью
       </h2>
+      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[36px]">
+        Цель — не «поговорить с людьми», а проверить конкретную гипотезу. Сформулируй до интервью: что именно хочешь подтвердить или опровергнуть.
+      </p>
 
       <div className="flex gap-[32px]">
         <div className="flex-[3]">
