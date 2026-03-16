@@ -15,6 +15,7 @@ import M1Slide07Perplexity from "./M1Slide07Perplexity";
 import M1Slide08PerplexityPrompts from "./M1Slide08PerplexityPrompts";
 import M1Slide09SimilarWeb from "./M1Slide09SimilarWeb";
 import M1Slide10MetaAdLibrary from "./M1Slide10MetaAdLibrary";
+import M1Slide10bGoogleTrends from "./M1Slide10bGoogleTrends";
 import M1Slide11Reviews from "./M1Slide11Reviews";
 import M1Slide12Teardown from "./M1Slide12Teardown";
 import M1Slide13BusinessModel from "./M1Slide13BusinessModel";
