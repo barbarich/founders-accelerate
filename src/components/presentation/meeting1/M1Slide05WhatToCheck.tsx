@@ -18,12 +18,10 @@ export default function M1Slide05WhatToCheck() {
       </h2>
       <div className="grid grid-cols-4 gap-[24px]">
         {items.map((item, i) => (
-          <div key={i} className="flex gap-[24px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[36px]">
-            <span className="text-[40px] shrink-0">{item.icon}</span>
-            <div>
-              <h3 className="text-[24px] font-semibold text-[hsl(var(--slide-text))] mb-[8px]">{item.title}</h3>
-              <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{item.text}</p>
-            </div>
+          <div key={i} className="flex flex-col gap-[12px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[24px]">
+            <span className="text-[32px]">{item.icon}</span>
+            <h3 className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.2]">{item.title}</h3>
+            <p className="text-[16px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{item.text}</p>
           </div>
         ))}
       </div>
