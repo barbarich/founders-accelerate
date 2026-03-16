@@ -91,6 +91,7 @@ const App = () => (
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
             <Route path="participants" element={<AdminParticipants />} />
+            <Route path="invite-codes" element={<AdminInviteCodes />} />
           </Route>
           <Route path="/admin/meeting/:id" element={
             <AdminGuard fallback={<AdminLogin />}>

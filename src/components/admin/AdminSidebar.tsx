@@ -19,6 +19,7 @@ const navItems = [
   { to: "/admin/meetings", icon: Video, label: "Встречи" },
   { to: "/admin/participants", icon: UserCheck, label: "Участники" },
   { to: "/admin/users", icon: Users, label: "Админы" },
+  { to: "/admin/invite-codes", icon: KeyRound, label: "Коды приглашений" },
 ];
 
 export function AdminSidebar() {
