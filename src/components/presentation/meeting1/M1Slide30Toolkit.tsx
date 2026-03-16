@@ -2,6 +2,7 @@ export default function M1Slide30Toolkit() {
   const tools = [
     { name: "Perplexity.ai", desc: "Исследование рынка и конкурентов" },
     { name: "Google NotebookLM", desc: "Глубокий анализ документов" },
+    { name: "Google Trends", desc: "Динамика спроса и сезонность" },
     { name: "SimilarWeb", desc: "Анализ трафика конкурентов" },
     { name: "Meta Ad Library", desc: "Реклама конкурентов" },
     { name: "tl;dv", desc: "Запись и анализ интервью" },
