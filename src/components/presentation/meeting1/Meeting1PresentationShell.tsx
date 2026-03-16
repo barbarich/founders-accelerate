@@ -126,7 +126,7 @@ function getSlideContent(index: number) {
 
 const TOTAL = 38;
 
-export default function Meeting1PresentationShell() {
+export default function Meeting1PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
