@@ -2,7 +2,7 @@ export default function M1Slide04CompetitorLevels() {
   const levels = [
     { icon: "⚔️", title: "Прямые", text: "Делают то же самое для той же аудитории" },
     { icon: "🔄", title: "Косвенные", text: "Решают ту же проблему другим способом" },
-    { icon: "📋", title: "Замена", text: 'Что клиент делает СЕЙЧАС вместо вашего продукта (Excel, стажёр, ручной процесс, "ничего не делать")' },
+    { icon: "📋", title: "Замена", text: 'Что клиент делает СЕЙЧАС вместо вашего продукта (Excel, стажёр, ручной процесс, привычные альтернативы)' },
   ];
 
   return (
@@ -22,8 +22,8 @@ export default function M1Slide04CompetitorLevels() {
         ))}
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.05)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[32px] py-[20px]">
-        <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium">
-          💡 "Ничего не делать" — ваш самый сильный конкурент. Люди привыкли жить с проблемой.
+        <p className="text-[20px] text-[hsl(var(--slide-gold))] font-medium leading-[1.6]">
+          💡 В RunEverywhere наш конкурент — не другое беговое приложение. Это бар и YouTube. Потому что вечером человек выбирает: выйти на пробежку или остаться на диване. Конкурент Netflix — сон. Думайте шире.
         </p>
       </div>
     </div>
