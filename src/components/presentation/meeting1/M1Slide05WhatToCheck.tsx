@@ -15,7 +15,7 @@ export default function M1Slide05WhatToCheck() {
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">
         10 вещей, а не всё подряд
       </h2>
-      <div className="grid grid-cols-4 gap-[24px]">
+      <div className="grid grid-cols-5 gap-[20px]">
         {items.map((item, i) => (
           <div key={i} className="flex flex-col gap-[12px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[12px] p-[24px]">
             <span className="text-[32px]">{item.icon}</span>
