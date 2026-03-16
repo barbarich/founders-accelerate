@@ -50,6 +50,7 @@ const slideNames = [
   "Запросы Perplexity",
   "SimilarWeb",
   "Meta Ad Library",
+  "Google Trends",
   "Отзывы конкурентов",
   "Продуктовый teardown",
   "Бизнес-модель",
