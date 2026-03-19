@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent } from "@/components/ui/card";
-import { Presentation, CalendarDays, Video, Users } from "lucide-react";
+import { Presentation, CalendarDays, Video, Users, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function AdminDashboard() {
-  const [counts, setCounts] = useState({ presentations: 0, plans: 0, meetings: 0, admins: 0 });
+  const [counts, setCounts] = useState({ presentations: 0, plans: 0, meetings: 0, admins: 0, cohorts: 0 });
 
   useEffect(() => {
     Promise.all([
@@ -13,12 +13,14 @@ export default function AdminDashboard() {
       supabase.from("monthly_plans").select("id", { count: "exact", head: true }),
       supabase.from("meetings").select("id", { count: "exact", head: true }),
       supabase.from("admin_users").select("id", { count: "exact", head: true }),
-    ]).then(([p, m, mt, a]) => {
+      supabase.from("cohorts").select("id", { count: "exact", head: true }),
+    ]).then(([p, m, mt, a, c]) => {
       setCounts({
         presentations: p.count ?? 0,
         plans: m.count ?? 0,
         meetings: mt.count ?? 0,
         admins: a.count ?? 0,
+        cohorts: c.count ?? 0,
       });
     });
   }, []);
@@ -27,6 +29,7 @@ export default function AdminDashboard() {
     { label: "Презентации", count: counts.presentations, icon: Presentation, to: "/admin/presentations" },
     { label: "Месячные планы", count: counts.plans, icon: CalendarDays, to: "/admin/plans" },
     { label: "Встречи", count: counts.meetings, icon: Video, to: "/admin/meetings" },
+    { label: "Потоки", count: counts.cohorts, icon: GraduationCap, to: "/admin/cohorts" },
     { label: "Админы", count: counts.admins, icon: Users, to: "/admin/users" },
   ];
 
@@ -35,7 +38,7 @@ export default function AdminDashboard() {
       <h1 className="text-2xl font-bold text-foreground mb-1">Dashboard</h1>
       <p className="text-muted-foreground text-sm mb-8">Управление программой акселератора</p>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {cards.map((c) => (
           <Link key={c.to} to={c.to}>
             <Card className="hover:border-primary/30 transition-colors cursor-pointer">

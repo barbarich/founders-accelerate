@@ -1,40 +1,33 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
-import {
-  LayoutDashboard,
-  Presentation,
-  CalendarDays,
-  Users,
-  Video,
-  LogOut,
-  GraduationCap,
-  Megaphone,
-} from "lucide-react";
+import { LayoutDashboard, BookOpen, Link as LinkIcon, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { clearStudentSession } from "@/lib/student-session";
+import { useStudentSession } from "./StudentGuard";
 
 const navItems = [
-  { to: "/admin", icon: LayoutDashboard, label: "Dashboard", end: true },
-  { to: "/admin/presentations", icon: Presentation, label: "Презентации" },
-  { to: "/admin/plans", icon: CalendarDays, label: "Помесячный план" },
-  { to: "/admin/meetings", icon: Video, label: "Встречи" },
-  { to: "/admin/cohorts", icon: GraduationCap, label: "Потоки" },
-  { to: "/admin/announcements", icon: Megaphone, label: "Объявления" },
-  { to: "/admin/users", icon: Users, label: "Админы" },
+  { to: "/cabinet", icon: LayoutDashboard, label: "Dashboard", end: true },
+  { to: "/cabinet/program", icon: BookOpen, label: "Программа" },
+  { to: "/cabinet/resources", icon: LinkIcon, label: "Ресурсы" },
 ];
 
-export function AdminSidebar() {
+export function CabinetSidebar() {
   const navigate = useNavigate();
+  const session = useStudentSession();
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    navigate("/admin");
+  const handleLogout = () => {
+    clearStudentSession();
+    navigate("/cabinet/login");
   };
 
   return (
     <aside className="w-60 border-r border-border bg-card min-h-screen flex flex-col">
       <div className="p-5 border-b border-border">
-        <p className="text-xs text-muted-foreground font-medium tracking-wider uppercase">Admin</p>
-        <p className="text-sm font-semibold text-foreground mt-0.5">The Founders Circle</p>
+        <p className="text-xs text-muted-foreground font-medium tracking-wider uppercase">
+          Личный кабинет
+        </p>
+        <p className="text-sm font-semibold text-foreground mt-0.5 truncate">
+          {session?.fullName || session?.email || "Студент"}
+        </p>
       </div>
 
       <nav className="flex-1 p-3 space-y-0.5">

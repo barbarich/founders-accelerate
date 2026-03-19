@@ -18,8 +18,16 @@ import AdminPresentations from "./pages/admin/AdminPresentations";
 import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
 import AdminMeetings from "./pages/admin/AdminMeetings";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminCohorts from "./pages/admin/AdminCohorts";
+import AdminCohortDetail from "./pages/admin/AdminCohortDetail";
+import AdminAnnouncements from "./pages/admin/AdminAnnouncements";
 import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
+import CabinetLayout from "./pages/cabinet/CabinetLayout";
+import CabinetLogin from "./pages/cabinet/CabinetLogin";
+import CabinetDashboard from "./pages/cabinet/CabinetDashboard";
+import CabinetProgram from "./pages/cabinet/CabinetProgram";
+import CabinetResources from "./pages/cabinet/CabinetResources";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
 import PublicMeeting1Shell from "@/components/presentation/meeting1/PublicMeeting1Shell";
 import PublicMeeting2Shell from "@/components/presentation/meeting2/PublicMeeting2Shell";
@@ -78,12 +86,21 @@ const App = () => (
             <Route path="plans" element={<AdminMonthlyPlans />} />
             <Route path="meetings" element={<AdminMeetings />} />
             <Route path="users" element={<AdminUsers />} />
+            <Route path="cohorts" element={<AdminCohorts />} />
+            <Route path="cohorts/:id" element={<AdminCohortDetail />} />
+            <Route path="announcements" element={<AdminAnnouncements />} />
           </Route>
           <Route path="/admin/meeting/:id" element={
             <AdminGuard fallback={<AdminLogin />}>
               <Meeting1PresentationShell />
             </AdminGuard>
           } />
+          <Route path="/cabinet/login" element={<CabinetLogin />} />
+          <Route path="/cabinet" element={<CabinetLayout />}>
+            <Route index element={<CabinetDashboard />} />
+            <Route path="program" element={<CabinetProgram />} />
+            <Route path="resources" element={<CabinetResources />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

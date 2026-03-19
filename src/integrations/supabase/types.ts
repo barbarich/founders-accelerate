@@ -14,6 +14,38 @@ export type Database = {
   }
   public: {
     Tables: {
+      announcements: {
+        Row: {
+          id: string
+          cohort_id: string
+          title: string
+          content: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          cohort_id: string
+          title: string
+          content: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          cohort_id?: string
+          title?: string
+          content?: string
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "announcements_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       admin_users: {
         Row: {
           created_at: string
@@ -35,9 +67,75 @@ export type Database = {
         }
         Relationships: []
       }
+      cohorts: {
+        Row: {
+          id: string
+          name: string
+          start_date: string
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          start_date: string
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          start_date?: string
+          is_active?: boolean
+          created_at?: string
+        }
+        Relationships: []
+      }
+      cohort_materials: {
+        Row: {
+          id: string
+          cohort_id: string
+          week_number: number
+          type: string
+          title: string
+          url: string
+          sort_order: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          cohort_id: string
+          week_number: number
+          type?: string
+          title: string
+          url: string
+          sort_order?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          cohort_id?: string
+          week_number?: number
+          type?: string
+          title?: string
+          url?: string
+          sort_order?: number | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cohort_materials_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       invite_codes: {
         Row: {
           code: string
+          cohort_id: string | null
           created_at: string
           id: string
           is_active: boolean
@@ -47,6 +145,7 @@ export type Database = {
         }
         Insert: {
           code: string
+          cohort_id?: string | null
           created_at?: string
           id?: string
           is_active?: boolean
@@ -56,6 +155,7 @@ export type Database = {
         }
         Update: {
           code?: string
+          cohort_id?: string | null
           created_at?: string
           id?: string
           is_active?: boolean
@@ -63,7 +163,15 @@ export type Database = {
           max_uses?: number | null
           used_count?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "invite_codes_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       meeting_materials: {
         Row: {
@@ -210,6 +318,7 @@ export type Database = {
       participants: {
         Row: {
           avatar_url: string | null
+          cohort_id: string | null
           created_at: string
           email: string
           full_name: string | null
@@ -220,6 +329,7 @@ export type Database = {
         }
         Insert: {
           avatar_url?: string | null
+          cohort_id?: string | null
           created_at?: string
           email: string
           full_name?: string | null
@@ -230,6 +340,7 @@ export type Database = {
         }
         Update: {
           avatar_url?: string | null
+          cohort_id?: string | null
           created_at?: string
           email?: string
           full_name?: string | null
@@ -244,6 +355,48 @@ export type Database = {
             columns: ["invite_code_id"]
             isOneToOne: false
             referencedRelation: "invite_codes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "participants_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      progress_checklist: {
+        Row: {
+          id: string
+          participant_id: string
+          week_number: number
+          item_key: string
+          is_completed: boolean
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          participant_id: string
+          week_number: number
+          item_key: string
+          is_completed?: boolean
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          participant_id?: string
+          week_number?: number
+          item_key?: string
+          is_completed?: boolean
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "progress_checklist_participant_id_fkey"
+            columns: ["participant_id"]
+            isOneToOne: false
+            referencedRelation: "participants"
             referencedColumns: ["id"]
           },
         ]
@@ -275,6 +428,44 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          id: string
+          cohort_id: string | null
+          title: string
+          url: string
+          category: string
+          sort_order: number | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          cohort_id?: string | null
+          title: string
+          url: string
+          category?: string
+          sort_order?: number | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          cohort_id?: string | null
+          title?: string
+          url?: string
+          category?: string
+          sort_order?: number | null
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resources_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -282,6 +473,19 @@ export type Database = {
     Functions: {
       is_admin: { Args: never; Returns: boolean }
       use_invite_code: { Args: { _code_id: string }; Returns: undefined }
+      validate_invite_code: {
+        Args: { _code: string; _email: string }
+        Returns: Json
+      }
+      toggle_progress: {
+        Args: {
+          _participant_id: string
+          _week_number: number
+          _item_key: string
+          _is_completed: boolean
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
