@@ -22,6 +22,7 @@ import { AdminGuard } from "@/components/admin/AdminGuard";
 import AdminLogin from "./pages/admin/AdminLogin";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
 import PublicMeeting1Shell from "@/components/presentation/meeting1/PublicMeeting1Shell";
+import PublicMeeting2Shell from "@/components/presentation/meeting2/PublicMeeting2Shell";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ const App = () => (
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />
+          <Route path="/programm-week2" element={<PublicMeeting2Shell />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="presentations" element={<AdminPresentations />} />
