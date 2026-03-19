@@ -4,13 +4,38 @@ import { supabase } from "@/integrations/supabase/client";
 import { useStudentSession } from "@/components/cabinet/StudentGuard";
 import { getCurrentWeek, getWeekTitle } from "@/data/program";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Link as LinkIcon, CheckCircle2, Megaphone } from "lucide-react";
+import { BookOpen, Link as LinkIcon, Megaphone, Video, Calendar, ExternalLink } from "lucide-react";
 
 interface Announcement {
   id: string;
   title: string;
   content: string;
   created_at: string;
+}
+
+interface Meeting {
+  id: string;
+  week_number: number;
+  title: string;
+  agenda: string | null;
+}
+
+const ZOOM_LINK = "https://us02web.zoom.us/j/89609077818?pwd=8hJUD5dEbU25lstTFvKQNqKd8KyzLk.1";
+
+// 12 встреч, каждый понедельник с 16 марта 2026, 18:30
+function getMeetingDate(weekNumber: number): Date {
+  const start = new Date(2026, 2, 16, 18, 30); // March 16, 2026 18:30
+  const date = new Date(start);
+  date.setDate(date.getDate() + (weekNumber - 1) * 7);
+  return date;
+}
+
+function formatMeetingDate(date: Date): string {
+  return date.toLocaleDateString("ru-RU", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
 }
 
 export default function CabinetDashboard() {
@@ -22,7 +47,6 @@ export default function CabinetDashboard() {
   useEffect(() => {
     if (!session) return;
 
-    // Get cohort start_date to calculate current week
     supabase
       .from("cohorts")
       .select("start_date")
@@ -34,7 +58,6 @@ export default function CabinetDashboard() {
         }
       });
 
-    // Get progress
     supabase
       .from("progress_checklist")
       .select("id")
@@ -44,7 +67,6 @@ export default function CabinetDashboard() {
         setProgress({ done: data?.length ?? 0, total: 36 });
       });
 
-    // Get announcements
     supabase
       .from("announcements")
       .select("*")
@@ -58,12 +80,54 @@ export default function CabinetDashboard() {
 
   const progressPercent = Math.round((progress.done / progress.total) * 100);
 
+  // Find next upcoming meeting
+  const now = new Date();
+  let nextMeetingWeek = currentWeek;
+  for (let w = 1; w <= 12; w++) {
+    const meetDate = getMeetingDate(w);
+    if (meetDate > now) {
+      nextMeetingWeek = w;
+      break;
+    }
+  }
+  const nextMeetingDate = getMeetingDate(nextMeetingWeek);
+  const isToday = now.toDateString() === nextMeetingDate.toDateString();
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-foreground mb-1">Dashboard</h1>
       <p className="text-muted-foreground text-sm mb-8">
         Добро пожаловать, {session?.fullName || session?.email}
       </p>
+
+      {/* Next meeting */}
+      <Card className={`mb-6 ${isToday ? "border-primary bg-primary/5" : "border-border"}`}>
+        <CardContent className="p-5">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-1 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5" />
+                {isToday ? "Сегодня" : "Ближайшая встреча"}
+              </p>
+              <p className="text-lg font-bold text-foreground">
+                Встреча {nextMeetingWeek} — {getWeekTitle(nextMeetingWeek)}
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {formatMeetingDate(nextMeetingDate)}, 18:30–20:30
+              </p>
+            </div>
+            <a
+              href={ZOOM_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              <Video className="w-4 h-4" />
+              Zoom
+            </a>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Current week + progress */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
