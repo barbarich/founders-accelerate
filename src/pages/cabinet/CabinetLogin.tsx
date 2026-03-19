@@ -32,7 +32,12 @@ export default function CabinetLogin() {
     );
 
     if (rpcError) {
-      setError("Ошибка сервера. Попробуйте позже.");
+      console.error("Cabinet login RPC error:", rpcError);
+      if (rpcError.message?.includes("does not exist") || rpcError.message?.includes("function")) {
+        setError("Система настраивается. Обратитесь к организатору.");
+      } else {
+        setError("Ошибка соединения. Проверьте интернет и попробуйте снова.");
+      }
       setLoading(false);
       return;
     }
@@ -74,6 +79,10 @@ export default function CabinetLogin() {
           <CardDescription>The Founders Circle</CardDescription>
         </CardHeader>
         <CardContent>
+          <p className="text-xs text-muted-foreground text-center mb-5 leading-relaxed">
+            Введите код доступа и ваш email.<br />
+            При первом входе аккаунт создастся автоматически.
+          </p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="code">Код доступа</Label>
@@ -99,7 +108,7 @@ export default function CabinetLogin() {
             </div>
             {error && <p className="text-sm text-destructive">{error}</p>}
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "..." : "Войти"}
+              {loading ? "Проверяем..." : "Войти"}
             </Button>
           </form>
         </CardContent>
