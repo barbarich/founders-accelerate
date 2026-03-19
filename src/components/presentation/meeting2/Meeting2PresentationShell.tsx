@@ -9,8 +9,7 @@ import M2Slide02Recap from "./M2Slide02Recap";
 import M2Slide03ThreeThings from "./M2Slide03ThreeThings";
 import M2BlockHeader from "./M2BlockHeader";
 import M2Slide04InterviewResults from "./M2Slide04InterviewResults";
-import M2Slide05CompetitorInsights from "./M2Slide05CompetitorInsights";
-import M2Slide06PositioningCheck from "./M2Slide06PositioningCheck";
+import M2Slide05PresentResults from "./M2Slide05PresentResults";
 import M2Slide07WhyMatters from "./M2Slide07WhyMatters";
 import M2Slide08Formula from "./M2Slide08Formula";
 import M2Slide09GoodVsBad from "./M2Slide09GoodVsBad";
@@ -36,10 +35,9 @@ const slideNames = [
   "Добро пожаловать",
   "Прошлая неделя",
   "Три вещи",
-  "Блок 1: Разбор домашки",
-  "Результаты интервью",
-  "Находки по конкурентам",
-  "Проверка позиционирования",
+  "Блок 1: Разбор домашнего задания",
+  "Что узнали из интервью",
+  "Презентация результатов",
   "Блок 2: Позиционирование",
   "Почему это важно",
   "Расширенная формула",
@@ -72,40 +70,39 @@ function getSlideContent(index: number) {
     case 0: return <M2Slide01Welcome />;
     case 1: return <M2Slide02Recap />;
     case 2: return <M2Slide03ThreeThings />;
-    case 3: return <M2BlockHeader blockNumber={1} title="Разбор домашки" subtitle="~20 минут" />;
+    case 3: return <M2BlockHeader blockNumber={1} title="Разбор домашнего задания" subtitle="~20 минут" />;
     case 4: return <M2Slide04InterviewResults />;
-    case 5: return <M2Slide05CompetitorInsights />;
-    case 6: return <M2Slide06PositioningCheck />;
-    case 7: return <M2BlockHeader blockNumber={2} title="Позиционирование" />;
-    case 8: return <M2Slide07WhyMatters />;
-    case 9: return <M2Slide08Formula />;
-    case 10: return <M2Slide09GoodVsBad />;
-    case 11: return <M2Slide10FourTests />;
-    case 12: return <M2Slide11AIPrompts />;
-    case 13: return <M2Slide12CommonMistakes />;
-    case 14: return <M2BlockHeader blockNumber={3} title="Цена и монетизация" />;
-    case 15: return <M2Slide13ModelsOverview />;
-    case 16: return <M2Slide14HowToChoose />;
-    case 17: return <M2Slide15PricingPsychology />;
-    case 18: return <M2Slide16FirstPrice />;
-    case 19: return <M2Slide17MyCases />;
-    case 20: return <M2BlockHeader blockNumber={4} title="MVP — что строить, а что нет" />;
-    case 21: return <M2Slide18MVPMyths />;
-    case 22: return <M2Slide19OneFeature />;
-    case 23: return <M2Slide20KillFeatures />;
-    case 24: return <M2Slide21MVPChecklist />;
-    case 25: return <M2BlockHeader blockNumber={5} title="Делаем вместе" subtitle="30 минут" />;
-    case 26: return <M2Slide22Step1 />;
-    case 27: return <M2Slide23Step2 />;
-    case 28: return <M2Slide24Step3 />;
-    case 29: return <M2BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 30: return <M2Slide25Homework />;
-    case 31: return <M2Slide26Closing />;
+    case 5: return <M2Slide05PresentResults />;
+    case 6: return <M2BlockHeader blockNumber={2} title="Позиционирование" />;
+    case 7: return <M2Slide07WhyMatters />;
+    case 8: return <M2Slide08Formula />;
+    case 9: return <M2Slide09GoodVsBad />;
+    case 10: return <M2Slide10FourTests />;
+    case 11: return <M2Slide11AIPrompts />;
+    case 12: return <M2Slide12CommonMistakes />;
+    case 13: return <M2BlockHeader blockNumber={3} title="Цена и монетизация" />;
+    case 14: return <M2Slide13ModelsOverview />;
+    case 15: return <M2Slide14HowToChoose />;
+    case 16: return <M2Slide15PricingPsychology />;
+    case 17: return <M2Slide16FirstPrice />;
+    case 18: return <M2Slide17MyCases />;
+    case 19: return <M2BlockHeader blockNumber={4} title="MVP — что строить, а что нет" />;
+    case 20: return <M2Slide18MVPMyths />;
+    case 21: return <M2Slide19OneFeature />;
+    case 22: return <M2Slide20KillFeatures />;
+    case 23: return <M2Slide21MVPChecklist />;
+    case 24: return <M2BlockHeader blockNumber={5} title="Делаем вместе" subtitle="30 минут" />;
+    case 25: return <M2Slide22Step1 />;
+    case 26: return <M2Slide23Step2 />;
+    case 27: return <M2Slide24Step3 />;
+    case 28: return <M2BlockHeader blockNumber={6} title="Задание на неделю" />;
+    case 29: return <M2Slide25Homework />;
+    case 30: return <M2Slide26Closing />;
     default: return null;
   }
 }
 
-const TOTAL = 32;
+const TOTAL = 31;
 
 export default function Meeting2PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
