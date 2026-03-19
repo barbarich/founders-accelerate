@@ -120,10 +120,11 @@ export default function CabinetDashboard() {
               href={ZOOM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+              className="shrink-0 inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-md shadow-primary/20"
             >
               <Video className="w-4 h-4" />
-              Zoom
+              Присоединиться
+              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
             </a>
           </div>
         </CardContent>

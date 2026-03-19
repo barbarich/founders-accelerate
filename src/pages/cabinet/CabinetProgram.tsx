@@ -9,7 +9,24 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ExternalLink, Presentation, Video, FileText, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Presentation, Video, FileText, CheckCircle2, Calendar } from "lucide-react";
+
+const ZOOM_LINK = "https://us02web.zoom.us/j/89609077818?pwd=8hJUD5dEbU25lstTFvKQNqKd8KyzLk.1";
+
+function getMeetingDate(weekNumber: number): Date {
+  const start = new Date(2026, 2, 16, 18, 30);
+  const date = new Date(start);
+  date.setDate(date.getDate() + (weekNumber - 1) * 7);
+  return date;
+}
+
+function formatMeetingDate(date: Date): string {
+  return date.toLocaleDateString("ru-RU", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
+}
 
 interface CohortMaterial {
   id: string;
@@ -173,6 +190,42 @@ export default function CabinetProgram() {
                 </div>
               </AccordionTrigger>
               <AccordionContent className="px-5 pb-5">
+                {/* Meeting info + Zoom button */}
+                {(() => {
+                  const meetDate = getMeetingDate(week.number);
+                  const now = new Date();
+                  const isMeetingDay = now.toDateString() === meetDate.toDateString();
+                  const isPast = meetDate < now;
+                  return (
+                    <div className={`flex items-center justify-between gap-3 mb-5 p-3.5 rounded-lg border ${isMeetingDay ? "border-primary/40 bg-primary/5" : "border-border bg-secondary/30"}`}>
+                      <div className="flex items-center gap-2.5">
+                        <Calendar className={`w-4 h-4 ${isMeetingDay ? "text-primary" : "text-muted-foreground"}`} />
+                        <div>
+                          <p className="text-sm font-medium text-foreground">
+                            {formatMeetingDate(meetDate)}, 18:30–20:30
+                          </p>
+                          {isMeetingDay && (
+                            <p className="text-xs text-primary font-medium mt-0.5">Сегодня!</p>
+                          )}
+                        </div>
+                      </div>
+                      {!isPast || isMeetingDay ? (
+                        <a
+                          href={ZOOM_LINK}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`shrink-0 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:scale-[1.02] active:scale-[0.98] ${isMeetingDay ? "bg-primary text-primary-foreground shadow-md shadow-primary/20 hover:bg-primary/90" : "bg-secondary text-foreground hover:bg-secondary/80 border border-border"}`}
+                        >
+                          <Video className="w-4 h-4" />
+                          Присоединиться
+                        </a>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">Встреча прошла</span>
+                      )}
+                    </div>
+                  );
+                })()}
+
                 {/* Materials */}
                 <div className="mb-5">
                   <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-3">
