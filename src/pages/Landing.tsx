@@ -662,15 +662,10 @@ export default function Landing() {
 
       {/* ═══════════════ CTA ═══════════════ */}
       <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
-        <div className="absolute inset-0 pointer-events-none">
-          <HandDrawnCircle className="absolute top-[10%] left-[10%] w-[150px] h-[150px] text-[hsl(var(--landing-accent))] landing-float-medium" />
-          <InkSplat className="absolute bottom-[15%] right-[20%] w-[200px] h-[200px] text-[hsl(var(--landing-accent-2))]" />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
-          {/* Startup energy */}
-          <SketchRocket className="absolute top-[6%] right-[10%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[8%] left-[6%] w-[160px] h-[160px] text-[hsl(var(--landing-accent-2))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[18%] left-[22%] w-[60px] h-[60px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute bottom-[20%] right-[6%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium" />
+          {/* Single rocket — top right, away from centered text */}
+          <SketchRocket className="absolute top-[10%] right-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
