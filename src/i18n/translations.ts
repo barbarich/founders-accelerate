@@ -179,6 +179,8 @@ export const translations: Record<Lang, Translations> = {
       { weeks: "Weeks 5–8", title: "Product", items: ["AI tools for product creation", "Working prototype — no coding skills needed", "Weekly demos and feedback", "Fast iterations and improvements"], result: "Working MVP" },
       { weeks: "Weeks 9–12", title: "Launch", items: ["Go-to-market strategy", "Marketing and first touchpoints", "Acquire first users", "3–6 month growth plan"], result: "Product in the market" },
     ],
+    phasesCurriculumCTA: "View full weekly curriculum →",
+    phasesCurriculumDesc: "3 months. From idea to product with first users. With group support and an experienced mentor.",
 
     resultsTag: "Outcomes",
     resultsTitle: "What You'll Achieve in 12 Weeks",
