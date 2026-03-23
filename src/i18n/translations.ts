@@ -10,75 +10,56 @@ export const langLabels: Record<Lang, string> = {
 };
 
 export interface Translations {
-  // Nav
   navApply: string;
   navProgram: string;
   navPricing: string;
   navMentor: string;
 
-  // Hero
   heroTag: string;
   heroTitle: string;
   heroSubtitle: string;
   heroCohort: string;
   heroCTA: string;
   heroGroup: string;
+  heroSpotsLeft: string;
 
-  // Stats
   statProducts: string;
   statExits: string;
   statUsers: string;
   statCountries: string;
 
-  // Problem
   problemTag: string;
   problemTitle: string;
   problemItems: string[];
 
-  // Mentor
+  whoTag: string;
+  whoTitle: string;
+  whoItems: { title: string; desc: string }[];
+
   mentorTag: string;
   mentorTitle: string;
   mentorSubtitle: string;
   mentorBio: string[];
 
-  // Track record
   trackTag: string;
   trackTitle: string;
-  trackItems: {
-    period: string;
-    title: string;
-    subtitle: string;
-    highlight: string;
-  }[];
+  trackItems: { period: string; title: string; subtitle: string; highlight: string }[];
 
-  // Program phases
   phasesTag: string;
   phasesTitle: string;
   phasesSubtitle: string;
-  phases: {
-    weeks: string;
-    title: string;
-    items: string[];
-    result: string;
-  }[];
+  phases: { weeks: string; title: string; items: string[]; result: string }[];
 
-  // Results
   resultsTag: string;
   resultsTitle: string;
   resultsSubtitle: string;
   resultsItems: { title: string; desc: string }[];
 
-  // Format
   formatTag: string;
   formatTitle: string;
   formatSubtitle: string;
-  formatColumns: {
-    title: string;
-    sub: string;
-    items: string[];
-  }[];
+  formatColumns: { title: string; sub: string; items: string[] }[];
 
-  // Pricing
   pricingTag: string;
   pricingTitle: string;
   accelTitle: string;
@@ -94,13 +75,18 @@ export interface Translations {
   consultPrice: string;
   consultPriceSub: string;
 
-  // CTA
+  faqTag: string;
+  faqTitle: string;
+  faqItems: { q: string; a: string }[];
+
   ctaTitle: string;
   ctaSubtitle: string;
   ctaCohort: string;
   ctaCTA: string;
 
-  // Apply form
+  midCTA: string;
+  midCTASub: string;
+
   applyTitle: string;
   applySubtitle: string;
   applyName: string;
@@ -116,7 +102,6 @@ export interface Translations {
   applySuccessSub: string;
   applyBack: string;
 
-  // Footer
   footerRights: string;
 }
 
@@ -133,6 +118,7 @@ export const translations: Record<Lang, Translations> = {
     heroCohort: "Next cohort: April 13, 2026",
     heroCTA: "Apply Now",
     heroGroup: "Group of 5–7 founders",
+    heroSpotsLeft: "Only 3 spots left",
 
     statProducts: "Products Built",
     statExits: "Successful Exits",
@@ -147,6 +133,15 @@ export const translations: Record<Lang, Translations> = {
       "I'm not technical — I can't build a product",
       "Working alone, no feedback or accountability",
       "No idea how to find my first customers",
+    ],
+
+    whoTag: "Who Is This For",
+    whoTitle: "This program is for you if…",
+    whoItems: [
+      { title: "You have an idea", desc: "But don't know how to validate it, build it, or find customers" },
+      { title: "You have a prototype", desc: "But it's not growing and you need a strategy to get first users" },
+      { title: "You're not technical", desc: "You want to build a product using AI and no-code tools, without a dev team" },
+      { title: "You need structure", desc: "Accountability, feedback, and a step-by-step system to actually launch" },
     ],
 
     mentorTag: "Your Mentor",
@@ -219,10 +214,24 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ session",
 
+    faqTag: "FAQ",
+    faqTitle: "Frequently Asked Questions",
+    faqItems: [
+      { q: "Do I need technical skills?", a: "Not at all. We use AI and no-code tools to build products. You don't need to write a single line of code." },
+      { q: "What if I don't have an idea yet?", a: "That's fine! The first weeks focus on finding and validating ideas. Many participants come in without a clear concept." },
+      { q: "How much time per week is needed?", a: "Plan for 4–6 hours per week: a 2-hour session plus homework and applying what you've learned." },
+      { q: "Can I join mid-program?", a: "No. Each cohort starts together to build group dynamics and ensure consistent progress." },
+      { q: "What happens after 12 weeks?", a: "You keep your community access, contacts, and growth plan. Many graduates continue collaborating and supporting each other." },
+      { q: "Is there a refund policy?", a: "If after the first session you feel it's not right for you, we'll offer a full refund — no questions asked." },
+    ],
+
     ctaTitle: "Ready to Launch?",
     ctaSubtitle: "Join the next cohort and go from idea to product in 12 weeks.",
     ctaCohort: "Next cohort: April 13, 2026",
     ctaCTA: "Apply Now",
+
+    midCTA: "Interested? Apply before spots fill up",
+    midCTASub: "We'll contact you within 24 hours",
 
     applyTitle: "Apply to The Founders Circle",
     applySubtitle: "Fill out the form and we'll get back to you within 24 hours.",
@@ -254,6 +263,7 @@ export const translations: Record<Lang, Translations> = {
     heroCohort: "Следующий набор: 13 апреля 2026",
     heroCTA: "Подать заявку",
     heroGroup: "Группа 5–7 фаундеров",
+    heroSpotsLeft: "Осталось 3 места",
 
     statProducts: "Продуктов",
     statExits: "Экзитов",
@@ -268,6 +278,15 @@ export const translations: Record<Lang, Translations> = {
       "Не технический — не могу сделать продукт",
       "Делаю один, не хватает обратной связи",
       "Не понимаю как найти первых клиентов",
+    ],
+
+    whoTag: "Для кого",
+    whoTitle: "Эта программа для вас, если…",
+    whoItems: [
+      { title: "У вас есть идея", desc: "Но вы не знаете как её проверить, реализовать и найти клиентов" },
+      { title: "У вас есть прототип", desc: "Но он не растёт и нужна стратегия для первых пользователей" },
+      { title: "Вы не технический", desc: "Хотите создать продукт с помощью AI и no-code, без разработчиков" },
+      { title: "Вам нужна система", desc: "Дисциплина, обратная связь и пошаговый план для реального запуска" },
     ],
 
     mentorTag: "Ментор",
@@ -340,10 +359,24 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ сессия",
 
+    faqTag: "Вопросы",
+    faqTitle: "Часто задаваемые вопросы",
+    faqItems: [
+      { q: "Нужны ли технические навыки?", a: "Нет. Мы используем AI и no-code инструменты. Вам не нужно писать ни строчки кода." },
+      { q: "А если у меня ещё нет идеи?", a: "Это нормально! Первые недели мы фокусируемся на поиске и валидации идей. Многие участники приходят без чёткого концепта." },
+      { q: "Сколько времени нужно в неделю?", a: "Планируйте 4–6 часов: 2-часовая встреча + домашка и практика." },
+      { q: "Можно ли присоединиться в середине?", a: "Нет. Каждая группа стартует вместе для лучшей динамики и прогресса." },
+      { q: "Что происходит после 12 недель?", a: "Вы сохраняете доступ к комьюнити, контакты и план роста. Многие выпускники продолжают сотрудничать." },
+      { q: "Есть ли возврат денег?", a: "Если после первой встречи вы поймёте, что это не для вас — вернём полную стоимость без вопросов." },
+    ],
+
     ctaTitle: "Готовы начать?",
     ctaSubtitle: "Присоединяйтесь к следующему набору и запустите продукт за 12 недель.",
     ctaCohort: "Следующий набор: 13 апреля 2026",
     ctaCTA: "Подать заявку",
+
+    midCTA: "Интересно? Подайте заявку, пока есть места",
+    midCTASub: "Свяжемся в течение 24 часов",
 
     applyTitle: "Заявка в The Founders Circle",
     applySubtitle: "Заполните форму и мы свяжемся с вами в течение 24 часов.",
@@ -375,6 +408,7 @@ export const translations: Record<Lang, Translations> = {
     heroCohort: "Наступний набір: 13 квітня 2026",
     heroCTA: "Подати заявку",
     heroGroup: "Група 5–7 фаундерів",
+    heroSpotsLeft: "Залишилось 3 місця",
 
     statProducts: "Продуктів",
     statExits: "Екзітів",
@@ -389,6 +423,15 @@ export const translations: Record<Lang, Translations> = {
       "Не технічний — не можу зробити продукт",
       "Роблю сам, бракує зворотного зв'язку",
       "Не розумію як знайти перших клієнтів",
+    ],
+
+    whoTag: "Для кого",
+    whoTitle: "Ця програма для вас, якщо…",
+    whoItems: [
+      { title: "У вас є ідея", desc: "Але ви не знаєте як її перевірити, реалізувати і знайти клієнтів" },
+      { title: "У вас є прототип", desc: "Але він не росте і потрібна стратегія для перших користувачів" },
+      { title: "Ви не технічний", desc: "Хочете створити продукт за допомогою AI і no-code, без розробників" },
+      { title: "Вам потрібна система", desc: "Дисципліна, зворотний зв'язок і покроковий план для реального запуску" },
     ],
 
     mentorTag: "Ментор",
@@ -461,10 +504,24 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ сесія",
 
+    faqTag: "Питання",
+    faqTitle: "Поширені запитання",
+    faqItems: [
+      { q: "Чи потрібні технічні навички?", a: "Ні. Ми використовуємо AI та no-code інструменти. Вам не потрібно писати жодного рядка коду." },
+      { q: "А якщо в мене ще немає ідеї?", a: "Це нормально! Перші тижні ми фокусуємося на пошуку та валідації ідей." },
+      { q: "Скільки часу потрібно на тиждень?", a: "Плануйте 4–6 годин: 2-годинна зустріч + домашка та практика." },
+      { q: "Чи можна приєднатися посередині?", a: "Ні. Кожна група стартує разом для кращої динаміки." },
+      { q: "Що відбувається після 12 тижнів?", a: "Ви зберігаєте доступ до спільноти, контакти та план зростання." },
+      { q: "Чи є повернення грошей?", a: "Якщо після першої зустрічі ви зрозумієте, що це не для вас — повернемо повну вартість без питань." },
+    ],
+
     ctaTitle: "Готові почати?",
     ctaSubtitle: "Приєднуйтесь до наступного набору та запустіть продукт за 12 тижнів.",
     ctaCohort: "Наступний набір: 13 квітня 2026",
     ctaCTA: "Подати заявку",
+
+    midCTA: "Цікаво? Подайте заявку, поки є місця",
+    midCTASub: "Зв'яжемося протягом 24 годин",
 
     applyTitle: "Заявка в The Founders Circle",
     applySubtitle: "Заповніть форму і ми зв'яжемося з вами протягом 24 годин.",
@@ -496,6 +553,7 @@ export const translations: Record<Lang, Translations> = {
     heroCohort: "מחזור הבא: 13 באפריל 2026",
     heroCTA: "הגש מועמדות",
     heroGroup: "קבוצה של 5–7 יזמים",
+    heroSpotsLeft: "נותרו 3 מקומות",
 
     statProducts: "מוצרים",
     statExits: "אקזיטים",
@@ -510,6 +568,15 @@ export const translations: Record<Lang, Translations> = {
       "אני לא טכני — אני לא יכול לבנות מוצר",
       "עובד לבד, חסר לי פידבק",
       "לא מבין איך למצוא לקוחות ראשונים",
+    ],
+
+    whoTag: "למי מתאים",
+    whoTitle: "התוכנית מתאימה לכם אם…",
+    whoItems: [
+      { title: "יש לכם רעיון", desc: "אבל לא יודעים איך לבדוק אותו, לבנות ולמצוא לקוחות" },
+      { title: "יש לכם אב-טיפוס", desc: "אבל הוא לא גדל וצריך אסטרטגיה למשתמשים ראשונים" },
+      { title: "אתם לא טכניים", desc: "רוצים לבנות מוצר עם AI וכלי no-code, בלי צוות פיתוח" },
+      { title: "צריכים מבנה", desc: "משמעת, פידבק ותוכנית צעד אחר צעד להשקה אמיתית" },
     ],
 
     mentorTag: "המנטור שלכם",
@@ -582,10 +649,24 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ מפגש",
 
+    faqTag: "שאלות נפוצות",
+    faqTitle: "שאלות נפוצות",
+    faqItems: [
+      { q: "צריך ידע טכני?", a: "בכלל לא. אנחנו משתמשים בכלי AI ו-no-code. לא צריך לכתוב שורת קוד אחת." },
+      { q: "מה אם אין לי רעיון?", a: "זה בסדר! בשבועות הראשונים מתמקדים בחיפוש וולידציה של רעיונות." },
+      { q: "כמה זמן צריך בשבוע?", a: "תכננו 4–6 שעות: מפגש של שעתיים + שיעורי בית ותרגול." },
+      { q: "אפשר להצטרף באמצע?", a: "לא. כל מחזור מתחיל ביחד לדינמיקה קבוצתית טובה יותר." },
+      { q: "מה קורה אחרי 12 שבועות?", a: "אתם שומרים גישה לקהילה, קשרים ותוכנית צמיחה." },
+      { q: "יש מדיניות החזר?", a: "אם אחרי המפגש הראשון תרגישו שזה לא מתאים — החזר מלא, ללא שאלות." },
+    ],
+
     ctaTitle: "מוכנים להתחיל?",
     ctaSubtitle: "הצטרפו למחזור הבא ועברו מרעיון למוצר ב-12 שבועות.",
     ctaCohort: "מחזור הבא: 13 באפריל 2026",
     ctaCTA: "הגש מועמדות",
+
+    midCTA: "מתעניינים? הגישו מועמדות לפני שהמקומות נגמרים",
+    midCTASub: "ניצור קשר תוך 24 שעות",
 
     applyTitle: "הגשת מועמדות ל-The Founders Circle",
     applySubtitle: "מלאו את הטופס ונחזור אליכם תוך 24 שעות.",
