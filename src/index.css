@@ -46,6 +46,17 @@
 
     --gold-light: 38 60% 70%;
     --gold-dark: 38 35% 35%;
+
+    /* Landing page — warm cream theme */
+    --landing-bg: 40 33% 96%;
+    --landing-bg-alt: 40 25% 93%;
+    --landing-text: 30 10% 15%;
+    --landing-muted: 30 8% 45%;
+    --landing-border: 35 15% 88%;
+    --landing-accent: 24 70% 50%;
+    --landing-accent-2: 340 45% 55%;
+    --landing-card-bg: 40 30% 98%;
+    --landing-card-border: 35 20% 90%;
   }
 }
 
