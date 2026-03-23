@@ -59,16 +59,16 @@ export default function M2Slide13ModelsOverview() {
         ))}
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.06)] border-2 border-[hsl(var(--slide-gold)/0.4)] rounded-[16px] px-[32px] py-[22px] max-w-[1100px] flex items-start gap-[24px]">
-        <span className="text-[40px] shrink-0">🤖</span>
+        <span className="text-[24px] shrink-0">🤖</span>
         <div className="flex-1">
-          <div className="flex items-center gap-[12px] mb-[8px]">
-            <p className="text-[22px] font-bold text-[hsl(var(--slide-gold))]">Оплата за результат (Outcome-based)</p>
-            <span className="text-[12px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[10px] py-[3px] rounded-full font-bold uppercase tracking-wider">Тренд 2026</span>
+          <div className="flex items-center gap-[12px] mb-[3px]">
+            <p className="text-[17px] font-semibold text-[hsl(var(--slide-text))]">Оплата за результат (Outcome-based)</p>
+            <span className="text-[11px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[8px] py-[2px] rounded-full font-bold uppercase tracking-wider">Тренд 2026</span>
           </div>
-          <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.6] mb-[6px]">
-            AI-агенты меняют правила: клиент платит не за доступ к инструменту, а за выполненную работу. Результат измерим — цена привязана к outcome. Самая честная модель: нет результата — нет оплаты.
+          <p className="text-[13px] text-[hsl(var(--slide-gold))] mb-[2px]">Devin, AI SDR-агенты, AI-рекрутеры</p>
+          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
+            AI-агенты меняют правила: клиент платит не за доступ, а за выполненную работу. Нет результата — нет оплаты.
           </p>
-          <p className="text-[15px] text-[hsl(var(--slide-text-muted))]">Devin (оплата за задачу), AI SDR-агенты (оплата за лид), AI-рекрутеры (оплата за нанятого)</p>
         </div>
       </div>
     </div>
