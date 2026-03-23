@@ -314,23 +314,14 @@ export default function Landing() {
         {/* Gradient mesh background */}
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
-        {/* Artistic floating elements */}
+        {/* Decorative elements — clean, intentional placement in safe zones */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <HandDrawnCircle className="absolute top-[15%] right-[10%] w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <HandDrawnCircle className="absolute bottom-[20%] left-[5%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-          <InkSplat className="absolute top-[30%] right-[25%] w-[200px] h-[200px] text-[hsl(var(--landing-accent))]" />
+          {/* Single rocket — top right corner, away from text */}
+          <SketchRocket className="absolute top-[20%] right-[4%] w-[120px] h-[120px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
           
-          {/* Startup sketches — prominent, intentional placement */}
-          <SketchRocket className="absolute top-[15%] right-[12%] w-[160px] h-[160px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[18%] left-[6%] w-[180px] h-[180px] text-[hsl(var(--landing-accent-2))] landing-float-slow landing-sketch-draw" />
-          <SketchChart className="absolute bottom-[25%] right-[6%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[60%] left-[18%] w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute top-[10%] left-[32%] w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-          
-          {/* Animated gradient orbs */}
+          {/* Gradient orbs — ambient background only */}
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
-          <div className="absolute top-[60%] left-[50%] w-[250px] h-[250px] rounded-full landing-orb-3" />
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
