@@ -1,7 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock, Shield } from "lucide-react";
 import { useInView, useCountUp } from "@/hooks/useInView";
 
