@@ -519,6 +519,22 @@ export default function Landing() {
               ))}
             </div>
           </div>
+
+          {/* Full curriculum CTA */}
+          <Reveal delay={400}>
+            <div className="mt-16 md:mt-24 text-center">
+              <p className="text-base md:text-lg text-[hsl(var(--landing-muted))] mb-6 max-w-2xl mx-auto">
+                {t.phasesCurriculumDesc}
+              </p>
+              <Link
+                to="/program"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-[hsl(var(--landing-accent))] text-[hsl(var(--landing-accent))] font-semibold text-base hover:bg-[hsl(var(--landing-accent))] hover:text-[hsl(var(--landing-bg))] transition-all duration-300 group"
+              >
+                {t.phasesCurriculumCTA}
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
