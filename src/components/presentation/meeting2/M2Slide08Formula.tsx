@@ -8,25 +8,24 @@ export default function M2Slide08Formula() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Позиционирование</p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          Расширенная формула
+          Формула результата
         </h2>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] p-[12px] mb-[14px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.8]">
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">[Продукт]</span> помогает{" "}
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">[кому конкретно]</span>{" "}
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">[решить проблему]</span>{" "}
-            с помощью <span className="text-[hsl(var(--slide-gold))] font-semibold">[как именно]</span>,{" "}
-            в отличие от <span className="text-[hsl(var(--slide-gold))] font-semibold">[альтернатива]</span>.
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[Кто]</span> получает{" "}
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[результат]</span>{" "}
+            с помощью <span className="text-[hsl(var(--slide-gold))] font-semibold">[продукт]</span>,{" "}
+            без <span className="text-[hsl(var(--slide-gold))] font-semibold">[боль / старый способ]</span>.
           </p>
         </div>
         <div className="space-y-[6px] mb-[10px]">
           <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold uppercase tracking-[0.15em]">Ключевые правила</p>
           <div className="space-y-[4px]">
             {[
-              "Конкретный клиент, не «все»",
-              "Результат, не процесс",
-              "Отстройка от конкретной альтернативы",
-              "Без жаргона и buzzwords",
+              "Результат, который можно измерить: часы, деньги, штуки",
+              "Конкретный клиент, не «все» и не «бизнесы»",
+              "Без = от чего избавляете (боль, старый способ)",
+              "Ноль жаргона — бабушка должна понять",
             ].map((r, i) => (
               <div key={i} className="flex items-center gap-[6px]">
                 <span className="w-[4px] h-[4px] rounded-full bg-[hsl(var(--slide-gold))] shrink-0" />
@@ -47,14 +46,13 @@ export default function M2Slide08Formula() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Позиционирование</p>
-      <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">Расширенная формула</h2>
+      <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">Формула результата</h2>
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] p-[40px] mb-[40px] max-w-[1000px]">
         <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.8]">
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">[Продукт]</span> помогает{" "}
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">[кому конкретно]</span>{" "}
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">[решить проблему / получить результат]</span>{" "}
-          с помощью <span className="text-[hsl(var(--slide-gold))] font-semibold">[как именно / чем отличается]</span>,{" "}
-          в отличие от <span className="text-[hsl(var(--slide-gold))] font-semibold">[альтернатива]</span>.
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">[Кто]</span> получает{" "}
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">[конкретный результат]</span>{" "}
+          с помощью <span className="text-[hsl(var(--slide-gold))] font-semibold">[продукт]</span>,{" "}
+          без <span className="text-[hsl(var(--slide-gold))] font-semibold">[боль / старый способ]</span>.
         </p>
       </div>
       <div className="flex gap-[48px] max-w-[1000px]">
@@ -62,10 +60,10 @@ export default function M2Slide08Formula() {
           <p className="text-[16px] text-[hsl(var(--slide-gold))] font-semibold uppercase tracking-[0.15em] mb-[16px]">Ключевые правила</p>
           <div className="space-y-[12px]">
             {[
+              "Результат, который можно измерить: часы, деньги, штуки",
               "Конкретный клиент, а не «все» и не «бизнесы»",
-              "Результат, а не процесс — что получит человек",
-              "Отстройка от конкретной альтернативы, не абстрактная",
-              "Без жаргона, buzzwords и корпоративного тумана",
+              "«Без» = от чего избавляете (боль или старый способ)",
+              "Ноль жаргона — если бабушка не поняла, переписывайте",
             ].map((r, i) => (
               <div key={i} className="flex items-center gap-[12px]">
                 <span className="w-[6px] h-[6px] rounded-full bg-[hsl(var(--slide-gold))] shrink-0" />

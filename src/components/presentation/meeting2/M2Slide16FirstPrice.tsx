@@ -8,11 +8,11 @@ export default function M2Slide16FirstPrice() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Ценообразование</p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          Как поставить первую цену
+          Цена = стоимость результата
         </h2>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] p-[12px] mb-[12px]">
           <p className="text-[12px] text-[hsl(var(--slide-text))] leading-[1.8] text-center font-semibold">
-            Цена = <span className="text-[hsl(var(--slide-gold))]">ценность для клиента</span> × <span className="text-[hsl(var(--slide-gold))]">10-20%</span>
+            Цена = <span className="text-[hsl(var(--slide-gold))]">результат клиента</span> × <span className="text-[hsl(var(--slide-gold))]">10-20%</span>
           </p>
         </div>
         <div className="space-y-[6px] mb-[10px]">
@@ -39,10 +39,10 @@ export default function M2Slide16FirstPrice() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Ценообразование</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">Как поставить первую цену</h2>
+      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">Цена = стоимость результата</h2>
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] p-[32px] mb-[36px] max-w-[800px]">
         <p className="text-[28px] text-[hsl(var(--slide-text))] leading-[1.6] text-center font-semibold">
-          Цена = <span className="text-[hsl(var(--slide-gold))]">ценность для клиента</span> × <span className="text-[hsl(var(--slide-gold))]">10-20%</span>
+          Цена = <span className="text-[hsl(var(--slide-gold))]">результат клиента</span> × <span className="text-[hsl(var(--slide-gold))]">10-20%</span>
         </p>
       </div>
       <div className="space-y-[16px] max-w-[1000px] mb-[32px]">

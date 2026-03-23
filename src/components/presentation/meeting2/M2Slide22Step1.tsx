@@ -2,10 +2,10 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function M2Slide22Step1() {
   const steps = [
-    { time: "0–2", action: "Запишите текущее позиционирование (или сформулируйте первый вариант)" },
-    { time: "2–5", action: "Проверьте по формуле: [Продукт] помогает [кому] [решить что] с помощью [как], в отличие от [альтернатива]" },
-    { time: "5–8", action: "Зачитайте группе — получите обратную связь: понятно ли за 5 секунд?" },
-    { time: "8–10", action: "Перепишите с учётом фидбека — финальный вариант" },
+    { time: "0–3", action: "Сформулируйте результат клиента: [Кто] получает [результат] с помощью [продукт], без [боль]" },
+    { time: "3–5", action: "Адаптируйте в три формата: лендинг, холодное сообщение, 30-сек питч" },
+    { time: "5–8", action: "Elevator pitch: 30 секунд питч партнёру. Не понял — переделываем" },
+    { time: "8–10", action: "Группа голосует: «сколько бы заплатил за этот результат?»" },
   ];
   const isMobile = useIsMobile();
 
@@ -28,7 +28,7 @@ export default function M2Slide22Step1() {
           ))}
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[8px]">
-          <p className="text-[10px] text-[hsl(var(--slide-text))] font-semibold">Результат: одно предложение, которое все поняли</p>
+          <p className="text-[10px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование через результат + три формулировки</p>
         </div>
       </div>
     );
@@ -43,10 +43,10 @@ export default function M2Slide22Step1() {
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">Пишем позиционирование</h2>
       <div className="space-y-[20px] max-w-[1100px]">
         {[
-          { time: "0–2 мин", action: "Запишите текущее позиционирование. Если нет — сформулируйте первый вариант прямо сейчас" },
-          { time: "2–5 мин", action: "Проверьте по формуле: [Продукт] помогает [кому] [решить что] с помощью [как], в отличие от [альтернатива]" },
-          { time: "5–8 мин", action: "Зачитайте группе. Группа отвечает: «Понятно ли за 5 секунд что это и для кого?»" },
-          { time: "8–10 мин", action: "Перепишите с учётом фидбека. Это ваш рабочий вариант на ближайшие недели" },
+          { time: "0–3 мин", action: "Сформулируйте результат клиента по формуле: [Кто] получает [результат] с помощью [продукт], без [боль]" },
+          { time: "3–5 мин", action: "Адаптируйте в три формата: заголовок лендинга, холодное сообщение, 30-секундный питч" },
+          { time: "5–8 мин", action: "Elevator pitch battle: встаёте, 30 секунд питч партнёру. Если не понял — позиционирование не работает" },
+          { time: "8–10 мин", action: "Перепишите с учётом фидбека. Группа голосует: «сколько бы заплатил за этот результат?»" },
         ].map((s, i) => (
           <div key={i} className="flex items-start gap-[16px]">
             <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[8px] rounded shrink-0 min-w-[90px] text-center">{s.time}</span>
@@ -55,7 +55,7 @@ export default function M2Slide22Step1() {
         ))}
       </div>
       <div className="mt-[44px] bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[28px] py-[18px]">
-        <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold">Результат: одно предложение, которое все в группе поняли за 5 секунд</p>
+        <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование через результат + три формулировки (лендинг, DM, питч)</p>
       </div>
     </div>
   );

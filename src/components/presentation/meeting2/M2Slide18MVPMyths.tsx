@@ -29,7 +29,7 @@ export default function M2Slide18MVPMyths() {
         </div>
         <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold)/0.4)] mb-[10px]" />
         <p className="text-[12px] text-[hsl(var(--slide-gold))] font-medium">
-          Вопрос не "что построить", а "что минимально нужно, чтобы доказать спрос"
+          MVP = минимум, чтобы доставить один результат одному клиенту
         </p>
       </div>
     );
@@ -59,7 +59,7 @@ export default function M2Slide18MVPMyths() {
       </div>
       <div className="w-[60px] h-[2px] bg-[hsl(var(--slide-gold)/0.4)] mb-[20px]" />
       <p className="text-[24px] text-[hsl(var(--slide-gold))] font-medium">
-        Вопрос не "что построить", а "что минимально нужно, чтобы доказать спрос"
+        MVP = минимум, чтобы доставить один результат одному клиенту
       </p>
     </div>
   );
