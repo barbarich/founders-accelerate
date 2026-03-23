@@ -49,6 +49,8 @@ export interface Translations {
   phasesTitle: string;
   phasesSubtitle: string;
   phases: { weeks: string; title: string; items: string[]; result: string }[];
+  phasesCurriculumCTA: string;
+  phasesCurriculumDesc: string;
 
   resultsTag: string;
   resultsTitle: string;
@@ -177,6 +179,8 @@ export const translations: Record<Lang, Translations> = {
       { weeks: "Weeks 5–8", title: "Product", items: ["AI tools for product creation", "Working prototype — no coding skills needed", "Weekly demos and feedback", "Fast iterations and improvements"], result: "Working MVP" },
       { weeks: "Weeks 9–12", title: "Launch", items: ["Go-to-market strategy", "Marketing and first touchpoints", "Acquire first users", "3–6 month growth plan"], result: "Product in the market" },
     ],
+    phasesCurriculumCTA: "View full weekly curriculum →",
+    phasesCurriculumDesc: "3 months. From idea to product with first users. With group support and an experienced mentor.",
 
     resultsTag: "Outcomes",
     resultsTitle: "What You'll Achieve in 12 Weeks",
@@ -322,6 +326,8 @@ export const translations: Record<Lang, Translations> = {
       { weeks: "Недели 5–8", title: "Продукт", items: ["AI-инструменты для создания продукта", "Рабочий прототип — без навыков кода", "Демо и обратная связь каждую неделю", "Быстрые итерации и улучшения"], result: "Работающий MVP" },
       { weeks: "Недели 9–12", title: "Запуск", items: ["Стратегия выхода на рынок", "Маркетинг и первые касания", "Привлечение первых пользователей", "План роста на 3–6 месяцев"], result: "Продукт в рынке" },
     ],
+    phasesCurriculumCTA: "Смотреть полную программу по неделям →",
+    phasesCurriculumDesc: "3 месяца. От идеи до продукта с первыми пользователями. С поддержкой группы и опытного ментора.",
 
     resultsTag: "Результат",
     resultsTitle: "Что вы получите за 12 недель",
@@ -467,6 +473,8 @@ export const translations: Record<Lang, Translations> = {
       { weeks: "Тижні 5–8", title: "Продукт", items: ["AI-інструменти для створення продукту", "Робочий прототип — без навичок коду", "Демо та зворотний зв'язок щотижня", "Швидкі ітерації та покращення"], result: "Працюючий MVP" },
       { weeks: "Тижні 9–12", title: "Запуск", items: ["Стратегія виходу на ринок", "Маркетинг і перші дотики", "Залучення перших користувачів", "План зростання на 3–6 місяців"], result: "Продукт на ринку" },
     ],
+    phasesCurriculumCTA: "Переглянути повну програму по тижнях →",
+    phasesCurriculumDesc: "3 місяці. Від ідеї до продукту з першими користувачами. З підтримкою групи та досвідченого ментора.",
 
     resultsTag: "Результат",
     resultsTitle: "Що ви отримаєте за 12 тижнів",
@@ -612,6 +620,8 @@ export const translations: Record<Lang, Translations> = {
       { weeks: "שבועות 5–8", title: "מוצר", items: ["כלי AI ליצירת מוצר", "אב-טיפוס עובד — ללא ידע בקוד", "דמו ופידבק כל שבוע", "איטרציות מהירות ושיפורים"], result: "MVP עובד" },
       { weeks: "שבועות 9–12", title: "השקה", items: ["אסטרטגיית Go-to-Market", "שיווק ומגעים ראשונים", "גיוס משתמשים ראשונים", "תוכנית צמיחה ל-3–6 חודשים"], result: "מוצר בשוק" },
     ],
+    phasesCurriculumCTA: "צפו בתוכנית המלאה לפי שבועות →",
+    phasesCurriculumDesc: "3 חודשים. מרעיון למוצר עם משתמשים ראשונים. עם תמיכה קבוצתית ומנטור מנוסה.",
 
     resultsTag: "תוצאות",
     resultsTitle: "מה תשיגו ב-12 שבועות",
