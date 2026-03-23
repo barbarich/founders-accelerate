@@ -553,11 +553,11 @@ export default function Landing() {
         <div className="absolute left-[3%] bottom-[10%] pointer-events-none">
           <HandDrawnCircle className="w-[200px] h-[200px] text-[hsl(var(--landing-accent))] landing-float-slow" />
         </div>
-        <div className="absolute right-[5%] top-[12%] pointer-events-none hidden lg:block">
-          <SketchTrophy className="w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+        <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
+          <SketchTrophy className="w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
         </div>
-        <div className="absolute left-[8%] top-[40%] pointer-events-none hidden lg:block">
-          <SketchStar className="w-[45px] h-[45px] text-[hsl(var(--landing-accent-2))] landing-float-slow" />
+        <div className="absolute left-[5%] top-[35%] pointer-events-none hidden lg:block">
+          <SketchStar className="w-[70px] h-[70px] text-[hsl(var(--landing-accent-2))] landing-float-slow" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
