@@ -33,7 +33,8 @@ export default function M2Slide11AIPrompts() {
 
   const [copied, setCopied] = useState<number | null>(null);
 
-  const handleCopy = (text: string, index: number) => {
+  const handleCopy = (e: React.MouseEvent, text: string, index: number) => {
+    e.stopPropagation();
     navigator.clipboard.writeText(text);
     setCopied(index);
     setTimeout(() => setCopied(null), 2000);
@@ -57,7 +58,7 @@ export default function M2Slide11AIPrompts() {
                   <span className="text-[11px] font-semibold text-[hsl(var(--slide-text))]">{p.title}</span>
                 </div>
                 <button
-                  onClick={() => handleCopy(p.prompt, i)}
+                  onClick={(e) => handleCopy(e, p.prompt, i)}
                   className="flex items-center gap-[3px] text-[8px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] hover:bg-[hsl(var(--slide-gold)/0.2)] px-[6px] py-[3px] rounded transition-colors shrink-0"
                 >
                   {copied === i ? <Check className="w-[10px] h-[10px]" /> : <Copy className="w-[10px] h-[10px]" />}
@@ -84,7 +85,7 @@ export default function M2Slide11AIPrompts() {
               <div className="flex items-center justify-between mb-[4px]">
                 <p className="text-[18px] font-semibold text-[hsl(var(--slide-text))]">{p.title}</p>
                 <button
-                  onClick={() => handleCopy(p.prompt, i)}
+                  onClick={(e) => handleCopy(e, p.prompt, i)}
                   className="flex items-center gap-[6px] text-[13px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] hover:bg-[hsl(var(--slide-gold)/0.2)] px-[12px] py-[6px] rounded-[6px] transition-colors shrink-0 cursor-pointer"
                 >
                   {copied === i ? <Check className="w-[14px] h-[14px]" /> : <Copy className="w-[14px] h-[14px]" />}
