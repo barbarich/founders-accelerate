@@ -424,8 +424,6 @@ export default function Landing() {
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[hsl(var(--landing-bg))]" />
-              {/* Artistic overlay */}
-              <HandDrawnCircle className="absolute bottom-10 right-10 w-[100px] h-[100px] text-[hsl(var(--landing-accent))] opacity-60" />
             </div>
           </Reveal>
 
