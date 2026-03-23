@@ -290,7 +290,7 @@ export default function Landing() {
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <SketchRocket className="absolute top-[20%] right-[4%] w-[120px] h-[120px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
+          
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
         </div>
