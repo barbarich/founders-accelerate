@@ -2,13 +2,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function M2Slide16FirstPrice() {
   const b2b = [
-    { label: "Экономит время", example: "Reply.io ($500/мес): менеджер тратил 40 ч/мес на холодные письма → AI делает за него" },
-    { label: "Увеличивает доход", example: "Apollo.io ($99-399/мес): находит лиды, которые приносят +$5000-10000 выручки" },
-    { label: "Заменяет сотрудника", example: "Jasper AI ($49-125/мес): заменяет копирайтера с зарплатой $2000-3000/мес" },
+    { label: "Экономит время", example: "Reply.io: экономит $2000/мес (40 ч × $50) → берёт $500/мес ≈ 25%" },
+    { label: "Увеличивает доход", example: "Apollo.io: приносит +$5000-10000 выручки → берёт $99-399/мес ≈ 2-4%" },
+    { label: "Заменяет сотрудника", example: "Jasper AI: заменяет копирайтера $2000-3000/мес → берёт $49-125/мес ≈ 2-4%" },
   ];
   const b2c = [
-    { label: "Заменяет специалиста", example: "Peloton ($13/мес): тренер $50-70/час × 8 занятий = $500/мес → приложение в 30× дешевле" },
-    { label: "Делает доступным", example: "Duolingo ($7-13/мес): репетитор $30-50/час × 8 уроков = $300/мес → приложение в 30× дешевле" },
+    { label: "Заменяет специалиста", example: "Peloton: тренер $500/мес (8 × $60) → приложение $13/мес ≈ 2.5%" },
+    { label: "Делает доступным", example: "Duolingo: репетитор $300/мес (8 × $40) → подписка $7-13/мес ≈ 2-4%" },
   ];
   const isMobile = useIsMobile();
 
@@ -19,7 +19,7 @@ export default function M2Slide16FirstPrice() {
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
           Цена = стоимость результата
         </h2>
-        <p className="text-[9px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">B2B — цена = 10-20% от результата в деньгах</p>
+        <p className="text-[9px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">B2B — цена = 1-10% от результата в деньгах</p>
         <div className="space-y-[4px] mb-[8px]">
           {b2b.map((item, i) => (
             <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
@@ -55,7 +55,7 @@ export default function M2Slide16FirstPrice() {
           <div className="flex items-center gap-[10px] mb-[14px]">
             <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold">B2B</span>
             <span className="text-[16px] text-[hsl(var(--slide-text-muted))]">—</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">10-20% от результата в деньгах</span>
+            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">1-10% от результата в деньгах</span>
           </div>
           <div className="space-y-[12px]">
             {b2b.map((item, i) => (
@@ -71,7 +71,7 @@ export default function M2Slide16FirstPrice() {
           <div className="flex items-center gap-[10px] mb-[14px]">
             <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold">B2C</span>
             <span className="text-[16px] text-[hsl(var(--slide-text-muted))]">—</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">В 5-10× дешевле оффлайн-альтернативы</span>
+            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">В 20-50× дешевле оффлайн-альтернативы</span>
           </div>
           <div className="space-y-[12px]">
             {b2c.map((item, i) => (
