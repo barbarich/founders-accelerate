@@ -394,9 +394,7 @@ export default function Landing() {
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display relative inline-block">
-              {t.problemTitle}
-              <HandDrawnCircle className="absolute -right-8 -top-4 w-[80px] h-[80px] text-[hsl(var(--landing-accent-2))]" />
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display">
             </h2>
           </Reveal>
 
