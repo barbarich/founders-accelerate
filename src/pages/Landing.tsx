@@ -280,10 +280,37 @@ export default function Landing() {
   const { lang, t } = useLanguage();
   const applyUrl = `/${lang}/apply`;
 
+  const rocketRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!rocketRef.current) return;
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      // Rocket flies upward as user scrolls: starts at 70% from top, ends at 5%
+      const topPercent = 70 - progress * 65;
+      rocketRef.current.style.top = `${topPercent}%`;
+      rocketRef.current.style.opacity = `${0.5 + progress * 0.3}`;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="landing-wrapper min-h-screen relative overflow-x-hidden">
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
+
+      {/* Fixed scroll-following rocket */}
+      <div
+        ref={rocketRef}
+        className="fixed right-[3%] z-20 pointer-events-none hidden lg:block transition-none"
+        style={{ top: "70%" }}
+      >
+        <SketchRocket className="w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-sketch-draw" />
+      </div>
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
