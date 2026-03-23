@@ -469,14 +469,9 @@ export default function Landing() {
 
       {/* ═══════════════ PROGRAM PHASES — TIMELINE ═══════════════ */}
       <section id="program" className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        <div className="absolute right-[5%] top-[10%] pointer-events-none">
-          <InkSplat className="w-[250px] h-[250px] text-[hsl(var(--landing-accent-2))]" />
-        </div>
-        <div className="absolute left-[2%] top-[25%] pointer-events-none hidden lg:block">
-          <SketchRocket className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-        </div>
-        <div className="absolute right-[4%] bottom-[10%] pointer-events-none hidden lg:block">
-          <SketchDiamond className="w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+        {/* Single chart icon — right margin */}
+        <div className="absolute right-[3%] top-[5%] pointer-events-none hidden lg:block">
+          <SketchChart className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
