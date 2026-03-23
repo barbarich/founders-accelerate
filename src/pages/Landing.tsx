@@ -394,8 +394,7 @@ export default function Landing() {
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display">
-            </h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display">{t.problemTitle}</h2>
           </Reveal>
 
           <div className="space-y-6 md:space-y-8 max-w-4xl">
