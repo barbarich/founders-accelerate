@@ -86,13 +86,13 @@ function WavyLine({ className = "" }: { className?: string }) {
 function SketchRocket({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 80 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M40 12C38 20 32 32 28 40C26 44 28 48 32 48L40 46L48 48C52 48 54 44 52 40C48 32 42 20 40 12Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.2"/>
-      <path d="M32 48L28 58L36 52" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.16"/>
-      <path d="M48 48L52 58L44 52" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.16"/>
-      <circle cx="40" cy="32" r="4" stroke="currentColor" strokeWidth="1" opacity="0.14"/>
-      <path d="M36 60C37 64 39 67 40 68C41 67 43 64 44 60" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15"/>
-      <circle cx="38" cy="66" r="0.8" fill="currentColor" opacity="0.12"/>
-      <circle cx="42" cy="64" r="0.6" fill="currentColor" opacity="0.1"/>
+      <path d="M40 12C38 20 32 32 28 40C26 44 28 48 32 48L40 46L48 48C52 48 54 44 52 40C48 32 42 20 40 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+      <path d="M32 48L28 58L36 52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
+      <path d="M48 48L52 58L44 52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
+      <circle cx="40" cy="32" r="4" stroke="currentColor" strokeWidth="1.2" opacity="0.3"/>
+      <path d="M36 60C37 64 39 67 40 68C41 67 43 64 44 60" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+      <circle cx="38" cy="66" r="1" fill="currentColor" opacity="0.25"/>
+      <circle cx="42" cy="64" r="0.8" fill="currentColor" opacity="0.2"/>
     </svg>
   );
 }
@@ -100,16 +100,16 @@ function SketchRocket({ className = "" }: { className?: string }) {
 function SketchUnicorn({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 90 90" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 55C25 48 30 42 38 40C42 39 48 40 52 42C58 45 62 50 62 56C62 62 56 66 48 66C40 66 32 64 28 60C26 58 25 57 25 55Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.18"/>
-      <path d="M38 40C36 34 34 28 36 24C38 20 42 20 44 24C45 26 44 30 42 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.18"/>
-      <path d="M38 22L36 12L40 20" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" opacity="0.22"/>
-      <path d="M36 10L35 8L37 9.5L35.5 11L36 10Z" fill="currentColor" opacity="0.17"/>
-      <path d="M32 62L30 74" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.13"/>
-      <path d="M40 66L39 76" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.13"/>
-      <path d="M50 64L51 74" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.13"/>
-      <path d="M56 60L58 70" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.13"/>
-      <path d="M25 55C20 52 16 56 18 60C20 64 24 62 25 58" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15"/>
-      <circle cx="37" cy="30" r="1" fill="currentColor" opacity="0.12"/>
+      <path d="M25 55C25 48 30 42 38 40C42 39 48 40 52 42C58 45 62 50 62 56C62 62 56 66 48 66C40 66 32 64 28 60C26 58 25 57 25 55Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
+      <path d="M38 40C36 34 34 28 36 24C38 20 42 20 44 24C45 26 44 30 42 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
+      <path d="M38 22L36 12L40 20" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45"/>
+      <path d="M36 10L35 8L37 9.5L35.5 11L36 10Z" fill="currentColor" opacity="0.35"/>
+      <path d="M32 62L30 74" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
+      <path d="M40 66L39 76" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
+      <path d="M50 64L51 74" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
+      <path d="M56 60L58 70" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
+      <path d="M25 55C20 52 16 56 18 60C20 64 24 62 25 58" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.32"/>
+      <circle cx="37" cy="30" r="1.2" fill="currentColor" opacity="0.25"/>
     </svg>
   );
 }
@@ -117,12 +117,12 @@ function SketchUnicorn({ className = "" }: { className?: string }) {
 function SketchTrophy({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 70 70" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22 18H48V28C48 38 42 44 35 44C28 44 22 38 22 28V18Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.18"/>
-      <path d="M22 22C18 22 14 26 14 30C14 34 18 36 22 34" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.14"/>
-      <path d="M48 22C52 22 56 26 56 30C56 34 52 36 48 34" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.14"/>
-      <path d="M35 44V52" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.16"/>
-      <path d="M26 52H44" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.16"/>
-      <path d="M35 26L36.5 30L41 30.5L38 33L39 37.5L35 35L31 37.5L32 33L29 30.5L33.5 30Z" stroke="currentColor" strokeWidth="0.8" strokeLinejoin="round" opacity="0.15"/>
+      <path d="M22 18H48V28C48 38 42 44 35 44C28 44 22 38 22 28V18Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/>
+      <path d="M22 22C18 22 14 26 14 30C14 34 18 36 22 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+      <path d="M48 22C52 22 56 26 56 30C56 34 52 36 48 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+      <path d="M35 44V52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35"/>
+      <path d="M26 52H44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35"/>
+      <path d="M35 26L36.5 30L41 30.5L38 33L39 37.5L35 35L31 37.5L32 33L29 30.5L33.5 30Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" opacity="0.3"/>
     </svg>
   );
 }
@@ -130,9 +130,9 @@ function SketchTrophy({ className = "" }: { className?: string }) {
 function SketchLightning({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 50 70" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M28 8L14 36H24L20 62L40 30H28L32 8Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.18"/>
-      <circle cx="18" cy="28" r="1" fill="currentColor" opacity="0.12"/>
-      <circle cx="36" cy="24" r="0.8" fill="currentColor" opacity="0.1"/>
+      <path d="M28 8L14 36H24L20 62L40 30H28L32 8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+      <circle cx="18" cy="28" r="1.2" fill="currentColor" opacity="0.25"/>
+      <circle cx="36" cy="24" r="1" fill="currentColor" opacity="0.2"/>
     </svg>
   );
 }
@@ -140,9 +140,9 @@ function SketchLightning({ className = "" }: { className?: string }) {
 function SketchFlag({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 60 70" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 12V62" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.17"/>
-      <path d="M15 14C25 10 35 18 45 14V34C35 38 25 30 15 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.16"/>
-      <path d="M30 22L31 25L34 25L32 27L33 30L30 28L27 30L28 27L26 25L29 25Z" stroke="currentColor" strokeWidth="0.7" strokeLinejoin="round" opacity="0.13"/>
+      <path d="M15 12V62" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
+      <path d="M15 14C25 10 35 18 45 14V34C35 38 25 30 15 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
+      <path d="M30 22L31 25L34 25L32 27L33 30L30 28L27 30L28 27L26 25L29 25Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" opacity="0.28"/>
     </svg>
   );
 }
@@ -150,13 +150,13 @@ function SketchFlag({ className = "" }: { className?: string }) {
 function SketchChart({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 70 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 48H58" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15"/>
-      <path d="M12 48V12" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15"/>
-      <path d="M14 44C20 42 26 38 32 30C38 22 44 16 50 14C54 13 56 12 58 10" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.2"/>
-      <circle cx="14" cy="44" r="1.5" fill="currentColor" opacity="0.13"/>
-      <circle cx="32" cy="30" r="1.5" fill="currentColor" opacity="0.13"/>
-      <circle cx="50" cy="14" r="1.5" fill="currentColor" opacity="0.13"/>
-      <path d="M55 13L58 10L56 15" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" opacity="0.16"/>
+      <path d="M12 48H58" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+      <path d="M12 48V12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+      <path d="M14 44C20 42 26 38 32 30C38 22 44 16 50 14C54 13 56 12 58 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.4"/>
+      <circle cx="14" cy="44" r="2" fill="currentColor" opacity="0.25"/>
+      <circle cx="32" cy="30" r="2" fill="currentColor" opacity="0.25"/>
+      <circle cx="50" cy="14" r="2" fill="currentColor" opacity="0.25"/>
+      <path d="M55 13L58 10L56 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
     </svg>
   );
 }
@@ -164,7 +164,7 @@ function SketchChart({ className = "" }: { className?: string }) {
 function SketchStar({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 4L24 14L35 15.5L27 23L29 34L20 29L11 34L13 23L5 15.5L16 14Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" opacity="0.16"/>
+      <path d="M20 4L24 14L35 15.5L27 23L29 34L20 29L11 34L13 23L5 15.5L16 14Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" opacity="0.35"/>
     </svg>
   );
 }
@@ -172,10 +172,10 @@ function SketchStar({ className = "" }: { className?: string }) {
 function SketchDiamond({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 50 50" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 6L44 20L25 44L6 20Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" opacity="0.15"/>
-      <path d="M6 20H44" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" opacity="0.1"/>
-      <path d="M18 6L14 20L25 44" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" opacity="0.09"/>
-      <path d="M32 6L36 20L25 44" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round" opacity="0.09"/>
+      <path d="M25 6L44 20L25 44L6 20Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" opacity="0.35"/>
+      <path d="M6 20H44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.22"/>
+      <path d="M18 6L14 20L25 44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.18"/>
+      <path d="M32 6L36 20L25 44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.18"/>
     </svg>
   );
 }
@@ -320,12 +320,12 @@ export default function Landing() {
           <HandDrawnCircle className="absolute bottom-[20%] left-[5%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
           <InkSplat className="absolute top-[30%] right-[25%] w-[200px] h-[200px] text-[hsl(var(--landing-accent))]" />
           
-          {/* Startup sketches */}
-          <SketchRocket className="absolute top-[18%] right-[18%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[22%] left-[8%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-slow landing-sketch-draw" />
-          <SketchChart className="absolute bottom-[30%] right-[8%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[65%] left-[20%] w-[50px] h-[50px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute top-[12%] left-[35%] w-[60px] h-[60px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+          {/* Startup sketches — prominent, intentional placement */}
+          <SketchRocket className="absolute top-[15%] right-[12%] w-[160px] h-[160px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+          <SketchUnicorn className="absolute bottom-[18%] left-[6%] w-[180px] h-[180px] text-[hsl(var(--landing-accent-2))] landing-float-slow landing-sketch-draw" />
+          <SketchChart className="absolute bottom-[25%] right-[6%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+          <SketchStar className="absolute top-[60%] left-[18%] w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow" />
+          <SketchLightning className="absolute top-[10%] left-[32%] w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
           
           {/* Animated gradient orbs */}
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
@@ -399,11 +399,11 @@ export default function Landing() {
       <section className="py-24 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
         {/* Startup sketch decorations */}
-        <div className="absolute right-[6%] top-[15%] pointer-events-none">
-          <SketchLightning className="w-[70px] h-[70px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+        <div className="absolute right-[4%] top-[12%] pointer-events-none">
+          <SketchLightning className="w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
         </div>
-        <div className="absolute left-[4%] bottom-[20%] pointer-events-none hidden lg:block">
-          <SketchFlag className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow" />
+        <div className="absolute left-[3%] bottom-[15%] pointer-events-none hidden lg:block">
+          <SketchFlag className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -491,11 +491,11 @@ export default function Landing() {
         <div className="absolute right-[5%] top-[10%] pointer-events-none">
           <InkSplat className="w-[250px] h-[250px] text-[hsl(var(--landing-accent-2))]" />
         </div>
-        <div className="absolute left-[3%] top-[30%] pointer-events-none hidden lg:block">
-          <SketchRocket className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+        <div className="absolute left-[2%] top-[25%] pointer-events-none hidden lg:block">
+          <SketchRocket className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
-        <div className="absolute right-[8%] bottom-[15%] pointer-events-none hidden lg:block">
-          <SketchDiamond className="w-[60px] h-[60px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+        <div className="absolute right-[4%] bottom-[10%] pointer-events-none hidden lg:block">
+          <SketchDiamond className="w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -553,11 +553,11 @@ export default function Landing() {
         <div className="absolute left-[3%] bottom-[10%] pointer-events-none">
           <HandDrawnCircle className="w-[200px] h-[200px] text-[hsl(var(--landing-accent))] landing-float-slow" />
         </div>
-        <div className="absolute right-[5%] top-[12%] pointer-events-none hidden lg:block">
-          <SketchTrophy className="w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+        <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
+          <SketchTrophy className="w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
         </div>
-        <div className="absolute left-[8%] top-[40%] pointer-events-none hidden lg:block">
-          <SketchStar className="w-[45px] h-[45px] text-[hsl(var(--landing-accent-2))] landing-float-slow" />
+        <div className="absolute left-[5%] top-[35%] pointer-events-none hidden lg:block">
+          <SketchStar className="w-[70px] h-[70px] text-[hsl(var(--landing-accent-2))] landing-float-slow" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -590,8 +590,11 @@ export default function Landing() {
 
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
       <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        <div className="absolute right-[4%] top-[8%] pointer-events-none hidden lg:block">
-          <SketchChart className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+        <div className="absolute right-[3%] top-[6%] pointer-events-none hidden lg:block">
+          <SketchChart className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+        </div>
+        <div className="absolute left-[2%] bottom-[12%] pointer-events-none hidden lg:block">
+          <SketchFlag className="w-[110px] h-[110px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -699,10 +702,10 @@ export default function Landing() {
           <InkSplat className="absolute bottom-[15%] right-[20%] w-[200px] h-[200px] text-[hsl(var(--landing-accent-2))]" />
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
           {/* Startup energy */}
-          <SketchRocket className="absolute top-[8%] right-[12%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[12%] left-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[20%] left-[25%] w-[40px] h-[40px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute bottom-[25%] right-[8%] w-[55px] h-[55px] text-[hsl(var(--landing-accent))] landing-float-medium" />
+          <SketchRocket className="absolute top-[6%] right-[10%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+          <SketchUnicorn className="absolute bottom-[8%] left-[6%] w-[160px] h-[160px] text-[hsl(var(--landing-accent-2))] landing-float-medium landing-sketch-draw" />
+          <SketchStar className="absolute top-[18%] left-[22%] w-[60px] h-[60px] text-[hsl(var(--landing-accent))] landing-float-slow" />
+          <SketchLightning className="absolute bottom-[20%] right-[6%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
