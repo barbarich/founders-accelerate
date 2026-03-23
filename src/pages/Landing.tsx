@@ -1,7 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock, Shield } from "lucide-react";
 import { useInView, useCountUp } from "@/hooks/useInView";
 
@@ -280,17 +280,44 @@ export default function Landing() {
   const { lang, t } = useLanguage();
   const applyUrl = `/${lang}/apply`;
 
+  const rocketRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!rocketRef.current) return;
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollY / maxScroll, 1);
+      // Rocket flies upward as user scrolls: starts at 70% from top, ends at 5%
+      const topPercent = 70 - progress * 65;
+      rocketRef.current.style.top = `${topPercent}%`;
+      rocketRef.current.style.opacity = `${0.5 + progress * 0.3}`;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="landing-wrapper min-h-screen relative overflow-x-hidden">
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
+
+      {/* Fixed scroll-following rocket */}
+      <div
+        ref={rocketRef}
+        className="fixed right-[3%] z-20 pointer-events-none hidden lg:block transition-none"
+        style={{ top: "70%" }}
+      >
+        <SketchRocket className="w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-sketch-draw" />
+      </div>
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <SketchRocket className="absolute top-[20%] right-[4%] w-[120px] h-[120px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
+          
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
         </div>
@@ -725,7 +752,7 @@ export default function Landing() {
       <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
-          <SketchRocket className="absolute top-[10%] right-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
+          
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
