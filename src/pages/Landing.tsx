@@ -319,7 +319,13 @@ export default function Landing() {
           <HandDrawnCircle className="absolute top-[15%] right-[10%] w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-float-slow" />
           <HandDrawnCircle className="absolute bottom-[20%] left-[5%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
           <InkSplat className="absolute top-[30%] right-[25%] w-[200px] h-[200px] text-[hsl(var(--landing-accent))]" />
-          <InkSplat className="absolute bottom-[15%] right-[15%] w-[150px] h-[150px] text-[hsl(var(--landing-accent-2))]" />
+          
+          {/* Startup sketches */}
+          <SketchRocket className="absolute top-[18%] right-[18%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+          <SketchUnicorn className="absolute bottom-[22%] left-[8%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-slow landing-sketch-draw" />
+          <SketchChart className="absolute bottom-[30%] right-[8%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
+          <SketchStar className="absolute top-[65%] left-[20%] w-[50px] h-[50px] text-[hsl(var(--landing-accent))] landing-float-slow" />
+          <SketchLightning className="absolute top-[12%] left-[35%] w-[60px] h-[60px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
           
           {/* Animated gradient orbs */}
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
