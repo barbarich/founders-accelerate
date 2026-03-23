@@ -698,6 +698,11 @@ export default function Landing() {
           <HandDrawnCircle className="absolute top-[10%] left-[10%] w-[150px] h-[150px] text-[hsl(var(--landing-accent))] landing-float-medium" />
           <InkSplat className="absolute bottom-[15%] right-[20%] w-[200px] h-[200px] text-[hsl(var(--landing-accent-2))]" />
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
+          {/* Startup energy */}
+          <SketchRocket className="absolute top-[8%] right-[12%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+          <SketchUnicorn className="absolute bottom-[12%] left-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium landing-sketch-draw" />
+          <SketchStar className="absolute top-[20%] left-[25%] w-[40px] h-[40px] text-[hsl(var(--landing-accent))] landing-float-slow" />
+          <SketchLightning className="absolute bottom-[25%] right-[8%] w-[55px] h-[55px] text-[hsl(var(--landing-accent))] landing-float-medium" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
