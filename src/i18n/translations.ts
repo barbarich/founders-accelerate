@@ -49,6 +49,8 @@ export interface Translations {
   phasesTitle: string;
   phasesSubtitle: string;
   phases: { weeks: string; title: string; items: string[]; result: string }[];
+  phasesCurriculumCTA: string;
+  phasesCurriculumDesc: string;
 
   resultsTag: string;
   resultsTitle: string;
