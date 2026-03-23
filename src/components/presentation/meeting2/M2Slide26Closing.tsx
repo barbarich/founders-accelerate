@@ -12,11 +12,11 @@ export default function M2Slide26Closing() {
             Теперь вы знаете за что заплатят
           </h2>
           <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[18px]">
-            Не за фичи. Не за технологию. За результат. У вас есть позиционирование, цена и MVP — и всё привязано к одному результату клиента.
+            Не за фичи. Не за технологию. За результат. У вас есть позиционирование, цена и план MVP — и всё привязано к одному результату клиента.
           </p>
           <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[10px] px-[18px] py-[14px] mb-[16px]">
             <p className="text-[13px] text-[hsl(var(--slide-text))] font-semibold leading-[1.6]">
-              На следующей встрече:<br />Доработка продукта и лендинг.<br />Строим вместе в реальном времени.
+              На следующей встрече:<br />Доработка продукта и создание лендинга.
             </p>
           </div>
           <p className="text-[13px] text-[hsl(var(--slide-gold))] font-medium">
@@ -36,12 +36,11 @@ export default function M2Slide26Closing() {
         </h2>
         <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[48px]">
           Не за фичи. Не за технологию. За результат.<br />
-          У вас есть позиционирование, цена и MVP — и всё привязано к одному результату клиента.
+          У вас есть позиционирование, цена и план MVP — и всё привязано к одному результату клиента.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[16px] px-[48px] py-[32px] mb-[48px] inline-block">
           <p className="text-[28px] text-[hsl(var(--slide-text))] font-semibold leading-[1.6]">
-            На следующей встрече: доработка продукта и лендинг.<br />
-            Строим вместе в реальном времени.
+            На следующей встрече: доработка продукта и создание лендинга.
           </p>
         </div>
         <p className="text-[24px] text-[hsl(var(--slide-gold))] font-medium">

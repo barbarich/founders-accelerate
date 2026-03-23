@@ -31,7 +31,7 @@ export default function M2Slide05PresentResults() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] px-[12px] py-[10px] mb-[8px]">
           <p className="text-[12px] text-[hsl(var(--slide-text))] font-semibold text-center">
-            "Понятно ли за 5 секунд, что это и для кого?"
+            "Понятно ли с первого раза, что это и для кого?"
           </p>
         </div>
         <div className="flex items-center gap-[6px]">
@@ -75,7 +75,7 @@ export default function M2Slide05PresentResults() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[16px] px-[40px] py-[24px] mb-[20px] max-w-[800px]">
         <p className="text-[26px] text-[hsl(var(--slide-text))] font-semibold text-center">
-          "Понятно ли за 5 секунд, что это и для кого?"
+          "Понятно ли с первого раза, что это и для кого?"
         </p>
       </div>
       <div className="flex items-center gap-[12px]">
