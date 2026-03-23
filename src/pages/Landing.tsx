@@ -314,23 +314,14 @@ export default function Landing() {
         {/* Gradient mesh background */}
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
-        {/* Artistic floating elements */}
+        {/* Decorative elements — clean, intentional placement in safe zones */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <HandDrawnCircle className="absolute top-[15%] right-[10%] w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <HandDrawnCircle className="absolute bottom-[20%] left-[5%] w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-          <InkSplat className="absolute top-[30%] right-[25%] w-[200px] h-[200px] text-[hsl(var(--landing-accent))]" />
+          {/* Single rocket — top right corner, away from text */}
+          <SketchRocket className="absolute top-[20%] right-[4%] w-[120px] h-[120px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
           
-          {/* Startup sketches — prominent, intentional placement */}
-          <SketchRocket className="absolute top-[15%] right-[12%] w-[160px] h-[160px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[18%] left-[6%] w-[180px] h-[180px] text-[hsl(var(--landing-accent-2))] landing-float-slow landing-sketch-draw" />
-          <SketchChart className="absolute bottom-[25%] right-[6%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[60%] left-[18%] w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute top-[10%] left-[32%] w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-          
-          {/* Animated gradient orbs */}
+          {/* Gradient orbs — ambient background only */}
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
-          <div className="absolute top-[60%] left-[50%] w-[250px] h-[250px] rounded-full landing-orb-3" />
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
@@ -398,22 +389,12 @@ export default function Landing() {
       {/* ═══════════════ PROBLEM ═══════════════ */}
       <section className="py-24 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
-        {/* Startup sketch decorations */}
-        <div className="absolute right-[4%] top-[12%] pointer-events-none">
-          <SketchLightning className="w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-        </div>
-        <div className="absolute left-[3%] bottom-[15%] pointer-events-none hidden lg:block">
-          <SketchFlag className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display relative inline-block">
-              {t.problemTitle}
-              <HandDrawnCircle className="absolute -right-8 -top-4 w-[80px] h-[80px] text-[hsl(var(--landing-accent-2))]" />
-            </h2>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display">{t.problemTitle}</h2>
           </Reveal>
 
           <div className="space-y-6 md:space-y-8 max-w-4xl">
@@ -443,8 +424,6 @@ export default function Landing() {
                 className="w-full h-full object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[hsl(var(--landing-bg))]" />
-              {/* Artistic overlay */}
-              <HandDrawnCircle className="absolute bottom-10 right-10 w-[100px] h-[100px] text-[hsl(var(--landing-accent))] opacity-60" />
             </div>
           </Reveal>
 
@@ -488,14 +467,9 @@ export default function Landing() {
 
       {/* ═══════════════ PROGRAM PHASES — TIMELINE ═══════════════ */}
       <section id="program" className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        <div className="absolute right-[5%] top-[10%] pointer-events-none">
-          <InkSplat className="w-[250px] h-[250px] text-[hsl(var(--landing-accent-2))]" />
-        </div>
-        <div className="absolute left-[2%] top-[25%] pointer-events-none hidden lg:block">
-          <SketchRocket className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-        </div>
-        <div className="absolute right-[4%] bottom-[10%] pointer-events-none hidden lg:block">
-          <SketchDiamond className="w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+        {/* Single chart icon — right margin */}
+        <div className="absolute right-[3%] top-[5%] pointer-events-none hidden lg:block">
+          <SketchChart className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -550,14 +524,9 @@ export default function Landing() {
 
       {/* ═══════════════ OUTCOMES — BENTO GRID ═══════════════ */}
       <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        <div className="absolute left-[3%] bottom-[10%] pointer-events-none">
-          <HandDrawnCircle className="w-[200px] h-[200px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-        </div>
+        {/* Single trophy — right margin */}
         <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
-          <SketchTrophy className="w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-medium landing-sketch-draw" />
-        </div>
-        <div className="absolute left-[5%] top-[35%] pointer-events-none hidden lg:block">
-          <SketchStar className="w-[70px] h-[70px] text-[hsl(var(--landing-accent-2))] landing-float-slow" />
+          <SketchTrophy className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
@@ -590,12 +559,6 @@ export default function Landing() {
 
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
       <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        <div className="absolute right-[3%] top-[6%] pointer-events-none hidden lg:block">
-          <SketchChart className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-        </div>
-        <div className="absolute left-[2%] bottom-[12%] pointer-events-none hidden lg:block">
-          <SketchFlag className="w-[110px] h-[110px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.formatTag}</p>
@@ -644,9 +607,6 @@ export default function Landing() {
             {/* Accelerator */}
             <Reveal delay={200}>
               <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
-                <div className="absolute top-4 right-4 pointer-events-none">
-                  <HandDrawnCircle className="w-[60px] h-[60px] text-[hsl(var(--landing-accent))]" />
-                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-1 font-display">{t.accelTitle}</h3>
                 <p className="text-sm text-[hsl(var(--landing-muted))] mb-8">{t.accelSub}</p>
                 <div className="space-y-3 mb-10">
@@ -697,15 +657,10 @@ export default function Landing() {
 
       {/* ═══════════════ CTA ═══════════════ */}
       <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
-        <div className="absolute inset-0 pointer-events-none">
-          <HandDrawnCircle className="absolute top-[10%] left-[10%] w-[150px] h-[150px] text-[hsl(var(--landing-accent))] landing-float-medium" />
-          <InkSplat className="absolute bottom-[15%] right-[20%] w-[200px] h-[200px] text-[hsl(var(--landing-accent-2))]" />
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
-          {/* Startup energy */}
-          <SketchRocket className="absolute top-[6%] right-[10%] w-[140px] h-[140px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
-          <SketchUnicorn className="absolute bottom-[8%] left-[6%] w-[160px] h-[160px] text-[hsl(var(--landing-accent-2))] landing-float-medium landing-sketch-draw" />
-          <SketchStar className="absolute top-[18%] left-[22%] w-[60px] h-[60px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-          <SketchLightning className="absolute bottom-[20%] right-[6%] w-[90px] h-[90px] text-[hsl(var(--landing-accent))] landing-float-medium" />
+          {/* Single rocket — top right, away from centered text */}
+          <SketchRocket className="absolute top-[10%] right-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
