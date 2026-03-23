@@ -725,7 +725,7 @@ export default function Landing() {
       <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
-          <SketchRocket className="absolute top-[10%] right-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
+          
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
           <Reveal>
