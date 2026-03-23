@@ -389,13 +389,6 @@ export default function Landing() {
       {/* ═══════════════ PROBLEM ═══════════════ */}
       <section className="py-24 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
-        {/* Startup sketch decorations */}
-        <div className="absolute right-[4%] top-[12%] pointer-events-none">
-          <SketchLightning className="w-[120px] h-[120px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
-        </div>
-        <div className="absolute left-[3%] bottom-[15%] pointer-events-none hidden lg:block">
-          <SketchFlag className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow" />
-        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
