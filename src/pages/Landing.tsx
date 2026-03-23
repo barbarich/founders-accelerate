@@ -1,14 +1,14 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock, Shield } from "lucide-react";
 import { useInView, useCountUp } from "@/hooks/useInView";
 
 import photo from "@/assets/slides/photo-michael.jpg";
 
 /* ============================
-   Artistic SVG decorations
+   Decorative elements (minimal)
    ============================ */
 function BrushStroke({ className = "" }: { className?: string }) {
   return (
@@ -30,42 +30,6 @@ function BrushStroke({ className = "" }: { className?: string }) {
   );
 }
 
-function InkSplat({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="8" opacity="0.15" />
-      <circle cx="35" cy="45" r="3" opacity="0.1" />
-      <circle cx="62" cy="40" r="5" opacity="0.08" />
-      <circle cx="55" cy="65" r="4" opacity="0.12" />
-      <circle cx="40" cy="60" r="2.5" opacity="0.06" />
-    </svg>
-  );
-}
-
-function HandDrawnCircle({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 120 120" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M60 15C85 14 105 30 108 55C111 80 95 105 65 108C35 111 12 90 10 60C8 30 30 16 60 15Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeDasharray="4 6"
-        opacity="0.3"
-      />
-    </svg>
-  );
-}
-
-function SketchArrow({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 60 30" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 15C10 14 25 16 40 12C48 10 52 13 56 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.4" />
-      <path d="M48 10L56 15L50 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
-    </svg>
-  );
-}
-
 function WavyLine({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 400 30" className={className} fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,9 +44,6 @@ function WavyLine({ className = "" }: { className?: string }) {
   );
 }
 
-/* ============================
-   Startup-themed sketched icons
-   ============================ */
 function SketchRocket({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 80 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,25 +52,6 @@ function SketchRocket({ className = "" }: { className?: string }) {
       <path d="M48 48L52 58L44 52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
       <circle cx="40" cy="32" r="4" stroke="currentColor" strokeWidth="1.2" opacity="0.3"/>
       <path d="M36 60C37 64 39 67 40 68C41 67 43 64 44 60" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
-      <circle cx="38" cy="66" r="1" fill="currentColor" opacity="0.25"/>
-      <circle cx="42" cy="64" r="0.8" fill="currentColor" opacity="0.2"/>
-    </svg>
-  );
-}
-
-function SketchUnicorn({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 90 90" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 55C25 48 30 42 38 40C42 39 48 40 52 42C58 45 62 50 62 56C62 62 56 66 48 66C40 66 32 64 28 60C26 58 25 57 25 55Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
-      <path d="M38 40C36 34 34 28 36 24C38 20 42 20 44 24C45 26 44 30 42 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
-      <path d="M38 22L36 12L40 20" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" opacity="0.45"/>
-      <path d="M36 10L35 8L37 9.5L35.5 11L36 10Z" fill="currentColor" opacity="0.35"/>
-      <path d="M32 62L30 74" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
-      <path d="M40 66L39 76" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
-      <path d="M50 64L51 74" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
-      <path d="M56 60L58 70" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.28"/>
-      <path d="M25 55C20 52 16 56 18 60C20 64 24 62 25 58" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.32"/>
-      <circle cx="37" cy="30" r="1.2" fill="currentColor" opacity="0.25"/>
     </svg>
   );
 }
@@ -122,27 +64,6 @@ function SketchTrophy({ className = "" }: { className?: string }) {
       <path d="M48 22C52 22 56 26 56 30C56 34 52 36 48 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
       <path d="M35 44V52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35"/>
       <path d="M26 52H44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35"/>
-      <path d="M35 26L36.5 30L41 30.5L38 33L39 37.5L35 35L31 37.5L32 33L29 30.5L33.5 30Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" opacity="0.3"/>
-    </svg>
-  );
-}
-
-function SketchLightning({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 50 70" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M28 8L14 36H24L20 62L40 30H28L32 8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
-      <circle cx="18" cy="28" r="1.2" fill="currentColor" opacity="0.25"/>
-      <circle cx="36" cy="24" r="1" fill="currentColor" opacity="0.2"/>
-    </svg>
-  );
-}
-
-function SketchFlag({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 60 70" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M15 12V62" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.38"/>
-      <path d="M15 14C25 10 35 18 45 14V34C35 38 25 30 15 34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-      <path d="M30 22L31 25L34 25L32 27L33 30L30 28L27 30L28 27L26 25L29 25Z" stroke="currentColor" strokeWidth="1" strokeLinejoin="round" opacity="0.28"/>
     </svg>
   );
 }
@@ -153,29 +74,8 @@ function SketchChart({ className = "" }: { className?: string }) {
       <path d="M12 48H58" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
       <path d="M12 48V12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
       <path d="M14 44C20 42 26 38 32 30C38 22 44 16 50 14C54 13 56 12 58 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.4"/>
-      <circle cx="14" cy="44" r="2" fill="currentColor" opacity="0.25"/>
       <circle cx="32" cy="30" r="2" fill="currentColor" opacity="0.25"/>
       <circle cx="50" cy="14" r="2" fill="currentColor" opacity="0.25"/>
-      <path d="M55 13L58 10L56 15" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-    </svg>
-  );
-}
-
-function SketchStar({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 4L24 14L35 15.5L27 23L29 34L20 29L11 34L13 23L5 15.5L16 14Z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" opacity="0.35"/>
-    </svg>
-  );
-}
-
-function SketchDiamond({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 50 50" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M25 6L44 20L25 44L6 20Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" opacity="0.35"/>
-      <path d="M6 20H44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.22"/>
-      <path d="M18 6L14 20L25 44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.18"/>
-      <path d="M32 6L36 20L25 44" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.18"/>
     </svg>
   );
 }
@@ -194,9 +94,6 @@ function Reveal({ children, className = "", delay = 0 }: { children: React.React
   );
 }
 
-/* ============================
-   Stat Counter
-   ============================ */
 function StatNumber({ end, suffix = "", prefix = "" }: { end: number; suffix?: string; prefix?: string }) {
   const { ref, isVisible } = useInView();
   const count = useCountUp(end, 2000, isVisible);
@@ -206,6 +103,82 @@ function StatNumber({ end, suffix = "", prefix = "" }: { end: number; suffix?: s
     </span>
   );
 }
+
+/* ============================
+   Intermediate CTA Banner
+   ============================ */
+function MidCTA({ t, applyUrl }: { t: any; applyUrl: string }) {
+  return (
+    <div className="py-16 md:py-20 bg-[hsl(var(--landing-accent))]/[0.04] border-y border-[hsl(var(--landing-accent))]/10">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <p className="text-lg md:text-xl font-semibold text-[hsl(var(--landing-text))]">{t.midCTA}</p>
+          <p className="text-sm text-[hsl(var(--landing-muted))] mt-1">{t.midCTASub}</p>
+        </div>
+        <Link
+          to={applyUrl}
+          className="group landing-cta-btn px-8 py-3.5 rounded-full text-sm font-semibold transition-all inline-flex items-center gap-2 shrink-0"
+        >
+          {t.heroCTA}
+          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ============================
+   Sticky Mobile CTA
+   ============================ */
+function StickyMobileCTA({ t, applyUrl }: { t: any; applyUrl: string }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-[hsl(var(--landing-bg))]/95 backdrop-blur-xl border-t border-[hsl(var(--landing-border))] p-3 safe-bottom">
+      <Link
+        to={applyUrl}
+        className="block landing-cta-btn w-full py-3.5 rounded-full text-sm font-semibold text-center"
+      >
+        {t.heroCTA} — {t.heroSpotsLeft}
+      </Link>
+    </div>
+  );
+}
+
+/* ============================
+   FAQ Accordion
+   ============================ */
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-[hsl(var(--landing-border))]">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between py-5 md:py-6 text-left group"
+      >
+        <span className="text-base md:text-lg font-medium text-[hsl(var(--landing-text))] pr-4 group-hover:text-[hsl(var(--landing-accent))] transition-colors">{q}</span>
+        <ChevronDown
+          size={20}
+          className={`text-[hsl(var(--landing-muted))] shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ${open ? "max-h-[300px] pb-5" : "max-h-0"}`}
+      >
+        <p className="text-sm md:text-base text-[hsl(var(--landing-muted))] leading-relaxed pr-8">{a}</p>
+      </div>
+    </div>
+  );
+}
+
 
 /* ============================
    Nav
@@ -238,6 +211,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
           <a href="#program" className="text-[13px] text-[hsl(var(--landing-muted))] hover:text-[hsl(var(--landing-text))] transition-colors tracking-wide uppercase">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} className="text-[13px] text-[hsl(var(--landing-muted))] hover:text-[hsl(var(--landing-text))] transition-colors tracking-wide uppercase">{t.navMentor}</Link>
           <a href="#pricing" className="text-[13px] text-[hsl(var(--landing-muted))] hover:text-[hsl(var(--landing-text))] transition-colors tracking-wide uppercase">{t.navPricing}</a>
+          <a href="#faq" className="text-[13px] text-[hsl(var(--landing-muted))] hover:text-[hsl(var(--landing-text))] transition-colors tracking-wide uppercase">FAQ</a>
 
           <div className="flex items-center gap-0.5 ml-2">
             {supportedLangs.map((l) => (
@@ -289,6 +263,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
           <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-[hsl(var(--landing-muted))]">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-[hsl(var(--landing-muted))]">{t.navMentor}</Link>
           <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-[hsl(var(--landing-muted))]">{t.navPricing}</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)} className="block text-sm text-[hsl(var(--landing-muted))]">FAQ</a>
           <Link to={applyUrl} className="block landing-cta-btn px-5 py-3 rounded-full text-sm font-semibold text-center">
             {t.navApply}
           </Link>
@@ -299,7 +274,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
 }
 
 /* ============================
-   LANDING PAGE
+   LANDING PAGE — Full Sales Funnel
    ============================ */
 export default function Landing() {
   const { lang, t } = useLanguage();
@@ -308,18 +283,14 @@ export default function Landing() {
   return (
     <div className="landing-wrapper min-h-screen relative overflow-x-hidden">
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
+      <StickyMobileCTA t={t} applyUrl={applyUrl} />
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Gradient mesh background */}
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
-        {/* Decorative elements — clean, intentional placement in safe zones */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Single rocket — top right corner, away from text */}
           <SketchRocket className="absolute top-[20%] right-[4%] w-[120px] h-[120px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
-          
-          {/* Gradient orbs — ambient background only */}
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
         </div>
@@ -334,25 +305,22 @@ export default function Landing() {
           </div>
 
           {/* Headline */}
-          <div className="relative">
-            <h1 className="text-[clamp(2.5rem,7vw,6rem)] leading-[1.05] font-bold text-[hsl(var(--landing-text))] mb-4 whitespace-pre-line font-display landing-fade-up landing-delay-200 max-w-5xl">
-              {t.heroTitle}
-            </h1>
-            <SketchArrow className="absolute -right-4 top-1/2 w-[60px] text-[hsl(var(--landing-accent))] hidden lg:block" />
-          </div>
+          <h1 className="text-[clamp(2.5rem,7vw,6rem)] leading-[1.05] font-bold text-[hsl(var(--landing-text))] mb-4 whitespace-pre-line font-display landing-fade-up landing-delay-200 max-w-5xl">
+            {t.heroTitle}
+          </h1>
 
-          {/* Artistic underline — brush stroke */}
+          {/* Brush stroke */}
           <div className="landing-fade-up landing-delay-300 mb-8">
             <BrushStroke className="w-[180px] h-[12px] text-[hsl(var(--landing-accent))] landing-draw-in" />
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-12">
+          <p className="text-lg md:text-xl text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
             {t.heroSubtitle}
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-start gap-5 landing-fade-up landing-delay-500 mb-16">
+          {/* CTA + urgency */}
+          <div className="flex flex-col sm:flex-row items-start gap-5 landing-fade-up landing-delay-500 mb-6">
             <Link
               to={applyUrl}
               className="group landing-cta-btn px-8 py-4 rounded-full text-base font-semibold transition-all inline-flex items-center gap-3"
@@ -360,22 +328,31 @@ export default function Landing() {
               {t.heroCTA}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
-            <div className="flex flex-col gap-1 text-sm text-[hsl(var(--landing-muted))]">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
-                {t.heroCohort}
-              </span>
-              <span className="text-[hsl(var(--landing-muted))]/60">{t.heroGroup}</span>
-            </div>
+          </div>
+
+          {/* Urgency signals */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-sm landing-fade-up landing-delay-500 mb-16">
+            <span className="inline-flex items-center gap-2 text-[hsl(var(--landing-muted))]">
+              <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
+              {t.heroCohort}
+            </span>
+            <span className="inline-flex items-center gap-2 text-[hsl(var(--landing-muted))]">
+              <Users size={14} className="text-[hsl(var(--landing-accent))]" />
+              {t.heroGroup}
+            </span>
+            <span className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--landing-accent))]">
+              <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
+              {t.heroSpotsLeft}
+            </span>
           </div>
 
           {/* Stats strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pt-10 border-t border-[hsl(var(--landing-border))]">
             {[
-              { end: 7, suffix: "", label: t.statProducts || "Products Built" },
-              { end: 2, suffix: "", label: t.statExits || "Successful Exits" },
-              { end: 50, suffix: "K+", label: t.statUsers || "Paying Users" },
-              { end: 107, suffix: "", label: t.statCountries || "Countries" },
+              { end: 7, suffix: "", label: t.statProducts },
+              { end: 2, suffix: "", label: t.statExits },
+              { end: 50, suffix: "K+", label: t.statUsers },
+              { end: 107, suffix: "", label: t.statCountries },
             ].map((stat, i) => (
               <div key={i} className="landing-fade-up" style={{ animationDelay: `${600 + i * 100}ms` }}>
                 <StatNumber end={stat.end} suffix={stat.suffix} />
@@ -412,10 +389,38 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══════════════ WHO IS THIS FOR ═══════════════ */}
+      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+          <Reveal>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.whoTag}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-4xl md:text-6xl font-bold text-[hsl(var(--landing-text))] mb-16 font-display">{t.whoTitle}</h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {t.whoItems.map((item: any, i: number) => (
+              <Reveal key={i} delay={i * 120}>
+                <div className="landing-card rounded-xl p-6 md:p-8 h-full group hover:-translate-y-1 transition-all duration-500">
+                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--landing-accent))]/10 flex items-center justify-center mb-5">
+                    <span className="text-[hsl(var(--landing-accent))] font-mono text-sm font-bold">{i + 1}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-2">{item.title}</h3>
+                  <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ MID CTA #1 ═══════════════ */}
+      <MidCTA t={t} applyUrl={applyUrl} />
+
       {/* ═══════════════ MENTOR ═══════════════ */}
       <section id="mentor" className="py-0 relative overflow-hidden">
         <div className="flex flex-col lg:flex-row min-h-[80vh]">
-          {/* Photo */}
           <Reveal className="w-full lg:w-[45%] relative">
             <div className="h-[50vh] lg:h-full lg:absolute lg:inset-0">
               <img
@@ -427,7 +432,6 @@ export default function Landing() {
             </div>
           </Reveal>
 
-          {/* Bio */}
           <div className="w-full lg:w-[55%] flex items-center">
             <div className="px-6 lg:px-20 py-16 lg:py-24 max-w-2xl">
               <Reveal>
@@ -467,7 +471,6 @@ export default function Landing() {
 
       {/* ═══════════════ PROGRAM PHASES — TIMELINE ═══════════════ */}
       <section id="program" className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        {/* Single chart icon — right margin */}
         <div className="absolute right-[3%] top-[5%] pointer-events-none hidden lg:block">
           <SketchChart className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
@@ -482,7 +485,6 @@ export default function Landing() {
             <p className="text-base md:text-lg text-[hsl(var(--landing-muted))] mb-20 max-w-3xl">{t.phasesSubtitle}</p>
           </Reveal>
 
-          {/* Timeline */}
           <div className="relative">
             <div className="hidden md:block absolute left-[39px] top-0 bottom-0 w-px bg-gradient-to-b from-[hsl(var(--landing-accent))]/40 via-[hsl(var(--landing-accent))]/20 to-transparent" />
 
@@ -490,7 +492,6 @@ export default function Landing() {
               {t.phases.map((phase: any, i: number) => (
                 <Reveal key={i} delay={i * 200}>
                   <div className="flex flex-col md:flex-row gap-6 md:gap-12">
-                    {/* Node */}
                     <div className="flex items-start gap-4 md:flex-col md:items-center md:w-20 shrink-0">
                       <div className="w-10 h-10 rounded-full border-2 border-[hsl(var(--landing-accent))] bg-[hsl(var(--landing-bg))] flex items-center justify-center z-10 relative">
                         <span className="text-[hsl(var(--landing-accent))] font-mono text-sm font-bold">{i + 1}</span>
@@ -498,7 +499,6 @@ export default function Landing() {
                       <span className="text-xs font-mono text-[hsl(var(--landing-accent))]/60 md:mt-2">{phase.weeks}</span>
                     </div>
 
-                    {/* Content */}
                     <div className="landing-card rounded-xl p-6 md:p-10 flex-1 transition-all duration-500">
                       <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-6 font-display">{phase.title}</h3>
                       <div className="grid md:grid-cols-2 gap-3 mb-8">
@@ -524,7 +524,6 @@ export default function Landing() {
 
       {/* ═══════════════ OUTCOMES — BENTO GRID ═══════════════ */}
       <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
-        {/* Single trophy — right margin */}
         <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
           <SketchTrophy className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
@@ -539,7 +538,6 @@ export default function Landing() {
             <p className="text-base md:text-lg text-[hsl(var(--landing-muted))] mb-16">{t.resultsSubtitle}</p>
           </Reveal>
 
-          {/* Bento grid */}
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
             {t.resultsItems.map((r: any, i: number) => {
               const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
@@ -557,8 +555,11 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══════════════ MID CTA #2 ═══════════════ */}
+      <MidCTA t={t} applyUrl={applyUrl} />
+
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
-      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
+      <section className="py-24 md:py-40 relative">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.formatTag}</p>
@@ -604,9 +605,16 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Accelerator */}
+            {/* Accelerator — featured */}
             <Reveal delay={200}>
               <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
+                {/* Popular badge */}
+                <div className="absolute top-4 right-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[hsl(var(--landing-accent))] text-[hsl(var(--landing-bg))] text-[11px] font-semibold uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-bg))] animate-pulse" />
+                    {t.heroSpotsLeft}
+                  </span>
+                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-1 font-display">{t.accelTitle}</h3>
                 <p className="text-sm text-[hsl(var(--landing-muted))] mb-8">{t.accelSub}</p>
                 <div className="space-y-3 mb-10">
@@ -617,7 +625,7 @@ export default function Landing() {
                     </div>
                   ))}
                 </div>
-                <div className="border-t border-[hsl(var(--landing-border))] pt-6 space-y-2">
+                <div className="border-t border-[hsl(var(--landing-border))] pt-6 space-y-2 mb-8">
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl md:text-5xl font-bold landing-stat-number font-mono">{t.accelPrice}</span>
                     <span className="text-sm text-[hsl(var(--landing-muted))]">{t.accelPriceSub}</span>
@@ -627,15 +635,22 @@ export default function Landing() {
                     <span className="text-sm text-[hsl(var(--landing-muted))]">{t.accelMonthlySub}</span>
                   </div>
                 </div>
+                <Link
+                  to={applyUrl}
+                  className="group landing-cta-btn w-full py-3.5 rounded-full text-sm font-semibold transition-all inline-flex items-center justify-center gap-2"
+                >
+                  {t.heroCTA}
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </Reveal>
 
             {/* Consultation */}
             <Reveal delay={350}>
-              <div className="landing-card rounded-2xl p-8 md:p-10 h-full">
+              <div className="landing-card rounded-2xl p-8 md:p-10 h-full flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-1 font-display">{t.consultTitle}</h3>
                 <p className="text-sm text-[hsl(var(--landing-muted))] mb-8">{t.consultSub}</p>
-                <div className="space-y-3 mb-10">
+                <div className="space-y-3 mb-10 flex-1">
                   {t.consultItems.map((item: string, i: number) => (
                     <div key={i} className="flex items-start gap-3">
                       <ChevronRight size={14} className="text-[hsl(var(--landing-muted))] mt-1 shrink-0" />
@@ -643,23 +658,57 @@ export default function Landing() {
                     </div>
                   ))}
                 </div>
-                <div className="border-t border-[hsl(var(--landing-border))] pt-6">
+                <div className="border-t border-[hsl(var(--landing-border))] pt-6 mb-8">
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl md:text-5xl font-bold text-[hsl(var(--landing-text))] font-mono">{t.consultPrice}</span>
                     <span className="text-sm text-[hsl(var(--landing-muted))]">{t.consultPriceSub}</span>
                   </div>
                 </div>
+                <Link
+                  to={applyUrl}
+                  className="group w-full py-3.5 rounded-full text-sm font-semibold border-2 border-[hsl(var(--landing-accent))]/30 text-[hsl(var(--landing-accent))] hover:border-[hsl(var(--landing-accent))] transition-all inline-flex items-center justify-center gap-2"
+                >
+                  {t.heroCTA}
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </Reveal>
+          </div>
+
+          {/* Guarantee */}
+          <Reveal delay={400}>
+            <div className="mt-8 flex items-center justify-center gap-3 text-sm text-[hsl(var(--landing-muted))]">
+              <Shield size={16} className="text-[hsl(var(--landing-accent))]" />
+              <span>{t.faqItems[t.faqItems.length - 1]?.a}</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══════════════ FAQ ═══════════════ */}
+      <section id="faq" className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))]">
+        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
+          <Reveal>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.faqTag}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-4xl md:text-5xl font-bold text-[hsl(var(--landing-text))] mb-12 font-display">{t.faqTitle}</h2>
+          </Reveal>
+
+          <div>
+            {t.faqItems.map((faq: any, i: number) => (
+              <Reveal key={i} delay={i * 80}>
+                <FAQItem q={faq.q} a={faq.a} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ CTA ═══════════════ */}
+      {/* ═══════════════ FINAL CTA ═══════════════ */}
       <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-1/3 right-[15%] w-[350px] h-[350px] rounded-full landing-orb-1" />
-          {/* Single rocket — top right, away from centered text */}
           <SketchRocket className="absolute top-[10%] right-[8%] w-[100px] h-[100px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw hidden lg:block" />
         </div>
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
@@ -667,7 +716,20 @@ export default function Landing() {
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-6 font-display">{t.ctaTitle}</h2>
           </Reveal>
           <Reveal delay={100}>
-            <p className="text-lg md:text-xl text-[hsl(var(--landing-muted))] mb-10">{t.ctaSubtitle}</p>
+            <p className="text-lg md:text-xl text-[hsl(var(--landing-muted))] mb-4">{t.ctaSubtitle}</p>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-[hsl(var(--landing-muted))] mb-10">
+              <span className="inline-flex items-center gap-2">
+                <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
+                {t.ctaCohort}
+              </span>
+              <span className="hidden sm:inline text-[hsl(var(--landing-border))]">·</span>
+              <span className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--landing-accent))]">
+                <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
+                {t.heroSpotsLeft}
+              </span>
+            </div>
           </Reveal>
           <Reveal delay={200}>
             <Link
@@ -678,21 +740,11 @@ export default function Landing() {
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </Reveal>
-          <Reveal delay={300}>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-[hsl(var(--landing-muted))]">
-              <span className="inline-flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
-                {t.ctaCohort}
-              </span>
-              <span className="hidden sm:inline text-[hsl(var(--landing-border))]">·</span>
-              <span className="text-[hsl(var(--landing-muted))]/60">{t.heroGroup}</span>
-            </div>
-          </Reveal>
         </div>
       </section>
 
       {/* ═══════════════ FOOTER ═══════════════ */}
-      <footer className="border-t border-[hsl(var(--landing-border))] py-8">
+      <footer className="border-t border-[hsl(var(--landing-border))] py-8 pb-24 md:pb-8">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-xs text-[hsl(var(--landing-muted))]/60">{t.footerRights}</span>
           <div className="flex items-center gap-1">
