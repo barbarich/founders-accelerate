@@ -590,6 +590,9 @@ export default function Landing() {
 
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
       <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
+        <div className="absolute right-[4%] top-[8%] pointer-events-none hidden lg:block">
+          <SketchChart className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.formatTag}</p>
