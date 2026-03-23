@@ -306,10 +306,18 @@ export default function Landing() {
       const scrollY = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollY / maxScroll, 1);
-      // Rocket flies upward as user scrolls: starts at 70% from top, ends at 5%
-      const topPercent = 70 - progress * 65;
-      rocketRef.current.style.top = `${topPercent}%`;
-      rocketRef.current.style.opacity = `${0.5 + progress * 0.3}`;
+      // Rocket flies upward: starts at bottom (85vh), rises to top (5vh)
+      const bottomStart = 85;
+      const topEnd = 5;
+      const topPercent = bottomStart - progress * (bottomStart - topEnd);
+      // Slight tilt as it accelerates
+      const rotate = -10 * progress;
+      // Grows slightly more visible and slightly bigger as it rises
+      const scale = 1 + progress * 0.15;
+      const opacity = 0.4 + progress * 0.4;
+      rocketRef.current.style.top = `${topPercent}vh`;
+      rocketRef.current.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+      rocketRef.current.style.opacity = `${opacity}`;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -321,13 +329,13 @@ export default function Landing() {
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
 
-      {/* Fixed scroll-following rocket */}
+      {/* Fixed scroll-following rocket — flies UP as you scroll */}
       <div
         ref={rocketRef}
-        className="fixed right-[3%] z-20 pointer-events-none hidden lg:block transition-none"
-        style={{ top: "70%" }}
+        className="fixed right-[4%] z-20 pointer-events-none hidden lg:block"
+        style={{ top: "85vh", transition: "none" }}
       >
-        <SketchRocket className="w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-sketch-draw" />
+        <SketchRocket className="w-[160px] h-[200px] text-[hsl(var(--landing-accent))]" />
       </div>
 
       {/* ═══════════════ HERO ═══════════════ */}
