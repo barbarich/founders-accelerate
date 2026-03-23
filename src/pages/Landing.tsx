@@ -491,11 +491,11 @@ export default function Landing() {
         <div className="absolute right-[5%] top-[10%] pointer-events-none">
           <InkSplat className="w-[250px] h-[250px] text-[hsl(var(--landing-accent-2))]" />
         </div>
-        <div className="absolute left-[3%] top-[30%] pointer-events-none hidden lg:block">
-          <SketchRocket className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
+        <div className="absolute left-[2%] top-[25%] pointer-events-none hidden lg:block">
+          <SketchRocket className="w-[130px] h-[130px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
-        <div className="absolute right-[8%] bottom-[15%] pointer-events-none hidden lg:block">
-          <SketchDiamond className="w-[60px] h-[60px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
+        <div className="absolute right-[4%] bottom-[10%] pointer-events-none hidden lg:block">
+          <SketchDiamond className="w-[100px] h-[100px] text-[hsl(var(--landing-accent-2))] landing-float-medium" />
         </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
