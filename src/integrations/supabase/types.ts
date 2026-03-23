@@ -14,38 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      announcements: {
-        Row: {
-          id: string
-          cohort_id: string
-          title: string
-          content: string
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          cohort_id: string
-          title: string
-          content: string
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          cohort_id?: string
-          title?: string
-          content?: string
-          created_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "announcements_cohort_id_fkey"
-            columns: ["cohort_id"]
-            isOneToOne: false
-            referencedRelation: "cohorts"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       admin_users: {
         Row: {
           created_at: string
@@ -67,60 +35,68 @@ export type Database = {
         }
         Relationships: []
       }
-      cohorts: {
+      announcements: {
         Row: {
-          id: string
-          name: string
-          start_date: string
-          is_active: boolean
+          cohort_id: string
+          content: string
           created_at: string
+          id: string
+          title: string
         }
         Insert: {
-          id?: string
-          name: string
-          start_date: string
-          is_active?: boolean
+          cohort_id: string
+          content: string
           created_at?: string
+          id?: string
+          title: string
         }
         Update: {
-          id?: string
-          name?: string
-          start_date?: string
-          is_active?: boolean
+          cohort_id?: string
+          content?: string
           created_at?: string
+          id?: string
+          title?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "announcements_cohort_id_fkey"
+            columns: ["cohort_id"]
+            isOneToOne: false
+            referencedRelation: "cohorts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       cohort_materials: {
         Row: {
-          id: string
           cohort_id: string
-          week_number: number
-          type: string
-          title: string
-          url: string
-          sort_order: number | null
           created_at: string
+          id: string
+          sort_order: number | null
+          title: string
+          type: string
+          url: string
+          week_number: number
         }
         Insert: {
-          id?: string
           cohort_id: string
-          week_number: number
-          type?: string
-          title: string
-          url: string
-          sort_order?: number | null
           created_at?: string
+          id?: string
+          sort_order?: number | null
+          title: string
+          type?: string
+          url: string
+          week_number: number
         }
         Update: {
-          id?: string
           cohort_id?: string
-          week_number?: number
-          type?: string
-          title?: string
-          url?: string
-          sort_order?: number | null
           created_at?: string
+          id?: string
+          sort_order?: number | null
+          title?: string
+          type?: string
+          url?: string
+          week_number?: number
         }
         Relationships: [
           {
@@ -131,6 +107,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      cohorts: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          name: string
+          start_date: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          start_date: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          start_date?: string
+        }
+        Relationships: []
       }
       invite_codes: {
         Row: {
@@ -351,52 +351,17 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "participants_invite_code_id_fkey"
-            columns: ["invite_code_id"]
-            isOneToOne: false
-            referencedRelation: "invite_codes"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "participants_cohort_id_fkey"
             columns: ["cohort_id"]
             isOneToOne: false
             referencedRelation: "cohorts"
             referencedColumns: ["id"]
           },
-        ]
-      }
-      progress_checklist: {
-        Row: {
-          id: string
-          participant_id: string
-          week_number: number
-          item_key: string
-          is_completed: boolean
-          updated_at: string
-        }
-        Insert: {
-          id?: string
-          participant_id: string
-          week_number: number
-          item_key: string
-          is_completed?: boolean
-          updated_at?: string
-        }
-        Update: {
-          id?: string
-          participant_id?: string
-          week_number?: number
-          item_key?: string
-          is_completed?: boolean
-          updated_at?: string
-        }
-        Relationships: [
           {
-            foreignKeyName: "progress_checklist_participant_id_fkey"
-            columns: ["participant_id"]
+            foreignKeyName: "participants_invite_code_id_fkey"
+            columns: ["invite_code_id"]
             isOneToOne: false
-            referencedRelation: "participants"
+            referencedRelation: "invite_codes"
             referencedColumns: ["id"]
           },
         ]
@@ -428,33 +393,68 @@ export type Database = {
         }
         Relationships: []
       }
-      resources: {
+      progress_checklist: {
         Row: {
           id: string
-          cohort_id: string | null
-          title: string
-          url: string
-          category: string
-          sort_order: number | null
-          created_at: string
+          is_completed: boolean
+          item_key: string
+          participant_id: string
+          updated_at: string
+          week_number: number
         }
         Insert: {
           id?: string
-          cohort_id?: string | null
-          title: string
-          url: string
-          category?: string
-          sort_order?: number | null
-          created_at?: string
+          is_completed?: boolean
+          item_key: string
+          participant_id: string
+          updated_at?: string
+          week_number: number
         }
         Update: {
           id?: string
+          is_completed?: boolean
+          item_key?: string
+          participant_id?: string
+          updated_at?: string
+          week_number?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "progress_checklist_participant_id_fkey"
+            columns: ["participant_id"]
+            isOneToOne: false
+            referencedRelation: "participants"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resources: {
+        Row: {
+          category: string
+          cohort_id: string | null
+          created_at: string
+          id: string
+          sort_order: number | null
+          title: string
+          url: string
+        }
+        Insert: {
+          category?: string
           cohort_id?: string | null
+          created_at?: string
+          id?: string
+          sort_order?: number | null
+          title: string
+          url: string
+        }
+        Update: {
+          category?: string
+          cohort_id?: string | null
+          created_at?: string
+          id?: string
+          sort_order?: number | null
           title?: string
           url?: string
-          category?: string
-          sort_order?: number | null
-          created_at?: string
         }
         Relationships: [
           {
@@ -472,19 +472,19 @@ export type Database = {
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
+      toggle_progress: {
+        Args: {
+          _is_completed: boolean
+          _item_key: string
+          _participant_id: string
+          _week_number: number
+        }
+        Returns: undefined
+      }
       use_invite_code: { Args: { _code_id: string }; Returns: undefined }
       validate_invite_code: {
         Args: { _code: string; _email: string }
         Returns: Json
-      }
-      toggle_progress: {
-        Args: {
-          _participant_id: string
-          _week_number: number
-          _item_key: string
-          _is_completed: boolean
-        }
-        Returns: undefined
       }
     }
     Enums: {
