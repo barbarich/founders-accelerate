@@ -17,9 +17,10 @@ export default function M2Slide16FirstPrice() {
         </div>
         <div className="space-y-[6px] mb-[10px]">
           {[
-            { label: "Экономит время", example: "40 часов/месяц × $50/час = $2000 экономии → цена $200-400/мес" },
-            { label: "Увеличивает доход", example: "+$5000 выручки/мес → цена $500-1000/мес" },
-            { label: "Заменяет сотрудника", example: "Зарплата $3000/мес → цена $300-600/мес" },
+            { label: "Экономит время", example: "AI-ассистент: 40 ч/мес × $50/час = $2000 → цена $200-400/мес" },
+            { label: "Увеличивает доход", example: "Лидген-сервис: +$5000 выручки/мес → цена $500-1000/мес" },
+            { label: "Заменяет сотрудника", example: "AI-рекрутер: зарплата HR $3000/мес → цена $300-600/мес" },
+            { label: "Снимает боль", example: "Дейтинг, фитнес, хобби: цена = сколько клиент уже тратит на альтернативу" },
           ].map((item, i) => (
             <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[7px]">
               <p className="text-[10px] font-semibold text-[hsl(var(--slide-gold))]">{item.label}</p>
@@ -47,9 +48,10 @@ export default function M2Slide16FirstPrice() {
       </div>
       <div className="space-y-[16px] max-w-[1000px] mb-[32px]">
         {[
-          { label: "Экономит время", example: "40 часов/месяц × $50/час = $2000 экономии → цена $200-400/мес" },
-          { label: "Увеличивает доход", example: "+$5000 выручки/мес → цена $500-1000/мес" },
-          { label: "Заменяет сотрудника", example: "Зарплата $3000/мес → цена $300-600/мес" },
+          { label: "Экономит время", example: "AI-ассистент: 40 ч/мес × $50/час = $2000 → цена $200-400/мес" },
+          { label: "Увеличивает доход", example: "Лидген-сервис: +$5000 выручки/мес → цена $500-1000/мес" },
+          { label: "Заменяет сотрудника", example: "AI-рекрутер: зарплата HR $3000/мес → цена $300-600/мес" },
+          { label: "Снимает боль", example: "Дейтинг, фитнес, хобби: цена = стоимость альтернативы клиента" },
         ].map((item, i) => (
           <div key={i} className="flex items-start gap-[16px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[24px] py-[16px]">
             <p className="text-[20px] font-semibold text-[hsl(var(--slide-gold))] shrink-0 min-w-[200px]">{item.label}</p>
