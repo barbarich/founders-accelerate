@@ -8,10 +8,10 @@ export default function M2Slide07WhyMatters() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[28px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">Главный инсайт</p>
         <h2 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-          Клиентам плевать<br />на ваш продукт
+          Никто не покупает продукт.<br />Покупают результат.
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[14px]">
-          Никто не покупает фичи, технологии или красивый UI. Люди покупают результат: сэкономленное время, заработанные деньги, снятую боль.
+          Не фичи, не технологии, не красивый UI. Люди платят за результат: сэкономленное время, заработанные деньги, снятую боль.
         </p>
         <div className="space-y-[6px] mb-[12px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[6px] px-[12px] py-[8px]">
@@ -39,10 +39,10 @@ export default function M2Slide07WhyMatters() {
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Главный инсайт</p>
       <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px]">
-        Клиентам плевать<br />на ваш продукт
+        Никто не покупает продукт.<br />Покупают результат.
       </h2>
       <p className="text-[26px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[40px] max-w-[900px]">
-        Никто не покупает фичи, технологии или красивый UI. Люди покупают <span className="text-[hsl(var(--slide-gold))] font-semibold">результат</span>: сэкономленное время, заработанные деньги, снятую боль.
+        Не фичи, не технологии, не красивый UI. Люди платят за <span className="text-[hsl(var(--slide-gold))] font-semibold">результат</span>: сэкономленное время, заработанные деньги, снятую боль.
       </p>
       <div className="flex gap-[24px] max-w-[1100px] mb-[36px]">
         {[
