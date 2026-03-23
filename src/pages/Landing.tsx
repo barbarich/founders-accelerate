@@ -46,12 +46,30 @@ function WavyLine({ className = "" }: { className?: string }) {
 
 function SketchRocket({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 80 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M40 12C38 20 32 32 28 40C26 44 28 48 32 48L40 46L48 48C52 48 54 44 52 40C48 32 42 20 40 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
-      <path d="M32 48L28 58L36 52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-      <path d="M48 48L52 58L44 52" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-      <circle cx="40" cy="32" r="4" stroke="currentColor" strokeWidth="1.2" opacity="0.3"/>
-      <path d="M36 60C37 64 39 67 40 68C41 67 43 64 44 60" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.3"/>
+    <svg viewBox="0 0 80 120" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Rocket body — pointing UP */}
+      <path d="M40 8C38 18 32 32 28 42C26 46 28 50 32 50L40 48L48 50C52 50 54 46 52 42C48 32 42 18 40 8Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
+      {/* Fins */}
+      <path d="M32 50L27 60L36 54" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+      <path d="M48 50L53 60L44 54" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.4"/>
+      {/* Window */}
+      <circle cx="40" cy="30" r="4.5" stroke="currentColor" strokeWidth="1.2" opacity="0.35"/>
+      {/* Flame — animated */}
+      <path d="M36 62C37 70 39 78 40 82C41 78 43 70 44 62" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.5">
+        <animate attributeName="d" values="M36 62C37 70 39 78 40 82C41 78 43 70 44 62;M35 62C36 74 39 84 40 90C41 84 44 74 45 62;M36 62C37 70 39 78 40 82C41 78 43 70 44 62" dur="0.6s" repeatCount="indefinite"/>
+      </path>
+      <path d="M38 62C38.5 68 39.5 74 40 76C40.5 74 41.5 68 42 62" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.3">
+        <animate attributeName="d" values="M38 62C38.5 68 39.5 74 40 76C40.5 74 41.5 68 42 62;M37.5 62C38 72 39.5 80 40 84C40.5 80 42 72 42.5 62;M38 62C38.5 68 39.5 74 40 76C40.5 74 41.5 68 42 62" dur="0.45s" repeatCount="indefinite"/>
+      </path>
+      {/* Spark particles */}
+      <circle cx="38" cy="85" r="1" fill="currentColor" opacity="0.25">
+        <animate attributeName="cy" values="85;100;85" dur="0.8s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.3;0;0.3" dur="0.8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="42" cy="88" r="0.8" fill="currentColor" opacity="0.2">
+        <animate attributeName="cy" values="88;105;88" dur="0.7s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.25;0;0.25" dur="0.7s" repeatCount="indefinite"/>
+      </circle>
     </svg>
   );
 }
@@ -288,10 +306,18 @@ export default function Landing() {
       const scrollY = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollY / maxScroll, 1);
-      // Rocket flies upward as user scrolls: starts at 70% from top, ends at 5%
-      const topPercent = 70 - progress * 65;
-      rocketRef.current.style.top = `${topPercent}%`;
-      rocketRef.current.style.opacity = `${0.5 + progress * 0.3}`;
+      // Rocket flies upward: starts at bottom (85vh), rises to top (5vh)
+      const bottomStart = 85;
+      const topEnd = 5;
+      const topPercent = bottomStart - progress * (bottomStart - topEnd);
+      // Slight tilt as it accelerates
+      const rotate = -10 * progress;
+      // Grows slightly more visible and slightly bigger as it rises
+      const scale = 1 + progress * 0.15;
+      const opacity = 0.4 + progress * 0.4;
+      rocketRef.current.style.top = `${topPercent}vh`;
+      rocketRef.current.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+      rocketRef.current.style.opacity = `${opacity}`;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -303,13 +329,13 @@ export default function Landing() {
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
 
-      {/* Fixed scroll-following rocket */}
+      {/* Fixed scroll-following rocket — flies UP as you scroll */}
       <div
         ref={rocketRef}
-        className="fixed right-[3%] z-20 pointer-events-none hidden lg:block transition-none"
-        style={{ top: "70%" }}
+        className="fixed right-[4%] z-20 pointer-events-none hidden lg:block"
+        style={{ top: "85vh", transition: "none" }}
       >
-        <SketchRocket className="w-[180px] h-[180px] text-[hsl(var(--landing-accent))] landing-sketch-draw" />
+        <SketchRocket className="w-[160px] h-[200px] text-[hsl(var(--landing-accent))]" />
       </div>
 
       {/* ═══════════════ HERO ═══════════════ */}
