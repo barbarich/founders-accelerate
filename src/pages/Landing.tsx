@@ -607,9 +607,6 @@ export default function Landing() {
             {/* Accelerator */}
             <Reveal delay={200}>
               <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
-                <div className="absolute top-4 right-4 pointer-events-none">
-                  <HandDrawnCircle className="w-[60px] h-[60px] text-[hsl(var(--landing-accent))]" />
-                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-1 font-display">{t.accelTitle}</h3>
                 <p className="text-sm text-[hsl(var(--landing-muted))] mb-8">{t.accelSub}</p>
                 <div className="space-y-3 mb-10">
