@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, CheckCircle2, Sparkles } from "lucide-react";
 
+const WEB3FORMS_KEY = "1340b491-9687-45e3-914d-3c6e4f777a0f";
+
 const applySchema = z.object({
   name: z.string().trim().min(1, "Required").max(100),
   email: z.string().trim().email("Invalid email").max(255),
@@ -21,6 +23,7 @@ type ApplyFormData = z.infer<typeof applySchema>;
 export default function Apply() {
   const { lang, t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -31,9 +34,36 @@ export default function Apply() {
     defaultValues: { preferredLang: lang.toUpperCase() },
   });
 
-  const onSubmit = async (_data: ApplyFormData) => {
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
+  const onSubmit = async (data: ApplyFormData) => {
+    setSubmitError(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New application: ${data.name} (${data.stage})`,
+          from_name: "Founders Circle",
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          idea: data.idea,
+          stage: data.stage,
+          preferred_language: data.preferredLang,
+        }),
+      });
+      const result = await res.json();
+      if (!result.success) throw new Error(result.message);
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Submit error:", err);
+      setSubmitError(
+        lang === "ru" ? "Ошибка отправки. Попробуйте ещё раз." :
+        lang === "ua" ? "Помилка відправки. Спробуйте ще раз." :
+        lang === "he" ? "שגיאה בשליחה. נסה שוב." :
+        "Submission failed. Please try again."
+      );
+    }
   };
 
   if (submitted) {
@@ -229,6 +259,10 @@ export default function Apply() {
             >
               {isSubmitting ? "..." : t.applySubmit}
             </button>
+
+            {submitError && (
+              <p className="text-sm text-red-500 text-center">{submitError}</p>
+            )}
           </form>
         </div>
       </div>
