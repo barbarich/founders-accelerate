@@ -81,10 +81,10 @@ export default function Mentor() {
             </Reveal>
 
             {/* Right — Name, subtitle, key facts */}
-            <div className="flex flex-col justify-center py-8 md:py-16 md:pl-12 lg:pl-16">
+            <div className="flex flex-col justify-center py-8 md:py-16 md:pl-10 lg:pl-14">
               <Reveal>
                 <p
-                  className="text-[11px] font-mono uppercase tracking-[0.3em] mb-4 font-semibold"
+                  className="text-[11px] font-mono uppercase tracking-[0.3em] mb-6 font-semibold"
                   style={{ color: "hsl(var(--landing-accent))" }}
                 >
                   {t.mentorTag}
@@ -92,7 +92,7 @@ export default function Mentor() {
               </Reveal>
               <Reveal delay={100}>
                 <h1
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 font-display leading-[1.1]"
+                  className="text-5xl md:text-6xl lg:text-[4.5rem] font-bold mb-2 font-display leading-[1.05] tracking-tight"
                   style={{ color: "hsl(var(--landing-text))" }}
                 >
                   {t.mentorTitle}
@@ -100,39 +100,39 @@ export default function Mentor() {
               </Reveal>
               <Reveal delay={150}>
                 <p
-                  className="text-base md:text-lg mb-8 max-w-md"
+                  className="text-base md:text-lg mb-10 max-w-md leading-relaxed"
                   style={{ color: "hsl(var(--landing-muted))" }}
                 >
                   {t.mentorSubtitle}
                 </p>
               </Reveal>
 
-              {/* Key facts — single column, larger text */}
-              <Reveal delay={200}>
-                <div className="space-y-3">
-                  {t.mentorBio.map((b: string, i: number) => (
+              {/* Key facts — asymmetric flowing layout */}
+              <div className="space-y-0">
+                {t.mentorBio.map((b: string, i: number) => (
+                  <Reveal key={i} delay={200 + i * 40}>
                     <div
-                      key={i}
-                      className="flex items-center gap-3 rounded-lg px-4 py-3"
+                      className="flex items-baseline gap-4 py-[10px]"
                       style={{
-                        background: "hsl(var(--landing-card-bg))",
-                        border: "1px solid hsl(var(--landing-border))",
+                        borderBottom: i < t.mentorBio.length - 1 ? "1px solid hsl(var(--landing-border) / 0.6)" : "none",
                       }}
                     >
-                      <div
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ background: "hsl(var(--landing-accent))" }}
-                      />
                       <span
-                        className="text-sm md:text-base font-medium"
-                        style={{ color: "hsl(var(--landing-text) / 0.85)" }}
+                        className="text-[11px] font-mono tabular-nums shrink-0 w-5 text-right"
+                        style={{ color: "hsl(var(--landing-accent) / 0.45)" }}
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span
+                        className="text-[15px] md:text-[17px] leading-snug"
+                        style={{ color: "hsl(var(--landing-text) / 0.9)" }}
                       >
                         {b}
                       </span>
                     </div>
-                  ))}
-                </div>
-              </Reveal>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </div>
