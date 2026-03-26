@@ -3,6 +3,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { months, type Week } from "@/data/program";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 function SectionBlock({
   label,
@@ -15,13 +16,13 @@ function SectionBlock({
 }) {
   const labelColors = {
     gold: "text-[hsl(var(--landing-accent))]",
-    blue: "text-blue-600",
-    green: "text-emerald-600",
+    blue: "text-blue-400",
+    green: "text-emerald-400",
   };
   const dotColors = {
     gold: "bg-[hsl(var(--landing-accent))]",
-    blue: "bg-blue-500",
-    green: "bg-emerald-500",
+    blue: "bg-blue-400",
+    green: "bg-emerald-400",
   };
 
   return (
@@ -31,7 +32,7 @@ function SectionBlock({
       </p>
       <ul className="space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-[hsl(var(--landing-text))]/70">
+          <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-white/60">
             <span className={`w-1 h-1 rounded-full ${dotColors[color]} mt-[7px] shrink-0`} />
             {item}
           </li>
@@ -43,12 +44,12 @@ function SectionBlock({
 
 function WeekCard({ week }: { week: Week }) {
   return (
-    <div className="rounded-xl overflow-hidden border border-[hsl(var(--landing-card-border))] bg-[hsl(var(--landing-card-bg))] shadow-sm hover:shadow-md transition-shadow duration-300">
-      <div className="px-5 py-4 border-b border-[hsl(var(--landing-border))] bg-[hsl(var(--landing-bg-alt))]/50">
-        <p className="text-[11px] text-[hsl(var(--landing-muted))] font-mono uppercase tracking-wider mb-0.5">
+    <div className="rounded-xl overflow-hidden landing-card">
+      <div className="px-5 py-4 border-b border-white/[0.06]">
+        <p className="text-[11px] text-white/30 font-mono uppercase tracking-wider mb-0.5">
           Неделя {week.number}
         </p>
-        <h3 className="text-[15px] font-semibold text-[hsl(var(--landing-text))] leading-snug">
+        <h3 className="text-[15px] font-semibold text-white/90 leading-snug">
           {week.title}
         </h3>
       </div>
@@ -56,7 +57,7 @@ function WeekCard({ week }: { week: Week }) {
       <div className="px-5 py-4 space-y-5">
         <SectionBlock label="Учу и показываю" color="gold" items={week.teach} />
         <SectionBlock label="Делаем вместе" color="blue" items={week.together} />
-        <div className="bg-[hsl(var(--landing-bg-alt))]/40 rounded-lg p-4 -mx-1">
+        <div className="bg-white/[0.02] rounded-lg p-4 -mx-1">
           <SectionBlock label="Задание на неделю" color="green" items={week.homework} />
         </div>
       </div>
@@ -84,8 +85,8 @@ function MonthTabs({
             rounded-full font-medium transition-all duration-300
             ${
               activeMonth === m.month
-                ? "bg-[hsl(var(--landing-accent))] text-white shadow-md"
-                : "bg-[hsl(var(--landing-card-bg))] text-[hsl(var(--landing-muted))] border border-[hsl(var(--landing-border))] hover:border-[hsl(var(--landing-accent))]/30 hover:text-[hsl(var(--landing-text))]"
+                ? "landing-cta-btn shadow-md"
+                : "bg-white/[0.04] text-white/40 border border-white/[0.08] hover:border-[hsl(var(--landing-accent))]/30 hover:text-white/70"
             }
           `}
         >
@@ -98,24 +99,28 @@ function MonthTabs({
 
 export default function Program() {
   const isMobile = useIsMobile();
+  const { lang } = useLanguage();
   const [activeMonth, setActiveMonth] = useState(1);
   const currentMonth = months.find((m) => m.month === activeMonth)!;
 
   return (
-    <div className="min-h-screen bg-[hsl(var(--landing-bg))] text-[hsl(var(--landing-text))]">
+    <div className="min-h-screen landing-wrapper">
+      {/* Stripes background */}
+      <div className="landing-stripes" />
+
       {/* Top bar */}
-      <nav className="sticky top-0 z-50 bg-[hsl(var(--landing-bg))]/90 backdrop-blur-xl border-b border-[hsl(var(--landing-border))]">
+      <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link
-            to="/"
-            className="flex items-center gap-2 text-[hsl(var(--landing-muted))] hover:text-[hsl(var(--landing-text))] transition-colors text-sm"
+            to={`/${lang}`}
+            className="flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Назад
           </Link>
           <Link
-            to="/register"
-            className="inline-flex items-center gap-2 bg-[hsl(var(--landing-accent))] text-white font-semibold rounded-full hover:bg-[hsl(var(--landing-accent))]/90 transition-colors text-sm px-5 py-2"
+            to={`/${lang}/apply`}
+            className="landing-cta-btn inline-flex items-center gap-2 font-semibold rounded-full text-sm px-5 py-2"
           >
             Присоединиться
             <ArrowRight className="w-3.5 h-3.5" />
@@ -123,16 +128,16 @@ export default function Program() {
         </div>
       </nav>
 
-      <main className={`max-w-3xl mx-auto ${isMobile ? "px-4 py-8" : "px-6 py-16"}`}>
+      <main className={`max-w-3xl mx-auto ${isMobile ? "px-4 py-8" : "px-6 py-16"} landing-content`}>
         {/* Hero */}
         <header className={`${isMobile ? "mb-6" : "mb-10"} text-center`}>
           <p className="text-[hsl(var(--landing-accent))] text-xs font-mono uppercase tracking-[0.3em] mb-3">
             The Founders Circle
           </p>
-          <h1 className={`${isMobile ? "text-3xl" : "text-5xl"} font-bold text-[hsl(var(--landing-text))] mb-4 font-display leading-tight`}>
+          <h1 className={`${isMobile ? "text-3xl" : "text-5xl"} font-bold text-white mb-4 font-display leading-tight`}>
             Программа акселератора
           </h1>
-          <p className={`${isMobile ? "text-sm" : "text-lg"} text-[hsl(var(--landing-muted))] max-w-xl mx-auto mb-8`}>
+          <p className={`${isMobile ? "text-sm" : "text-lg"} text-white/40 max-w-xl mx-auto mb-8`}>
             12 недель. От идеи до готового продукта с первыми пользователями
           </p>
 
@@ -141,30 +146,30 @@ export default function Program() {
 
         {/* Month Title */}
         <div className={`text-center ${isMobile ? "mb-6" : "mb-10"}`}>
-          <p className="text-[hsl(var(--landing-muted))] text-xs font-mono uppercase tracking-wider mb-1">
+          <p className="text-white/30 text-xs font-mono uppercase tracking-wider mb-1">
             Месяц {currentMonth.month}
           </p>
-          <h2 className={`${isMobile ? "text-2xl" : "text-3xl"} font-bold text-[hsl(var(--landing-text))] mb-1 font-display`}>
+          <h2 className={`${isMobile ? "text-2xl" : "text-3xl"} font-bold text-white mb-1 font-display`}>
             {currentMonth.label}
           </h2>
-          <p className="text-[hsl(var(--landing-muted))] text-sm">{currentMonth.subtitle}</p>
+          <p className="text-white/40 text-sm">{currentMonth.subtitle}</p>
         </div>
 
         {/* Who & Result */}
         <div className={`grid ${isMobile ? "grid-cols-1 gap-3" : "grid-cols-2 gap-5"} mb-10`}>
-          <div className="border border-[hsl(var(--landing-card-border))] rounded-xl p-5 bg-[hsl(var(--landing-card-bg))]">
-            <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--landing-muted))] mb-2">
+          <div className="landing-card rounded-xl p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-2">
               Точка входа
             </p>
-            <p className="text-[13px] text-[hsl(var(--landing-text))]/75 leading-relaxed">
+            <p className="text-[13px] text-white/60 leading-relaxed">
               {currentMonth.forWhom}
             </p>
           </div>
-          <div className="border border-[hsl(var(--landing-accent))]/20 rounded-xl p-5 bg-[hsl(var(--landing-accent))]/[0.04]">
+          <div className="landing-card-accent rounded-xl p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--landing-accent))] mb-2">
               Результат месяца
             </p>
-            <p className="text-[13px] text-[hsl(var(--landing-text))]/75 leading-relaxed">
+            <p className="text-[13px] text-white/60 leading-relaxed">
               {currentMonth.result}
             </p>
           </div>
@@ -178,13 +183,13 @@ export default function Program() {
         </div>
 
         {/* Outcomes */}
-        <section className="border border-[hsl(var(--landing-accent))]/20 rounded-xl p-6 bg-[hsl(var(--landing-accent))]/[0.04] mb-12">
-          <p className={`${isMobile ? "text-base" : "text-lg"} font-bold text-[hsl(var(--landing-text))] mb-4 text-center font-display`}>
+        <section className="landing-card-accent rounded-xl p-6 mb-12">
+          <p className={`${isMobile ? "text-base" : "text-lg"} font-bold text-white mb-4 text-center font-display`}>
             Что получает каждый участник за месяц {currentMonth.month}
           </p>
           <ul className="space-y-2">
             {currentMonth.outcomes.map((item, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-[13px] text-[hsl(var(--landing-text))]/70">
+              <li key={i} className="flex items-start gap-2.5 text-[13px] text-white/60">
                 <ChevronRight size={12} className="text-[hsl(var(--landing-accent))] mt-[3px] shrink-0" />
                 {item}
               </li>
@@ -195,15 +200,15 @@ export default function Program() {
         {/* Bottom CTA */}
         <div className="text-center pb-10">
           <Link
-            to="/register"
-            className={`inline-flex items-center gap-3 bg-[hsl(var(--landing-accent))] text-white font-semibold rounded-full hover:bg-[hsl(var(--landing-accent))]/90 transition-all group ${
+            to={`/${lang}/apply`}
+            className={`landing-cta-btn inline-flex items-center gap-3 font-semibold rounded-full group ${
               isMobile ? "px-8 py-3.5 text-base" : "px-10 py-4 text-lg"
             }`}
           >
             Присоединиться
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <p className="text-[hsl(var(--landing-muted))] text-xs mt-3">
+          <p className="text-white/30 text-xs mt-3">
             Старт 13 апреля 2026 · 12 недель · Группа 5-7 человек
           </p>
         </div>
