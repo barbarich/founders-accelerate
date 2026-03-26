@@ -353,58 +353,57 @@ export default function Landing() {
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
         </div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-5 md:px-6 lg:px-10 pt-24 md:pt-32 pb-16 md:pb-20 w-full">
           {/* Tag */}
-          <div className="landing-fade-up mb-8">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[hsl(var(--landing-accent))]/20 bg-[hsl(var(--landing-accent))]/[0.06] text-[hsl(var(--landing-accent))] text-xs font-mono tracking-widest uppercase">
+          <div className="landing-fade-up mb-5 md:mb-8">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-[hsl(var(--landing-accent))]/20 bg-[hsl(var(--landing-accent))]/[0.06] text-[hsl(var(--landing-accent))] text-[10px] md:text-xs font-mono tracking-widest uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
               {t.heroTag}
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-[clamp(2.5rem,7vw,6rem)] leading-[1.05] font-bold text-[hsl(var(--landing-text))] mb-4 whitespace-pre-line font-display landing-fade-up landing-delay-200 max-w-5xl">
+          <h1 className="text-[2.2rem] md:text-[clamp(2.5rem,7vw,6rem)] leading-[1.1] font-bold text-[hsl(var(--landing-text))] mb-3 md:mb-4 whitespace-pre-line font-display landing-fade-up landing-delay-200 max-w-5xl">
             {t.heroTitle}
           </h1>
 
           {/* Brush stroke */}
-          <div className="landing-fade-up landing-delay-300 mb-8">
-            <BrushStroke className="w-[180px] h-[12px] text-[hsl(var(--landing-accent))] landing-draw-in" />
+          <div className="landing-fade-up landing-delay-300 mb-6 md:mb-8">
+            <BrushStroke className="w-[140px] md:w-[180px] h-[10px] md:h-[12px] text-[hsl(var(--landing-accent))] landing-draw-in" />
           </div>
 
           {/* Subtitle */}
-          <p className="text-base md:text-lg text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
+          <p className="text-[15px] md:text-lg text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-8 md:mb-10">
             {t.heroSubtitle}
           </p>
 
-          {/* CTA + urgency */}
-          <div className="flex flex-col sm:flex-row items-start gap-5 landing-fade-up landing-delay-500 mb-6">
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row items-start gap-5 landing-fade-up landing-delay-500 mb-5 md:mb-6">
             <Link
               to={applyUrl}
-              className="group landing-cta-btn px-10 py-5 rounded-full text-lg font-semibold transition-all inline-flex items-center gap-3"
+              className="group landing-cta-btn px-7 py-3.5 md:px-10 md:py-5 rounded-full text-base md:text-lg font-semibold transition-all inline-flex items-center gap-2.5 md:gap-3"
             >
               {t.heroCTA}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           {/* Urgency signals */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-base landing-fade-up landing-delay-500 mb-16">
-            <span className="inline-flex items-center gap-2 text-[hsl(var(--landing-muted))]">
-              <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6 text-[13px] md:text-base landing-fade-up landing-delay-500 mb-12 md:mb-16">
+            <span className="inline-flex items-center gap-1.5 text-[hsl(var(--landing-muted))]">
+              <Clock size={13} className="text-[hsl(var(--landing-accent))]" />
               {t.heroCohort}
             </span>
-            <span className="inline-flex items-center gap-2 text-[hsl(var(--landing-muted))]">
-              <Users size={14} className="text-[hsl(var(--landing-accent))]" />
+            <span className="inline-flex items-center gap-1.5 text-[hsl(var(--landing-muted))]">
+              <Users size={13} className="text-[hsl(var(--landing-accent))]" />
               {t.heroGroup}
             </span>
-            <span className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--landing-accent))]">
-              <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 font-semibold text-[hsl(var(--landing-accent))]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
               {t.heroSpotsLeft}
             </span>
           </div>
