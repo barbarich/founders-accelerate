@@ -335,7 +335,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <div className="landing-wrapper min-h-screen relative overflow-x-hidden">
+    <div className="landing-wrapper min-h-screen relative overflow-x-hidden" style={{ background: 'hsl(var(--landing-bg))' }}>
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
 
