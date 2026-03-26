@@ -384,11 +384,57 @@
 }
 
 /* ═══════════════════════════════════════════
-   LANDING PAGE — Warm Light Theme
+   LANDING PAGE — Dark Stripe Theme
    ═══════════════════════════════════════════ */
 .landing-wrapper {
   background: hsl(var(--landing-bg));
   color: hsl(var(--landing-text));
+  position: relative;
+}
+
+/* Vertical stripes overlay */
+.landing-stripes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+    90deg,
+    hsla(0, 0%, 100%, 0.04) 0px,
+    hsla(0, 0%, 100%, 0.04) 1px,
+    transparent 1px,
+    transparent 60px
+  );
+}
+
+/* Edge glow — left */
+.landing-edge-glow-left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: linear-gradient(90deg, hsla(24, 90%, 45%, 0.15) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Edge glow — right */
+.landing-edge-glow-right {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background: linear-gradient(270deg, hsla(24, 90%, 45%, 0.12) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Content sits above stripes */
+.landing-content {
+  position: relative;
+  z-index: 10;
 }
 
 /* Reveal animations */
@@ -418,130 +464,49 @@
 
 /* Stat number gradient */
 .landing-stat-number {
-  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(30 80% 60%), hsl(var(--landing-accent-2)));
+  background: linear-gradient(135deg, hsl(24 90% 65%), hsl(30 85% 55%), hsl(20 80% 45%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hero mesh background */
-.landing-hero-mesh {
-  background:
-    radial-gradient(ellipse at 70% 20%, hsla(24, 85%, 55%, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, hsla(30, 90%, 45%, 0.08) 0%, transparent 45%),
-    hsl(var(--landing-bg));
-}
-
-/* Vertical lines texture overlay */
-.landing-wrapper::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background-image: repeating-linear-gradient(
-    90deg,
-    hsla(0, 0%, 100%, 0.03) 0px,
-    hsla(0, 0%, 100%, 0.03) 1px,
-    transparent 1px,
-    transparent 40px
-  );
-  opacity: 0.6;
-}
-
-/* Animated gradient orbs */
-.landing-orb-1 {
-  background: radial-gradient(circle, hsla(24, 85%, 55%, 0.1) 0%, transparent 70%);
-  animation: landing-orb-drift 12s ease-in-out infinite;
-}
-.landing-orb-2 {
-  background: radial-gradient(circle, hsla(30, 90%, 45%, 0.07) 0%, transparent 70%);
-  animation: landing-orb-drift 16s ease-in-out infinite reverse;
-}
-.landing-orb-3 {
-  background: radial-gradient(circle, hsla(24, 70%, 60%, 0.05) 0%, transparent 70%);
-  animation: landing-orb-drift 20s ease-in-out infinite 3s;
-}
-@keyframes landing-orb-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -20px) scale(1.05); }
-  50% { transform: translate(-20px, 30px) scale(0.95); }
-  75% { transform: translate(15px, 15px) scale(1.02); }
-}
-
-/* Floating animations for artistic elements */
-.landing-float-slow {
-  animation: landing-float 8s ease-in-out infinite;
-}
-.landing-float-medium {
-  animation: landing-float 5s ease-in-out infinite 1s;
-}
-@keyframes landing-float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(3deg); }
-}
-
-/* Draw-in animation for brush stroke */
-.landing-draw-in {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: landing-draw 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-}
-@keyframes landing-draw {
-  to { stroke-dashoffset: 0; }
-}
-
-/* Sketch draw-in animation for startup icons */
-.landing-sketch-draw path,
-.landing-sketch-draw circle {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: landing-sketch-appear 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.landing-sketch-draw path:nth-child(2) { animation-delay: 0.15s; }
-.landing-sketch-draw path:nth-child(3) { animation-delay: 0.3s; }
-.landing-sketch-draw path:nth-child(4) { animation-delay: 0.45s; }
-.landing-sketch-draw circle:nth-child(n) { animation-delay: 0.6s; }
-@keyframes landing-sketch-appear {
-  to { stroke-dashoffset: 0; }
-}
-
-
+/* Landing card */
 .landing-card {
-  background: hsl(var(--landing-card-bg));
-  border: 1px solid hsl(var(--landing-card-border));
+  background: hsla(0, 0%, 100%, 0.03);
+  border: 1px solid hsla(0, 0%, 100%, 0.06);
+  backdrop-filter: blur(20px);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .landing-card:hover {
-  border-color: hsl(var(--landing-accent) / 0.3);
-  box-shadow: 0 8px 40px -12px hsla(24, 85%, 55%, 0.15);
+  background: hsla(0, 0%, 100%, 0.06);
+  border-color: hsla(24, 85%, 55%, 0.2);
+  box-shadow: 0 8px 40px -12px hsla(24, 85%, 55%, 0.2);
 }
 
 /* Accent card (for pricing) */
 .landing-card-accent {
-  background: hsl(var(--landing-card-bg));
-  border: 1px solid hsl(var(--landing-accent) / 0.25);
-  box-shadow:
-    0 0 0 1px hsl(var(--landing-accent) / 0.08),
-    0 4px 30px -8px hsla(24, 85%, 55%, 0.15);
+  background: hsla(24, 85%, 55%, 0.05);
+  border: 1px solid hsla(24, 85%, 55%, 0.2);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px -20px hsla(24, 85%, 55%, 0.15);
 }
 
 /* CTA Button */
 .landing-cta-btn {
-  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(24 70% 42%));
+  background: linear-gradient(135deg, hsl(24 85% 55%), hsl(20 80% 42%));
   color: hsl(0, 0%, 100%);
-  box-shadow: 0 4px 20px -4px hsla(24, 85%, 55%, 0.4);
+  box-shadow: 0 4px 24px -4px hsla(24, 85%, 55%, 0.5);
   transition: all 0.3s ease;
 }
 .landing-cta-btn:hover {
-  box-shadow: 0 6px 30px -4px hsla(24, 85%, 55%, 0.6);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 40px -4px hsla(24, 85%, 55%, 0.7);
+  transform: translateY(-2px);
 }
 
 /* CTA section background */
 .landing-cta-section {
   background:
-    radial-gradient(ellipse at 30% 50%, hsla(24, 85%, 55%, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 40%, hsla(30, 90%, 45%, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 50%, hsla(24, 85%, 55%, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 40%, hsla(20, 80%, 45%, 0.08) 0%, transparent 50%),
     hsl(var(--landing-bg));
 }
