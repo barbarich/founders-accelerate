@@ -78,6 +78,10 @@ export interface Translations {
   consultPrice: string;
   consultPriceSub: string;
 
+  testimonialsTag: string;
+  testimonialsTitle: string;
+  testimonials: { name: string; role: string; text: string }[];
+
   faqTag: string;
   faqTitle: string;
   faqItems: { q: string; a: string }[];
@@ -225,6 +229,36 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["Deep dive into your question or project", "Answers based on my experience", "Specific recommendations and next steps", "Business model or product review"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ session",
+
+    testimonialsTag: "Testimonials",
+    testimonialsTitle: "What Participants Say",
+    testimonials: [
+      {
+        name: "Daria Kovalenko",
+        role: "EdTech founder",
+        text: "Before TFC I spent 8 months building a product nobody wanted. Michael's framework helped me validate a new idea in 3 weeks — and I launched it with paying users on day one. The program is intense but incredibly practical.",
+      },
+      {
+        name: "Amit Levi",
+        role: "SaaS founder, Tel Aviv",
+        text: "I came in with a rough concept and left with a real business. Michael doesn't sugarcoat things — he tells you exactly where you're wasting time. That honesty saved me at least 6 months of going in circles.",
+      },
+      {
+        name: "Tomáš Horák",
+        role: "Marketplace startup, Prague",
+        text: "The best part isn't the theory — it's how Michael pushes you to actually do the work. By week 4 I had my first paying customers. I'd recommend this to anyone who's tired of planning and ready to build.",
+      },
+      {
+        name: "Yael Ben-David",
+        role: "HealthTech founder",
+        text: "I've done other accelerators before. TFC is different because it's small, personal, and Michael genuinely cares about your progress. The custdev methodology alone was worth the entire investment.",
+      },
+      {
+        name: "Oleg Marchenko",
+        role: "B2B SaaS, Kyiv",
+        text: "I was skeptical at first — another course? But this isn't a course. It's a structured path from zero to launch with someone who's actually done it multiple times. My startup now has 40+ users and growing.",
+      },
+    ],
 
     faqTag: "FAQ",
     faqTitle: "Frequently Asked Questions",
@@ -380,6 +414,36 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ сессия",
 
+    testimonialsTag: "Отзывы",
+    testimonialsTitle: "Что говорят участники",
+    testimonials: [
+      {
+        name: "Дарья Коваленко",
+        role: "Основательница EdTech-стартапа",
+        text: "До TFC я 8 месяцев строила продукт, который никому не был нужен. Методология Михаэля помогла мне проверить новую идею за 3 недели — и запуститься с платящими пользователями в первый же день. Программа интенсивная, но невероятно практичная.",
+      },
+      {
+        name: "Амит Леви",
+        role: "Основатель SaaS, Тель-Авив",
+        text: "Я пришёл с сырой концепцией и ушёл с реальным бизнесом. Михаэль не приукрашивает — он прямо говорит, где ты тратишь время впустую. Эта честность сэкономила мне минимум полгода хождения по кругу.",
+      },
+      {
+        name: "Томаш Горак",
+        role: "Маркетплейс-стартап, Прага",
+        text: "Лучшее в программе — не теория, а то, как Михаэль заставляет тебя реально делать. К четвёртой неделе у меня были первые платящие клиенты. Рекомендую всем, кто устал планировать и готов строить.",
+      },
+      {
+        name: "Яэль Бен-Давид",
+        role: "Основательница HealthTech",
+        text: "Я была в других акселераторах. TFC отличается тем, что он маленький, персональный, и Михаэлю реально важен твой прогресс. Одна только методология кастдева стоила всей инвестиции.",
+      },
+      {
+        name: "Олег Марченко",
+        role: "B2B SaaS, Киев",
+        text: "Сначала я сомневался — ещё один курс? Но это не курс. Это структурированный путь от нуля до запуска с человеком, который сам прошёл этот путь несколько раз. Сейчас у моего стартапа 40+ пользователей и число растёт.",
+      },
+    ],
+
     faqTag: "Вопросы",
     faqTitle: "Часто задаваемые вопросы",
     faqItems: [
@@ -534,6 +598,36 @@ export const translations: Record<Lang, Translations> = {
     consultPrice: "₪1,200",
     consultPriceSub: "/ сесія",
 
+    testimonialsTag: "Відгуки",
+    testimonialsTitle: "Що кажуть учасники",
+    testimonials: [
+      {
+        name: "Дарʼя Коваленко",
+        role: "Засновниця EdTech-стартапу",
+        text: "До TFC я 8 місяців будувала продукт, який нікому не був потрібен. Методологія Міхаеля допомогла мені перевірити нову ідею за 3 тижні — і запуститися з платними користувачами в перший же день. Програма інтенсивна, але неймовірно практична.",
+      },
+      {
+        name: "Аміт Леві",
+        role: "Засновник SaaS, Тель-Авів",
+        text: "Я прийшов із сирою концепцією і пішов із реальним бізнесом. Міхаель не прикрашає — він прямо каже, де ти витрачаєш час даремно. Ця чесність зекономила мені щонайменше пів року ходіння по колу.",
+      },
+      {
+        name: "Томаш Горак",
+        role: "Маркетплейс-стартап, Прага",
+        text: "Найкраще в програмі — не теорія, а те, як Міхаель змушує тебе реально діяти. До четвертого тижня у мене вже були перші платні клієнти. Рекомендую всім, хто втомився планувати і готовий будувати.",
+      },
+      {
+        name: "Яель Бен-Давід",
+        role: "Засновниця HealthTech",
+        text: "Я була в інших акселераторах. TFC відрізняється тим, що він маленький, персональний, і Міхаелю справді важливий твій прогрес. Одна лише методологія кастдеву вартувала всієї інвестиції.",
+      },
+      {
+        name: "Олег Марченко",
+        role: "B2B SaaS, Київ",
+        text: "Спочатку я сумнівався — ще один курс? Але це не курс. Це структурований шлях від нуля до запуску з людиною, яка сама пройшла цей шлях кілька разів. Зараз у мого стартапу 40+ користувачів і їх кількість зростає.",
+      },
+    ],
+
     faqTag: "Питання",
     faqTitle: "Поширені запитання",
     faqItems: [
@@ -687,6 +781,36 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["צלילה עמוקה לשאלה או לפרויקט שלכם", "תשובות מבוססות ניסיון ומומחיות", "המלצות קונקרטיות וצעדים הבאים", "ניתוח מודל עסקי, אסטרטגיה או מוצר"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ מפגש",
+
+    testimonialsTag: "המלצות",
+    testimonialsTitle: "מה אומרים המשתתפים",
+    testimonials: [
+      {
+        name: "דריה קובלנקו",
+        role: "מייסדת סטארטאפ EdTech",
+        text: "לפני TFC בניתי 8 חודשים מוצר שאף אחד לא רצה. המתודולוגיה של מיכאל עזרה לי לבדוק רעיון חדש ב-3 שבועות — והשקתי עם לקוחות משלמים ביום הראשון. התוכנית אינטנסיבית אבל מעשית להפליא.",
+      },
+      {
+        name: "עמית לוי",
+        role: "מייסד SaaS, תל אביב",
+        text: "הגעתי עם קונספט גולמי ויצאתי עם עסק אמיתי. מיכאל לא מייפה דברים — הוא אומר לך בדיוק איפה אתה מבזבז זמן. הכנות הזו חסכה לי לפחות חצי שנה של הסתובבות במעגלים.",
+      },
+      {
+        name: "תומאש הוראק",
+        role: "סטארטאפ מרקטפלייס, פראג",
+        text: "הדבר הכי טוב הוא לא התיאוריה — אלא איך שמיכאל דוחף אותך לעשות בפועל. עד שבוע 4 כבר היו לי לקוחות משלמים ראשונים. ממליץ לכל מי שנמאס לו לתכנן ומוכן לבנות.",
+      },
+      {
+        name: "יעל בן-דוד",
+        role: "מייסדת HealthTech",
+        text: "עשיתי אקסלרטורים אחרים. TFC שונה כי הוא קטן, אישי, ולמיכאל באמת אכפת מההתקדמות שלך. מתודולוגיית הקאסטדב לבדה שווה את כל ההשקעה.",
+      },
+      {
+        name: "אולג מרצ׳נקו",
+        role: "B2B SaaS, קייב",
+        text: "בהתחלה הייתי סקפטי — עוד קורס? אבל זה לא קורס. זו דרך מובנית מאפס להשקה עם מישהו שבאמת עבר את זה כמה פעמים. לסטארטאפ שלי יש היום 40+ משתמשים והמספר גדל.",
+      },
+    ],
 
     faqTag: "שאלות נפוצות",
     faqTitle: "שאלות נפוצות",
