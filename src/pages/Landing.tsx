@@ -368,7 +368,7 @@ export default function Landing() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
+          <p className="text-xl md:text-2xl text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
             {t.heroSubtitle}
           </p>
 
@@ -384,7 +384,7 @@ export default function Landing() {
           </div>
 
           {/* Urgency signals */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-sm landing-fade-up landing-delay-500 mb-16">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 text-base landing-fade-up landing-delay-500 mb-16">
             <span className="inline-flex items-center gap-2 text-[hsl(var(--landing-muted))]">
               <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
               {t.heroCohort}
