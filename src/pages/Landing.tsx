@@ -705,13 +705,13 @@ export default function Landing() {
             <Reveal delay={200}>
               <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
                 {/* Popular badge */}
-                <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[hsl(var(--landing-accent))] text-[hsl(var(--landing-bg))] text-[11px] font-semibold uppercase tracking-wider">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-bg))] animate-pulse" />
+                <div className="flex items-start justify-between mb-1">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] font-display">{t.accelTitle}</h3>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[hsl(var(--landing-accent))] text-[hsl(var(--landing-bg))] text-[9px] md:text-[10px] font-semibold uppercase tracking-wider shrink-0 mt-1.5">
+                    <span className="w-1 h-1 rounded-full bg-[hsl(var(--landing-bg))] animate-pulse" />
                     {t.heroSpotsLeft}
                   </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] mb-1 font-display">{t.accelTitle}</h3>
                 <p className="text-sm text-[hsl(var(--landing-muted))] mb-8">{t.accelSub}</p>
                 <div className="space-y-3 mb-10">
                   {t.accelItems.map((item: string, i: number) => (
