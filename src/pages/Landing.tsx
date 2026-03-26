@@ -398,21 +398,6 @@ export default function Landing() {
               {t.heroSpotsLeft}
             </span>
           </div>
-
-          {/* Stats strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pt-10 border-t border-[hsl(var(--landing-border))]">
-            {[
-              { end: 7, suffix: "", label: t.statProducts },
-              { end: 2, suffix: "", label: t.statExits },
-              { end: 50, suffix: "K+", label: t.statUsers },
-              { end: 107, suffix: "", label: t.statCountries },
-            ].map((stat, i) => (
-              <div key={i} className="landing-fade-up" style={{ animationDelay: `${600 + i * 100}ms` }}>
-                <StatNumber end={stat.end} suffix={stat.suffix} />
-                <p className="text-xs md:text-sm text-[hsl(var(--landing-muted))] mt-2 uppercase tracking-wider font-mono">{stat.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
