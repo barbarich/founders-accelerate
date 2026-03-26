@@ -456,7 +456,7 @@ export const translations: Record<Lang, Translations> = {
     ],
 
     mentorTag: "Ментор",
-    mentorTitle: "Міхаель Барбаріч",
+    mentorTitle: "Міхаель Барбарич",
     mentorSubtitle: "Діючий підприємець. Будую продукти і зараз.",
     mentorStatement: [
       "Мене звати Михаель Барбарич. Я будую компанії вже 16 років — і за цей час пройшов через усе, що тільки може трапитися з підприємцем.",
