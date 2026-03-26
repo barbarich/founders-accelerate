@@ -159,11 +159,8 @@ export default function Landing() {
 
   return (
     <div className="landing-wrapper min-h-screen overflow-x-hidden">
-      {/* Vertical stripes */}
+      {/* Background stripes */}
       <div className="landing-stripes" />
-      {/* Edge glows */}
-      <div className="landing-edge-glow-left" />
-      <div className="landing-edge-glow-right" />
 
       <Nav lang={lang} t={t} applyUrl={applyUrl} />
       <StickyMobileCTA t={t} applyUrl={applyUrl} />
