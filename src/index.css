@@ -47,16 +47,16 @@
     --gold-light: 38 60% 70%;
     --gold-dark: 38 35% 35%;
 
-    /* Landing page — warm cream theme */
-    --landing-bg: 40 33% 96%;
-    --landing-bg-alt: 40 25% 93%;
-    --landing-text: 30 10% 15%;
-    --landing-muted: 30 8% 45%;
-    --landing-border: 35 15% 88%;
-    --landing-accent: 24 70% 50%;
-    --landing-accent-2: 340 45% 55%;
-    --landing-card-bg: 40 30% 98%;
-    --landing-card-border: 35 20% 90%;
+    /* Landing page — dark premium theme */
+    --landing-bg: 20 15% 5%;
+    --landing-bg-alt: 20 12% 8%;
+    --landing-text: 30 20% 92%;
+    --landing-muted: 25 10% 50%;
+    --landing-border: 20 10% 14%;
+    --landing-accent: 24 85% 55%;
+    --landing-accent-2: 30 90% 45%;
+    --landing-card-bg: 20 12% 9%;
+    --landing-card-border: 20 10% 16%;
   }
 }
 
@@ -418,7 +418,7 @@
 
 /* Stat number gradient */
 .landing-stat-number {
-  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(24 60% 40%), hsl(var(--landing-accent-2)));
+  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(30 80% 60%), hsl(var(--landing-accent-2)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -427,22 +427,39 @@
 /* Hero mesh background */
 .landing-hero-mesh {
   background:
-    radial-gradient(ellipse at 70% 20%, hsla(24, 70%, 50%, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 80%, hsla(340, 45%, 55%, 0.06) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 50%, hsla(40, 33%, 96%, 1) 0%, hsla(40, 33%, 96%, 1) 100%);
+    radial-gradient(ellipse at 70% 20%, hsla(24, 85%, 55%, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, hsla(30, 90%, 45%, 0.08) 0%, transparent 45%),
+    hsl(var(--landing-bg));
+}
+
+/* Vertical lines texture overlay */
+.landing-wrapper::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: repeating-linear-gradient(
+    90deg,
+    hsla(0, 0%, 100%, 0.03) 0px,
+    hsla(0, 0%, 100%, 0.03) 1px,
+    transparent 1px,
+    transparent 40px
+  );
+  opacity: 0.6;
 }
 
 /* Animated gradient orbs */
 .landing-orb-1 {
-  background: radial-gradient(circle, hsla(24, 70%, 50%, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(24, 85%, 55%, 0.1) 0%, transparent 70%);
   animation: landing-orb-drift 12s ease-in-out infinite;
 }
 .landing-orb-2 {
-  background: radial-gradient(circle, hsla(340, 45%, 55%, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(30, 90%, 45%, 0.07) 0%, transparent 70%);
   animation: landing-orb-drift 16s ease-in-out infinite reverse;
 }
 .landing-orb-3 {
-  background: radial-gradient(circle, hsla(24, 50%, 60%, 0.04) 0%, transparent 70%);
+  background: radial-gradient(circle, hsla(24, 70%, 60%, 0.05) 0%, transparent 70%);
   animation: landing-orb-drift 20s ease-in-out infinite 3s;
 }
 @keyframes landing-orb-drift {
@@ -497,34 +514,34 @@
 }
 .landing-card:hover {
   border-color: hsl(var(--landing-accent) / 0.3);
-  box-shadow: 0 8px 40px -12px hsla(24, 70%, 50%, 0.1);
+  box-shadow: 0 8px 40px -12px hsla(24, 85%, 55%, 0.15);
 }
 
 /* Accent card (for pricing) */
 .landing-card-accent {
   background: hsl(var(--landing-card-bg));
-  border: 1px solid hsl(var(--landing-accent) / 0.2);
+  border: 1px solid hsl(var(--landing-accent) / 0.25);
   box-shadow:
-    0 0 0 1px hsl(var(--landing-accent) / 0.05),
-    0 4px 30px -8px hsla(24, 70%, 50%, 0.1);
+    0 0 0 1px hsl(var(--landing-accent) / 0.08),
+    0 4px 30px -8px hsla(24, 85%, 55%, 0.15);
 }
 
 /* CTA Button */
 .landing-cta-btn {
-  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(24 55% 42%));
-  color: hsl(40, 33%, 98%);
-  box-shadow: 0 4px 20px -4px hsla(24, 70%, 50%, 0.35);
+  background: linear-gradient(135deg, hsl(var(--landing-accent)), hsl(24 70% 42%));
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0 4px 20px -4px hsla(24, 85%, 55%, 0.4);
   transition: all 0.3s ease;
 }
 .landing-cta-btn:hover {
-  box-shadow: 0 6px 30px -4px hsla(24, 70%, 50%, 0.5);
+  box-shadow: 0 6px 30px -4px hsla(24, 85%, 55%, 0.6);
   transform: translateY(-1px);
 }
 
 /* CTA section background */
 .landing-cta-section {
   background:
-    radial-gradient(ellipse at 30% 50%, hsla(24, 70%, 50%, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 40%, hsla(340, 45%, 55%, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 50%, hsla(24, 85%, 55%, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 40%, hsla(30, 90%, 45%, 0.06) 0%, transparent 50%),
     hsl(var(--landing-bg));
 }
