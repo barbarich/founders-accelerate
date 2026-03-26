@@ -98,6 +98,121 @@ function SketchChart({ className = "" }: { className?: string }) {
   );
 }
 
+/* ============================
+   Section Visual Illustrations
+   ============================ */
+
+function DotGrid({ className = "", rows = 5, cols = 8 }: { className?: string; rows?: number; cols?: number }) {
+  const dots = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      dots.push(<circle key={`${r}-${c}`} cx={c * 14 + 7} cy={r * 14 + 7} r="1.5" fill="currentColor" opacity={0.08 + Math.random() * 0.07} />);
+    }
+  }
+  return (
+    <svg viewBox={`0 0 ${cols * 14} ${rows * 14}`} className={className} xmlns="http://www.w3.org/2000/svg">
+      {dots}
+    </svg>
+  );
+}
+
+function SketchCompass({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.2" opacity="0.25" />
+      <circle cx="24" cy="24" r="12" stroke="currentColor" strokeWidth="0.8" opacity="0.15" strokeDasharray="3 3" />
+      <path d="M24 6V10M24 38V42M6 24H10M38 24H42" stroke="currentColor" strokeWidth="1" opacity="0.2" strokeLinecap="round" />
+      <polygon points="24,12 27,22 24,20 21,22" fill="currentColor" opacity="0.35" />
+      <polygon points="24,36 21,26 24,28 27,26" fill="currentColor" opacity="0.15" />
+      <circle cx="24" cy="24" r="2" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+function SketchTarget({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="1" opacity="0.15" />
+      <circle cx="24" cy="24" r="14" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+      <circle cx="24" cy="24" r="8" stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
+      <circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.35" />
+      <path d="M24 4V12M24 36V44M4 24H12M36 24H44" stroke="currentColor" strokeWidth="0.6" opacity="0.1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SketchSeedling({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 40V24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35" />
+      <path d="M24 28C18 28 14 22 14 16C20 16 24 20 24 24" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.3" />
+      <path d="M24 24C30 22 34 16 34 10C28 12 24 18 24 24" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.3" />
+      <path d="M16 42H32" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15" />
+      <circle cx="24" cy="24" r="1.5" fill="currentColor" opacity="0.25" />
+    </svg>
+  );
+}
+
+function SketchLightning({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M26 6L16 24H24L22 42L34 22H26L26 6Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35" />
+      <path d="M26 6L16 24H24L22 42L34 22H26L26 6Z" fill="currentColor" opacity="0.06" />
+    </svg>
+  );
+}
+
+function SketchPeople({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="5" stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
+      <path d="M6 34C6 28 10 24 16 24C22 24 26 28 26 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.25" />
+      <circle cx="34" cy="18" r="4" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+      <path d="M26 36C26 31 29 28 34 28C39 28 42 31 42 36" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15" />
+    </svg>
+  );
+}
+
+function SketchDiamond({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 18L24 6L36 18L24 42L12 18Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" opacity="0.3" />
+      <path d="M12 18H36" stroke="currentColor" strokeWidth="0.8" opacity="0.2" />
+      <path d="M18 18L24 6L30 18" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M18 18L24 42L30 18" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M12 18L24 6L36 18L24 42L12 18Z" fill="currentColor" opacity="0.03" />
+    </svg>
+  );
+}
+
+function SketchMountain({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 55L35 15L50 35L65 10L95 55" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2" />
+      <path d="M65 10L72 18L58 18Z" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M0 55H120" stroke="currentColor" strokeWidth="0.8" opacity="0.1" />
+      <circle cx="100" cy="15" r="6" stroke="currentColor" strokeWidth="0.8" opacity="0.12" />
+      <path d="M100 9L100 21M94 15L106 15" stroke="currentColor" strokeWidth="0.4" opacity="0.08" />
+    </svg>
+  );
+}
+
+function SketchPath({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 200 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 60C30 60 40 20 70 20C100 20 100 55 130 55C160 55 170 25 190 25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.2" strokeDasharray="6 4" />
+      <circle cx="10" cy="60" r="4" stroke="currentColor" strokeWidth="1" opacity="0.25" />
+      <circle cx="10" cy="60" r="1.5" fill="currentColor" opacity="0.2" />
+      <path d="M186 21L192 25L186 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
+      {/* Milestone dots */}
+      <circle cx="70" cy="20" r="2.5" fill="currentColor" opacity="0.15" />
+      <circle cx="130" cy="55" r="2.5" fill="currentColor" opacity="0.15" />
+    </svg>
+  );
+}
+
+const whoIcons = [SketchCompass, SketchSeedling, SketchLightning, SketchPeople];
+
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useInView();
