@@ -309,6 +309,7 @@ export default function Mentor() {
           </div>
         </div>
       </footer>
+      </div>{/* end landing-content */}
     </div>
   );
 }
