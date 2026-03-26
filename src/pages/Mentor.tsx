@@ -107,31 +107,30 @@ export default function Mentor() {
                 </p>
               </Reveal>
 
-              {/* Key facts as a clean list */}
+              {/* Key facts — single column, larger text */}
               <Reveal delay={200}>
-                <div
-                  className="rounded-xl p-5 md:p-6"
-                  style={{
-                    background: "hsl(var(--landing-card-bg))",
-                    border: "1px solid hsl(var(--landing-border))",
-                  }}
-                >
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-3">
-                    {t.mentorBio.map((b: string, i: number) => (
-                      <div key={i} className="flex items-start gap-2">
-                        <div
-                          className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
-                          style={{ background: "hsl(var(--landing-accent))" }}
-                        />
-                        <span
-                          className="text-[13px] leading-snug"
-                          style={{ color: "hsl(var(--landing-text) / 0.75)" }}
-                        >
-                          {b}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                <div className="space-y-3">
+                  {t.mentorBio.map((b: string, i: number) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-3 rounded-lg px-4 py-3"
+                      style={{
+                        background: "hsl(var(--landing-card-bg))",
+                        border: "1px solid hsl(var(--landing-border))",
+                      }}
+                    >
+                      <div
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{ background: "hsl(var(--landing-accent))" }}
+                      />
+                      <span
+                        className="text-sm md:text-base font-medium"
+                        style={{ color: "hsl(var(--landing-text) / 0.85)" }}
+                      >
+                        {b}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </Reveal>
             </div>
