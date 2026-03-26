@@ -78,6 +78,10 @@ export interface Translations {
   consultPrice: string;
   consultPriceSub: string;
 
+  testimonialsTag: string;
+  testimonialsTitle: string;
+  testimonials: { name: string; role: string; text: string }[];
+
   faqTag: string;
   faqTitle: string;
   faqItems: { q: string; a: string }[];

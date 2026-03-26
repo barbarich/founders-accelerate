@@ -663,6 +663,39 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══════════════ TESTIMONIALS ═══════════════ */}
+      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))]">
+        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
+          <Reveal>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.testimonialsTag}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-4xl md:text-6xl font-bold text-[hsl(var(--landing-text))] mb-16 font-display">{t.testimonialsTitle}</h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {t.testimonials.map((item: any, i: number) => (
+              <Reveal key={i} delay={i * 80}>
+                <div
+                  className={`landing-card rounded-xl p-6 md:p-8 h-full flex flex-col justify-between ${i === 0 ? "lg:col-span-1 lg:row-span-2" : ""}`}
+                >
+                  <div>
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" fill="currentColor" style={{ color: "hsl(var(--landing-accent))" }}>
+                      <path d="M11 7.05C7.26 7.56 4.5 10.59 4.5 14.24V17h5V12H6.83c.46-2.47 2.34-4.35 4.17-4.95V7.05zM19.5 7.05c-3.74.51-6.5 3.54-6.5 7.19V17h5V12h-2.67c.46-2.47 2.34-4.35 4.17-4.95V7.05z"/>
+                    </svg>
+                    <p className="text-[15px] md:text-base leading-[1.75] text-[hsl(var(--landing-text))]/80 mb-6">{item.text}</p>
+                  </div>
+                  <div className="pt-4 border-t border-[hsl(var(--landing-border))]">
+                    <p className="text-sm font-semibold text-[hsl(var(--landing-text))]">{item.name}</p>
+                    <p className="text-xs text-[hsl(var(--landing-muted))] mt-0.5">{item.role}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════ PRICING ═══════════════ */}
       <section id="pricing" className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
