@@ -285,12 +285,8 @@ export default function Landing() {
         <div className="flex flex-col lg:flex-row min-h-[80vh]">
           <Reveal className="w-full lg:w-[45%] relative">
             <div className="h-[50vh] lg:h-full lg:absolute lg:inset-0">
-              <img src={photo} alt={t.mentorTitle} className="w-full h-full object-cover object-top opacity-70" />
-              {/* Heavy multi-directional fade into background */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-[hsl(var(--landing-bg))]/60 to-[hsl(var(--landing-bg))]/30" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--landing-bg))]/80 via-transparent to-transparent" />
-              <div className="absolute inset-0 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[hsl(var(--landing-bg))]" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--landing-bg))]/50 via-transparent to-transparent" />
+              <img src={photo} alt={t.mentorTitle} className="w-full h-full object-cover object-top" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[hsl(var(--landing-bg))]" />
             </div>
           </Reveal>
 
