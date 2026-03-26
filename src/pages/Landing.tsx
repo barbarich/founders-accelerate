@@ -376,10 +376,10 @@ export default function Landing() {
           <div className="flex flex-col sm:flex-row items-start gap-5 landing-fade-up landing-delay-500 mb-6">
             <Link
               to={applyUrl}
-              className="group landing-cta-btn px-8 py-4 rounded-full text-base font-semibold transition-all inline-flex items-center gap-3"
+              className="group landing-cta-btn px-10 py-5 rounded-full text-lg font-semibold transition-all inline-flex items-center gap-3"
             >
               {t.heroCTA}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
