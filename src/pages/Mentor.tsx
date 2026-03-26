@@ -21,6 +21,10 @@ export default function Mentor() {
 
   return (
     <div className="min-h-screen landing-wrapper">
+      {/* Stripes background */}
+      <div className="landing-stripes" />
+      <div className="landing-content">
+
       {/* Nav */}
       <nav
         className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl"
@@ -57,26 +61,26 @@ export default function Mentor() {
 
       {/* Hero — Large cinematic photo with overlay */}
       <section className="pt-20 md:pt-24 relative">
-        <div className="absolute inset-0 landing-hero-mesh" />
         <div className="relative max-w-[1100px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-0 md:gap-8 rtl:md:gap-10 items-stretch min-h-[70vh] md:min-h-[75vh]">
             
-            {/* Left — Photo taking full column height */}
+            {/* Left — Photo with smooth edge blending */}
             <Reveal className="relative">
-              <div
-                className="relative w-full h-[50vh] md:h-full rounded-2xl md:rounded-r-none md:rounded-l-2xl overflow-hidden"
-                style={{ boxShadow: "0 20px 60px -15px hsl(var(--landing-accent) / 0.15)" }}
-              >
+              <div className="relative w-full h-[50vh] md:h-full overflow-hidden">
                 <img
                   src={photo}
                   alt={t.mentorTitle}
                   className="w-full h-full object-cover object-top"
                 />
-                {/* Subtle gradient overlay at bottom */}
-                <div
-                  className="absolute inset-x-0 bottom-0 h-1/3 md:hidden"
-                  style={{ background: "linear-gradient(to top, hsl(var(--landing-bg)), transparent)" }}
-                />
+                {/* Multi-directional fade */}
+                <div className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+                  style={{ background: "linear-gradient(to top, hsl(var(--landing-bg)), transparent)" }} />
+                <div className="absolute inset-x-0 top-0 h-1/3 pointer-events-none"
+                  style={{ background: "linear-gradient(to bottom, hsl(var(--landing-bg)), transparent)" }} />
+                <div className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
+                  style={{ background: "linear-gradient(to right, hsl(var(--landing-bg)), transparent)" }} />
+                <div className="absolute inset-y-0 right-0 w-1/3 pointer-events-none"
+                  style={{ background: "linear-gradient(to left, hsl(var(--landing-bg)), transparent)" }} />
               </div>
             </Reveal>
 
@@ -305,6 +309,7 @@ export default function Mentor() {
           </div>
         </div>
       </footer>
+      </div>{/* end landing-content */}
     </div>
   );
 }
