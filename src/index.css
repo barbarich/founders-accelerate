@@ -53,8 +53,8 @@
     --landing-text: 30 20% 92%;
     --landing-muted: 25 10% 50%;
     --landing-border: 20 10% 14%;
-    --landing-accent: 24 85% 55%;
-    --landing-accent-2: 30 90% 45%;
+    --landing-accent: 38 50% 60%;
+    --landing-accent-2: 35 45% 50%;
     --landing-card-bg: 20 12% 9%;
     --landing-card-border: 20 10% 16%;
   }
@@ -434,7 +434,7 @@
 
 /* Stat number gradient */
 .landing-stat-number {
-  background: linear-gradient(135deg, hsl(24 90% 65%), hsl(30 85% 55%), hsl(20 80% 45%));
+  background: linear-gradient(135deg, hsl(38 55% 68%), hsl(35 50% 55%), hsl(32 40% 42%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -449,16 +449,16 @@
 }
 .landing-card:hover {
   background: hsla(0, 0%, 100%, 0.06);
-  border-color: hsla(24, 85%, 55%, 0.2);
-  box-shadow: 0 8px 40px -12px hsla(24, 85%, 55%, 0.2);
+  border-color: hsla(38, 50%, 60%, 0.2);
+  box-shadow: 0 8px 40px -12px hsla(38, 50%, 60%, 0.2);
 }
 
 /* Accent card (for pricing) */
 .landing-card-accent {
-  background: hsla(24, 85%, 55%, 0.05);
-  border: 1px solid hsla(24, 85%, 55%, 0.2);
+  background: hsla(38, 50%, 60%, 0.05);
+  border: 1px solid hsla(38, 50%, 60%, 0.2);
   backdrop-filter: blur(20px);
-  box-shadow: 0 0 60px -20px hsla(24, 85%, 55%, 0.15);
+  box-shadow: 0 0 60px -20px hsla(38, 50%, 60%, 0.15);
 }
 
 /* CTA Button */
