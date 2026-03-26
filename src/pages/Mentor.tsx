@@ -59,7 +59,7 @@ export default function Mentor() {
       <section className="pt-20 md:pt-24 relative">
         <div className="absolute inset-0 landing-hero-mesh" />
         <div className="relative max-w-[1100px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-0 md:gap-0 items-stretch min-h-[70vh] md:min-h-[75vh]">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-0 md:gap-8 rtl:md:gap-10 items-stretch min-h-[70vh] md:min-h-[75vh]">
             
             {/* Left — Photo taking full column height */}
             <Reveal className="relative">
