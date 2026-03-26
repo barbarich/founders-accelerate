@@ -98,6 +98,121 @@ function SketchChart({ className = "" }: { className?: string }) {
   );
 }
 
+/* ============================
+   Section Visual Illustrations
+   ============================ */
+
+function DotGrid({ className = "", rows = 5, cols = 8 }: { className?: string; rows?: number; cols?: number }) {
+  const dots = [];
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      dots.push(<circle key={`${r}-${c}`} cx={c * 14 + 7} cy={r * 14 + 7} r="1.5" fill="currentColor" opacity={0.08 + Math.random() * 0.07} />);
+    }
+  }
+  return (
+    <svg viewBox={`0 0 ${cols * 14} ${rows * 14}`} className={className} xmlns="http://www.w3.org/2000/svg">
+      {dots}
+    </svg>
+  );
+}
+
+function SketchCompass({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.2" opacity="0.25" />
+      <circle cx="24" cy="24" r="12" stroke="currentColor" strokeWidth="0.8" opacity="0.15" strokeDasharray="3 3" />
+      <path d="M24 6V10M24 38V42M6 24H10M38 24H42" stroke="currentColor" strokeWidth="1" opacity="0.2" strokeLinecap="round" />
+      <polygon points="24,12 27,22 24,20 21,22" fill="currentColor" opacity="0.35" />
+      <polygon points="24,36 21,26 24,28 27,26" fill="currentColor" opacity="0.15" />
+      <circle cx="24" cy="24" r="2" fill="currentColor" opacity="0.3" />
+    </svg>
+  );
+}
+
+function SketchTarget({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="1" opacity="0.15" />
+      <circle cx="24" cy="24" r="14" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+      <circle cx="24" cy="24" r="8" stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
+      <circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.35" />
+      <path d="M24 4V12M24 36V44M4 24H12M36 24H44" stroke="currentColor" strokeWidth="0.6" opacity="0.1" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function SketchSeedling({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 40V24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.35" />
+      <path d="M24 28C18 28 14 22 14 16C20 16 24 20 24 24" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.3" />
+      <path d="M24 24C30 22 34 16 34 10C28 12 24 18 24 24" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.3" />
+      <path d="M16 42H32" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15" />
+      <circle cx="24" cy="24" r="1.5" fill="currentColor" opacity="0.25" />
+    </svg>
+  );
+}
+
+function SketchLightning({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M26 6L16 24H24L22 42L34 22H26L26 6Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.35" />
+      <path d="M26 6L16 24H24L22 42L34 22H26L26 6Z" fill="currentColor" opacity="0.06" />
+    </svg>
+  );
+}
+
+function SketchPeople({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="5" stroke="currentColor" strokeWidth="1.2" opacity="0.3" />
+      <path d="M6 34C6 28 10 24 16 24C22 24 26 28 26 34" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.25" />
+      <circle cx="34" cy="18" r="4" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+      <path d="M26 36C26 31 29 28 34 28C39 28 42 31 42 36" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.15" />
+    </svg>
+  );
+}
+
+function SketchDiamond({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 18L24 6L36 18L24 42L12 18Z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" opacity="0.3" />
+      <path d="M12 18H36" stroke="currentColor" strokeWidth="0.8" opacity="0.2" />
+      <path d="M18 18L24 6L30 18" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M18 18L24 42L30 18" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M12 18L24 6L36 18L24 42L12 18Z" fill="currentColor" opacity="0.03" />
+    </svg>
+  );
+}
+
+function SketchMountain({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 120 60" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 55L35 15L50 35L65 10L95 55" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.2" />
+      <path d="M65 10L72 18L58 18Z" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+      <path d="M0 55H120" stroke="currentColor" strokeWidth="0.8" opacity="0.1" />
+      <circle cx="100" cy="15" r="6" stroke="currentColor" strokeWidth="0.8" opacity="0.12" />
+      <path d="M100 9L100 21M94 15L106 15" stroke="currentColor" strokeWidth="0.4" opacity="0.08" />
+    </svg>
+  );
+}
+
+function SketchPath({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 200 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 60C30 60 40 20 70 20C100 20 100 55 130 55C160 55 170 25 190 25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.2" strokeDasharray="6 4" />
+      <circle cx="10" cy="60" r="4" stroke="currentColor" strokeWidth="1" opacity="0.25" />
+      <circle cx="10" cy="60" r="1.5" fill="currentColor" opacity="0.2" />
+      <path d="M186 21L192 25L186 29" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.3" />
+      {/* Milestone dots */}
+      <circle cx="70" cy="20" r="2.5" fill="currentColor" opacity="0.15" />
+      <circle cx="130" cy="55" r="2.5" fill="currentColor" opacity="0.15" />
+    </svg>
+  );
+}
+
+const whoIcons = [SketchCompass, SketchSeedling, SketchLightning, SketchPeople];
+
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useInView();
@@ -343,9 +458,16 @@ export default function Landing() {
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
+          {/* Dot grid decoration */}
+          <div className="hidden lg:block absolute top-[18%] right-[8%] opacity-40">
+            <DotGrid className="w-[180px] h-[120px] text-[hsl(var(--landing-accent))]" rows={6} cols={10} />
+          </div>
+          {/* Path illustration */}
+          <div className="hidden lg:block absolute bottom-[15%] left-[5%]">
+            <SketchPath className="w-[280px] h-[100px] text-[hsl(var(--landing-accent))]" />
+          </div>
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
@@ -404,6 +526,10 @@ export default function Landing() {
       {/* ═══════════════ PROBLEM ═══════════════ */}
       <section className="py-24 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
+        {/* Mountain illustration */}
+        <div className="hidden lg:block absolute bottom-[10%] right-[3%] pointer-events-none">
+          <SketchMountain className="w-[200px] h-[100px] text-[hsl(var(--landing-accent))]" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
@@ -438,17 +564,24 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {t.whoItems.map((item: any, i: number) => (
-              <Reveal key={i} delay={i * 120}>
-                <div className="landing-card rounded-xl p-6 md:p-8 h-full group hover:-translate-y-1 transition-all duration-500">
-                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--landing-accent))]/10 flex items-center justify-center mb-5">
-                    <span className="text-[hsl(var(--landing-accent))] font-mono text-sm font-bold">{i + 1}</span>
+            {t.whoItems.map((item: any, i: number) => {
+              const Icon = whoIcons[i] || SketchCompass;
+              return (
+                <Reveal key={i} delay={i * 120}>
+                  <div className="landing-card rounded-xl p-6 md:p-8 h-full group hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+                    {/* Background dot grid */}
+                    <div className="absolute top-3 right-3 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      <DotGrid className="w-[70px] h-[56px] text-[hsl(var(--landing-accent))]" rows={4} cols={5} />
+                    </div>
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--landing-accent))]/8 flex items-center justify-center mb-5 group-hover:bg-[hsl(var(--landing-accent))]/15 transition-colors">
+                      <Icon className="w-7 h-7 text-[hsl(var(--landing-accent))]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-2">{item.title}</h3>
+                    <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{item.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{item.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -581,6 +714,10 @@ export default function Landing() {
         <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
           <SketchTrophy className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
+        {/* Dot grid left side */}
+        <div className="hidden lg:block absolute left-[2%] bottom-[15%] pointer-events-none opacity-30">
+          <DotGrid className="w-[100px] h-[100px] text-[hsl(var(--landing-accent))]" rows={7} cols={7} />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.resultsTag}</p>
@@ -593,18 +730,27 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
-            {t.resultsItems.map((r: any, i: number) => {
-              const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
-              return (
-                <Reveal key={i} delay={i * 100} className={span}>
-                  <div className="landing-card rounded-xl p-6 md:p-8 h-full transition-all duration-500 group cursor-default">
-                    <span className="landing-stat-number font-mono text-3xl font-bold mb-4 block">0{i + 1}</span>
-                    <h3 className="text-lg md:text-xl font-semibold text-[hsl(var(--landing-text))] mb-2">{r.title}</h3>
-                    <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{r.desc}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
+            {(() => {
+              const resultIcons = [SketchTarget, SketchDiamond, SketchSeedling, SketchLightning, SketchCompass];
+              return t.resultsItems.map((r: any, i: number) => {
+                const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
+                const Icon = resultIcons[i] || SketchTarget;
+                return (
+                  <Reveal key={i} delay={i * 100} className={span}>
+                    <div className="landing-card rounded-xl p-6 md:p-8 h-full transition-all duration-500 group cursor-default relative overflow-hidden">
+                      {/* Subtle accent line top */}
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--landing-accent))]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="flex items-start justify-between mb-4">
+                        <span className="landing-stat-number font-mono text-3xl font-bold">0{i + 1}</span>
+                        <Icon className="w-10 h-10 text-[hsl(var(--landing-accent))] opacity-30 group-hover:opacity-50 transition-opacity" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-semibold text-[hsl(var(--landing-text))] mb-2">{r.title}</h3>
+                      <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{r.desc}</p>
+                    </div>
+                  </Reveal>
+                );
+              });
+            })()}
           </div>
         </div>
       </section>
@@ -614,6 +760,10 @@ export default function Landing() {
 
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
       <section className="py-24 md:py-40 relative">
+        {/* Decorative path */}
+        <div className="hidden lg:block absolute top-[12%] right-[5%] pointer-events-none">
+          <SketchPath className="w-[240px] h-[80px] text-[hsl(var(--landing-accent))] opacity-60" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.formatTag}</p>
@@ -626,30 +776,46 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {t.formatColumns.map((col: any, i: number) => (
-              <Reveal key={i} delay={i * 150}>
-                <div className="group rounded-xl p-6 md:p-8 border-t-2 border-[hsl(var(--landing-accent))]/40 landing-card hover:-translate-y-1 transition-all duration-500">
-                  <div className="mb-5">
-                    <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-1">{col.title}</h3>
-                    <span className="text-xs font-mono text-[hsl(var(--landing-accent))]">{col.sub}</span>
-                  </div>
-                  <div className="space-y-3">
-                    {col.items.map((item: string, j: number) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))]/40 mt-2 shrink-0" />
-                        <p className="text-sm text-[hsl(var(--landing-text))]/80 leading-relaxed">{item}</p>
+            {(() => {
+              const formatIcons = [SketchPeople, SketchTarget, SketchDiamond];
+              return t.formatColumns.map((col: any, i: number) => {
+                const Icon = formatIcons[i];
+                return (
+                  <Reveal key={i} delay={i * 150}>
+                    <div className="group rounded-xl p-6 md:p-8 border-t-2 border-[hsl(var(--landing-accent))]/40 landing-card hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute -bottom-4 -right-4 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <Icon className="w-24 h-24 text-[hsl(var(--landing-accent))] opacity-[0.06]" />
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                      <div className="mb-5">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--landing-accent))]/8 flex items-center justify-center mb-4">
+                          <Icon className="w-5 h-5 text-[hsl(var(--landing-accent))]" />
+                        </div>
+                        <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-1">{col.title}</h3>
+                        <span className="text-xs font-mono text-[hsl(var(--landing-accent))]">{col.sub}</span>
+                      </div>
+                      <div className="space-y-3">
+                        {col.items.map((item: string, j: number) => (
+                          <div key={j} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))]/40 mt-2 shrink-0" />
+                            <p className="text-sm text-[hsl(var(--landing-text))]/80 leading-relaxed">{item}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              });
+            })()}
           </div>
         </div>
       </section>
 
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
-      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))]">
+      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
+        {/* Decorative dot grid */}
+        <div className="hidden lg:block absolute top-[10%] left-[3%] pointer-events-none opacity-30">
+          <DotGrid className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))]" rows={5} cols={5} />
+        </div>
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.testimonialsTag}</p>
@@ -659,24 +825,37 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.testimonials.map((item: any, i: number) => (
-              <Reveal key={i} delay={i * 80}>
-                <div
-                  className={`landing-card rounded-xl p-6 md:p-8 h-full flex flex-col justify-between ${i === 0 ? "lg:col-span-1 lg:row-span-2" : ""}`}
-                >
-                  <div>
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" fill="currentColor" style={{ color: "hsl(var(--landing-accent))" }}>
-                      <path d="M11 7.05C7.26 7.56 4.5 10.59 4.5 14.24V17h5V12H6.83c.46-2.47 2.34-4.35 4.17-4.95V7.05zM19.5 7.05c-3.74.51-6.5 3.54-6.5 7.19V17h5V12h-2.67c.46-2.47 2.34-4.35 4.17-4.95V7.05z"/>
-                    </svg>
-                    <p className="text-[15px] md:text-base leading-[1.75] text-[hsl(var(--landing-text))]/80 mb-6">{item.text}</p>
+            {t.testimonials.map((item: any, i: number) => {
+              // Generate initials avatar colors
+              const avatarColors = ["hsl(24 60% 50%)", "hsl(340 40% 50%)", "hsl(200 50% 45%)", "hsl(160 40% 40%)", "hsl(280 35% 50%)"];
+              const initials = item.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2);
+              return (
+                <Reveal key={i} delay={i * 80}>
+                  <div
+                    className={`landing-card rounded-xl p-6 md:p-8 h-full flex flex-col justify-between ${i === 0 ? "lg:col-span-1 lg:row-span-2" : ""}`}
+                  >
+                    <div>
+                      <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" fill="currentColor" style={{ color: "hsl(var(--landing-accent))" }}>
+                        <path d="M11 7.05C7.26 7.56 4.5 10.59 4.5 14.24V17h5V12H6.83c.46-2.47 2.34-4.35 4.17-4.95V7.05zM19.5 7.05c-3.74.51-6.5 3.54-6.5 7.19V17h5V12h-2.67c.46-2.47 2.34-4.35 4.17-4.95V7.05z"/>
+                      </svg>
+                      <p className="text-[15px] md:text-base leading-[1.75] text-[hsl(var(--landing-text))]/80 mb-6">{item.text}</p>
+                    </div>
+                    <div className="pt-4 border-t border-[hsl(var(--landing-border))] flex items-center gap-3">
+                      <div
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold tracking-wide shrink-0"
+                        style={{ background: avatarColors[i % avatarColors.length], color: "hsl(40, 33%, 98%)" }}
+                      >
+                        {initials}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[hsl(var(--landing-text))]">{item.name}</p>
+                        <p className="text-xs text-[hsl(var(--landing-muted))] mt-0.5">{item.role}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="pt-4 border-t border-[hsl(var(--landing-border))]">
-                    <p className="text-sm font-semibold text-[hsl(var(--landing-text))]">{item.name}</p>
-                    <p className="text-xs text-[hsl(var(--landing-muted))] mt-0.5">{item.role}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
