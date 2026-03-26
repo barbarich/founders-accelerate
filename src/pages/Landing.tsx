@@ -760,6 +760,10 @@ export default function Landing() {
 
       {/* ═══════════════ FORMAT — THREE PILLARS ═══════════════ */}
       <section className="py-24 md:py-40 relative">
+        {/* Decorative path */}
+        <div className="hidden lg:block absolute top-[12%] right-[5%] pointer-events-none">
+          <SketchPath className="w-[240px] h-[80px] text-[hsl(var(--landing-accent))] opacity-60" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.formatTag}</p>
@@ -772,24 +776,36 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {t.formatColumns.map((col: any, i: number) => (
-              <Reveal key={i} delay={i * 150}>
-                <div className="group rounded-xl p-6 md:p-8 border-t-2 border-[hsl(var(--landing-accent))]/40 landing-card hover:-translate-y-1 transition-all duration-500">
-                  <div className="mb-5">
-                    <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-1">{col.title}</h3>
-                    <span className="text-xs font-mono text-[hsl(var(--landing-accent))]">{col.sub}</span>
-                  </div>
-                  <div className="space-y-3">
-                    {col.items.map((item: string, j: number) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))]/40 mt-2 shrink-0" />
-                        <p className="text-sm text-[hsl(var(--landing-text))]/80 leading-relaxed">{item}</p>
+            {(() => {
+              const formatIcons = [SketchPeople, SketchTarget, SketchDiamond];
+              return t.formatColumns.map((col: any, i: number) => {
+                const Icon = formatIcons[i];
+                return (
+                  <Reveal key={i} delay={i * 150}>
+                    <div className="group rounded-xl p-6 md:p-8 border-t-2 border-[hsl(var(--landing-accent))]/40 landing-card hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+                      <div className="absolute -bottom-4 -right-4 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <Icon className="w-24 h-24 text-[hsl(var(--landing-accent))] opacity-[0.06]" />
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                      <div className="mb-5">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--landing-accent))]/8 flex items-center justify-center mb-4">
+                          <Icon className="w-5 h-5 text-[hsl(var(--landing-accent))]" />
+                        </div>
+                        <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-1">{col.title}</h3>
+                        <span className="text-xs font-mono text-[hsl(var(--landing-accent))]">{col.sub}</span>
+                      </div>
+                      <div className="space-y-3">
+                        {col.items.map((item: string, j: number) => (
+                          <div key={j} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--landing-accent))]/40 mt-2 shrink-0" />
+                            <p className="text-sm text-[hsl(var(--landing-text))]/80 leading-relaxed">{item}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              });
+            })()}
           </div>
         </div>
       </section>
