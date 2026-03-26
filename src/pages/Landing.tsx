@@ -284,9 +284,18 @@ export default function Landing() {
       <section className="landing-content py-0 relative overflow-hidden">
         <div className="flex flex-col lg:flex-row min-h-[80vh]">
           <Reveal className="w-full lg:w-[45%] relative">
-            <div className="h-[50vh] lg:h-full lg:absolute lg:inset-0">
+            <div className="h-[60vh] lg:h-full lg:absolute lg:inset-0">
               <img src={photo} alt={t.mentorTitle} className="w-full h-full object-cover object-top" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[hsl(var(--landing-bg))]" />
+              {/* Bottom fade */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--landing-bg))] via-[hsl(var(--landing-bg)/0.3)] to-transparent" style={{ top: '40%' }} />
+              {/* Top fade */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--landing-bg))] to-transparent" style={{ bottom: '70%' }} />
+              {/* Left fade */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--landing-bg))] to-transparent" style={{ right: '70%' }} />
+              {/* Right fade */}
+              <div className="absolute inset-0 bg-gradient-to-l from-[hsl(var(--landing-bg))] to-transparent" style={{ left: '70%' }} />
+              {/* Desktop: stronger right fade for text area */}
+              <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-transparent via-[hsl(var(--landing-bg)/0.4)] to-[hsl(var(--landing-bg))]" style={{ left: '30%' }} />
             </div>
           </Reveal>
 
