@@ -705,9 +705,11 @@ export default function Landing() {
             <Reveal delay={200}>
               <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
                 {/* Popular badge */}
-                <div className="flex items-start justify-between mb-1">
+                <div className="flex items-center justify-between mb-1">
                   <h3 className="text-2xl md:text-3xl font-bold text-[hsl(var(--landing-text))] font-display">{t.accelTitle}</h3>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[hsl(var(--landing-accent))] text-[hsl(var(--landing-bg))] text-[9px] md:text-[10px] font-semibold uppercase tracking-wider shrink-0 mt-1.5">
+                </div>
+                <div className="mb-1">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[hsl(var(--landing-accent))] text-[hsl(var(--landing-bg))] text-[8px] md:text-[9px] font-semibold uppercase tracking-wider">
                     <span className="w-1 h-1 rounded-full bg-[hsl(var(--landing-bg))] animate-pulse" />
                     {t.heroSpotsLeft}
                   </span>
