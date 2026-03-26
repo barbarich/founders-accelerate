@@ -368,7 +368,7 @@ export default function Landing() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
+          <p className="text-base md:text-lg text-[hsl(var(--landing-muted))] max-w-2xl leading-relaxed landing-fade-up landing-delay-400 mb-10">
             {t.heroSubtitle}
           </p>
 
