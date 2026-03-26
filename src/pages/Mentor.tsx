@@ -1,7 +1,7 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
 import { supportedLangs, langLabels } from "@/i18n/translations";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 import photo from "@/assets/slides/photo-michael.jpg";
@@ -21,237 +21,270 @@ export default function Mentor() {
 
   return (
     <div className="min-h-screen landing-wrapper">
-      {/* Nav */}
+      {/* Minimal top bar */}
       <nav
-        className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl"
-        style={{ background: "hsl(var(--landing-bg) / 0.85)", borderBottom: "1px solid hsl(var(--landing-border))" }}
+        className="fixed top-0 inset-x-0 z-50"
+        style={{
+          background: "hsl(var(--landing-bg) / 0.6)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+        }}
       >
-        <div className="max-w-[1100px] mx-auto flex items-center justify-between px-6 py-4">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between px-8 py-5">
           <Link
             to={`/${lang}`}
-            className="font-display text-lg font-bold inline-flex items-center gap-3"
-            style={{ color: "hsl(var(--landing-text))" }}
+            className="font-mono text-[11px] uppercase tracking-[0.25em]"
+            style={{ color: "hsl(var(--landing-muted))" }}
           >
-            <ArrowLeft size={16} style={{ color: "hsl(var(--landing-muted))" }} />
-            TFC
+            ← TFC
           </Link>
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-0.5">
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-1">
               {supportedLangs.map((l) => (
                 <Link
                   key={l}
                   to={`/${l}/mentor`}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded-md transition-all ${l === lang ? "text-white" : ""}`}
-                  style={l === lang ? { background: "hsl(var(--landing-accent))" } : { color: "hsl(var(--landing-muted))" }}
+                  className="px-2 py-1 text-[10px] font-mono uppercase tracking-wider transition-colors"
+                  style={{
+                    color: l === lang ? "hsl(var(--landing-text))" : "hsl(var(--landing-muted) / 0.5)",
+                    borderBottom: l === lang ? "1px solid hsl(var(--landing-text))" : "1px solid transparent",
+                  }}
                 >
                   {langLabels[l]}
                 </Link>
               ))}
             </div>
-            <Link to={applyUrl} className="landing-cta-btn px-5 py-2 rounded-lg text-sm font-semibold">
+            <Link
+              to={applyUrl}
+              className="text-[11px] font-mono uppercase tracking-[0.2em] px-5 py-2.5 rounded-none transition-all"
+              style={{
+                border: "1px solid hsl(var(--landing-text))",
+                color: "hsl(var(--landing-text))",
+              }}
+            >
               {t.navApply}
             </Link>
           </div>
         </div>
       </nav>
 
-      {/* Hero — Large cinematic photo with overlay */}
-      <section className="pt-20 md:pt-24 relative">
-        <div className="absolute inset-0 landing-hero-mesh" />
-        <div className="relative max-w-[1100px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-0 md:gap-0 items-stretch min-h-[70vh] md:min-h-[75vh]">
-            
-            {/* Left — Photo taking full column height */}
-            <Reveal className="relative">
-              <div
-                className="relative w-full h-[50vh] md:h-full rounded-2xl md:rounded-r-none md:rounded-l-2xl overflow-hidden"
-                style={{ boxShadow: "0 20px 60px -15px hsl(var(--landing-accent) / 0.15)" }}
+      {/* ═══ HERO — Full-bleed cinematic ═══ */}
+      <section className="relative min-h-screen flex items-end">
+        {/* Full background image */}
+        <div className="absolute inset-0">
+          <img
+            src={photo}
+            alt={t.mentorTitle}
+            className="w-full h-full object-cover object-[center_20%]"
+          />
+          {/* Dramatic gradient overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `
+                linear-gradient(to bottom, 
+                  hsl(var(--landing-bg) / 0.1) 0%, 
+                  hsl(var(--landing-bg) / 0.0) 30%, 
+                  hsl(var(--landing-bg) / 0.4) 60%, 
+                  hsl(var(--landing-bg) / 0.95) 85%, 
+                  hsl(var(--landing-bg)) 100%
+                )
+              `,
+            }}
+          />
+          <div
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background: `
+                linear-gradient(to right, 
+                  hsl(var(--landing-bg) / 0.85) 0%, 
+                  hsl(var(--landing-bg) / 0.3) 40%, 
+                  transparent 70%
+                )
+              `,
+            }}
+          />
+        </div>
+
+        {/* Content at bottom-left */}
+        <div className="relative z-10 max-w-[1400px] mx-auto w-full px-8 pb-16 md:pb-24 pt-[60vh] md:pt-0">
+          <div className="max-w-2xl">
+            <Reveal>
+              <p
+                className="font-mono text-[10px] uppercase tracking-[0.4em] mb-6"
+                style={{ color: "hsl(var(--landing-accent))" }}
               >
-                <img
-                  src={photo}
-                  alt={t.mentorTitle}
-                  className="w-full h-full object-cover object-top"
-                />
-                {/* Subtle gradient overlay at bottom */}
+                {t.mentorTag}
+              </p>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1
+                className="text-[clamp(2.5rem,6vw,5rem)] font-display font-bold leading-[1.05] mb-5"
+                style={{ color: "hsl(var(--landing-text))" }}
+              >
+                {t.mentorTitle}
+              </h1>
+            </Reveal>
+            <Reveal delay={140}>
+              <p
+                className="text-lg md:text-xl leading-relaxed max-w-lg"
+                style={{ color: "hsl(var(--landing-muted))" }}
+              >
+                {t.mentorSubtitle}
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ KEY FACTS — Horizontal strip ═══ */}
+      <section
+        style={{
+          background: "hsl(var(--landing-text))",
+          color: "hsl(var(--landing-bg))",
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto px-8 py-6 md:py-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x"
+            style={{ borderColor: "hsl(var(--landing-bg) / 0.15)" }}
+          >
+            {t.mentorBio.slice(0, 4).map((fact: string, i: number) => (
+              <Reveal key={i} delay={i * 60}>
+                <div className="py-4 md:py-8 md:px-8 first:md:pl-0 last:md:pr-0">
+                  <p className="text-[13px] md:text-sm font-medium leading-snug" style={{ color: "hsl(var(--landing-bg) / 0.85)" }}>
+                    {fact}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ MANIFESTO — Big editorial typography ═══ */}
+      <section className="py-24 md:py-40">
+        <div className="max-w-[1400px] mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-20">
+            {/* Left — sticky label */}
+            <Reveal>
+              <div className="md:sticky md:top-32">
                 <div
-                  className="absolute inset-x-0 bottom-0 h-1/3 md:hidden"
-                  style={{ background: "linear-gradient(to top, hsl(var(--landing-bg)), transparent)" }}
+                  className="w-12 h-[1px] mb-6"
+                  style={{ background: "hsl(var(--landing-accent))" }}
                 />
+                <p
+                  className="font-mono text-[10px] uppercase tracking-[0.4em]"
+                  style={{ color: "hsl(var(--landing-accent))" }}
+                >
+                  In my own words
+                </p>
               </div>
             </Reveal>
 
-            {/* Right — Name, subtitle, key facts */}
-            <div className="flex flex-col justify-center py-8 md:py-16 md:pl-12 lg:pl-16">
-              <Reveal>
-                <p
-                  className="text-[11px] font-mono uppercase tracking-[0.3em] mb-4 font-semibold"
-                  style={{ color: "hsl(var(--landing-accent))" }}
-                >
-                  {t.mentorTag}
-                </p>
-              </Reveal>
-              <Reveal delay={100}>
-                <h1
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 font-display leading-[1.1]"
-                  style={{ color: "hsl(var(--landing-text))" }}
-                >
-                  {t.mentorTitle}
-                </h1>
-              </Reveal>
-              <Reveal delay={150}>
-                <p
-                  className="text-base md:text-lg mb-8 max-w-md"
-                  style={{ color: "hsl(var(--landing-muted))" }}
-                >
-                  {t.mentorSubtitle}
-                </p>
-              </Reveal>
-
-              {/* Key facts — single column, larger text */}
-              <Reveal delay={200}>
-                <div className="space-y-3">
-                  {t.mentorBio.map((b: string, i: number) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-3 rounded-lg px-4 py-3"
+            {/* Right — text */}
+            <div className="max-w-[640px]">
+              {t.mentorStatement.map((paragraph: string, i: number) => {
+                const isLast = i === t.mentorStatement.length - 1;
+                const isFirst = i === 0;
+                return (
+                  <Reveal key={i} delay={i * 50}>
+                    <p
+                      className={`mb-8 ${
+                        isFirst
+                          ? "text-xl md:text-2xl font-display leading-[1.6]"
+                          : isLast
+                            ? "text-lg md:text-xl font-display font-semibold mt-12 pt-10 leading-[1.5]"
+                            : "text-[15px] md:text-[17px] leading-[1.9]"
+                      }`}
                       style={{
-                        background: "hsl(var(--landing-card-bg))",
-                        border: "1px solid hsl(var(--landing-border))",
+                        color: isFirst
+                          ? "hsl(var(--landing-text))"
+                          : isLast
+                            ? "hsl(var(--landing-accent))"
+                            : "hsl(var(--landing-text) / 0.65)",
+                        ...(isLast
+                          ? { borderTop: "1px solid hsl(var(--landing-accent) / 0.15)" }
+                          : {}),
                       }}
                     >
-                      <div
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ background: "hsl(var(--landing-accent))" }}
-                      />
-                      <span
-                        className="text-sm md:text-base font-medium"
-                        style={{ color: "hsl(var(--landing-text) / 0.85)" }}
-                      >
-                        {b}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+                      {paragraph}
+                    </p>
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Personal Statement — Editorial long-form */}
+      {/* ═══ TRACK RECORD — Asymmetric grid ═══ */}
       <section
-        className="py-20 md:py-32"
-        style={{ borderTop: "1px solid hsl(var(--landing-border))" }}
-      >
-        <div className="max-w-[720px] mx-auto px-6">
-          {/* Section label */}
-          <Reveal>
-            <p
-              className="text-[11px] font-mono uppercase tracking-[0.3em] mb-8 font-semibold"
-              style={{ color: "hsl(var(--landing-accent))" }}
-            >
-              In my own words
-            </p>
-          </Reveal>
-
-          {/* Statement paragraphs — clean editorial typography */}
-          <div className="space-y-6">
-            {t.mentorStatement.map((paragraph: string, i: number) => {
-              const isLast = i === t.mentorStatement.length - 1;
-              return (
-                <Reveal key={i} delay={i * 60}>
-                  <p
-                    className={`leading-[1.8] ${
-                      isLast
-                        ? "text-xl md:text-2xl font-display font-bold mt-10 pt-8"
-                        : i === 0
-                          ? "text-lg md:text-xl font-medium"
-                          : "text-base md:text-[17px]"
-                    }`}
-                    style={{
-                      color: isLast
-                        ? "hsl(var(--landing-accent))"
-                        : i === 0
-                          ? "hsl(var(--landing-text))"
-                          : "hsl(var(--landing-text) / 0.75)",
-                      ...(isLast
-                        ? { borderTop: "1px solid hsl(var(--landing-accent) / 0.2)" }
-                        : {}),
-                    }}
-                  >
-                    {paragraph}
-                  </p>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Track Record — Horizontal cards grid */}
-      <section
-        className="py-20 md:py-32"
+        className="py-24 md:py-40"
         style={{
           borderTop: "1px solid hsl(var(--landing-border))",
-          background: "hsl(var(--landing-card-bg) / 0.5)",
         }}
       >
-        <div className="max-w-[1100px] mx-auto px-6">
-          <Reveal>
-            <p
-              className="text-[11px] font-mono uppercase tracking-[0.3em] mb-3 font-semibold"
-              style={{ color: "hsl(var(--landing-accent))" }}
-            >
-              {t.trackTag}
-            </p>
-          </Reveal>
-          <Reveal delay={80}>
-            <h2
-              className="text-3xl md:text-5xl font-bold mb-14 font-display"
-              style={{ color: "hsl(var(--landing-text))" }}
-            >
-              {t.trackTitle}
-            </h2>
-          </Reveal>
-
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.trackItems.map((item: any, i: number) => (
-              <Reveal key={i} delay={i * 60}>
+        <div className="max-w-[1400px] mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-20 mb-16">
+            <Reveal>
+              <div>
                 <div
-                  className="rounded-xl p-6 h-full flex flex-col justify-between transition-all duration-300 hover:-translate-y-1"
+                  className="w-12 h-[1px] mb-6"
+                  style={{ background: "hsl(var(--landing-accent))" }}
+                />
+                <p
+                  className="font-mono text-[10px] uppercase tracking-[0.4em] mb-4"
+                  style={{ color: "hsl(var(--landing-accent))" }}
+                >
+                  {t.trackTag}
+                </p>
+                <h2
+                  className="text-3xl md:text-4xl font-display font-bold leading-tight"
+                  style={{ color: "hsl(var(--landing-text))" }}
+                >
+                  {t.trackTitle}
+                </h2>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Cards — staggered two-column */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:ml-[calc(280px+5rem)]">
+            {t.trackItems.map((item: any, i: number) => (
+              <Reveal key={i} delay={i * 40}>
+                <div
+                  className="group relative p-7 transition-all duration-500"
                   style={{
-                    background: "hsl(var(--landing-bg))",
-                    border: "1px solid hsl(var(--landing-border))",
-                    boxShadow: "0 2px 12px -4px hsl(var(--landing-accent) / 0.06)",
+                    borderLeft: "2px solid hsl(var(--landing-border))",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderLeftColor = `hsl(var(--landing-accent))`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderLeftColor = `hsl(var(--landing-border))`;
                   }}
                 >
-                  <div>
-                    <span
-                      className="text-[11px] font-mono tracking-wider block mb-2"
-                      style={{ color: "hsl(var(--landing-accent) / 0.5)" }}
-                    >
-                      {item.period}
-                    </span>
-                    <h3
-                      className="text-lg font-bold font-display mb-1"
-                      style={{ color: "hsl(var(--landing-text))" }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="text-sm mb-4"
-                      style={{ color: "hsl(var(--landing-muted))" }}
-                    >
-                      {item.subtitle}
-                    </p>
-                  </div>
                   <span
-                    className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full self-start"
-                    style={{
-                      color: "hsl(var(--landing-accent))",
-                      background: "hsl(var(--landing-accent) / 0.08)",
-                    }}
+                    className="font-mono text-[10px] tracking-[0.3em] uppercase block mb-3"
+                    style={{ color: "hsl(var(--landing-muted) / 0.5)" }}
+                  >
+                    {item.period}
+                  </span>
+                  <h3
+                    className="text-base font-semibold mb-1.5"
+                    style={{ color: "hsl(var(--landing-text))" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="text-[13px] leading-relaxed mb-4"
+                    style={{ color: "hsl(var(--landing-muted))" }}
+                  >
+                    {item.subtitle}
+                  </p>
+                  <span
+                    className="inline-block text-[11px] font-mono tracking-wider uppercase"
+                    style={{ color: "hsl(var(--landing-accent))" }}
                   >
                     {item.highlight}
                   </span>
@@ -262,42 +295,72 @@ export default function Mentor() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 md:py-28 landing-cta-section" style={{ borderTop: "1px solid hsl(var(--landing-border))" }}>
-        <div className="max-w-3xl mx-auto px-6 text-center">
+      {/* ═══ CTA — Minimal ═══ */}
+      <section
+        className="py-32 md:py-48"
+        style={{ borderTop: "1px solid hsl(var(--landing-border))" }}
+      >
+        <div className="max-w-[1400px] mx-auto px-8 text-center">
           <Reveal>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 font-display" style={{ color: "hsl(var(--landing-text))" }}>
+            <h2
+              className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight"
+              style={{ color: "hsl(var(--landing-text))" }}
+            >
               {t.ctaTitle}
             </h2>
           </Reveal>
-          <Reveal delay={100}>
-            <p className="text-lg mb-10" style={{ color: "hsl(var(--landing-muted))" }}>
+          <Reveal delay={80}>
+            <p
+              className="text-base md:text-lg mb-14 max-w-lg mx-auto"
+              style={{ color: "hsl(var(--landing-muted))" }}
+            >
               {t.ctaSubtitle}
             </p>
           </Reveal>
-          <Reveal delay={200}>
+          <Reveal delay={140}>
             <Link
               to={applyUrl}
-              className="group landing-cta-btn px-8 py-4 rounded-xl text-base font-semibold inline-flex items-center gap-3"
+              className="group inline-flex items-center gap-4 text-[13px] font-mono uppercase tracking-[0.25em] px-10 py-5 transition-all duration-300"
+              style={{
+                border: "1px solid hsl(var(--landing-text))",
+                color: "hsl(var(--landing-text))",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = "hsl(var(--landing-text))";
+                el.style.color = "hsl(var(--landing-bg))";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = "transparent";
+                el.style.color = "hsl(var(--landing-text))";
+              }}
             >
               {t.ctaCTA}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </Reveal>
         </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid hsl(var(--landing-border))" }} className="py-8">
-        <div className="max-w-[1100px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerRights}</span>
+      <footer
+        className="py-8"
+        style={{ borderTop: "1px solid hsl(var(--landing-border))" }}
+      >
+        <div className="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-[11px] font-mono" style={{ color: "hsl(var(--landing-muted) / 0.4)" }}>
+            {t.footerRights}
+          </span>
           <div className="flex items-center gap-1">
             {supportedLangs.map((l) => (
               <Link
                 key={l}
                 to={`/${l}/mentor`}
-                className="px-2 py-1 text-[11px] font-mono rounded transition-colors"
-                style={{ color: l === lang ? "hsl(var(--landing-accent))" : "hsl(var(--landing-muted) / 0.6)" }}
+                className="px-2 py-1 text-[10px] font-mono transition-colors"
+                style={{
+                  color: l === lang ? "hsl(var(--landing-text))" : "hsl(var(--landing-muted) / 0.4)",
+                }}
               >
                 {langLabels[l]}
               </Link>
