@@ -392,43 +392,13 @@
   position: relative;
 }
 
-/* Vertical stripes overlay */
+/* Background image with stripes */
 .landing-stripes {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background-image: repeating-linear-gradient(
-    90deg,
-    hsla(0, 0%, 100%, 0.04) 0px,
-    hsla(0, 0%, 100%, 0.04) 1px,
-    transparent 1px,
-    transparent 60px
-  );
-}
-
-/* Edge glow — left */
-.landing-edge-glow-left {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 300px;
-  background: linear-gradient(90deg, hsla(24, 90%, 45%, 0.15) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Edge glow — right */
-.landing-edge-glow-right {
-  position: fixed;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 300px;
-  background: linear-gradient(270deg, hsla(24, 90%, 45%, 0.12) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
+  background: url('/images/landing-bg.png') center center / cover no-repeat;
 }
 
 /* Content sits above stripes */
