@@ -811,7 +811,11 @@ export default function Landing() {
       </section>
 
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
-      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))]">
+      <section className="py-24 md:py-40 border-t border-[hsl(var(--landing-border))] relative">
+        {/* Decorative dot grid */}
+        <div className="hidden lg:block absolute top-[10%] left-[3%] pointer-events-none opacity-30">
+          <DotGrid className="w-[80px] h-[80px] text-[hsl(var(--landing-accent))]" rows={5} cols={5} />
+        </div>
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.testimonialsTag}</p>
@@ -821,23 +825,37 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {t.testimonials.map((item: any, i: number) => (
-              <Reveal key={i} delay={i * 80}>
-                <div
-                  className={`landing-card rounded-xl p-6 md:p-8 h-full flex flex-col justify-between ${i === 0 ? "lg:col-span-1 lg:row-span-2" : ""}`}
-                >
-                  <div>
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" fill="currentColor" style={{ color: "hsl(var(--landing-accent))" }}>
-                      <path d="M11 7.05C7.26 7.56 4.5 10.59 4.5 14.24V17h5V12H6.83c.46-2.47 2.34-4.35 4.17-4.95V7.05zM19.5 7.05c-3.74.51-6.5 3.54-6.5 7.19V17h5V12h-2.67c.46-2.47 2.34-4.35 4.17-4.95V7.05z"/>
-                    </svg>
-                    <p className="text-[15px] md:text-base leading-[1.75] text-[hsl(var(--landing-text))]/80 mb-6">{item.text}</p>
+            {t.testimonials.map((item: any, i: number) => {
+              // Generate initials avatar colors
+              const avatarColors = ["hsl(24 60% 50%)", "hsl(340 40% 50%)", "hsl(200 50% 45%)", "hsl(160 40% 40%)", "hsl(280 35% 50%)"];
+              const initials = item.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2);
+              return (
+                <Reveal key={i} delay={i * 80}>
+                  <div
+                    className={`landing-card rounded-xl p-6 md:p-8 h-full flex flex-col justify-between ${i === 0 ? "lg:col-span-1 lg:row-span-2" : ""}`}
+                  >
+                    <div>
+                      <svg viewBox="0 0 24 24" className="w-6 h-6 mb-4 opacity-20" fill="currentColor" style={{ color: "hsl(var(--landing-accent))" }}>
+                        <path d="M11 7.05C7.26 7.56 4.5 10.59 4.5 14.24V17h5V12H6.83c.46-2.47 2.34-4.35 4.17-4.95V7.05zM19.5 7.05c-3.74.51-6.5 3.54-6.5 7.19V17h5V12h-2.67c.46-2.47 2.34-4.35 4.17-4.95V7.05z"/>
+                      </svg>
+                      <p className="text-[15px] md:text-base leading-[1.75] text-[hsl(var(--landing-text))]/80 mb-6">{item.text}</p>
+                    </div>
+                    <div className="pt-4 border-t border-[hsl(var(--landing-border))] flex items-center gap-3">
+                      <div
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold tracking-wide shrink-0"
+                        style={{ background: avatarColors[i % avatarColors.length], color: "hsl(40, 33%, 98%)" }}
+                      >
+                        {initials}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-[hsl(var(--landing-text))]">{item.name}</p>
+                        <p className="text-xs text-[hsl(var(--landing-muted))] mt-0.5">{item.role}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="pt-4 border-t border-[hsl(var(--landing-border))]">
-                    <p className="text-sm font-semibold text-[hsl(var(--landing-text))]">{item.name}</p>
-                    <p className="text-xs text-[hsl(var(--landing-muted))] mt-0.5">{item.role}</p>
-                  </div>
-                </div>
-              </Reveal>
+                </Reveal>
+              );
+            })}
             ))}
           </div>
         </div>
