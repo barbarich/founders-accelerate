@@ -856,7 +856,6 @@ export default function Landing() {
                 </Reveal>
               );
             })}
-            ))}
           </div>
         </div>
       </section>
