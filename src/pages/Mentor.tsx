@@ -133,12 +133,6 @@ export default function Mentor() {
                   ))}
                 </div>
               </Reveal>
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
             </div>
           </div>
         </div>
