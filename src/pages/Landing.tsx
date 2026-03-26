@@ -411,22 +411,22 @@ export default function Landing() {
       </section>
 
       {/* ═══════════════ PROBLEM ═══════════════ */}
-      <section className="py-24 md:py-40 relative">
+      <section className="py-16 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="max-w-[1400px] mx-auto px-5 md:px-6 lg:px-10">
           <Reveal>
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
+            <p className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-3 md:mb-4">{t.problemTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-16 md:mb-24 font-display">{t.problemTitle}</h2>
+            <h2 className="text-[1.75rem] md:text-6xl lg:text-7xl font-bold text-[hsl(var(--landing-text))] mb-8 md:mb-24 font-display leading-tight">{t.problemTitle}</h2>
           </Reveal>
 
-          <div className="space-y-6 md:space-y-8 max-w-4xl">
+          <div className="max-w-4xl">
             {t.problemItems.map((p: string, i: number) => (
-              <Reveal key={i} delay={i * 120}>
-                <div className="group flex items-start gap-6 py-6 border-b border-[hsl(var(--landing-border))] hover:border-[hsl(var(--landing-accent))]/40 transition-colors">
-                  <span className="text-[hsl(var(--landing-accent))]/30 font-mono text-sm mt-1 shrink-0">0{i + 1}</span>
-                  <p className="text-xl md:text-2xl lg:text-3xl text-[hsl(var(--landing-text))]/70 group-hover:text-[hsl(var(--landing-text))] transition-colors leading-snug font-light">
+              <Reveal key={i} delay={i * 100}>
+                <div className="group flex items-start gap-4 md:gap-6 py-4 md:py-6 border-b border-[hsl(var(--landing-border))] hover:border-[hsl(var(--landing-accent))]/40 transition-colors">
+                  <span className="text-[hsl(var(--landing-accent))]/40 font-mono text-[11px] md:text-sm mt-0.5 md:mt-1 shrink-0 w-5 md:w-auto">0{i + 1}</span>
+                  <p className="text-base md:text-2xl lg:text-3xl text-[hsl(var(--landing-text))]/70 group-hover:text-[hsl(var(--landing-text))] transition-colors leading-snug font-light">
                     "{p}"
                   </p>
                 </div>
