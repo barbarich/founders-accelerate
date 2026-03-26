@@ -463,13 +463,14 @@
 
 /* CTA Button */
 .landing-cta-btn {
-  background: linear-gradient(135deg, hsl(24 85% 55%), hsl(20 80% 42%));
-  color: hsl(0, 0%, 100%);
-  box-shadow: 0 4px 24px -4px hsla(24, 85%, 55%, 0.5);
+  background: linear-gradient(135deg, hsl(0 0% 95%), hsl(0 0% 80%));
+  color: hsl(0, 0%, 8%);
+  box-shadow: 0 4px 24px -4px hsla(0, 0%, 100%, 0.25);
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 .landing-cta-btn:hover {
-  box-shadow: 0 8px 40px -4px hsla(24, 85%, 55%, 0.7);
+  box-shadow: 0 8px 40px -4px hsla(0, 0%, 100%, 0.4);
   transform: translateY(-2px);
 }
 
