@@ -39,6 +39,7 @@ export interface Translations {
   mentorTag: string;
   mentorTitle: string;
   mentorSubtitle: string;
+  mentorStatement: string[];
   mentorBio: string[];
 
   trackTag: string;
@@ -149,6 +150,13 @@ export const translations: Record<Lang, Translations> = {
     mentorTag: "Your Mentor",
     mentorTitle: "Michael Barbarich",
     mentorSubtitle: "Serial entrepreneur. Still building products today.",
+    mentorStatement: [
+      "My name is Michael Barbarich. I've been building companies for 16 years — and in that time, I've been through everything an entrepreneur can go through.",
+      "I started with small teams and grew to hundreds of people in an organization. I've worked in EdTech, FinTech, SportTech, e-commerce and SaaS — with companies taking their first steps and those that had been in the market for 15 years. B2B and B2C, startups and corporations, Israel and international markets.",
+      "I've made every mistake possible. I'm not exaggerating — literally all of them. Wrong hires, wrong strategy, wrong product, wrong partnerships. I paid for it with time and money. And every time I analyzed: what went wrong and why.",
+      "It's from these analyses — not from books or business schools — that the methodology I use today and teach in my mentorship program was born. How to build a product from scratch. How not to spend a year on something you can validate in two weeks. How to make decisions when data is scarce and stakes are high.",
+      "The Founders Circle is what I wish I had at the very beginning of my journey.",
+    ],
     mentorBio: [
       "16 years in business, 7 in tech",
       "2 exits (tech products + restaurant business)",
@@ -296,6 +304,13 @@ export const translations: Record<Lang, Translations> = {
     mentorTag: "Ментор",
     mentorTitle: "Михаэль Барбарич",
     mentorSubtitle: "Действующий предприниматель. Строю продукты и сейчас.",
+    mentorStatement: [
+      "Меня зовут Михаэль Барбарич. Я строю компании уже 16 лет — и за это время прошёл через всё, что только может случиться с предпринимателем.",
+      "Я начинал с маленьких команд и доходил до сотен человек в организации. Работал в EdTech, FinTech, SportTech, e-commerce и SaaS — с компаниями, которые делали первые шаги, и с теми, кто уже 15 лет держался на рынке. B2B и B2C, стартапы и корпорации, Израиль и международные рынки.",
+      "Я совершил все ошибки, которые только возможно совершить. Не преувеличиваю — буквально все. Ошибался в найме, в стратегии, в продукте, в партнёрствах. Платил за это временем и деньгами. И каждый раз разбирал: что пошло не так и почему.",
+      "Именно из этих разборов — не из книг и не из бизнес-школ — выросла методология, которую я сегодня применяю сам и передаю на своей менторской программе. Как строить продукт с нуля. Как не тратить год на то, что можно проверить за две недели. Как принимать решения, когда данных мало, а ставки высоки.",
+      "The Founders Circle — это то, что я хотел бы иметь в самом начале своего пути.",
+    ],
     mentorBio: [
       "16 лет в бизнесе, 7 из них в tech",
       "2 экзита (tech-продукты + ресторанный бизнес)",
@@ -443,6 +458,13 @@ export const translations: Record<Lang, Translations> = {
     mentorTag: "Ментор",
     mentorTitle: "Міхаель Барбаріч",
     mentorSubtitle: "Діючий підприємець. Будую продукти і зараз.",
+    mentorStatement: [
+      "Мене звати Міхаель Барбаріч. Я будую компанії вже 16 років — і за цей час пройшов через усе, що тільки може трапитися з підприємцем.",
+      "Я починав з маленьких команд і доходив до сотень людей в організації. Працював у EdTech, FinTech, SportTech, e-commerce та SaaS — з компаніями, які робили перші кроки, і з тими, хто вже 15 років тримався на ринку. B2B і B2C, стартапи і корпорації, Ізраїль і міжнародні ринки.",
+      "Я зробив усі помилки, які тільки можливо зробити. Не перебільшую — буквально всі. Помилявся в наймі, в стратегії, в продукті, в партнерствах. Платив за це часом і грошима. І кожного разу розбирав: що пішло не так і чому.",
+      "Саме з цих розборів — не з книжок і не з бізнес-шкіл — виросла методологія, яку я сьогодні застосовую сам і передаю на своїй менторській програмі. Як будувати продукт з нуля. Як не витрачати рік на те, що можна перевірити за два тижні. Як приймати рішення, коли даних мало, а ставки високі.",
+      "The Founders Circle — це те, що я хотів би мати на самому початку свого шляху.",
+    ],
     mentorBio: [
       "16 років у бізнесі, 7 з них у tech",
       "2 екзіти (tech-продукти + ресторанний бізнес)",
@@ -590,6 +612,13 @@ export const translations: Record<Lang, Translations> = {
     mentorTag: "המנטור שלכם",
     mentorTitle: "מיכאל ברבריץ׳",
     mentorSubtitle: "יזם פעיל. בונה מוצרים גם היום.",
+    mentorStatement: [
+      "שמי מיכאל ברבריץ׳. אני בונה חברות כבר 16 שנה — ובתקופה הזו עברתי דרך כל מה שיכול לקרות ליזם.",
+      "התחלתי עם צוותים קטנים והגעתי למאות אנשים בארגון. עבדתי ב-EdTech, FinTech, SportTech, e-commerce ו-SaaS — עם חברות שעשו את הצעדים הראשונים ועם כאלה שכבר 15 שנה בשוק. B2B ו-B2C, סטארטאפים ותאגידים, ישראל ושווקים בינלאומיים.",
+      "עשיתי את כל הטעויות שאפשר לעשות. אני לא מגזים — ממש את כולן. טעיתי בגיוס, באסטרטגיה, במוצר, בשותפויות. שילמתי על זה בזמן ובכסף. ובכל פעם ניתחתי: מה השתבש ולמה.",
+      "בדיוק מהניתוחים האלה — לא מספרים ולא מבתי ספר לעסקים — צמחה המתודולוגיה שאני מיישם היום בעצמי ומעביר בתוכנית המנטורינג שלי. איך לבנות מוצר מאפס. איך לא לבזבז שנה על משהו שאפשר לבדוק בשבועיים. איך לקבל החלטות כשהנתונים מועטים והסיכונים גבוהים.",
+      "The Founders Circle זה מה שהייתי רוצה שיהיה לי בתחילת הדרך שלי.",
+    ],
     mentorBio: [
       "16 שנים בעסקים, 7 מהם בטק",
       "2 אקזיטים (מוצרי טק + עסק מסעדנות)",
