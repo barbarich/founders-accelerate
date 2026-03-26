@@ -458,9 +458,16 @@ export default function Landing() {
         <div className="absolute inset-0 pointer-events-none landing-hero-mesh" />
         
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          
           <div className="absolute top-1/4 left-[15%] w-[400px] h-[400px] rounded-full landing-orb-1" />
           <div className="absolute bottom-1/4 right-[10%] w-[300px] h-[300px] rounded-full landing-orb-2" />
+          {/* Dot grid decoration */}
+          <div className="hidden lg:block absolute top-[18%] right-[8%] opacity-40">
+            <DotGrid className="w-[180px] h-[120px] text-[hsl(var(--landing-accent))]" rows={6} cols={10} />
+          </div>
+          {/* Path illustration */}
+          <div className="hidden lg:block absolute bottom-[15%] left-[5%]">
+            <SketchPath className="w-[280px] h-[100px] text-[hsl(var(--landing-accent))]" />
+          </div>
         </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 pt-32 pb-20 w-full">
@@ -519,6 +526,10 @@ export default function Landing() {
       {/* ═══════════════ PROBLEM ═══════════════ */}
       <section className="py-24 md:py-40 relative">
         <WavyLine className="absolute top-0 left-0 w-full h-[30px] text-[hsl(var(--landing-accent))]" />
+        {/* Mountain illustration */}
+        <div className="hidden lg:block absolute bottom-[10%] right-[3%] pointer-events-none">
+          <SketchMountain className="w-[200px] h-[100px] text-[hsl(var(--landing-accent))]" />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.problemTag}</p>
@@ -553,17 +564,24 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {t.whoItems.map((item: any, i: number) => (
-              <Reveal key={i} delay={i * 120}>
-                <div className="landing-card rounded-xl p-6 md:p-8 h-full group hover:-translate-y-1 transition-all duration-500">
-                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--landing-accent))]/10 flex items-center justify-center mb-5">
-                    <span className="text-[hsl(var(--landing-accent))] font-mono text-sm font-bold">{i + 1}</span>
+            {t.whoItems.map((item: any, i: number) => {
+              const Icon = whoIcons[i] || SketchCompass;
+              return (
+                <Reveal key={i} delay={i * 120}>
+                  <div className="landing-card rounded-xl p-6 md:p-8 h-full group hover:-translate-y-1 transition-all duration-500 relative overflow-hidden">
+                    {/* Background dot grid */}
+                    <div className="absolute top-3 right-3 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                      <DotGrid className="w-[70px] h-[56px] text-[hsl(var(--landing-accent))]" rows={4} cols={5} />
+                    </div>
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--landing-accent))]/8 flex items-center justify-center mb-5 group-hover:bg-[hsl(var(--landing-accent))]/15 transition-colors">
+                      <Icon className="w-7 h-7 text-[hsl(var(--landing-accent))]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-2">{item.title}</h3>
+                    <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{item.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-[hsl(var(--landing-text))] mb-2">{item.title}</h3>
-                  <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{item.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -696,6 +714,10 @@ export default function Landing() {
         <div className="absolute right-[3%] top-[8%] pointer-events-none hidden lg:block">
           <SketchTrophy className="w-[110px] h-[110px] text-[hsl(var(--landing-accent))] landing-float-slow landing-sketch-draw" />
         </div>
+        {/* Dot grid left side */}
+        <div className="hidden lg:block absolute left-[2%] bottom-[15%] pointer-events-none opacity-30">
+          <DotGrid className="w-[100px] h-[100px] text-[hsl(var(--landing-accent))]" rows={7} cols={7} />
+        </div>
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
           <Reveal>
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.resultsTag}</p>
@@ -708,18 +730,27 @@ export default function Landing() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
-            {t.resultsItems.map((r: any, i: number) => {
-              const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
-              return (
-                <Reveal key={i} delay={i * 100} className={span}>
-                  <div className="landing-card rounded-xl p-6 md:p-8 h-full transition-all duration-500 group cursor-default">
-                    <span className="landing-stat-number font-mono text-3xl font-bold mb-4 block">0{i + 1}</span>
-                    <h3 className="text-lg md:text-xl font-semibold text-[hsl(var(--landing-text))] mb-2">{r.title}</h3>
-                    <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{r.desc}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
+            {(() => {
+              const resultIcons = [SketchTarget, SketchDiamond, SketchSeedling, SketchLightning, SketchCompass];
+              return t.resultsItems.map((r: any, i: number) => {
+                const span = i < 2 ? "md:col-span-3" : "md:col-span-2";
+                const Icon = resultIcons[i] || SketchTarget;
+                return (
+                  <Reveal key={i} delay={i * 100} className={span}>
+                    <div className="landing-card rounded-xl p-6 md:p-8 h-full transition-all duration-500 group cursor-default relative overflow-hidden">
+                      {/* Subtle accent line top */}
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[hsl(var(--landing-accent))]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="flex items-start justify-between mb-4">
+                        <span className="landing-stat-number font-mono text-3xl font-bold">0{i + 1}</span>
+                        <Icon className="w-10 h-10 text-[hsl(var(--landing-accent))] opacity-30 group-hover:opacity-50 transition-opacity" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-semibold text-[hsl(var(--landing-text))] mb-2">{r.title}</h3>
+                      <p className="text-sm text-[hsl(var(--landing-muted))] leading-relaxed">{r.desc}</p>
+                    </div>
+                  </Reveal>
+                );
+              });
+            })()}
           </div>
         </div>
       </section>
