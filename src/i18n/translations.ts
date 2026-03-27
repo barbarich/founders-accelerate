@@ -30,10 +30,13 @@ export interface Translations {
 
   problemTag: string;
   problemTitle: string;
+  problemIntro: string;
   problemItems: string[];
+  problemOutro: string;
 
   whoTag: string;
   whoTitle: string;
+  whoIntro: string;
   whoItems: { title: string; desc: string }[];
 
   mentorTag: string;
@@ -41,6 +44,7 @@ export interface Translations {
   mentorSubtitle: string;
   mentorStatement: string[];
   mentorBio: string[];
+  mentorNote: string;
 
   trackTag: string;
   trackTitle: string;
@@ -65,6 +69,7 @@ export interface Translations {
 
   pricingTag: string;
   pricingTitle: string;
+  pricingIntro: string;
   accelTitle: string;
   accelSub: string;
   accelItems: string[];
@@ -77,6 +82,7 @@ export interface Translations {
   consultItems: string[];
   consultPrice: string;
   consultPriceSub: string;
+  guaranteeText: string;
 
   testimonialsTag: string;
   testimonialsTitle: string;
@@ -120,8 +126,8 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Mentor",
 
     heroTag: "Accelerator for Founders",
-    heroTitle: "Launch Your Product\nin 12 Weeks",
-    heroSubtitle: "From idea to paying customers — with a mentor who built 7 products, made 2 exits, and reached 50,000+ users in 107 countries.",
+    heroTitle: "From idea to first paying customers\nin 12 weeks",
+    heroSubtitle: "A mentorship program from a CEO of international companies and a founder with 16 years of experience who built 7 products across Israel and global markets, with 2 exits.",
     heroCohort: "Next cohort: April 13, 2026",
     heroCTA: "Apply Now",
     heroGroup: "Group of 5–7 founders",
@@ -134,42 +140,39 @@ export const translations: Record<Lang, Translations> = {
 
     problemTag: "The Problem",
     problemTitle: "Sound familiar?",
+    problemIntro: "These days I work as CEO at established companies, take on crisis management, and mentor startup founders. In 2026, building has become so easy that the only real question left is: \"What's next?\"",
     problemItems: [
-      "I've had an idea for months, but don't know where to start",
-      "Started building, got stuck, and gave up",
-      "I'm not technical — I can't build a product",
-      "Working alone, no feedback or accountability",
-      "No idea how to find my first customers",
+      "I've had an idea for months - but I have no idea where to start",
+      "I started building - then got stuck and quietly gave up",
+      "I'm not technical - feels like I can't build anything without a developer",
+      "I'm doing this alone - no feedback, no deadlines, nobody to tell me when I'm going the wrong way",
+      "I have no clue - how to find my first customers and start selling",
     ],
+    problemOutro: "If any of this sounds like you - you're in the right place.",
 
     whoTag: "Who Is This For",
-    whoTitle: "This program is for you if…",
+    whoTitle: "For founders at the beginning of the road",
+    whoIntro: "I guide you step by step - from idea, MVP, or prototype - to a finished product, in the market, with real users. This program is 100% based on my personal experience. Pure practice, zero theory.",
     whoItems: [
-      { title: "You have an idea", desc: "But don't know how to validate it, build it, or find customers" },
-      { title: "You have a prototype", desc: "But it's not growing and you need a strategy to get first users" },
-      { title: "You're not technical", desc: "You want to build a product using AI and no-code tools, without a dev team" },
-      { title: "You need structure", desc: "Accountability, feedback, and a step-by-step system to actually launch" },
+      { title: "You have an idea", desc: "But how do you build it so it actually takes off?" },
+      { title: "You have a prototype", desc: "But you're not sure you're building something people will pay for" },
+      { title: "You're not technical", desc: "You want to build with AI and no-code tools, no developer needed" },
+      { title: "You need support", desc: "Because motivation alone isn't enough - a group and a mentor make all the difference" },
     ],
 
     mentorTag: "Your Mentor",
     mentorTitle: "Michael Barbarich",
-    mentorSubtitle: "Serial entrepreneur. Still building products today.",
+    mentorSubtitle: "CEO MetaMinder, Founder Mikey AI",
     mentorStatement: [
-      "My name is Michael Barbarich. I've been building companies for 16 years — and in that time, I've been through pretty much everything an entrepreneur can go through.",
-      "I started with small teams and scaled up to hundreds of people. I've worked across EdTech, FinTech, SportTech, e-commerce, and SaaS — with companies taking their very first steps, and with businesses that had been running for 15 years. B2B and B2C, startups and enterprises, Israel and global markets.",
-      "I've made every mistake in the book. Not exaggerating — literally every one. Wrong hires, wrong strategy, wrong product calls, wrong partnerships. I paid for them with time and money. And every single time, I sat down and asked: what went wrong, and why.",
-      "That's where my methodology came from — not from books or business schools, but from those post-mortems. How to build a product from zero. How to avoid spending a year on something you could test in two weeks. How to make decisions when data is scarce and stakes are high.",
-      "The Founders Circle is what I wish I'd had at the very beginning.",
+      "16 years in business. At 18 I started my first company with a $10 budget - an education business. Then came restaurants, e-commerce in Israel, a large sports startup. I was CEO at a major Canadian fintech company and now CEO at B2B company MetaMinder, where I went from idea to first paying customers in 7 months. We now have clients on every continent. In parallel, I mentor companies and founders on launching new products and businesses.",
     ],
     mentorBio: [
-      "16 years in business, 7 in tech",
-      "2 exits (tech products + restaurant business)",
-      "CEO experience in international companies",
-      "Built products from $0 to $8M ARR",
-      "50,000+ paying customers in 107 countries",
-      "10 years in Israel",
-      "Currently: MetaMinder (B2B SaaS) + mymikey.ai (AI startup)",
+      "16 years in business",
+      "7 products · 2 exits",
+      "$0 to $8M ARR",
+      "50,000+ customers in 107 countries",
     ],
+    mentorNote: "TFC is not a course. It's a mentorship program where I share the knowledge and hands-on experience I gained by making every possible mistake - and learning from each one.",
 
     trackTag: "Track Record",
     trackTitle: "7 Products. 2 Exits. Real Results.",
@@ -184,12 +187,12 @@ export const translations: Record<Lang, Translations> = {
     ],
 
     phasesTag: "Program",
-    phasesTitle: "How the Program Works",
-    phasesSubtitle: "No coding, marketing, or sales experience needed — we'll go through it together, step by step.",
+    phasesTitle: "Three phases. Twelve weeks. One outcome.",
+    phasesSubtitle: "The goal of the accelerator - your finished product, in the market, with first users, in 12 weeks.",
     phases: [
-      { weeks: "Weeks 1–4", title: "Foundation", items: ["Validate your idea — test demand", "Market & competitor research", "Build your business model", "Define MVP — what to build first"], result: "Clarity on what to build and for whom" },
-      { weeks: "Weeks 5–8", title: "Product", items: ["AI tools for product creation", "Working prototype — no coding skills needed", "Weekly demos and feedback", "Fast iterations and improvements"], result: "Working MVP" },
-      { weeks: "Weeks 9–12", title: "Launch", items: ["Go-to-market strategy", "Marketing and first touchpoints", "Acquire first users", "3–6 month growth plan"], result: "Product in the market" },
+      { weeks: "Weeks 1–4", title: "Foundation", items: ["Idea validation, market research, business model, MVP"], result: "Foundation" },
+      { weeks: "Weeks 5–8", title: "Product", items: ["AI tools, working prototype, weekly demos, fast iterations"], result: "Product" },
+      { weeks: "Weeks 9–12", title: "Launch", items: ["Marketing, sales, go to market, first users, 3–6 month growth plan"], result: "Launch" },
     ],
     phasesCurriculumCTA: "View full weekly curriculum →",
     phasesCurriculumDesc: "3 months. From idea to product with first users. With group support and an experienced mentor.",
@@ -217,6 +220,7 @@ export const translations: Record<Lang, Translations> = {
 
     pricingTag: "Pricing",
     pricingTitle: "Investment Options",
+    pricingIntro: "In mini-groups of 5–7 people I give maximum attention to each participant and their idea. I give feedback, share experience, and guide toward launch step by step.",
     accelTitle: "Accelerator",
     accelSub: "Full program · 3 months",
     accelItems: ["12 weekly group sessions (2 hours)", "6 personal consultations with me", "3 expert guest sessions", "Access to me between sessions (Telegram)", "Network & community of 170+ founders", "My contacts and connections"],
@@ -229,6 +233,7 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["Deep dive into your question or project", "Answers based on my experience", "Specific recommendations and next steps", "Business model or product review"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ session",
+    guaranteeText: "If after the first session you feel it's not the right fit - I'll refund you in full. No questions asked.",
 
     testimonialsTag: "Testimonials",
     testimonialsTitle: "What Participants Say",
@@ -236,27 +241,27 @@ export const translations: Record<Lang, Translations> = {
       {
         name: "Daria Kovalenko",
         role: "EdTech founder",
-        text: "Before TFC I spent 8 months building a product nobody wanted. Michael's framework helped me validate a new idea in 3 weeks — and I launched it with paying users on day one. The program is intense but incredibly practical.",
+        text: "Before TFC I'd barely moved forward on my EdTech idea for almost a year. By week 3, Michael convinced me to throw out 60% of the concept - and I'm so glad I listened. By week 10 I had 18 paying beta users and a waitlist.",
       },
       {
         name: "Amit Levi",
         role: "SaaS founder, Tel Aviv",
-        text: "I came in with a rough concept and left with a real business. Michael doesn't sugarcoat things — he tells you exactly where you're wasting time. That honesty saved me at least 6 months of going in circles.",
+        text: "I came in with rough sketches and left with a real business. Michael doesn't sugarcoat things - he tells you straight where you're wasting time. That honesty saved me at least six months of running in circles.",
       },
       {
         name: "Tomáš Horák",
         role: "Marketplace startup, Prague",
-        text: "The best part isn't the theory — it's how Michael pushes you to actually do the work. By week 4 I had my first paying customers. I'd recommend this to anyone who's tired of planning and ready to build.",
+        text: "The best part isn't the theory - it's that Michael makes you do the actual work right now. By week 4 I had my first paying customers. I've done other programs. Here, there's nowhere to hide.",
       },
       {
         name: "Yael Ben-David",
         role: "HealthTech founder",
-        text: "I've done other accelerators before. TFC is different because it's small, personal, and Michael genuinely cares about your progress. The custdev methodology alone was worth the entire investment.",
+        text: "TFC is different because the group is small, everything is personal, and Michael genuinely tracks your progress every week. The custdev methodology alone was worth the entire cost of the program.",
       },
       {
         name: "Oleg Marchenko",
-        role: "B2B SaaS, Kyiv",
-        text: "I was skeptical at first — another course? But this isn't a course. It's a structured path from zero to launch with someone who's actually done it multiple times. My startup now has 40+ users and growing.",
+        role: "B2B SaaS",
+        text: "My startup now has 40+ users, and last week I closed my first annual contract.",
       },
     ],
 
@@ -271,10 +276,10 @@ export const translations: Record<Lang, Translations> = {
       { q: "Is there a refund policy?", a: "If after the first session you feel it's not right for you, we'll offer a full refund — no questions asked." },
     ],
 
-    ctaTitle: "Ready to Launch?",
-    ctaSubtitle: "Join the next cohort and go from idea to product in 12 weeks.",
+    ctaTitle: "The next cohort starts April 13.",
+    ctaSubtitle: "Apply and we'll get on a 15-minute call to talk through your specific situation. If you feel this program is what you need, and I see the potential - welcome to TFC Accelerator.",
     ctaCohort: "Next cohort: April 13, 2026",
-    ctaCTA: "Apply Now",
+    ctaCTA: "Apply - takes 1 minute",
 
     midCTA: "Interested? Apply before spots fill up",
     midCTASub: "We'll contact you within 24 hours",
@@ -304,11 +309,11 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Ментор",
 
     heroTag: "Акселератор для фаундеров",
-    heroTitle: "Запусти свой продукт\nза 12 недель",
-    heroSubtitle: "От идеи до платящих клиентов — с ментором, который построил 7 продуктов, сделал 2 экзита и вырастил 50 000+ пользователей в 107 странах.",
-    heroCohort: "Следующий набор: 13 апреля 2026",
+    heroTitle: "От идеи до первых платящих клиентов\nза 12 недель",
+    heroSubtitle: "Менторская программа от СЕО международных компаний и фаундера с 16-летним стажем, что построил 7 продуктов, в Израиле и на глобальном рынке, сделал 2 экзита.",
+    heroCohort: "Следующий поток: 13 апреля 2026",
     heroCTA: "Подать заявку",
-    heroGroup: "Группа 5–7 фаундеров",
+    heroGroup: "Группа из 5–7 фаундеров",
     heroSpotsLeft: "Осталось 3 места",
 
     statProducts: "Продуктов",
@@ -317,43 +322,40 @@ export const translations: Record<Lang, Translations> = {
     statCountries: "Стран",
 
     problemTag: "Проблема",
-    problemTitle: "Знакомо?",
+    problemTitle: "Узнаёшь себя?",
+    problemIntro: "Последние годы я работаю СЕО в крупных компаниях, работаю как кризис-менеджер и менторю основателей стартапов. В 2026 строить стало так легко, что единственный вопрос - это: «Что дальше?»",
     problemItems: [
-      "У меня есть идея уже полгода, но я не знаю с чего начать",
-      "Начал строить, застрял и забросил",
-      "Не технический — не могу сделать продукт",
-      "Делаю один, не хватает обратной связи",
-      "Не понимаю как найти первых клиентов",
+      "Идея есть уже несколько месяцев - но я не знаю, с чего начать",
+      "Начинал строить - потом застрял и тихо бросил",
+      "Я не технарь - кажется, что без разработчика ничего не сделать",
+      "Делаю всё один - нет обратной связи, нет дедлайнов, некому сказать когда иду не туда",
+      "Понятия не имею - как найти первых клиентов и начать продажи",
     ],
+    problemOutro: "Если хоть что-то из этого про тебя - ты попал в правильное место.",
 
     whoTag: "Для кого",
-    whoTitle: "Эта программа для вас, если…",
+    whoTitle: "Для тех, кто в начале пути",
+    whoIntro: "Я помогаю и веду от идеи, MVP или прототипа, шаг за шагом - к готовому продукту, в рынке, с реальными пользователями. Эта программа 100% основана на моём личном опыте. Только практика, никакой теории.",
     whoItems: [
-      { title: "У вас есть идея", desc: "Но вы не знаете как её проверить, реализовать и найти клиентов" },
-      { title: "У вас есть прототип", desc: "Но он не растёт и нужна стратегия для первых пользователей" },
-      { title: "Вы не технический", desc: "Хотите создать продукт с помощью AI и no-code, без разработчиков" },
-      { title: "Вам нужна система", desc: "Дисциплина, обратная связь и пошаговый план для реального запуска" },
+      { title: "Есть идея", desc: "Но как реализовать её так, чтобы она взлетела?" },
+      { title: "Есть прототип", desc: "Но не уверен, что строишь то, что будут покупать" },
+      { title: "Ты не технарь", desc: "Хочешь строить с AI и no-code инструментами, без найма разработчиков" },
+      { title: "Нужна поддержка", desc: "Потому что мотивации одной недостаточно, а с группой и ментором всё намного эффективнее" },
     ],
 
     mentorTag: "Ментор",
     mentorTitle: "Михаэль Барбарич",
-    mentorSubtitle: "Действующий предприниматель. Строю продукты и сейчас.",
+    mentorSubtitle: "CEO MetaMinder, Founder Mikey AI",
     mentorStatement: [
-      "Меня зовут Михаэль Барбарич. Я строю компании уже 16 лет — и за это время прошёл через всё, что только может случиться с предпринимателем.",
-      "Я начинал с маленьких команд и доходил до сотен человек в организации. Работал в EdTech, FinTech, SportTech, e-commerce и SaaS — с компаниями, которые делали первые шаги, и с теми, кто уже 15 лет держался на рынке. B2B и B2C, стартапы и корпорации, Израиль и международные рынки.",
-      "Я совершил все ошибки, которые только возможно совершить. Не преувеличиваю — буквально все. Ошибался в найме, в стратегии, в продукте, в партнёрствах. Платил за это временем и деньгами. И каждый раз разбирал: что пошло не так и почему.",
-      "Именно из этих разборов — не из книг и не из бизнес-школ — выросла методология, которую я сегодня применяю сам и передаю на своей менторской программе. Как строить продукт с нуля. Как не тратить год на то, что можно проверить за две недели. Как принимать решения, когда данных мало, а ставки высоки.",
-      "The Founders Circle — это то, что я хотел бы иметь в самом начале своего пути.",
+      "16 лет в бизнесе. В 18 лет построил первую компанию с бюджетом в 10 долларов - образовательная компания. Далее - ресторанный бизнес, e-commerce в Израиле, большой стартап в сфере спорта. Я работал СЕО в крупной Канадской финтех-компании и сейчас СЕО в B2B компании MetaMinder, где за 7 месяцев прошёл путь от идеи до первых платящих клиентов. Сейчас у нас клиенты на всех континентах. Параллельно менторю компании и фаундеров в запуске новых продуктов и компаний.",
     ],
     mentorBio: [
-      "16 лет в бизнесе, 7 из них в tech",
-      "2 экзита (tech-продукты + ресторанный бизнес)",
-      "Опыт CEO в международных компаниях",
-      "Построил продукты от $0 до $8M ARR",
-      "50 000+ платящих клиентов в 107 странах",
-      "10 лет в Израиле",
-      "Сейчас: MetaMinder (B2B SaaS) + mymikey.ai (AI-стартап)",
+      "16 лет в бизнесе",
+      "7 продуктов · 2 экзита",
+      "$0 до $8M ARR",
+      "50 000+ клиентов в 107 странах",
     ],
+    mentorNote: "TFC акселератор - это не курс. Это программа наставничества, где я делюсь знаниями и практическим опытом, который получил, совершив все возможные ошибки и научившись на них.",
 
     trackTag: "Трек рекорд",
     trackTitle: "7 продуктов. 2 экзита. Реальные результаты.",
@@ -368,12 +370,12 @@ export const translations: Record<Lang, Translations> = {
     ],
 
     phasesTag: "Программа",
-    phasesTitle: "Как устроена программа",
-    phasesSubtitle: "Не нужен опыт в разработке, маркетинге или продажах — мы пройдём это вместе, шаг за шагом.",
+    phasesTitle: "Три фазы. Двенадцать недель. Один результат.",
+    phasesSubtitle: "Цель акселератора - твой готовый продукт, в рынке, с первыми пользователями за 12 недель.",
     phases: [
-      { weeks: "Недели 1–4", title: "Фундамент", items: ["Валидация идеи — проверяем спрос", "Исследование рынка и конкурентов", "Формируем бизнес-модель", "Определяем MVP — что строить первым"], result: "Понимание, что строить и для кого" },
-      { weeks: "Недели 5–8", title: "Продукт", items: ["AI-инструменты для создания продукта", "Рабочий прототип — без навыков кода", "Демо и обратная связь каждую неделю", "Быстрые итерации и улучшения"], result: "Работающий MVP" },
-      { weeks: "Недели 9–12", title: "Запуск", items: ["Стратегия выхода на рынок", "Маркетинг и первые касания", "Привлечение первых пользователей", "План роста на 3–6 месяцев"], result: "Продукт в рынке" },
+      { weeks: "Недели 1–4", title: "Фундамент", items: ["Валидация идеи, исследование рынка, бизнес-модель, MVP"], result: "Фундамент" },
+      { weeks: "Недели 5–8", title: "Продукт", items: ["AI инструменты, рабочий прототип, еженедельные демо, быстрые итерации"], result: "Продукт" },
+      { weeks: "Недели 9–12", title: "Запуск", items: ["Маркетинг, продажи, выход на рынок, первые пользователи, план роста на 3–6 месяцев"], result: "Запуск" },
     ],
     phasesCurriculumCTA: "Смотреть полную программу по неделям →",
     phasesCurriculumDesc: "3 месяца. От идеи до продукта с первыми пользователями. С поддержкой группы и опытного ментора.",
@@ -399,8 +401,9 @@ export const translations: Record<Lang, Translations> = {
       { title: "Эксперты", sub: "Раз в месяц", items: ["Маркетинг и продажи", "Искусственный интеллект", "Legal и финансы", "Стратегия и рост"] },
     ],
 
-    pricingTag: "Участие",
+    pricingTag: "Стоимость",
     pricingTitle: "Форматы участия",
+    pricingIntro: "В мини-группах по 5–7 человек я уделяю максимум внимания каждому участнику и его идее. Даю фидбек, делюсь опытом и веду к запуску шаг-за-шагом.",
     accelTitle: "Акселератор",
     accelSub: "Полная программа · 3 месяца",
     accelItems: ["12 еженедельных групповых встреч (2 часа)", "6 личных консультаций со мной (раз в 2 недели)", "3 сессии с приглашёнными экспертами", "Доступ ко мне между встречами (Telegram)", "Нетворк и комьюнити 170+ фаундеров", "Мои контакты и связи"],
@@ -413,34 +416,35 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["Глубокое погружение в ваш вопрос или проект", "Ответы на основе моего опыта и экспертизы", "Конкретные рекомендации и следующие шаги", "Разбор бизнес-модели, стратегии или продукта"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ сессия",
+    guaranteeText: "Если после первой сессии ты почувствуешь, что это не то - верну деньги полностью. Без вопросов.",
 
     testimonialsTag: "Отзывы",
     testimonialsTitle: "Что говорят участники",
     testimonials: [
       {
         name: "Дарья Коваленко",
-        role: "Основательница EdTech-стартапа",
-        text: "До TFC я 8 месяцев строила продукт, который никому не был нужен. Методология Михаэля помогла мне проверить новую идею за 3 недели — и запуститься с платящими пользователями в первый же день. Программа интенсивная, но невероятно практичная.",
+        role: "EdTech основатель",
+        text: "До TFC я почти год не двигалась с места с идеей для EdTech-продукта. К третьей неделе Михаэль убедил меня выбросить 60% концепции - и я так рада, что согласилась. К 10-й неделе у меня было 18 платящих бета-пользователей и лист ожидания.",
       },
       {
         name: "Амит Леви",
-        role: "Основатель SaaS, Тель-Авив",
-        text: "Я пришёл с сырой концепцией и ушёл с реальным бизнесом. Михаэль не приукрашивает — он прямо говорит, где ты тратишь время впустую. Эта честность сэкономила мне минимум полгода хождения по кругу.",
+        role: "SaaS основатель, Тель-Авив",
+        text: "Пришла с набросками, ушла с реальным бизнесом. Михаэль не приукрашивает - он прямо говорит, где ты теряешь время. Эта честность сэкономила мне минимум полгода хождения по кругу.",
       },
       {
-        name: "Томаш Горак",
-        role: "Маркетплейс-стартап, Прага",
-        text: "Лучшее в программе — не теория, а то, как Михаэль заставляет тебя реально делать. К четвёртой неделе у меня были первые платящие клиенты. Рекомендую всем, кто устал планировать и готов строить.",
+        name: "Томаш Хорак",
+        role: "Marketplace стартап, Прага",
+        text: "Лучшее - не теория, а то, что Михаэль заставляет делать работу прямо сейчас. К 4-й неделе у меня были первые платящие клиенты. Я проходил другие программы. Здесь спрятаться не получится.",
       },
       {
         name: "Яэль Бен-Давид",
-        role: "Основательница HealthTech",
-        text: "Я была в других акселераторах. TFC отличается тем, что он маленький, персональный, и Михаэлю реально важен твой прогресс. Одна только методология кастдева стоила всей инвестиции.",
+        role: "HealthTech основатель",
+        text: "TFC отличается тем, что группа маленькая, всё личное, и Михаэль реально следит за твоим прогрессом каждую неделю. Только методология кастдева окупила всю стоимость программы.",
       },
       {
         name: "Олег Марченко",
-        role: "B2B SaaS, Киев",
-        text: "Сначала я сомневался — ещё один курс? Но это не курс. Это структурированный путь от нуля до запуска с человеком, который сам прошёл этот путь несколько раз. Сейчас у моего стартапа 40+ пользователей и число растёт.",
+        role: "B2B SaaS",
+        text: "У моего стартапа сейчас 40+ пользователей, и на прошлой неделе я закрыл первый годовой контракт.",
       },
     ],
 
@@ -455,10 +459,10 @@ export const translations: Record<Lang, Translations> = {
       { q: "Есть ли возврат денег?", a: "Если после первой встречи вы поймёте, что это не для вас — вернём полную стоимость без вопросов." },
     ],
 
-    ctaTitle: "Готовы начать?",
-    ctaSubtitle: "Присоединяйтесь к следующему набору и запустите продукт за 12 недель.",
-    ctaCohort: "Следующий набор: 13 апреля 2026",
-    ctaCTA: "Подать заявку",
+    ctaTitle: "Следующий поток начинается 13 апреля.",
+    ctaSubtitle: "Подай заявку, мы встретимся на 15-минутном звонке и обсудим лично твой кейс. Если ты поймёшь, что эта программа - то, что тебе нужно, а я пойму, что в ней есть потенциал - добро пожаловать в TFC Акселератор.",
+    ctaCohort: "Следующий поток: 13 апреля 2026",
+    ctaCTA: "Подать заявку - занимает 1 минуту",
 
     midCTA: "Интересно? Подайте заявку, пока есть места",
     midCTASub: "Свяжемся в течение 24 часов",
@@ -488,11 +492,11 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Ментор",
 
     heroTag: "Акселератор для фаундерів",
-    heroTitle: "Запусти свій продукт\nза 12 тижнів",
-    heroSubtitle: "Від ідеї до клієнтів, що платять — з ментором, який побудував 7 продуктів, зробив 2 екзіти та виростив 50 000+ користувачів у 107 країнах.",
-    heroCohort: "Наступний набір: 13 квітня 2026",
+    heroTitle: "Від ідеї до перших платних клієнтів\nза 12 тижнів",
+    heroSubtitle: "Менторська програма від CEO міжнародних компаній і фаундера з 16-річним досвідом, який побудував 7 продуктів в Ізраїлі та на глобальному ринку, з 2 екзитами.",
+    heroCohort: "Наступний потік: 13 квітня 2026",
     heroCTA: "Подати заявку",
-    heroGroup: "Група 5–7 фаундерів",
+    heroGroup: "Група з 5–7 засновників",
     heroSpotsLeft: "Залишилось 3 місця",
 
     statProducts: "Продуктів",
@@ -501,43 +505,40 @@ export const translations: Record<Lang, Translations> = {
     statCountries: "Країн",
 
     problemTag: "Проблема",
-    problemTitle: "Знайоме?",
+    problemTitle: "Впізнаєш себе?",
+    problemIntro: "Останніми роками я працюю CEO в великих компаніях, працюю як кризис-менеджер і менторю засновників стартапів. У 2026 будувати стало настільки просто, що єдине реальне питання - «Що далі?»",
     problemItems: [
-      "У мене є ідея вже півроку, але не знаю з чого почати",
-      "Почав будувати, застряг і закинув",
-      "Не технічний — не можу зробити продукт",
-      "Роблю сам, бракує зворотного зв'язку",
-      "Не розумію як знайти перших клієнтів",
+      "Ідея є вже кілька місяців - але я не знаю, з чого почати",
+      "Починав будувати - потім застряг і тихо кинув",
+      "Я не технар - здається, що без розробника нічого не вийде",
+      "Роблю все сам - немає зворотного зв'язку, немає дедлайнів, нікому сказати коли йду не туди",
+      "Не уявляю - як знайти перших клієнтів і почати продавати",
     ],
+    problemOutro: "Якщо хоч щось із цього про тебе - ти потрапив туди, куди треба.",
 
     whoTag: "Для кого",
-    whoTitle: "Ця програма для вас, якщо…",
+    whoTitle: "Для тих, хто на початку шляху",
+    whoIntro: "Я допомагаю і веду від ідеї, MVP або прототипу, крок за кроком - до готового продукту, на ринку, з реальними користувачами. Ця програма на 100% базується на моєму особистому досвіді. Тільки практика, жодної теорії.",
     whoItems: [
-      { title: "У вас є ідея", desc: "Але ви не знаєте як її перевірити, реалізувати і знайти клієнтів" },
-      { title: "У вас є прототип", desc: "Але він не росте і потрібна стратегія для перших користувачів" },
-      { title: "Ви не технічний", desc: "Хочете створити продукт за допомогою AI і no-code, без розробників" },
-      { title: "Вам потрібна система", desc: "Дисципліна, зворотний зв'язок і покроковий план для реального запуску" },
+      { title: "Є ідея", desc: "Але як реалізувати її так, щоб вона взлетіла?" },
+      { title: "Є прототип", desc: "Але не впевнений, що будую те, за що будуть платити" },
+      { title: "Ти не технар", desc: "Хочеш будувати з AI і no-code інструментами, без найму розробників" },
+      { title: "Потрібна підтримка", desc: "Бо мотивації однієї недостатньо, а з групою і ментором все набагато ефективніше" },
     ],
 
     mentorTag: "Ментор",
-    mentorTitle: "Міхаель Барбарич",
-    mentorSubtitle: "Діючий підприємець. Будую продукти і зараз.",
+    mentorTitle: "Михаель Барбарич",
+    mentorSubtitle: "CEO MetaMinder, Founder Mikey AI",
     mentorStatement: [
-      "Мене звати Михаель Барбарич. Я будую компанії вже 16 років — і за цей час пройшов через усе, що тільки може трапитися з підприємцем.",
-      "Починав з невеликих команд і доходив до сотень людей в організації. Працював у EdTech, FinTech, SportTech, e-commerce та SaaS — з компаніями, що робили перші кроки, і з тими, хто вже 15 років тримався на ринку. B2B і B2C, стартапи й корпорації, Ізраїль і міжнародні ринки.",
-      "Я зробив усі помилки, які тільки можливо зробити. Без перебільшень — буквально всі. Помилявся в наймі, у стратегії, у продукті, у партнерствах. Платив за це часом і грошима. І щоразу сідав і розбирав: що пішло не так і чому.",
-      "Саме з цих розборів — не з книжок і не з бізнес-шкіл — виросла методологія, яку я сьогодні застосовую сам і передаю на своїй менторській програмі. Як будувати продукт з нуля. Як не витрачати рік на те, що можна перевірити за два тижні. Як ухвалювати рішення, коли даних мало, а ставки високі.",
-      "The Founders Circle — це те, що я хотів би мати на самому початку свого шляху.",
+      "16 років у бізнесі. У 18 років побудував першу компанію з бюджетом 10 доларів - освітня компанія. Далі - ресторанний бізнес, e-commerce в Ізраїлі, великий стартап у сфері спорту. Я працював CEO у великій канадській фінтех-компанії і зараз CEO в B2B-компанії MetaMinder, де за 7 місяців пройшов шлях від ідеї до перших платних клієнтів. Зараз маємо клієнтів на всіх континентах. Паралельно менторю компанії і засновників у запуску нових продуктів і компаній.",
     ],
     mentorBio: [
-      "16 років у бізнесі, 7 з них у tech",
-      "2 екзіти (tech-продукти + ресторанний бізнес)",
-      "Досвід CEO в міжнародних компаніях",
-      "Побудував продукти від $0 до $8M ARR",
-      "50 000+ клієнтів, що платять, у 107 країнах",
-      "10 років в Ізраїлі",
-      "Зараз: MetaMinder (B2B SaaS) + mymikey.ai (AI-стартап)",
+      "16 років у бізнесі",
+      "7 продуктів · 2 екзити",
+      "$0 до $8M ARR",
+      "50 000+ клієнтів у 107 країнах",
     ],
+    mentorNote: "TFC акселератор - це не курс. Це програма наставництва, де я ділюсь знаннями і практичним досвідом, який отримав, зробивши всі можливі помилки - і навчившись на них.",
 
     trackTag: "Трек рекорд",
     trackTitle: "7 продуктів. 2 екзіти. Реальні результати.",
@@ -552,12 +553,12 @@ export const translations: Record<Lang, Translations> = {
     ],
 
     phasesTag: "Програма",
-    phasesTitle: "Як влаштована програма",
-    phasesSubtitle: "Не потрібен досвід у розробці, маркетингу чи продажах — ми пройдемо це разом, крок за кроком.",
+    phasesTitle: "Три фази. Дванадцять тижнів. Один результат.",
+    phasesSubtitle: "Мета акселератора - твій готовий продукт, на ринку, з першими користувачами за 12 тижнів.",
     phases: [
-      { weeks: "Тижні 1–4", title: "Фундамент", items: ["Валідація ідеї — перевіряємо попит", "Дослідження ринку та конкурентів", "Формуємо бізнес-модель", "Визначаємо MVP — що будувати першим"], result: "Розуміння, що будувати і для кого" },
-      { weeks: "Тижні 5–8", title: "Продукт", items: ["AI-інструменти для створення продукту", "Робочий прототип — без навичок коду", "Демо та зворотний зв'язок щотижня", "Швидкі ітерації та покращення"], result: "Працюючий MVP" },
-      { weeks: "Тижні 9–12", title: "Запуск", items: ["Стратегія виходу на ринок", "Маркетинг і перші дотики", "Залучення перших користувачів", "План зростання на 3–6 місяців"], result: "Продукт на ринку" },
+      { weeks: "Тижні 1–4", title: "Фундамент", items: ["Валідація ідеї, дослідження ринку, бізнес-модель, MVP"], result: "Фундамент" },
+      { weeks: "Тижні 5–8", title: "Продукт", items: ["AI інструменти, робочий прототип, щотижневі демо, швидкі ітерації"], result: "Продукт" },
+      { weeks: "Тижні 9–12", title: "Запуск", items: ["Маркетинг, продажі, вихід на ринок, перші користувачі, план зростання на 3–6 місяців"], result: "Запуск" },
     ],
     phasesCurriculumCTA: "Переглянути повну програму по тижнях →",
     phasesCurriculumDesc: "3 місяці. Від ідеї до продукту з першими користувачами. З підтримкою групи та досвідченого ментора.",
@@ -583,8 +584,9 @@ export const translations: Record<Lang, Translations> = {
       { title: "Експерти", sub: "Раз на місяць", items: ["Маркетинг і продажі", "Штучний інтелект", "Legal і фінанси", "Стратегія та зростання"] },
     ],
 
-    pricingTag: "Участь",
+    pricingTag: "Вартість",
     pricingTitle: "Формати участі",
+    pricingIntro: "У міні-групах з 5–7 осіб я приділяю максимум уваги кожному учаснику і його ідеї. Даю фідбек, ділюсь досвідом і веду до запуску крок-за-кроком.",
     accelTitle: "Акселератор",
     accelSub: "Повна програма · 3 місяці",
     accelItems: ["12 щотижневих групових зустрічей (2 години)", "6 особистих консультацій зі мною", "3 сесії з запрошеними експертами", "Доступ до мене між зустрічами (Telegram)", "Нетворк і спільнота 170+ фаундерів", "Мої контакти та зв'язки"],
@@ -597,34 +599,35 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["Глибоке занурення у ваше питання або проєкт", "Відповіді на основі мого досвіду та експертизи", "Конкретні рекомендації та наступні кроки", "Розбір бізнес-моделі, стратегії або продукту"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ сесія",
+    guaranteeText: "Якщо після першої сесії відчуєш, що це не твоє - поверну гроші повністю. Без запитань.",
 
     testimonialsTag: "Відгуки",
     testimonialsTitle: "Що кажуть учасники",
     testimonials: [
       {
-        name: "Дарʼя Коваленко",
-        role: "Засновниця EdTech-стартапу",
-        text: "До TFC я 8 місяців будувала продукт, який нікому не був потрібен. Методологія Міхаеля допомогла мені перевірити нову ідею за 3 тижні — і запуститися з платними користувачами в перший же день. Програма інтенсивна, але неймовірно практична.",
+        name: "Дар'я Коваленко",
+        role: "EdTech засновниця",
+        text: "До TFC я майже рік не рухалась з ідеєю для EdTech-продукту. На третьому тижні Михаель переконав мене викинути 60% концепції - і я так рада, що погодилась. На 10-му тижні у мене було 18 платних бета-користувачів і лист очікування.",
       },
       {
         name: "Аміт Леві",
-        role: "Засновник SaaS, Тель-Авів",
-        text: "Я прийшов із сирою концепцією і пішов із реальним бізнесом. Міхаель не прикрашає — він прямо каже, де ти витрачаєш час даремно. Ця чесність зекономила мені щонайменше пів року ходіння по колу.",
+        role: "SaaS засновник, Тель-Авів",
+        text: "Прийшла з набрисками, пішла з реальним бізнесом. Михаель не прикрашає - він прямо каже, де ти втрачаєш час. Ця чесність зекономила мені щонайменше півроку ходіння по колу.",
       },
       {
         name: "Томаш Горак",
-        role: "Маркетплейс-стартап, Прага",
-        text: "Найкраще в програмі — не теорія, а те, як Міхаель змушує тебе реально діяти. До четвертого тижня у мене вже були перші платні клієнти. Рекомендую всім, хто втомився планувати і готовий будувати.",
+        role: "Marketplace стартап, Прага",
+        text: "Найкраще - не теорія, а те, що Михаель змушує робити роботу зараз. На 4-му тижні у мене були перші платні клієнти. Я проходив інші програми. Тут сховатись не вийде.",
       },
       {
         name: "Яель Бен-Давід",
-        role: "Засновниця HealthTech",
-        text: "Я була в інших акселераторах. TFC відрізняється тим, що він маленький, персональний, і Міхаелю справді важливий твій прогрес. Одна лише методологія кастдеву вартувала всієї інвестиції.",
+        role: "HealthTech засновниця",
+        text: "TFC відрізняється тим, що група маленька, все особисте, і Михаель реально слідкує за твоїм прогресом щотижня. Тільки методологія кастдеву окупила всю вартість програми.",
       },
       {
         name: "Олег Марченко",
-        role: "B2B SaaS, Київ",
-        text: "Спочатку я сумнівався — ще один курс? Але це не курс. Це структурований шлях від нуля до запуску з людиною, яка сама пройшла цей шлях кілька разів. Зараз у мого стартапу 40+ користувачів і їх кількість зростає.",
+        role: "B2B SaaS",
+        text: "У мого стартапу зараз 40+ користувачів, і минулого тижня я закрив перший річний контракт.",
       },
     ],
 
@@ -639,10 +642,10 @@ export const translations: Record<Lang, Translations> = {
       { q: "Чи є повернення грошей?", a: "Якщо після першої зустрічі ви зрозумієте, що це не для вас — повернемо повну вартість без питань." },
     ],
 
-    ctaTitle: "Готові почати?",
-    ctaSubtitle: "Приєднуйтесь до наступного набору та запустіть продукт за 12 тижнів.",
-    ctaCohort: "Наступний набір: 13 квітня 2026",
-    ctaCTA: "Подати заявку",
+    ctaTitle: "Наступний потік стартує 13 квітня.",
+    ctaSubtitle: "Подай заявку, і ми зустрінемось на 15-хвилинному дзвінку, щоб обговорити особисто твій кейс. Якщо ти зрозумієш, що ця програма - те, що тобі потрібно, а я побачу, що в ній є потенціал - добро пожалувати до TFC Акселератору.",
+    ctaCohort: "Наступний потік: 13 квітня 2026",
+    ctaCTA: "Подати заявку - займе 1 хвилину",
 
     midCTA: "Цікаво? Подайте заявку, поки є місця",
     midCTASub: "Зв'яжемося протягом 24 годин",
@@ -672,12 +675,12 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "מנטור",
 
     heroTag: "אקסלרטור ליזמים",
-    heroTitle: "השיקו את המוצר שלכם\nב-12 שבועות",
-    heroSubtitle: "מרעיון ללקוחות משלמים — עם מנטור שבנה 7 מוצרים, עשה 2 אקזיטים והגיע ל-50,000+ משתמשים ב-107 מדינות.",
-    heroCohort: "מחזור הבא: 13 באפריל 2026",
+    heroTitle: "מרעיון ללקוחות משלמים ראשונים\nתוך 12 שבועות",
+    heroSubtitle: "תוכנית מנטורינג מאת CEO של חברות בינלאומיות ויזם עם 16 שנים נסיון שבנה 7 מוצרים בישראל ובשוק הגלובלי, עם 2 אקזיטים.",
+    heroCohort: "קוהורט הבא: 13 באפריל 2026",
     heroCTA: "הגש מועמדות",
-    heroGroup: "קבוצה של 5–7 יזמים",
-    heroSpotsLeft: "נותרו 3 מקומות",
+    heroGroup: "קבוצה של 5–7 מייסדים",
+    heroSpotsLeft: "נשארו 3 מקומות",
 
     statProducts: "מוצרים",
     statExits: "אקזיטים",
@@ -685,43 +688,40 @@ export const translations: Record<Lang, Translations> = {
     statCountries: "מדינות",
 
     problemTag: "הבעיה",
-    problemTitle: "מוכר?",
+    problemTitle: "נשמע מוכר?",
+    problemIntro: "בשנים האחרונות אני עובד כ-CEO בחברות גדולות, עובד כמנהל משברים ומעניק מנטורינג למייסדי סטארטאפים. ב-2026 לבנות הפך כל כך פשוט, שהשאלה היחידה שנשארת היא: \"במה נמשיך?\"",
     problemItems: [
-      "יש לי רעיון כבר חצי שנה, אבל לא יודע מאיפה להתחיל",
-      "התחלתי לבנות, נתקעתי וויתרתי",
-      "אני לא טכני — אני לא יכול לבנות מוצר",
-      "עובד לבד, חסר לי פידבק",
-      "לא מבין איך למצוא לקוחות ראשונים",
+      "יש לי רעיון כבר כמה חודשים - אבל אין לי מושג מאיפה מתחילים",
+      "התחלתי לבנות - נתקעתי ועזבתי בשקט",
+      "אני לא טכני - מרגיש שאי אפשר לבנות כלום בלי מפתח",
+      "אני עושה את זה לבד - אין פידבק, אין דדליינים, אין מי שיגיד לי כשאני הולך בכיוון הלא נכון",
+      "אין לי מושג - איך למצוא לקוחות ראשונים ולהתחיל למכור",
     ],
+    problemOutro: "אם משהו מזה מתאר אותך - הגעת למקום הנכון.",
 
     whoTag: "למי מתאים",
-    whoTitle: "התוכנית מתאימה לכם אם…",
+    whoTitle: "למי שבתחילת הדרך",
+    whoIntro: "אני מלווה ומדריך צעד אחר צעד - מרעיון, MVP או פרוטוטיפ - עד מוצר גמור, בשוק, עם משתמשים אמיתיים. התוכנית מבוססת 100% על הניסיון האישי שלי. רק פרקטיקה, אפס תיאוריה.",
     whoItems: [
-      { title: "יש לכם רעיון", desc: "אבל לא יודעים איך לבדוק אותו, לבנות ולמצוא לקוחות" },
-      { title: "יש לכם אב-טיפוס", desc: "אבל הוא לא גדל וצריך אסטרטגיה למשתמשים ראשונים" },
-      { title: "אתם לא טכניים", desc: "רוצים לבנות מוצר עם AI וכלי no-code, בלי צוות פיתוח" },
-      { title: "צריכים מבנה", desc: "משמעת, פידבק ותוכנית צעד אחר צעד להשקה אמיתית" },
+      { title: "יש לך רעיון", desc: "אבל איך לבנות אותו כך שיצליח?" },
+      { title: "יש לך פרוטוטיפ", desc: "אבל אתה לא בטוח שאתה בונה משהו שישלמו עליו" },
+      { title: "אתה לא טכני", desc: "רוצה לבנות עם כלי AI ו-no-code, בלי גיוס מפתחים" },
+      { title: "אתה צריך תמיכה", desc: "כי מוטיבציה לבד לא מספיקה, עם קבוצה ומנטור הכל הרבה יותר אפקטיבי" },
     ],
 
     mentorTag: "המנטור שלכם",
     mentorTitle: "מיכאל ברבריץ׳",
-    mentorSubtitle: "יזם פעיל. בונה מוצרים גם היום.",
+    mentorSubtitle: "CEO MetaMinder, Founder Mikey AI",
     mentorStatement: [
-      "קוראים לי מיכאל ברברי׳ץ. אני בונה חברות כבר 16 שנה — ובמהלך הזמן הזה עברתי כמעט כל מה שיכול לקרות ליזם.",
-      "התחלתי עם צוותים קטנים והגעתי לארגונים של מאות אנשים. עבדתי ב-EdTech, FinTech, SportTech, e-commerce ו-SaaS — עם חברות שזה עתה קמו, ועם כאלה שכבר 15 שנה בשוק. B2B ו-B2C, סטארטאפים ותאגידים, ישראל ושווקים בינלאומיים.",
-      "עשיתי את כל הטעויות שאפשר לעשות. לא מגזים — ממש את כולן. טעיתי בגיוסים, באסטרטגיה, במוצר, בשותפויות. שילמתי על זה בזמן ובכסף. ובכל פעם ישבתי ופירקתי: מה הלך לא בסדר ולמה.",
-      "מהפירוקים האלה — לא מספרים ולא מ-MBA — צמחה המתודולוגיה שאני מיישם היום בעצמי ומעביר בתוכנית המנטורינג שלי. איך בונים מוצר מאפס. איך לא מבזבזים שנה על משהו שאפשר לבדוק בשבועיים. איך מקבלים החלטות כשאין מספיק דאטה והסיכון גבוה.",
-      "The Founders Circle — זה מה שהייתי רוצה שיהיה לי בתחילת הדרך.",
+      "16 שנות בעסקים. בגיל 18 בניתי את העסק הראשון שלי בתקציב של 10 דולר - עסק חינוכי. אחרי כן - עסקי מסעדות, e-commerce בישראל, סטארטאפ ספורט גדול. הייתי CEO בחברת פינטק קנדית גדולה וכיום CEO בחברת B2B - MetaMinder, שם פיתחתי מרעיון ללקוחות משלמים ראשונים תוך 7 חודשים. היום יש לנו לקוחות בכל יבשת. במקביל אני מעניק מנטורינג לחברות ולמייסדים בהשקת מוצרים וחברות חדשות.",
     ],
     mentorBio: [
-      "16 שנים בעסקים, 7 מהם בטק",
-      "2 אקזיטים (מוצרי טק + עסק מסעדנות)",
-      "ניסיון כ-CEO בחברות בינלאומיות",
-      "בנה מוצרים מ-$0 עד $8M ARR",
-      "50,000+ לקוחות משלמים ב-107 מדינות",
-      "10 שנים בישראל",
-      "כרגע: MetaMinder (B2B SaaS) + mymikey.ai (סטארטאפ AI)",
+      "16 שנים בעסקים",
+      "7 מוצרים · 2 אקזיטים",
+      "$0 עד $8M ARR",
+      "50,000+ לקוחות ב-107 מדינות",
     ],
+    mentorNote: "TFC אקסלרטור זה לא קורס. זו תוכנית חניכות שבה אני משתף את הידע והניסיון המעשי שצברתי דרך כל טעויות אפשריות - ולמדתי מהן.",
 
     trackTag: "רקורד",
     trackTitle: "7 מוצרים. 2 אקזיטים. תוצאות אמיתיות.",
@@ -736,12 +736,12 @@ export const translations: Record<Lang, Translations> = {
     ],
 
     phasesTag: "תוכנית",
-    phasesTitle: "איך התוכנית עובדת",
-    phasesSubtitle: "לא צריך ניסיון בפיתוח, שיווק או מכירות — נעבור את זה ביחד, צעד אחר צעד.",
+    phasesTitle: "שלושה שלבים. שניים עשר שבועות. תוצאה אחת.",
+    phasesSubtitle: "מטרת האקסלרטור - מוצר מוכן שלך, בשוק, עם משתמשים ראשונים תוך 12 שבועות.",
     phases: [
-      { weeks: "שבועות 1–4", title: "בסיס", items: ["ולידציה של הרעיון — בדיקת ביקוש", "מחקר שוק ומתחרים", "בניית מודל עסקי", "הגדרת MVP — מה לבנות קודם"], result: "בהירות מה לבנות ולמי" },
-      { weeks: "שבועות 5–8", title: "מוצר", items: ["כלי AI ליצירת מוצר", "אב-טיפוס עובד — ללא ידע בקוד", "דמו ופידבק כל שבוע", "איטרציות מהירות ושיפורים"], result: "MVP עובד" },
-      { weeks: "שבועות 9–12", title: "השקה", items: ["אסטרטגיית Go-to-Market", "שיווק ומגעים ראשונים", "גיוס משתמשים ראשונים", "תוכנית צמיחה ל-3–6 חודשים"], result: "מוצר בשוק" },
+      { weeks: "שבועות 1–4", title: "בסיס", items: ["וולידציה של הרעיון, מחקר שוק, מודל עסקי, MVP"], result: "בסיס" },
+      { weeks: "שבועות 5–8", title: "מוצר", items: ["כלי AI, פרוטוטיפ עובד, דמו שבועי, איטרציות מהירות"], result: "מוצר" },
+      { weeks: "שבועות 9–12", title: "השקה", items: ["שיווק, מכירות, כניסה לשוק, משתמשים ראשונים, תוכנית צמיחה ל-3–6 חודשים"], result: "השקה" },
     ],
     phasesCurriculumCTA: "צפו בתוכנית המלאה לפי שבועות →",
     phasesCurriculumDesc: "3 חודשים. מרעיון למוצר עם משתמשים ראשונים. עם תמיכה קבוצתית ומנטור מנוסה.",
@@ -769,6 +769,7 @@ export const translations: Record<Lang, Translations> = {
 
     pricingTag: "מחירון",
     pricingTitle: "אפשרויות השקעה",
+    pricingIntro: "בקבוצות קטנות של 5–7 אנשים אני מקדיש תשומת לב מקסימלית לכל משתתף ולרעיון שלו. נותן פידבק, משתף ניסיון ומדריך לקראת השקה צעד אחר צעד.",
     accelTitle: "אקסלרטור",
     accelSub: "תוכנית מלאה · 3 חודשים",
     accelItems: ["12 מפגשים קבוצתיים שבועיים (שעתיים)", "6 ייעוצים אישיים איתי", "3 מפגשים עם מומחים אורחים", "גישה אלי בין המפגשים (Telegram)", "נטוורק וקהילה של 170+ יזמים", "הקשרים והקשרים שלי"],
@@ -781,34 +782,35 @@ export const translations: Record<Lang, Translations> = {
     consultItems: ["צלילה עמוקה לשאלה או לפרויקט שלכם", "תשובות מבוססות ניסיון ומומחיות", "המלצות קונקרטיות וצעדים הבאים", "ניתוח מודל עסקי, אסטרטגיה או מוצר"],
     consultPrice: "₪1,200",
     consultPriceSub: "/ מפגש",
+    guaranteeText: "אם אחרי הפגישה הראשונה תרגיש שזה לא מתאים לך - אחזיר את הכסף במלואו. בלי שאלות.",
 
     testimonialsTag: "המלצות",
     testimonialsTitle: "מה אומרים המשתתפים",
     testimonials: [
       {
         name: "דריה קובלנקו",
-        role: "מייסדת סטארטאפ EdTech",
-        text: "לפני TFC בניתי 8 חודשים מוצר שאף אחד לא רצה. המתודולוגיה של מיכאל עזרה לי לבדוק רעיון חדש ב-3 שבועות — והשקתי עם לקוחות משלמים ביום הראשון. התוכנית אינטנסיבית אבל מעשית להפליא.",
+        role: "מייסדת EdTech",
+        text: "לפני TFC כמעט שנה לא זזתי מהמקום עם הרעיון שלי ל-EdTech. בשבוע השלישי מיכאל שכנע אותי לזרוק 60% מהקונספט - ואני כל כך שמחה שהסכמתי. בשבוע העשירי היו לי 18 משתמשי בטא משלמים ורשימת הממתנה.",
       },
       {
         name: "עמית לוי",
         role: "מייסד SaaS, תל אביב",
-        text: "הגעתי עם קונספט גולמי ויצאתי עם עסק אמיתי. מיכאל לא מייפה דברים — הוא אומר לך בדיוק איפה אתה מבזבז זמן. הכנות הזו חסכה לי לפחות חצי שנה של הסתובבות במעגלים.",
+        text: "הגעתי עם רעיונות גולמיים ויצאתי עם עסק אמיתי. מיכאל לא מייפה - הוא אומר לך ישירות איפה אתה מבזבז זמן. הישרות הזאת חסכה לי לפחות חצי שנה של הילוך במעגלים.",
       },
       {
         name: "תומאש הוראק",
         role: "סטארטאפ מרקטפלייס, פראג",
-        text: "הדבר הכי טוב הוא לא התיאוריה — אלא איך שמיכאל דוחף אותך לעשות בפועל. עד שבוע 4 כבר היו לי לקוחות משלמים ראשונים. ממליץ לכל מי שנמאס לו לתכנן ומוכן לבנות.",
+        text: "הדבר הכי טוב - זה לא התיאוריה, אלא שמיכאל גורם לך לעשות את העבודה בפועל. כבר בשבוע הרביעי היו לי לקוחות משלמים ראשונים. נסיתי תוכניות אחרות. פה אין איפה להתחבא.",
       },
       {
         name: "יעל בן-דוד",
         role: "מייסדת HealthTech",
-        text: "עשיתי אקסלרטורים אחרים. TFC שונה כי הוא קטן, אישי, ולמיכאל באמת אכפת מההתקדמות שלך. מתודולוגיית הקאסטדב לבדה שווה את כל ההשקעה.",
+        text: "TFC שונה כי הקבוצה קטנה, הכל אישי, ומיכאל באמת עוקב אחרי ההתקדמות שלך כל שבוע. רק מתודולוגיית הקאסטדב שילמה את כל הערך של התוכנית.",
       },
       {
         name: "אולג מרצ׳נקו",
-        role: "B2B SaaS, קייב",
-        text: "בהתחלה הייתי סקפטי — עוד קורס? אבל זה לא קורס. זו דרך מובנית מאפס להשקה עם מישהו שבאמת עבר את זה כמה פעמים. לסטארטאפ שלי יש היום 40+ משתמשים והמספר גדל.",
+        role: "B2B SaaS",
+        text: "לסטארטאפ שלי יש כיום 40+ משתמשים, ובשבוע שעבר סגרתי את החוזה השנתי הראשון שלי.",
       },
     ],
 
@@ -823,10 +825,10 @@ export const translations: Record<Lang, Translations> = {
       { q: "יש מדיניות החזר?", a: "אם אחרי המפגש הראשון תרגישו שזה לא מתאים — החזר מלא, ללא שאלות." },
     ],
 
-    ctaTitle: "מוכנים להתחיל?",
-    ctaSubtitle: "הצטרפו למחזור הבא ועברו מרעיון למוצר ב-12 שבועות.",
-    ctaCohort: "מחזור הבא: 13 באפריל 2026",
-    ctaCTA: "הגש מועמדות",
+    ctaTitle: "הקוהורט הבא מתחיל ב-13 באפריל.",
+    ctaSubtitle: "הגש בקשה וניפגש בשיחה קצרה של 15 דקות כדי לשוחח על הקייס הספציפי שלך. אם תרגיש שהתוכנית היא מה שאתה צריך, ואני אראה פוטנציאל - ברוכים הבאים ל-TFC אקסלרטור.",
+    ctaCohort: "קוהורט הבא: 13 באפריל 2026",
+    ctaCTA: "להגיש בקשה - לוקח דקה אחת",
 
     midCTA: "מתעניינים? הגישו מועמדות לפני שהמקומות נגמרים",
     midCTASub: "ניצור קשר תוך 24 שעות",
