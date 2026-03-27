@@ -651,7 +651,26 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══════════════ FOOTER ═══════════════ */}
+      {/* ═══════════════ FAQ ═══════════════ */}
+      <section id="faq" className="landing-content py-24 md:py-40 border-t border-white/[0.06]">
+        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
+          <Reveal>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.faqTag}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-12">{t.faqTitle}</h2>
+          </Reveal>
+
+          <div>
+            {t.faqItems.map((faq: any, i: number) => (
+              <Reveal key={i} delay={i * 80}>
+                <FAQItem q={faq.q} a={faq.a} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer className="landing-content border-t border-white/[0.06] py-8 pb-24 md:pb-8">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-xs text-white/20">{t.footerRights}</span>
