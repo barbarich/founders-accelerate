@@ -634,7 +634,7 @@ export default function Landing() {
                   </div>
                 </div>
                 <Link to={applyUrl} className="group w-full py-3.5 rounded-full text-sm font-semibold border-2 border-[hsl(var(--landing-accent))]/30 text-[hsl(var(--landing-accent))] hover:border-[hsl(var(--landing-accent))] hover:bg-[hsl(var(--landing-accent))] hover:text-black transition-all inline-flex items-center justify-center gap-2">
-                  {t.hereCTA}
+                  {t.heroCTA}
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
