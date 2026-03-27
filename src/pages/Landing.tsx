@@ -222,8 +222,13 @@ export default function Landing() {
             <p className="text-[10px] md:text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-3 md:mb-4">{t.problemTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-[1.75rem] md:text-6xl lg:text-7xl font-black text-white mb-10 md:mb-24 leading-tight">{t.problemTitle}</h2>
+            <h2 className="text-[1.75rem] md:text-6xl lg:text-7xl font-black text-white mb-6 md:mb-10 leading-tight">{t.problemTitle}</h2>
           </Reveal>
+          {t.problemIntro && (
+            <Reveal delay={150}>
+              <p className="text-[15px] md:text-xl text-white/50 max-w-3xl leading-relaxed mb-10 md:mb-20">{t.problemIntro}</p>
+            </Reveal>
+          )}
 
           <div className="max-w-4xl">
             {t.problemItems.map((p: string, i: number) => (
