@@ -526,6 +526,40 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══════════════ FINAL CTA ═══════════════ */}
+      <section className="landing-content min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
+          <Reveal>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6">{t.ctaTitle}</h2>
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="text-lg md:text-xl text-white/40 mb-4">{t.ctaSubtitle}</p>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/40 mb-10">
+              <span className="inline-flex items-center gap-2">
+                <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
+                {t.ctaCohort}
+              </span>
+              <span className="hidden sm:inline text-white/10">·</span>
+              <span className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--landing-accent))]">
+                <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
+                {t.heroSpotsLeft}
+              </span>
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <Link
+              to={applyUrl}
+              className="group landing-cta-btn px-10 py-4 rounded-full text-lg font-bold transition-all inline-flex items-center gap-3"
+            >
+              {t.ctaCTA}
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ═══════════════ PRICING ═══════════════ */}
       <section id="pricing" className="landing-content py-24 md:py-40 border-t border-white/[0.06]">
         <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
@@ -613,60 +647,6 @@ export default function Landing() {
               <Shield size={16} className="text-[hsl(var(--landing-accent))]" />
               <span>{t.faqItems[t.faqItems.length - 1]?.a}</span>
             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ═══════════════ FAQ ═══════════════ */}
-      <section id="faq" className="landing-content py-24 md:py-40 border-t border-white/[0.06]">
-        <div className="max-w-[800px] mx-auto px-6 lg:px-10">
-          <Reveal>
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.faqTag}</p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-12">{t.faqTitle}</h2>
-          </Reveal>
-
-          <div>
-            {t.faqItems.map((faq: any, i: number) => (
-              <Reveal key={i} delay={i * 80}>
-                <FAQItem q={faq.q} a={faq.a} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ FINAL CTA ═══════════════ */}
-      <section className="landing-content min-h-[70vh] flex items-center justify-center relative overflow-hidden landing-cta-section">
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center py-24">
-          <Reveal>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6">{t.ctaTitle}</h2>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="text-lg md:text-xl text-white/40 mb-4">{t.ctaSubtitle}</p>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/40 mb-10">
-              <span className="inline-flex items-center gap-2">
-                <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
-                {t.ctaCohort}
-              </span>
-              <span className="hidden sm:inline text-white/10">·</span>
-              <span className="inline-flex items-center gap-2 font-semibold text-[hsl(var(--landing-accent))]">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--landing-accent))] animate-pulse" />
-                {t.heroSpotsLeft}
-              </span>
-            </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <Link
-              to={applyUrl}
-              className="group landing-cta-btn px-10 py-4 rounded-full text-lg font-bold transition-all inline-flex items-center gap-3"
-            >
-              {t.ctaCTA}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
           </Reveal>
         </div>
       </section>
