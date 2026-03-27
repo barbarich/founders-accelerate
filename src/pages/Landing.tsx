@@ -242,6 +242,11 @@ export default function Landing() {
               </Reveal>
             ))}
           </div>
+          {t.problemOutro && (
+            <Reveal delay={600}>
+              <p className="text-base md:text-xl text-[hsl(var(--landing-accent))] font-medium mt-10 md:mt-16">{t.problemOutro}</p>
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -252,8 +257,13 @@ export default function Landing() {
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.whoTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-16">{t.whoTitle}</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-4">{t.whoTitle}</h2>
           </Reveal>
+          {t.whoIntro && (
+            <Reveal delay={150}>
+              <p className="text-[15px] md:text-lg text-white/50 max-w-3xl leading-relaxed mb-16">{t.whoIntro}</p>
+            </Reveal>
+          )}
 
           <div className="grid md:grid-cols-2 gap-5">
             {t.whoItems.map((item: any, i: number) => (
@@ -523,8 +533,13 @@ export default function Landing() {
             <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.pricingTag}</p>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-16">{t.pricingTitle}</h2>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-4">{t.pricingTitle}</h2>
           </Reveal>
+          {t.pricingIntro && (
+            <Reveal delay={150}>
+              <p className="text-[15px] md:text-lg text-white/50 max-w-3xl leading-relaxed mb-16">{t.pricingIntro}</p>
+            </Reveal>
+          )}
 
           <div className="grid md:grid-cols-2 gap-6">
             {/* Accelerator */}
