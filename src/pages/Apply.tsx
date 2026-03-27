@@ -73,30 +73,6 @@ export default function Apply() {
     }
   };
 
-  if (submitted) {
-    return (
-      <div className="min-h-screen landing-wrapper flex items-center justify-center px-6">
-        <div className="landing-stripes" />
-        <div className="text-center max-w-md landing-content">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 size={32} className="text-emerald-400" />
-          </div>
-          <h1 className="text-3xl font-bold font-display mb-3 text-white">
-            {t.applySuccess}
-          </h1>
-          <p className="mb-8 text-white/40">{t.applySuccessSub}</p>
-          <Link
-            to={`/${lang}`}
-            className="landing-cta-btn px-6 py-3 rounded-full text-sm font-semibold inline-flex items-center gap-2"
-          >
-            <ArrowLeft size={16} />
-            {t.applyBack}
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   const inputClass =
     "w-full rounded-xl px-4 py-3 text-sm transition-all duration-200 outline-none bg-white/[0.04] border border-white/[0.08] text-white placeholder:text-white/20 focus:ring-2 focus:ring-[hsl(var(--landing-accent))]/30 focus:border-[hsl(var(--landing-accent))]/50";
 
