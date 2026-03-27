@@ -140,7 +140,7 @@ export const translations: Record<Lang, Translations> = {
 
     problemTag: "The Problem",
     problemTitle: "Sound familiar?",
-    problemIntro: "These days I work as CEO at established companies, take on crisis management, and mentor startup founders. In 2026, building has become so easy that the only real question left is: \"What's next?\"",
+    problemIntro: "",
     problemItems: [
       "I've had an idea for months - but I have no idea where to start",
       "I started building - then got stuck and quietly gave up",
@@ -323,7 +323,7 @@ export const translations: Record<Lang, Translations> = {
 
     problemTag: "Проблема",
     problemTitle: "Узнаёшь себя?",
-    problemIntro: "Последние годы я работаю СЕО в крупных компаниях, работаю как кризис-менеджер и менторю основателей стартапов. В 2026 строить стало так легко, что единственный вопрос - это: «Что дальше?»",
+    problemIntro: "",
     problemItems: [
       "Идея есть уже несколько месяцев - но я не знаю, с чего начать",
       "Начинал строить - потом застрял и тихо бросил",
@@ -506,7 +506,7 @@ export const translations: Record<Lang, Translations> = {
 
     problemTag: "Проблема",
     problemTitle: "Впізнаєш себе?",
-    problemIntro: "Останніми роками я працюю CEO в великих компаніях, працюю як кризис-менеджер і менторю засновників стартапів. У 2026 будувати стало настільки просто, що єдине реальне питання - «Що далі?»",
+    problemIntro: "",
     problemItems: [
       "Ідея є вже кілька місяців - але я не знаю, з чого почати",
       "Починав будувати - потім застряг і тихо кинув",
@@ -689,7 +689,7 @@ export const translations: Record<Lang, Translations> = {
 
     problemTag: "הבעיה",
     problemTitle: "נשמע מוכר?",
-    problemIntro: "בשנים האחרונות אני עובד כ-CEO בחברות גדולות, עובד כמנהל משברים ומעניק מנטורינג למייסדי סטארטאפים. ב-2026 לבנות הפך כל כך פשוט, שהשאלה היחידה שנשארת היא: \"במה נמשיך?\"",
+    problemIntro: "",
     problemItems: [
       "יש לי רעיון כבר כמה חודשים - אבל אין לי מושג מאיפה מתחילים",
       "התחלתי לבנות - נתקעתי ועזבתי בשקט",
