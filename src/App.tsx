@@ -12,6 +12,7 @@ import PresentationShell from "@/components/presentation/PresentationShell";
 import Register from "./pages/Register";
 import Program from "./pages/Program";
 import NotFound from "./pages/NotFound";
+import ThankYou from "./pages/ThankYou";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPresentations from "./pages/admin/AdminPresentations";
@@ -80,6 +81,7 @@ const App = () => (
           <Route path="/program" element={<Program />} />
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />
           <Route path="/programm-week2" element={<PublicMeeting2Shell />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="presentations" element={<AdminPresentations />} />

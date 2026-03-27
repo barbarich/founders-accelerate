@@ -1,5 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supportedLangs, langLabels } from "@/i18n/translations";
 import { useState } from "react";
 
@@ -26,7 +26,7 @@ type ApplyFormData = z.infer<typeof applySchema>;
 
 export default function Apply() {
   const { lang, t } = useLanguage();
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
@@ -61,7 +61,7 @@ export default function Apply() {
       if (window.fbq) {
         window.fbq('track', 'Lead', { content_name: 'Application Form' });
       }
-      setSubmitted(true);
+      navigate("/thank-you");
     } catch (err) {
       console.error("Submit error:", err);
       setSubmitError(
