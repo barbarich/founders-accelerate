@@ -126,7 +126,7 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Mentor",
 
     heroTag: "Accelerator for Founders",
-    heroTitle: "From idea to first paying customers\nin 12 weeks",
+    heroTitle: "Launch Your Product\nin 12 Weeks",
     heroSubtitle: "A mentorship program from a CEO of international companies and a founder with 16 years of experience who built 7 products across Israel and global markets, with 2 exits.",
     heroCohort: "Next cohort: April 13, 2026",
     heroCTA: "Apply Now",
@@ -309,7 +309,7 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Ментор",
 
     heroTag: "Акселератор для фаундеров",
-    heroTitle: "От идеи до первых платящих клиентов\nза 12 недель",
+    heroTitle: "Запусти свой продукт\nза 12 недель",
     heroSubtitle: "Менторская программа от СЕО международных компаний и фаундера с 16-летним стажем, что построил 7 продуктов, в Израиле и на глобальном рынке, сделал 2 экзита.",
     heroCohort: "Следующий поток: 13 апреля 2026",
     heroCTA: "Подать заявку",
@@ -492,7 +492,7 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "Ментор",
 
     heroTag: "Акселератор для фаундерів",
-    heroTitle: "Від ідеї до перших платних клієнтів\nза 12 тижнів",
+    heroTitle: "Запусти свій продукт\nза 12 тижнів",
     heroSubtitle: "Менторська програма від CEO міжнародних компаній і фаундера з 16-річним досвідом, який побудував 7 продуктів в Ізраїлі та на глобальному ринку, з 2 екзитами.",
     heroCohort: "Наступний потік: 13 квітня 2026",
     heroCTA: "Подати заявку",
@@ -675,7 +675,7 @@ export const translations: Record<Lang, Translations> = {
     navMentor: "מנטור",
 
     heroTag: "אקסלרטור ליזמים",
-    heroTitle: "מרעיון ללקוחות משלמים ראשונים\nתוך 12 שבועות",
+    heroTitle: "השקת המוצר שלך\nתוך 12 שבועות",
     heroSubtitle: "תוכנית מנטורינג מאת CEO של חברות בינלאומיות ויזם עם 16 שנים נסיון שבנה 7 מוצרים בישראל ובשוק הגלובלי, עם 2 אקזיטים.",
     heroCohort: "קוהורט הבא: 13 באפריל 2026",
     heroCTA: "הגש מועמדות",
