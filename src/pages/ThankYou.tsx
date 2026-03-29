@@ -12,7 +12,7 @@ export default function ThankYou() {
         <h1 className="text-3xl md:text-4xl font-bold font-display mb-4 text-white">
           Thank you!
         </h1>
-        <p className="text-base text-white/40 mb-10 leading-relaxed">
+        <p className="text-base text-white/80 mb-10 leading-relaxed">
           Your application has been received. We'll review it and get back to you shortly.
         </p>
         <Link

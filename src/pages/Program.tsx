@@ -32,7 +32,7 @@ function SectionBlock({
       </p>
       <ul className="space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-white/60">
+          <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed text-white/80">
             <span className={`w-1 h-1 rounded-full ${dotColors[color]} mt-[7px] shrink-0`} />
             {item}
           </li>
@@ -46,7 +46,7 @@ function WeekCard({ week }: { week: Week }) {
   return (
     <div className="rounded-xl overflow-hidden landing-card">
       <div className="px-5 py-4 border-b border-white/[0.06]">
-        <p className="text-[11px] text-white/30 font-mono uppercase tracking-wider mb-0.5">
+        <p className="text-[11px] text-white/70 font-mono uppercase tracking-wider mb-0.5">
           Неделя {week.number}
         </p>
         <h3 className="text-[15px] font-semibold text-white/90 leading-snug">
@@ -86,7 +86,7 @@ function MonthTabs({
             ${
               activeMonth === m.month
                 ? "landing-cta-btn shadow-md"
-                : "bg-white/[0.04] text-white/40 border border-white/[0.08] hover:border-[hsl(var(--landing-accent))]/30 hover:text-white/70"
+                : "bg-white/[0.04] text-white/80 border border-white/[0.08] hover:border-[hsl(var(--landing-accent))]/30 hover:text-white/70"
             }
           `}
         >
@@ -113,7 +113,7 @@ export default function Program() {
         <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link
             to={`/${lang}`}
-            className="flex items-center gap-2 text-white/40 hover:text-white transition-colors text-sm"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Назад
@@ -137,7 +137,7 @@ export default function Program() {
           <h1 className={`${isMobile ? "text-3xl" : "text-5xl"} font-bold text-white mb-4 font-display leading-tight`}>
             Программа акселератора
           </h1>
-          <p className={`${isMobile ? "text-sm" : "text-lg"} text-white/40 max-w-xl mx-auto mb-8`}>
+          <p className={`${isMobile ? "text-sm" : "text-lg"} text-white/80 max-w-xl mx-auto mb-8`}>
             12 недель. От идеи до готового продукта с первыми пользователями
           </p>
 
@@ -146,22 +146,22 @@ export default function Program() {
 
         {/* Month Title */}
         <div className={`text-center ${isMobile ? "mb-6" : "mb-10"}`}>
-          <p className="text-white/30 text-xs font-mono uppercase tracking-wider mb-1">
+          <p className="text-white/70 text-xs font-mono uppercase tracking-wider mb-1">
             Месяц {currentMonth.month}
           </p>
           <h2 className={`${isMobile ? "text-2xl" : "text-3xl"} font-bold text-white mb-1 font-display`}>
             {currentMonth.label}
           </h2>
-          <p className="text-white/40 text-sm">{currentMonth.subtitle}</p>
+          <p className="text-white/80 text-sm">{currentMonth.subtitle}</p>
         </div>
 
         {/* Who & Result */}
         <div className={`grid ${isMobile ? "grid-cols-1 gap-3" : "grid-cols-2 gap-5"} mb-10`}>
           <div className="landing-card rounded-xl p-5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-white/30 mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-white/70 mb-2">
               Точка входа
             </p>
-            <p className="text-[13px] text-white/60 leading-relaxed">
+            <p className="text-[13px] text-white/80 leading-relaxed">
               {currentMonth.forWhom}
             </p>
           </div>
@@ -169,7 +169,7 @@ export default function Program() {
             <p className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--landing-accent))] mb-2">
               Результат месяца
             </p>
-            <p className="text-[13px] text-white/60 leading-relaxed">
+            <p className="text-[13px] text-white/80 leading-relaxed">
               {currentMonth.result}
             </p>
           </div>
@@ -189,7 +189,7 @@ export default function Program() {
           </p>
           <ul className="space-y-2">
             {currentMonth.outcomes.map((item, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-[13px] text-white/60">
+              <li key={i} className="flex items-start gap-2.5 text-[13px] text-white/80">
                 <ChevronRight size={12} className="text-[hsl(var(--landing-accent))] mt-[3px] shrink-0" />
                 {item}
               </li>
@@ -208,7 +208,7 @@ export default function Program() {
             Присоединиться
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <p className="text-white/30 text-xs mt-3">
+          <p className="text-white/70 text-xs mt-3">
             Старт 13 апреля 2026 · 12 недель · Группа 5-7 человек
           </p>
         </div>

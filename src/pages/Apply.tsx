@@ -88,7 +88,7 @@ export default function Apply() {
             to={`/${lang}`}
             className="font-display text-lg font-bold inline-flex items-center gap-2 text-white"
           >
-            <ArrowLeft size={16} className="text-white/40" />
+            <ArrowLeft size={16} className="text-white/80" />
             The Founders Circle
           </Link>
           <div className="flex items-center gap-0.5">
@@ -99,7 +99,7 @@ export default function Apply() {
                 className={`px-2.5 py-1 text-xs rounded-md transition-all font-medium ${
                   l === lang
                     ? "bg-[hsl(var(--landing-accent))]/15 text-[hsl(var(--landing-accent))]"
-                    : "text-white/30 hover:text-white/60"
+                    : "text-white/70 hover:text-white/80"
                 }`}
               >
                 {langLabels[l]}
@@ -119,7 +119,7 @@ export default function Apply() {
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-3 text-white">
             {t.applyTitle}
           </h1>
-          <p className="text-base text-white/40">{t.applySubtitle}</p>
+          <p className="text-base text-white/80">{t.applySubtitle}</p>
         </div>
       </div>
 

@@ -38,11 +38,11 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         <span className="text-base md:text-lg font-medium text-white/90 pr-4 group-hover:text-[hsl(var(--landing-accent))] transition-colors">{q}</span>
         <ChevronDown
           size={20}
-          className={`text-white/30 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          className={`text-white/70 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
         />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? "max-h-[300px] pb-5" : "max-h-0"}`}>
-        <p className="text-sm md:text-base text-white/50 leading-relaxed pr-8">{a}</p>
+        <p className="text-sm md:text-base text-white/70 leading-relaxed pr-8">{a}</p>
       </div>
     </div>
   );
@@ -98,17 +98,17 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#program" className="text-[13px] text-white/40 hover:text-white transition-colors tracking-wide uppercase">{t.navProgram}</a>
-          <Link to={`/${lang}/mentor`} className="text-[13px] text-white/40 hover:text-white transition-colors tracking-wide uppercase">{t.navMentor}</Link>
-          <a href="#pricing" className="text-[13px] text-white/40 hover:text-white transition-colors tracking-wide uppercase">{t.navPricing}</a>
-          <a href="#faq" className="text-[13px] text-white/40 hover:text-white transition-colors tracking-wide uppercase">FAQ</a>
+          <a href="#program" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navProgram}</a>
+          <Link to={`/${lang}/mentor`} className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navMentor}</Link>
+          <a href="#pricing" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navPricing}</a>
+          <a href="#faq" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">FAQ</a>
 
           <div className="flex items-center gap-0.5 ml-2">
             {supportedLangs.map((l) => (
               <Link
                 key={l}
                 to={`/${l}`}
-                className={`px-2 py-1 text-[11px] font-mono rounded transition-all ${l === lang ? "bg-[hsl(var(--landing-accent))]/15 text-[hsl(var(--landing-accent))]" : "text-white/30 hover:text-white/60"}`}
+                className={`px-2 py-1 text-[11px] font-mono rounded transition-all ${l === lang ? "bg-[hsl(var(--landing-accent))]/15 text-[hsl(var(--landing-accent))]" : "text-white/70 hover:text-white/80"}`}
               >
                 {langLabels[l]}
               </Link>
@@ -122,7 +122,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
         <div className="md:hidden flex items-center gap-3">
           <div className="flex items-center gap-0.5">
             {supportedLangs.map((l) => (
-              <Link key={l} to={`/${l}`} className={`px-1.5 py-0.5 text-[10px] font-mono rounded transition-colors ${l === lang ? "bg-[hsl(var(--landing-accent))]/15 text-[hsl(var(--landing-accent))]" : "text-white/30"}`}>
+              <Link key={l} to={`/${l}`} className={`px-1.5 py-0.5 text-[10px] font-mono rounded transition-colors ${l === lang ? "bg-[hsl(var(--landing-accent))]/15 text-[hsl(var(--landing-accent))]" : "text-white/70"}`}>
                 {langLabels[l]}
               </Link>
             ))}
@@ -135,10 +135,10 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
 
       {menuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/[0.06] px-6 pb-5 space-y-4">
-          <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-white/50">{t.navProgram}</a>
-          <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-white/50">{t.navMentor}</Link>
-          <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-white/50">{t.navPricing}</a>
-          <a href="#faq" onClick={() => setMenuOpen(false)} className="block text-sm text-white/50">FAQ</a>
+          <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navProgram}</a>
+          <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navMentor}</Link>
+          <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navPricing}</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">FAQ</a>
           <Link to={applyUrl} className="block landing-cta-btn px-5 py-3 rounded-full text-sm font-semibold text-center">{t.navApply}</Link>
         </div>
       )}
@@ -184,7 +184,7 @@ export default function Landing() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-[15px] md:text-xl text-white/50 max-w-2xl leading-relaxed landing-fade-up landing-delay-300 mb-10 md:mb-14">
+          <p className="text-[15px] md:text-xl text-white/70 max-w-2xl leading-relaxed landing-fade-up landing-delay-300 mb-10 md:mb-14">
             {t.heroSubtitle}
           </p>
 
@@ -201,11 +201,11 @@ export default function Landing() {
 
           {/* Urgency signals */}
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6 text-[13px] md:text-sm landing-fade-up landing-delay-500">
-            <span className="inline-flex items-center gap-1.5 text-white/40">
+            <span className="inline-flex items-center gap-1.5 text-white/80">
               <Clock size={13} className="text-[hsl(var(--landing-accent))]" />
               {t.heroCohort}
             </span>
-            <span className="inline-flex items-center gap-1.5 text-white/40">
+            <span className="inline-flex items-center gap-1.5 text-white/80">
               <Users size={13} className="text-[hsl(var(--landing-accent))]" />
               {t.heroGroup}
             </span>
@@ -228,7 +228,7 @@ export default function Landing() {
           </Reveal>
           {t.problemIntro && (
             <Reveal delay={150}>
-              <p className="text-[15px] md:text-xl text-white/50 max-w-3xl leading-relaxed mb-10 md:mb-20">{t.problemIntro}</p>
+              <p className="text-[15px] md:text-xl text-white/70 max-w-3xl leading-relaxed mb-10 md:mb-20">{t.problemIntro}</p>
             </Reveal>
           )}
 
@@ -237,7 +237,7 @@ export default function Landing() {
               <Reveal key={i} delay={i * 100}>
                 <div className="group flex items-start gap-4 md:gap-6 py-5 md:py-7 border-b border-white/[0.06] hover:border-[hsl(var(--landing-accent))]/30 transition-colors">
                   <span className="text-[hsl(var(--landing-accent))]/40 font-mono text-[11px] md:text-sm mt-0.5 shrink-0 w-5">0{i + 1}</span>
-                  <p className="text-base md:text-2xl lg:text-3xl text-white/60 group-hover:text-white/90 transition-colors leading-snug font-light">
+                  <p className="text-base md:text-2xl lg:text-3xl text-white/80 group-hover:text-white/90 transition-colors leading-snug font-light">
                     "{p}"
                   </p>
                 </div>
@@ -263,7 +263,7 @@ export default function Landing() {
           </Reveal>
           {t.whoIntro && (
             <Reveal delay={150}>
-              <p className="text-[15px] md:text-lg text-white/50 max-w-3xl leading-relaxed mb-16">{t.whoIntro}</p>
+              <p className="text-[15px] md:text-lg text-white/70 max-w-3xl leading-relaxed mb-16">{t.whoIntro}</p>
             </Reveal>
           )}
 
@@ -275,7 +275,7 @@ export default function Landing() {
                     <span className="text-[hsl(var(--landing-accent))] font-mono text-sm font-bold">{i + 1}</span>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-white/40 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-white/80 leading-relaxed">{item.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -288,7 +288,7 @@ export default function Landing() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <p className="text-lg md:text-xl font-semibold text-white">{t.midCTA}</p>
-            <p className="text-sm text-white/40 mt-1">{t.midCTASub}</p>
+            <p className="text-sm text-white/80 mt-1">{t.midCTASub}</p>
           </div>
           <Link to={applyUrl} className="group landing-cta-btn px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 shrink-0">
             {t.heroCTA}
@@ -325,7 +325,7 @@ export default function Landing() {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-2">{t.mentorTitle}</h2>
               </Reveal>
               <Reveal delay={200}>
-                <p className="text-base md:text-lg text-white/40 italic mb-10">{t.mentorSubtitle}</p>
+                <p className="text-base md:text-lg text-white/80 italic mb-10">{t.mentorSubtitle}</p>
               </Reveal>
 
               <div className="space-y-4">
@@ -363,7 +363,7 @@ export default function Landing() {
             <h2 className="text-4xl md:text-6xl font-black text-white mb-3">{t.phasesTitle}</h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-base md:text-lg text-white/40 mb-20 max-w-3xl">{t.phasesSubtitle}</p>
+            <p className="text-base md:text-lg text-white/80 mb-20 max-w-3xl">{t.phasesSubtitle}</p>
           </Reveal>
 
           <div className="relative">
@@ -404,7 +404,7 @@ export default function Landing() {
           {/* Full curriculum CTA */}
           <Reveal delay={400}>
             <div className="mt-16 md:mt-24 text-center">
-              <p className="text-base md:text-lg text-white/40 mb-6 max-w-2xl mx-auto">{t.phasesCurriculumDesc}</p>
+              <p className="text-base md:text-lg text-white/80 mb-6 max-w-2xl mx-auto">{t.phasesCurriculumDesc}</p>
               <Link
                 to="/program"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-[hsl(var(--landing-accent))] text-[hsl(var(--landing-accent))] font-semibold text-base hover:bg-[hsl(var(--landing-accent))] hover:text-black transition-all duration-300 group"
@@ -427,7 +427,7 @@ export default function Landing() {
             <h2 className="text-4xl md:text-6xl font-black text-white mb-3">{t.resultsTitle}</h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-base md:text-lg text-white/40 mb-16">{t.resultsSubtitle}</p>
+            <p className="text-base md:text-lg text-white/80 mb-16">{t.resultsSubtitle}</p>
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
@@ -438,7 +438,7 @@ export default function Landing() {
                   <div className="landing-card rounded-xl p-6 md:p-8 h-full cursor-default">
                     <span className="landing-stat-number font-mono text-3xl font-bold mb-4 block">0{i + 1}</span>
                     <h3 className="text-lg md:text-xl font-semibold text-white mb-2">{r.title}</h3>
-                    <p className="text-sm text-white/40 leading-relaxed">{r.desc}</p>
+                    <p className="text-sm text-white/80 leading-relaxed">{r.desc}</p>
                   </div>
                 </Reveal>
               );
@@ -452,7 +452,7 @@ export default function Landing() {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <p className="text-lg md:text-xl font-semibold text-white">{t.midCTA}</p>
-            <p className="text-sm text-white/40 mt-1">{t.midCTASub}</p>
+            <p className="text-sm text-white/80 mt-1">{t.midCTASub}</p>
           </div>
           <Link to={applyUrl} className="group landing-cta-btn px-8 py-3.5 rounded-full text-sm font-semibold inline-flex items-center gap-2 shrink-0">
             {t.heroCTA}
@@ -471,7 +471,7 @@ export default function Landing() {
             <h2 className="text-4xl md:text-6xl font-black text-white mb-2">{t.formatTitle}</h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-base md:text-lg text-white/40 mb-16">{t.formatSubtitle}</p>
+            <p className="text-base md:text-lg text-white/80 mb-16">{t.formatSubtitle}</p>
           </Reveal>
 
           <div className="grid md:grid-cols-3 gap-5">
@@ -504,10 +504,10 @@ export default function Landing() {
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6">{t.ctaTitle}</h2>
           </Reveal>
           <Reveal delay={100}>
-            <p className="text-lg md:text-xl text-white/40 mb-4">{t.ctaSubtitle}</p>
+            <p className="text-lg md:text-xl text-white/80 mb-4">{t.ctaSubtitle}</p>
           </Reveal>
           <Reveal delay={150}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/40 mb-10">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-white/80 mb-10">
               <span className="inline-flex items-center gap-2">
                 <Clock size={14} className="text-[hsl(var(--landing-accent))]" />
                 {t.ctaCohort}
@@ -553,7 +553,7 @@ export default function Landing() {
                   </div>
                   <div className="pt-4 border-t border-white/[0.06]">
                     <p className="text-sm font-semibold text-white">{item.name}</p>
-                    <p className="text-xs text-white/30 mt-0.5">{item.role}</p>
+                    <p className="text-xs text-white/70 mt-0.5">{item.role}</p>
                   </div>
                 </div>
               </Reveal>
@@ -573,7 +573,7 @@ export default function Landing() {
           </Reveal>
           {t.pricingIntro && (
             <Reveal delay={150}>
-              <p className="text-[15px] md:text-lg text-white/50 max-w-3xl leading-relaxed mb-16">{t.pricingIntro}</p>
+              <p className="text-[15px] md:text-lg text-white/70 max-w-3xl leading-relaxed mb-16">{t.pricingIntro}</p>
             </Reveal>
           )}
 
@@ -590,7 +590,7 @@ export default function Landing() {
                     {t.heroSpotsLeft}
                   </span>
                 </div>
-                <p className="text-sm text-white/40 mb-8">{t.accelSub}</p>
+                <p className="text-sm text-white/80 mb-8">{t.accelSub}</p>
                 <div className="space-y-3 mb-10">
                   {t.accelItems.map((item: string, i: number) => (
                     <div key={i} className="flex items-start gap-3">
@@ -602,11 +602,11 @@ export default function Landing() {
                 <div className="border-t border-white/[0.08] pt-6 space-y-2 mb-8">
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl md:text-5xl font-bold landing-stat-number font-mono">{t.accelPrice}</span>
-                    <span className="text-sm text-white/40">{t.accelPriceSub}</span>
+                    <span className="text-sm text-white/80">{t.accelPriceSub}</span>
                   </div>
                   <div className="flex items-baseline gap-3">
-                    <span className="text-2xl md:text-3xl font-bold text-white/50 font-mono">{t.accelMonthly}</span>
-                    <span className="text-sm text-white/40">{t.accelMonthlySub}</span>
+                    <span className="text-2xl md:text-3xl font-bold text-white/70 font-mono">{t.accelMonthly}</span>
+                    <span className="text-sm text-white/80">{t.accelMonthlySub}</span>
                   </div>
                 </div>
                 <Link to={applyUrl} className="group landing-cta-btn w-full py-3.5 rounded-full text-sm font-semibold inline-flex items-center justify-center gap-2">
@@ -620,11 +620,11 @@ export default function Landing() {
             <Reveal delay={350}>
               <div className="landing-card rounded-2xl p-8 md:p-10 h-full flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{t.consultTitle}</h3>
-                <p className="text-sm text-white/40 mb-8">{t.consultSub}</p>
+                <p className="text-sm text-white/80 mb-8">{t.consultSub}</p>
                 <div className="space-y-3 mb-10 flex-1">
                   {t.consultItems.map((item: string, i: number) => (
                     <div key={i} className="flex items-start gap-3">
-                      <ChevronRight size={14} className="text-white/30 mt-1 shrink-0" />
+                      <ChevronRight size={14} className="text-white/70 mt-1 shrink-0" />
                       <span className="text-sm text-white/70 leading-relaxed">{item}</span>
                     </div>
                   ))}
@@ -632,7 +632,7 @@ export default function Landing() {
                 <div className="border-t border-white/[0.08] pt-6 mb-8">
                   <div className="flex items-baseline gap-3">
                     <span className="text-4xl md:text-5xl font-bold text-white font-mono">{t.consultPrice}</span>
-                    <span className="text-sm text-white/40">{t.consultPriceSub}</span>
+                    <span className="text-sm text-white/80">{t.consultPriceSub}</span>
                   </div>
                 </div>
                 <Link to={applyUrl} className="group w-full py-3.5 rounded-full text-sm font-semibold border-2 border-[hsl(var(--landing-accent))]/30 text-[hsl(var(--landing-accent))] hover:border-[hsl(var(--landing-accent))] hover:bg-[hsl(var(--landing-accent))] hover:text-black transition-all inline-flex items-center justify-center gap-2">
@@ -645,7 +645,7 @@ export default function Landing() {
 
           {/* Guarantee */}
           <Reveal delay={400}>
-            <div className="mt-8 flex items-center justify-center gap-3 text-sm text-white/40">
+            <div className="mt-8 flex items-center justify-center gap-3 text-sm text-white/80">
               <Shield size={16} className="text-[hsl(var(--landing-accent))]" />
               <span>{t.faqItems[t.faqItems.length - 1]?.a}</span>
             </div>
@@ -678,7 +678,7 @@ export default function Landing() {
           <span className="text-xs text-white/20">{t.footerRights}</span>
           <div className="flex items-center gap-1">
             {supportedLangs.map((l) => (
-              <Link key={l} to={`/${l}`} className={`px-2 py-1 text-[11px] font-mono rounded transition-colors ${l === lang ? "text-[hsl(var(--landing-accent))]" : "text-white/20 hover:text-white/50"}`}>
+              <Link key={l} to={`/${l}`} className={`px-2 py-1 text-[11px] font-mono rounded transition-colors ${l === lang ? "text-[hsl(var(--landing-accent))]" : "text-white/20 hover:text-white/70"}`}>
                 {langLabels[l]}
               </Link>
             ))}
