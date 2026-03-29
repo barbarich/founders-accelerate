@@ -401,6 +401,15 @@
   background: url('/images/landing-bg.png') center center / cover no-repeat;
 }
 
+/* On mobile, scale background wider so side frame borders are pushed off-screen
+   and shift up so top rounded corners are hidden */
+@media (max-width: 768px) {
+  .landing-stripes {
+    inset: -40px -28px 0 -28px;
+    background-position: center top;
+  }
+}
+
 /* Content sits above stripes */
 .landing-content {
   position: relative;
