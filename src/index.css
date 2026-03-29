@@ -22,7 +22,7 @@
     --secondary-foreground: 0 0% 95%;
 
     --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 70%;
 
     --accent: 38 45% 58%;
     --accent-foreground: 0 0% 4%;
@@ -41,7 +41,7 @@
     --slide-gold: 38 45% 58%;
     --slide-gold-dim: 38 30% 40%;
     --slide-text: 0 0% 95%;
-    --slide-text-muted: 0 0% 55%;
+    --slide-text-muted: 0 0% 70%;
     --slide-border: 0 0% 18%;
 
     --gold-light: 38 60% 70%;
@@ -51,7 +51,7 @@
     --landing-bg: 20 15% 5%;
     --landing-bg-alt: 20 12% 8%;
     --landing-text: 30 20% 92%;
-    --landing-muted: 25 10% 50%;
+    --landing-muted: 25 12% 68%;
     --landing-border: 20 10% 14%;
     --landing-accent: 25 65% 58%;
     --landing-accent-2: 20 55% 48%;
