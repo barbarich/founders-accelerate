@@ -174,10 +174,10 @@ export default function Mentor() {
                   <p
                     className={`leading-[1.9] ${
                       isLast
-                        ? "text-xl md:text-2xl font-display font-bold mt-10 pt-8"
+                        ? "text-xl md:text-2xl font-display font-normal mt-10 pt-8"
                         : i === 0
-                          ? "text-xl md:text-2xl font-medium"
-                          : "text-[17px] md:text-lg"
+                          ? "text-xl md:text-2xl font-normal"
+                          : "text-[17px] md:text-lg font-normal"
                     }`}
                     style={{
                       color: isLast
