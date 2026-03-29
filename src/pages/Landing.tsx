@@ -100,7 +100,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
         <div className="hidden md:flex items-center gap-8">
           <a href="#program" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navMentor}</Link>
-          <a href="#pricing" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">{t.navPricing}</a>
+          
           <a href="#faq" className="text-[13px] text-white/80 hover:text-white transition-colors tracking-wide uppercase">FAQ</a>
 
           <div className="flex items-center gap-0.5 ml-2">
@@ -137,7 +137,7 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/[0.06] px-6 pb-5 space-y-4">
           <a href="#program" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navProgram}</a>
           <Link to={`/${lang}/mentor`} onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navMentor}</Link>
-          <a href="#pricing" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">{t.navPricing}</a>
+          
           <a href="#faq" onClick={() => setMenuOpen(false)} className="block text-sm text-white/70">FAQ</a>
           <Link to={applyUrl} className="block landing-cta-btn px-5 py-3 rounded-full text-sm font-semibold text-center">{t.navApply}</Link>
         </div>
@@ -562,96 +562,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══════════════ PRICING ═══════════════ */}
-      <section id="pricing" className="landing-content py-24 md:py-40 border-t border-white/[0.06]">
-        <div className="max-w-[1100px] mx-auto px-6 lg:px-10">
-          <Reveal>
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-[hsl(var(--landing-accent))] mb-4">{t.pricingTag}</p>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-4">{t.pricingTitle}</h2>
-          </Reveal>
-          {t.pricingIntro && (
-            <Reveal delay={150}>
-              <p className="text-[15px] md:text-lg text-white/70 max-w-3xl leading-relaxed mb-16">{t.pricingIntro}</p>
-            </Reveal>
-          )}
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Accelerator */}
-            <Reveal delay={200}>
-              <div className="landing-card-accent rounded-2xl p-8 md:p-10 h-full relative overflow-hidden">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">{t.accelTitle}</h3>
-                </div>
-                <div className="mb-1">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[hsl(var(--landing-accent))] text-black text-[8px] md:text-[9px] font-semibold uppercase tracking-wider">
-                    <span className="w-1 h-1 rounded-full bg-black animate-pulse" />
-                    {t.heroSpotsLeft}
-                  </span>
-                </div>
-                <p className="text-sm text-white/80 mb-8">{t.accelSub}</p>
-                <div className="space-y-3 mb-10">
-                  {t.accelItems.map((item: string, i: number) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <ChevronRight size={14} className="text-[hsl(var(--landing-accent))] mt-1 shrink-0" />
-                      <span className="text-sm text-white/80 leading-relaxed">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="border-t border-white/[0.08] pt-6 space-y-2 mb-8">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-4xl md:text-5xl font-bold landing-stat-number font-mono">{t.accelPrice}</span>
-                    <span className="text-sm text-white/80">{t.accelPriceSub}</span>
-                  </div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-2xl md:text-3xl font-bold text-white/70 font-mono">{t.accelMonthly}</span>
-                    <span className="text-sm text-white/80">{t.accelMonthlySub}</span>
-                  </div>
-                </div>
-                <Link to={applyUrl} className="group landing-cta-btn w-full py-3.5 rounded-full text-sm font-semibold inline-flex items-center justify-center gap-2">
-                  {t.heroCTA}
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </Reveal>
-
-            {/* Consultation */}
-            <Reveal delay={350}>
-              <div className="landing-card rounded-2xl p-8 md:p-10 h-full flex flex-col">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{t.consultTitle}</h3>
-                <p className="text-sm text-white/80 mb-8">{t.consultSub}</p>
-                <div className="space-y-3 mb-10 flex-1">
-                  {t.consultItems.map((item: string, i: number) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <ChevronRight size={14} className="text-white/70 mt-1 shrink-0" />
-                      <span className="text-sm text-white/70 leading-relaxed">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="border-t border-white/[0.08] pt-6 mb-8">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-4xl md:text-5xl font-bold text-white font-mono">{t.consultPrice}</span>
-                    <span className="text-sm text-white/80">{t.consultPriceSub}</span>
-                  </div>
-                </div>
-                <Link to={applyUrl} className="group w-full py-3.5 rounded-full text-sm font-semibold border-2 border-[hsl(var(--landing-accent))]/30 text-[hsl(var(--landing-accent))] hover:border-[hsl(var(--landing-accent))] hover:bg-[hsl(var(--landing-accent))] hover:text-black transition-all inline-flex items-center justify-center gap-2">
-                  {t.heroCTA}
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Guarantee */}
-          <Reveal delay={400}>
-            <div className="mt-8 flex items-center justify-center gap-3 text-sm text-white/80">
-              <Shield size={16} className="text-[hsl(var(--landing-accent))]" />
-              <span>{t.faqItems[t.faqItems.length - 1]?.a}</span>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
       {/* ═══════════════ FAQ ═══════════════ */}
       <section id="faq" className="landing-content py-24 md:py-40 border-t border-white/[0.06]">
