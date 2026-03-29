@@ -181,7 +181,7 @@ export default function Mentor() {
                     }`}
                     style={{
                       color: isLast
-                        ? "hsl(var(--landing-accent))"
+                        ? "hsl(var(--landing-text))"
                         : i === 0
                           ? "hsl(var(--landing-text))"
                           : "hsl(var(--landing-text) / 0.92)",
