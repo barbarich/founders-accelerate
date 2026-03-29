@@ -90,8 +90,10 @@ function Nav({ lang, t, applyUrl }: { lang: Lang; t: any; applyUrl: string }) {
   return (
     <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/[0.06]" : "bg-transparent"}`}>
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
-        <Link to={`/${lang}`} className="font-display text-xl font-bold text-white tracking-tight">
-          TFC
+        <Link to={`/${lang}`} className="font-display font-bold text-white tracking-tight leading-[1.1] text-[13px] md:text-base uppercase">
+          <span className="block">The</span>
+          <span className="block">Founders</span>
+          <span className="block">Circle</span>
         </Link>
 
         {/* Desktop */}
