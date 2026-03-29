@@ -158,26 +158,33 @@ export default function Mentor() {
             </p>
           </Reveal>
 
-          {/* Statement paragraphs — clean editorial typography */}
-          <div className="space-y-6">
+          {/* Statement paragraphs — card with semi-transparent bg */}
+          <div
+            className="rounded-2xl p-6 md:p-10 space-y-6"
+            style={{
+              background: "hsl(var(--landing-bg) / 0.7)",
+              border: "1px solid hsl(var(--landing-border) / 0.5)",
+              backdropFilter: "blur(8px)",
+            }}
+          >
             {t.mentorStatement.map((paragraph: string, i: number) => {
               const isLast = i === t.mentorStatement.length - 1;
               return (
                 <Reveal key={i} delay={i * 60}>
                   <p
-                    className={`leading-[1.8] ${
+                    className={`leading-[1.9] ${
                       isLast
                         ? "text-xl md:text-2xl font-display font-bold mt-10 pt-8"
                         : i === 0
-                          ? "text-lg md:text-xl font-medium"
-                          : "text-base md:text-[17px]"
+                          ? "text-xl md:text-2xl font-medium"
+                          : "text-[17px] md:text-lg"
                     }`}
                     style={{
                       color: isLast
                         ? "hsl(var(--landing-accent))"
                         : i === 0
                           ? "hsl(var(--landing-text))"
-                          : "hsl(var(--landing-text) / 0.75)",
+                          : "hsl(var(--landing-text) / 0.92)",
                       ...(isLast
                         ? { borderTop: "1px solid hsl(var(--landing-accent) / 0.2)" }
                         : {}),
