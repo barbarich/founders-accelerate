@@ -61,7 +61,7 @@ export default function Apply() {
       if (window.fbq) {
         window.fbq('track', 'Lead', { content_name: 'Application Form' });
       }
-      navigate("/thank-you");
+      navigate(`/${lang}/thank-you`);
     } catch (err) {
       console.error("Submit error:", err);
       setSubmitError(

@@ -65,6 +65,16 @@ function LangMentor() {
   );
 }
 
+function LangThankYou() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <ThankYou />
+    </LanguageProvider>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -81,7 +91,8 @@ const App = () => (
           <Route path="/program" element={<Program />} />
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />
           <Route path="/programm-week2" element={<PublicMeeting2Shell />} />
-          <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="/:lang/thank-you" element={<LangThankYou />} />
+          <Route path="/thank-you" element={<Navigate to="/en/thank-you" replace />} />
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="presentations" element={<AdminPresentations />} />
