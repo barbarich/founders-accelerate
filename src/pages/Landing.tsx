@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 declare global {
   interface Window { fbq?: (...args: any[]) => void; }
 }
-import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock, Shield } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
 import photo from "@/assets/slides/photo-michael.jpg";
