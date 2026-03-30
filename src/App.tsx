@@ -32,6 +32,7 @@ import CabinetResources from "./pages/cabinet/CabinetResources";
 import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
 import PublicMeeting1Shell from "@/components/presentation/meeting1/PublicMeeting1Shell";
 import PublicMeeting2Shell from "@/components/presentation/meeting2/PublicMeeting2Shell";
+import PublicMeeting3Shell from "@/components/presentation/meeting3/PublicMeeting3Shell";
 
 const queryClient = new QueryClient();
 
@@ -91,6 +92,7 @@ const App = () => (
           <Route path="/program" element={<Program />} />
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />
           <Route path="/programm-week2" element={<PublicMeeting2Shell />} />
+          <Route path="/programm-week3" element={<PublicMeeting3Shell />} />
           <Route path="/:lang/thank-you" element={<LangThankYou />} />
           <Route path="/thank-you" element={<Navigate to="/en/thank-you" replace />} />
           <Route path="/admin" element={<AdminLayout />}>
