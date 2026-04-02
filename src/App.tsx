@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Program from "./pages/Program";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPresentations from "./pages/admin/AdminPresentations";
@@ -76,6 +77,16 @@ function LangThankYou() {
   );
 }
 
+function LangPrivacy() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <PrivacyPolicy />
+    </LanguageProvider>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -93,6 +104,7 @@ const App = () => (
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />
           <Route path="/programm-week2" element={<PublicMeeting2Shell />} />
           <Route path="/programm-week3" element={<PublicMeeting3Shell />} />
+          <Route path="/:lang/privacy" element={<LangPrivacy />} />
           <Route path="/:lang/thank-you" element={<LangThankYou />} />
           <Route path="/thank-you" element={<Navigate to="/en/thank-you" replace />} />
           <Route path="/admin" element={<AdminLayout />}>

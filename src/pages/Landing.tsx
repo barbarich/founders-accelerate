@@ -585,7 +585,12 @@ export default function Landing() {
 
       <footer className="landing-content border-t border-white/[0.06] py-8 pb-24 md:pb-8">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs text-white/20">{t.footerRights}</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-white/20">{t.footerRights}</span>
+            <Link to={`/${lang}/privacy`} className="text-xs text-white/20 hover:text-white/50 transition-colors underline underline-offset-2">
+              {t.footerPrivacy}
+            </Link>
+          </div>
           <div className="flex items-center gap-1">
             {supportedLangs.map((l) => (
               <Link key={l} to={`/${l}`} className={`px-2 py-1 text-[11px] font-mono rounded transition-colors ${l === lang ? "text-[hsl(var(--landing-accent))]" : "text-white/20 hover:text-white/70"}`}>

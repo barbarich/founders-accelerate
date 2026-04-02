@@ -116,6 +116,12 @@ export interface Translations {
   applyBack: string;
 
   footerRights: string;
+  footerPrivacy: string;
+
+  privacyTitle: string;
+  privacyLastUpdated: string;
+  privacySections: { title: string; content: string }[];
+  privacyBack: string;
 }
 
 export const translations: Record<Lang, Translations> = {
@@ -301,6 +307,53 @@ export const translations: Record<Lang, Translations> = {
     applyBack: "Back to Home",
 
     footerRights: "© 2026 The Founders Circle. All rights reserved.",
+    footerPrivacy: "Privacy Policy",
+
+    privacyTitle: "Privacy Policy",
+    privacyLastUpdated: "Last updated: April 2, 2026",
+    privacySections: [
+      {
+        title: "1. Introduction",
+        content: "The Founders Circle (\"we\", \"us\", \"our\") respects your privacy and is committed to protecting the personal data you share with us. This Privacy Policy describes what data we collect, how we use it, and your rights regarding your personal information. This policy applies to all interactions with our website, messenger communications (including Meta/Facebook Messenger), application forms, and related services.",
+      },
+      {
+        title: "2. Data We Collect",
+        content: "We may collect the following categories of personal data:\n\n• Contact information: name, email address, phone number\n• Application data: information about your startup idea, current stage, preferred language of communication\n• Communication data: messages you send us through Meta Messenger, WhatsApp, or other messaging platforms\n• Technical data: IP address, browser type, device information, cookies\n• Usage data: pages visited, time spent on the site, referral source",
+      },
+      {
+        title: "3. How We Use Your Data",
+        content: "We use your personal data for the following purposes:\n\n• Processing your application to the accelerator program\n• Communicating with you about the program, including via Meta Messenger\n• Sending you relevant information about our services and events\n• Improving our website and services\n• Complying with legal obligations\n• Running advertising campaigns, including Meta (Facebook/Instagram) ads with messaging objectives",
+      },
+      {
+        title: "4. Legal Basis for Processing",
+        content: "We process your data based on:\n\n• Your consent — when you submit an application form, send us a message, or interact with our ads\n• Legitimate interest — to improve our services and communicate relevant information\n• Contractual necessity — to fulfill our obligations under the accelerator program agreement",
+      },
+      {
+        title: "5. Meta Messenger & Advertising",
+        content: "When you interact with our Meta (Facebook/Instagram) advertising campaigns and send us messages through Meta Messenger, we receive your name, profile information, and message content as provided by Meta Platforms. This data is used exclusively to respond to your inquiry and provide information about our accelerator program. We do not sell or share this data with third parties for their own marketing purposes.",
+      },
+      {
+        title: "6. Data Sharing",
+        content: "We do not sell your personal data. We may share your data with:\n\n• Service providers who help us operate our platform (hosting, analytics, CRM)\n• Meta Platforms, Inc. — in connection with advertising campaigns and messaging\n• Legal authorities — when required by law\n\nAll third-party service providers are contractually required to protect your data.",
+      },
+      {
+        title: "7. Data Retention",
+        content: "We retain your personal data for as long as necessary to fulfill the purposes described in this policy, or as required by law. Application data is typically retained for up to 2 years after your last interaction with us. You may request deletion of your data at any time.",
+      },
+      {
+        title: "8. Your Rights",
+        content: "Depending on your location, you may have the following rights:\n\n• Access — request a copy of data we hold about you\n• Correction — request correction of inaccurate data\n• Deletion — request deletion of your personal data\n• Restriction — request that we limit the processing of your data\n• Portability — receive your data in a machine-readable format\n• Objection — object to our processing of your data\n• Withdraw consent — withdraw your consent at any time\n\nTo exercise any of these rights, contact us at the email provided below.",
+      },
+      {
+        title: "9. Cookies",
+        content: "Our website uses cookies and similar tracking technologies, including Meta Pixel, for analytics and advertising purposes. You can manage your cookie preferences through your browser settings. For more information about how Meta uses cookies, please refer to Meta's Cookie Policy.",
+      },
+      {
+        title: "10. Contact Us",
+        content: "If you have questions about this Privacy Policy or wish to exercise your rights, please contact us:\n\nThe Founders Circle\nEmail: michael@founders-circle.co",
+      },
+    ],
+    privacyBack: "Back to Home",
   },
 
   ru: {
@@ -485,6 +538,53 @@ export const translations: Record<Lang, Translations> = {
     applyBack: "На главную",
 
     footerRights: "© 2026 The Founders Circle. Все права защищены.",
+    footerPrivacy: "Политика конфиденциальности",
+
+    privacyTitle: "Политика конфиденциальности",
+    privacyLastUpdated: "Последнее обновление: 2 апреля 2026 г.",
+    privacySections: [
+      {
+        title: "1. Введение",
+        content: "The Founders Circle («мы», «нас», «наш») уважает вашу конфиденциальность и обязуется защищать персональные данные, которыми вы с нами делитесь. Настоящая Политика конфиденциальности описывает, какие данные мы собираем, как мы их используем и какие у вас есть права в отношении вашей личной информации. Эта политика распространяется на все взаимодействия с нашим сайтом, мессенджерами (включая Meta/Facebook Messenger), формы заявок и связанные сервисы.",
+      },
+      {
+        title: "2. Данные, которые мы собираем",
+        content: "Мы можем собирать следующие категории персональных данных:\n\n• Контактная информация: имя, адрес электронной почты, номер телефона\n• Данные заявки: информация о вашей стартап-идее, текущей стадии, предпочтительном языке общения\n• Данные переписки: сообщения, которые вы отправляете нам через Meta Messenger, WhatsApp или другие мессенджеры\n• Технические данные: IP-адрес, тип браузера, информация об устройстве, файлы cookie\n• Данные об использовании: посещённые страницы, время на сайте, источник перехода",
+      },
+      {
+        title: "3. Как мы используем ваши данные",
+        content: "Мы используем ваши персональные данные в следующих целях:\n\n• Обработка вашей заявки на участие в программе-акселераторе\n• Связь с вами по вопросам программы, в том числе через Meta Messenger\n• Отправка вам актуальной информации о наших услугах и мероприятиях\n• Улучшение нашего сайта и сервисов\n• Соблюдение требований законодательства\n• Проведение рекламных кампаний, включая рекламу в Meta (Facebook/Instagram) с целями обмена сообщениями",
+      },
+      {
+        title: "4. Правовые основания обработки",
+        content: "Мы обрабатываем ваши данные на основании:\n\n• Вашего согласия — когда вы отправляете заявку, пишете нам сообщение или взаимодействуете с нашей рекламой\n• Законного интереса — для улучшения наших услуг и предоставления актуальной информации\n• Договорной необходимости — для выполнения наших обязательств по договору программы-акселератора",
+      },
+      {
+        title: "5. Meta Messenger и реклама",
+        content: "Когда вы взаимодействуете с нашими рекламными кампаниями в Meta (Facebook/Instagram) и отправляете нам сообщения через Meta Messenger, мы получаем ваше имя, информацию профиля и содержание сообщения, предоставленные Meta Platforms. Эти данные используются исключительно для ответа на ваш запрос и предоставления информации о нашей программе-акселераторе. Мы не продаём и не передаём эти данные третьим лицам для их собственных маркетинговых целей.",
+      },
+      {
+        title: "6. Передача данных",
+        content: "Мы не продаём ваши персональные данные. Мы можем передавать ваши данные:\n\n• Поставщикам услуг, которые помогают нам в работе платформы (хостинг, аналитика, CRM)\n• Meta Platforms, Inc. — в связи с рекламными кампаниями и обменом сообщениями\n• Государственным органам — когда это требуется по закону\n\nВсе сторонние поставщики услуг обязаны по договору защищать ваши данные.",
+      },
+      {
+        title: "7. Хранение данных",
+        content: "Мы храним ваши персональные данные столько, сколько необходимо для выполнения целей, описанных в настоящей политике, или в соответствии с требованиями закона. Данные заявки обычно хранятся до 2 лет после вашего последнего взаимодействия с нами. Вы можете запросить удаление ваших данных в любое время.",
+      },
+      {
+        title: "8. Ваши права",
+        content: "В зависимости от вашего местоположения вы можете обладать следующими правами:\n\n• Доступ — запросить копию данных, которые мы храним о вас\n• Исправление — запросить исправление неточных данных\n• Удаление — запросить удаление ваших персональных данных\n• Ограничение — запросить ограничение обработки ваших данных\n• Переносимость — получить ваши данные в машиночитаемом формате\n• Возражение — возразить против обработки ваших данных\n• Отзыв согласия — отозвать своё согласие в любое время\n\nДля реализации любого из этих прав свяжитесь с нами по указанному ниже адресу электронной почты.",
+      },
+      {
+        title: "9. Файлы cookie",
+        content: "Наш сайт использует файлы cookie и аналогичные технологии отслеживания, включая Meta Pixel, в целях аналитики и рекламы. Вы можете управлять настройками cookie через настройки вашего браузера. Для получения дополнительной информации об использовании файлов cookie компанией Meta обратитесь к Политике cookie Meta.",
+      },
+      {
+        title: "10. Связаться с нами",
+        content: "Если у вас есть вопросы по данной Политике конфиденциальности или вы хотите реализовать свои права, свяжитесь с нами:\n\nThe Founders Circle\nEmail: michael@founders-circle.co",
+      },
+    ],
+    privacyBack: "На главную",
   },
 
   ua: {
@@ -669,6 +769,53 @@ export const translations: Record<Lang, Translations> = {
     applyBack: "На головну",
 
     footerRights: "© 2026 The Founders Circle. Усі права захищені.",
+    footerPrivacy: "Політика конфіденційності",
+
+    privacyTitle: "Політика конфіденційності",
+    privacyLastUpdated: "Останнє оновлення: 2 квітня 2026 р.",
+    privacySections: [
+      {
+        title: "1. Вступ",
+        content: "The Founders Circle («ми», «нас», «наш») поважає вашу конфіденційність та зобов'язується захищати персональні дані, якими ви з нами ділитесь. Ця Політика конфіденційності описує, які дані ми збираємо, як їх використовуємо та які у вас є права щодо вашої особистої інформації. Ця політика поширюється на всі взаємодії з нашим сайтом, месенджерами (включаючи Meta/Facebook Messenger), формами заявок та пов'язаними сервісами.",
+      },
+      {
+        title: "2. Дані, які ми збираємо",
+        content: "Ми можемо збирати такі категорії персональних даних:\n\n• Контактна інформація: ім'я, адреса електронної пошти, номер телефону\n• Дані заявки: інформація про вашу стартап-ідею, поточну стадію, бажану мову спілкування\n• Дані листування: повідомлення, які ви надсилаєте нам через Meta Messenger, WhatsApp або інші месенджери\n• Технічні дані: IP-адреса, тип браузера, інформація про пристрій, файли cookie\n• Дані про використання: відвідані сторінки, час на сайті, джерело переходу",
+      },
+      {
+        title: "3. Як ми використовуємо ваші дані",
+        content: "Ми використовуємо ваші персональні дані з такою метою:\n\n• Обробка вашої заявки на участь у програмі-акселераторі\n• Зв'язок з вами щодо програми, зокрема через Meta Messenger\n• Надсилання актуальної інформації про наші послуги та заходи\n• Покращення нашого сайту та сервісів\n• Дотримання вимог законодавства\n• Проведення рекламних кампаній, включаючи рекламу в Meta (Facebook/Instagram) з цілями обміну повідомленнями",
+      },
+      {
+        title: "4. Правові підстави обробки",
+        content: "Ми обробляємо ваші дані на підставі:\n\n• Вашої згоди — коли ви надсилаєте заявку, пишете нам повідомлення або взаємодієте з нашою рекламою\n• Законного інтересу — для покращення наших послуг та надання актуальної інформації\n• Договірної необхідності — для виконання наших зобов'язань за договором програми-акселератора",
+      },
+      {
+        title: "5. Meta Messenger та реклама",
+        content: "Коли ви взаємодієте з нашими рекламними кампаніями в Meta (Facebook/Instagram) та надсилаєте нам повідомлення через Meta Messenger, ми отримуємо ваше ім'я, інформацію профілю та зміст повідомлення, надані Meta Platforms. Ці дані використовуються виключно для відповіді на ваш запит та надання інформації про нашу програму-акселератор. Ми не продаємо і не передаємо ці дані третім особам для їхніх власних маркетингових цілей.",
+      },
+      {
+        title: "6. Передача даних",
+        content: "Ми не продаємо ваші персональні дані. Ми можемо передавати ваші дані:\n\n• Постачальникам послуг, які допомагають нам у роботі платформи (хостинг, аналітика, CRM)\n• Meta Platforms, Inc. — у зв'язку з рекламними кампаніями та обміном повідомленнями\n• Державним органам — коли це вимагається законом\n\nУсі сторонні постачальники послуг зобов'язані за договором захищати ваші дані.",
+      },
+      {
+        title: "7. Зберігання даних",
+        content: "Ми зберігаємо ваші персональні дані стільки, скільки необхідно для виконання цілей, описаних у цій політиці, або відповідно до вимог закону. Дані заявки зазвичай зберігаються до 2 років після вашої останньої взаємодії з нами. Ви можете запросити видалення ваших даних у будь-який час.",
+      },
+      {
+        title: "8. Ваші права",
+        content: "Залежно від вашого місцезнаходження ви можете мати такі права:\n\n• Доступ — запросити копію даних, які ми зберігаємо про вас\n• Виправлення — запросити виправлення неточних даних\n• Видалення — запросити видалення ваших персональних даних\n• Обмеження — запросити обмеження обробки ваших даних\n• Переносимість — отримати ваші дані у машиночитаному форматі\n• Заперечення — заперечити проти обробки ваших даних\n• Відкликання згоди — відкликати свою згоду у будь-який час\n\nДля реалізації будь-якого з цих прав зв'яжіться з нами за вказаною нижче електронною адресою.",
+      },
+      {
+        title: "9. Файли cookie",
+        content: "Наш сайт використовує файли cookie та аналогічні технології відстеження, включаючи Meta Pixel, з метою аналітики та реклами. Ви можете керувати налаштуваннями cookie через налаштування вашого браузера. Для отримання додаткової інформації про використання файлів cookie компанією Meta зверніться до Політики cookie Meta.",
+      },
+      {
+        title: "10. Зв'язатися з нами",
+        content: "Якщо у вас є питання щодо цієї Політики конфіденційності або ви хочете реалізувати свої права, зв'яжіться з нами:\n\nThe Founders Circle\nEmail: michael@founders-circle.co",
+      },
+    ],
+    privacyBack: "На головну",
   },
 
   he: {
@@ -853,5 +1000,52 @@ export const translations: Record<Lang, Translations> = {
     applyBack: "חזרה לעמוד הראשי",
 
     footerRights: "© 2026 The Founders Circle. כל הזכויות שמורות.",
+    footerPrivacy: "מדיניות פרטיות",
+
+    privacyTitle: "מדיניות פרטיות",
+    privacyLastUpdated: "עדכון אחרון: 2 באפריל 2026",
+    privacySections: [
+      {
+        title: "1. מבוא",
+        content: "The Founders Circle (\"אנחנו\", \"אנו\", \"שלנו\") מכבדת את פרטיותכם ומחויבת להגן על המידע האישי שאתם משתפים איתנו. מדיניות פרטיות זו מתארת אילו נתונים אנו אוספים, כיצד אנו משתמשים בהם ומה זכויותיכם בנוגע למידע האישי שלכם. מדיניות זו חלה על כל האינטראקציות עם האתר שלנו, תקשורת במסנג'ר (כולל Meta/Facebook Messenger), טפסי הרשמה ושירותים קשורים.",
+      },
+      {
+        title: "2. מידע שאנו אוספים",
+        content: "אנו עשויים לאסוף את הקטגוריות הבאות של מידע אישי:\n\n• פרטי קשר: שם, כתובת דוא\"ל, מספר טלפון\n• נתוני הרשמה: מידע על רעיון הסטארטאפ שלכם, שלב נוכחי, שפת תקשורת מועדפת\n• נתוני תקשורת: הודעות שאתם שולחים לנו דרך Meta Messenger, WhatsApp או פלטפורמות הודעות אחרות\n• נתונים טכניים: כתובת IP, סוג דפדפן, מידע על המכשיר, עוגיות\n• נתוני שימוש: דפים שנצפו, זמן שהייה באתר, מקור ההפניה",
+      },
+      {
+        title: "3. כיצד אנו משתמשים במידע שלכם",
+        content: "אנו משתמשים במידע האישי שלכם למטרות הבאות:\n\n• עיבוד הבקשה שלכם לתוכנית האקסלרטור\n• תקשורת איתכם בנוגע לתוכנית, כולל דרך Meta Messenger\n• שליחת מידע רלוונטי על השירותים והאירועים שלנו\n• שיפור האתר והשירותים שלנו\n• עמידה בדרישות חוקיות\n• הפעלת קמפיינים פרסומיים, כולל מודעות Meta (Facebook/Instagram) עם יעדי הודעות",
+      },
+      {
+        title: "4. בסיס חוקי לעיבוד",
+        content: "אנו מעבדים את המידע שלכם על בסיס:\n\n• הסכמתכם — כאשר אתם שולחים טופס הרשמה, שולחים לנו הודעה או מתקשרים עם הפרסומות שלנו\n• אינטרס לגיטימי — לשיפור השירותים שלנו ותקשורת מידע רלוונטי\n• הכרח חוזי — למילוי התחייבויותינו במסגרת הסכם תוכנית האקסלרטור",
+      },
+      {
+        title: "5. Meta Messenger ופרסום",
+        content: "כאשר אתם מתקשרים עם קמפיינים פרסומיים שלנו ב-Meta (Facebook/Instagram) ושולחים לנו הודעות דרך Meta Messenger, אנו מקבלים את שמכם, מידע הפרופיל ותוכן ההודעה כפי שסופקו על ידי Meta Platforms. מידע זה משמש אך ורק למענה לפנייתכם ולמתן מידע על תוכנית האקסלרטור שלנו. אנו לא מוכרים או משתפים מידע זה עם צדדים שלישיים למטרות שיווקיות שלהם.",
+      },
+      {
+        title: "6. שיתוף מידע",
+        content: "אנו לא מוכרים את המידע האישי שלכם. אנו עשויים לשתף את המידע שלכם עם:\n\n• ספקי שירות המסייעים לנו בהפעלת הפלטפורמה (אחסון, אנליטיקה, CRM)\n• Meta Platforms, Inc. — בקשר לקמפיינים פרסומיים והודעות\n• רשויות חוקיות — כאשר נדרש על פי חוק\n\nכל ספקי השירות של צדדים שלישיים מחויבים חוזית להגן על המידע שלכם.",
+      },
+      {
+        title: "7. שמירת מידע",
+        content: "אנו שומרים את המידע האישי שלכם כל עוד נדרש למילוי המטרות המתוארות במדיניות זו, או כנדרש על פי חוק. נתוני הרשמה נשמרים בדרך כלל עד שנתיים לאחר האינטראקציה האחרונה שלכם איתנו. תוכלו לבקש מחיקת המידע שלכם בכל עת.",
+      },
+      {
+        title: "8. הזכויות שלכם",
+        content: "בהתאם למיקומכם, ייתכן שיש לכם את הזכויות הבאות:\n\n• גישה — לבקש עותק של המידע שאנו מחזיקים עליכם\n• תיקון — לבקש תיקון מידע לא מדויק\n• מחיקה — לבקש מחיקת המידע האישי שלכם\n• הגבלה — לבקש הגבלת עיבוד המידע שלכם\n• ניידות — לקבל את המידע שלכם בפורמט קריא מכונה\n• התנגדות — להתנגד לעיבוד המידע שלכם\n• ביטול הסכמה — לבטל את הסכמתכם בכל עת\n\nלמימוש כל אחת מזכויות אלה, צרו איתנו קשר בדוא\"ל המצוין להלן.",
+      },
+      {
+        title: "9. עוגיות",
+        content: "האתר שלנו משתמש בעוגיות וטכנולוגיות מעקב דומות, כולל Meta Pixel, למטרות אנליטיקה ופרסום. תוכלו לנהל את העדפות העוגיות שלכם דרך הגדרות הדפדפן. למידע נוסף על השימוש של Meta בעוגיות, עיינו במדיניות העוגיות של Meta.",
+      },
+      {
+        title: "10. צרו קשר",
+        content: "אם יש לכם שאלות לגבי מדיניות פרטיות זו או שאתם מעוניינים לממש את זכויותיכם, צרו איתנו קשר:\n\nThe Founders Circle\nEmail: michael@founders-circle.co",
+      },
+    ],
+    privacyBack: "חזרה לעמוד הראשי",
   },
 };
