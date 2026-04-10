@@ -585,10 +585,16 @@ export default function Landing() {
 
       <footer className="landing-content border-t border-white/[0.06] py-8 pb-24 md:pb-8">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
             <span className="text-xs text-white/20">{t.footerRights}</span>
             <Link to={`/${lang}/privacy`} className="text-xs text-white/20 hover:text-white/50 transition-colors underline underline-offset-2">
               {t.footerPrivacy}
+            </Link>
+            <Link to={`/${lang}/terms`} className="text-xs text-white/20 hover:text-white/50 transition-colors underline underline-offset-2">
+              {t.footerTerms}
+            </Link>
+            <Link to={`/${lang}/contact`} className="text-xs text-white/20 hover:text-white/50 transition-colors underline underline-offset-2">
+              {t.footerContact}
             </Link>
           </div>
           <div className="flex items-center gap-1">

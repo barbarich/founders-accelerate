@@ -301,7 +301,12 @@ export default function Mentor() {
       {/* Footer */}
       <footer style={{ borderTop: "1px solid hsl(var(--landing-border))" }} className="py-8">
         <div className="max-w-[1100px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-xs" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerRights}</span>
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="text-xs" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerRights}</span>
+            <Link to={`/${lang}/privacy`} className="text-xs underline underline-offset-2 transition-colors" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerPrivacy}</Link>
+            <Link to={`/${lang}/terms`} className="text-xs underline underline-offset-2 transition-colors" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerTerms}</Link>
+            <Link to={`/${lang}/contact`} className="text-xs underline underline-offset-2 transition-colors" style={{ color: "hsl(var(--landing-muted) / 0.6)" }}>{t.footerContact}</Link>
+          </div>
           <div className="flex items-center gap-1">
             {supportedLangs.map((l) => (
               <Link

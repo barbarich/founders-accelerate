@@ -117,11 +117,30 @@ export interface Translations {
 
   footerRights: string;
   footerPrivacy: string;
+  footerTerms: string;
+  footerContact: string;
 
   privacyTitle: string;
   privacyLastUpdated: string;
   privacySections: { title: string; content: string }[];
   privacyBack: string;
+
+  termsTitle: string;
+  termsLastUpdated: string;
+  termsSections: { title: string; content: string }[];
+  termsBack: string;
+
+  contactTitle: string;
+  contactSubtitle: string;
+  contactNameLabel: string;
+  contactEmailLabel: string;
+  contactSubjectLabel: string;
+  contactMessageLabel: string;
+  contactMessagePlaceholder: string;
+  contactSubmit: string;
+  contactSuccess: string;
+  contactError: string;
+  contactBack: string;
 }
 
 export const translations: Record<Lang, Translations> = {
@@ -308,6 +327,8 @@ export const translations: Record<Lang, Translations> = {
 
     footerRights: "© 2026 The Founders Circle. All rights reserved.",
     footerPrivacy: "Privacy Policy",
+    footerTerms: "Terms of Service",
+    footerContact: "Contact Us",
 
     privacyTitle: "Privacy Policy",
     privacyLastUpdated: "Last updated: April 2, 2026",
@@ -354,6 +375,64 @@ export const translations: Record<Lang, Translations> = {
       },
     ],
     privacyBack: "Back to Home",
+
+    termsTitle: "Terms of Service",
+    termsLastUpdated: "Last updated: April 10, 2026",
+    termsSections: [
+      {
+        title: "1. Introduction",
+        content: "These Terms of Service (\"Terms\") govern your access to and use of the website founders-circle.space and all related services provided by RunEverywhere, Inc. (\"Company\", \"we\", \"us\", \"our\"). By accessing or using our services, you agree to be bound by these Terms. If you do not agree, please do not use our services.",
+      },
+      {
+        title: "2. Services",
+        content: "The Founders Circle provides the following services:\n\n• Startup accelerator program — a structured 12-week program for early-stage founders including mentorship, workshops, and peer support\n• Consulting services — one-on-one strategic consulting for founders and startups\n• Educational events — workshops, webinars, and group sessions on topics related to building and scaling startups\n\nThe specific scope, duration, and terms of each service are described on our website and in individual agreements.",
+      },
+      {
+        title: "3. Eligibility",
+        content: "Our services are intended for individuals who are at least 18 years of age and have the legal capacity to enter into binding agreements. By using our services, you represent that you meet these requirements.",
+      },
+      {
+        title: "4. Registration and Accounts",
+        content: "To access certain services, you may need to submit an application or create an account. You agree to:\n\n• Provide accurate and complete information\n• Keep your account credentials confidential\n• Notify us promptly of any unauthorized access\n• Be responsible for all activity under your account",
+      },
+      {
+        title: "5. Payments and Refunds",
+        content: "Payment terms are specified at the time of purchase or enrollment. All payments are processed securely through Stripe.\n\n• Prices are listed in the currency indicated on the website\n• Payment is due at the time of enrollment unless otherwise agreed\n• Refund requests must be submitted within 7 days of purchase\n• Refunds are provided at the Company's discretion based on the circumstances\n• No refund is available after the program has started, unless required by applicable law",
+      },
+      {
+        title: "6. Intellectual Property",
+        content: "All content on our website and in our programs — including text, graphics, logos, course materials, presentations, and software — is the property of RunEverywhere, Inc. or its licensors and is protected by intellectual property laws.\n\nYou may not reproduce, distribute, or create derivative works from our content without prior written consent.",
+      },
+      {
+        title: "7. User Conduct",
+        content: "When using our services, you agree not to:\n\n• Violate any applicable laws or regulations\n• Infringe on the rights of others\n• Share confidential information from the program with unauthorized parties\n• Use our services for any fraudulent or harmful purpose\n• Interfere with the operation of our website or services",
+      },
+      {
+        title: "8. Limitation of Liability",
+        content: "To the maximum extent permitted by law, RunEverywhere, Inc. shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services.\n\nOur total liability for any claim related to our services shall not exceed the amount you paid to us in the 12 months preceding the claim.",
+      },
+      {
+        title: "9. Termination",
+        content: "We reserve the right to suspend or terminate your access to our services at any time, with or without cause, and with or without notice. Upon termination, your right to use our services ceases immediately.\n\nYou may terminate your participation by contacting us at the email below. Termination does not automatically entitle you to a refund.",
+      },
+      {
+        title: "10. Governing Law and Contact",
+        content: "These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict of law principles.\n\nIf you have any questions about these Terms, please contact us:\n\nRunEverywhere, Inc.\nEmail: michael.barbarych@gmail.com",
+      },
+    ],
+    termsBack: "Back to Home",
+
+    contactTitle: "Contact Us",
+    contactSubtitle: "Have a question or want to learn more? Send us a message and we'll get back to you shortly.",
+    contactNameLabel: "Your Name",
+    contactEmailLabel: "Email Address",
+    contactSubjectLabel: "Subject",
+    contactMessageLabel: "Message",
+    contactMessagePlaceholder: "How can we help you?",
+    contactSubmit: "Send Message",
+    contactSuccess: "Message sent! We'll get back to you soon.",
+    contactError: "Something went wrong. Please try again or email us directly.",
+    contactBack: "Back to Home",
   },
 
   ru: {
@@ -539,6 +618,8 @@ export const translations: Record<Lang, Translations> = {
 
     footerRights: "© 2026 The Founders Circle. Все права защищены.",
     footerPrivacy: "Политика конфиденциальности",
+    footerTerms: "Условия использования",
+    footerContact: "Связаться с нами",
 
     privacyTitle: "Политика конфиденциальности",
     privacyLastUpdated: "Последнее обновление: 2 апреля 2026 г.",
@@ -585,6 +666,64 @@ export const translations: Record<Lang, Translations> = {
       },
     ],
     privacyBack: "На главную",
+
+    termsTitle: "Условия использования",
+    termsLastUpdated: "Последнее обновление: 10 апреля 2026",
+    termsSections: [
+      {
+        title: "1. Введение",
+        content: "Настоящие Условия использования («Условия») регулируют доступ и использование веб-сайта founders-circle.space и всех связанных услуг, предоставляемых RunEverywhere, Inc. («Компания», «мы», «нас», «наш»). Используя наши услуги, вы соглашаетесь с настоящими Условиями. Если вы не согласны, пожалуйста, не используйте наши услуги.",
+      },
+      {
+        title: "2. Услуги",
+        content: "The Founders Circle предоставляет следующие услуги:\n\n• Программа-акселератор — структурированная 12-недельная программа для фаундеров ранних стадий, включающая менторство, мастер-классы и поддержку коллег\n• Консалтинг — индивидуальные стратегические консультации для фаундеров и стартапов\n• Образовательные мероприятия — воркшопы, вебинары и групповые сессии по темам создания и масштабирования стартапов\n\nКонкретный объём, продолжительность и условия каждой услуги описаны на нашем сайте и в индивидуальных соглашениях.",
+      },
+      {
+        title: "3. Право на участие",
+        content: "Наши услуги предназначены для лиц старше 18 лет, обладающих полной дееспособностью для заключения обязывающих соглашений. Используя наши услуги, вы подтверждаете, что соответствуете этим требованиям.",
+      },
+      {
+        title: "4. Регистрация и учётные записи",
+        content: "Для доступа к некоторым услугам вам может потребоваться подать заявку или создать учётную запись. Вы обязуетесь:\n\n• Предоставлять точную и полную информацию\n• Хранить данные учётной записи в тайне\n• Незамедлительно уведомлять нас о несанкционированном доступе\n• Нести ответственность за все действия в рамках вашей учётной записи",
+      },
+      {
+        title: "5. Оплата и возвраты",
+        content: "Условия оплаты указываются при покупке или регистрации. Все платежи обрабатываются безопасно через Stripe.\n\n• Цены указаны в валюте, обозначенной на сайте\n• Оплата производится в момент регистрации, если не согласовано иное\n• Запросы на возврат должны быть отправлены в течение 7 дней после покупки\n• Возвраты предоставляются по усмотрению Компании в зависимости от обстоятельств\n• Возврат недоступен после начала программы, если иное не предусмотрено законом",
+      },
+      {
+        title: "6. Интеллектуальная собственность",
+        content: "Весь контент на нашем сайте и в программах — включая тексты, графику, логотипы, учебные материалы, презентации и программное обеспечение — является собственностью RunEverywhere, Inc. или её лицензиаров и защищён законодательством об интеллектуальной собственности.\n\nВы не вправе воспроизводить, распространять или создавать производные работы на основе нашего контента без предварительного письменного согласия.",
+      },
+      {
+        title: "7. Правила поведения",
+        content: "Используя наши услуги, вы обязуетесь не:\n\n• Нарушать действующее законодательство и нормативные акты\n• Нарушать права других лиц\n• Делиться конфиденциальной информацией программы с неуполномоченными лицами\n• Использовать наши услуги в мошеннических или вредоносных целях\n• Вмешиваться в работу нашего сайта или сервисов",
+      },
+      {
+        title: "8. Ограничение ответственности",
+        content: "В максимально допустимой законом степени RunEverywhere, Inc. не несёт ответственности за любые косвенные, случайные, специальные, последующие или штрафные убытки, возникающие в связи с использованием наших услуг.\n\nОбщая ответственность за любое требование, связанное с нашими услугами, не превышает сумму, уплаченную вами нам за 12 месяцев, предшествующих требованию.",
+      },
+      {
+        title: "9. Прекращение",
+        content: "Мы оставляем за собой право приостановить или прекратить ваш доступ к нашим услугам в любое время, с указанием или без указания причин, с уведомлением или без. После прекращения ваше право на использование услуг прекращается немедленно.\n\nВы можете прекратить участие, связавшись с нами по электронной почте ниже. Прекращение не даёт автоматического права на возврат средств.",
+      },
+      {
+        title: "10. Применимое право и контакты",
+        content: "Настоящие Условия регулируются законодательством штата Делавэр, США, без учёта норм о коллизии законов.\n\nПо любым вопросам, связанным с настоящими Условиями, обращайтесь:\n\nRunEverywhere, Inc.\nEmail: michael.barbarych@gmail.com",
+      },
+    ],
+    termsBack: "На главную",
+
+    contactTitle: "Связаться с нами",
+    contactSubtitle: "Есть вопрос или хотите узнать больше? Отправьте нам сообщение, и мы ответим в ближайшее время.",
+    contactNameLabel: "Ваше имя",
+    contactEmailLabel: "Email",
+    contactSubjectLabel: "Тема",
+    contactMessageLabel: "Сообщение",
+    contactMessagePlaceholder: "Чем мы можем вам помочь?",
+    contactSubmit: "Отправить",
+    contactSuccess: "Сообщение отправлено! Мы свяжемся с вами в ближайшее время.",
+    contactError: "Что-то пошло не так. Попробуйте ещё раз или напишите нам напрямую.",
+    contactBack: "На главную",
   },
 
   ua: {
@@ -770,6 +909,8 @@ export const translations: Record<Lang, Translations> = {
 
     footerRights: "© 2026 The Founders Circle. Усі права захищені.",
     footerPrivacy: "Політика конфіденційності",
+    footerTerms: "Умови використання",
+    footerContact: "Зв'язатися з нами",
 
     privacyTitle: "Політика конфіденційності",
     privacyLastUpdated: "Останнє оновлення: 2 квітня 2026 р.",
@@ -816,6 +957,64 @@ export const translations: Record<Lang, Translations> = {
       },
     ],
     privacyBack: "На головну",
+
+    termsTitle: "Умови використання",
+    termsLastUpdated: "Останнє оновлення: 10 квітня 2026",
+    termsSections: [
+      {
+        title: "1. Вступ",
+        content: "Ці Умови використання («Умови») регулюють доступ та використання веб-сайту founders-circle.space та всіх пов'язаних послуг, що надаються RunEverywhere, Inc. («Компанія», «ми», «нас», «наш»). Використовуючи наші послуги, ви погоджуєтесь з цими Умовами. Якщо ви не згодні, будь ласка, не користуйтесь нашими послугами.",
+      },
+      {
+        title: "2. Послуги",
+        content: "The Founders Circle надає такі послуги:\n\n• Програма-акселератор — структурована 12-тижнева програма для засновників ранніх стадій, що включає менторство, майстер-класи та підтримку колег\n• Консалтинг — індивідуальні стратегічні консультації для засновників та стартапів\n• Освітні заходи — воркшопи, вебінари та групові сесії з тем створення та масштабування стартапів\n\nКонкретний обсяг, тривалість та умови кожної послуги описані на нашому сайті та в індивідуальних угодах.",
+      },
+      {
+        title: "3. Право на участь",
+        content: "Наші послуги призначені для осіб старше 18 років, які мають повну дієздатність для укладання зобов'язуючих угод. Використовуючи наші послуги, ви підтверджуєте, що відповідаєте цим вимогам.",
+      },
+      {
+        title: "4. Реєстрація та облікові записи",
+        content: "Для доступу до деяких послуг вам може знадобитися подати заявку або створити обліковий запис. Ви зобов'язуєтесь:\n\n• Надавати точну та повну інформацію\n• Зберігати дані облікового запису в таємниці\n• Негайно повідомляти нас про несанкціонований доступ\n• Нести відповідальність за всі дії в рамках вашого облікового запису",
+      },
+      {
+        title: "5. Оплата та повернення",
+        content: "Умови оплати зазначаються при купівлі або реєстрації. Усі платежі обробляються безпечно через Stripe.\n\n• Ціни вказані у валюті, зазначеній на сайті\n• Оплата здійснюється в момент реєстрації, якщо не домовлено інше\n• Запити на повернення повинні бути надіслані протягом 7 днів після купівлі\n• Повернення надається на розсуд Компанії залежно від обставин\n• Повернення недоступне після початку програми, якщо інше не передбачено законом",
+      },
+      {
+        title: "6. Інтелектуальна власність",
+        content: "Увесь контент на нашому сайті та в програмах — включаючи тексти, графіку, логотипи, навчальні матеріали, презентації та програмне забезпечення — є власністю RunEverywhere, Inc. або її ліцензіарів та захищений законодавством про інтелектуальну власність.\n\nВи не маєте права відтворювати, поширювати або створювати похідні роботи на основі нашого контенту без попереднього письмового дозволу.",
+      },
+      {
+        title: "7. Правила поведінки",
+        content: "Використовуючи наші послуги, ви зобов'язуєтесь не:\n\n• Порушувати чинне законодавство та нормативні акти\n• Порушувати права інших осіб\n• Поширювати конфіденційну інформацію програми неуповноваженим особам\n• Використовувати наші послуги в шахрайських або шкідливих цілях\n• Втручатися в роботу нашого сайту або сервісів",
+      },
+      {
+        title: "8. Обмеження відповідальності",
+        content: "В максимально допустимій законом мірі RunEverywhere, Inc. не несе відповідальності за будь-які непрямі, випадкові, спеціальні, наслідкові або штрафні збитки, що виникають у зв'язку з використанням наших послуг.\n\nЗагальна відповідальність за будь-яку вимогу, пов'язану з нашими послугами, не перевищує суму, сплачену вами нам за 12 місяців, що передують вимозі.",
+      },
+      {
+        title: "9. Припинення",
+        content: "Ми залишаємо за собою право призупинити або припинити ваш доступ до наших послуг у будь-який час, із зазначенням або без зазначення причин, з повідомленням або без. Після припинення ваше право на використання послуг припиняється негайно.\n\nВи можете припинити участь, зв'язавшись з нами за електронною поштою нижче. Припинення не дає автоматичного права на повернення коштів.",
+      },
+      {
+        title: "10. Застосовне право та контакти",
+        content: "Ці Умови регулюються законодавством штату Делавер, США, без урахування норм про колізію законів.\n\nЗ будь-яких питань щодо цих Умов звертайтесь:\n\nRunEverywhere, Inc.\nEmail: michael.barbarych@gmail.com",
+      },
+    ],
+    termsBack: "На головну",
+
+    contactTitle: "Зв'язатися з нами",
+    contactSubtitle: "Маєте питання або хочете дізнатися більше? Надішліть нам повідомлення, і ми відповімо найближчим часом.",
+    contactNameLabel: "Ваше ім'я",
+    contactEmailLabel: "Email",
+    contactSubjectLabel: "Тема",
+    contactMessageLabel: "Повідомлення",
+    contactMessagePlaceholder: "Чим ми можемо вам допомогти?",
+    contactSubmit: "Надіслати",
+    contactSuccess: "Повідомлення надіслано! Ми зв'яжемося з вами найближчим часом.",
+    contactError: "Щось пішло не так. Спробуйте ще раз або напишіть нам напряму.",
+    contactBack: "На головну",
   },
 
   he: {
@@ -1001,6 +1200,8 @@ export const translations: Record<Lang, Translations> = {
 
     footerRights: "© 2026 The Founders Circle. כל הזכויות שמורות.",
     footerPrivacy: "מדיניות פרטיות",
+    footerTerms: "תנאי שימוש",
+    footerContact: "צור קשר",
 
     privacyTitle: "מדיניות פרטיות",
     privacyLastUpdated: "עדכון אחרון: 2 באפריל 2026",
@@ -1047,5 +1248,63 @@ export const translations: Record<Lang, Translations> = {
       },
     ],
     privacyBack: "חזרה לעמוד הראשי",
+
+    termsTitle: "תנאי שימוש",
+    termsLastUpdated: "עדכון אחרון: 10 באפריל 2026",
+    termsSections: [
+      {
+        title: "1. מבוא",
+        content: "תנאי שימוש אלה (\"התנאים\") מסדירים את הגישה והשימוש באתר founders-circle.space ובכל השירותים הקשורים שמסופקים על ידי RunEverywhere, Inc. (\"החברה\", \"אנחנו\", \"שלנו\"). בשימוש בשירותינו, אתה מסכים לתנאים אלה. אם אינך מסכים, אנא אל תשתמש בשירותינו.",
+      },
+      {
+        title: "2. שירותים",
+        content: "The Founders Circle מספק את השירותים הבאים:\n\n• תוכנית אקסלרטור — תוכנית מובנית של 12 שבועות למייסדים בשלבים מוקדמים הכוללת מנטורינג, סדנאות ותמיכת עמיתים\n• שירותי ייעוץ — ייעוץ אסטרטגי אישי למייסדים וסטארטאפים\n• אירועים חינוכיים — סדנאות, וובינרים ומפגשים קבוצתיים בנושאי בנייה והרחבת סטארטאפים\n\nההיקף, משך הזמן והתנאים של כל שירות מפורטים באתר שלנו ובהסכמים אישיים.",
+      },
+      {
+        title: "3. זכאות",
+        content: "השירותים שלנו מיועדים לאנשים בני 18 ומעלה בעלי כשרות משפטית לחתום על הסכמים מחייבים. בשימוש בשירותינו, אתה מצהיר שאתה עומד בדרישות אלה.",
+      },
+      {
+        title: "4. רישום וחשבונות",
+        content: "לצורך גישה לשירותים מסוימים, ייתכן שתצטרך להגיש בקשה או ליצור חשבון. אתה מתחייב:\n\n• לספק מידע מדויק ומלא\n• לשמור על סודיות פרטי החשבון\n• להודיע לנו מיד על גישה לא מורשית\n• לשאת באחריות לכל הפעילות בחשבונך",
+      },
+      {
+        title: "5. תשלומים והחזרים",
+        content: "תנאי התשלום מצוינים בעת הרכישה או ההרשמה. כל התשלומים מעובדים באופן מאובטח דרך Stripe.\n\n• המחירים מצוינים במטבע המופיע באתר\n• התשלום מתבצע בעת ההרשמה, אלא אם סוכם אחרת\n• בקשות להחזר יש להגיש תוך 7 ימים מהרכישה\n• החזרים ניתנים לפי שיקול דעת החברה בהתאם לנסיבות\n• אין החזר לאחר תחילת התוכנית, אלא אם נדרש על פי חוק",
+      },
+      {
+        title: "6. קניין רוחני",
+        content: "כל התוכן באתר ובתוכניות שלנו — כולל טקסטים, גרפיקה, לוגואים, חומרי לימוד, מצגות ותוכנה — הוא רכושה של RunEverywhere, Inc. או בעלי הרישיון שלה ומוגן בחוקי קניין רוחני.\n\nאינך רשאי לשכפל, להפיץ או ליצור עבודות נגזרות מהתוכן שלנו ללא הסכמה מראש בכתב.",
+      },
+      {
+        title: "7. כללי התנהגות",
+        content: "בשימוש בשירותינו, אתה מתחייב שלא:\n\n• להפר חוקים או תקנות חלים\n• לפגוע בזכויות של אחרים\n• לשתף מידע סודי מהתוכנית עם גורמים לא מורשים\n• להשתמש בשירותינו למטרות הונאה או מזיקות\n• להפריע לפעולת האתר או השירותים שלנו",
+      },
+      {
+        title: "8. הגבלת אחריות",
+        content: "במידה המרבית המותרת בחוק, RunEverywhere, Inc. לא תישא באחריות לכל נזק עקיף, מקרי, מיוחד, תוצאתי או עונשי הנובע משימושך בשירותינו.\n\nהאחריות הכוללת שלנו לכל תביעה הקשורה לשירותינו לא תעלה על הסכום ששילמת לנו ב-12 החודשים שקדמו לתביעה.",
+      },
+      {
+        title: "9. סיום",
+        content: "אנו שומרים לעצמנו את הזכות להשעות או לסיים את גישתך לשירותינו בכל עת, עם או בלי סיבה, עם או בלי הודעה מוקדמת. עם הסיום, זכותך להשתמש בשירותים מפסיקה מיד.\n\nאתה יכול לסיים את השתתפותך על ידי פנייה אלינו בדוא\"ל שלהלן. סיום אינו מזכה אוטומטית בהחזר.",
+      },
+      {
+        title: "10. דין חל ויצירת קשר",
+        content: "תנאים אלה כפופים לחוקי מדינת דלאוור, ארצות הברית, ללא התחשבות בכללי ברירת דין.\n\nלכל שאלה בנוגע לתנאים אלה, אנא פנו אלינו:\n\nRunEverywhere, Inc.\nEmail: michael.barbarych@gmail.com",
+      },
+    ],
+    termsBack: "חזרה לעמוד הראשי",
+
+    contactTitle: "צור קשר",
+    contactSubtitle: "יש לך שאלה או רוצה לדעת עוד? שלח לנו הודעה ונחזור אליך בהקדם.",
+    contactNameLabel: "שם מלא",
+    contactEmailLabel: "כתובת אימייל",
+    contactSubjectLabel: "נושא",
+    contactMessageLabel: "הודעה",
+    contactMessagePlaceholder: "כיצד נוכל לעזור לך?",
+    contactSubmit: "שלח הודעה",
+    contactSuccess: "ההודעה נשלחה! נחזור אליך בהקדם.",
+    contactError: "משהו השתבש. נסה שוב או שלח לנו אימייל ישירות.",
+    contactBack: "חזרה לעמוד הראשי",
   },
 };

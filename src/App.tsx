@@ -14,6 +14,8 @@ import Program from "./pages/Program";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import ContactUs from "./pages/ContactUs";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminPresentations from "./pages/admin/AdminPresentations";
@@ -88,6 +90,26 @@ function LangPrivacy() {
   );
 }
 
+function LangTerms() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <TermsOfService />
+    </LanguageProvider>
+  );
+}
+
+function LangContact() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
+  return (
+    <LanguageProvider lang={validLang}>
+      <ContactUs />
+    </LanguageProvider>
+  );
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -107,6 +129,8 @@ const App = () => (
           <Route path="/programm-week3" element={<PublicMeeting3Shell />} />
           <Route path="/programm-week4" element={<PublicMeeting4Shell />} />
           <Route path="/:lang/privacy" element={<LangPrivacy />} />
+          <Route path="/:lang/terms" element={<LangTerms />} />
+          <Route path="/:lang/contact" element={<LangContact />} />
           <Route path="/:lang/thank-you" element={<LangThankYou />} />
           <Route path="/thank-you" element={<Navigate to="/en/thank-you" replace />} />
           <Route path="/admin" element={<AdminLayout />}>
