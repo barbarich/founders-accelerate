@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { supportedLangs, type Lang } from "@/i18n/translations";
 import Landing from "./pages/Landing";
+import NewLanding from "./pages/NewLanding";
+import Accelerator from "./pages/Accelerator";
 import Apply from "./pages/Apply";
 import Mentor from "./pages/Mentor";
 import PresentationShell from "@/components/presentation/PresentationShell";
@@ -42,10 +44,20 @@ const queryClient = new QueryClient();
 
 function LangLanding() {
   const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "ru";
+  return (
+    <LanguageProvider lang={validLang}>
+      <NewLanding />
+    </LanguageProvider>
+  );
+}
+
+function LangAccelerator() {
+  const { lang } = useParams<{ lang: string }>();
   const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "en";
   return (
     <LanguageProvider lang={validLang}>
-      <Landing />
+      <Accelerator />
     </LanguageProvider>
   );
 }
@@ -117,8 +129,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/en" replace />} />
+          <Route path="/" element={<Navigate to="/ru" replace />} />
           <Route path="/:lang" element={<LangLanding />} />
+          <Route path="/:lang/accelerator" element={<LangAccelerator />} />
           <Route path="/:lang/apply" element={<LangApply />} />
           <Route path="/:lang/mentor" element={<LangMentor />} />
           <Route path="/pitch" element={<PresentationShell />} />

@@ -490,3 +490,122 @@
     radial-gradient(ellipse at 70% 40%, hsla(20, 80%, 45%, 0.08) 0%, transparent 50%),
     hsl(var(--landing-bg));
 }
+
+/* ═══════════════════════════════════════════
+   NEW LANDING PAGE — Light Theme (From Zero to Launch)
+   ═══════════════════════════════════════════ */
+
+:root {
+  --nl-bg: #f8f8f4;
+  --nl-surface: #ffffff;
+  --nl-border: #e4e4dc;
+  --nl-border-light: #f0f0e8;
+
+  --nl-text: #0d0d0d;
+  --nl-text-secondary: #555555;
+  --nl-text-muted: #888888;
+  --nl-text-hint: #aaaaaa;
+
+  --nl-accent: #CAFF00;
+  --nl-accent-bg: rgba(202,255,0,0.2);
+
+  --nl-sage-bg: #eef4e8;
+  --nl-sage-border: #c8ddb8;
+  --nl-sage-text: #1a2e14;
+  --nl-sage-muted: #6a8a60;
+  --nl-sage-dark: #1a2e14;
+
+  --nl-font-display: 'Space Grotesk', sans-serif;
+  --nl-font-body: 'DM Sans', sans-serif;
+
+  --nl-radius-sm: 10px;
+  --nl-radius-md: 14px;
+  --nl-radius-lg: 18px;
+  --nl-radius-xl: 24px;
+  --nl-radius-pill: 100px;
+
+  --nl-section-padding: 72px 48px;
+  --nl-container-max: 1200px;
+}
+
+/* New landing wrapper */
+.nl-page {
+  background: var(--nl-bg);
+  color: var(--nl-text);
+  font-family: var(--nl-font-body);
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+.nl-page h1,
+.nl-page h2,
+.nl-page h3 {
+  font-family: var(--nl-font-display);
+}
+
+.nl-page h1 {
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.nl-page h2 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.nl-page h3 {
+  font-weight: 600;
+}
+
+/* Container */
+.nl-container {
+  max-width: var(--nl-container-max);
+  margin: 0 auto;
+  padding: var(--nl-section-padding);
+}
+
+/* Pulse animation for green dot */
+@keyframes nl-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.4); }
+}
+
+.nl-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: nl-pulse 2s ease-in-out infinite;
+}
+
+/* Scroll reveal for new landing — starts visible, animates when IntersectionObserver fires */
+.nl-reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* When JS loads, add .nl-reveal-ready to body, then hide unrevealed sections */
+.nl-reveal-ready .nl-reveal:not(.visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.nl-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* New landing scrollbar */
+.nl-page ::-webkit-scrollbar-track {
+  background: var(--nl-bg);
+}
+.nl-page ::-webkit-scrollbar-thumb {
+  background: var(--nl-border);
+}
+
+@media (max-width: 768px) {
+  .nl-container {
+    padding: 48px 24px;
+  }
+}
