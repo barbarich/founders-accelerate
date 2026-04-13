@@ -394,24 +394,34 @@ export default function NewLanding() {
         </section>
       </Reveal>
 
-      {/* ════════════════════ S8 — PAIN (white bg) ════════════════════ */}
+      {/* ════════════════════ S8 — AI TEAM (white bg) ════════════════════ */}
       <Reveal>
         <section className="nl-section" style={{ background: S.bg, paddingTop: 100, paddingBottom: 100 }}>
           <div className="nl-container-inner" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 48px" }}>
             <div className="nl-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1.3fr", gap: 56 }}>
               <div>
-                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase", color: S.hint }}>{t.pain.label}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase", color: S.greenActive }}>{t.pain.label}</span>
                 <h2 className="nl-h2 font-syne" style={{ fontSize: 36, fontWeight: 700, color: S.text, lineHeight: 1.2, margin: "12px 0 0", letterSpacing: -1 }}>{t.pain.title}</h2>
-                <p style={{ fontSize: 15, color: S.secondary, lineHeight: 1.7, marginTop: 20, fontStyle: "italic" }}>&ldquo;{t.pain.quote}&rdquo;</p>
+                <p style={{ fontSize: 15, color: S.secondary, lineHeight: 1.7, marginTop: 20 }}>{t.pain.quote}</p>
               </div>
-              <div className="nl-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
-                {t.pain.cards.map((c, i) => (
-                  <div key={i} style={{ background: S.surface, borderRadius: 18, padding: 24, boxShadow: cardShadow }}>
-                    <div style={{ fontSize: 28, marginBottom: 12 }}>{c.emoji}</div>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: S.text, marginBottom: 8 }}>{c.title}</div>
-                    <p style={{ fontSize: 14, color: S.secondary, lineHeight: 1.6, margin: 0 }}>{c.text}</p>
-                  </div>
-                ))}
+              <div className="nl-two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                {t.pain.cards.map((c, i) => {
+                  const icons = [
+                    <svg key="r" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>,
+                    <svg key="d" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>,
+                    <svg key="m" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>,
+                    <svg key="s" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
+                  ];
+                  return (
+                    <div key={i} style={{ background: S.surface, borderRadius: 16, padding: 24, boxShadow: cardShadow, display: "flex", flexDirection: "column", gap: 12 }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 10, background: S.sageBg, color: S.green, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        {icons[i]}
+                      </div>
+                      <div style={{ fontSize: 15, fontWeight: 600, color: S.text }}>{c.title}</div>
+                      <p style={{ fontSize: 14, color: S.secondary, lineHeight: 1.6, margin: 0 }}>{c.text}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
