@@ -221,18 +221,8 @@ export default function NewLanding() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="/images/video-poster.jpg"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
-              {/* fallback if no video yet */}
-              <div className="nl-video-placeholder" style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, pointerEvents: "none" }}>
-                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(255,255,255,0.15)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-                <span style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", fontWeight: 500 }}>
-                  {lang === "ru" ? "О программе — от основателя" : "About the program — from the founder"}
-                </span>
-              </div>
             </div>
             <p style={{ textAlign: "center", marginTop: 16, fontSize: 14, color: S.muted }}>
               {lang === "ru" ? "2 минуты о том, как устроена программа и для кого она" : "2 minutes on how the program works and who it's for"}
