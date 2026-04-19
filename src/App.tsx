@@ -40,6 +40,7 @@ import PublicMeeting2Shell from "@/components/presentation/meeting2/PublicMeetin
 import PublicMeeting3Shell from "@/components/presentation/meeting3/PublicMeeting3Shell";
 import PublicMeeting4Shell from "@/components/presentation/meeting4/PublicMeeting4Shell";
 import PublicMeeting5Shell from "@/components/presentation/meeting5/PublicMeeting5Shell";
+import PublicMeeting6Shell from "@/components/presentation/meeting6/PublicMeeting6Shell";
 
 const queryClient = new QueryClient();
 
@@ -143,6 +144,7 @@ const App = () => (
           <Route path="/programm-week3" element={<PublicMeeting3Shell />} />
           <Route path="/programm-week4" element={<PublicMeeting4Shell />} />
           <Route path="/programm-week5" element={<PublicMeeting5Shell />} />
+          <Route path="/programm-week6" element={<PublicMeeting6Shell />} />
           <Route path="/:lang/privacy" element={<LangPrivacy />} />
           <Route path="/:lang/terms" element={<LangTerms />} />
           <Route path="/:lang/contact" element={<LangContact />} />
