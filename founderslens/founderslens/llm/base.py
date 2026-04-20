@@ -47,6 +47,11 @@ class LLMProvider(abc.ABC):
         if not api_key:
             raise ValueError(f"{self.provider_name}: api_key required")
         self.api_key = api_key
+        # CRITICAL for multi-user safety: copy class-level default_models into
+        # an instance-level dict. Any subsequent per-run mutation (e.g. user's
+        # chosen model override in server.py::_run_pipeline) stays isolated to
+        # this instance and never leaks to concurrent runs or future requests.
+        self.default_models = dict(type(self).default_models)
 
     @abc.abstractmethod
     async def complete(
