@@ -36,7 +36,13 @@ const C = {
   green: "#4a8a28",
 };
 
-const API_BASE = import.meta.env.VITE_FOUNDERSLENS_API || "http://localhost:8000";
+// Dev: hit local FastAPI on :8000. Prod build: Railway backend.
+// Override via VITE_FOUNDERSLENS_API if you need something else.
+const API_BASE =
+  import.meta.env.VITE_FOUNDERSLENS_API ||
+  (import.meta.env.DEV
+    ? "http://localhost:8000"
+    : "https://lens-api.founders-circle.space");
 
 type Stage = "setup" | "clarify" | "progress" | "report" | "error";
 type Provider = "anthropic" | "openai" | "gemini";

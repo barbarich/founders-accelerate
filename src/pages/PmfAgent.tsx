@@ -33,7 +33,13 @@ const C = {
   green: "#4a8a28",
 };
 
-const API_BASE = import.meta.env.VITE_PMF_API || "http://localhost:8001";
+// Dev: hit local FastAPI on :8001. Prod build: Railway backend.
+// Override via VITE_PMF_API if you need something else.
+const API_BASE =
+  import.meta.env.VITE_PMF_API ||
+  (import.meta.env.DEV
+    ? "http://localhost:8001"
+    : "https://pmf-api.founders-circle.space");
 
 type Stage = "setup" | "clarify" | "progress" | "report" | "error";
 type Provider = "anthropic" | "openai" | "gemini";
