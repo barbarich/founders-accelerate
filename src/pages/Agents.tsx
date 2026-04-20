@@ -62,15 +62,14 @@ const AGENTS: AgentTile[] = [
     title: "PMF Agent",
     tagline: "Оценка Product-Market Fit с honest-сигналом",
     description:
-      "Считает PMF Score по 5 осям (pain, timing, market, competitive edge, channel viability). Если score < 50 — Pivot Advisor предлагает, куда повернуть. Честный эксперт, не льстит.",
+      "9-осевой PMF Score: pain, market, timing, competitive whitespace, demand, monetization, unit economics, regulatory, execution. Если score < 50 — Pivot Advisor генерирует альтернативные траектории. Честный эксперт, не льстит.",
     stats: [
       { label: "Время", value: "~10-15 мин" },
-      { label: "Стоимость", value: "~$1 (твой LLM-ключ)" },
-      { label: "Выход", value: "PMF-скоринг + pivot-рекомендации" },
+      { label: "Стоимость", value: "твой LLM-ключ" },
+      { label: "Выход", value: "PMF-скоринг + pivot-сценарии" },
     ],
-    cta: "Открыть PMF Agent",
-    href: "https://pmf.founders-circle.space",
-    external: true,
+    cta: "Запустить PMF-анализ",
+    href: "/agents/pmf",
     status: "live",
   },
   // Add more agents as they ship.

@@ -9,6 +9,7 @@ import Agents from "./pages/Agents";
 import Landing from "./pages/Landing";
 import Lens from "./pages/Lens";
 import NewLanding from "./pages/NewLanding";
+import PmfAgent from "./pages/PmfAgent";
 import Accelerator from "./pages/Accelerator";
 import Apply from "./pages/Apply";
 import Mentor from "./pages/Mentor";
@@ -141,6 +142,7 @@ const App = () => (
           <Route path="/pitch" element={<PresentationShell />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/agents/lens" element={<Lens />} />
+          <Route path="/agents/pmf" element={<PmfAgent />} />
           <Route path="/lens" element={<Navigate to="/agents/lens" replace />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
