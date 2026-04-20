@@ -17,7 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
-import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, type Provider as ProviderLib } from "@/lib/llmModels";
+import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, type Provider as ProviderLib } from "@/lib/llmModels";
 
 const C = {
   bg: "#f8f8f4",
@@ -70,13 +70,17 @@ export default function PmfAgent() {
   // Setup form
   const [provider, setProvider] = useState<Provider>("anthropic");
   const [model, setModel] = useState<string>(DEFAULT_MODEL["anthropic"]);
+  const [customModel, setCustomModel] = useState<string>("");
   const [apiKey, setApiKey] = useState("");
   const [showKey, setShowKey] = useState(false);
 
   // Reset model to provider's default when provider changes
   useEffect(() => {
     setModel(DEFAULT_MODEL[provider]);
+    setCustomModel("");
   }, [provider]);
+
+  const effectiveModel = model === CUSTOM_MODEL_ID ? customModel.trim() : model;
   const [language, setLanguage] = useState<"ru" | "en">("ru");
   const [idea, setIdea] = useState("");
   const [targetUser, setTargetUser] = useState("");
@@ -123,7 +127,7 @@ export default function PmfAgent() {
       reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
       provider,
       api_key: apiKey,
-      model,
+      model: effectiveModel,
       prior_questions: priorQuestions,
       prior_answers: priorAnswers,
     };
@@ -183,7 +187,7 @@ export default function PmfAgent() {
       reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
       provider,
       api_key: apiKey,
-      model,
+      model: effectiveModel,
       prior_questions: newPriorQ,
       prior_answers: newPriorA,
     };
@@ -220,7 +224,7 @@ export default function PmfAgent() {
       const resp = await fetch(`${API_BASE}/api/research/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idea_input: ideaInput, provider, api_key: apiKey, model }),
+        body: JSON.stringify({ idea_input: ideaInput, provider, api_key: apiKey, model: effectiveModel }),
       });
       if (!resp.ok) {
         const text = await resp.text();
@@ -351,6 +355,7 @@ export default function PmfAgent() {
           <SetupCard
             provider={provider} setProvider={setProvider}
             model={model} setModel={setModel}
+            customModel={customModel} setCustomModel={setCustomModel}
             apiKey={apiKey} setApiKey={setApiKey}
             showKey={showKey} setShowKey={setShowKey}
             language={language} setLanguage={setLanguage}
@@ -407,6 +412,7 @@ export default function PmfAgent() {
 function SetupCard(props: any) {
   const {
     provider, setProvider, model, setModel,
+    customModel, setCustomModel,
     apiKey, setApiKey, showKey, setShowKey,
     language, setLanguage, idea, setIdea, targetUser, setTargetUser,
     geography, setGeography, monetization, setMonetization, refs, setRefs,
@@ -467,8 +473,17 @@ function SetupCard(props: any) {
             </option>
           ))}
         </select>
+        {model === CUSTOM_MODEL_ID && (
+          <Input
+            value={customModel}
+            onChange={(e) => setCustomModel(e.target.value)}
+            placeholder={`например: ${provider === "anthropic" ? "claude-opus-5-20260301" : provider === "openai" ? "gpt-5.1" : "gemini-3.1-pro"}`}
+            style={{ marginTop: 10, fontSize: 14, fontFamily: "ui-monospace, monospace" }}
+          />
+        )}
         <p style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>
           Дороже модель = точнее скоринг, но и дольше прогон + больше трат с твоего ключа.
+          {model === CUSTOM_MODEL_ID && " ID модели передастся провайдеру как есть — убедись что он существует."}
         </p>
       </div>
 
