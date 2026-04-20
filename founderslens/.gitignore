@@ -1,0 +1,41 @@
+# Secrets
+.env
+.env.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Node (inside scrapers/)
+scrapers/node_modules/
+scrapers/package-lock.json
+
+# Data & cache (runtime artifacts, not source)
+data/runs.db
+data/runs.db-journal
+data/runs.db-wal
+data/runs.db-shm
+data/runs/
+data/cached_runs/*.json
+!data/cached_runs/.gitkeep
+# Temp fixtures created by Streamlit/UI
+data/fixtures/_ui_*.json
+
+# Generated reports
+reports/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp

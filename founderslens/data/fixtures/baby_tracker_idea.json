@@ -1,0 +1,19 @@
+{
+  "idea": "Mobile app that helps new parents track baby feeding, sleep, and diaper changes, with a shared real-time view for both parents and caregivers",
+  "context": {
+    "target_user": "new parents (first-time and second-time), ages 25-40",
+    "geography": ["US", "EU"],
+    "monetization_hypothesis": "freemium subscription, $4.99/mo premium",
+    "reference_products": ["Huckleberry", "BabyTracker", "Glow Baby"],
+    "already_tried": null
+  },
+  "language": "ru",
+  "expected_classification": {
+    "industry": "consumer health",
+    "sub_industry": "parenting / baby care",
+    "business_model": "freemium subscription",
+    "segment": "B2C",
+    "domain_flags": ["mobile", "consumer", "health_adjacent", "family"]
+  },
+  "notes": "Canonical fixture for vertical-slice testing. Exercises: app stores (iOS + Android), Meta ads (Huckleberry is a heavy advertiser), Reddit parenting subs (r/NewParents, r/beyondthebump), real pricing competitors with Wayback history, G2/review sites N/A (consumer)."
+}

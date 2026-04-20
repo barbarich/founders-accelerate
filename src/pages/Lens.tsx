@@ -1,0 +1,738 @@
+/**
+ * FoundersLens — /lens route.
+ *
+ * State machine: setup → clarify → progress → report.
+ * - setup: user enters LLM provider + API key + idea + context
+ * - clarify: if intake evaluator says idea incomplete, show 2-3 questions
+ * - progress: pipeline running, SSE feed of findings
+ * - report: embedded final HTML report + metrics
+ *
+ * Styled to match the Founders Circle landing (NewLanding.tsx):
+ * - bg #f8f8f4, surface #ffffff, accent #CAFF00 (lime), text #0d0d0d
+ */
+
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
+
+const C = {
+  bg: "#f8f8f4",
+  surface: "#ffffff",
+  border: "#e4e4dc",
+  borderLight: "#f0f0e8",
+  text: "#0d0d0d",
+  secondary: "#555555",
+  muted: "#888888",
+  accent: "#CAFF00",
+  sageBg: "#eef4e8",
+  sageBorder: "#c8ddb8",
+  sageText: "#1a2e14",
+  green: "#4a8a28",
+};
+
+const API_BASE = import.meta.env.VITE_FOUNDERSLENS_API || "http://localhost:8000";
+
+type Stage = "setup" | "clarify" | "progress" | "report" | "error";
+type Provider = "anthropic" | "openai" | "gemini";
+
+interface IdeaInput {
+  raw_idea: string;
+  target_user?: string | null;
+  geography: string[];
+  monetization_hypothesis?: string | null;
+  reference_products: string[];
+  already_tried?: string | null;
+  language: "ru" | "en";
+}
+
+interface Event {
+  id: number;
+  ts: string;
+  phase: string | null;
+  kind: string;
+  message: string;
+}
+
+export default function Lens() {
+  const [stage, setStage] = useState<Stage>("setup");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Setup form
+  const [provider, setProvider] = useState<Provider>("anthropic");
+  const [apiKey, setApiKey] = useState("");
+  const [showKey, setShowKey] = useState(false);
+  const [language, setLanguage] = useState<"ru" | "en">("ru");
+  const [idea, setIdea] = useState("");
+  const [targetUser, setTargetUser] = useState("");
+  const [geography, setGeography] = useState("US, EU");
+  const [monetization, setMonetization] = useState("");
+  const [refs, setRefs] = useState("");
+
+  // Clarify
+  const [clarifyLoading, setClarifyLoading] = useState(false);
+  const [priorQuestions, setPriorQuestions] = useState<string[]>([]);
+  const [priorAnswers, setPriorAnswers] = useState<string[]>([]);
+  const [currentQuestions, setCurrentQuestions] = useState<string[]>([]);
+  const [currentAnswers, setCurrentAnswers] = useState<string[]>([]);
+  const [completenessScore, setCompletenessScore] = useState(0);
+
+  // Research
+  const [runId, setRunId] = useState<string | null>(null);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [elapsed, setElapsed] = useState(0);
+  const [finalStatus, setFinalStatus] = useState<{
+    status: string;
+    verdict: string | null;
+    quality_score: number | null;
+    total_cost_usd: number;
+  } | null>(null);
+  const eventSourceRef = useRef<EventSource | null>(null);
+  const eventsEndRef = useRef<HTMLDivElement>(null);
+
+  const handleStartResearch = async () => {
+    if (!idea.trim() || !apiKey.trim()) {
+      setErrorMsg("Заполни идею и API key.");
+      return;
+    }
+    setErrorMsg(null);
+    setClarifyLoading(true);
+
+    const payload = {
+      idea: idea.trim(),
+      language,
+      target_user: targetUser.trim() || null,
+      geography: geography.split(",").map(s => s.trim()).filter(Boolean),
+      monetization_hypothesis: monetization.trim() || null,
+      reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
+      provider,
+      api_key: apiKey,
+      prior_questions: priorQuestions,
+      prior_answers: priorAnswers,
+    };
+
+    try {
+      const resp = await fetch(`${API_BASE}/api/intake/evaluate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!resp.ok) {
+        const text = await resp.text();
+        setErrorMsg(`Ошибка: ${resp.status} — ${text.slice(0, 200)}`);
+        setStage("error");
+        setClarifyLoading(false);
+        return;
+      }
+      const data = await resp.json();
+      setCompletenessScore(data.completeness_score || 0);
+
+      if (!data.ready && data.questions?.length) {
+        setCurrentQuestions(data.questions);
+        setCurrentAnswers(data.questions.map(() => ""));
+        setStage("clarify");
+      } else if (data.ready && data.idea_input) {
+        // launch pipeline
+        await launchPipeline(data.idea_input);
+      } else {
+        setErrorMsg("Ответ от сервера некорректен");
+        setStage("error");
+      }
+    } catch (e: any) {
+      setErrorMsg(`Не удалось достучаться до API: ${e?.message || e}`);
+      setStage("error");
+    } finally {
+      setClarifyLoading(false);
+    }
+  };
+
+  const handleClarifySubmit = async () => {
+    // Merge current Q&A into priors, re-evaluate
+    const newPriorQ = [...priorQuestions, ...currentQuestions];
+    const newPriorA = [...priorAnswers, ...currentAnswers];
+    setPriorQuestions(newPriorQ);
+    setPriorAnswers(newPriorA);
+    setCurrentQuestions([]);
+    setCurrentAnswers([]);
+    setClarifyLoading(true);
+    setErrorMsg(null);
+
+    const payload = {
+      idea: idea.trim(),
+      language,
+      target_user: targetUser.trim() || null,
+      geography: geography.split(",").map(s => s.trim()).filter(Boolean),
+      monetization_hypothesis: monetization.trim() || null,
+      reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
+      provider,
+      api_key: apiKey,
+      prior_questions: newPriorQ,
+      prior_answers: newPriorA,
+    };
+
+    try {
+      const resp = await fetch(`${API_BASE}/api/intake/evaluate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await resp.json();
+      setCompletenessScore(data.completeness_score || 0);
+
+      if (!data.ready && data.questions?.length) {
+        setCurrentQuestions(data.questions);
+        setCurrentAnswers(data.questions.map(() => ""));
+      } else if (data.ready && data.idea_input) {
+        await launchPipeline(data.idea_input);
+      }
+    } catch (e: any) {
+      setErrorMsg(`Ошибка: ${e?.message || e}`);
+      setStage("error");
+    } finally {
+      setClarifyLoading(false);
+    }
+  };
+
+  const launchPipeline = async (ideaInput: IdeaInput) => {
+    setStage("progress");
+    setStartTime(Date.now());
+    setEvents([]);
+
+    try {
+      const resp = await fetch(`${API_BASE}/api/research/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idea_input: ideaInput, provider, api_key: apiKey }),
+      });
+      if (!resp.ok) {
+        const text = await resp.text();
+        setErrorMsg(`Pipeline не запустился: ${resp.status} — ${text.slice(0, 200)}`);
+        setStage("error");
+        return;
+      }
+      const { run_id } = await resp.json();
+      setRunId(run_id);
+      connectSSE(run_id);
+    } catch (e: any) {
+      setErrorMsg(`Не удалось запустить pipeline: ${e?.message || e}`);
+      setStage("error");
+    }
+  };
+
+  const connectSSE = (rid: string) => {
+    const es = new EventSource(`${API_BASE}/api/research/events/${rid}`);
+    eventSourceRef.current = es;
+
+    es.addEventListener("finding", (e: any) => {
+      try {
+        const data = JSON.parse(e.data);
+        setEvents(prev => [...prev, data]);
+      } catch {}
+    });
+
+    es.addEventListener("done", (e: any) => {
+      try {
+        const data = JSON.parse(e.data);
+        setFinalStatus({
+          status: data.status,
+          verdict: data.verdict,
+          quality_score: data.quality_score,
+          total_cost_usd: data.total_cost_usd || 0,
+        });
+        es.close();
+        if (data.status === "completed") {
+          setStage("report");
+        } else {
+          setErrorMsg(`Pipeline завершился со статусом: ${data.status}`);
+          setStage("error");
+        }
+      } catch {}
+    });
+
+    es.onerror = () => {
+      console.warn("SSE error; will close");
+      es.close();
+    };
+  };
+
+  // Elapsed time ticker
+  useEffect(() => {
+    if (stage !== "progress" || !startTime) return;
+    const t = setInterval(() => setElapsed((Date.now() - startTime) / 1000), 1000);
+    return () => clearInterval(t);
+  }, [stage, startTime]);
+
+  // Auto-scroll events
+  useEffect(() => {
+    eventsEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [events]);
+
+  useEffect(() => {
+    return () => {
+      eventSourceRef.current?.close();
+    };
+  }, []);
+
+  // -------------------------------------------------------------------
+  // Render
+  // -------------------------------------------------------------------
+  return (
+    <div
+      style={{
+        background: C.bg, minHeight: "100vh", color: C.text,
+        fontFamily: "-apple-system, system-ui, sans-serif",
+        // Force light-mode CSS vars for shadcn components scoped to this page
+        // (the app defaults to dark). These vars match the NewLanding palette.
+        "--background": "0 0% 97%",
+        "--foreground": "0 0% 5%",
+        "--card": "0 0% 100%",
+        "--card-foreground": "0 0% 5%",
+        "--popover": "0 0% 100%",
+        "--popover-foreground": "0 0% 5%",
+        "--primary": "0 0% 5%",
+        "--primary-foreground": "0 0% 100%",
+        "--secondary": "60 6% 92%",
+        "--secondary-foreground": "0 0% 5%",
+        "--muted": "60 6% 94%",
+        "--muted-foreground": "0 0% 45%",
+        "--accent": "76 100% 50%",          // lime #CAFF00
+        "--accent-foreground": "0 0% 5%",
+        "--destructive": "0 70% 50%",
+        "--destructive-foreground": "0 0% 98%",
+        "--border": "60 5% 88%",
+        "--input": "60 5% 88%",
+        "--ring": "76 100% 50%",
+      } as React.CSSProperties}
+    >
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px" }}>
+        {/* Header */}
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 48 }}>
+          <div style={{ width: 40, height: 40, background: C.text, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Sparkles size={22} color={C.accent} />
+          </div>
+          <div>
+            <div style={{ fontSize: 22, fontWeight: 800, letterSpacing: -0.5 }}>FoundersLens</div>
+            <div style={{ fontSize: 12, color: C.muted, letterSpacing: 1, textTransform: "uppercase" }}>
+              Market Research Agent by Founders Circle
+            </div>
+          </div>
+        </div>
+
+        {errorMsg && (
+          <div style={{
+            background: "#fbe6e6", borderLeft: `4px solid #a82020`, padding: "14px 20px",
+            marginBottom: 24, borderRadius: 8, color: "#5a1010", fontSize: 14,
+            display: "flex", gap: 10, alignItems: "flex-start",
+          }}>
+            <AlertCircle size={18} style={{ marginTop: 2, flexShrink: 0 }} />
+            <span>{errorMsg}</span>
+          </div>
+        )}
+
+        {stage === "setup" && (
+          <SetupCard
+            provider={provider} setProvider={setProvider}
+            apiKey={apiKey} setApiKey={setApiKey}
+            showKey={showKey} setShowKey={setShowKey}
+            language={language} setLanguage={setLanguage}
+            idea={idea} setIdea={setIdea}
+            targetUser={targetUser} setTargetUser={setTargetUser}
+            geography={geography} setGeography={setGeography}
+            monetization={monetization} setMonetization={setMonetization}
+            refs={refs} setRefs={setRefs}
+            loading={clarifyLoading}
+            onStart={handleStartResearch}
+          />
+        )}
+
+        {stage === "clarify" && (
+          <ClarifyCard
+            questions={currentQuestions}
+            answers={currentAnswers}
+            setAnswers={setCurrentAnswers}
+            priorQA={priorQuestions.map((q, i) => ({ q, a: priorAnswers[i] || "" }))}
+            completenessScore={completenessScore}
+            loading={clarifyLoading}
+            onSubmit={handleClarifySubmit}
+          />
+        )}
+
+        {stage === "progress" && (
+          <ProgressView
+            runId={runId}
+            events={events}
+            elapsed={elapsed}
+            eventsEndRef={eventsEndRef}
+          />
+        )}
+
+        {stage === "report" && runId && (
+          <ReportView runId={runId} finalStatus={finalStatus} />
+        )}
+
+        {stage === "error" && (
+          <div style={{ textAlign: "center", padding: 48 }}>
+            <Button onClick={() => { setStage("setup"); setErrorMsg(null); }} variant="outline">
+              Начать заново
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// -------------------------------------------------------------------------
+// Setup card
+// -------------------------------------------------------------------------
+function SetupCard(props: any) {
+  const {
+    provider, setProvider, apiKey, setApiKey, showKey, setShowKey,
+    language, setLanguage, idea, setIdea, targetUser, setTargetUser,
+    geography, setGeography, monetization, setMonetization, refs, setRefs,
+    loading, onStart,
+  } = props;
+
+  return (
+    <Card style={{ background: C.surface, borderColor: C.border, padding: 40 }}>
+      <h1 style={{ fontSize: 40, fontWeight: 900, letterSpacing: -1, marginBottom: 12 }}>
+        Твоя идея — стоит ли её делать?
+      </h1>
+      <p style={{ fontSize: 18, color: C.secondary, marginBottom: 32, lineHeight: 1.5 }}>
+        За 10 минут соберу рыночное исследование: конкурентов, тренды, креативы их рекламы, кладбище провалов, вердикт GO / PIVOT / NO-GO и конкретный план действий на 30 дней.
+      </p>
+
+      {/* Provider selection */}
+      <div style={{ marginBottom: 24 }}>
+        <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 12, display: "block" }}>
+          LLM провайдер (твой ключ)
+        </Label>
+        <RadioGroup value={provider} onValueChange={(v) => setProvider(v as any)} style={{ display: "flex", gap: 12 }}>
+          {[
+            { v: "anthropic", label: "Claude", sub: "Anthropic" },
+            { v: "openai", label: "GPT-4o", sub: "OpenAI" },
+            { v: "gemini", label: "Gemini", sub: "Google" },
+          ].map((p) => (
+            <label
+              key={p.v}
+              style={{
+                flex: 1, padding: "14px 16px", border: `2px solid ${provider === p.v ? C.text : C.border}`,
+                borderRadius: 10, cursor: "pointer",
+                background: provider === p.v ? C.sageBg : C.surface,
+                transition: "all 0.15s",
+              }}
+            >
+              <RadioGroupItem value={p.v} id={p.v} style={{ display: "none" }} />
+              <div style={{ fontWeight: 700, fontSize: 15 }}>{p.label}</div>
+              <div style={{ fontSize: 12, color: C.muted }}>{p.sub}</div>
+            </label>
+          ))}
+        </RadioGroup>
+      </div>
+
+      {/* API key */}
+      <div style={{ marginBottom: 24 }}>
+        <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
+          API key
+        </Label>
+        <div style={{ display: "flex", gap: 8 }}>
+          <Input
+            type={showKey ? "text" : "password"}
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            placeholder={provider === "anthropic" ? "sk-ant-..." : provider === "openai" ? "sk-proj-..." : "AI..."}
+            style={{ flex: 1, fontSize: 14, fontFamily: "ui-monospace, monospace" }}
+          />
+          <Button type="button" variant="outline" onClick={() => setShowKey(!showKey)} size="sm">
+            {showKey ? <EyeOff size={16} /> : <Eye size={16} />}
+          </Button>
+        </div>
+        <p style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>
+          Ключ используется только для этой сессии. Мы его не храним.
+        </p>
+      </div>
+
+      {/* Language */}
+      <div style={{ marginBottom: 24 }}>
+        <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
+          Язык отчёта
+        </Label>
+        <RadioGroup value={language} onValueChange={(v) => setLanguage(v as any)} style={{ display: "flex", gap: 10 }}>
+          {[
+            { v: "ru", label: "Русский" },
+            { v: "en", label: "English" },
+          ].map((l) => (
+            <label key={l.v}
+              style={{
+                padding: "8px 20px", border: `1px solid ${language === l.v ? C.text : C.border}`,
+                borderRadius: 8, cursor: "pointer",
+                background: language === l.v ? C.text : C.surface,
+                color: language === l.v ? C.accent : C.text,
+                fontSize: 14, fontWeight: 600,
+              }}>
+              <RadioGroupItem value={l.v} id={l.v} style={{ display: "none" }} />
+              {l.label}
+            </label>
+          ))}
+        </RadioGroup>
+      </div>
+
+      {/* Idea */}
+      <div style={{ marginBottom: 24 }}>
+        <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
+          Твоя идея (1-3 предложения)
+        </Label>
+        <Textarea
+          value={idea}
+          onChange={(e) => setIdea(e.target.value)}
+          placeholder="Например: Мобильное приложение помогающее молодым родителям трекать кормление, сон и смену подгузников с общим экраном для обоих родителей."
+          rows={4}
+          style={{ fontSize: 15 }}
+        />
+      </div>
+
+      {/* Advanced context */}
+      <details style={{ marginBottom: 24 }}>
+        <summary style={{ fontSize: 13, color: C.secondary, cursor: "pointer", marginBottom: 12, userSelect: "none" }}>
+          Дополнительный контекст (необязательно, улучшает точность)
+        </summary>
+        <div style={{ display: "grid", gap: 16, marginTop: 12 }}>
+          <div>
+            <Label style={{ fontSize: 13, marginBottom: 6, display: "block" }}>Целевой пользователь</Label>
+            <Input
+              value={targetUser}
+              onChange={(e) => setTargetUser(e.target.value)}
+              placeholder="первородящие мамы 25-35 в США и ЕС"
+            />
+          </div>
+          <div>
+            <Label style={{ fontSize: 13, marginBottom: 6, display: "block" }}>Рынки (через запятую)</Label>
+            <Input
+              value={geography}
+              onChange={(e) => setGeography(e.target.value)}
+              placeholder="US, EU, UK"
+            />
+          </div>
+          <div>
+            <Label style={{ fontSize: 13, marginBottom: 6, display: "block" }}>Модель монетизации</Label>
+            <Input
+              value={monetization}
+              onChange={(e) => setMonetization(e.target.value)}
+              placeholder="freemium subscription $4.99/mo"
+            />
+          </div>
+          <div>
+            <Label style={{ fontSize: 13, marginBottom: 6, display: "block" }}>Референсные продукты</Label>
+            <Input
+              value={refs}
+              onChange={(e) => setRefs(e.target.value)}
+              placeholder="Huckleberry, BabyTracker"
+            />
+          </div>
+        </div>
+      </details>
+
+      <Button
+        onClick={onStart}
+        disabled={loading || !idea.trim() || !apiKey.trim()}
+        style={{
+          width: "100%", background: C.accent, color: C.text, fontSize: 16, fontWeight: 700,
+          height: 56, borderRadius: 12,
+        }}
+      >
+        {loading ? <><Loader2 className="animate-spin" size={18} /> Проверяю идею…</> : "Запустить исследование →"}
+      </Button>
+
+      <p style={{ fontSize: 12, color: C.muted, marginTop: 14, textAlign: "center" }}>
+        ~10 минут · использует твой LLM ключ · отчёт доступен сразу
+      </p>
+    </Card>
+  );
+}
+
+// -------------------------------------------------------------------------
+// Clarify card
+// -------------------------------------------------------------------------
+function ClarifyCard(props: any) {
+  const { questions, answers, setAnswers, priorQA, completenessScore, loading, onSubmit } = props;
+
+  const setAnswer = (i: number, v: string) => {
+    const next = [...answers];
+    next[i] = v;
+    setAnswers(next);
+  };
+
+  const allAnswered = answers.every((a: string) => a.trim().length > 3);
+
+  return (
+    <Card style={{ background: C.surface, borderColor: C.border, padding: 40 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
+        <div style={{ fontSize: 28, fontWeight: 800 }}>Нужно чуть-чуть уточнить</div>
+        <div style={{
+          padding: "4px 12px", background: C.sageBg, color: C.sageText,
+          borderRadius: 16, fontSize: 12, fontWeight: 700,
+        }}>
+          Полнота {completenessScore}%
+        </div>
+      </div>
+
+      <p style={{ fontSize: 15, color: C.secondary, marginBottom: 32, lineHeight: 1.5 }}>
+        Чем точнее ответишь — тем качественнее будет research. Ответы короткие, по одному-двум предложениям.
+      </p>
+
+      {priorQA.length > 0 && (
+        <div style={{ background: C.borderLight, padding: 16, borderRadius: 8, marginBottom: 24, fontSize: 13 }}>
+          <div style={{ fontWeight: 700, marginBottom: 8, color: C.secondary }}>Ранее ответил:</div>
+          {priorQA.map((qa: any, i: number) => (
+            <div key={i} style={{ marginBottom: 6 }}>
+              <div style={{ color: C.muted }}>Q: {qa.q}</div>
+              <div>A: {qa.a}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div style={{ display: "grid", gap: 20 }}>
+        {questions.map((q: string, i: number) => (
+          <div key={i}>
+            <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
+              {i + 1}. {q}
+            </Label>
+            <Textarea
+              value={answers[i] || ""}
+              onChange={(e) => setAnswer(i, e.target.value)}
+              rows={2}
+              placeholder="Твой ответ..."
+              style={{ fontSize: 14 }}
+            />
+          </div>
+        ))}
+      </div>
+
+      <Button
+        onClick={onSubmit}
+        disabled={loading || !allAnswered}
+        style={{
+          width: "100%", marginTop: 28, background: C.accent, color: C.text,
+          fontSize: 16, fontWeight: 700, height: 56, borderRadius: 12,
+        }}
+      >
+        {loading ? <><Loader2 className="animate-spin" size={18} /> Проверяю…</> : "Готово, поехали →"}
+      </Button>
+    </Card>
+  );
+}
+
+// -------------------------------------------------------------------------
+// Progress view
+// -------------------------------------------------------------------------
+function ProgressView(props: any) {
+  const { runId, events, elapsed, eventsEndRef } = props;
+  const expectedSec = 600;
+  const pct = Math.min((elapsed / expectedSec) * 100, 95);
+  const minutesLeft = Math.max(0, Math.ceil((expectedSec - elapsed) / 60));
+
+  const kindIcon = (k: string) =>
+    k === "phase_start" ? "▶️" : k === "phase_end" ? "✅" : k === "finding" ? "💡" : k === "warning" ? "⚠️" : k === "error" ? "❌" : "·";
+
+  return (
+    <Card style={{ background: C.surface, borderColor: C.border, padding: 40 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
+        <div>
+          <div style={{ fontSize: 28, fontWeight: 800 }}>🔍 Идёт исследование</div>
+          <div style={{ fontSize: 13, color: C.muted, marginTop: 4 }}>{runId}</div>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <div style={{ fontSize: 32, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
+            {Math.floor(elapsed / 60)}:{String(Math.floor(elapsed % 60)).padStart(2, "0")}
+          </div>
+          <div style={{ fontSize: 12, color: C.muted }}>осталось ~{minutesLeft} мин</div>
+        </div>
+      </div>
+
+      <Progress value={pct} style={{ height: 8, marginBottom: 28 }} />
+
+      <div style={{ marginBottom: 12, fontSize: 13, color: C.secondary, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
+        Живой фид находок
+      </div>
+
+      <div style={{
+        background: C.borderLight, padding: "16px 20px", borderRadius: 8,
+        maxHeight: 420, overflowY: "auto", fontFamily: "ui-monospace, Menlo, monospace", fontSize: 13, lineHeight: 1.7,
+      }}>
+        {events.length === 0 ? (
+          <div style={{ color: C.muted, padding: "24px 0", textAlign: "center" }}>
+            Ждём первого сигнала из pipeline…
+          </div>
+        ) : (
+          events.map((ev) => (
+            <div key={ev.id} style={{ marginBottom: 6 }}>
+              <span style={{ color: C.muted, marginRight: 8 }}>{new Date(ev.ts).toLocaleTimeString()}</span>
+              <span>{kindIcon(ev.kind)}</span>{" "}
+              {ev.phase && <span style={{ color: C.green, fontWeight: 600 }}>[{ev.phase}] </span>}
+              <span>{ev.message}</span>
+            </div>
+          ))
+        )}
+        <div ref={eventsEndRef} />
+      </div>
+    </Card>
+  );
+}
+
+// -------------------------------------------------------------------------
+// Report view
+// -------------------------------------------------------------------------
+function ReportView(props: any) {
+  const { runId, finalStatus } = props;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const reportUrl = `${API_BASE}/api/research/report/${runId}`;
+
+  const verdictColor = finalStatus?.verdict === "GO" ? "#0a7a2e" : finalStatus?.verdict === "PIVOT" ? "#c58900" : "#a82020";
+  const verdictLabel = finalStatus?.verdict === "GO" ? "GO — идея жизнеспособна" : finalStatus?.verdict === "PIVOT" ? "PIVOT — нужна корректировка" : finalStatus?.verdict === "NO_GO" ? "NO-GO — не рекомендуется" : "—";
+
+  return (
+    <div>
+      {/* Verdict banner */}
+      {finalStatus && (
+        <div style={{
+          background: C.surface, border: `1px solid ${C.border}`, borderLeft: `6px solid ${verdictColor}`,
+          padding: "20px 28px", borderRadius: 12, marginBottom: 24,
+          display: "grid", gridTemplateColumns: "1fr auto auto auto", gap: 24, alignItems: "center",
+        }}>
+          <div>
+            <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Вердикт</div>
+            <div style={{ fontSize: 22, fontWeight: 800, color: verdictColor }}>{verdictLabel}</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>Quality</div>
+            <div style={{ fontSize: 22, fontWeight: 800 }}>{finalStatus.quality_score ?? "—"}/100</div>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>Cost</div>
+            <div style={{ fontSize: 22, fontWeight: 800 }}>${finalStatus.total_cost_usd.toFixed(2)}</div>
+          </div>
+          <a href={reportUrl} target="_blank" rel="noreferrer">
+            <Button style={{ background: C.accent, color: C.text, fontWeight: 700 }}>Открыть в новой вкладке →</Button>
+          </a>
+        </div>
+      )}
+
+      {/* Embedded report */}
+      <div style={{ background: C.surface, border: `1px solid ${C.border}`, borderRadius: 12, overflow: "hidden" }}>
+        <iframe
+          ref={iframeRef}
+          src={reportUrl}
+          style={{ width: "100%", height: "1200px", border: 0 }}
+          title="FoundersLens Report"
+        />
+      </div>
+    </div>
+  );
+}

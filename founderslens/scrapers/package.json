@@ -1,0 +1,21 @@
+{
+  "name": "founderslens-scrapers",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node subprocess helpers for App Store and Google Play scraping. Called from Python via subprocess.",
+  "bin": {
+    "app-store-scrape": "./app_store_scrape.js",
+    "play-store-scrape": "./play_store_scrape.js"
+  },
+  "scripts": {
+    "scrape:app": "node app_store_scrape.js",
+    "scrape:play": "node play_store_scrape.js"
+  },
+  "dependencies": {
+    "app-store-scraper": "^0.18.0",
+    "google-play-scraper": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

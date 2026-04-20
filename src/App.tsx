@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { supportedLangs, type Lang } from "@/i18n/translations";
+import Agents from "./pages/Agents";
 import Landing from "./pages/Landing";
+import Lens from "./pages/Lens";
 import NewLanding from "./pages/NewLanding";
 import Accelerator from "./pages/Accelerator";
 import Apply from "./pages/Apply";
@@ -137,6 +139,9 @@ const App = () => (
           <Route path="/:lang/apply" element={<LangApply />} />
           <Route path="/:lang/mentor" element={<LangMentor />} />
           <Route path="/pitch" element={<PresentationShell />} />
+          <Route path="/agents" element={<Agents />} />
+          <Route path="/agents/lens" element={<Lens />} />
+          <Route path="/lens" element={<Navigate to="/agents/lens" replace />} />
           <Route path="/register" element={<Register />} />
           <Route path="/program" element={<Program />} />
           <Route path="/programm-week1" element={<PublicMeeting1Shell />} />

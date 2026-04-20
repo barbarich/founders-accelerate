@@ -1,0 +1,40 @@
+{
+  "intake": {
+    "welcome": "Привет! Расскажи идею в 1-2 предложениях. Я задам пару уточняющих вопросов и начну исследование.",
+    "q_target_user": "Кто твой целевой пользователь? Опиши одним предложением.",
+    "q_geography": "На каких рынках планируешь запускаться? (например: Россия, США, ЕС)",
+    "q_monetization": "Как планируешь монетизировать? (подписка / разовая покупка / реклама / B2B SaaS / другое)",
+    "q_references": "Есть ли 1-3 похожих продукта, с которыми будешь конкурировать?",
+    "q_already_tried": "Что уже пробовал? (интервью, лендинг, прототип — или пока ничего)"
+  },
+  "report": {
+    "cover_title": "Рыночный анализ",
+    "cover_generated_by": "Сгенерировано FoundersLens за {minutes} минут",
+    "quality_score_label": "Качество исследования",
+    "go_no_go": {
+      "go": "GO — идея жизнеспособна",
+      "pivot": "PIVOT — нужна корректировка",
+      "no_go": "NO-GO — не рекомендуется"
+    },
+    "section_exec": "Краткое резюме",
+    "section_market": "Рынок и тайминг",
+    "section_competitors": "Конкурентная среда",
+    "section_deep_competitors": "Детальный разбор конкурентов",
+    "section_customer": "Потребитель",
+    "section_economics": "Экономика и каналы",
+    "section_strategy": "Стратегические рекомендации",
+    "section_action": "План действий",
+    "section_appendix": "Приложение",
+    "confidence_high": "ВЫСОКАЯ",
+    "confidence_medium": "СРЕДНЯЯ",
+    "confidence_low": "НИЗКАЯ",
+    "confidence_unavailable": "НЕТ ДАННЫХ"
+  },
+  "ui": {
+    "run_button": "Запустить исследование",
+    "idea_placeholder": "Опиши свою идею...",
+    "progress_title": "Идёт исследование",
+    "cost_so_far": "Потрачено: ${cost}",
+    "elapsed": "Прошло: {minutes} мин"
+  }
+}
