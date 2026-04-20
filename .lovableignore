@@ -1,0 +1,8 @@
+# Lovable AI editor: do NOT read, edit, refactor, or touch anything under /pmf-agent.
+# This folder is a separate Python + Streamlit service deployed independently on Railway.
+# It is NOT part of the Vite/React build and must not be modified by the Lovable agent.
+#
+# If Lovable does not natively read .lovableignore, the same rule is enforced via the
+# project-level system prompt (Lovable Project → Settings → Knowledge).
+
+pmf-agent/

@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python (pmf-agent subproject)
+pmf-agent/__pycache__/
+pmf-agent/**/__pycache__/
+pmf-agent/*.pyc
+pmf-agent/**/*.pyc
+pmf-agent/.venv/
+pmf-agent/venv/
+pmf-agent/.env
+pmf-agent/.env.*
+pmf-agent/reports/
+pmf-agent/*.egg-info/

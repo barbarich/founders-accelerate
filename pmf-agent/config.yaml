@@ -1,0 +1,82 @@
+# Provider: "gemini" or "anthropic"
+provider: "gemini"
+
+models:
+  # Gemini (cheap for testing)
+  gemini:
+    orchestrator: "gemini-2.0-flash"
+    research: "gemini-2.0-flash"
+    pivot: "gemini-2.0-flash"
+  # Anthropic (production quality)
+  anthropic:
+    orchestrator: "claude-opus-4-5-20250514"
+    research: "claude-sonnet-4-6-20250514"
+    pivot: "claude-opus-4-5-20250514"
+
+# Available Gemini models for UI selector (as of March 14, 2026)
+gemini_models:
+  # --- Gemini 3.1 ---
+  - id: "gemini-3.1-pro-preview"
+    name: "Gemini 3.1 Pro Preview"
+    description: "Best quality, agentic & coding, complex tasks"
+    tier: "premium"
+  - id: "gemini-3.1-flash-lite-preview"
+    name: "Gemini 3.1 Flash Lite Preview"
+    description: "Frontier-class at lowest cost"
+    tier: "budget"
+  # --- Gemini 3.0 ---
+  - id: "gemini-3-flash-preview"
+    name: "Gemini 3 Flash Preview"
+    description: "Frontier performance, fast & cheap"
+    tier: "recommended"
+  # --- Gemini 2.5 (stable) ---
+  - id: "gemini-2.5-pro"
+    name: "Gemini 2.5 Pro"
+    description: "Deep reasoning & coding, stable"
+    tier: "premium"
+  - id: "gemini-2.5-flash"
+    name: "Gemini 2.5 Flash"
+    description: "Best price-performance, reasoning, stable"
+    tier: "recommended"
+  - id: "gemini-2.5-flash-lite"
+    name: "Gemini 2.5 Flash Lite"
+    description: "Fastest & cheapest in 2.5 family, stable"
+    tier: "budget"
+  # --- Gemini 2.0 (deprecated, retiring June 2026) ---
+  - id: "gemini-2.0-flash"
+    name: "Gemini 2.0 Flash"
+    description: "Deprecated — retiring June 2026"
+    tier: "deprecated"
+  - id: "gemini-2.0-flash-lite"
+    name: "Gemini 2.0 Flash Lite"
+    description: "Deprecated — retiring June 2026"
+    tier: "deprecated"
+
+thresholds:
+  go: 70
+  validate_min: 45
+  pivot_trigger: 50
+
+output:
+  dir: "./reports"
+  filename_template: "{idea_id}_pmf_{date}.pdf"
+
+retry:
+  max_retries: 3
+  base_delay: 1.0
+
+research_depth:
+  market_rounds: 3
+  competitor_rounds: 3
+  pain_rounds: 2
+  trends_rounds: 2
+  demand_rounds: 2
+  unit_economics_rounds: 2
+  regulatory_rounds: 1
+
+search_limits:
+  market: 6
+  competitors: 8
+  pain: 6
+  trends: 5
+  pivot: 3
