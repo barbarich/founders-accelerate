@@ -73,6 +73,7 @@ class IntakeEvaluateRequest(BaseModel):
     # provider/key used for clarifying-question LLM call
     provider: Literal["anthropic", "claude", "openai", "gpt", "gemini", "google"] = "anthropic"
     api_key: str
+    model: Optional[str] = None  # user-chosen model id; falls back to provider default
     prior_questions: list[str] = Field(default_factory=list)
     prior_answers: list[str] = Field(default_factory=list)
 
@@ -88,6 +89,7 @@ class ResearchStartRequest(BaseModel):
     idea_input: IdeaInput
     provider: Literal["anthropic", "claude", "openai", "gpt", "gemini", "google"]
     api_key: str
+    model: Optional[str] = None  # user-chosen model id; falls back to provider default
 
 
 class ResearchStartResponse(BaseModel):
@@ -173,6 +175,7 @@ async def intake_evaluate(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
             schema=IntakeEval,
             system=EVALUATOR_SYSTEM,
             user=user,
+            model=req.model,  # user-chosen model (None → provider default)
             max_tokens=1500,
         )
     except Exception as e:
@@ -193,14 +196,23 @@ async def intake_evaluate(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
 _ACTIVE_RUNS: dict[str, asyncio.Task] = {}
 
 
-async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, api_key: str) -> None:
-    """Execute the graph in background for a given run_id."""
+async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, api_key: str, model: Optional[str] = None) -> None:
+    """Execute the graph in background for a given run_id.
+
+    `model` — user-chosen LLM model id. None → provider picks its default per tier.
+    """
     try:
         provider = get_provider(provider_name, api_key)
     except Exception as e:
         log.error("run %s: provider init failed: %s", run_id, e)
         _mark_run_failed(run_id, f"provider init: {e}")
         return
+
+    # If user specified a model, override provider's tier defaults so every
+    # agent in the pipeline uses that exact model (simpler than per-tier routing).
+    if model:
+        for tier in list(provider.default_models.keys()):
+            provider.default_models[tier] = model
 
     # Persist run start row
     with get_conn() as conn:
@@ -285,7 +297,7 @@ async def research_start(req: ResearchStartRequest) -> ResearchStartResponse:
         raise HTTPException(status_code=401, detail=f"LLM provider init failed: {e}")
 
     run_id = f"run_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}"
-    task = asyncio.create_task(_run_pipeline(run_id, req.idea_input, req.provider, req.api_key))
+    task = asyncio.create_task(_run_pipeline(run_id, req.idea_input, req.provider, req.api_key, req.model))
     _ACTIVE_RUNS[run_id] = task
     return ResearchStartResponse(run_id=run_id)
 

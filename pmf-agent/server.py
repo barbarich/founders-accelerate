@@ -398,6 +398,7 @@ class IntakeEvaluateRequest(BaseModel):
     stage: str = "idea"
     provider: Provider = "anthropic"
     api_key: str
+    model: Optional[str] = None  # user-chosen model id; falls back to provider default
     prior_questions: list[str] = Field(default_factory=list)
     prior_answers: list[str] = Field(default_factory=list)
 
@@ -422,6 +423,7 @@ class ResearchStartRequest(BaseModel):
     idea_input: IdeaInputPayload
     provider: Provider
     api_key: str
+    model: Optional[str] = None  # user-chosen model id; falls back to provider default
 
 
 class ResearchStartResponse(BaseModel):
@@ -487,12 +489,19 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
 
     # Simple JSON-mode call per provider. Keeping implementation tight — not as
     # robust as founderslens (tool-calling); good enough for intake.
+    # Resolve model: user's choice or sensible default per provider
+    model_id = req.model or {
+        "anthropic": "claude-sonnet-4-5",
+        "openai": "gpt-4o",
+        "gemini": "gemini-2.0-flash-exp",
+    }.get(provider, "claude-sonnet-4-5")
+
     raw_text = ""
     try:
         if provider == "anthropic":
             import anthropic
             msg = await client.messages.create(
-                model="claude-sonnet-4-5",
+                model=model_id,
                 max_tokens=1500,
                 system=EVALUATOR_SYSTEM + '\n\nВыведи JSON между ```json и ```.',
                 messages=[{"role": "user", "content": user_text}],
@@ -501,7 +510,7 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
         elif provider == "openai":
             from openai import AsyncOpenAI
             resp = await client.chat.completions.create(
-                model="gpt-4o",
+                model=model_id,
                 max_tokens=1500,
                 response_format={"type": "json_object"},
                 messages=[
@@ -513,7 +522,7 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
         elif provider == "gemini":
             mdl = client.models
             resp = mdl.generate_content(
-                model="gemini-2.0-flash-exp",
+                model=model_id,
                 contents=EVALUATOR_SYSTEM + "\n\n" + user_text + "\n\nReturn JSON only.",
                 config={"response_mime_type": "application/json"},
             )
@@ -583,11 +592,12 @@ async def intake_evaluate(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
 # ---------------------------------------------------------------------------
 # Research endpoints
 # ---------------------------------------------------------------------------
-async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider: str, api_key: str) -> None:
+async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider: str, api_key: str, model: Optional[str] = None) -> None:
     state = _get_run(run_id)
     if state is None:
         return
-    model = _pick_model(provider, CONFIG) or "claude-sonnet-4-5"
+    # User-chosen model takes precedence; fall back to config default
+    model = model or _pick_model(provider, CONFIG) or "claude-sonnet-4-5"
     try:
         report = await run_analysis_api(
             idea=idea_input, config=CONFIG, emitter=state.emitter,
@@ -618,7 +628,7 @@ async def research_start(req: ResearchStartRequest) -> ResearchStartResponse:
     state = RunState(run_id, idea_input)
     _put_run(state)
 
-    asyncio.create_task(_run_pipeline(run_id, idea_input, provider, req.api_key))
+    asyncio.create_task(_run_pipeline(run_id, idea_input, provider, req.api_key, req.model))
     return ResearchStartResponse(run_id=run_id)
 
 

@@ -17,6 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
+import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, type Provider as ProviderLib } from "@/lib/llmModels";
 
 const C = {
   bg: "#f8f8f4",
@@ -42,7 +43,7 @@ const API_BASE =
     : "https://pmf-api.founders-circle.space");
 
 type Stage = "setup" | "clarify" | "progress" | "report" | "error";
-type Provider = "anthropic" | "openai" | "gemini";
+type Provider = ProviderLib;
 
 interface IdeaInput {
   raw_idea: string;
@@ -68,8 +69,14 @@ export default function PmfAgent() {
 
   // Setup form
   const [provider, setProvider] = useState<Provider>("anthropic");
+  const [model, setModel] = useState<string>(DEFAULT_MODEL["anthropic"]);
   const [apiKey, setApiKey] = useState("");
   const [showKey, setShowKey] = useState(false);
+
+  // Reset model to provider's default when provider changes
+  useEffect(() => {
+    setModel(DEFAULT_MODEL[provider]);
+  }, [provider]);
   const [language, setLanguage] = useState<"ru" | "en">("ru");
   const [idea, setIdea] = useState("");
   const [targetUser, setTargetUser] = useState("");
@@ -116,6 +123,7 @@ export default function PmfAgent() {
       reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
       provider,
       api_key: apiKey,
+      model,
       prior_questions: priorQuestions,
       prior_answers: priorAnswers,
     };
@@ -175,6 +183,7 @@ export default function PmfAgent() {
       reference_products: refs.split(",").map(s => s.trim()).filter(Boolean),
       provider,
       api_key: apiKey,
+      model,
       prior_questions: newPriorQ,
       prior_answers: newPriorA,
     };
@@ -211,7 +220,7 @@ export default function PmfAgent() {
       const resp = await fetch(`${API_BASE}/api/research/start`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idea_input: ideaInput, provider, api_key: apiKey }),
+        body: JSON.stringify({ idea_input: ideaInput, provider, api_key: apiKey, model }),
       });
       if (!resp.ok) {
         const text = await resp.text();
@@ -341,6 +350,7 @@ export default function PmfAgent() {
         {stage === "setup" && (
           <SetupCard
             provider={provider} setProvider={setProvider}
+            model={model} setModel={setModel}
             apiKey={apiKey} setApiKey={setApiKey}
             showKey={showKey} setShowKey={setShowKey}
             language={language} setLanguage={setLanguage}
@@ -396,7 +406,8 @@ export default function PmfAgent() {
 // -------------------------------------------------------------------------
 function SetupCard(props: any) {
   const {
-    provider, setProvider, apiKey, setApiKey, showKey, setShowKey,
+    provider, setProvider, model, setModel,
+    apiKey, setApiKey, showKey, setShowKey,
     language, setLanguage, idea, setIdea, targetUser, setTargetUser,
     geography, setGeography, monetization, setMonetization, refs, setRefs,
     loading, onStart,
@@ -412,44 +423,66 @@ function SetupCard(props: any) {
       </p>
 
       {/* Provider selection */}
-      <div style={{ marginBottom: 24 }}>
+      <div style={{ marginBottom: 20 }}>
         <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 12, display: "block" }}>
-          LLM провайдер (твой ключ)
+          LLM провайдер
         </Label>
         <RadioGroup value={provider} onValueChange={(v) => setProvider(v as any)} style={{ display: "flex", gap: 12 }}>
-          {[
-            { v: "anthropic", label: "Claude", sub: "Anthropic" },
-            { v: "openai", label: "GPT-4o", sub: "OpenAI" },
-            { v: "gemini", label: "Gemini", sub: "Google" },
-          ].map((p) => (
+          {(Object.entries(PROVIDER_LABELS) as [Provider, typeof PROVIDER_LABELS["anthropic"]][]).map(([v, meta]) => (
             <label
-              key={p.v}
+              key={v}
               style={{
-                flex: 1, padding: "14px 16px", border: `2px solid ${provider === p.v ? C.text : C.border}`,
+                flex: 1, padding: "14px 16px", border: `2px solid ${provider === v ? C.text : C.border}`,
                 borderRadius: 10, cursor: "pointer",
-                background: provider === p.v ? C.sageBg : C.surface,
+                background: provider === v ? C.sageBg : C.surface,
                 transition: "all 0.15s",
               }}
             >
-              <RadioGroupItem value={p.v} id={p.v} style={{ display: "none" }} />
-              <div style={{ fontWeight: 700, fontSize: 15 }}>{p.label}</div>
-              <div style={{ fontSize: 12, color: C.muted }}>{p.sub}</div>
+              <RadioGroupItem value={v} id={v} style={{ display: "none" }} />
+              <div style={{ fontWeight: 700, fontSize: 15 }}>{meta.title}</div>
+              <div style={{ fontSize: 12, color: C.muted }}>{meta.subtitle}</div>
             </label>
           ))}
         </RadioGroup>
       </div>
 
+      {/* Model selection (depends on provider) */}
+      <div style={{ marginBottom: 24 }}>
+        <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
+          Модель ({PROVIDER_LABELS[provider as Provider].title})
+        </Label>
+        <select
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          style={{
+            width: "100%", padding: "10px 12px", fontSize: 14,
+            border: `1px solid ${C.border}`, borderRadius: 8,
+            background: C.surface, color: C.text,
+            fontFamily: "-apple-system, system-ui, sans-serif",
+          }}
+        >
+          {MODELS[provider as Provider].map((m) => (
+            <option key={m.id} value={m.id}>
+              {m.label} — {m.note}
+            </option>
+          ))}
+        </select>
+        <p style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>
+          Дороже модель = точнее скоринг, но и дольше прогон + больше трат с твоего ключа.
+        </p>
+      </div>
+
       {/* API key */}
       <div style={{ marginBottom: 24 }}>
         <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
-          API key
+          API key ({PROVIDER_LABELS[provider as Provider].title})
         </Label>
         <div style={{ display: "flex", gap: 8 }}>
           <Input
             type={showKey ? "text" : "password"}
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            placeholder={provider === "anthropic" ? "sk-ant-..." : provider === "openai" ? "sk-proj-..." : "AI..."}
+            placeholder={PROVIDER_LABELS[provider as Provider].keyHint}
             style={{ flex: 1, fontSize: 14, fontFamily: "ui-monospace, monospace" }}
           />
           <Button type="button" variant="outline" onClick={() => setShowKey(!showKey)} size="sm">
