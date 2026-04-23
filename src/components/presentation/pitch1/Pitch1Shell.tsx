@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X, ChevronsRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ScaledSlide from "../ScaledSlide";
+import RotatedScaledSlide from "./RotatedScaledSlide";
 
 import Slide00Cover from "./slides/Slide00Cover";
 import SlideAboutMe from "./slides/SlideAboutMe";
