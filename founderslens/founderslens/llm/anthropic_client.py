@@ -16,6 +16,7 @@ from anthropic import AsyncAnthropic
 from pydantic import BaseModel
 
 from founderslens import config
+from founderslens.llm.anthropic_provider import _inline_refs
 from founderslens.utils.retry import retry_async
 
 log = logging.getLogger(__name__)
@@ -90,7 +91,7 @@ async def extract_json(
     """
     client = _get_client()
     tool_name = f"emit_{schema.__name__.lower()}"
-    tool_schema = schema.model_json_schema()
+    tool_schema = _inline_refs(schema.model_json_schema())
     msg = await client.messages.create(
         model=model,
         system=system,

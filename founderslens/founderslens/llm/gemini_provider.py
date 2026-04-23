@@ -9,6 +9,7 @@ import json
 import logging
 from typing import Any, Optional, Type
 
+from founderslens.llm.anthropic_provider import _inline_refs
 from founderslens.llm.base import LLMProvider, LLMResponse, T
 from founderslens.utils.retry import retry_async
 
@@ -83,7 +84,7 @@ class GeminiProvider(LLMProvider):
                 "max_output_tokens": max_tokens,
                 "temperature": temperature,
                 "response_mime_type": "application/json",
-                "response_schema": schema.model_json_schema(),
+                "response_schema": _inline_refs(schema.model_json_schema()),
             },
         )
         raw = ""

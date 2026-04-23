@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 from typing import Any, Optional, Type
 
@@ -10,6 +11,32 @@ from pydantic import BaseModel
 
 from founderslens.llm.base import LLMProvider, LLMResponse, T
 from founderslens.utils.retry import retry_async
+
+
+def _inline_refs(schema: dict[str, Any]) -> dict[str, Any]:
+    # Anthropic tool input_schema rejects `$defs` / `$ref`. Pydantic emits them
+    # whenever a model references another model. Resolve every `$ref` against
+    # `$defs`, drop the `$defs` key, return a self-contained schema.
+    schema = copy.deepcopy(schema)
+    defs = schema.pop("$defs", {}) or schema.pop("definitions", {})
+
+    def resolve(node: Any) -> Any:
+        if isinstance(node, dict):
+            if "$ref" in node and isinstance(node["$ref"], str):
+                ref = node["$ref"]
+                if ref.startswith("#/$defs/") or ref.startswith("#/definitions/"):
+                    key = ref.split("/")[-1]
+                    if key in defs:
+                        merged = resolve(defs[key])
+                        # honor sibling keys (e.g. description) alongside $ref
+                        extras = {k: resolve(v) for k, v in node.items() if k != "$ref"}
+                        return {**merged, **extras}
+            return {k: resolve(v) for k, v in node.items()}
+        if isinstance(node, list):
+            return [resolve(item) for item in node]
+        return node
+
+    return resolve(schema)
 
 
 class AnthropicProvider(LLMProvider):
@@ -55,7 +82,7 @@ class AnthropicProvider(LLMProvider):
             "tools": [{
                 "name": tool_name,
                 "description": f"Emit a {schema.__name__} result.",
-                "input_schema": schema.model_json_schema(),
+                "input_schema": _inline_refs(schema.model_json_schema()),
             }],
             "tool_choice": {"type": "tool", "name": tool_name},
             "messages": [{"role": "user", "content": user}],
