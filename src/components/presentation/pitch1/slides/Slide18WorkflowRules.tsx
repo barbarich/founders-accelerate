@@ -9,7 +9,7 @@ const rules = [
   {
     n: 2,
     t: "Файлы до 500 строк",
-    d: "Большие файлы = баги и конфликты. Claude сам разобьёт, если попросить — качество кода вырастет в разы.",
+    d: "Большие файлы = баги и конфликты. Claude сам разобьёт — качество кода вырастет в разы.",
   },
   {
     n: 3,
@@ -19,7 +19,7 @@ const rules = [
   {
     n: 4,
     t: "Production-ready, а не MVP",
-    d: "Слово «прототип» = поверхностный код. Проси сразу production-quality — получишь другой уровень.",
+    d: "Слово «прототип» = поверхностный код. Проси сразу production-quality.",
   },
   {
     n: 5,
@@ -31,73 +31,51 @@ const rules = [
     t: "CLAUDE.md — правила проекта",
     d: "Стек, конвенции, запреты. Один раз написал — Claude следует им всегда.",
   },
-  {
-    n: 7,
-    t: "Юнит-тесты под каждую фичу",
-    d: "Без тестов AI ломает старое, делая новое. С тестами — качество держится месяцами.",
-  },
-  {
-    n: 8,
-    t: "Одна задача — один промпт",
-    d: "Не пихай 5 фич в один запрос. Атомарность = контроль качества и контекста.",
-  },
-  {
-    n: 9,
-    t: "Контекст решает всё",
-    d: "Давай примеры, ТЗ, ссылки на код. Не знаешь как — обсуди с Claude, пока не сложится картина.",
-  },
-  {
-    n: 10,
-    t: "Сначала план — потом код",
-    d: "Проси Claude план, читай, правь. Реализация по согласованному плану на порядок чище.",
-  },
-  {
-    n: 11,
-    t: "Второе мнение от другой модели",
-    d: "План от Claude → отдай Codex или Antigravity. Альтернативная модель ловит уязвимости и логические дыры.",
-  },
 ];
 
 export default function Slide18WorkflowRules() {
   return (
-    <SlideFrame padding={56}>
-      <div className="w-full h-full flex flex-col gap-5">
-        <div className="flex flex-col gap-2">
-          <Eyebrow>Лучшие практики · Claude Code</Eyebrow>
-          <div style={{ fontSize: 32, fontWeight: 600, color: COLORS.text, letterSpacing: "-0.02em", fontFamily: "'Playfair Display', Georgia, serif" }}>
+    <SlideFrame padding={64}>
+      <div className="w-full h-full flex flex-col gap-7">
+        <div className="flex flex-col gap-3">
+          <Eyebrow>Best practices · Claude Code · 1/2</Eyebrow>
+          <div style={{ fontSize: 40, fontWeight: 600, color: COLORS.text, letterSpacing: "-0.02em", fontFamily: "'Playfair Display', Georgia, serif", lineHeight: 1.1 }}>
             Как пишут промпты в <span style={{ color: COLORS.accent }}>NVIDIA, Google</span> — и как пишу я
+          </div>
+          <div style={{ fontSize: 18, color: COLORS.muted, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.05em" }}>
+            Часть 1 · Качество кода и архитектура
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-7 gap-y-3 flex-1">
+        <div className="grid grid-cols-2 gap-x-7 gap-y-4 flex-1">
           {rules.map((r) => (
             <div
               key={r.n}
-              className="flex gap-4"
+              className="flex gap-5"
               style={{
-                padding: "14px 16px",
+                padding: "20px 22px",
                 background: COLORS.panel,
                 border: `1px solid ${COLORS.panelBorder}`,
-                borderRadius: 10,
+                borderRadius: 12,
               }}
             >
               <div
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
-                  fontSize: 18,
+                  fontSize: 24,
                   color: COLORS.accent,
-                  width: 28,
+                  width: 36,
                   flexShrink: 0,
                   paddingTop: 2,
                 }}
               >
                 {String(r.n).padStart(2, "0")}
               </div>
-              <div className="flex flex-col gap-1">
-                <div style={{ fontSize: 17, fontWeight: 600, color: COLORS.text, lineHeight: 1.25 }}>
+              <div className="flex flex-col gap-2">
+                <div style={{ fontSize: 22, fontWeight: 600, color: COLORS.text, lineHeight: 1.25 }}>
                   {r.t}
                 </div>
-                <div style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.45 }}>
+                <div style={{ fontSize: 17, color: COLORS.muted, lineHeight: 1.5 }}>
                   {r.d}
                 </div>
               </div>
