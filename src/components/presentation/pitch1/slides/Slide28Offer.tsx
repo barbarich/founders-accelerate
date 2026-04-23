@@ -20,6 +20,35 @@ export default function Slide28Offer() {
               которое доводит до запуска.
             </div>
 
+            {/* Price block */}
+            <div style={{
+              display: "flex",
+              alignItems: "baseline",
+              gap: 14,
+              padding: "14px 18px",
+              border: `1px solid ${COLORS.accent}`,
+              borderRadius: 8,
+              background: "hsla(25, 65%, 58%, 0.06)",
+              alignSelf: "flex-start",
+            }}>
+              <span style={{ fontSize: 34, fontWeight: 600, color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
+                ₪3 000
+              </span>
+              <span style={{ fontSize: 18, color: COLORS.muted, textDecoration: "line-through" }}>
+                ₪4 500
+              </span>
+              <span style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: COLORS.accent,
+                marginLeft: 6,
+              }}>
+                до конца недели
+              </span>
+            </div>
+
             <div style={{ width: 280 }}><Divider /></div>
 
             <div style={{
