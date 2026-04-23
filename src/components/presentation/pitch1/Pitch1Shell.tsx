@@ -12,8 +12,10 @@ import Slide03Pipeline from "./slides/Slide03Pipeline";
 import Slide05DividerT1 from "./slides/Slide05DividerT1";
 import Slide06WhyValidation from "./slides/Slide06WhyValidation";
 import Slide06bLesson from "./slides/Slide06bLesson";
-import Slide07Playbook from "./slides/Slide07Playbook";
-import Slide08MikeyCase from "./slides/Slide08MikeyCase";
+import SlideDeepResearch from "./slides/SlideDeepResearch";
+import SlideResearchAgent from "./slides/SlideResearchAgent";
+import SlideAIvsFounder from "./slides/SlideAIvsFounder";
+import SlideCustdevReal from "./slides/SlideCustdevReal";
 import Slide09DividerT2 from "./slides/Slide09DividerT2";
 import Slide10MarketParadox from "./slides/Slide10MarketParadox";
 import Slide11LiveDemo from "./slides/Slide11LiveDemo";
@@ -47,8 +49,10 @@ const slides = [
   { name: "Тема 1", c: Slide05DividerT1 },
   { name: "Interview Ninja", c: Slide06WhyValidation },
   { name: "Урок: знать ≠ знать", c: Slide06bLesson },
-  { name: "Playbook", c: Slide07Playbook },
-  { name: "Кейс Mikey", c: Slide08MikeyCase },
+  { name: "Deep Research", c: SlideDeepResearch },
+  { name: "Research Agent", c: SlideResearchAgent },
+  { name: "AI ≠ замена тебе", c: SlideAIvsFounder },
+  { name: "Кастдев руками", c: SlideCustdevReal },
   { name: "Тема 2", c: Slide09DividerT2 },
   { name: "Парадокс рынка", c: Slide10MarketParadox },
   { name: "Живое демо", c: Slide11LiveDemo },
