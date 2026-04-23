@@ -30,10 +30,10 @@ export default function Slide28Offer() {
           lineHeight: 1.7,
           textAlign: "left",
         }}>
-{`→  Оплата в ближайшие 48 часов
+{`→  Регистрация — до конца недели
 →  8 мест в ближайшей когорте
-→  Бонус: настройка PMF Research Agent
-   под ваш проект на первом 1-1 звонке`}
+→  Оплата: перевод на IL-счёт · Bit · крипта · рассрочка
+→  Бонус: настройка PMF Research Agent под ваш проект`}
         </div>
 
         <div className="flex items-center gap-10 mt-2">
