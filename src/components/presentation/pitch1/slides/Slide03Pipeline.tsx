@@ -1,4 +1,4 @@
-import { Eyebrow, H1, H2, Body, Divider, COLORS, SlideFooter, SlideFrame } from "./_shared";
+import { Eyebrow, H1, H2, Divider, COLORS, SlideFooter, SlideFrame } from "./_shared";
 
 const SANS = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
 const MONO = "'JetBrains Mono', 'SF Mono', Menlo, monospace";
@@ -108,12 +108,6 @@ export default function Slide03Pipeline() {
           />
         </div>
 
-        <div className="flex flex-col items-center gap-2">
-          <Body size={18} color={COLORS.text}>
-            Останьтесь до конца — в финале оффер только для тех, кто здесь
-            живьём.
-          </Body>
-        </div>
       </div>
       <SlideFooter>
         90 минут · 4 темы · живое демо · готовые шаблоны
