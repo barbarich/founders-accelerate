@@ -21,6 +21,7 @@ import Slide14Stack from "./slides/Slide14Stack";
 import Slide15MetaminderCase from "./slides/Slide15MetaminderCase";
 import Slide17MCPMixpanel from "./slides/Slide17MCPMixpanel";
 import Slide18WorkflowRules from "./slides/Slide18WorkflowRules";
+import Slide18bWorkflowRules from "./slides/Slide18bWorkflowRules";
 import Slide19DividerT4 from "./slides/Slide19DividerT4";
 import Slide20WhyManual from "./slides/Slide20WhyManual";
 import Slide21Method from "./slides/Slide21Method";
@@ -52,7 +53,8 @@ const slides = [
   { name: "Мой стек · Mikey", c: Slide14Stack },
   { name: "MCP × Mixpanel · Mikey", c: Slide17MCPMixpanel },
   { name: "Кейс MetaMinder", c: Slide15MetaminderCase },
-  { name: "Best practices · Claude Code", c: Slide18WorkflowRules },
+  { name: "Best practices · 1/2", c: Slide18WorkflowRules },
+  { name: "Best practices · 2/2", c: Slide18bWorkflowRules },
   { name: "Тема 4", c: Slide19DividerT4 },
   { name: "Почему руками", c: Slide20WhyManual },
   { name: "Метод", c: Slide21Method },
