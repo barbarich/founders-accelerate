@@ -213,57 +213,39 @@ export default function SlideDeepResearch() {
           className="grid gap-6"
           style={{ gridTemplateColumns: "1fr 1.25fr", flex: 1, minHeight: 0 }}
         >
-          {/* LEFT: что делает + короткая версия */}
+          {/* LEFT: что делает Deep Research */}
           <div className="flex flex-col gap-6" style={{ minHeight: 0 }}>
             <div style={{
               background: COLORS.panel,
               border: `1px solid ${COLORS.panelBorder}`,
               borderRadius: 14,
-              padding: 28,
+              padding: 36,
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: 18,
             }}>
-              <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace", marginBottom: 12 }}>
+              <div style={{ fontSize: 15, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
                 Что делает Deep Research
               </div>
-              <Body size={19} color={COLORS.text}>
+              <Body size={22} color={COLORS.text}>
                 • Парсит десятки источников за один прогон<br/>
                 • Сравнивает конкурентов, цены, позиционирование<br/>
                 • Достаёт цитаты пользователей с Reddit, G2, отзывов<br/>
                 • Сводит всё в структурированный отчёт со ссылками
               </Body>
-            </div>
 
-            <div style={{
-              background: COLORS.panel,
-              border: `1px solid ${COLORS.panelBorder}`,
-              borderRadius: 14,
-              padding: 28,
-              flex: 1,
-              minHeight: 0,
-              display: "flex",
-              flexDirection: "column",
-            }}>
-              <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace", marginBottom: 12 }}>
-                Версия для слайда (короткая)
+              <div style={{
+                marginTop: "auto",
+                padding: "18px 22px",
+                borderLeft: `4px solid ${COLORS.accent}`,
+                background: "hsla(25,65%,58%,0.08)",
+                borderRadius: 4,
+              }}>
+                <Body size={19} color={COLORS.text}>
+                  90% фаундеров пропускают этот шаг — «и так понятно». В итоге строят то, что уже есть.
+                </Body>
               </div>
-              <pre style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 14,
-                lineHeight: 1.55,
-                color: COLORS.text,
-                margin: 0,
-                whiteSpace: "pre-wrap",
-              }}>{`Я строю [продукт] для [сегмент].
-Сделай Deep Research:
-
-1. Топ-10 конкурентов: цена, модель,
-   позиционирование, сильные/слабые
-2. Что говорят пользователи о боли
-   (Reddit, G2, отзывы) — цитаты
-3. Размер рынка и динамика за 3 года
-4. Незакрытые ниши, которые видят
-   пользователи, но не закрыли игроки
-
-Ответ — структурированно, со ссылками.`}</pre>
             </div>
           </div>
 
@@ -290,10 +272,10 @@ export default function SlideDeepResearch() {
               }}
             >
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <div style={{ fontSize: 13, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
-                  Мастер-промпт · v2 · бонус
+                <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
+                  Мастер-промпт · бонус
                 </div>
-                <div style={{ fontSize: 13, color: COLORS.muted, fontFamily: "'Inter', sans-serif" }}>
+                <div style={{ fontSize: 14, color: COLORS.muted, fontFamily: "'Inter', sans-serif" }}>
                   Заполни поля в <span style={{ color: COLORS.accent }}>[квадратных скобках]</span> · вставь в Claude / ChatGPT / Gemini Deep Research
                 </div>
               </div>
@@ -328,9 +310,9 @@ export default function SlideDeepResearch() {
                 flex: 1,
                 minHeight: 0,
                 overflowY: "auto",
-                padding: "22px 26px",
+                padding: "26px 30px",
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 13,
+                fontSize: 16,
                 lineHeight: 1.7,
                 color: COLORS.text,
                 whiteSpace: "pre-wrap",
