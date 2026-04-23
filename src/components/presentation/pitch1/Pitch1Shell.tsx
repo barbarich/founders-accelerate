@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X, ChevronsRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import ScaledSlide from "../ScaledSlide";
+import RotatedScaledSlide from "./RotatedScaledSlide";
 
 import Slide00Cover from "./slides/Slide00Cover";
 import SlideAboutMe from "./slides/SlideAboutMe";
@@ -213,22 +214,27 @@ export default function Pitch1Shell() {
             const dx = t.clientX - touchStartRef.current.x;
             const dy = t.clientY - touchStartRef.current.y;
             touchStartRef.current = null;
-            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+            const absX = Math.abs(dx);
+            const absY = Math.abs(dy);
+            // On mobile the slide is rotated 90deg so vertical swipes map to slide navigation too.
+            // Swipe-up on screen (dy<0) = next, swipe-down = prev. Swipe-left = next, swipe-right = prev.
+            if (isMobile && absY > 50 && absY > absX) {
+              if (dy < 0) next(); else prev();
+            } else if (absX > 50 && absX > absY) {
               if (dx < 0) next(); else prev();
-            } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+            } else if (absX < 10 && absY < 10) {
               next();
             }
           }}
         >
           <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
-            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+            <RotatedScaledSlide>{getSlideContent(displayed)}</RotatedScaledSlide>
           </div>
 
           {isMobile && current === 0 && swipeHintVisible && (
-            <div className="absolute bottom-20 inset-x-0 flex justify-center animate-pulse pointer-events-none">
+            <div className="absolute bottom-20 inset-x-0 flex justify-center animate-pulse pointer-events-none z-20">
               <div className="flex items-center gap-2 rounded-full px-4 py-2" style={{ background: "rgba(250,250,250,0.95)", border: "0.5px solid #E5E5E5" }}>
-                <span className="text-xs" style={{ color: "#666666" }}>Свайпните</span>
-                <ChevronsRight size={16} style={{ color: "#666666" }} className="animate-bounce-x" />
+                <span className="text-xs" style={{ color: "#666666" }}>Свайп вверх ↑</span>
               </div>
             </div>
           )}
