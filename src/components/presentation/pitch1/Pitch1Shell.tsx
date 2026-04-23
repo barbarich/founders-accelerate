@@ -214,9 +214,15 @@ export default function Pitch1Shell() {
             const dx = t.clientX - touchStartRef.current.x;
             const dy = t.clientY - touchStartRef.current.y;
             touchStartRef.current = null;
-            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+            const absX = Math.abs(dx);
+            const absY = Math.abs(dy);
+            // On mobile the slide is rotated 90deg so vertical swipes map to slide navigation too.
+            // Swipe-up on screen (dy<0) = next, swipe-down = prev. Swipe-left = next, swipe-right = prev.
+            if (isMobile && absY > 50 && absY > absX) {
+              if (dy < 0) next(); else prev();
+            } else if (absX > 50 && absX > absY) {
               if (dx < 0) next(); else prev();
-            } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+            } else if (absX < 10 && absY < 10) {
               next();
             }
           }}
