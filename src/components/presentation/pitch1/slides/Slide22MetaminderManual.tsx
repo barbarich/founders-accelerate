@@ -1,20 +1,42 @@
-import { Eyebrow, H2, Mono, SlideFrame, SlideFooter } from "./_shared";
+import { Eyebrow, H1, SlideFrame, SlideFooter, COLORS } from "./_shared";
 
 export default function Slide22MetaminderManual() {
   return (
-    <SlideFrame>
-      <div className="w-full h-full flex flex-col items-center justify-center gap-8 text-center">
-        <Eyebrow>Кейс MetaMinder</Eyebrow>
-        <H2 size={28}>Первые 7 клиентов — как было на самом деле</H2>
-        <div style={{ fontSize: 44, fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.25, maxWidth: 1100 }}>
-          Никакой магии. Никаких хаков.<br/>Просто тяжёлая работа фаундера.
-        </div>
-        <Mono size={20}>{`Знакомлюсь → слушаю боль → показываю демо →
-отвечаю на возражения → закрываю → онбордю
+    <SlideFrame padding={80}>
+      <div className="w-full h-full flex flex-col gap-10 justify-center">
+        <div><Eyebrow>Главное правило запуска</Eyebrow></div>
+        <H1 size={64}>Запускайте раньше, чем готовы.</H1>
 
-И так 7 раз.`}</Mono>
+        <div className="grid grid-cols-2 gap-8" style={{ marginTop: 8 }}>
+          <div style={{ background: COLORS.panel, border: `0.5px solid ${COLORS.line}`, padding: 32 }}>
+            <div style={{ fontSize: 16, fontFamily: "'JetBrains Mono', monospace", color: COLORS.error, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 14 }}>
+              Так не надо
+            </div>
+            <div style={{ fontSize: 22, color: COLORS.muted, lineHeight: 1.5 }}>
+              Полгода полировать в одиночку.<br/>
+              Идеально — только для вас.<br/>
+              Для рынка — непонятно и неудобно.
+            </div>
+          </div>
+
+          <div style={{ background: COLORS.panel, border: `0.5px solid ${COLORS.accent}`, padding: 32 }}>
+            <div style={{ fontSize: 16, fontFamily: "'JetBrains Mono', monospace", color: COLORS.accent, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 14 }}>
+              Так работает
+            </div>
+            <div style={{ fontSize: 22, color: COLORS.text, lineHeight: 1.5 }}>
+              Одна фича решает проблему — запускайте.<br/>
+              Баги? Нормально.<br/>
+              Живой фидбек строит продукт.
+            </div>
+          </div>
+        </div>
+
+        <div style={{ fontSize: 26, fontWeight: 400, color: COLORS.muted, lineHeight: 1.5, textAlign: "center", marginTop: 8 }}>
+          Никакая AI-модель не заменит реального пользователя,<br/>
+          который прошёл через ваш продукт и сказал, что не работает.
+        </div>
       </div>
-      <SlideFooter>Ни один клиент не пришёл с сайта.</SlideFooter>
+      <SlideFooter>Продукт не бывает идеальным. Он бывает живым или мёртвым.</SlideFooter>
     </SlideFrame>
   );
 }
