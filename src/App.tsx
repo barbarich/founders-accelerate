@@ -14,6 +14,7 @@ import Accelerator from "./pages/Accelerator";
 import Apply from "./pages/Apply";
 import Mentor from "./pages/Mentor";
 import PresentationShell from "@/components/presentation/PresentationShell";
+import Pitch1Shell from "@/components/presentation/pitch1/Pitch1Shell";
 import Register from "./pages/Register";
 import Program from "./pages/Program";
 import NotFound from "./pages/NotFound";
@@ -140,6 +141,7 @@ const App = () => (
           <Route path="/:lang/apply" element={<LangApply />} />
           <Route path="/:lang/mentor" element={<LangMentor />} />
           <Route path="/pitch" element={<PresentationShell />} />
+          <Route path="/pitch1" element={<Pitch1Shell />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/agents/lens" element={<Lens />} />
           <Route path="/agents/pmf" element={<PmfAgent />} />
