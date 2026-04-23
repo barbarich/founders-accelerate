@@ -59,7 +59,7 @@ const slides = [
   { name: "Магии нет", c: Slide20WhyManual },
   { name: "4 канала дистрибуции", c: Slide21Method },
   { name: "Запускайте раньше", c: Slide22MetaminderManual },
-  { name: "Автоматизация", c: Slide23PostAutomation },
+  { name: "Linked Helper · Instantly", c: Slide23PostAutomation },
   { name: "LinkedIn DM", c: Slide24LinkedInScript },
   { name: "Переход к офферу", c: Slide25BridgeToOffer },
   { name: "Программа", c: Slide26ProgramTable },

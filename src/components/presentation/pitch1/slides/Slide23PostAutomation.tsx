@@ -1,42 +1,64 @@
-import { Eyebrow, SlideFrame, COLORS } from "./_shared";
+import { Eyebrow, SlideFrame, SlideFooter, COLORS } from "./_shared";
 
-const blocks = [
+const tools = [
   {
-    n: 1,
-    t: "Outreach на автопилоте",
-    d: "LinkedIn + email → Clay, Instantly, Lemlist\nПромпты и шаблоны написаны с Claude\nЯ только одобряю отправку и отвечаю",
+    n: "01",
+    name: "Linked Helper",
+    channel: "LinkedIn",
+    d: "Полностью автоматизированный outreach в LinkedIn.\nСистема по заготовленной воронке добавляет в друзья,\nпишет сообщения, ведёт диалог до демо.",
+    metric: "Особенно сильно для B2B",
   },
   {
-    n: 2,
-    t: "Публичность фаундера как канал",
-    d: "Посты и статьи в LinkedIn / Threads / Facebook\nНаписаны с AI, адаптированы под мой голос\nЛюди пишут сами, уже прогретые",
-  },
-  {
-    n: 3,
-    t: "Контент-машина",
-    d: "Один черновик в неделю →\nClaude превращает в 5 форматов:\nдлинный пост · карусель · видео · email · тред",
+    n: "02",
+    name: "Instantly",
+    channel: "Email",
+    d: "Массовые персонализированные email-кампании.\nВ MetaMinder отправляем ~3 000 писем в день.\nДаже при небольшой конверсии — стабильный поток демо.",
+    metric: "~3 000 писем / день в MetaMinder",
   },
 ];
 
 export default function Slide23PostAutomation() {
   return (
     <SlideFrame padding={80}>
-      <div className="w-full h-full flex flex-col gap-6 justify-center">
-        <div><Eyebrow>После 7 ручных сделок — включаю автоматизацию</Eyebrow></div>
-        <div className="flex flex-col gap-4">
-          {blocks.map((b) => (
-            <div key={b.n} style={{ background: COLORS.panel, padding: 24 }}>
-              <div style={{ fontSize: 22, fontWeight: 500, color: COLORS.text, marginBottom: 8 }}>
-                <span style={{ color: COLORS.accent, marginRight: 12 }}>{b.n}.</span>{b.t}
+      <div className="w-full h-full flex flex-col gap-8 justify-center">
+        <div><Eyebrow>Автоматизация outreach · особенно для B2B</Eyebrow></div>
+
+        <div style={{ fontSize: 30, fontWeight: 500, color: COLORS.text, lineHeight: 1.3, maxWidth: 1200 }}>
+          Инструментов много. Я использую два, которые реально работают.
+        </div>
+
+        <div className="grid grid-cols-2 gap-6">
+          {tools.map((t) => (
+            <div
+              key={t.n}
+              style={{
+                background: COLORS.panel,
+                border: `0.5px solid ${COLORS.line}`,
+                padding: 32,
+              }}
+            >
+              <div className="flex items-baseline gap-3" style={{ marginBottom: 16 }}>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18, color: COLORS.accent }}>
+                  {t.n}
+                </div>
+                <div style={{ fontSize: 30, fontWeight: 500, color: COLORS.text }}>
+                  {t.name}
+                </div>
+                <div style={{ fontSize: 14, fontFamily: "'JetBrains Mono', monospace", color: COLORS.muted, textTransform: "uppercase", letterSpacing: "0.15em", marginLeft: "auto" }}>
+                  {t.channel}
+                </div>
               </div>
-              <div style={{ fontSize: 17, color: COLORS.muted, whiteSpace: "pre-line", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.55 }}>{b.d}</div>
+              <div style={{ fontSize: 18, color: COLORS.muted, whiteSpace: "pre-line", lineHeight: 1.55, marginBottom: 18 }}>
+                {t.d}
+              </div>
+              <div style={{ fontSize: 15, fontFamily: "'JetBrains Mono', monospace", color: COLORS.accent, paddingTop: 14, borderTop: `0.5px solid ${COLORS.line}` }}>
+                → {t.metric}
+              </div>
             </div>
           ))}
         </div>
-        <div style={{ fontSize: 28, fontWeight: 500, textAlign: "center", marginTop: 8 }}>
-          Топ воронки растёт сам. Я занимаюсь закрытием.
-        </div>
       </div>
+      <SlideFooter>Автоматизация — отдельная большая тема. Здесь — только то, что использую сам.</SlideFooter>
     </SlideFrame>
   );
 }
