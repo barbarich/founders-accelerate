@@ -2,60 +2,71 @@ import { Eyebrow, H1, Body, SlideFrame, COLORS } from "./_shared";
 
 export default function SlideAIvsFounder() {
   return (
-    <SlideFrame padding={72}>
+    <SlideFrame padding={64}>
       <div className="w-full h-full flex flex-col gap-7">
-        <div><Eyebrow>Шаг 3 · Не полагайся только на AI</Eyebrow></div>
-        <H1 size={62}>
-          AI делает <span style={{ color: COLORS.muted }}>80%</span> работы.<br/>
-          Оставшиеся <span style={{ color: COLORS.accent }}>20%</span> — твои руки.
+        <div><Eyebrow>Шаги 1 + 2 · Что у тебя на руках</Eyebrow></div>
+        <H1 size={58}>
+          За пару часов ты получил то,<br/>
+          на что раньше уходили <span style={{ color: COLORS.accent }}>недели</span>.
         </H1>
 
-        <div className="grid grid-cols-2 gap-7 mt-2 flex-1">
+        <Body size={22} color={COLORS.muted}>
+          После Deep Research в ChatGPT/Gemini/Claude и прогона через моего AI Research Agent — у тебя на столе уже лежит полноценный отчёт по рынку:
+        </Body>
+
+        <div className="grid grid-cols-2 gap-7 flex-1">
           <div style={{
             background: COLORS.panel,
             border: `1px solid ${COLORS.panelBorder}`,
             borderRadius: 14,
-            padding: 36,
+            padding: 32,
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            gap: 14,
           }}>
-            <div style={{ fontSize: 16, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
-              Что делает AI
+            <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
+              Шаг 1 · Deep Research
             </div>
-            <Body size={22} color={COLORS.text}>
-              ✓ Собирает рынок и конкурентов<br/>
-              ✓ Сводит данные в отчёт<br/>
-              ✓ Генерит гипотезы и вопросы для интервью<br/>
-              ✓ Находит цитаты и паттерны болей
+            <Body size={21} color={COLORS.text}>
+              ✓ Топ-конкуренты с ценами и моделями<br/>
+              ✓ Цитаты пользователей о реальной боли<br/>
+              ✓ Размер рынка и динамика<br/>
+              ✓ Незакрытые ниши и сегменты<br/>
+              ✓ Источники и ссылки на каждое утверждение
             </Body>
-            <div style={{ fontSize: 15, color: COLORS.muted, marginTop: "auto", fontStyle: "italic" }}>
-              Но AI <span style={{ color: COLORS.error }}>может ошибаться</span> и не чувствует рынок.
-            </div>
           </div>
 
           <div style={{
             background: COLORS.panel,
             border: `1px solid ${COLORS.panelBorder}`,
             borderRadius: 14,
-            padding: 36,
+            padding: 32,
             display: "flex",
             flexDirection: "column",
-            gap: 16,
+            gap: 14,
           }}>
-            <div style={{ fontSize: 16, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
-              Что обязан сделать ты
+            <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
+              Шаг 2 · Research Agent
             </div>
-            <Body size={22} color={COLORS.text}>
-              → Зайти на сайт каждого конкурента<br/>
-              → Зарегистрироваться, пройти онбординг<br/>
-              → Реально попользоваться продуктом<br/>
-              → Понять, где у них дыры — глазами, не отчётом
+            <Body size={21} color={COLORS.text}>
+              ✓ SEO: ключи, объёмы, intent<br/>
+              ✓ Рекламные креативы конкурентов<br/>
+              ✓ Источники трафика и география<br/>
+              ✓ Сильные и слабые стороны игроков<br/>
+              ✓ Готовые гипотезы для проверки
             </Body>
-            <div style={{ fontSize: 15, color: COLORS.muted, marginTop: "auto", fontStyle: "italic" }}>
-              Это даёт <span style={{ color: COLORS.accent }}>чувство рынка</span>, которое не заменит ни одна модель.
-            </div>
           </div>
+        </div>
+
+        <div style={{
+          padding: "22px 32px",
+          borderLeft: `4px solid ${COLORS.accent}`,
+          background: "hsla(25,65%,58%,0.08)",
+          borderRadius: 4,
+        }}>
+          <Body size={22} color={COLORS.text}>
+            Это <span style={{ color: COLORS.accent }}>фундамент</span> — но ещё не валидация. Дальше начинается работа, которую AI за тебя не сделает.
+          </Body>
         </div>
       </div>
     </SlideFrame>
