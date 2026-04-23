@@ -693,7 +693,7 @@ async def research_events(run_id: str):
 # HTML report renderer (matches Founders Circle palette)
 # Minimal but information-dense. Could be upgraded later.
 # ---------------------------------------------------------------------------
-def _render_html_report(report: IdeaReport) -> str:
+def _render_html_report(report: IdeaReport, run_id: str = "") -> str:
     import html as _html
 
     score = report.pmf_score
@@ -725,23 +725,220 @@ def _render_html_report(report: IdeaReport) -> str:
     pain_items = ""
     if report.pain and report.pain.pain_signals:
         pain_items = "".join(
-            f'<li><em>"{esc(s.quote)[:200]}"</em> — <span class="muted">{esc(s.source)}</span></li>'
-            for s in report.pain.pain_signals[:6]
+            f'<li><em>"{esc(s.quote)[:240]}"</em> — <span class="muted">{esc(s.source)}</span> '
+            f'<span class="muted">· severity {s.sentiment_intensity}/10 · workaround: {esc(s.current_workaround)[:120]}</span></li>'
+            for s in report.pain.pain_signals[:8]
         )
+    workarounds_block = ""
+    if report.pain and report.pain.top_workarounds:
+        workarounds_block = (
+            "<p><strong>Текущие workarounds:</strong> "
+            + ", ".join(esc(w) for w in report.pain.top_workarounds[:6])
+            + "</p>"
+        )
+    wtp_block = (
+        f"<p><strong>Готовность платить:</strong> {esc(report.pain.wtp_summary)}</p>"
+        if report.pain and report.pain.wtp_summary else ""
+    )
 
     pivot_block = ""
     if report.pivot_plan and getattr(report.pivot_plan, "scenarios", None):
         pivot_rows = "".join(
             f'<div class="pivot-card">'
             f'<div class="pivot-type">{esc(p.pivot_type)}</div>'
-            f'<div class="pivot-hyp">{esc(p.hypothesis)}</div>'
+            f'<div class="pivot-hyp"><strong>Гипотеза:</strong> {esc(p.hypothesis)}</div>'
+            f'<div class="pivot-hyp"><strong>Эксперимент:</strong> {esc(p.validation_experiment)}</div>'
+            f'<div class="pivot-hyp"><strong>Метрика успеха:</strong> {esc(p.success_metric)} · {p.timeline_days} дней</div>'
+            f'<div class="pivot-hyp"><strong>Аналог:</strong> {esc(p.company_inspiration)}</div>'
             f'</div>'
             for p in report.pivot_plan.scenarios[:3]
         )
-        pivot_block = f'<h2>Pivot scenarios</h2><div class="pivot-grid">{pivot_rows}</div>'
+        pivot_recommend = (
+            f'<p style="margin-top:12px;"><strong>Рекомендуемый pivot:</strong> {esc(report.pivot_plan.recommended_pivot)} — '
+            f'<span class="muted">{esc(report.pivot_plan.reasoning)[:300]}</span></p>'
+            if report.pivot_plan.recommended_pivot else ""
+        )
+        pivot_block = f'<h2>Pivot сценарии</h2><div class="pivot-grid">{pivot_rows}</div>{pivot_recommend}'
+
+    # Timing — tailwinds, headwinds, technology readiness, S-curve
+    timing_block = ""
+    if report.timing:
+        t = report.timing
+        def _kv_list(items, key="title", desc="description"):
+            if not items:
+                return '<p class="muted">—</p>'
+            rows = []
+            for it in items[:5]:
+                if isinstance(it, dict):
+                    title = it.get(key) or it.get("name") or it.get("driver") or it.get("signal") or ""
+                    body = it.get(desc) or it.get("rationale") or it.get("evidence") or it.get("impact") or ""
+                    rows.append(f'<li><strong>{esc(title)}</strong>'
+                                + (f' — <span class="muted">{esc(body)[:240]}</span>' if body else "")
+                                + '</li>')
+                else:
+                    rows.append(f'<li>{esc(it)}</li>')
+            return f"<ul>{''.join(rows)}</ul>"
+        timing_block = f"""
+<h2>Тренды и timing</h2>
+<div class="two-col">
+  <div>
+    <h3 class="sub">Попутный ветер ({len(t.tailwinds)})</h3>
+    {_kv_list(t.tailwinds)}
+  </div>
+  <div>
+    <h3 class="sub">Встречный ветер ({len(t.headwinds)})</h3>
+    {_kv_list(t.headwinds)}
+  </div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="stat-val">{esc(t.technology_readiness)}</div><div class="stat-label">Tech readiness</div></div>
+  <div class="stat"><div class="stat-val">{esc(t.s_curve_position)}</div><div class="stat-label">S-curve</div></div>
+  <div class="stat"><div class="stat-val">{t.timing_score}/100</div><div class="stat-label">Timing score</div></div>
+</div>
+"""
+
+    # Unit economics
+    econ_block = ""
+    if report.unit_economics:
+        e = report.unit_economics
+        models_rows = "".join(
+            f'<tr><td><strong>{esc(m.get("model") or m.get("type") or "—")}</strong></td>'
+            f'<td>{esc(m.get("description") or m.get("rationale") or "")[:240]}</td></tr>'
+            for m in (e.monetization_models or [])[:5]
+        )
+        econ_block = f"""
+<h2>Юнит-экономика</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-val">{esc(e.estimated_arpu) or "—"}</div><div class="stat-label">ARPU</div></div>
+  <div class="stat"><div class="stat-val">{esc(e.estimated_cac_range) or "—"}</div><div class="stat-label">CAC</div></div>
+  <div class="stat"><div class="stat-val">{esc(e.estimated_ltv_range) or "—"}</div><div class="stat-label">LTV</div></div>
+  <div class="stat"><div class="stat-val">{esc(e.ltv_cac_ratio) or "—"}</div><div class="stat-label">LTV / CAC</div></div>
+  <div class="stat"><div class="stat-val">{e.unit_economics_score}/100</div><div class="stat-label">Score</div></div>
+</div>
+{f'<table><thead><tr><th>Модель монетизации</th><th>Описание</th></tr></thead><tbody>{models_rows}</tbody></table>' if models_rows else ''}
+"""
+
+    # Regulatory + legal risks
+    reg_block = ""
+    if report.regulatory:
+        r = report.regulatory
+        regs_rows = "".join(
+            f'<tr><td><strong>{esc(reg.get("name") or reg.get("regulation") or "—")}</strong></td>'
+            f'<td>{esc(reg.get("jurisdiction") or reg.get("region") or "—")}</td>'
+            f'<td>{esc(reg.get("impact") or reg.get("description") or "")[:240]}</td></tr>'
+            for reg in (r.regulations or [])[:6]
+        )
+        risks_rows = "".join(
+            f'<tr><td><strong>{esc(rk.get("risk") or rk.get("name") or "—")}</strong></td>'
+            f'<td><span class="badge badge-{esc(str(rk.get("severity","")).lower()) or "med"}">{esc(rk.get("severity") or "—")}</span></td>'
+            f'<td>{esc(rk.get("mitigation") or rk.get("description") or "")[:240]}</td></tr>'
+            for rk in (r.legal_risks or [])[:6]
+        )
+        comp = ", ".join(esc(c) for c in (r.compliance_requirements or [])[:8]) or "—"
+        privacy = ", ".join(esc(p) for p in (r.data_privacy_requirements or [])[:6]) or "—"
+        reg_block = f"""
+<h2>Регуляторика и юридические риски</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-val">{r.regulatory_score}/100</div><div class="stat-label">Regulatory score</div></div>
+  <div class="stat" style="flex:2;"><div class="stat-val" style="font-size:14px;font-weight:600;line-height:1.4;">{comp}</div><div class="stat-label">Compliance</div></div>
+</div>
+<p><strong>Data privacy:</strong> {privacy}</p>
+{f'<h3 class="sub">Применимые регуляции</h3><table><thead><tr><th>Регуляция</th><th>Юрисдикция</th><th>Влияние</th></tr></thead><tbody>{regs_rows}</tbody></table>' if regs_rows else ''}
+{f'<h3 class="sub">Юридические риски</h3><table><thead><tr><th>Риск</th><th>Severity</th><th>Mitigation</th></tr></thead><tbody>{risks_rows}</tbody></table>' if risks_rows else ''}
+"""
+
+    # Hypothesis risk matrix (from search_plan.key_hypotheses) — what to validate first
+    risk_matrix_block = ""
+    if report.search_plan and report.search_plan.key_hypotheses:
+        hyp_rows = "".join(
+            f'<tr><td>H{i+1}</td><td>{esc(h)}</td></tr>'
+            for i, h in enumerate(report.search_plan.key_hypotheses[:8])
+        )
+        risk_matrix_block = f"""
+<h2>Ключевые гипотезы для валидации</h2>
+<p class="muted" style="font-size:13px;">Это утверждения, на которых держится твоя идея. Каждое нужно подтвердить или опровергнуть до серьёзных вложений.</p>
+<table><thead><tr><th style="width:50px;">#</th><th>Гипотеза</th></tr></thead><tbody>{hyp_rows}</tbody></table>
+"""
+
+    # Blue Ocean / ERRC — what competitors do badly that you can flip
+    bluocean_block = ""
+    if report.competitors and report.competitors.errc:
+        errc = report.competitors.errc
+        def _errc(key, label, color):
+            items = errc.get(key) or []
+            if not items:
+                return ""
+            return (f'<div class="errc-card" style="border-top:3px solid {color};">'
+                    f'<div class="errc-label">{label}</div>'
+                    f'<ul>{"".join(f"<li>{esc(it)}</li>" for it in items[:5])}</ul>'
+                    f'</div>')
+        cards = (_errc("eliminate", "Устранить", "#a82020")
+                 + _errc("reduce",   "Снизить",   "#c58900")
+                 + _errc("raise",    "Поднять",   "#0a7a2e")
+                 + _errc("create",   "Создать",   "#1a4ec0"))
+        whitespace = report.competitors.whitespace_opportunities or []
+        ws_block = (
+            f'<h3 class="sub">Незанятые ниши</h3><ul>'
+            + "".join(f"<li>{esc(w)}</li>" for w in whitespace[:6])
+            + "</ul>"
+        ) if whitespace else ""
+        bluocean_block = f"""
+<h2>Стратегический канвас (ERRC)</h2>
+<p class="muted" style="font-size:13px;">Что в этой категории все делают одинаково, и где можно сломать паттерн.</p>
+<div class="errc-grid">{cards}</div>
+{ws_block}
+"""
 
     market = report.market
     demand = report.demand
+    # Demand details — search queries, communities, social signals
+    demand_block = ""
+    if demand:
+        comm_rows = "".join(
+            f'<tr><td><strong>{esc(c.get("name") or c.get("community") or "—")}</strong></td>'
+            f'<td>{esc(c.get("size") or c.get("members") or "—")}</td>'
+            f'<td>{esc(c.get("platform") or c.get("source") or "—")}</td></tr>'
+            for c in (demand.community_sizes or [])[:6]
+        )
+        social_rows = "".join(
+            f'<li><strong>{esc(s.get("platform") or "—")}:</strong> {esc(s.get("signal") or s.get("description") or "")[:200]}</li>'
+            for s in (demand.social_media_signals or [])[:5]
+        )
+        demand_block = f"""
+<h2>Спрос: подробнее</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-val">{demand.demand_score}/100</div><div class="stat-label">Demand score</div></div>
+  <div class="stat"><div class="stat-val">{esc(demand.demand_trajectory)}</div><div class="stat-label">Тренд</div></div>
+</div>
+{f'<p><strong>Google Trends:</strong> {esc(demand.google_trends_summary)}</p>' if demand.google_trends_summary else ''}
+{f'<h3 class="sub">Где живёт твоя аудитория</h3><table><thead><tr><th>Сообщество</th><th>Размер</th><th>Платформа</th></tr></thead><tbody>{comm_rows}</tbody></table>' if comm_rows else ''}
+{f'<h3 class="sub">Сигналы из соцсетей</h3><ul>{social_rows}</ul>' if social_rows else ''}
+"""
+
+    # Market: deeper — growth drivers, segments, methodology
+    market_extra_block = ""
+    if market:
+        drivers = market.growth_drivers or []
+        segs = market.market_segments or []
+        drivers_block = (
+            "<h3 class='sub'>Драйверы роста</h3><ul>"
+            + "".join(f"<li><strong>{esc(d.get('driver') or d.get('name') or '—')}:</strong> "
+                      f"<span class='muted'>{esc(d.get('description') or d.get('impact') or '')[:200]}</span></li>"
+                      for d in drivers[:5])
+            + "</ul>"
+        ) if drivers else ""
+        segs_block = (
+            "<h3 class='sub'>Сегменты рынка</h3><ul>"
+            + "".join(f"<li><strong>{esc(s.get('name') or s.get('segment') or '—')}:</strong> "
+                      f"<span class='muted'>{esc(s.get('size') or s.get('description') or '')[:200]}</span></li>"
+                      for s in segs[:5])
+            + "</ul>"
+        ) if segs else ""
+        meth_block = (
+            f"<p style='font-size:13px;color:#555;'><strong>SOM methodology:</strong> {esc(market.som_methodology)}</p>"
+            if market.som_methodology else ""
+        )
+        market_extra_block = drivers_block + segs_block + meth_block
     return f"""<!doctype html>
 <html lang="ru">
 <head>
@@ -768,8 +965,24 @@ def _render_html_report(report: IdeaReport) -> str:
   .pivot-grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }}
   .pivot-card {{ background:#fff; border:1px solid #e4e4dc; border-radius:8px; padding:14px 18px; }}
   .pivot-type {{ font-weight:700; margin-bottom:6px; font-size:14px; color:#1a2e14; background:#eef4e8; display:inline-block; padding:2px 10px; border-radius:12px; }}
-  .pivot-hyp {{ font-size:13px; color:#333; line-height:1.5; }}
+  .pivot-hyp {{ font-size:13px; color:#333; line-height:1.5; margin-top:6px; }}
+  .two-col {{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:12px 0; }}
+  .sub {{ font-size:15px; font-weight:700; margin:14px 0 6px; color:#333; }}
+  .errc-grid {{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:12px 0; }}
+  .errc-card {{ background:#fff; border:1px solid #e4e4dc; border-radius:8px; padding:12px 16px; }}
+  .errc-label {{ font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; color:#1a1a1a; margin-bottom:6px; }}
+  .errc-card ul {{ margin:0; padding-left:18px; font-size:13px; }}
+  .errc-card li {{ margin:4px 0; }}
+  .badge {{ display:inline-block; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }}
+  .badge-high, .badge-critical {{ background:#fbe6e6; color:#a82020; }}
+  .badge-medium, .badge-med {{ background:#fff3cd; color:#7a5500; }}
+  .badge-low {{ background:#e8f7ec; color:#0a7a2e; }}
+  .download-strip {{ background:#fff; border:1px solid #e4e4dc; border-left:4px solid #1a1a1a; padding:14px 20px; border-radius:8px; margin:24px 0; display:flex; align-items:center; justify-content:space-between; gap:14px; }}
+  .download-strip a {{ background:#CAFF00; color:#0d0d0d; text-decoration:none; padding:10px 18px; border-radius:8px; font-weight:700; font-size:14px; }}
   .footer {{ margin-top:48px; padding-top:16px; border-top:1px solid #eee; color:#aaa; font-size:12px; text-align:center; }}
+  @media (max-width:640px) {{
+    .two-col, .errc-grid {{ grid-template-columns:1fr; }}
+  }}
 </style>
 </head>
 <body>
@@ -784,6 +997,13 @@ def _render_html_report(report: IdeaReport) -> str:
   <p class="summary">{esc(score.summary)}</p>
 </div>
 
+<div class="download-strip">
+  <div>
+    <strong>Полный отчёт в PDF</strong> · 12+ страниц с графиками, картой болей, ERRC-матрицей, дорожной картой 30/60/90
+  </div>
+  <a href="/api/research/report/{esc(run_id or report.idea.id)}/pdf" target="_blank" rel="noopener">↓ Скачать PDF</a>
+</div>
+
 <h2>Рынок</h2>
 <div class="stats">
   <div class="stat"><div class="stat-val">{esc(market.tam)}</div><div class="stat-label">TAM</div></div>
@@ -791,23 +1011,37 @@ def _render_html_report(report: IdeaReport) -> str:
   <div class="stat"><div class="stat-val">{esc(market.som)}</div><div class="stat-label">SOM</div></div>
   <div class="stat"><div class="stat-val">{esc(market.cagr)}</div><div class="stat-label">CAGR</div></div>
 </div>
+<p><strong>География:</strong> {esc(market.geography)} · <strong>Зрелость:</strong> {esc(market.market_maturity)}</p>
+<p><strong>Демография:</strong> {esc(market.demographics)}</p>
 <p><strong>Why now:</strong> {esc(report.timing.why_now if report.timing else "—")}</p>
+{market_extra_block}
 
 <h2>PMF Score по 9 осям</h2>
 <table><thead><tr><th>Ось</th><th>Балл</th><th>Вес</th><th>Обоснование</th></tr></thead><tbody>{axes_rows}</tbody></table>
 
+{risk_matrix_block}
+
 <h2>Конкуренты</h2>
 {f'<table><thead><tr><th>Имя</th><th>Финансирование</th><th>Угроза</th><th>Дифференциация</th></tr></thead><tbody>{competitors_rows}</tbody></table>' if competitors_rows else '<p class="muted">Конкуренты не найдены.</p>'}
 
+{bluocean_block}
+
 <h2>Боль пользователей</h2>
+{wtp_block}
+{workarounds_block}
 {f'<ul>{pain_items}</ul>' if pain_items else '<p class="muted">Сигналов не найдено.</p>'}
 
-<h2>Спрос</h2>
-<p><strong>Demand score:</strong> {demand.demand_score if demand else "—"}/100 · {esc(demand.demand_trajectory if demand else "")}</p>
+{demand_block}
+
+{timing_block}
+
+{econ_block}
+
+{reg_block}
 
 {pivot_block}
 
-<div class="footer">PMF Agent · Founders Circle · {datetime.now(timezone.utc).strftime("%Y-%m-%d")}</div>
+<div class="footer">PMF Agent · Founders Circle · {datetime.now(timezone.utc).strftime("%Y-%m-%d")} · run {esc(report.idea.id)}</div>
 </body>
 </html>"""
 
@@ -825,7 +1059,56 @@ async def research_report(run_id: str):
         )
     if state.report is None:
         raise HTTPException(status_code=409, detail="report not ready — pipeline still running")
-    return HTMLResponse(content=_render_html_report(state.report))
+    return HTMLResponse(content=_render_html_report(state.report, run_id=run_id))
+
+
+# In-process cache so repeat downloads of the same report don't regenerate the
+# PDF (each run triggers ~12 charts + heavy reportlab layout — 5–15s of work).
+_PDF_CACHE: dict[str, str] = {}
+_PDF_LOCK = threading.Lock()
+
+
+@app.get("/api/research/report/{run_id}/pdf")
+async def research_report_pdf(run_id: str):
+    from fastapi.responses import FileResponse
+
+    state = _get_run(run_id)
+    if state is None:
+        raise HTTPException(status_code=404, detail="run not found")
+    if state.status == "failed":
+        raise HTTPException(status_code=409, detail=f"run failed: {state.error or 'unknown'}")
+    if state.report is None:
+        raise HTTPException(status_code=409, detail="report not ready — pipeline still running")
+
+    cached = _PDF_CACHE.get(run_id)
+    if cached and Path(cached).exists():
+        return FileResponse(cached, media_type="application/pdf",
+                            filename=f"pmf_report_{run_id}.pdf")
+
+    try:
+        from report.pdf_generator import PDFReportGenerator
+    except Exception as e:
+        log.exception("pdf generator import failed")
+        raise HTTPException(status_code=500, detail=f"pdf generator unavailable: {e}")
+
+    output_dir = Path(__file__).parent / "data" / "pdf_reports"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Charts use matplotlib which fights with asyncio loops — run in a thread.
+    def _build() -> str:
+        gen = PDFReportGenerator(output_dir=str(output_dir))
+        return gen.generate(state.report)
+
+    try:
+        path = await asyncio.to_thread(_build)
+    except Exception as e:
+        log.exception("pdf generation failed")
+        raise HTTPException(status_code=500, detail=f"pdf generation failed: {e}")
+
+    with _PDF_LOCK:
+        _PDF_CACHE[run_id] = path
+    return FileResponse(path, media_type="application/pdf",
+                        filename=f"pmf_report_{run_id}.pdf")
 
 
 # ---------------------------------------------------------------------------

@@ -799,6 +799,7 @@ function ReportView(props: any) {
   const { runId, finalStatus } = props;
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const reportUrl = `${API_BASE}/api/research/report/${runId}`;
+  const pdfUrl = `${API_BASE}/api/research/report/${runId}/pdf`;
 
   // PMF Agent uses GO / VALIDATE / PIVOT (not GO / PIVOT / NO_GO like Lens)
   const verdictColor =
@@ -817,7 +818,7 @@ function ReportView(props: any) {
         <div style={{
           background: C.surface, border: `1px solid ${C.border}`, borderLeft: `6px solid ${verdictColor}`,
           padding: "20px 28px", borderRadius: 12, marginBottom: 24,
-          display: "grid", gridTemplateColumns: "1fr auto auto", gap: 24, alignItems: "center",
+          display: "grid", gridTemplateColumns: "1fr auto auto auto auto", gap: 16, alignItems: "center",
         }}>
           <div>
             <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Вердикт</div>
@@ -827,6 +828,9 @@ function ReportView(props: any) {
             <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>PMF Score</div>
             <div style={{ fontSize: 22, fontWeight: 800 }}>{finalStatus.quality_score ?? "—"}/100</div>
           </div>
+          <a href={pdfUrl} target="_blank" rel="noreferrer" download>
+            <Button variant="outline" style={{ fontWeight: 700, borderColor: C.text }}>↓ PDF</Button>
+          </a>
           <a href={reportUrl} target="_blank" rel="noreferrer">
             <Button style={{ background: C.accent, color: C.text, fontWeight: 700 }}>Открыть в новой вкладке →</Button>
           </a>
