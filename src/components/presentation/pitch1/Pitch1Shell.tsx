@@ -11,6 +11,7 @@ import Slide02Thesis from "./slides/Slide02Thesis";
 import Slide03Pipeline from "./slides/Slide03Pipeline";
 import Slide05DividerT1 from "./slides/Slide05DividerT1";
 import Slide06WhyValidation from "./slides/Slide06WhyValidation";
+import Slide06bLesson from "./slides/Slide06bLesson";
 import Slide07Playbook from "./slides/Slide07Playbook";
 import Slide08MikeyCase from "./slides/Slide08MikeyCase";
 import Slide09DividerT2 from "./slides/Slide09DividerT2";
@@ -44,7 +45,8 @@ const slides = [
   { name: "Главный тезис", c: Slide02Thesis },
   { name: "Пайплайн", c: Slide03Pipeline },
   { name: "Тема 1", c: Slide05DividerT1 },
-  { name: "Почему валидация", c: Slide06WhyValidation },
+  { name: "Interview Ninja", c: Slide06WhyValidation },
+  { name: "Урок: знать ≠ знать", c: Slide06bLesson },
   { name: "Playbook", c: Slide07Playbook },
   { name: "Кейс Mikey", c: Slide08MikeyCase },
   { name: "Тема 2", c: Slide09DividerT2 },
