@@ -222,7 +222,7 @@ export default function Pitch1Shell() {
           }}
         >
           <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
-            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+            <RotatedScaledSlide>{getSlideContent(displayed)}</RotatedScaledSlide>
           </div>
 
           {isMobile && current === 0 && swipeHintVisible && (
