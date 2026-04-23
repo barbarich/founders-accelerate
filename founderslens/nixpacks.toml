@@ -2,10 +2,15 @@
 # pango / cairo / gdk-pixbuf are runtime deps of weasyprint >= 60.
 [phases.setup]
 aptPkgs = [
+  "libglib2.0-0",          # provides libgobject-2.0-0 (first thing weasyprint loads)
   "libpango-1.0-0",
   "libpangoft2-1.0-0",
+  "libpangocairo-1.0-0",
   "libharfbuzz0b",
+  "libfontconfig1",
+  "libfreetype6",
   "libcairo2",
+  "libcairo-gobject2",
   "libgdk-pixbuf-2.0-0",
   "libffi-dev",
   "shared-mime-info",
