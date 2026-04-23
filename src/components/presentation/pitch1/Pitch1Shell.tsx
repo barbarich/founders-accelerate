@@ -19,7 +19,6 @@ import SlideCustdevReal from "./slides/SlideCustdevReal";
 import Slide13DividerT3 from "./slides/Slide13DividerT3";
 import Slide14Stack from "./slides/Slide14Stack";
 import Slide15MetaminderCase from "./slides/Slide15MetaminderCase";
-import Slide16MikeyFlow from "./slides/Slide16MikeyFlow";
 import Slide17MCPMixpanel from "./slides/Slide17MCPMixpanel";
 import Slide18WorkflowRules from "./slides/Slide18WorkflowRules";
 import Slide19DividerT4 from "./slides/Slide19DividerT4";
@@ -53,7 +52,6 @@ const slides = [
   { name: "Мой стек · Mikey", c: Slide14Stack },
   { name: "MCP × Mixpanel · Mikey", c: Slide17MCPMixpanel },
   { name: "Кейс MetaMinder", c: Slide15MetaminderCase },
-  { name: "Фича в Mikey", c: Slide16MikeyFlow },
   { name: "5 правил workflow", c: Slide18WorkflowRules },
   { name: "Тема 4", c: Slide19DividerT4 },
   { name: "Почему руками", c: Slide20WhyManual },
