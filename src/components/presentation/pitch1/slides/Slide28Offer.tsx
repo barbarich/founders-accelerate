@@ -44,19 +44,20 @@ export default function Slide28Offer() {
             onClick={(e) => e.stopPropagation()}
             style={{
               padding: "20px 44px",
-              background: COLORS.text,
-              color: "#FFFFFF",
+              background: COLORS.accent,
+              color: COLORS.bg,
               fontSize: 18,
-              fontWeight: 600,
+              fontWeight: 700,
               letterSpacing: "0.06em",
               textDecoration: "none",
               display: "inline-block",
+              boxShadow: "0 0 50px hsla(25, 65%, 58%, 0.3)",
             }}
           >
             ЗАБРАТЬ МЕСТО
           </a>
-          <div style={{ background: "#FFFFFF", padding: 8, border: `0.5px solid ${COLORS.line}` }}>
-            <QRCodeSVG value={REGISTER_URL} size={180} level="M" fgColor={COLORS.text} bgColor="#FFFFFF" />
+          <div style={{ background: "#FFFFFF", padding: 12, border: `1px solid ${COLORS.accent}`, borderRadius: 6 }}>
+            <QRCodeSVG value={REGISTER_URL} size={180} level="M" fgColor="hsl(20 15% 5%)" bgColor="#FFFFFF" />
           </div>
         </div>
       </div>

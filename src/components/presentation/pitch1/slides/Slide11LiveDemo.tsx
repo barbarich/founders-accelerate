@@ -19,13 +19,14 @@ export default function Slide11LiveDemo() {
             style={{
               display: "inline-block",
               padding: "18px 40px",
-              background: COLORS.text,
-              color: "#FFFFFF",
+              background: COLORS.accent,
+              color: COLORS.bg,
               fontSize: 18,
-              fontWeight: 500,
+              fontWeight: 600,
               letterSpacing: "0.02em",
               borderRadius: 999,
               textDecoration: "none",
+              boxShadow: "0 0 40px hsla(25, 65%, 58%, 0.25)",
             }}
           >
             Open PMF Agent →
