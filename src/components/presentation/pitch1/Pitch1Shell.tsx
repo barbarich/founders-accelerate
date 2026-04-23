@@ -4,6 +4,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import ScaledSlide from "../ScaledSlide";
 
 import Slide00Cover from "./slides/Slide00Cover";
+import SlideAboutMe from "./slides/SlideAboutMe";
+import SlideCompanies from "./slides/SlideCompanies";
 import Slide01ColdFact from "./slides/Slide01ColdFact";
 import Slide02Thesis from "./slides/Slide02Thesis";
 import Slide03Pipeline from "./slides/Slide03Pipeline";
@@ -37,6 +39,8 @@ import Slide30Finale from "./slides/Slide30Finale";
 
 const slides = [
   { name: "Cover", c: Slide00Cover },
+  { name: "Кто я", c: SlideAboutMe },
+  { name: "Опыт · компании", c: SlideCompanies },
   { name: "Холодный факт", c: Slide01ColdFact },
   { name: "Главный тезис", c: Slide02Thesis },
   { name: "Пайплайн", c: Slide03Pipeline },
