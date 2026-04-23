@@ -1,34 +1,78 @@
-import { Eyebrow, H2, SlideFrame, COLORS } from "./_shared";
+import { Eyebrow, H1, Body, SlideFrame, COLORS } from "./_shared";
 
 export default function Slide15MetaminderCase() {
   return (
-    <SlideFrame padding={80}>
+    <SlideFrame padding={64}>
       <div className="w-full h-full flex flex-col gap-6">
-        <div><Eyebrow>Кейс MetaMinder</Eyebrow></div>
-        <H2 size={28}>Как я убрал из команды продакта и дизайнера</H2>
-        <div className="flex gap-6 flex-1">
-          <div style={{ background: COLORS.panel, padding: 36, flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-            <div style={{ fontSize: 13, letterSpacing: "0.15em", color: COLORS.accent, fontWeight: 500 }}>БЫЛО</div>
-            <pre style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18, lineHeight: 1.6, color: COLORS.text, margin: 0, whiteSpace: "pre-wrap" }}>
-{`Продакт   →  ТЗ на новую фичу         2-3 дня
-Дизайнер  →  вайрфреймы и макеты      3-5 дней
-Dev team  →  реализация               2-4 недели`}
-            </pre>
-            <div style={{ marginTop: "auto", fontSize: 18, fontWeight: 500 }}>Итого: 3-6 недель на одну фичу</div>
+        <div><Eyebrow>Кейс MetaMinder · B2B Enterprise в проде</Eyebrow></div>
+        <H1 size={54}>
+          Как я убрал продакт-менеджера и дизайнера —
+          и стал делать фичи в <span style={{ color: COLORS.accent }}>10× быстрее</span>.
+        </H1>
+
+        <Body size={20} color={COLORS.muted}>
+          В MetaMinder у меня были продакт-менеджер за <span style={{ color: COLORS.text }}>$4–5K/мес</span> и дизайнер за <span style={{ color: COLORS.text }}>$2–2.5K/мес</span>. Я перенёс каждый экран продукта как он есть в проде — в Lovable. Получил полный клон: не для работы, а как инструмент для проектирования новых фич в стиле и контексте уже существующего продукта.
+        </Body>
+
+        <div className="grid grid-cols-2 gap-6 flex-1">
+          {/* BEFORE */}
+          <div style={{
+            background: COLORS.panel,
+            border: `1px solid ${COLORS.panelBorder}`,
+            borderRadius: 14,
+            padding: 28,
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+          }}>
+            <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.muted, fontFamily: "'JetBrains Mono', monospace" }}>
+              Раньше · команда
+            </div>
+            <div style={{ fontSize: 30, fontWeight: 600, color: COLORS.text, fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "-0.02em" }}>
+              $6.5–7.5K / мес
+            </div>
+            <Body size={18} color={COLORS.muted}>
+              → Продакт пишет ТЗ — дни и созвоны<br/>
+              → Дизайнер делает макеты — недели<br/>
+              → Согласования, правки, итерации<br/>
+              → Пример: онбординг — <span style={{ color: COLORS.error }}>3 месяца работы и полная ерунда на выходе</span>
+            </Body>
           </div>
-          <div style={{ background: COLORS.bg, border: `0.5px solid ${COLORS.line}`, padding: 36, flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
-            <div style={{ fontSize: 13, letterSpacing: "0.15em", color: COLORS.accent, fontWeight: 500 }}>СТАЛО</div>
-            <pre style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 17, lineHeight: 1.6, color: COLORS.text, margin: 0, whiteSpace: "pre-wrap" }}>
-{`Перенёс все экраны продукта в Lovable
-(AI «видит» и «знает» продукт целиком)
-         ↓
-Пишу промпт в Lovable → функционал за минуты
-         ↓
-Передаю dev team — у всех подключён Claude
-         ↓
-Новая фича в проде: меньше недели`}
-            </pre>
+
+          {/* NOW */}
+          <div style={{
+            background: COLORS.panel,
+            border: `1px solid ${COLORS.accent}`,
+            borderRadius: 14,
+            padding: 28,
+            display: "flex",
+            flexDirection: "column",
+            gap: 12,
+          }}>
+            <div style={{ fontSize: 14, letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.accent, fontFamily: "'JetBrains Mono', monospace" }}>
+              Сейчас · я + Lovable + Claude
+            </div>
+            <div style={{ fontSize: 30, fontWeight: 600, color: COLORS.accent, fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "-0.02em" }}>
+              $0 · дни вместо месяцев
+            </div>
+            <Body size={18} color={COLORS.text}>
+              ✓ Пишу промпт в Lovable — фича в стиле продукта<br/>
+              ✓ Итерирую визуал и UX за один вечер<br/>
+              ✓ Передаю готовый прототип разработчику<br/>
+              ✓ Тот же онбординг — <span style={{ color: COLORS.accent }}>несколько дней в Lovable + неделя в Claude</span>
+            </Body>
           </div>
+        </div>
+
+        <div style={{
+          padding: "22px 32px",
+          borderLeft: `4px solid ${COLORS.accent}`,
+          background: "hsla(25,65%,58%,0.08)",
+          borderRadius: 4,
+        }}>
+          <Body size={20} color={COLORS.text}>
+            Так мы выкатили в прод и копайлот внутри MetaMinder, и десятки других фич. Это сложный B2B Enterprise с реальными клиентами — но даже здесь AI экономит <span style={{ color: COLORS.accent }}>деньги, время и согласования</span>, и даёт результат заметно качественнее.
+          </Body>
         </div>
       </div>
     </SlideFrame>
