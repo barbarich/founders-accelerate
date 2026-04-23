@@ -18,7 +18,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, type Provider as ProviderLib } from "@/lib/llmModels";
 
@@ -245,40 +244,87 @@ export default function Lens() {
     }
   };
 
+  // SSE connect with auto-reconnect on transient drops. Backend re-streams from
+  // SQLite, so on reconnect we start fresh and skip already-seen ids client-side.
   const connectSSE = (rid: string) => {
-    const es = new EventSource(`${API_BASE}/api/research/events/${rid}`);
-    eventSourceRef.current = es;
+    let stopped = false;
+    let backoffMs = 2000;
+    const seenIds = new Set<number>();
 
-    es.addEventListener("finding", (e: any) => {
-      try {
-        const data = JSON.parse(e.data);
-        setEvents(prev => [...prev, data]);
-      } catch {}
-    });
+    const open = () => {
+      if (stopped) return;
+      const es = new EventSource(`${API_BASE}/api/research/events/${rid}`);
+      eventSourceRef.current = es;
 
-    es.addEventListener("done", (e: any) => {
+      es.addEventListener("finding", (e: any) => {
+        try {
+          const data = JSON.parse(e.data);
+          if (data.id != null && seenIds.has(data.id)) return;
+          if (data.id != null) seenIds.add(data.id);
+          setEvents(prev => [...prev, data]);
+          backoffMs = 2000; // reset backoff on healthy traffic
+        } catch {}
+      });
+
+      es.addEventListener("done", (e: any) => {
+        try {
+          const data = JSON.parse(e.data);
+          stopped = true;
+          setFinalStatus({
+            status: data.status,
+            verdict: data.verdict,
+            quality_score: data.quality_score,
+            total_cost_usd: data.total_cost_usd || 0,
+          });
+          es.close();
+          if (data.status === "completed") {
+            setStage("report");
+          } else {
+            setErrorMsg(`Pipeline завершился со статусом: ${data.status}`);
+            setStage("error");
+          }
+        } catch {}
+      });
+
+      es.onerror = () => {
+        // Browser already auto-retries while readyState=CONNECTING; we only
+        // intervene when the connection closes for good (e.g. server restart).
+        if (stopped) return;
+        if (es.readyState === EventSource.CLOSED) {
+          console.warn(`SSE closed; reconnecting in ${backoffMs}ms`);
+          setTimeout(() => {
+            if (!stopped) open();
+          }, backoffMs);
+          backoffMs = Math.min(backoffMs * 2, 30000);
+        }
+      };
+    };
+
+    open();
+
+    // Poll status as a safety net — if the run finished while SSE was down,
+    // we'd otherwise hang on the progress screen forever.
+    const statusPoll = setInterval(async () => {
+      if (stopped) { clearInterval(statusPoll); return; }
       try {
-        const data = JSON.parse(e.data);
-        setFinalStatus({
-          status: data.status,
-          verdict: data.verdict,
-          quality_score: data.quality_score,
-          total_cost_usd: data.total_cost_usd || 0,
-        });
-        es.close();
-        if (data.status === "completed") {
-          setStage("report");
-        } else {
-          setErrorMsg(`Pipeline завершился со статусом: ${data.status}`);
-          setStage("error");
+        const r = await fetch(`${API_BASE}/api/research/status/${rid}`);
+        if (!r.ok) return;
+        const s = await r.json();
+        if (s.status === "completed" || s.status === "failed" || s.status === "aborted") {
+          stopped = true;
+          eventSourceRef.current?.close();
+          setFinalStatus({
+            status: s.status,
+            verdict: s.verdict,
+            quality_score: s.quality_score,
+            total_cost_usd: s.total_cost_usd || 0,
+          });
+          if (s.status === "completed") setStage("report");
+          else { setErrorMsg(`Pipeline завершился со статусом: ${s.status}`); setStage("error"); }
+          clearInterval(statusPoll);
         }
       } catch {}
-    });
-
-    es.onerror = () => {
-      console.warn("SSE error; will close");
-      es.close();
-    };
+    }, 15000);
   };
 
   // Elapsed time ticker
@@ -429,7 +475,7 @@ function SetupCard(props: any) {
         Твоя идея — стоит ли её делать?
       </h1>
       <p style={{ fontSize: 18, color: C.secondary, marginBottom: 32, lineHeight: 1.5 }}>
-        За 10 минут соберу рыночное исследование: конкурентов, тренды, креативы их рекламы, кладбище провалов, вердикт GO / PIVOT / NO-GO и конкретный план действий на 30 дней.
+        Соберу рыночное исследование: конкурентов, тренды, креативы их рекламы, кладбище провалов, вердикт GO / PIVOT / NO-GO и конкретный план действий на 30 дней. Прогон занимает 10–30 минут — зависит от модели и сложности идеи.
       </p>
 
       {/* Provider selection */}
@@ -605,7 +651,7 @@ function SetupCard(props: any) {
       </Button>
 
       <p style={{ fontSize: 12, color: C.muted, marginTop: 14, textAlign: "center" }}>
-        ~10 минут · использует твой LLM ключ · отчёт доступен сразу
+        Использует твой LLM ключ · отчёт открывается сразу как только pipeline завершит работу
       </p>
     </Card>
   );
@@ -689,9 +735,12 @@ function ClarifyCard(props: any) {
 // -------------------------------------------------------------------------
 function ProgressView(props: any) {
   const { runId, events, elapsed, eventsEndRef } = props;
-  const expectedSec = 600;
-  const pct = Math.min((elapsed / expectedSec) * 100, 95);
-  const minutesLeft = Math.max(0, Math.ceil((expectedSec - elapsed) / 60));
+  // Detect "stale" feed — no event in last 90s. Could be a slow phase
+  // (deep dive on 5 competitors), but worth surfacing so the user knows.
+  const lastEventTs = events.length ? new Date(events[events.length - 1].ts).getTime() : null;
+  const secSinceLast = lastEventTs ? (Date.now() - lastEventTs) / 1000 : null;
+  const stale = secSinceLast != null && secSinceLast > 90;
+  const currentPhase = events.length ? (events[events.length - 1].phase || "starting") : "starting";
 
   const kindIcon = (k: string) =>
     k === "phase_start" ? "▶️" : k === "phase_end" ? "✅" : k === "finding" ? "💡" : k === "warning" ? "⚠️" : k === "error" ? "❌" : "·";
@@ -701,20 +750,37 @@ function ProgressView(props: any) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20 }}>
         <div>
           <div style={{ fontSize: 28, fontWeight: 800 }}>🔍 Идёт исследование</div>
-          <div style={{ fontSize: 13, color: C.muted, marginTop: 4 }}>{runId}</div>
+          <div style={{ fontSize: 13, color: C.muted, marginTop: 4 }}>
+            фаза: <span style={{ color: C.green, fontWeight: 600 }}>{currentPhase}</span> · {runId}
+          </div>
         </div>
         <div style={{ textAlign: "right" }}>
           <div style={{ fontSize: 32, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
             {Math.floor(elapsed / 60)}:{String(Math.floor(elapsed % 60)).padStart(2, "0")}
           </div>
-          <div style={{ fontSize: 12, color: C.muted }}>осталось ~{minutesLeft} мин</div>
+          <div style={{ fontSize: 12, color: C.muted }}>прошло времени</div>
         </div>
       </div>
 
-      <Progress value={pct} style={{ height: 8, marginBottom: 28 }} />
+      {/* Indeterminate animated bar — pipeline duration depends on model + idea, no honest ETA */}
+      <div style={{ height: 8, marginBottom: 28, background: C.borderLight, borderRadius: 4, overflow: "hidden", position: "relative" }}>
+        <div style={{
+          position: "absolute", height: "100%", width: "30%",
+          background: stale ? "#c58900" : C.text,
+          borderRadius: 4,
+          animation: "lensIndeterminate 1.6s ease-in-out infinite",
+        }} />
+        <style>{`@keyframes lensIndeterminate { 0% { left: -30%; } 100% { left: 100%; } }`}</style>
+      </div>
+
+      {stale && (
+        <div style={{ fontSize: 13, color: "#7a5500", background: "#fff5db", padding: "10px 14px", borderRadius: 6, marginBottom: 16 }}>
+          Последнее событие — {Math.round(secSinceLast!)} сек назад. Это нормально для фазы deep_dive (модель работает с большими объёмами текста). Если ничего не двигается ещё минуту — проверь что окно браузера активно и интернет на месте.
+        </div>
+      )}
 
       <div style={{ marginBottom: 12, fontSize: 13, color: C.secondary, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.5 }}>
-        Живой фид находок
+        Живой фид находок ({events.length})
       </div>
 
       <div style={{
