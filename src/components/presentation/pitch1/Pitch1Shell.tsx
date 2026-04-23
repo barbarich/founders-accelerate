@@ -52,7 +52,7 @@ const slides = [
   { name: "Мой стек · Mikey", c: Slide14Stack },
   { name: "MCP × Mixpanel · Mikey", c: Slide17MCPMixpanel },
   { name: "Кейс MetaMinder", c: Slide15MetaminderCase },
-  { name: "5 правил workflow", c: Slide18WorkflowRules },
+  { name: "Best practices · Claude Code", c: Slide18WorkflowRules },
   { name: "Тема 4", c: Slide19DividerT4 },
   { name: "Почему руками", c: Slide20WhyManual },
   { name: "Метод", c: Slide21Method },
