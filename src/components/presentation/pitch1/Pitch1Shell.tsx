@@ -9,7 +9,6 @@ import SlideCompanies from "./slides/SlideCompanies";
 import Slide01ColdFact from "./slides/Slide01ColdFact";
 import Slide02Thesis from "./slides/Slide02Thesis";
 import Slide03Pipeline from "./slides/Slide03Pipeline";
-import Slide04Map from "./slides/Slide04Map";
 import Slide05DividerT1 from "./slides/Slide05DividerT1";
 import Slide06WhyValidation from "./slides/Slide06WhyValidation";
 import Slide07Playbook from "./slides/Slide07Playbook";
@@ -44,7 +43,6 @@ const slides = [
   { name: "Холодный факт", c: Slide01ColdFact },
   { name: "Главный тезис", c: Slide02Thesis },
   { name: "Пайплайн", c: Slide03Pipeline },
-  { name: "Карта вебинара", c: Slide04Map },
   { name: "Тема 1", c: Slide05DividerT1 },
   { name: "Почему валидация", c: Slide06WhyValidation },
   { name: "Playbook", c: Slide07Playbook },
