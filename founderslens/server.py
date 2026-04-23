@@ -396,6 +396,50 @@ async def research_report(run_id: str) -> HTMLResponse:
     return HTMLResponse(content=html_content)
 
 
+@app.get("/api/research/report/{run_id}/pdf")
+async def research_report_pdf(run_id: str):
+    """Render the HTML report to PDF via WeasyPrint.
+
+    base_url points at the run dir so relative asset paths (screenshots/,
+    creatives/) resolve to local files without HTTP round-trips. Cached
+    per run_id since WeasyPrint on a 30+ image report takes 5-10s.
+    """
+    html_path = config.RUNS_DIR / run_id / "report.html"
+    if not html_path.exists():
+        raise HTTPException(status_code=404, detail="report not found (run may still be running or failed)")
+
+    pdf_path = config.RUNS_DIR / run_id / "report.pdf"
+    if not pdf_path.exists():
+        try:
+            from weasyprint import HTML
+        except Exception as e:
+            log.exception("weasyprint import failed")
+            raise HTTPException(status_code=500, detail=f"pdf engine unavailable: {e}")
+
+        html_text = html_path.read_text(encoding="utf-8")
+        run_dir_url = html_path.parent.resolve().as_uri() + "/"
+
+        def _render() -> None:
+            HTML(string=html_text, base_url=run_dir_url).write_pdf(str(pdf_path))
+
+        try:
+            import asyncio as _asyncio
+            await _asyncio.to_thread(_render)
+        except Exception as e:
+            log.exception("pdf render failed for %s", run_id)
+            # Clean up partial file if any so next call retries
+            try:
+                pdf_path.unlink(missing_ok=True)
+            except Exception:
+                pass
+            raise HTTPException(status_code=500, detail=f"pdf render failed: {e}")
+
+    return FileResponse(
+        pdf_path, media_type="application/pdf",
+        filename=f"founderslens_{run_id}.pdf",
+    )
+
+
 @app.get("/api/research/assets/{run_id}/screenshots/{filename}")
 async def research_screenshot(run_id: str, filename: str):
     # Basic path-traversal guard

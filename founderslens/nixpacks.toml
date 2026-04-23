@@ -1,0 +1,14 @@
+# Extra system packages for WeasyPrint (used by /api/research/report/{id}/pdf).
+# pango / cairo / gdk-pixbuf are runtime deps of weasyprint >= 60.
+[phases.setup]
+aptPkgs = [
+  "libpango-1.0-0",
+  "libpangoft2-1.0-0",
+  "libharfbuzz0b",
+  "libcairo2",
+  "libgdk-pixbuf-2.0-0",
+  "libffi-dev",
+  "shared-mime-info",
+  "fonts-dejavu-core",
+  "fonts-noto-core",
+]

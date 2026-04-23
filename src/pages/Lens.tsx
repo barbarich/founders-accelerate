@@ -814,31 +814,37 @@ function ReportView(props: any) {
   const { runId, finalStatus } = props;
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const reportUrl = `${API_BASE}/api/research/report/${runId}`;
+  const pdfUrl = `${API_BASE}/api/research/report/${runId}/pdf`;
 
   const verdictColor = finalStatus?.verdict === "GO" ? "#0a7a2e" : finalStatus?.verdict === "PIVOT" ? "#c58900" : "#a82020";
   const verdictLabel = finalStatus?.verdict === "GO" ? "GO — идея жизнеспособна" : finalStatus?.verdict === "PIVOT" ? "PIVOT — нужна корректировка" : finalStatus?.verdict === "NO_GO" ? "NO-GO — не рекомендуется" : "—";
 
+  const hasQuality = typeof finalStatus?.quality_score === "number";
+
   return (
     <div>
-      {/* Verdict banner */}
+      {/* Verdict banner — conditionally grid with/without quality column */}
       {finalStatus && (
         <div style={{
           background: C.surface, border: `1px solid ${C.border}`, borderLeft: `6px solid ${verdictColor}`,
           padding: "20px 28px", borderRadius: 12, marginBottom: 24,
-          display: "grid", gridTemplateColumns: "1fr auto auto auto", gap: 24, alignItems: "center",
+          display: "grid",
+          gridTemplateColumns: hasQuality ? "1fr auto auto auto" : "1fr auto auto",
+          gap: 20, alignItems: "center",
         }}>
           <div>
             <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4 }}>Вердикт</div>
             <div style={{ fontSize: 22, fontWeight: 800, color: verdictColor }}>{verdictLabel}</div>
           </div>
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>Quality</div>
-            <div style={{ fontSize: 22, fontWeight: 800 }}>{finalStatus.quality_score ?? "—"}/100</div>
-          </div>
-          <div style={{ textAlign: "right" }}>
-            <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>Cost</div>
-            <div style={{ fontSize: 22, fontWeight: 800 }}>${finalStatus.total_cost_usd.toFixed(2)}</div>
-          </div>
+          {hasQuality && (
+            <div style={{ textAlign: "right" }}>
+              <div style={{ fontSize: 12, color: C.muted, textTransform: "uppercase", letterSpacing: 0.5 }}>Quality</div>
+              <div style={{ fontSize: 22, fontWeight: 800 }}>{finalStatus.quality_score}/100</div>
+            </div>
+          )}
+          <a href={pdfUrl} target="_blank" rel="noreferrer" download>
+            <Button variant="outline" style={{ fontWeight: 700, borderColor: C.text }}>↓ PDF</Button>
+          </a>
           <a href={reportUrl} target="_blank" rel="noreferrer">
             <Button style={{ background: C.accent, color: C.text, fontWeight: 700 }}>Открыть в новой вкладке →</Button>
           </a>
