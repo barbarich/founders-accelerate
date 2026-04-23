@@ -232,10 +232,9 @@ export default function Pitch1Shell() {
           </div>
 
           {isMobile && current === 0 && swipeHintVisible && (
-            <div className="absolute bottom-20 inset-x-0 flex justify-center animate-pulse pointer-events-none">
+            <div className="absolute bottom-20 inset-x-0 flex justify-center animate-pulse pointer-events-none z-20">
               <div className="flex items-center gap-2 rounded-full px-4 py-2" style={{ background: "rgba(250,250,250,0.95)", border: "0.5px solid #E5E5E5" }}>
-                <span className="text-xs" style={{ color: "#666666" }}>Свайпните</span>
-                <ChevronsRight size={16} style={{ color: "#666666" }} className="animate-bounce-x" />
+                <span className="text-xs" style={{ color: "#666666" }}>Свайп вверх ↑</span>
               </div>
             </div>
           )}
