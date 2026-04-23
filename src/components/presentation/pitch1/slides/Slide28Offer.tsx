@@ -1,63 +1,66 @@
 import { QRCodeSVG } from "qrcode.react";
-import { Eyebrow, Divider, SlideFrame, COLORS } from "./_shared";
+import { Eyebrow, Divider, SlideFrame, H1, COLORS } from "./_shared";
 
-const REGISTER_URL = typeof window !== "undefined"
-  ? `${window.location.origin}/register`
-  : "/register";
+const SITE_URL = "https://founders-circle.space/";
 
 export default function Slide28Offer() {
   return (
     <SlideFrame padding={70}>
-      <div className="w-full h-full flex flex-col items-center justify-center gap-6">
-        <div className="text-center"><Eyebrow>Оффер для участников вебинара</Eyebrow></div>
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="flex items-center gap-16 max-w-[1100px]">
+          {/* LEFT: invitation copy */}
+          <div className="flex-1 flex flex-col gap-6">
+            <Eyebrow>Приглашение в группу</Eyebrow>
+            <H1 size={56}>
+              Запустим ваш продукт<br />за 4 недели — вместе
+            </H1>
+            <div style={{ fontSize: 19, lineHeight: 1.55, color: COLORS.muted }}>
+              Группа 5–7 фаундеров. Личная работа со мной каждую неделю,
+              ваш проект в фокусе, обратная связь от команды и комьюнити,
+              которое доводит до запуска.
+            </div>
 
-        <div className="flex flex-col items-center gap-3">
-          <div style={{ fontSize: 22, color: COLORS.muted }}>
-            Публичная цена: <span style={{ textDecoration: "line-through" }}>₪4,500</span>
+            <div style={{ width: 280 }}><Divider /></div>
+
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 15,
+              color: COLORS.muted,
+              lineHeight: 1.9,
+            }}>
+{`→  4 встречи по 3 часа · личный разбор каждого проекта
+→  Валидация → MVP → первые продажи за месяц
+→  Бонус: PMF Research Agent под ваш проект
+→  Гибкая оплата: IL-перевод · Bit · крипта · рассрочка`}
+            </div>
           </div>
-          <div style={{ fontSize: 96, fontWeight: 600, letterSpacing: "-0.03em", lineHeight: 1, color: COLORS.text }}>
-            ₪3,000
-          </div>
-          <div style={{ fontSize: 18, color: COLORS.muted }}>Сегодня для вас · экономия ₪1,500</div>
-        </div>
 
-        <div style={{ width: 480 }}><Divider /></div>
-
-        <div style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 16,
-          color: COLORS.muted,
-          lineHeight: 1.7,
-          textAlign: "left",
-        }}>
-{`→  Регистрация — до конца недели
-→  8 мест в ближайшей когорте
-→  Оплата: перевод на IL-счёт · Bit · крипта · рассрочка
-→  Бонус: настройка PMF Research Agent под ваш проект`}
-        </div>
-
-        <div className="flex items-center gap-10 mt-2">
-          <a
-            href="/register"
-            target="_blank"
-            rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              padding: "20px 44px",
-              background: COLORS.accent,
-              color: COLORS.bg,
-              fontSize: 18,
-              fontWeight: 700,
-              letterSpacing: "0.06em",
-              textDecoration: "none",
-              display: "inline-block",
-              boxShadow: "0 0 50px hsla(25, 65%, 58%, 0.3)",
-            }}
-          >
-            ЗАБРАТЬ МЕСТО
-          </a>
-          <div style={{ background: "#FFFFFF", padding: 12, border: `1px solid ${COLORS.accent}`, borderRadius: 6 }}>
-            <QRCodeSVG value={REGISTER_URL} size={180} level="M" fgColor="hsl(20 15% 5%)" bgColor="#FFFFFF" />
+          {/* RIGHT: QR + CTA */}
+          <div className="flex flex-col items-center gap-5">
+            <div style={{ fontSize: 13, fontFamily: "'JetBrains Mono', monospace", letterSpacing: "0.18em", textTransform: "uppercase", color: COLORS.accent }}>
+              Забронируйте место
+            </div>
+            <div style={{ background: "#FFFFFF", padding: 16, border: `1px solid ${COLORS.accent}`, borderRadius: 8, boxShadow: "0 0 60px hsla(25, 65%, 58%, 0.25)" }}>
+              <QRCodeSVG value={SITE_URL} size={260} level="M" fgColor="hsl(20 15% 5%)" bgColor="#FFFFFF" />
+            </div>
+            <a
+              href={SITE_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 16,
+                color: COLORS.accent,
+                textDecoration: "underline",
+                textUnderlineOffset: 4,
+              }}
+            >
+              founders-circle.space
+            </a>
+            <div style={{ fontSize: 13, color: COLORS.muted, textAlign: "center", maxWidth: 260 }}>
+              Отсканируйте QR или перейдите по ссылке — оставьте заявку, и я лично свяжусь с вами.
+            </div>
           </div>
         </div>
       </div>
