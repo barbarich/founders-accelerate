@@ -65,7 +65,7 @@ export default function Slide14Stack() {
           borderRadius: 4,
         }}>
           <Body size={22} color={COLORS.text}>
-            Связка <span style={{ color: COLORS.accent }}>Lovable + Claude Code + MCP</span> — Mikey уже в рынке, с реальными пользователями. Cursor не использую: эти три инструмента закрывают всё.
+            Связка <span style={{ color: COLORS.accent }}>Lovable + Claude Code + MCP</span> — Mikey уже в рынке, с реальными пользователями.
           </Body>
         </div>
       </div>
