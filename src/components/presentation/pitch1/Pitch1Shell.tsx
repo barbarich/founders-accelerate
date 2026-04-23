@@ -16,10 +16,6 @@ import SlideDeepResearch from "./slides/SlideDeepResearch";
 import SlideResearchAgent from "./slides/SlideResearchAgent";
 import SlideAIvsFounder from "./slides/SlideAIvsFounder";
 import SlideCustdevReal from "./slides/SlideCustdevReal";
-import Slide09DividerT2 from "./slides/Slide09DividerT2";
-import Slide10MarketParadox from "./slides/Slide10MarketParadox";
-import Slide11LiveDemo from "./slides/Slide11LiveDemo";
-import Slide12WhatYouSaw from "./slides/Slide12WhatYouSaw";
 import Slide13DividerT3 from "./slides/Slide13DividerT3";
 import Slide14Stack from "./slides/Slide14Stack";
 import Slide15MetaminderCase from "./slides/Slide15MetaminderCase";
@@ -53,10 +49,6 @@ const slides = [
   { name: "Мой Research Agent", c: SlideResearchAgent },
   { name: "Что у тебя на руках", c: SlideAIvsFounder },
   { name: "Проверь руками", c: SlideCustdevReal },
-  { name: "Тема 2", c: Slide09DividerT2 },
-  { name: "Парадокс рынка", c: Slide10MarketParadox },
-  { name: "Живое демо", c: Slide11LiveDemo },
-  { name: "Что вы увидели", c: Slide12WhatYouSaw },
   { name: "Тема 3", c: Slide13DividerT3 },
   { name: "Мой стек", c: Slide14Stack },
   { name: "Кейс MetaMinder", c: Slide15MetaminderCase },
