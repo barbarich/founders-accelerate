@@ -1,4 +1,4 @@
-import { Eyebrow, H1, H2, Divider, COLORS, SlideFooter, SlideFrame } from "./_shared";
+import { Eyebrow, H1, H2, Divider, COLORS, SlideFrame } from "./_shared";
 
 const SANS = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
 const MONO = "'JetBrains Mono', 'SF Mono', Menlo, monospace";
@@ -84,6 +84,7 @@ export default function Slide03Pipeline() {
             gridTemplateColumns: "repeat(4, 1fr)",
             gap: 20,
             flex: 1,
+            marginBottom: 20,
           }}
         >
           <Block
@@ -109,9 +110,6 @@ export default function Slide03Pipeline() {
         </div>
 
       </div>
-      <SlideFooter>
-        90 минут · 4 темы · живое демо · готовые шаблоны
-      </SlideFooter>
     </SlideFrame>
   );
 }
