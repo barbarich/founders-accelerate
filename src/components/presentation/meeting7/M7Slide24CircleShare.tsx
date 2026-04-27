@@ -19,7 +19,7 @@ export default function M7Slide24CircleShare() {
           Каждый по 90 секунд.<br />Покажи свои 3 строки.
         </h2>
         <p className="text-[9.5px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[10px]">
-          Зачитываешь — группа реагирует одной фразой. Конкретной, не «звучит круто».
+          Зачитываешь свои три строки. Группа слушает.
         </p>
         <div className="space-y-[5px]">
           {lines.map((l) => (
@@ -29,9 +29,6 @@ export default function M7Slide24CircleShare() {
             </div>
           ))}
         </div>
-        <p className="text-[9px] text-[hsl(var(--slide-gold))] font-semibold mt-[8px] leading-[1.4]">
-          «Не понятно что значит сценарий» — да. «Звучит круто» — нет.
-        </p>
       </div>
     );
   }
@@ -45,7 +42,7 @@ export default function M7Slide24CircleShare() {
         Каждый по 90 секунд. Покажи свои 3 строки.
       </h2>
       <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[28px] max-w-[1500px]">
-        Зачитываешь свои три строки. Группа реагирует одной конкретной фразой — что понятно, что нет.
+        Зачитываешь свои три строки. Группа слушает.
       </p>
       <div className="space-y-[12px] max-w-[1600px] mb-[24px]">
         {lines.map((l) => (
@@ -55,9 +52,6 @@ export default function M7Slide24CircleShare() {
           </div>
         ))}
       </div>
-      <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1500px] leading-[1.4]">
-        Реакция группы — конкретная. «Не понятно, что значит "сценарий"» — да. «Звучит круто» — нет.
-      </p>
     </div>
   );
 }
