@@ -7,7 +7,6 @@ import ScaledSlide from "../ScaledSlide";
 import M7Slide01Welcome from "./M7Slide01Welcome";
 import M7Slide02ReverseDemo from "./M7Slide02ReverseDemo";
 import M7Slide03EntryRule from "./M7Slide03EntryRule";
-import M7Slide04DiscoveryWall from "./M7Slide04DiscoveryWall";
 import M7Slide05Theme from "./M7Slide05Theme";
 import M7Slide06UxFourIdeas from "./M7Slide06UxFourIdeas";
 import M7Slide07JourneyMap from "./M7Slide07JourneyMap";
@@ -22,7 +21,6 @@ const slideNames = [
   "Добро пожаловать",
   "Reverse demo: что покажешь на демо-дне",
   "Правило встречи: данные, не мнения",
-  "Discovery wall: 5 правд",
   "Тема: От каркаса к Aha",
   "UX = четыре идеи",
   "Карта пути юзера",
@@ -39,21 +37,20 @@ function getSlideContent(index: number) {
     case 0: return <M7Slide01Welcome />;
     case 1: return <M7Slide02ReverseDemo />;
     case 2: return <M7Slide03EntryRule />;
-    case 3: return <M7Slide04DiscoveryWall />;
-    case 4: return <M7Slide05Theme />;
-    case 5: return <M7Slide06UxFourIdeas />;
-    case 6: return <M7Slide07JourneyMap />;
-    case 7: return <M7Slide08AhaFormula />;
-    case 8: return <M7Slide09FrictionTypes />;
-    case 9: return <M7Slide10LiveAudit />;
-    case 10: return <M7Slide11SpeedPact />;
-    case 11: return <M7Slide12NextWeekRetention />;
-    case 12: return <M7Slide13Closing />;
+    case 3: return <M7Slide05Theme />;
+    case 4: return <M7Slide06UxFourIdeas />;
+    case 5: return <M7Slide07JourneyMap />;
+    case 6: return <M7Slide08AhaFormula />;
+    case 7: return <M7Slide09FrictionTypes />;
+    case 8: return <M7Slide10LiveAudit />;
+    case 9: return <M7Slide11SpeedPact />;
+    case 10: return <M7Slide12NextWeekRetention />;
+    case 11: return <M7Slide13Closing />;
     default: return null;
   }
 }
 
-const TOTAL = 13;
+const TOTAL = 12;
 
 export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
