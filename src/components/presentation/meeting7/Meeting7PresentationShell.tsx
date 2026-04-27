@@ -26,7 +26,6 @@ import M7Slide19FiveMechanisms from "./M7Slide19FiveMechanisms";
 import M7Slide20MechanismExamples from "./M7Slide20MechanismExamples";
 import M7Slide21PushEmail from "./M7Slide21PushEmail";
 import M7Slide22Exercise3 from "./M7Slide22Exercise3";
-import M7Slide23LiveRebuild from "./M7Slide23LiveRebuild";
 import M7Slide24CircleShare from "./M7Slide24CircleShare";
 import M7Slide25Homework from "./M7Slide25Homework";
 import M7Slide26NextWeek from "./M7Slide26NextWeek";
@@ -54,7 +53,6 @@ const slideNames = [
   "Примеры механизмов",
   "Push и email",
   "Упражнение 3",
-  "Live · переделываем 3 экрана",
   "Круг · каждый показывает",
   "Домашнее задание",
   "Неделя 8",
@@ -84,15 +82,14 @@ function getSlideContent(index: number) {
     case 19: return <M7Slide20MechanismExamples />;
     case 20: return <M7Slide21PushEmail />;
     case 21: return <M7Slide22Exercise3 />;
-    case 22: return <M7Slide23LiveRebuild />;
-    case 23: return <M7Slide24CircleShare />;
-    case 24: return <M7Slide25Homework />;
-    case 25: return <M7Slide26NextWeek />;
+    case 22: return <M7Slide24CircleShare />;
+    case 23: return <M7Slide25Homework />;
+    case 24: return <M7Slide26NextWeek />;
     default: return null;
   }
 }
 
-const TOTAL = 26;
+const TOTAL = 25;
 
 export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
