@@ -27,7 +27,7 @@ export default function M7Slide03EntryRule() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px] py-[16px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Открываем встречу · 5 минут на каждого</p>
         <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-          Каждый показывает прогресс за неделю. Прямо сейчас, по очереди.
+          Демонстрация прогресса
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[10px]">
           Не пересказ — открываем экран и показываем продукт. Дальше воркшоп строится на ваших кейсах.
@@ -51,7 +51,7 @@ export default function M7Slide03EntryRule() {
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Открываем встречу · 5 минут на каждого</p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] max-w-[1600px]">
-        Каждый показывает прогресс за неделю. Прямо сейчас, по очереди.
+        Демонстрация прогресса
       </h2>
       <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.45] max-w-[1500px] mb-[40px]">
         Не пересказ — открываем экран и показываем продукт. Дальше воркшоп строится на ваших кейсах.
