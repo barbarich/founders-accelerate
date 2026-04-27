@@ -2,20 +2,20 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const steps = [
   {
-    title: "Покажи продукт за 3 минуты",
-    body: "Что это, для кого, ключевой экран. Без долгих предисловий — сразу к экрану.",
+    title: "Покажи продукт",
+    body: "Открой экран. Что это, для кого, ключевой сценарий. Без слайдов — живой интерфейс.",
   },
   {
-    title: "Расскажи, как привёл первых 5–10 юзеров",
-    body: "Канал, оффер, цена. Что сработало, что нет.",
+    title: "Что сделал за неделю",
+    body: "Главное изменение в продукте + как приводил юзеров: канал, оффер, цена.",
   },
   {
-    title: "Покажи данные",
-    body: "Где смотрел, что увидел: drop-off, цитаты, цифры. Минимум — одна точка выпадения.",
+    title: "Какие данные получил",
+    body: "Цифры, цитаты, точка выпадения. Минимум — одно наблюдение, которое тебя удивило.",
   },
   {
-    title: "Получи разбор от группы",
-    body: "Экран и точка трения разбираются вместе. Уходишь с конкретной гипотезой на правку.",
+    title: "Где застрял",
+    body: "Один конкретный вопрос или место трения, по которому хочешь обратной связи от группы.",
   },
 ];
 
@@ -25,12 +25,12 @@ export default function M7Slide03EntryRule() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px] py-[16px]">
-        <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Обязательное задание</p>
+        <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Открываем встречу · 5 минут на каждого</p>
         <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-          К следующей встрече каждый приносит свой кейс. Без исключений.
+          Каждый показывает прогресс за неделю. Прямо сейчас, по очереди.
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[10px]">
-          Воркшоп строится на ваших продуктах и ваших данных. Если кейса нет — встреча теряет смысл.
+          Не пересказ — открываем экран и показываем продукт. Дальше воркшоп строится на ваших кейсах.
         </p>
         <div className="space-y-[6px]">
           {steps.map((s, i) => (
@@ -49,12 +49,12 @@ export default function M7Slide03EntryRule() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Обязательное задание</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Открываем встречу · 5 минут на каждого</p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] max-w-[1600px]">
-        К следующей встрече каждый приносит свой кейс. Без исключений.
+        Каждый показывает прогресс за неделю. Прямо сейчас, по очереди.
       </h2>
       <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.45] max-w-[1500px] mb-[40px]">
-        Воркшоп строится на ваших продуктах и ваших данных. Если кейса нет — встреча теряет смысл.
+        Не пересказ — открываем экран и показываем продукт. Дальше воркшоп строится на ваших кейсах.
       </p>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1680px]">
         {steps.map((s, i) => (
