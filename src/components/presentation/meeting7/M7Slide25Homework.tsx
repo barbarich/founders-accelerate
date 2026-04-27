@@ -38,9 +38,6 @@ export default function M7Slide25Homework() {
             ))}
           </div>
         </div>
-        <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Среда: пара пишет паре со скриншотом нового экрана. Без скриншота — нет ответа.
-        </p>
       </div>
     );
   }
@@ -75,9 +72,6 @@ export default function M7Slide25Homework() {
           </div>
         </div>
       </div>
-      <p className="text-[24px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1500px] leading-[1.4]">
-        Среда: пара пишет паре со скриншотом нового экрана. Без скриншота — нет ответа.
-      </p>
     </div>
   );
 }
