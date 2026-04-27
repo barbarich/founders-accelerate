@@ -11,23 +11,37 @@ import M7Slide05Theme from "./M7Slide05Theme";
 import M7Slide06UxFourIdeas from "./M7Slide06UxFourIdeas";
 import M7Slide07JourneyMap from "./M7Slide07JourneyMap";
 import M7Slide08AhaFormula from "./M7Slide08AhaFormula";
+import M7Slide08aBestInClass from "./M7Slide08aBestInClass";
+import M7Slide08bAntiPatterns from "./M7Slide08bAntiPatterns";
 import M7Slide09FrictionTypes from "./M7Slide09FrictionTypes";
+import M7Slide09bToolkit from "./M7Slide09bToolkit";
+import M7Slide09cAuditPrompt from "./M7Slide09cAuditPrompt";
+import M7Slide09dPriorityMatrix from "./M7Slide09dPriorityMatrix";
 import M7Slide10LiveAudit from "./M7Slide10LiveAudit";
+import M7Slide11aCommitment from "./M7Slide11aCommitment";
 import M7Slide11SpeedPact from "./M7Slide11SpeedPact";
+import M7Slide11bHomework from "./M7Slide11bHomework";
 import M7Slide12NextWeekRetention from "./M7Slide12NextWeekRetention";
 import M7Slide13Closing from "./M7Slide13Closing";
 
 const slideNames = [
   "Добро пожаловать",
   "Reverse demo: что покажешь на демо-дне",
-  "Правило встречи: данные, не мнения",
+  "Демонстрация прогресса · шаблон",
   "Тема: От каркаса к Aha",
   "UX = четыре идеи",
   "Карта пути юзера",
   "Формула Aha",
+  "Best-in-class onboarding (Linear, Superhuman, Cal.com)",
+  "Anti-patterns onboarding",
   "5 типов трения",
+  "Friction toolkit (PostHog, Clarity, Maze)",
+  "Friction-audit prompt",
+  "Матрица приоритизации Impact × Effort",
   "Live friction audit",
+  "Commitment вслух",
   "Speed pact",
+  "Homework: 5 задач до M8",
   "Неделя 8: Retention",
   "Закрытие",
 ];
@@ -41,16 +55,23 @@ function getSlideContent(index: number) {
     case 4: return <M7Slide06UxFourIdeas />;
     case 5: return <M7Slide07JourneyMap />;
     case 6: return <M7Slide08AhaFormula />;
-    case 7: return <M7Slide09FrictionTypes />;
-    case 8: return <M7Slide10LiveAudit />;
-    case 9: return <M7Slide11SpeedPact />;
-    case 10: return <M7Slide12NextWeekRetention />;
-    case 11: return <M7Slide13Closing />;
+    case 7: return <M7Slide08aBestInClass />;
+    case 8: return <M7Slide08bAntiPatterns />;
+    case 9: return <M7Slide09FrictionTypes />;
+    case 10: return <M7Slide09bToolkit />;
+    case 11: return <M7Slide09cAuditPrompt />;
+    case 12: return <M7Slide09dPriorityMatrix />;
+    case 13: return <M7Slide10LiveAudit />;
+    case 14: return <M7Slide11aCommitment />;
+    case 15: return <M7Slide11SpeedPact />;
+    case 16: return <M7Slide11bHomework />;
+    case 17: return <M7Slide12NextWeekRetention />;
+    case 18: return <M7Slide13Closing />;
     default: return null;
   }
 }
 
-const TOTAL = 12;
+const TOTAL = 19;
 
 export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
