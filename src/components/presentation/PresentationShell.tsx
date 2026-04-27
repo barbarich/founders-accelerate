@@ -226,9 +226,6 @@ export default function PresentationShell() {
         {/* Slide */}
         <div
           className="flex-1 relative"
-          onClick={(e) => {
-            if (!isMobile) next();
-          }}
           onTouchStart={(e) => {
             const t = e.touches[0];
             touchStartRef.current = { x: t.clientX, y: t.clientY };
@@ -243,9 +240,6 @@ export default function PresentationShell() {
             if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
               if (dx < 0) next();
               else prev();
-            } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-              // Tap — advance forward on mobile too
-              next();
             }
           }}
         >
