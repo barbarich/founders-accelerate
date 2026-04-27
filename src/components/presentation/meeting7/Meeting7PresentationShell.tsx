@@ -5,73 +5,94 @@ import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../ScaledSlide";
 
 import M7Slide01Welcome from "./M7Slide01Welcome";
-import M7Slide02ReverseDemo from "./M7Slide02ReverseDemo";
-import M7Slide03EntryRule from "./M7Slide03EntryRule";
-import M7Slide05Theme from "./M7Slide05Theme";
-import M7Slide06UxFourIdeas from "./M7Slide06UxFourIdeas";
-import M7Slide07JourneyMap from "./M7Slide07JourneyMap";
-import M7Slide08AhaFormula from "./M7Slide08AhaFormula";
-import M7Slide08aBestInClass from "./M7Slide08aBestInClass";
-import M7Slide08bAntiPatterns from "./M7Slide08bAntiPatterns";
-import M7Slide09FrictionTypes from "./M7Slide09FrictionTypes";
-import M7Slide09bToolkit from "./M7Slide09bToolkit";
-import M7Slide09cAuditPrompt from "./M7Slide09cAuditPrompt";
-import M7Slide09dPriorityMatrix from "./M7Slide09dPriorityMatrix";
-import M7Slide10LiveAudit from "./M7Slide10LiveAudit";
-import M7Slide11aCommitment from "./M7Slide11aCommitment";
-import M7Slide11SpeedPact from "./M7Slide11SpeedPact";
-import M7Slide11bHomework from "./M7Slide11bHomework";
-import M7Slide12NextWeekRetention from "./M7Slide12NextWeekRetention";
-import M7Slide13Closing from "./M7Slide13Closing";
+import M7Slide02MainThesis from "./M7Slide02MainThesis";
+import M7Slide03ShowYourPhone from "./M7Slide03ShowYourPhone";
+import M7Slide04FourReasons from "./M7Slide04FourReasons";
+import M7Slide05ThreeScreensRule from "./M7Slide05ThreeScreensRule";
+import M7Slide06Screen1Intro from "./M7Slide06Screen1Intro";
+import M7Slide07PromiseFormula from "./M7Slide07PromiseFormula";
+import M7Slide08FiveGoodFirstScreens from "./M7Slide08FiveGoodFirstScreens";
+import M7Slide09FiveBadFirstScreens from "./M7Slide09FiveBadFirstScreens";
+import M7Slide10FiveSecondTest from "./M7Slide10FiveSecondTest";
+import M7Slide11Exercise1 from "./M7Slide11Exercise1";
+import M7Slide12Screen2Intro from "./M7Slide12Screen2Intro";
+import M7Slide13SkipTheWall from "./M7Slide13SkipTheWall";
+import M7Slide14FiveActionFirst from "./M7Slide14FiveActionFirst";
+import M7Slide15WhenToAsk from "./M7Slide15WhenToAsk";
+import M7Slide16EmptyStates from "./M7Slide16EmptyStates";
+import M7Slide17Exercise2 from "./M7Slide17Exercise2";
+import M7Slide18Screen3Intro from "./M7Slide18Screen3Intro";
+import M7Slide19FiveMechanisms from "./M7Slide19FiveMechanisms";
+import M7Slide20MechanismExamples from "./M7Slide20MechanismExamples";
+import M7Slide21PushEmail from "./M7Slide21PushEmail";
+import M7Slide22Exercise3 from "./M7Slide22Exercise3";
+import M7Slide23LiveRebuild from "./M7Slide23LiveRebuild";
+import M7Slide24CircleShare from "./M7Slide24CircleShare";
+import M7Slide25Homework from "./M7Slide25Homework";
+import M7Slide26NextWeek from "./M7Slide26NextWeek";
 
 const slideNames = [
-  "Добро пожаловать",
-  "Reverse demo: что покажешь на демо-дне",
-  "Демонстрация прогресса · шаблон",
-  "Тема: От каркаса к Aha",
-  "UX = четыре идеи",
-  "Карта пути юзера",
-  "Формула Aha",
-  "Best-in-class onboarding (Linear, Superhuman, Cal.com)",
-  "Anti-patterns onboarding",
-  "5 типов трения",
-  "Friction toolkit (PostHog, Clarity, Maze)",
-  "Friction-audit prompt",
-  "Матрица приоритизации Impact × Effort",
-  "Live friction audit",
-  "Commitment вслух",
-  "Speed pact",
-  "Homework: 5 задач до M8",
-  "Неделя 8: Retention",
-  "Закрытие",
+  "Заглавный",
+  "Главная мысль",
+  "Покажи свой телефон",
+  "4 причины ухода",
+  "Правило трёх экранов",
+  "Экран 1 · Одно обещание",
+  "Формула обещания",
+  "5 правильных первых экранов",
+  "5 ошибок первого экрана",
+  "Тест на 5 секунд",
+  "Упражнение 1",
+  "Экран 2 · Одно действие",
+  "Сначала результат, потом email",
+  "5 продуктов: действие до email",
+  "Что и когда спрашивать",
+  "Empty states",
+  "Упражнение 2",
+  "Экран 3 · Причина вернуться",
+  "5 механизмов возврата",
+  "Примеры механизмов",
+  "Push и email",
+  "Упражнение 3",
+  "Live · переделываем 3 экрана",
+  "Круг · каждый показывает",
+  "Домашнее задание",
+  "Неделя 8",
 ];
 
 function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M7Slide01Welcome />;
-    case 1: return <M7Slide02ReverseDemo />;
-    case 2: return <M7Slide03EntryRule />;
-    case 3: return <M7Slide05Theme />;
-    case 4: return <M7Slide06UxFourIdeas />;
-    case 5: return <M7Slide07JourneyMap />;
-    case 6: return <M7Slide08AhaFormula />;
-    case 7: return <M7Slide08aBestInClass />;
-    case 8: return <M7Slide08bAntiPatterns />;
-    case 9: return <M7Slide09FrictionTypes />;
-    case 10: return <M7Slide09bToolkit />;
-    case 11: return <M7Slide09cAuditPrompt />;
-    case 12: return <M7Slide09dPriorityMatrix />;
-    case 13: return <M7Slide10LiveAudit />;
-    case 14: return <M7Slide11aCommitment />;
-    case 15: return <M7Slide11SpeedPact />;
-    case 16: return <M7Slide11bHomework />;
-    case 17: return <M7Slide12NextWeekRetention />;
-    case 18: return <M7Slide13Closing />;
+    case 1: return <M7Slide02MainThesis />;
+    case 2: return <M7Slide03ShowYourPhone />;
+    case 3: return <M7Slide04FourReasons />;
+    case 4: return <M7Slide05ThreeScreensRule />;
+    case 5: return <M7Slide06Screen1Intro />;
+    case 6: return <M7Slide07PromiseFormula />;
+    case 7: return <M7Slide08FiveGoodFirstScreens />;
+    case 8: return <M7Slide09FiveBadFirstScreens />;
+    case 9: return <M7Slide10FiveSecondTest />;
+    case 10: return <M7Slide11Exercise1 />;
+    case 11: return <M7Slide12Screen2Intro />;
+    case 12: return <M7Slide13SkipTheWall />;
+    case 13: return <M7Slide14FiveActionFirst />;
+    case 14: return <M7Slide15WhenToAsk />;
+    case 15: return <M7Slide16EmptyStates />;
+    case 16: return <M7Slide17Exercise2 />;
+    case 17: return <M7Slide18Screen3Intro />;
+    case 18: return <M7Slide19FiveMechanisms />;
+    case 19: return <M7Slide20MechanismExamples />;
+    case 20: return <M7Slide21PushEmail />;
+    case 21: return <M7Slide22Exercise3 />;
+    case 22: return <M7Slide23LiveRebuild />;
+    case 23: return <M7Slide24CircleShare />;
+    case 24: return <M7Slide25Homework />;
+    case 25: return <M7Slide26NextWeek />;
     default: return null;
   }
 }
 
-const TOTAL = 19;
+const TOTAL = 26;
 
 export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
