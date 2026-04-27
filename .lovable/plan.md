@@ -1,116 +1,77 @@
+## Презентация M7 — «От каркаса к Aha»
 
+Собираем 13 слайдов по утверждённому сценарию. Стилистика, токены, паттерны mobile/desktop — точно как в M6 (тёмный премиум, золотой акцент `hsl(var(--slide-gold))`, серифные H1, моноширинные плейсхолдеры, эйбрау-полоски).
 
-## Webinar Presentation `/pitch1` — Apple-Minimalist Style
+### Структура файлов
 
-A new 31-slide deck (slides 0–30) for the 90-minute webinar "Запуск продукта с AI", reachable at `/pitch1`. It reuses the existing presentation shell architecture (1920×1080 scaled slides, keyboard nav, fullscreen, grid view, mobile swipe), but with a completely new white/minimalist visual language — separate from the dark, copper-accented `/pitch` deck.
-
-### Visual language
-
-- Background `#FFFFFF`, primary text `#0A0A0A`, secondary `#666666`
-- Hairline separators `0.5px #E5E5E5`
-- Accent (eyebrow + CTA) `#185FA5`, success `#639922`, error `#D64545`
-- Inter / SF Pro for headings, JetBrains Mono for code-style blocks
-- Eyebrow: 12px UPPERCASE, letter-spacing 0.1em, color `#185FA5`
-- H1 48–64px, H2 24–28px (muted), body 18–20px, mono 16px
-- 80–120px padding from edges, one central object per slide
-- No emojis, no gradients, no shadows, arrows `→` instead of bullets
-
-### Slide list (0–30)
+Новая папка `src/components/presentation/meeting7/` со следующим содержимым:
 
 ```text
-0   Pre-show cover           "Запуск продукта с AI"
-1   Холодный факт            "В 2024 я не умел писать код"
-2   Главный тезис            проблема не в инструментах
-3   Пайплайн (mono)          4 этапа запуска
-4   Карта вебинара           4 темы + offer hint
-5   Divider — Тема 1          Валидация за 48 часов
-6   Почему валидация
-7   Playbook (mono)          10–15 разговоров
-8   Кейс Mikey               два слоя валидации (split)
-9   Divider — Тема 2          Ресерч: что НЕ строить
-10  Парадокс рынка 2026
-11  Live demo intro          PMF Research Agent + кнопка "Open Agent"
-12  Что вы только что увидели
-13  Divider — Тема 3          MVP с AI без команды
-14  Мой стек (mono)          Lovable / Claude / MCP
-15  Кейс MetaMinder          было / стало (split)
-16  Фича в Mikey             flow diagram
-17  MCP · Mixpanel           before/after + "3000€ → 0€"
-18  5 правил workflow
-19  Divider — Тема 4          Первые 10 платящих
-20  Почему руками
-21  Метод (5 шагов)
-22  MetaMinder — никакой магии
-23  Что автоматизировал ПОСЛЕ
-24  Скрипт LinkedIn DM (mono message box)
-25  Переход к офферу
-26  Что такое программа      4-week table
-27  Что получаете на выходе
-28  Оффер                    ₪4,500 → ₪3,000 + QR + CTA
-29  Q&A
-30  Финал                    "Спасибо. 48 часов."
+meeting7/
+  Meeting7PresentationShell.tsx     ← копия M6Shell, TOTAL=13, свой массив slideNames
+  PublicMeeting7Shell.tsx           ← обёртка с backTo="/program"
+  M7Slide01Welcome.tsx              ← Блок 0, слайд 1 (Welcome)
+  M7Slide02ReverseDemo.tsx          ← Блок 0, слайд 2 (Reverse demo prompt)
+  M7Slide03EntryRule.tsx            ← Блок 1, слайд 3 (Правило входа)
+  M7Slide04DiscoveryWall.tsx        ← Блок 1, слайд 4 (сетка 5 участников)
+  M7Slide05Theme.tsx                ← Блок 2, слайд 5 (Тема: От каркаса к Aha)
+  M7Slide06UxFourIdeas.tsx          ← Блок 2, слайд 6 (UX = 4 идеи)
+  M7Slide07JourneyMap.tsx           ← Блок 2, слайд 7 (Карта пути юзера)
+  M7Slide08AhaFormula.tsx           ← Блок 3, слайд 8 (Формула Aha)
+  M7Slide09FrictionTypes.tsx        ← Блок 3, слайд 9 (5 типов трения)
+  M7Slide10LiveAudit.tsx            ← Блок 4, слайд 10 (Live audit, 5 шагов)
+  M7Slide11SpeedPact.tsx            ← Блок 5, слайд 11 (Speed pact)
+  M7Slide12NextWeekRetention.tsx    ← Блок 6, слайд 12 (M8: Retention)
+  M7Slide13Closing.tsx              ← Блок 6, слайд 13 (Закрытие)
 ```
 
-### Architecture
+Маршрут: добавить в `src/App.tsx` `<Route path="/programm-week7" element={<PublicMeeting7Shell />} />` (по аналогии со строкой 156 для week6). Импорт PublicMeeting7Shell — рядом с импортом PublicMeeting6Shell.
 
-```text
-src/components/presentation/pitch1/
-   Pitch1Shell.tsx         ← copy of PresentationShell, TOTAL=31, light-theme chrome
-   slides/
-      Slide00Cover.tsx
-      Slide01ColdFact.tsx
-      Slide02Thesis.tsx
-      Slide03Pipeline.tsx
-      Slide04Map.tsx
-      Slide05DividerT1.tsx
-      Slide06WhyValidation.tsx
-      Slide07Playbook.tsx
-      Slide08MikeyCase.tsx
-      Slide09DividerT2.tsx
-      Slide10MarketParadox.tsx
-      Slide11LiveDemo.tsx
-      Slide12WhatYouSaw.tsx
-      Slide13DividerT3.tsx
-      Slide14Stack.tsx
-      Slide15MetaminderCase.tsx
-      Slide16MikeyFlow.tsx
-      Slide17MCPMixpanel.tsx
-      Slide18WorkflowRules.tsx
-      Slide19DividerT4.tsx
-      Slide20WhyManual.tsx
-      Slide21Method.tsx
-      Slide22MetaminderManual.tsx
-      Slide23PostAutomation.tsx
-      Slide24LinkedInScript.tsx
-      Slide25BridgeToOffer.tsx
-      Slide26ProgramTable.tsx
-      Slide27Outcomes.tsx
-      Slide28Offer.tsx        ← QR + CTA + price
-      Slide29QA.tsx
-      Slide30Finale.tsx
-```
+### Унаследованные паттерны (без изменений)
 
-Shared shell behaviour copied from `PresentationShell.tsx`: keyboard arrows / Space / F5 / G, fullscreen, grid view, mobile swipe, fade transitions, progress bar, slide counter. Mobile uses the existing `ScaledSlide` (430×760 base) — each slide ships a separate mobile branch with reduced font sizes, mirroring the `Slide18Pricing` pattern.
+- **Shell**: `Meeting6PresentationShell.tsx` копируется один-в-один → меняем только `TOTAL=13`, импорты слайдов, `slideNames[]`, `getSlideContent()`. Сохраняем grid-view, fullscreen, клавиатурную навигацию, свайпы, мобильные хинты.
+- **Каждый слайд** реализует две ветки: `if (isMobile) return <…портрет…>` + десктопный 1920×1080 рендер. Используем те же CSS-переменные `--slide-bg`, `--slide-bg-alt`, `--slide-text`, `--slide-text-muted`, `--slide-gold`, font-display (serif) для H1, font-mono для метрик/плейсхолдеров.
+- **Эйбрау**: маленький uppercase золотом, tracking 0.2em (как в M6Commitment).
+- **Золотая нижняя строка** (правило/цитата): `text-[hsl(var(--slide-gold))] font-semibold`.
 
-### Key implementation details
+### Содержимое слайдов (тексты — финальные, из утверждённого сценария)
 
-- **Routing** — add `<Route path="/pitch1" element={<Pitch1Shell />} />` in `src/App.tsx` next to the existing `/pitch` route.
-- **Light theme chrome** — the new shell uses inline white surfaces (not the dark `--background` token) for the bottom bar, sidebar, and grid view, so the chrome matches the deck's white aesthetic. Progress bar fill uses `#0A0A0A` on a `#E5E5E5` track.
-- **Slide 11 — Live demo** — eyebrow + H1 + H2 + body + a `<a target="_blank">` "Open PMF Agent" button styled as a black pill (`#0A0A0A` bg, white text) so the presenter can switch to the live agent in one click without alt-tab fumbling.
-- **Slide 28 — Offer** — uses `qrcode.react` (already installed for `/pitch`) to render a 240×240 QR pointing to `/register` (same registration page as `/pitch`, which holds the Bit / wire-transfer requisites referenced in the brief). Strikethrough `₪4,500` in `#666666`, current `₪3,000` in 96px black, savings note in `#666666`. Black "ЗАБРАТЬ МЕСТО" button links to `/register` (clickable in fullscreen). Conditions list with arrows.
-- **Mono blocks** — slides 3, 7, 14, 16, 17, 22, 24, 26 render content inside `<pre className="font-mono">` with proper indentation/alignment so arrows line up vertically as in the spec. ❌ in `#D64545`, ✅ in `#639922`, everything else in `#0A0A0A`.
-- **Divider slides** (5, 9, 13, 19) — eyebrow "ТЕМА N", giant H1, muted H2, single hairline divider — pure typography.
-- **Q&A slide (29)** — extra-large H1 centered, small grey footer reminding about 48-hour offer.
-- **Final slide (30)** — large "Спасибо.", divider, two-line body, "Михаэль" footer.
+**Слайд 1 — Welcome.** Эйбрау-полоска, H1 «The Founders Circle», подзаголовок золотом «Встреча 7», подпись «Половина программы позади. Сегодня — продукт, который не отпускает.» Фон — `titleBg` с opacity 0.06 (как в M6Slide01).
 
-### Memory updates
+**Слайд 2 — Reverse demo.** Эйбрау «Открытие». H1 «5 встреч позади. 5 впереди. Что будет на демо-дне?» Карточка-инструкция с тремя bullet-ами: «По кругу, по 60 секунд», «Одно предложение: На демо-дне я покажу __», «Без оправданий, без "если успею"». Золотая нижняя строка: «Я не комментирую сейчас. Запоминаем — вернёмся к этому в конце.»
 
-Add a new memory file `mem://features/pitch1-webinar-deck` describing this Apple-minimalist webinar deck, its route, structure, and the offer details (₪4,500 → ₪3,000, 48h window). Update `mem://index.md` to reference it next to the existing presentation memories.
+**Слайд 3 — Правило входа.** Эйбрау «Правило встречи». H1 «Сегодня обсуждаем то, что показали юзеры. Не то, что мы о них думаем.» Две карточки рядом (на mobile — стек): «С данными → ты в воркшопе» / «Без данных → ты на встрече, забираешь рамки, в среду пишешь паре с цифрой». Золотая строка: «Нет наказания за "не сделал". Есть один вопрос: ты хочешь продукт или процесс? Если продукт — пора включаться.»
 
-### Out of scope
+**Слайд 4 — Discovery wall.** Эйбрау «Что показали живые юзеры». H1 «5 человек — 5 правд.» Сетка из 5 карточек-плейсхолдеров (Laura, Mila, Vlad, Lea, Inna+Aleksandra) с тремя моноширинными полями каждая: МЕТРИКА, ТОЧКА ВЫПАДЕНИЯ, ЦИТАТА. Десктоп — grid-cols-5 (или 3+2), mobile — стек. Золотая строка: «Если кто-то рассказывает не цифрами — мягко возвращаю: "Что показали юзеры? Цифру или цитату."»
 
-- No edits to existing `/pitch` deck or its slides
-- No backend changes — registration flow already exists
-- QR is generated client-side via `qrcode.react`; replacing it with a pre-rendered image from qrcode-monkey can happen later if needed
-- No localisation — webinar is delivered in Russian only
+**Слайд 5 — Тема встречи.** Эйбрау «Тема встречи». H1 «От каркаса к Aha.» Подзаголовок: «На M6 собрали первый флоу. На M7 делаем его лёгким и доводим до момента, ради которого юзер вернётся.» Золотая строка-цитата: «Юзер не покупает фичу. Юзер покупает результат, который произошёл с ним.»
 
+**Слайд 6 — UX = 4 идеи.** Эйбрау «Что такое UX». H1 «Четыре идеи, которые меняют, как вы строите продукт.» 4 пронумерованные карточки 2×2 на десктопе, стек на mobile, с заголовками и подтекстами из сценария (UX ≠ дизайн / UX = разница продукта и фичи / Каждое решение — UX / На MVP UX > функциональности). Золотая строка про «юзер не понял, что фича делает».
+
+**Слайд 7 — Карта пути юзера.** Эйбрау «Полный путь». H1 «Вход → Onboarding → Первый результат → Aha → Возврат.» Горизонтальная диаграмма из 5 шагов на десктопе (соединённых тонкой золотой линией), вертикальная на mobile. Каждый шаг: название, описание, метрика (моноширинно). Золотая врезка под диаграммой: «Граница, которую все путают: Первый результат — событие. Aha — интерпретация события юзером…»
+
+**Слайд 8 — Формула Aha.** Эйбрау «Формула Aha». H1 «Aha = Результат × Связь с моей целью × Предсказуемость повторения.» Три карточки-расшифровки множителей. Внизу — пример Notion в одну строку. Золотая нижняя строка: «Если у юзера только результат без двух других множителей — Aha = ноль. И возврат = ноль.»
+
+**Слайд 9 — 5 типов трения.** Эйбрау «Friction audit». H1 «5 типов трения. Каждое ловится в записи экрана.» Сетка 5 карточек (3+2 на десктопе, стек на mobile): Когнитивное / Интерфейсное / Эмоциональное / Контекстное / Доверия. У каждой — описание + маркер (как заметить в записи) + микро-пример на чужом продукте. Золотая строка: «Если вы не записывали экран юзера — вы не видели friction. Никогда. Догадки не считаются.»
+
+**Слайд 10 — Live audit.** Эйбрау «Live audit». H1 «Один продукт. Глубоко. Все работают вместе.» Двухколоночный layout на десктопе: левая колонка — 5 пронумерованных шагов с таймингами (5/8/8/5/2 мин), правая — золотой блок с правилом «Я не предлагаю решения за тебя…» + блок для тех, кто без данных. На mobile — последовательно сверху вниз.
+
+**Слайд 11 — Speed pact.** Эйбрау «Обязательство группы». H1 «Каждый говорит вслух. Три строки.» Три карточки (как в M6Commitment, тот же визуальный паттерн): 1) Одна правка — выкачу до M8, 2) Одна гипотеза с метрикой ДО/ПОСЛЕ, 3) 5–10 новых юзеров на новом флоу. Золотая зона снизу: блок «Reverse demo, проверка» + финальная строка «Между сегодня и M8 у вас семь дней…».
+
+**Слайд 12 — M8 анонс.** Эйбрау «Следующая встреча». H1 «Неделя 8: Retention. Что заставляет вернуться.» Карточка с подводкой «На M7 открыли путь до Aha. На M8 — закрываем петлю» + 4 буллета со стрелками: Anatomy retention loop / Email и Push в crucial moments / Triggers и Hooks (Эяль Нир) / D1/D7/D30 метрики. Золотая строка: «Приходишь с цифрой ДО и ПОСЛЕ правки M7. Без числа на руках — встреча превращается в теорию.»
+
+**Слайд 13 — Закрытие.** Крупный заголовок без эйбрау: «Продукт делается семью днями подряд, не одной встречей в неделю.» Подзаголовок-триплет («Сегодня — рамка и one deep audit / Семь дней — выкаченная правка и 5 юзеров / Через неделю — цифра ДО и ПОСЛЕ»). Золотая зона: M7 → правки в прод / M8 → метрика retention / M12 → демо-день. Финальная строка: «Среда — пара. Без скриншота прогресса — нет ответа партнёру.»
+
+### Технические детали
+
+- **Никаких изменений** в M1–M6, в `ScaledSlide`, в `Pitch1Shell` или общих UI-компонентах. M7 — изолированная папка.
+- **Адаптив** делается тем же способом, что в M6: ветка `if (isMobile)` через `useIsMobile()` в каждом слайде, портретный layout с уменьшенными размерами (text-[9–22px], padding [20px], spacing [4–10px]) — никакого rotate, mobile-first portrait как в M6.
+- **Routing**: только одна правка в `src/App.tsx` — добавить импорт + `<Route path="/programm-week7">`. Маршрут `/admin/meetings/week7` не нужен (M6 тоже не имеет отдельного admin-роута, шелл переиспользуется через backTo).
+- **Память**: после сборки обновлю `.lovable/memory/features/` заметкой о структуре meeting7 (по аналогии с pitch1-webinar-deck.md).
+
+### Что НЕ делаю
+
+- Не трогаю `/pmf-agent/` (за пределами Lovable).
+- Не меняю токены, не добавляю новых ассетов (используем существующий `titleBg` для слайда 1).
+- Не правлю M6 ни одной строкой — только копирую как образец.
+- Не добавляю в админку отдельную ссылку на M7 (если нужно — отдельной задачей).
