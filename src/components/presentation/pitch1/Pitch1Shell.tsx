@@ -203,7 +203,6 @@ export default function Pitch1Shell() {
       <div className="flex-1 relative flex flex-col">
         <div
           className="flex-1 relative"
-          onClick={() => { if (!isMobile) next(); }}
           onTouchStart={(e) => {
             const t = e.touches[0];
             touchStartRef.current = { x: t.clientX, y: t.clientY };
@@ -222,8 +221,6 @@ export default function Pitch1Shell() {
               if (dy < 0) next(); else prev();
             } else if (absX > 50 && absX > absY) {
               if (dx < 0) next(); else prev();
-            } else if (absX < 10 && absY < 10) {
-              next();
             }
           }}
         >

@@ -191,7 +191,6 @@ export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }
 
       <div className="flex-1 relative flex flex-col">
         <div className="flex-1 relative"
-          onClick={() => { if (!isMobile) next(); }}
           onTouchStart={(e) => { touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
           onTouchEnd={(e) => {
             if (!touchStartRef.current) return;
@@ -200,7 +199,6 @@ export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }
             const dy = t.clientY - touchStartRef.current.y;
             touchStartRef.current = null;
             if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? next() : prev(); }
-            else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) next();
           }}>
           <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
             <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
