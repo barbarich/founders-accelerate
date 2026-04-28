@@ -3052,104 +3052,42 @@ export const L1InterviewNinjaRetro = () => {
   );
 };
 
-/* Slide 15 — Practice now · 10 minutes */
-const PRACTICE_STEPS: { time: string; t: string }[] = [
-  { time: "2 мин", t: "Открой Perplexity → вставь промпт «Карта конкурентов» со своей нишей" },
-  { time: "2 мин", t: "Из результата выбери 3 прямых конкурента → запиши в таблицу: название, цена, ключевое отличие" },
-  { time: "2 мин", t: "Открой сайт главного конкурента → зафиксируй: заголовок, CTA, целевая аудитория" },
-  { time: "2 мин", t: "Найди 2–3 негативных отзыва на конкурента (G2, Trustpilot, App Store) → запиши главные боли" },
-  { time: "2 мин", t: "Сформулируй одно предложение: чем твой продукт лучше главного конкурента" },
+/* ========== Slide · Homework (merged practice + plan) ========== */
+const HOMEWORK_STEPS: { title: string; body: string }[] = [
+  { title: "Запусти Deep Research", body: "Возьми мастер-промпт со слайда 14, заполни 15 полей про свою идею и прогони в Claude / ChatGPT / Gemini." },
+  { title: "Собери карту из 10 конкурентов", body: "Прямые, косвенные, обходные. Используй FoundersLens или промпты Perplexity со слайда 13." },
+  { title: "Глубоко разбери топ-3", body: "Пройди по 8 измерениям: цена, позиционирование, отзывы, реклама, трафик, аудитория, слабости, моменты." },
+  { title: "Найди 3 дыры на рынке", body: "Сегментная, функциональная или ценовая — то, на что жалуются, но никто не чинит." },
+  { title: "Сформулируй позиционирование", body: "Одна фраза по формуле: [продукт] помогает [кому] [решить проблему], [чем отличается]." },
 ];
-export const L1PracticeNow = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[18px] h-full">
-          <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
-            Делаем прямо сейчас · 10 минут
-          </h2>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mb-[10px] leading-[1.4]">
-            Поставь видео на паузу. Сделай это руками. Без паузы Урок 2 не сработает.
-          </p>
-          <ol className="space-y-[6px] mb-[8px]">
-            {PRACTICE_STEPS.map((s, i) => (
-              <li key={i} className="flex items-start gap-[8px] text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
-                <span className="text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap">{i + 1}. {s.time}</span>
-                <span>{s.t}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="text-[9.5px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
-            На выходе: таблица из 3 конкурентов + одно предложение отстройки.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
-        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px] tracking-[-0.01em]">
-          Делаем прямо сейчас · 10 минут
-        </h2>
-        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic mb-[36px] leading-[1.4]">
-          Поставь видео на паузу. Сделай это руками. Без паузы Урок 2 не сработает.
-        </p>
-        <ol className="space-y-[16px] mb-[28px]">
-          {PRACTICE_STEPS.map((s, i) => (
-            <li key={i} className="flex items-start gap-[24px] text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              <span className="text-[24px] text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap min-w-[140px]">
-                {i + 1}. <span className="text-[hsl(var(--slide-text))]">{s.time}</span>
-              </span>
-              <span>{s.t}</span>
-            </li>
-          ))}
-        </ol>
-        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
-          На выходе: таблица из 3 конкурентов + одно предложение отстройки. Это твой минимальный артефакт после этого урока.
-        </p>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
+const HOMEWORK_DELIVERABLE = [
+  { icon: "🔍", title: "Карта конкурентов", sub: "10 имён × 8 параметров" },
+  { icon: "💎", title: "3 рыночные дыры", sub: "с цитатами и источниками" },
+  { icon: "📝", title: "Одна фраза позиционирования", sub: "проверенная на 3 людях" },
+];
 
-/* Slide 16 — Full 90-min plan + templates */
-const PLAN_STEPS: { time: string; title: string; body: string }[] = [
-  { time: "15 мин", title: "Market Sizing", body: "Промпт #3 в Perplexity. Заполни Market Sizing Template." },
-  { time: "15 мин", title: "Карта конкурентов", body: "Промпт #1. Получи 10 имён." },
-  { time: "30 мин", title: "Глубокий разбор 3 главных", body: "8 параметров. Pricing, отзывы, FB Ads, SimilarWeb." },
-  { time: "15 мин", title: "Найди 3 дыры", body: "Сегментная, функциональная или ценовая." },
-  { time: "15 мин", title: "Формула позиционирования", body: "Один лист. Одна фраза." },
-];
-const PLAN_TEMPLATES = [
-  { icon: "📊", title: "Market Sizing Template", sub: "Google Sheets" },
-  { icon: "🔍", title: "Competitor Matrix", sub: "10 конкурентов × 8 параметров" },
-  { icon: "📝", title: "Positioning Worksheet", sub: "формула + 3 теста" },
-];
-export const L1FullPlan = () => {
+export const L1Homework = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
+          <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">Домашнее задание</p>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Полный план на 90 минут + шаблоны
+            Что сделать после этого урока
           </h2>
-          <p className="text-[9.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Чек-лист</p>
           <ol className="space-y-[5px] mb-[10px]">
-            {PLAN_STEPS.map((s, i) => (
+            {HOMEWORK_STEPS.map((s, i) => (
               <li key={i} className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                <b className="text-[hsl(var(--slide-gold))]">{s.time}</b> · <b className="text-[hsl(var(--slide-text))]">{s.title}.</b> {s.body}
+                <b className="text-[hsl(var(--slide-gold))]">{i + 1}.</b>{" "}
+                <b className="text-[hsl(var(--slide-text))]">{s.title}.</b> {s.body}
               </li>
             ))}
           </ol>
-          <p className="text-[9.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Шаблоны</p>
+          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">На выходе должно быть</p>
           <div className="grid grid-cols-3 gap-[5px] mb-[8px]">
-            {PLAN_TEMPLATES.map((t) => (
-              <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[5px] px-[6px] py-[6px]">
+            {HOMEWORK_DELIVERABLE.map((t) => (
+              <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[6px] py-[6px]">
                 <p className="text-[14px] mb-[2px]">{t.icon}</p>
                 <p className="text-[8px] font-bold text-[hsl(var(--slide-text))] leading-[1.3]">{t.title}</p>
                 <p className="text-[7px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{t.sub}</p>
@@ -3157,7 +3095,7 @@ export const L1FullPlan = () => {
             ))}
           </div>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Все три заполнятся за 90 минут, если идёшь по чек-листу.
+            Без этих трёх артефактов Урок 2 не сработает — он строится поверх них.
           </p>
         </div>
         <FooterMobile />
@@ -3167,26 +3105,27 @@ export const L1FullPlan = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Полный план на 90 минут + шаблоны
+        <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Домашнее задание</p>
+        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
+          Что сделать после этого урока
         </h2>
-        <div className="grid grid-cols-2 gap-[40px]">
+        <div className="grid grid-cols-2 gap-[48px]">
           <div>
-            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Чек-лист с временным бюджетом</p>
-            <ol className="space-y-[12px]">
-              {PLAN_STEPS.map((s, i) => (
+            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[16px]">5 шагов</p>
+            <ol className="space-y-[14px]">
+              {HOMEWORK_STEPS.map((s, i) => (
                 <li key={i} className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
-                  <span className="text-[hsl(var(--slide-gold))] font-bold mr-2">{s.time}</span>
+                  <span className="text-[hsl(var(--slide-gold))] font-bold mr-2">{i + 1}.</span>
                   <b className="text-[hsl(var(--slide-text))]">{s.title}.</b> {s.body}
                 </li>
               ))}
             </ol>
           </div>
           <div>
-            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Шаблоны для скачивания</p>
+            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[16px]">На выходе должно быть</p>
             <div className="grid grid-cols-1 gap-[12px]">
-              {PLAN_TEMPLATES.map((t) => (
-                <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[20px] py-[16px] flex items-center gap-[16px]">
+              {HOMEWORK_DELIVERABLE.map((t) => (
+                <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[20px] py-[16px] flex items-center gap-[16px]">
                   <p className="text-[36px]">{t.icon}</p>
                   <div>
                     <p className="text-[20px] font-bold text-[hsl(var(--slide-text))]">{t.title}</p>
@@ -3195,8 +3134,8 @@ export const L1FullPlan = () => {
                 </div>
               ))}
             </div>
-            <p className="text-[20px] text-[hsl(var(--slide-gold))] italic mt-[18px] leading-[1.4]">
-              Все три заполнятся за 90 минут, если идёшь по чек-листу.
+            <p className="text-[19px] text-[hsl(var(--slide-gold))] italic mt-[18px] leading-[1.45]">
+              Без этих трёх артефактов Урок 2 не сработает — он строится поверх них.
             </p>
           </div>
         </div>
@@ -3535,7 +3474,6 @@ export const slides = [
   L1AgentLens,              // 14 FoundersLens AI agent
   L1AgentPmf,               // 15 PMF AI agent
   L1GapsPositioning,        // 16 3 gaps + Positioning formula + mid CTA
-  L1PracticeNow,            // 17 Practice now · 10 min
-  L1FullPlan,               // 18 Full 90-min plan + templates
-  L1Closing,                // 19 Closing + CTA → Lesson 2
+  L1Homework,               // 17 Homework — what to do after the lesson
+  L1Closing,                // 18 Closing + CTA → Lesson 2
 ];
