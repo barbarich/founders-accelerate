@@ -72,16 +72,16 @@ export const S2 = () => {
           <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[16px]">
             Сделай это прямо сейчас
           </h2>
-          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[16px] py-[18px] mb-[14px] bg-[hsl(var(--slide-gold)/0.04)]">
-            <p className="text-[14px] text-[hsl(var(--slide-text))] leading-[1.4] font-medium">
-              «Я строю [что] для [кого], потому что они страдают от [чего].»
+          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[12px] py-[16px] mb-[14px] bg-[hsl(var(--slide-gold)/0.04)] overflow-hidden">
+            <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.3] font-medium whitespace-nowrap text-center">
+              «Я строю <span className="text-[hsl(var(--slide-gold))] font-bold">[что]</span> для <span className="text-[hsl(var(--slide-gold))] font-bold">[кого]</span>, потому что они страдают от <span className="text-[hsl(var(--slide-gold))] font-bold">[чего]</span>.»
             </p>
           </div>
           <p className="text-[11px] text-[hsl(var(--slide-gold))] italic leading-[1.4] mb-[10px]">
-            Возьми лист бумаги. Напиши эту строку про свою идею. У тебя есть 60 секунд.
+            Возьми лист бумаги и напиши эту строку про свою идею. У фаундеров с чёткой идеей это занимает 60 секунд.
           </p>
           <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
-            Если ты не можешь это написать — у тебя нет идеи. У тебя есть фантазия. И именно поэтому ты здесь.
+            Если уместить идею в одну строку пока не получается — это нормально. Ты в правильном месте: именно над этим мы и начинаем работать.
           </p>
         </div>
         <FooterMobile index={2} />
@@ -94,16 +94,16 @@ export const S2 = () => {
         <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[44px]">
           Сделай это прямо сейчас
         </h2>
-        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[64px] py-[60px] mb-[36px] bg-[hsl(var(--slide-gold)/0.04)] mx-auto w-full max-w-[1500px]">
-          <p className="text-[44px] text-[hsl(var(--slide-text))] leading-[1.3] text-center font-medium">
-            «Я строю [что] для [кого], потому что они страдают от [чего].»
+        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[48px] py-[56px] mb-[36px] bg-[hsl(var(--slide-gold)/0.04)] mx-auto w-full max-w-[1640px] overflow-hidden">
+          <p className="text-[32px] text-[hsl(var(--slide-text))] leading-[1.3] text-center font-medium whitespace-nowrap">
+            «Я строю <span className="text-[hsl(var(--slide-gold))] font-bold">[что]</span> для <span className="text-[hsl(var(--slide-gold))] font-bold">[кого]</span>, потому что они страдают от <span className="text-[hsl(var(--slide-gold))] font-bold">[чего]</span>.»
           </p>
         </div>
-        <p className="text-[28px] text-[hsl(var(--slide-gold))] italic leading-[1.4] mb-[20px] text-center">
-          Возьми лист бумаги. Напиши эту строку про свою идею. У тебя есть 60 секунд.
+        <p className="text-[26px] text-[hsl(var(--slide-gold))] italic leading-[1.45] mb-[20px] text-center max-w-[1500px] mx-auto">
+          Возьми лист бумаги и напиши эту строку про свою идею. У фаундеров с чёткой идеей и пониманием, что, кому и зачем они строят, это занимает 60 секунд.
         </p>
-        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1400px] mx-auto">
-          Если ты не можешь это написать — у тебя нет идеи. У тебя есть фантазия. И именно поэтому ты здесь.
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px] mx-auto">
+          Если уместить идею в одну строку пока не получается — это нормально. Ты в правильном месте: именно над этим мы и начинаем работать.
         </p>
       </div>
       <Footer index={2} />
