@@ -1451,7 +1451,7 @@ export const S12e = () => {
         <div className="flex flex-col justify-center px-[24px] h-full">
           <Eyebrow mobile>Якорь 2 · Конкуренты</Eyebrow>
           <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-            Сначала найди. Потом проверь, что у них правда есть деньги.
+            Сначала найди. Потом проверь, что ими правда пользуются.
           </h2>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px] mb-[8px]">
             <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[5px]">Где искать</p>
@@ -1485,7 +1485,7 @@ export const S12e = () => {
       <div className="flex flex-col justify-center px-[140px] h-full">
         <Eyebrow>Якорь 2 · Конкуренты</Eyebrow>
         <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[32px] max-w-[1620px]">
-          Сначала найди. Потом проверь, что у них правда есть <span className="text-[hsl(var(--slide-gold))]">деньги</span>.
+          Сначала найди. Потом проверь, что ими <span className="text-[hsl(var(--slide-gold))]">правда пользуются</span>.
         </h2>
         <div className="grid grid-cols-3 gap-[20px] max-w-[1620px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
