@@ -335,19 +335,16 @@ export const S6 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[12px]">Дальше</p>
+          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[14px] text-center">В следующем уроке</p>
           <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] text-center">
             Урок 1 · Customer Development
           </h2>
-          <p className="text-[12px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[20px] text-center">
-            К концу следующего часа ты будешь точно знать, имеет ли смысл строить ту идею, которая у тебя сейчас в голове.
+          <p className="text-[12px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[12px] text-center">
+            Как разговаривать с целевой аудиторией, чтобы валидировать идею ещё до разработки.
           </p>
-          <a
-            href="/mini-course/lesson1"
-            className="inline-flex items-center justify-center self-center px-[20px] py-[12px] rounded-[8px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[13px] no-underline"
-          >
-            Начать Урок 1 →
-          </a>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center">
+            К концу урока ты будешь точно знать, имеет ли смысл строить идею, которая сейчас у тебя в голове.
+          </p>
         </div>
         <FooterMobile index={6} />
       </Stage>
@@ -356,19 +353,16 @@ export const S6 = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center items-center px-[140px] h-full max-w-[1700px] mx-auto">
-        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[22px] mb-[40px]">Дальше</p>
-        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] text-center">
+        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[22px] mb-[40px]">В следующем уроке</p>
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px] text-center">
           Урок 1 · Customer Development
         </h2>
-        <p className="text-[32px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[64px] text-center max-w-[1500px]">
-          К концу следующего часа ты будешь точно знать, имеет ли смысл строить ту идею, которая у тебя сейчас в голове.
+        <p className="text-[34px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[32px] text-center max-w-[1500px]">
+          Как разговаривать с целевой аудиторией, чтобы валидировать идею ещё до разработки.
         </p>
-        <a
-          href="/mini-course/lesson1"
-          className="inline-flex items-center justify-center px-[56px] py-[26px] rounded-[12px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[30px] no-underline hover:opacity-90 transition"
-        >
-          Начать Урок 1 →
-        </a>
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px]">
+          К концу урока ты будешь точно знать, имеет ли смысл строить идею, которая сейчас у тебя в голове.
+        </p>
       </div>
       <Footer index={6} />
     </Stage>
