@@ -933,11 +933,14 @@ export const S13 = () => {
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
           <Eyebrow mobile>Метод</Eyebrow>
-          <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px]">
-            Теперь — метод.
+          <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
+            Customer Development.
           </h2>
+          <p className="text-[11px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[12px]">
+            Лучший способ понять: то, что ты строишь — это <span className="text-[hsl(var(--slide-text))] font-semibold">реальная проблема, которую стоит решать</span>, или ты её придумал, а рынок давно решил её без тебя.
+          </p>
           <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[12px]">
-            <p className="text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.25]">
+            <p className="text-[15px] font-bold text-[hsl(var(--slide-text))] leading-[1.25]">
               10 разговоров до первого пикселя.
             </p>
           </div>
@@ -950,11 +953,14 @@ export const S13 = () => {
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
         <Eyebrow>Метод</Eyebrow>
-        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[40px] tracking-[-0.02em]">
-          Теперь — метод.
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
+          Customer Development.
         </h2>
-        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[40px] py-[32px] max-w-[1400px]">
-          <p className="text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.2]">
+        <p className="text-[28px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
+          Лучший способ понять: то, что ты строишь — это <span className="text-[hsl(var(--slide-text))] font-semibold">реальная проблема, которую стоит решать</span>, или ты её придумал, а рынок давно решил её без тебя.
+        </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[40px] py-[28px] max-w-[1500px]">
+          <p className="text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.2]">
             10 разговоров до первого пикселя.
           </p>
         </div>
