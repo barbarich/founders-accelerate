@@ -24,7 +24,7 @@ const Footer: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
   >
-    Михаэль · Урок 1 из 4 · Slide {index}/23
+    Михаэль · Урок 1 из 4 · Slide {index}/29
   </div>
 );
 
@@ -33,7 +33,7 @@ const FooterMobile: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 14, bottom: 10, color: "hsl(var(--slide-text-muted))", fontSize: 8, letterSpacing: "0.04em" }}
   >
-    Slide {index}/23
+    Slide {index}/29
   </div>
 );
 
@@ -925,6 +925,525 @@ export const S12 = () => (
   </div>
 );
 
+/* ========== Slides 14–19 — Three anchors of validation ========== */
+
+const AnchorCard: React.FC<{
+  num: string;
+  title: string;
+  body: string;
+  active?: boolean;
+  mobile?: boolean;
+}> = ({ num, title, body, active, mobile }) => (
+  <div
+    className={`${
+      active
+        ? "bg-[hsl(var(--slide-gold)/0.12)] border-[hsl(var(--slide-gold))]"
+        : "bg-[hsl(var(--slide-bg-alt))] border-[hsl(var(--slide-gold)/0.2)]"
+    } border rounded-[14px] ${mobile ? "px-[12px] py-[10px]" : "px-[28px] py-[24px]"}`}
+  >
+    <p
+      className={`font-mono ${
+        active ? "text-[hsl(var(--slide-gold))]" : "text-[hsl(var(--slide-text-muted))]"
+      } ${mobile ? "text-[10px] mb-[4px]" : "text-[14px] mb-[10px]"} font-bold tracking-[0.18em]`}
+    >
+      {num}
+    </p>
+    <p
+      className={`font-bold text-[hsl(var(--slide-text))] leading-[1.2] ${
+        mobile ? "text-[12px] mb-[4px]" : "text-[24px] mb-[10px]"
+      }`}
+    >
+      {title}
+    </p>
+    <p
+      className={`text-[hsl(var(--slide-text)/0.85)] leading-[1.45] ${
+        mobile ? "text-[10px]" : "text-[17px]"
+      }`}
+    >
+      {body}
+    </p>
+  </div>
+);
+
+/* ========== Slide 14 — Three anchors of validation ========== */
+export const S12a = () => {
+  const isMobile = useIsMobile();
+  const cards = [
+    {
+      num: "01",
+      title: "Анализ рынка",
+      body: "Размер, динамика, тренды, ниши. Где деньги, где переоценено, куда движется индустрия.",
+    },
+    {
+      num: "02",
+      title: "Анализ конкурентов",
+      body: "Кто уже на рынке, какой у них трафик, за что им платят и где у них слабо.",
+    },
+    {
+      num: "03",
+      title: "Customer Development",
+      body: "Реальные разговоры с ЦА. Боль ли это вообще — или ты её придумал.",
+    },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Валидация — три якоря</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Три проверки до первого пикселя.
+          </h2>
+          <div className="space-y-[7px]">
+            {cards.map((c) => (
+              <AnchorCard key={c.num} mobile {...c} />
+            ))}
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.4]">
+            Сложить все три — и только тогда строить.
+          </p>
+        </div>
+        <FooterMobile index={14} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Валидация — три якоря</Eyebrow>
+        <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[40px]">
+          Три проверки до первого пикселя.
+        </h2>
+        <div className="grid grid-cols-3 gap-[20px] max-w-[1620px]">
+          {cards.map((c) => (
+            <AnchorCard key={c.num} {...c} />
+          ))}
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mt-[28px] max-w-[1620px]">
+          Сложить все три — и только тогда строить. Пропустишь хоть один — рискуешь повторить InterviewNinja.
+        </p>
+      </div>
+      <Footer index={14} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 15 — Anchor 1: Market Research intro ========== */
+export const S12b = () => {
+  const isMobile = useIsMobile();
+  const points = [
+    {
+      k: "Размер и динамика",
+      v: "Сколько людей реально могут купить. Растёт рынок или сжимается. Куда смотрят инвесторы.",
+    },
+    {
+      k: "Тренды и окно",
+      v: "Что изменилось за 1–2 года и делает идею реалистичной именно сейчас. Технология, поведение, регуляции.",
+    },
+    {
+      k: "Незакрытые ниши",
+      v: "На что жалуются пользователи, но никто не чинит. Какие сегменты игнорируют большие игроки.",
+    },
+    {
+      k: "Риски",
+      v: "Платформенные, регуляторные, угроза от больших платформ. Где можно умереть, не начав.",
+    },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Якорь 1 · Market Research</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Сначала пойми рынок.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            То, на что раньше уходили недели ручной работы, AI делает за 30 минут. Без этого слоя ты строишь вслепую.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            {points.map((p) => (
+              <div
+                key={p.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[2px]">{p.k}</p>
+                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{p.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile index={15} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Якорь 1 · Market Research</Eyebrow>
+        <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          Сначала пойми рынок.
+        </h2>
+        <p className="text-[26px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
+          То, на что раньше уходили недели ручной работы, AI делает за <span className="text-[hsl(var(--slide-gold))]">30 минут</span>. Без этого слоя ты строишь вслепую.
+        </p>
+        <div className="grid grid-cols-4 gap-[18px] max-w-[1620px]">
+          {points.map((p) => (
+            <div
+              key={p.k}
+              className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[24px] py-[22px]"
+            >
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">
+                {p.k}
+              </p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{p.v}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Footer index={15} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 16 — Deep Research prompt ========== */
+export const S12c = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Шаг 1 · Deep Research</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Один промпт — отчёт по рынку.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            Открой ChatGPT / Claude / Gemini в режиме <span className="text-[hsl(var(--slide-gold))]">Deep Research</span>. Вставь мастер-промпт. Заполни поля в скобках. Получи 8–10 страниц с цитатами и источниками.
+          </p>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[12px] py-[10px] mb-[8px]">
+            <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Что внутри отчёта</p>
+            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Боль с реальными цитатами · размер рынка · топ-7 конкурентов · кто провалился и почему · незакрытые ниши · окно «почему сейчас» · риски + план на 7 дней.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+              Готовый промпт — в материалах урока. Просто скопируй и запусти.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={16} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Шаг 1 · Deep Research</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          Один промпт — отчёт по рынку.
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
+          Открой ChatGPT / Claude / Gemini в режиме <span className="text-[hsl(var(--slide-gold))]">Deep Research</span>. Вставь мастер-промпт. Заполни поля в скобках. Получи 8–10 страниц с цитатами и источниками.
+        </p>
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
+              Что внутри отчёта
+            </p>
+            <ul className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[2px]">
+              <li>• Боль с реальными цитатами и URL</li>
+              <li>• Размер рынка обычными словами</li>
+              <li>• Топ-7 конкурентов с ценами</li>
+              <li>• Кто провалился и главный урок</li>
+              <li>• Незакрытые ниши и сегменты</li>
+              <li>• Окно «почему именно сейчас»</li>
+              <li>• Риски + план действий на 7 дней</li>
+            </ul>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px] flex flex-col">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
+              Правила промпта
+            </p>
+            <ul className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[2px]">
+              <li>• Простой язык, без TAM/SAM/CAGR</li>
+              <li>• Каждое утверждение — с источником</li>
+              <li>• Нет данных — пишет «нет данных»</li>
+              <li>• Вердикт: ДА / НЕТ / ИЗМЕНИТЬ</li>
+              <li>• 8–10 страниц, читается за 20 минут</li>
+            </ul>
+            <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[20px] py-[14px] mt-[18px]">
+              <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.4]">
+                Готовый промпт — в материалах урока. Скопируй и запусти.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer index={16} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 17 — Research Agent (FoundersLens) ========== */
+export const S12d = () => {
+  const isMobile = useIsMobile();
+  const cards = [
+    { k: "Анализ рынка", v: "Размер, динамика, ключевые игроки." },
+    { k: "Ключевые слова", v: "Объёмы, конкуренция, intent." },
+    { k: "Реклама конкурентов", v: "Что крутят и на каких креативах." },
+    { k: "Трафик и источники", v: "География, каналы, поведение." },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Шаг 2 · Мой AI Research Agent</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Когда промпта мало — подключаешь агента.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            Подхватывает там, где Deep Research заканчивается, и доводит ресёрч до полноценной картинки.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px] mb-[8px]">
+            {cards.map((c) => (
+              <div
+                key={c.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))]">{c.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{c.v}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+              <span className="font-bold text-[hsl(var(--slide-text))]">FoundersLens</span> — agentов прогоняет твою идею. Ссылка → /agents/lens
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={17} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Шаг 2 · Мой AI Research Agent</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          Когда промпта мало — подключаешь <span className="text-[hsl(var(--slide-gold))]">агента</span>.
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[32px] max-w-[1500px]">
+          В дополнение к Deep Research я собрал отдельного AI-агента — <span className="text-[hsl(var(--slide-text))] font-semibold">FoundersLens</span>. Подхватывает там, где Deep Research заканчивается, и доводит ресёрч до полноценной картинки.
+        </p>
+        <div className="grid grid-cols-4 gap-[18px] max-w-[1620px]">
+          {cards.map((c) => (
+            <div
+              key={c.k}
+              className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[24px] py-[22px]"
+            >
+              <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[8px]">{c.k}</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{c.v}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border border-[hsl(var(--slide-gold))] rounded-[12px] px-[36px] py-[22px] mt-[28px] max-w-[1620px] flex items-center justify-between gap-[24px]">
+          <div>
+            <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] mb-[6px]">
+              Бонус для участников
+            </p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.4]">
+              <span className="font-bold">FoundersLens</span> — агент прогоняет твою идею за один запуск.
+            </p>
+          </div>
+          <div className="font-mono text-[15px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap">
+            /agents/lens →
+          </div>
+        </div>
+      </div>
+      <Footer index={17} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 18 — Anchor 2: Competitor analysis (find + traffic) ========== */
+export const S12e = () => {
+  const isMobile = useIsMobile();
+  const where = [
+    "Google по ключевым запросам ЦА",
+    "Product Hunt, App Store, Google Play",
+    "Reddit, нишевые форумы, чаты",
+    "Crunchbase — кто поднял раунды",
+    "G2 / Capterra / Trustpilot",
+    "Реклама в Facebook Ad Library",
+  ];
+  const signals = [
+    { k: "Платный трафик", v: "Если крутят рекламу месяцами — окупается. Похожие креативы → рабочая боль." },
+    { k: "Органика", v: "SimilarWeb / Semrush. Растёт трафик — растёт спрос. Падает — рынок уходит." },
+    { k: "Деньги от инвесторов", v: "Crunchbase: подняли раунд в этой нише за 12 мес — рынок валидирован за тебя." },
+    { k: "Активность пользователей", v: "Отзывы, апдейты, ответы на жалобы. Живой продукт vs заброшенный." },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Якорь 2 · Конкуренты</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
+            Сначала найди. Потом проверь, что у них правда есть деньги.
+          </h2>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px] mb-[8px]">
+            <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[5px]">Где искать</p>
+            <ul className="text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] space-y-[1px]">
+              {where.map((w) => (
+                <li key={w}>• {w}</li>
+              ))}
+            </ul>
+          </div>
+          <p className="text-[10px] font-bold text-[hsl(var(--slide-text-muted))] uppercase tracking-[0.15em] mb-[5px]">
+            На что смотреть
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            {signals.map((s) => (
+              <div
+                key={s.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{s.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{s.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile index={18} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Якорь 2 · Конкуренты</Eyebrow>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[32px] max-w-[1620px]">
+          Сначала найди. Потом проверь, что у них правда есть <span className="text-[hsl(var(--slide-gold))]">деньги</span>.
+        </h2>
+        <div className="grid grid-cols-3 gap-[20px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Где искать</p>
+            <ul className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[4px]">
+              {where.map((w) => (
+                <li key={w}>• {w}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-span-2 grid grid-cols-2 gap-[16px]">
+            {signals.map((s) => (
+              <div
+                key={s.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[24px] py-[20px]"
+              >
+                <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[8px]">{s.k}</p>
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{s.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mt-[24px] max-w-[1620px]">
+          Нет рекламы, нет органики, нет инвестиций, нет апдейтов — это не «нет конкурентов». Это <span className="text-[hsl(var(--slide-text))] font-semibold">нет рынка</span>.
+        </p>
+      </div>
+      <Footer index={18} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 19 — Anchor 2: What to learn from competitors ========== */
+export const S12f = () => {
+  const isMobile = useIsMobile();
+  const watch = [
+    { k: "Цены и упаковка", v: "За что готовы платить. Где предел готовности платить." },
+    { k: "Онбординг", v: "Где люди отваливаются. Что их блокирует на первом экране." },
+    { k: "Жалобы в отзывах", v: "Чего им не хватает. Это твоё место для дифференциации." },
+    { k: "Флоу до AHA", v: "За какое количество шагов человек получает ценность." },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Что копировать — а что нет</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Inspired by — да. Copy-paste — нет.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            UX-паттерны, которые рынок уже валидировал, переиспользовать можно и нужно. Бренд, тексты, визуал и контент — нет.
+          </p>
+          <p className="text-[10px] font-bold text-[hsl(var(--slide-text-muted))] uppercase tracking-[0.15em] mb-[5px]">
+            На что смотреть
+          </p>
+          <div className="grid grid-cols-2 gap-[6px] mb-[8px]">
+            {watch.map((w) => (
+              <div
+                key={w.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{w.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{w.v}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+              Возьми лучшее у каждого. Адаптируй под свою нишу. Добавь то, чего у них нет.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={19} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Что копировать — а что нет</Eyebrow>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px] max-w-[1620px]">
+          <span className="text-[hsl(var(--slide-gold))]">Inspired by</span> — да. Copy-paste — нет.
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1620px]">
+          UX-паттерны, которые рынок уже валидировал, переиспользовать можно и нужно. Бренд, тексты, визуал и контент — нет.
+        </p>
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
+              На что смотреть у конкурентов
+            </p>
+            <div className="space-y-[12px]">
+              {watch.map((w) => (
+                <div key={w.k}>
+                  <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{w.k}</p>
+                  <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{w.v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px] flex flex-col">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
+              Правила приличия
+            </p>
+            <ul className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.55] space-y-[6px]">
+              <li>✓ Бери паттерны и решения, не дизайн и копирайт</li>
+              <li>✓ Если рынок валидировал модель — повторяй, отличайся в нише и UX</li>
+              <li>✓ Всегда добавляй свою отличительную ценность</li>
+              <li>✗ Не копируй визуал, бренд, тексты — это не работа, это плагиат</li>
+            </ul>
+            <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[20px] py-[14px] mt-[18px]">
+              <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.4]">
+                Возьми лучшее у каждого. Адаптируй под нишу. Добавь то, чего у них нет.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer index={19} />
+    </Stage>
+  );
+};
+
 /* ========== Slide 13 — Method intro ========== */
 export const S13 = () => {
   const isMobile = useIsMobile();
@@ -932,7 +1451,7 @@ export const S13 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Метод</Eyebrow>
+          <Eyebrow mobile>Якорь 3 · Customer Development</Eyebrow>
           <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
             Customer Development.
           </h2>
@@ -945,14 +1464,14 @@ export const S13 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={14} />
+        <FooterMobile index={20} />
       </Stage>
     );
   }
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Метод</Eyebrow>
+        <Eyebrow>Якорь 3 · Customer Development</Eyebrow>
         <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
           Customer Development.
         </h2>
@@ -965,7 +1484,7 @@ export const S13 = () => {
           </p>
         </div>
       </div>
-      <Footer index={14} />
+      <Footer index={20} />
     </Stage>
   );
 };
@@ -994,7 +1513,7 @@ export const S14 = () => {
             «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
           </p>
         </div>
-        <FooterMobile index={15} />
+        <FooterMobile index={21} />
       </Stage>
     );
   }
@@ -1017,7 +1536,7 @@ export const S14 = () => {
           «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
         </p>
       </div>
-      <Footer index={15} />
+      <Footer index={21} />
     </Stage>
   );
 };
@@ -1048,7 +1567,7 @@ export const S15 = () => {
             «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
           </p>
         </div>
-        <FooterMobile index={16} />
+        <FooterMobile index={22} />
       </Stage>
     );
   }
@@ -1074,7 +1593,7 @@ export const S15 = () => {
           «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
         </p>
       </div>
-      <Footer index={16} />
+      <Footer index={22} />
     </Stage>
   );
 };
@@ -1114,7 +1633,7 @@ export const S16 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={17} />
+        <FooterMobile index={23} />
       </Stage>
     );
   }
@@ -1137,7 +1656,7 @@ export const S16 = () => {
           </div>
         </div>
       </div>
-      <Footer index={17} />
+      <Footer index={23} />
     </Stage>
   );
 };
@@ -1181,7 +1700,7 @@ export const S17 = () => {
             <ResourceCard mobile icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
           </div>
         </div>
-        <FooterMobile index={18} />
+        <FooterMobile index={24} />
       </Stage>
     );
   }
@@ -1197,7 +1716,7 @@ export const S17 = () => {
           <ResourceCard icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
         </div>
       </div>
-      <Footer index={18} />
+      <Footer index={24} />
     </Stage>
   );
 };
@@ -1244,7 +1763,7 @@ export const S18 = () => {
             «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
           </p>
         </div>
-        <FooterMobile index={19} />
+        <FooterMobile index={25} />
       </Stage>
     );
   }
@@ -1262,7 +1781,7 @@ export const S18 = () => {
           «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
         </p>
       </div>
-      <Footer index={19} />
+      <Footer index={25} />
     </Stage>
   );
 };
@@ -1295,7 +1814,7 @@ export const S19 = () => {
             ))}
           </div>
         </div>
-        <FooterMobile index={20} />
+        <FooterMobile index={26} />
       </Stage>
     );
   }
@@ -1318,7 +1837,7 @@ export const S19 = () => {
           ))}
         </div>
       </div>
-      <Footer index={20} />
+      <Footer index={26} />
     </Stage>
   );
 };
@@ -1358,7 +1877,7 @@ export const S20 = () => {
             founders-circle.space →
           </a>
         </div>
-        <FooterMobile index={21} />
+        <FooterMobile index={27} />
       </Stage>
     );
   }
@@ -1388,7 +1907,7 @@ export const S20 = () => {
           Узнать больше → founders-circle.space
         </a>
       </div>
-      <Footer index={21} />
+      <Footer index={27} />
     </Stage>
   );
 };
@@ -1409,7 +1928,7 @@ export const S21 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={22} />
+        <FooterMobile index={28} />
       </Stage>
     );
   }
@@ -1425,7 +1944,7 @@ export const S21 = () => {
           </p>
         </div>
       </div>
-      <Footer index={22} />
+      <Footer index={28} />
     </Stage>
   );
 };
@@ -1458,7 +1977,7 @@ export const S22 = () => {
             Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
           </p>
         </div>
-        <FooterMobile index={23} />
+        <FooterMobile index={29} />
       </Stage>
     );
   }
@@ -1481,9 +2000,9 @@ export const S22 = () => {
           Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
         </p>
       </div>
-      <Footer index={23} />
+      <Footer index={29} />
     </Stage>
   );
 };
 
-export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
+export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
