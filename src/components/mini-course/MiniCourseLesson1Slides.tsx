@@ -1,5 +1,6 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { QRCodeSVG } from "qrcode.react";
 import titleBg from "@/assets/slides/title-bg.jpg";
 import photoMichael from "@/assets/slides/photo-michael.jpg";
 
