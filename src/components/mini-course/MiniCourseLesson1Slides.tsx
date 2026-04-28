@@ -2405,23 +2405,734 @@ export const L1Closing = () => {
   );
 };
 
-// Lesson 1 — 17 slides (Market & Competitor Research)
+/* ========== NEW v3 slides (lesson1 restructure) ========== */
+
+/* Slide 6 — Why market research first */
+export const L1WhyMarketFirst = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <Eyebrow mobile>Порядок имеет значение</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
+            Почему рынок — раньше людей
+          </h2>
+          <div className="space-y-[10px]">
+            <div className="bg-[hsl(0_70%_55%/0.08)] border-l-2 border-[hsl(0_70%_55%)] rounded-[8px] px-[12px] py-[10px]">
+              <p className="text-[10px] font-bold text-[hsl(0_70%_65%)] uppercase tracking-[0.15em] mb-[4px]">Если сначала разговоры</p>
+              <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                Ты идёшь в рынок без карты. Слышишь боль одного человека и думаешь, что это рынок. Тратишь 6 месяцев на нишу из 50 клиентов.
+              </p>
+            </div>
+            <div className="bg-[hsl(140_55%_45%/0.1)] border-l-2 border-[hsl(140_55%_50%)] rounded-[8px] px-[12px] py-[10px]">
+              <p className="text-[10px] font-bold text-[hsl(140_55%_60%)] uppercase tracking-[0.15em] mb-[4px]">Если сначала рынок</p>
+              <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                Ты идёшь к людям с гипотезой, которую уже отфильтровал по размеру, тренду и конкурентам. 10 разговоров проверяют гипотезу, а не выдумывают её.
+              </p>
+            </div>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic text-center mt-[12px] leading-[1.4]">
+            90 минут ресёрча экономят 6 месяцев разработки.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
+        <Eyebrow>Порядок имеет значение</Eyebrow>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px] tracking-[-0.01em]">
+          Почему рынок — раньше людей
+        </h2>
+        <div className="grid grid-cols-2 gap-[28px] mb-[28px]">
+          <div className="bg-[hsl(0_70%_55%/0.08)] border-l-[4px] border-[hsl(0_70%_55%)] rounded-[14px] px-[32px] py-[28px]">
+            <p className="text-[18px] font-bold text-[hsl(0_70%_65%)] uppercase tracking-[0.18em] mb-[16px]">Если сначала разговоры</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              Ты идёшь в рынок без карты. Слышишь боль одного человека и думаешь, что это рынок. Тратишь 6 месяцев на нишу из 50 клиентов.
+            </p>
+          </div>
+          <div className="bg-[hsl(140_55%_45%/0.08)] border-l-[4px] border-[hsl(140_55%_50%)] rounded-[14px] px-[32px] py-[28px]">
+            <p className="text-[18px] font-bold text-[hsl(140_55%_60%)] uppercase tracking-[0.18em] mb-[16px]">Если сначала рынок</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              Ты идёшь к людям с гипотезой, которую уже отфильтровал по размеру, тренду и конкурентам. 10 разговоров проверяют гипотезу, а не выдумывают её.
+            </p>
+          </div>
+        </div>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+          90 минут ресёрча экономят 6 месяцев разработки. Помнишь, какой инсайт?
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 8 — Three levels of competitors */
+const COMP_LEVELS = [
+  { icon: "⚔️", n: "01", title: "Прямые", body: "Делают то же самое для той же аудитории." },
+  { icon: "🔄", n: "02", title: "Косвенные", body: "Решают ту же проблему другим способом." },
+  { icon: "📋", n: "03", title: "Замена", body: "Что клиент делает СЕЙЧАС вместо твоего продукта: Excel, стажёр, ручной процесс." },
+];
+export const L1ThreeLevels = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Конкуренты бывают трёх уровней
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic mb-[12px] leading-[1.4]">
+            Большинство фаундеров видят только первый уровень — и пропускают самое важное.
+          </p>
+          <div className="space-y-[8px]">
+            {COMP_LEVELS.map((c) => (
+              <div key={c.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[12px] py-[9px]">
+                <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] mb-[3px]">{c.icon} {c.n} · {c.title}</p>
+                <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{c.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mt-[12px] leading-[1.4]">
+            Не учёл уровень 3 — конкурируешь не с продуктом, а с привычкой. И привычка побеждает.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.01em]">
+          Конкуренты бывают трёх уровней
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic mb-[44px] leading-[1.4]">
+          Большинство фаундеров видят только первый уровень — и пропускают самое важное.
+        </p>
+        <div className="grid grid-cols-3 gap-[24px] mb-[36px]">
+          {COMP_LEVELS.map((c) => (
+            <div key={c.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[28px]">
+              <p className="text-[40px] mb-[10px]">{c.icon}</p>
+              <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">{c.n} · {c.title}</p>
+              <p className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">{c.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+          Если ты не учёл уровень 3 — ты конкурируешь не с продуктом, а с привычкой. И привычка побеждает.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 9 — 8 dimensions to check at competitors */
+const COMP_DIMS: { icon: string; title: string; body: string }[] = [
+  { icon: "💰", title: "Цена и модель", body: "Подписка / разовая / freemium. Твой ценовой коридор." },
+  { icon: "⭐", title: "Негативные отзывы", body: "Где не дотягивают. Это твоё место." },
+  { icon: "🖥️", title: "Первый экран", body: "Как формулируют ценность. С кого они снимают деньги." },
+  { icon: "🕳️", title: "Что НЕ делают", body: "Пробелы в их офере = твоя ниша." },
+  { icon: "📧", title: "Email-воронка", body: "Подпишись на их рассылку. Изучи, чем они греют лида." },
+  { icon: "📱", title: "Соцсети и комьюнити", body: "Что хвалят, на что жалуются. Каждый комментарий — данные." },
+  { icon: "📊", title: "Трафик и каналы", body: "Откуда идут клиенты (SimilarWeb)." },
+  { icon: "🎯", title: "Value Proposition", body: "Их one-liner. Если копируешь — ты не отстройка, ты копия." },
+];
+export const L1EightDimensions = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <p className="text-[9px] text-[hsl(var(--slide-text-muted))] italic mb-[6px] leading-[1.4]">
+            Три уровня — это карта. 8 параметров — это разбор.
+          </p>
+          <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
+            Что смотреть у конкурентов
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic mb-[8px]">8 параметров. По каждому — одна находка.</p>
+          <div className="grid grid-cols-2 gap-[5px]">
+            {COMP_DIMS.map((d) => (
+              <div key={d.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.18)] rounded-[6px] px-[8px] py-[7px]">
+                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{d.icon} {d.title}</p>
+                <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.35]">{d.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[8px] text-center leading-[1.4]">
+            На каждый параметр — 5 минут. 40 минут на одного конкурента.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1900px]">
+        <p className="text-[18px] text-[hsl(var(--slide-text-muted))] italic mb-[14px] leading-[1.4]">
+          Три уровня — это карта. 8 параметров — это разбор. Без карты разбор бесполезен.
+        </p>
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px] tracking-[-0.01em]">
+          Что смотреть у конкурентов
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] italic mb-[28px]">8 параметров. По каждому — одна находка.</p>
+        <div className="grid grid-cols-4 gap-[16px] mb-[24px]">
+          {COMP_DIMS.map((d) => (
+            <div key={d.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[12px] px-[20px] py-[20px]">
+              <p className="text-[28px] mb-[6px]">{d.icon}</p>
+              <p className="text-[17px] font-bold text-[hsl(var(--slide-text))] mb-[8px]">{d.title}</p>
+              <p className="text-[15px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">{d.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+          На каждый параметр — 5 минут. Всего — 40 минут на одного конкурента.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 10 — Negative reviews are gold */
+export const L1NegativeReviews = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+            Главное золото · негативные отзывы
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic mb-[10px]">Голос недовольного клиента = твоя возможность.</p>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[9px] mb-[10px]">
+            <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.45]">
+              <b>Задание:</b> найти 10 негативных отзывов на каждого из 3 главных конкурентов. Сгруппировать по темам.
+            </p>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] mb-[6px]">
+            <b className="text-[hsl(var(--slide-gold))]">Где искать:</b> G2, Trustpilot, App Store, Google Play, Reddit.
+          </p>
+          <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">Что искать в группах жалоб:</p>
+          <ul className="space-y-[4px] text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+            <li>• 30%+ жалоб на онбординг → точка входа для disruption</li>
+            <li>• Жалуются на цену → разбери unit-экономику. Pricing — твоё оружие.</li>
+            <li>• Переросли продукт → строй платформу, не фичу.</li>
+          </ul>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mt-[8px] leading-[1.4]">
+            Час чтения отзывов = лист с 5 «дырами», которые конкуренты не закроют.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px] tracking-[-0.01em]">
+          Главное золото · негативные отзывы
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic mb-[28px]">
+          Голос недовольного клиента = твоя возможность.
+        </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[32px] py-[22px] mb-[24px]">
+          <p className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.45]">
+            <b>Задание:</b> найти 10 негативных отзывов на каждого из 3 главных конкурентов. Сгруппировать по темам.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-[28px] mb-[24px]">
+          <div>
+            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Где искать</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              G2 · Trustpilot · App Store · Google Play · Reddit
+            </p>
+          </div>
+          <div>
+            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Что искать в группах жалоб</p>
+            <ul className="space-y-[8px] text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              <li>• 30%+ жалоб на онбординг → точка входа для disruption</li>
+              <li>• Жалуются на цену → unit-экономика. Pricing — твоё оружие.</li>
+              <li>• Переросли продукт → строй платформу, не фичу.</li>
+            </ul>
+          </div>
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+          Один час чтения отзывов = один лист с 5 «дырами», которые твои конкуренты не закроют.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 11 — Perplexity (5 prompts) */
+const PERPLEXITY_PROMPTS = [
+  "Карта конкурентов в [моя ниша]: топ-10 с позиционированием, ценой, последним раундом.",
+  "Слабые места: что чаще всего ругают в отзывах на [конкурент] на G2 / Trustpilot за последние 12 месяцев.",
+  "Размер рынка для [моя ниша]: TAM, SAM, SOM с источниками за 2024–2025.",
+  "Кто платит: основной customer profile у [конкурент] — должность, размер компании, индустрия.",
+  "Позиционирование: чем [конкурент A] отличается от [конкурент B] и [конкурент C]. Что ни один не делает.",
+];
+export const L1Perplexity = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Инструмент 1</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[4px]">Perplexity</h2>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mb-[8px]">Это не GPT. Поиск, который сам цитирует источники.</p>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] mb-[10px] leading-[1.45]">
+            AI-поисковик. Отвечает на сложные запросы и даёт ссылки на источники, не выдумывая факты.
+          </p>
+          <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[6px]">5 промптов</p>
+          <ol className="space-y-[5px] mb-[8px]">
+            {PERPLEXITY_PROMPTS.map((p, i) => (
+              <li key={i} className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] font-mono bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.15)] rounded-[5px] px-[8px] py-[5px]">
+                <span className="text-[hsl(var(--slide-gold))] font-bold">{i + 1}.</span> {p}
+              </li>
+            ))}
+          </ol>
+          <p className="text-[9.5px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            AI делает 80% работы. Оставшиеся 20% — твои.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Инструмент 1</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[10px] tracking-[-0.02em]">Perplexity</h2>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic mb-[18px]">Это не GPT. Это поиск, который сам цитирует источники.</p>
+        <p className="text-[20px] text-[hsl(var(--slide-text)/0.9)] mb-[26px] leading-[1.5] max-w-[1500px]">
+          AI-поисковик. Отвечает на сложные запросы и даёт ссылки на источники, не выдумывая факты.
+        </p>
+        <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">5 промптов для конкурентного анализа</p>
+        <ol className="space-y-[10px] mb-[20px]">
+          {PERPLEXITY_PROMPTS.map((p, i) => (
+            <li key={i} className="text-[17px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] font-mono bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.18)] rounded-[10px] px-[20px] py-[12px]">
+              <span className="text-[hsl(var(--slide-gold))] font-bold mr-2">{i + 1}.</span>{p}
+            </li>
+          ))}
+        </ol>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+          AI делает 80% работы. Оставшиеся 20% — твои: открыть сайты, прочитать отзывы, перепроверить цифры.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 12 — Three verification tools */
+const VERIFY_TOOLS = [
+  {
+    icon: "📊",
+    name: "SimilarWeb",
+    url: "similarweb.com · бесплатно",
+    sub: "Откуда конкуренты берут клиентов.",
+    signal: "70%+ из платной рекламы → у них дорогой CAC, заходи через органику.",
+  },
+  {
+    icon: "📢",
+    name: "Meta Ad Library",
+    url: "facebook.com/ads/library · бесплатно",
+    sub: "Какую рекламу крутят месяцами.",
+    signal: "Одно объявление 6+ месяцев = working creative. Учись на их экспериментах.",
+  },
+  {
+    icon: "📈",
+    name: "Google Trends",
+    url: "trends.google.com · бесплатно",
+    sub: "Растёт ли интерес к нише.",
+    signal: "+30% год к году = ты в правильном месте. Падение → переоцени гипотезу.",
+  },
+];
+export const L1VerificationTools = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+            Три инструмента для верификации
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic mb-[12px]">
+            Perplexity даёт картину. Эти три проверяют, что AI не выдумал.
+          </p>
+          <div className="space-y-[8px]">
+            {VERIFY_TOOLS.map((t) => (
+              <div key={t.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[12px] py-[9px]">
+                <p className="text-[11px] font-bold text-[hsl(var(--slide-text))]">{t.icon} {t.name}</p>
+                <p className="text-[8px] text-[hsl(var(--slide-text-muted))] mb-[4px]">{t.url}</p>
+                <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mb-[3px]">{t.sub}</p>
+                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{t.signal}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic text-center mt-[10px] leading-[1.4]">
+            5 минут на каждый. 15 минут — и знаешь, врёт ли тебе Perplexity.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px] tracking-[-0.01em]">
+          Три инструмента для верификации
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic mb-[36px]">
+          Perplexity даёт картину. Эти три проверяют, что AI не выдумал.
+        </p>
+        <div className="grid grid-cols-3 gap-[24px] mb-[28px]">
+          {VERIFY_TOOLS.map((t) => (
+            <div key={t.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[26px] py-[26px]">
+              <p className="text-[36px] mb-[8px]">{t.icon}</p>
+              <p className="text-[24px] font-bold text-[hsl(var(--slide-text))] mb-[4px]">{t.name}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text-muted))] mb-[14px]">{t.url}</p>
+              <p className="text-[18px] text-[hsl(var(--slide-gold))] italic mb-[12px] leading-[1.4]">{t.sub}</p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+                <span className="font-bold">Главный сигнал:</span> {t.signal}
+              </p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+          5 минут на каждый. 15 минут — и ты знаешь, врёт ли тебе Perplexity.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 13 — Find 3 gaps + Positioning formula + mid CTA */
+const GAPS = [
+  { t: "Сегментная дыра", d: "есть аудитория, которую никто не обслуживает прицельно" },
+  { t: "Функциональная дыра", d: "все жалуются на одно и то же отсутствие" },
+  { t: "Ценовая дыра", d: "есть premium и есть free, но нет mid-tier" },
+];
+export const L1GapsPositioning = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
+            Шаг финальный · 3 дыры + позиционирование
+          </h2>
+          <p className="text-[9.5px] text-[hsl(var(--slide-text-muted))] italic mb-[8px]">Ресёрч без позиционирования — потерянное время.</p>
+          <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">3 типа дыр:</p>
+          <ul className="space-y-[3px] mb-[8px]">
+            {GAPS.map((g) => (
+              <li key={g.t} className="text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                <b className="text-[hsl(var(--slide-text))]">{g.t}</b> — {g.d}
+              </li>
+            ))}
+          </ul>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[8px] mb-[8px]">
+            <p className="text-[9.5px] font-bold text-[hsl(var(--slide-text))] leading-[1.45]">
+              [Продукт] помогает [кому конкретно]<br />
+              [решить проблему / получить результат],<br />
+              в отличие от [главная альтернатива],<br />
+              который [её слабость].
+            </p>
+          </div>
+          <div className="border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[7px]">
+            <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] italic leading-[1.4]">
+              Хочешь, чтобы я еженедельно разбирал твою карту конкурентов и говорил, где ты обманываешь себя — TFC. <span className="text-[hsl(var(--slide-gold))] font-semibold">founders-circle.space →</span>
+            </p>
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px] tracking-[-0.01em]">
+          Шаг финальный · 3 дыры + позиционирование
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] italic mb-[24px]">
+          Ресёрч без позиционирования — потерянное время.
+        </p>
+        <div className="grid grid-cols-2 gap-[36px] mb-[24px]">
+          <div>
+            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">3 типа дыр</p>
+            <ul className="space-y-[14px]">
+              {GAPS.map((g) => (
+                <li key={g.t} className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                  <b className="text-[hsl(var(--slide-text))]">{g.t}</b> — {g.d}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[28px] py-[22px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Формула позиционирования</p>
+            <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.5]">
+              [Продукт] помогает [кому конкретно]<br />
+              [решить проблему / получить результат],<br />
+              в отличие от [главная альтернатива],<br />
+              который [её слабость].
+            </p>
+          </div>
+        </div>
+        <div className="border border-[hsl(var(--slide-gold)/0.35)] rounded-[12px] px-[24px] py-[16px] bg-[hsl(var(--slide-bg-alt)/0.5)]">
+          <p className="text-[17px] text-[hsl(var(--slide-text)/0.85)] italic leading-[1.5]">
+            Это весь метод. Сделать его руками за 90 минут — реально. Сделать так, чтобы он сработал — нужны итерации. Если хочешь, чтобы я еженедельно разбирал твою карту конкурентов и говорил, где ты обманываешь себя — TFC. <span className="text-[hsl(var(--slide-gold))] font-semibold not-italic">founders-circle.space →</span>
+          </p>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 14 — InterviewNinja counter-case */
+const NINJA_LINES = [
+  { t: "Не проверил, поднял ли кто-то раунд в этой нише за 12 месяцев. Никто не поднял.", sig: "Сигнал был в Crunchbase." },
+  { t: "Не посмотрел отзывы на конкурентов. Все жаловались на одно: «симулятор не даёт работу».", sig: "Сигнал был в G2 и App Store." },
+  { t: "Не построил карту дыр. Дыр не было — ниша уже схлопнулась.", sig: "Сигнал был в Google Trends." },
+];
+export const L1InterviewNinjaRetro = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
+            InterviewNinja · что было бы при ресёрче
+          </h2>
+          <p className="text-[9px] text-[hsl(var(--slide-text-muted))] mb-[8px]">2023–2024. Стартап, который я закрыл за 18 месяцев.</p>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] italic mb-[10px] leading-[1.4]">
+            Теперь ты знаешь метод. Посмотри, что бы он мне сэкономил.
+          </p>
+          <ul className="space-y-[8px] mb-[10px]">
+            {NINJA_LINES.map((l, i) => (
+              <li key={i} className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                <span className="text-[hsl(0_70%_60%)] font-bold mr-1">❌</span>{l.t} <b className="text-[hsl(var(--slide-gold))]">{l.sig}</b>
+              </li>
+            ))}
+          </ul>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            18 месяцев разработки. Ответ был в 90 минутах ресёрча.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1750px]">
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px] tracking-[-0.01em]">
+          InterviewNinja · что было бы при ресёрче
+        </h2>
+        <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mb-[18px]">2023–2024. Стартап, который я закрыл за 18 месяцев.</p>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] italic mb-[28px]">
+          Теперь ты знаешь метод. Посмотри, что бы он мне сэкономил.
+        </p>
+        <ul className="space-y-[18px] mb-[28px]">
+          {NINJA_LINES.map((l, i) => (
+            <li key={i} className="flex items-start gap-[16px] text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              <span className="text-[28px] text-[hsl(0_70%_60%)] font-bold leading-none">❌</span>
+              <span>{l.t} <b className="text-[hsl(var(--slide-gold))]">{l.sig}</b></span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+          18 месяцев разработки. Ответ был в 90 минутах ресёрча. В тех же инструментах, что я только что дал тебе.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 15 — Practice now · 10 minutes */
+const PRACTICE_STEPS: { time: string; t: string }[] = [
+  { time: "2 мин", t: "Открой Perplexity → вставь промпт «Карта конкурентов» со своей нишей" },
+  { time: "2 мин", t: "Из результата выбери 3 прямых конкурента → запиши в таблицу: название, цена, ключевое отличие" },
+  { time: "2 мин", t: "Открой сайт главного конкурента → зафиксируй: заголовок, CTA, целевая аудитория" },
+  { time: "2 мин", t: "Найди 2–3 негативных отзыва на конкурента (G2, Trustpilot, App Store) → запиши главные боли" },
+  { time: "2 мин", t: "Сформулируй одно предложение: чем твой продукт лучше главного конкурента" },
+];
+export const L1PracticeNow = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+            Делаем прямо сейчас · 10 минут
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic mb-[10px] leading-[1.4]">
+            Поставь видео на паузу. Сделай это руками. Без паузы Урок 2 не сработает.
+          </p>
+          <ol className="space-y-[6px] mb-[8px]">
+            {PRACTICE_STEPS.map((s, i) => (
+              <li key={i} className="flex items-start gap-[8px] text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                <span className="text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap">{i + 1}. {s.time}</span>
+                <span>{s.t}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-[9.5px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+            На выходе: таблица из 3 конкурентов + одно предложение отстройки.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px] tracking-[-0.01em]">
+          Делаем прямо сейчас · 10 минут
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic mb-[36px] leading-[1.4]">
+          Поставь видео на паузу. Сделай это руками. Без паузы Урок 2 не сработает.
+        </p>
+        <ol className="space-y-[16px] mb-[28px]">
+          {PRACTICE_STEPS.map((s, i) => (
+            <li key={i} className="flex items-start gap-[24px] text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              <span className="text-[24px] text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap min-w-[140px]">
+                {i + 1}. <span className="text-[hsl(var(--slide-text))]">{s.time}</span>
+              </span>
+              <span>{s.t}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+          На выходе: таблица из 3 конкурентов + одно предложение отстройки. Это твой минимальный артефакт после этого урока.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* Slide 16 — Full 90-min plan + templates */
+const PLAN_STEPS: { time: string; title: string; body: string }[] = [
+  { time: "15 мин", title: "Market Sizing", body: "Промпт #3 в Perplexity. Заполни Market Sizing Template." },
+  { time: "15 мин", title: "Карта конкурентов", body: "Промпт #1. Получи 10 имён." },
+  { time: "30 мин", title: "Глубокий разбор 3 главных", body: "8 параметров. Pricing, отзывы, FB Ads, SimilarWeb." },
+  { time: "15 мин", title: "Найди 3 дыры", body: "Сегментная, функциональная или ценовая." },
+  { time: "15 мин", title: "Формула позиционирования", body: "Один лист. Одна фраза." },
+];
+const PLAN_TEMPLATES = [
+  { icon: "📊", title: "Market Sizing Template", sub: "Google Sheets" },
+  { icon: "🔍", title: "Competitor Matrix", sub: "10 конкурентов × 8 параметров" },
+  { icon: "📝", title: "Positioning Worksheet", sub: "формула + 3 теста" },
+];
+export const L1FullPlan = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Полный план на 90 минут + шаблоны
+          </h2>
+          <p className="text-[9.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Чек-лист</p>
+          <ol className="space-y-[5px] mb-[10px]">
+            {PLAN_STEPS.map((s, i) => (
+              <li key={i} className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                <b className="text-[hsl(var(--slide-gold))]">{s.time}</b> · <b className="text-[hsl(var(--slide-text))]">{s.title}.</b> {s.body}
+              </li>
+            ))}
+          </ol>
+          <p className="text-[9.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Шаблоны</p>
+          <div className="grid grid-cols-3 gap-[5px] mb-[8px]">
+            {PLAN_TEMPLATES.map((t) => (
+              <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[5px] px-[6px] py-[6px]">
+                <p className="text-[14px] mb-[2px]">{t.icon}</p>
+                <p className="text-[8px] font-bold text-[hsl(var(--slide-text))] leading-[1.3]">{t.title}</p>
+                <p className="text-[7px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{t.sub}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            Все три заполнятся за 90 минут, если идёшь по чек-листу.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
+          Полный план на 90 минут + шаблоны
+        </h2>
+        <div className="grid grid-cols-2 gap-[40px]">
+          <div>
+            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Чек-лист с временным бюджетом</p>
+            <ol className="space-y-[12px]">
+              {PLAN_STEPS.map((s, i) => (
+                <li key={i} className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                  <span className="text-[hsl(var(--slide-gold))] font-bold mr-2">{s.time}</span>
+                  <b className="text-[hsl(var(--slide-text))]">{s.title}.</b> {s.body}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Шаблоны для скачивания</p>
+            <div className="grid grid-cols-1 gap-[12px]">
+              {PLAN_TEMPLATES.map((t) => (
+                <div key={t.title} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[20px] py-[16px] flex items-center gap-[16px]">
+                  <p className="text-[36px]">{t.icon}</p>
+                  <div>
+                    <p className="text-[20px] font-bold text-[hsl(var(--slide-text))]">{t.title}</p>
+                    <p className="text-[15px] text-[hsl(var(--slide-text-muted))]">{t.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="text-[20px] text-[hsl(var(--slide-gold))] italic mt-[18px] leading-[1.4]">
+              Все три заполнятся за 90 минут, если идёшь по чек-листу.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+// Lesson 1 — 17 slides (Market & Competitor Research, v3 restructure)
 export const slides = [
-  S1,    // 1 Title (modified)
-  S2,    // 2 Main insight
-  S3,    // 3 Mirror question
-  S4,    // 4 Stats
-  S4b,   // 5 Mentor intro
-  S9,    // 6 MetaMinder case (source pos 10)
-  S11,   // 7 RunEverywhere case (source pos 12)
-  S12,   // 8 Main insight repeat (source pos 13)
-  S11c,  // 9 Truth about competitors (source pos 14)
-  S12a,  // 10 Three anchors of validation (source pos 15)
-  S12b,  // 11 Anchor 1 · Market Research (source pos 16)
-  S12c,  // 12 AI 80/20 (source pos 17)
-  S12d,  // 13 FoundersLens (source pos 18)
-  S12e,  // 14 Anchor 2 · Competitors (source pos 19)
-  S12f,  // 15 What to copy / not (source pos 20)
-  L1Checklist, // 16 NEW
-  L1Closing,   // 17 NEW
+  S1,                       // 1  Title
+  S2,                       // 2  Main insight (rewritten)
+  S3,                       // 3  Mirror question (rewritten)
+  S4,                       // 4  Stats
+  S4b,                      // 5  Mentor intro
+  L1WhyMarketFirst,         // 6  Why market research first (NEW)
+  S9,                       // 7  MetaMinder success case
+  L1ThreeLevels,            // 8  Three levels of competitors (NEW)
+  L1EightDimensions,        // 9  8 dimensions to check (NEW)
+  L1NegativeReviews,        // 10 Negative reviews are gold (NEW)
+  L1Perplexity,             // 11 Perplexity · 5 prompts (NEW)
+  L1VerificationTools,      // 12 SimilarWeb + Meta Ad Library + Google Trends (NEW)
+  L1GapsPositioning,        // 13 3 gaps + Positioning formula + mid CTA (NEW)
+  L1InterviewNinjaRetro,    // 14 InterviewNinja counter-case (NEW)
+  L1PracticeNow,            // 15 Practice now · 10 min (NEW)
+  L1FullPlan,               // 16 Full 90-min plan + templates (NEW)
+  L1Closing,                // 17 Closing + CTA → Lesson 2
 ];
