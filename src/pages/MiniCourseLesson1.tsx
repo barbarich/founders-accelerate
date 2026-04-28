@@ -3,8 +3,10 @@ import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer, Sparkles } from
 import { Link } from "react-router-dom";
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson1Slides";
+import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
 
 const TOTAL = slides.length;
+const LESSON = 1;
 
 export default function MiniCourseLesson1() {
   const [current, setCurrent] = useState(0);
@@ -95,7 +97,9 @@ export default function MiniCourseLesson1() {
         `}</style>
         {slides.map((Slide, i) => (
           <div key={i} className="mini-print-page">
-            <Slide />
+            <SlideMetaProvider value={{ index: i + 1, total: TOTAL, lesson: LESSON }}>
+              <Slide />
+            </SlideMetaProvider>
           </div>
         ))}
       </div>
@@ -115,7 +119,11 @@ export default function MiniCourseLesson1() {
           <ScaledSlide>
             {(() => {
               const Slide = slides[displayed];
-              return <Slide />;
+              return (
+                <SlideMetaProvider value={{ index: displayed + 1, total: TOTAL, lesson: LESSON }}>
+                  <Slide />
+                </SlideMetaProvider>
+              );
             })()}
           </ScaledSlide>
         </div>
