@@ -34,13 +34,18 @@ export const S1 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[28px] h-full">
-          <h1 className="font-display text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em] mb-[18px]">
-            Ты только что заплатил $9.
+          <h1 className="font-display text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em] mb-[16px]">
+            Рад, что ты здесь.
           </h1>
-          <p className="text-[18px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.3] mb-[16px]">
-            В ближайшие 7 минут вернём эти деньги ясностью, которой у тебя сейчас нет.
+          <p className="text-[16px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.3] mb-[14px]">
+            В ближайшие 7 минут разберём, о чём этот курс и что ты получишь.
           </p>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">Поехали.</p>
+          <p className="text-[12px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[10px]">
+            А сразу после — приступим к настоящей работе.
+          </p>
+          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+            Цель — построить с помощью AI продукт, который действительно нужен рынку.
+          </p>
         </div>
         <FooterMobile index={1} />
       </Stage>
@@ -49,13 +54,18 @@ export const S1 = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] max-w-[1600px] h-full">
-        <h1 className="font-display text-[96px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[48px]">
-          Ты только что заплатил $9.
+        <h1 className="font-display text-[96px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[44px]">
+          Рад, что ты здесь.
         </h1>
-        <p className="text-[44px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.25] mb-[36px] max-w-[1500px]">
-          В ближайшие 7 минут вернём эти деньги ясностью, которой у тебя сейчас нет.
+        <p className="text-[40px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.3] mb-[32px] max-w-[1500px]">
+          В ближайшие 7 минут разберём, о чём этот курс и что ты получишь.
         </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">Поехали.</p>
+        <p className="text-[28px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[20px] max-w-[1500px]">
+          А сразу после — приступим к настоящей работе.
+        </p>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1500px]">
+          Цель — построить с помощью AI продукт, который действительно нужен рынку.
+        </p>
       </div>
       <Footer index={1} />
     </Stage>
