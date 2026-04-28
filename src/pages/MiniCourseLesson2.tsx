@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-react";
 import ScaledSlide from "@/components/presentation/ScaledSlide";
-import { slides } from "@/components/mini-course/MiniCourseLesson1Slides";
+import { slides } from "@/components/mini-course/MiniCourseLesson2Slides";
 import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
 
 const TOTAL = slides.length;
-const LESSON = 1;
+const LESSON = 2;
 
-export default function MiniCourseLesson1() {
+export default function MiniCourseLesson2() {
   const [current, setCurrent] = useState(0);
   const [displayed, setDisplayed] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -72,14 +71,12 @@ export default function MiniCourseLesson1() {
 
   const exportPDF = () => {
     setPrinting(true);
-    // Wait a tick so all slides render before print dialog opens
     setTimeout(() => {
       window.print();
       setTimeout(() => setPrinting(false), 500);
     }, 100);
   };
 
-  // Print mode: render all slides stacked, one per page
   if (printing) {
     return (
       <div className="bg-[#0A0E1A] mini-print-root">
@@ -128,7 +125,6 @@ export default function MiniCourseLesson1() {
           </ScaledSlide>
         </div>
 
-        {/* Edge hints */}
         <button
           onClick={(e) => { e.stopPropagation(); prev(); }}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/5 hover:bg-white/15 text-white transition disabled:opacity-30"
@@ -146,17 +142,7 @@ export default function MiniCourseLesson1() {
           <ChevronRight size={28} />
         </button>
 
-        {/* Top-right utility buttons */}
         <div className="absolute top-4 right-4 z-10 flex gap-2">
-          <Link
-            to="/mini-course/lesson1/text"
-            onClick={(e) => e.stopPropagation()}
-            className="flex items-center gap-1.5 px-2.5 py-2 rounded bg-white/5 hover:bg-white/15 text-white/80 transition text-[12px] font-medium"
-            title="Текстовая версия для AI (Claude / ChatGPT)"
-          >
-            <Sparkles size={14} />
-            <span className="hidden sm:inline">AI-версия</span>
-          </Link>
           <button
             onClick={(e) => { e.stopPropagation(); exportPDF(); }}
             className="p-2 rounded bg-white/5 hover:bg-white/15 text-white/80 transition"
@@ -173,7 +159,6 @@ export default function MiniCourseLesson1() {
           </button>
         </div>
 
-        {/* Persistent counter bottom-right */}
         <div
           className="absolute bottom-4 right-4 z-10 text-[14px] font-medium pointer-events-none"
           style={{ color: "#94A3B8", fontFamily: "'Inter', system-ui, sans-serif" }}
