@@ -2001,44 +2001,58 @@ const TaskRow: React.FC<{ time: string; text: string; mobile?: boolean }> = ({ t
 export const S18 = () => {
   const isMobile = useIsMobile();
   const tasks = [
-    ["3 мин", "Напиши 5 имён людей, с которыми ты будешь говорить. Не друзей."],
-    ["3 мин", "Сформулируй главную гипотезу: «Я предполагаю, что [кто] страдает от [чего] и сейчас решает это [как].»"],
-    ["5 мин", "Адаптируй 3 вопроса из шаблона под свою нишу. Не копируй — переписывай своими словами."],
+    "Сформулируй главную гипотезу: «Я предполагаю, что [кто] страдает от [чего] и сейчас решает это [как]».",
+    "Market Research: оцени размер рынка (TAM/SAM/SOM), тренды и динамику спроса в твоей нише. Зафиксируй источники.",
+    "Анализ конкурентов: выпиши 5–7 прямых и непрямых конкурентов. Для каждого — позиционирование, цена, на чём держатся, где слабы.",
+    "Найди 3 «дыры» на рынке: что конкуренты не делают, делают плохо или игнорируют целый сегмент.",
+    "Составь список из 10 человек твоей ЦА для интервью. Можно знакомых — главное, что они реально в сегменте.",
+    "Адаптируй вопросы под свою нишу: только открытые, только про прошлый опыт. Никаких «купил бы / понравилось бы».",
+    "Проведи минимум 5 разговоров. Записывай дословные цитаты, костыли, частоту и стоимость проблемы.",
   ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Сейчас — твоя очередь</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[12px]">
-            Сейчас — твоя очередь
+          <Eyebrow mobile>Чек-лист урока</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">
+            Что сделать после этого урока
           </h2>
-          <div className="space-y-[6px] mb-[10px]">
-            {tasks.map(([t, txt]) => <TaskRow mobile key={t + txt} time={t} text={txt} />)}
+          <div className="space-y-[5px] mb-[10px]">
+            {tasks.map((txt, i) => (
+              <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[9px] py-[6px] flex gap-[7px]">
+                <span className="font-mono text-[10px] text-[hsl(var(--slide-gold))] font-bold shrink-0 leading-[1.4]">{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.4]">{txt}</span>
+              </div>
+            ))}
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
+          <p className="text-[9.5px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            Три блока вместе — рынок, конкуренты, клиенты. Только так картина становится честной.
           </p>
         </div>
-        <FooterMobile index={26} />
+        <FooterMobile index={25} />
       </Stage>
     );
   }
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Практика</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">
-          Сейчас — твоя очередь
+        <Eyebrow>Чек-лист урока</Eyebrow>
+        <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px]">
+          Что сделать после этого урока
         </h2>
-        <div className="space-y-[14px] max-w-[1500px] mb-[28px]">
-          {tasks.map(([t, txt]) => <TaskRow key={t + txt} time={t} text={txt} />)}
+        <div className="space-y-[10px] max-w-[1600px] mb-[24px]">
+          {tasks.map((txt, i) => (
+            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[28px] py-[16px] flex gap-[22px] items-baseline">
+              <span className="font-mono text-[28px] text-[hsl(var(--slide-gold))] font-bold leading-none shrink-0">{String(i + 1).padStart(2, "0")}</span>
+              <span className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.4]">{txt}</span>
+            </div>
+          ))}
         </div>
-        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1500px]">
-          «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1600px]">
+          Три блока вместе — рынок, конкуренты, клиенты. Только так картина становится честной.
         </p>
       </div>
-      <Footer index={26} />
+      <Footer index={25} />
     </Stage>
   );
 };
