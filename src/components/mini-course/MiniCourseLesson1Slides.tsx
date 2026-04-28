@@ -1,6 +1,7 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import titleBg from "@/assets/slides/title-bg.jpg";
+import photoMichael from "@/assets/slides/photo-michael.jpg";
 
 /* ========== Shared atoms (meeting7 visual language) ========== */
 
@@ -23,7 +24,7 @@ const Footer: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
   >
-    Михаэль · Урок 1 из 4 · Slide {index}/22
+    Михаэль · Урок 1 из 4 · Slide {index}/23
   </div>
 );
 
@@ -32,7 +33,7 @@ const FooterMobile: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 14, bottom: 10, color: "hsl(var(--slide-text-muted))", fontSize: 8, letterSpacing: "0.04em" }}
   >
-    Slide {index}/22
+    Slide {index}/23
   </div>
 );
 
@@ -235,9 +236,99 @@ const CaseTitle: React.FC<{ name: string; sub: string; punch: string; index: num
   );
 };
 
+/* ========== Slide 5 — About the speaker ========== */
+const SpeakerStat: React.FC<{ value: string; label: string; mobile?: boolean }> = ({ value, label, mobile }) => (
+  <div
+    className={`bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] ${
+      mobile ? "px-[12px] py-[10px]" : "px-[28px] py-[22px]"
+    }`}
+  >
+    <p
+      className={`font-bold text-[hsl(var(--slide-text))] leading-[1.1] ${
+        mobile ? "text-[15px]" : "text-[34px]"
+      }`}
+    >
+      {value}
+    </p>
+    <p
+      className={`text-[hsl(var(--slide-text-muted))] mt-[4px] ${
+        mobile ? "text-[10px]" : "text-[16px]"
+      }`}
+    >
+      {label}
+    </p>
+  </div>
+);
+
+export const S4b = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="h-[230px] relative shrink-0">
+          <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover object-[center_25%]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
+          <div className="absolute left-[16px] bottom-[14px] z-10">
+            <p className="text-[12px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
+            <p className="text-[9px] text-[hsl(var(--slide-text-muted))]">Serial founder · 2 exits · Tel Aviv</p>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col px-[24px] pt-[14px]">
+          <Eyebrow mobile>Твой ментор</Eyebrow>
+          <h2 className="text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            16 лет. 7 продуктов. 2 экзита. Сейчас — строю с AI.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[10px]">
+            В 18 лет — первая компания с бюджетом $10. Дальше — RunEverywhere (50 000+ клиентов в 107 странах), CEO в канадском финтехе. Сейчас CEO MetaMinder и строю AI-продукты в одиночку.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            <SpeakerStat mobile value="7 продуктов" label="2 экзита" />
+            <SpeakerStat mobile value="50K+ клиентов" label="107 стран" />
+            <SpeakerStat mobile value="$0 → $8M ARR" label="MetaMinder + портфолио" />
+            <SpeakerStat mobile value="Solo AI builder" label="Без команды, без кода" />
+          </div>
+        </div>
+        <FooterMobile index={5} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex h-full">
+        <div className="w-[640px] h-full relative shrink-0 p-[80px]">
+          <div className="w-full h-full relative rounded-[14px] overflow-hidden border border-[hsl(var(--slide-gold)/0.25)]">
+            <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--slide-bg))] via-transparent to-transparent" />
+            <div className="absolute left-[24px] bottom-[20px] z-10">
+              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text-muted))]">Serial founder · 2 exits · Tel Aviv</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col justify-center pr-[120px] py-[80px]">
+          <Eyebrow>Твой ментор</Eyebrow>
+          <h2 className="text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em] mb-[28px]">
+            16 лет. 7 продуктов.<br />2 экзита. Сейчас — строю с AI.
+          </h2>
+          <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[36px] max-w-[820px]">
+            В 18 лет построил первую компанию с бюджетом $10. Дальше — RunEverywhere, спортивный стартап с 50 000+ клиентами в 107 странах. CEO в крупной канадской финтех-компании. Сейчас CEO MetaMinder (B2B SaaS, от $0 до первых платящих клиентов за 7 месяцев) и строю AI-продукты в одиночку — без команды, без агентств.
+          </p>
+          <div className="grid grid-cols-2 gap-[16px] max-w-[760px]">
+            <SpeakerStat value="7 продуктов" label="2 экзита" />
+            <SpeakerStat value="50K+ клиентов" label="107 стран" />
+            <SpeakerStat value="$0 → $8M ARR" label="MetaMinder + портфолио" />
+            <SpeakerStat value="Solo AI builder" label="Без команды, без кода" />
+          </div>
+        </div>
+      </div>
+      <Footer index={5} />
+    </Stage>
+  );
+};
+
 export const S5 = () => (
   <CaseTitle
-    index={5}
+    index={6}
     name="InterviewNinja"
     sub="2017–2018. Стартап, который я закрыл."
     punch="18 месяцев. Команда. Деньги. Закрыто."
@@ -270,7 +361,7 @@ export const S6 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={6} />
+        <FooterMobile index={7} />
       </Stage>
     );
   }
@@ -296,7 +387,7 @@ export const S6 = () => {
           </div>
         </div>
       </div>
-      <Footer index={6} />
+      <Footer index={7} />
     </Stage>
   );
 };
@@ -354,7 +445,7 @@ const Numbered: React.FC<{ index: number; eyebrow: string; title: string; items:
 
 export const S7 = () => (
   <Numbered
-    index={7}
+    index={8}
     eyebrow="Сигналы, которые я не услышал"
     title="Сигналы, которые я не услышал"
     items={[
@@ -368,7 +459,7 @@ export const S7 = () => (
 
 export const S8 = () => (
   <Numbered
-    index={8}
+    index={9}
     eyebrow="Что я сделал бы сейчас"
     title="Что я сделал бы сейчас"
     items={[
@@ -381,7 +472,7 @@ export const S8 = () => (
 
 export const S9 = () => (
   <CaseTitle
-    index={9}
+    index={10}
     name="MetaMinder"
     sub="2019–2025. B2B SaaS LMS. Экзит."
     punch="В первой версии — никто не покупал. Во второй — нашли свою нишу. Разница — 47 разговоров."
@@ -390,7 +481,7 @@ export const S9 = () => (
 
 export const S10 = () => (
   <CaseTitle
-    index={10}
+    index={11}
     name="Mikey"
     sub="2025–сейчас. AI-matchmaking для Израиля."
     punch="Валидация — это не разовый акт. Это ритм."
@@ -399,7 +490,7 @@ export const S10 = () => (
 
 export const S11 = () => (
   <CaseTitle
-    index={11}
+    index={12}
     name="RunEverywhere"
     sub="50,000+ пользователей в 107 странах."
     punch="Я не задавал вопросы. Рынок сам говорил. Я просто умел слушать."
@@ -412,7 +503,7 @@ export const S12 = () => (
     <PullQuote sub="">
       Валидация — это не доказательство того, что идея хорошая. Это попытка её убить.
     </PullQuote>
-    <Footer index={12} />
+    <Footer index={13} />
   </div>
 );
 
@@ -433,7 +524,7 @@ export const S13 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={13} />
+        <FooterMobile index={14} />
       </Stage>
     );
   }
@@ -450,7 +541,7 @@ export const S13 = () => {
           </p>
         </div>
       </div>
-      <Footer index={13} />
+      <Footer index={14} />
     </Stage>
   );
 };
@@ -479,7 +570,7 @@ export const S14 = () => {
             «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
           </p>
         </div>
-        <FooterMobile index={14} />
+        <FooterMobile index={15} />
       </Stage>
     );
   }
@@ -502,7 +593,7 @@ export const S14 = () => {
           «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
         </p>
       </div>
-      <Footer index={14} />
+      <Footer index={15} />
     </Stage>
   );
 };
@@ -533,7 +624,7 @@ export const S15 = () => {
             «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
           </p>
         </div>
-        <FooterMobile index={15} />
+        <FooterMobile index={16} />
       </Stage>
     );
   }
@@ -559,7 +650,7 @@ export const S15 = () => {
           «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
         </p>
       </div>
-      <Footer index={15} />
+      <Footer index={16} />
     </Stage>
   );
 };
@@ -599,7 +690,7 @@ export const S16 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={16} />
+        <FooterMobile index={17} />
       </Stage>
     );
   }
@@ -622,7 +713,7 @@ export const S16 = () => {
           </div>
         </div>
       </div>
-      <Footer index={16} />
+      <Footer index={17} />
     </Stage>
   );
 };
@@ -666,7 +757,7 @@ export const S17 = () => {
             <ResourceCard mobile icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
           </div>
         </div>
-        <FooterMobile index={17} />
+        <FooterMobile index={18} />
       </Stage>
     );
   }
@@ -682,7 +773,7 @@ export const S17 = () => {
           <ResourceCard icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
         </div>
       </div>
-      <Footer index={17} />
+      <Footer index={18} />
     </Stage>
   );
 };
@@ -729,7 +820,7 @@ export const S18 = () => {
             «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
           </p>
         </div>
-        <FooterMobile index={18} />
+        <FooterMobile index={19} />
       </Stage>
     );
   }
@@ -747,7 +838,7 @@ export const S18 = () => {
           «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
         </p>
       </div>
-      <Footer index={18} />
+      <Footer index={19} />
     </Stage>
   );
 };
@@ -780,7 +871,7 @@ export const S19 = () => {
             ))}
           </div>
         </div>
-        <FooterMobile index={19} />
+        <FooterMobile index={20} />
       </Stage>
     );
   }
@@ -803,7 +894,7 @@ export const S19 = () => {
           ))}
         </div>
       </div>
-      <Footer index={19} />
+      <Footer index={20} />
     </Stage>
   );
 };
@@ -843,7 +934,7 @@ export const S20 = () => {
             founders-circle.space →
           </a>
         </div>
-        <FooterMobile index={20} />
+        <FooterMobile index={21} />
       </Stage>
     );
   }
@@ -873,7 +964,7 @@ export const S20 = () => {
           Узнать больше → founders-circle.space
         </a>
       </div>
-      <Footer index={20} />
+      <Footer index={21} />
     </Stage>
   );
 };
@@ -894,7 +985,7 @@ export const S21 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={21} />
+        <FooterMobile index={22} />
       </Stage>
     );
   }
@@ -910,7 +1001,7 @@ export const S21 = () => {
           </p>
         </div>
       </div>
-      <Footer index={21} />
+      <Footer index={22} />
     </Stage>
   );
 };
@@ -943,7 +1034,7 @@ export const S22 = () => {
             Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
           </p>
         </div>
-        <FooterMobile index={22} />
+        <FooterMobile index={23} />
       </Stage>
     );
   }
@@ -966,9 +1057,9 @@ export const S22 = () => {
           Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
         </p>
       </div>
-      <Footer index={22} />
+      <Footer index={23} />
     </Stage>
   );
 };
 
-export const slides = [S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
+export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
