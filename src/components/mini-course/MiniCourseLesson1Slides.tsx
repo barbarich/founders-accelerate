@@ -1653,29 +1653,47 @@ export const S13 = () => {
   );
 };
 
-/* ========== Slide 14 — Who NOT to interview ========== */
+/* ========== Slide 22 — Whom to interview (friends/family are OK if they are TA) ========== */
 export const S14 = () => {
   const isMobile = useIsMobile();
-  const items = ["Друзей", "Семью", "Тех, кому ты нравишься"];
+  const yes = [
+    { k: "Целевая аудитория", v: "Те, у кого реально есть эта проблема — независимо от того, знаешь ты их или нет." },
+    { k: "Друзья и семья — если они ЦА", v: "Их легче найти и попросить 30 минут. Не отказывайся от доступного канала." },
+    { k: "Знакомые из ниши", v: "Коллеги, бывшие клиенты, люди из чатов и сообществ. Они дадут честный контекст." },
+  ];
+  const no = [
+    { k: "Прямые вопросы «купишь / не купишь»", v: "Ответ всегда вежливый и бесполезный. Спрашивай про прошлый опыт, а не про будущее." },
+    { k: "Презентация идеи в лоб", v: "Как только ты «продаёшь» — собеседник начинает поддакивать. Ты слышишь себя, а не его." },
+  ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Кого не интервьюируешь</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[12px]">
-            Кого ты НЕ интервьюируешь
+          <Eyebrow mobile>Кого интервьюировать</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[8px]">
+            Друзей и семью — <span className="text-[hsl(var(--slide-gold))]">можно</span>. Если они ЦА.
           </h2>
-          <div className="space-y-[6px] mb-[12px]">
-            {items.map((t) => (
-              <div key={t} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[8px] flex gap-[8px] items-center">
-                <span className="text-red-400 text-[14px]">✕</span>
-                <span className="text-[12px] text-[hsl(var(--slide-text))]">{t}</span>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            Главное — не <span className="text-[hsl(var(--slide-text))]">кого</span> ты спрашиваешь, а <span className="text-[hsl(var(--slide-text))]">как</span>. Доступные люди — это плюс. А «купишь / не купишь» — табу для всех.
+          </p>
+          <p className="text-[9.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Можно интервьюировать</p>
+          <div className="space-y-[5px] mb-[8px]">
+            {yes.map((y) => (
+              <div key={y.k} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[10px] py-[7px]">
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{y.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{y.v}</p>
               </div>
             ))}
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
-          </p>
+          <p className="text-[9.5px] font-bold text-red-400 uppercase tracking-[0.15em] mb-[4px]">Что нельзя — никогда</p>
+          <div className="space-y-[5px]">
+            {no.map((n) => (
+              <div key={n.k} className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[6px] px-[10px] py-[7px]">
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{n.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{n.v}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <FooterMobile index={22} />
       </Stage>
@@ -1684,20 +1702,43 @@ export const S14 = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Кого ты НЕ интервьюируешь</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px]">
-          Кого ты НЕ интервьюируешь
+        <Eyebrow>Кого интервьюировать</Eyebrow>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] max-w-[1620px]">
+          Друзей и семью — <span className="text-[hsl(var(--slide-gold))]">можно</span>. Если они твоя ЦА.
         </h2>
-        <div className="space-y-[14px] max-w-[1400px] mb-[36px]">
-          {items.map((t) => (
-            <div key={t} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[22px] flex gap-[24px] items-center">
-              <span className="text-red-400 text-[36px] leading-none">✕</span>
-              <span className="text-[34px] text-[hsl(var(--slide-text))] font-medium">{t}</span>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[32px] max-w-[1500px]">
+          Найти 10 «незнакомых» респондентов — задача на недели. Доступные люди вокруг тебя — нормальный канал. Главное — не <span className="text-[hsl(var(--slide-text))] font-semibold">кого</span> ты спрашиваешь, а <span className="text-[hsl(var(--slide-text))] font-semibold">как</span>.
+        </p>
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[14px] px-[28px] py-[22px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
+              Можно интервьюировать
+            </p>
+            <div className="space-y-[12px]">
+              {yes.map((y) => (
+                <div key={y.k}>
+                  <p className="text-[19px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{y.k}</p>
+                  <p className="text-[16px] text-[hsl(var(--slide-text)/0.8)] leading-[1.45]">{y.v}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/35 rounded-[14px] px-[28px] py-[22px]">
+            <p className="text-[14px] font-bold text-red-400 uppercase tracking-[0.18em] mb-[14px]">
+              Что нельзя — никогда
+            </p>
+            <div className="space-y-[12px]">
+              {no.map((n) => (
+                <div key={n.k}>
+                  <p className="text-[19px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{n.k}</p>
+                  <p className="text-[16px] text-[hsl(var(--slide-text)/0.8)] leading-[1.45]">{n.v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1500px]">
-          «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
+        <p className="text-[20px] text-[hsl(var(--slide-gold))] italic mt-[24px] max-w-[1620px]">
+          Технику Customer Development интервью разберём дальше — там и научимся вытаскивать правду из любого собеседника.
         </p>
       </div>
       <Footer index={22} />
