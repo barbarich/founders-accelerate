@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer, Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson1Slides";
 
@@ -139,6 +140,15 @@ export default function MiniCourseLesson1() {
 
         {/* Top-right utility buttons */}
         <div className="absolute top-4 right-4 z-10 flex gap-2">
+          <Link
+            to="/mini-course/lesson1/text"
+            onClick={(e) => e.stopPropagation()}
+            className="flex items-center gap-1.5 px-2.5 py-2 rounded bg-white/5 hover:bg-white/15 text-white/80 transition text-[12px] font-medium"
+            title="Текстовая версия для AI (Claude / ChatGPT)"
+          >
+            <Sparkles size={14} />
+            <span className="hidden sm:inline">AI-версия</span>
+          </Link>
           <button
             onClick={(e) => { e.stopPropagation(); exportPDF(); }}
             className="p-2 rounded bg-white/5 hover:bg-white/15 text-white/80 transition"
