@@ -212,21 +212,45 @@ const stats = [
 ];
 export const S4 = () => {
   const isMobile = useIsMobile();
+  const industry: Array<[string, string, string]> = [
+    ["42%", "стартапов закрываются от «no market need»", "CB Insights"],
+    ["80%", "AI-проектов не доходят до продакшена", "RAND Corporation"],
+    ["1 из 12", "стартапов доходит до product-market fit", "Startup Genome"],
+  ];
+  const myScore: Array<[string, string]> = [
+    ["6 мес", "на InterviewNinja без валидации — закрыл"],
+    ["7 мес", "на MetaMinder с правильным ресёрчем — первый платящий клиент"],
+    ["50K+", "клиентов на RunEverywhere в 107 странах — поймали момент"],
+  ];
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Статистика</Eyebrow>
-          <div className="space-y-[8px] mb-[12px]">
-            {stats.map(([n, t]) => (
-              <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[10px] py-[8px] flex gap-[10px] items-baseline">
-                <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] font-bold shrink-0 min-w-[64px]">{n}</span>
-                <span className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.3]">{t}</span>
+        <div className="flex flex-col justify-center px-[20px] h-full gap-[10px]">
+          <Eyebrow mobile>Статистика индустрии</Eyebrow>
+          <div className="grid grid-cols-3 gap-[6px]">
+            {industry.map(([n, t, src]) => (
+              <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[6px] px-[6px] py-[8px] flex flex-col">
+                <span className="font-mono text-[14px] text-[hsl(var(--slide-gold))] font-bold leading-none">{n}</span>
+                <span className="text-[8px] text-[hsl(var(--slide-text))] leading-[1.25] mt-[5px]">{t}</span>
+                <span className="text-[7px] text-[hsl(var(--slide-text-muted))] mt-[4px] uppercase tracking-[0.06em]">{src}</span>
               </div>
             ))}
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold">
-            Это не статистика. Это распределение твоих шансов.
+          <div className="border-t border-[hsl(var(--slide-gold)/0.5)] my-[2px]" />
+          <p className="italic text-[9px] text-[hsl(var(--slide-gold))] text-center">
+            А вот мой счёт по каждому из трёх подходов:
+          </p>
+          <Eyebrow mobile>Мой счёт</Eyebrow>
+          <div className="grid grid-cols-3 gap-[6px]">
+            {myScore.map(([n, t]) => (
+              <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[6px] px-[6px] py-[8px] flex flex-col">
+                <span className="font-mono text-[14px] text-[hsl(var(--slide-gold))] font-bold leading-none">{n}</span>
+                <span className="text-[8px] text-[hsl(var(--slide-text))] leading-[1.25] mt-[5px]">{t}</span>
+              </div>
+            ))}
+          </div>
+          <p className="italic text-[8px] text-[hsl(var(--slide-gold))] text-center mt-[4px] leading-[1.35]">
+            Индустрия — это твои шансы. Мой счёт — это карта, по какой дорожке ты пойдёшь.
           </p>
         </div>
         <FooterMobile index={4} />
@@ -235,18 +259,42 @@ export const S4 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Статистика</Eyebrow>
-        <div className="space-y-[18px] max-w-[1500px] mb-[28px]">
-          {stats.map(([n, t]) => (
-            <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[36px] py-[24px] flex gap-[36px] items-baseline">
-              <span className="font-mono text-[64px] text-[hsl(var(--slide-gold))] font-bold leading-none shrink-0 min-w-[260px]">{n}</span>
-              <span className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.35]">{t}</span>
-            </div>
-          ))}
+      <div className="flex flex-col justify-center px-[140px] h-full gap-[28px]">
+        <div>
+          <Eyebrow>Статистика индустрии</Eyebrow>
+          <div className="grid grid-cols-3 gap-[24px] max-w-[1640px]">
+            {industry.map(([n, t, src]) => (
+              <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.5)] rounded-[14px] px-[32px] py-[28px] flex flex-col">
+                <span className="font-mono text-[88px] text-[hsl(var(--slide-gold))] font-bold leading-none">{n}</span>
+                <span className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.3] mt-[18px]">{t}</span>
+                <span className="text-[14px] text-[hsl(var(--slide-text-muted))] mt-[16px] uppercase tracking-[0.12em]">{src}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold">
-          Это не статистика. Это распределение твоих шансов.
+
+        <div className="flex flex-col items-center gap-[14px]">
+          <div className="h-[1px] w-full bg-[hsl(var(--slide-gold)/0.5)]" />
+          <p className="italic text-[24px] text-[hsl(var(--slide-gold))]">
+            А вот мой счёт по каждому из трёх подходов:
+          </p>
+          <div className="h-[1px] w-full bg-[hsl(var(--slide-gold)/0.5)]" />
+        </div>
+
+        <div>
+          <Eyebrow>Мой счёт</Eyebrow>
+          <div className="grid grid-cols-3 gap-[24px] max-w-[1640px]">
+            {myScore.map(([n, t]) => (
+              <div key={n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.5)] rounded-[14px] px-[32px] py-[28px] flex flex-col">
+                <span className="font-mono text-[80px] text-[hsl(var(--slide-gold))] font-bold leading-none">{n}</span>
+                <span className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.3] mt-[18px]">{t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="italic text-[22px] text-[hsl(var(--slide-gold))] text-center mt-[4px]">
+          Индустрия — это твои шансы. Мой счёт — это карта, по какой дорожке ты пойдёшь.
         </p>
       </div>
       <Footer index={4} />
