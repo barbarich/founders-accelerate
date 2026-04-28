@@ -1,6 +1,7 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { QRCodeSVG } from "qrcode.react";
+import { Check, Copy } from "lucide-react";
 import titleBg from "@/assets/slides/title-bg.jpg";
 import photoMichael from "@/assets/slides/photo-michael.jpg";
 import { useSlideMeta } from "./SlideMetaContext";
@@ -3210,13 +3211,15 @@ export const slides = [
   S4,                       // 6  Stats
   S4b,                      // 7  Mentor intro
   S9,                       // 8  MetaMinder success case
-  L1ThreeLevels,            // 10 Three levels of competitors
-  L1EightDimensions,        // 11 8 dimensions to check
-  L1NegativeReviews,        // 12 Negative reviews are gold
-  L1Perplexity,             // 13 Perplexity · 5 prompts
-  L1VerificationTools,      // 14 SimilarWeb + Meta Ad Library + Google Trends
-  L1GapsPositioning,        // 15 3 gaps + Positioning formula + mid CTA
-  L1PracticeNow,            // 16 Practice now · 10 min
-  L1FullPlan,               // 17 Full 90-min plan + templates
-  L1Closing,                // 18 Closing + CTA → Lesson 2
+  L1ThreeLevels,            // 9  Three levels of competitors
+  L1EightDimensions,        // 10 8 dimensions to check
+  L1NegativeReviews,        // 11 Negative reviews are gold
+  L1Perplexity,             // 12 Perplexity · 5 prompts
+  L1DeepResearchPrompt,     // 13 Deep Research master prompt (replaces VerificationTools)
+  L1AgentLens,              // 14 FoundersLens AI agent
+  L1AgentPmf,               // 15 PMF AI agent
+  L1GapsPositioning,        // 16 3 gaps + Positioning formula + mid CTA
+  L1PracticeNow,            // 17 Practice now · 10 min
+  L1FullPlan,               // 18 Full 90-min plan + templates
+  L1Closing,                // 19 Closing + CTA → Lesson 2
 ];
