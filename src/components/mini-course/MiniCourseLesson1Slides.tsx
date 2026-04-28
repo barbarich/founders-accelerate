@@ -236,6 +236,96 @@ const CaseTitle: React.FC<{ name: string; sub: string; punch: string; index: num
   );
 };
 
+/* ========== Slide 5 — About the speaker ========== */
+const SpeakerStat: React.FC<{ value: string; label: string; mobile?: boolean }> = ({ value, label, mobile }) => (
+  <div
+    className={`bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] ${
+      mobile ? "px-[12px] py-[10px]" : "px-[28px] py-[22px]"
+    }`}
+  >
+    <p
+      className={`font-bold text-[hsl(var(--slide-text))] leading-[1.1] ${
+        mobile ? "text-[15px]" : "text-[34px]"
+      }`}
+    >
+      {value}
+    </p>
+    <p
+      className={`text-[hsl(var(--slide-text-muted))] mt-[4px] ${
+        mobile ? "text-[10px]" : "text-[16px]"
+      }`}
+    >
+      {label}
+    </p>
+  </div>
+);
+
+export const S4b = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="h-[230px] relative shrink-0">
+          <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover object-[center_25%]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
+          <div className="absolute left-[16px] bottom-[14px] z-10">
+            <p className="text-[12px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
+            <p className="text-[9px] text-[hsl(var(--slide-text-muted))]">Serial founder · 2 exits · Tel Aviv</p>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col px-[24px] pt-[14px]">
+          <Eyebrow mobile>Твой ментор</Eyebrow>
+          <h2 className="text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            16 лет. 7 продуктов. 2 экзита. Сейчас — строю с AI.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[10px]">
+            В 18 лет — первая компания с бюджетом $10. Дальше — RunEverywhere (50 000+ клиентов в 107 странах), CEO в канадском финтехе. Сейчас CEO MetaMinder и строю AI-продукты в одиночку.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            <SpeakerStat mobile value="7 продуктов" label="2 экзита" />
+            <SpeakerStat mobile value="50K+ клиентов" label="107 стран" />
+            <SpeakerStat mobile value="$0 → $8M ARR" label="MetaMinder + портфолио" />
+            <SpeakerStat mobile value="Solo AI builder" label="Без команды, без кода" />
+          </div>
+        </div>
+        <FooterMobile index={5} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex h-full">
+        <div className="w-[640px] h-full relative shrink-0 p-[80px]">
+          <div className="w-full h-full relative rounded-[14px] overflow-hidden border border-[hsl(var(--slide-gold)/0.25)]">
+            <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--slide-bg))] via-transparent to-transparent" />
+            <div className="absolute left-[24px] bottom-[20px] z-10">
+              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text-muted))]">Serial founder · 2 exits · Tel Aviv</p>
+            </div>
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col justify-center pr-[120px] py-[80px]">
+          <Eyebrow>Твой ментор</Eyebrow>
+          <h2 className="text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em] mb-[28px]">
+            16 лет. 7 продуктов.<br />2 экзита. Сейчас — строю с AI.
+          </h2>
+          <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[36px] max-w-[820px]">
+            В 18 лет построил первую компанию с бюджетом $10. Дальше — RunEverywhere, спортивный стартап с 50 000+ клиентами в 107 странах. CEO в крупной канадской финтех-компании. Сейчас CEO MetaMinder (B2B SaaS, от $0 до первых платящих клиентов за 7 месяцев) и строю AI-продукты в одиночку — без команды, без агентств.
+          </p>
+          <div className="grid grid-cols-2 gap-[16px] max-w-[760px]">
+            <SpeakerStat value="7 продуктов" label="2 экзита" />
+            <SpeakerStat value="50K+ клиентов" label="107 стран" />
+            <SpeakerStat value="$0 → $8M ARR" label="MetaMinder + портфолио" />
+            <SpeakerStat value="Solo AI builder" label="Без команды, без кода" />
+          </div>
+        </div>
+      </div>
+      <Footer index={5} />
+    </Stage>
+  );
+};
+
 export const S5 = () => (
   <CaseTitle
     index={6}
