@@ -1266,10 +1266,24 @@ export const S12d = () => {
               </div>
             ))}
           </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
-            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-              <span className="font-bold text-[hsl(var(--slide-text))]">FoundersLens</span> — agentов прогоняет твою идею. Ссылка → /agents/lens
-            </p>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px] flex items-center gap-[10px]">
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                <span className="font-bold text-[hsl(var(--slide-text))]">FoundersLens</span> — агент прогоняет твою идею.
+              </p>
+              <p className="text-[8.5px] font-mono text-[hsl(var(--slide-gold))] mt-[2px]">
+                founders-circle.space/agents/lens
+              </p>
+            </div>
+            <div className="bg-white p-[3px] rounded-[3px] flex-shrink-0">
+              <QRCodeSVG
+                value="https://founders-circle.space/agents/lens"
+                size={48}
+                level="M"
+                bgColor="#ffffff"
+                fgColor="#0A0E1A"
+              />
+            </div>
           </div>
         </div>
         <FooterMobile index={17} />
