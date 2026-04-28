@@ -3052,14 +3052,6 @@ export const L1InterviewNinjaRetro = () => {
   );
 };
 
-/* Slide 15 — Practice now · 10 minutes */
-const PRACTICE_STEPS: { time: string; t: string }[] = [
-  { time: "2 мин", t: "Открой Perplexity → вставь промпт «Карта конкурентов» со своей нишей" },
-  { time: "2 мин", t: "Из результата выбери 3 прямых конкурента → запиши в таблицу: название, цена, ключевое отличие" },
-  { time: "2 мин", t: "Открой сайт главного конкурента → зафиксируй: заголовок, CTA, целевая аудитория" },
-  { time: "2 мин", t: "Найди 2–3 негативных отзыва на конкурента (G2, Trustpilot, App Store) → запиши главные боли" },
-  { time: "2 мин", t: "Сформулируй одно предложение: чем твой продукт лучше главного конкурента" },
-];
 /* ========== Slide · Homework (merged practice + plan) ========== */
 const HOMEWORK_STEPS: { title: string; body: string }[] = [
   { title: "Запусти Deep Research", body: "Возьми мастер-промпт со слайда 14, заполни 15 полей про свою идею и прогони в Claude / ChatGPT / Gemini." },
