@@ -1746,30 +1746,54 @@ export const S14 = () => {
   );
 };
 
-/* ========== Slide 15 — Bad vs Good question ========== */
+/* ========== Slide 23 — Bad vs Good questions (open + about the past) ========== */
 export const S15 = () => {
   const isMobile = useIsMobile();
+  const pairs = [
+    {
+      bad: "«Тебе бы пригодилось приложение, которое...?»",
+      good: "«Расскажи, как ты решал эту задачу в последний раз?»",
+    },
+    {
+      bad: "«Ты бы заплатил $20 в месяц за такое?»",
+      good: "«Сколько ты сейчас тратишь — деньгами или временем — чтобы это решать?»",
+    },
+    {
+      bad: "«Тебе нравится идея?»",
+      good: "«Что ты пробовал до этого и почему перестал этим пользоваться?»",
+    },
+    {
+      bad: "«Ты бы пользовался этим каждый день?»",
+      good: "«Когда последний раз эта проблема всплывала и что ты тогда сделал?»",
+    },
+  ];
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
+        <div className="flex flex-col justify-center px-[20px] h-full">
           <Eyebrow mobile>Как спрашивать</Eyebrow>
-          <div className="space-y-[8px] mb-[12px]">
-            <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[7px] px-[12px] py-[10px]">
-              <p className="text-[10px] font-bold text-red-400 uppercase tracking-[0.15em] mb-[4px]">Плохо</p>
-              <p className="text-[11px] italic text-[hsl(var(--slide-text))] leading-[1.4]">
-                «Тебе бы пригодилось приложение, которое...?»
-              </p>
-            </div>
-            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[7px] px-[12px] py-[10px]">
-              <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Хорошо</p>
-              <p className="text-[11px] italic text-[hsl(var(--slide-text))] leading-[1.4]">
-                «Расскажи, как ты решал эту проблему в последний раз?»
-              </p>
-            </div>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[6px]">
+            Открытые вопросы про <span className="text-[hsl(var(--slide-gold))]">прошлое</span>.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[8px]">
+            Закрытые вопросы про будущее → вежливые фантазии. Открытые про прошлое → реальные данные о поведении.
+          </p>
+          <div className="space-y-[5px]">
+            {pairs.map((p) => (
+              <div key={p.bad} className="grid grid-cols-2 gap-[5px]">
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[6px] px-[8px] py-[6px]">
+                  <p className="text-[8px] font-bold text-red-400 uppercase tracking-[0.12em] mb-[2px]">Плохо</p>
+                  <p className="text-[9px] italic text-[hsl(var(--slide-text))] leading-[1.35]">{p.bad}</p>
+                </div>
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[6px] px-[8px] py-[6px]">
+                  <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[2px]">Хорошо</p>
+                  <p className="text-[9px] italic text-[hsl(var(--slide-text))] leading-[1.35]">{p.good}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
+          <p className="text-[9.5px] text-[hsl(var(--slide-gold))] italic leading-[1.4] mt-[8px]">
+            Прошлое — данные. Будущее — фантазии.
           </p>
         </div>
         <FooterMobile index={23} />
@@ -1780,22 +1804,28 @@ export const S15 = () => {
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
         <Eyebrow>Как спрашивать</Eyebrow>
-        <div className="grid grid-cols-2 gap-[28px] max-w-[1600px] mb-[36px]">
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[16px] px-[36px] py-[32px]">
-            <p className="text-[20px] font-bold text-red-400 uppercase tracking-[0.15em] mb-[18px]">Плохо</p>
-            <p className="text-[28px] italic text-[hsl(var(--slide-text))] leading-[1.4]">
-              «Тебе бы пригодилось приложение, которое...?»
-            </p>
-          </div>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[16px] px-[36px] py-[32px]">
-            <p className="text-[20px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[18px]">Хорошо</p>
-            <p className="text-[28px] italic text-[hsl(var(--slide-text))] leading-[1.4]">
-              «Расскажи, как ты решал эту проблему в последний раз?»
-            </p>
-          </div>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[18px]">
+          Открытые вопросы про <span className="text-[hsl(var(--slide-gold))]">прошлое</span>.
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1500px]">
+          Закрытые вопросы про будущее = вежливые фантазии. Открытые вопросы про прошлый опыт = реальные данные о поведении.
+        </p>
+        <div className="grid grid-cols-2 gap-x-[24px] gap-y-[14px] max-w-[1620px] mb-[24px]">
+          {pairs.map((p) => (
+            <React.Fragment key={p.bad}>
+              <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[12px] px-[24px] py-[16px]">
+                <p className="text-[12px] font-bold text-red-400 uppercase tracking-[0.18em] mb-[8px]">Плохо</p>
+                <p className="text-[20px] italic text-[hsl(var(--slide-text))] leading-[1.4]">{p.bad}</p>
+              </div>
+              <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[12px] px-[24px] py-[16px]">
+                <p className="text-[12px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">Хорошо</p>
+                <p className="text-[20px] italic text-[hsl(var(--slide-text))] leading-[1.4]">{p.good}</p>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
-        <p className="text-[26px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1600px]">
-          «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1620px]">
+          Прошлое — данные. Будущее — фантазии. Спрашивай так, чтобы человек <span className="not-italic font-semibold">рассказывал историю</span>, а не отвечал «да / нет».
         </p>
       </div>
       <Footer index={23} />
