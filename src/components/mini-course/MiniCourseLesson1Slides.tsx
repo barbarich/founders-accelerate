@@ -1034,18 +1034,22 @@ export const S12b = () => {
     {
       k: "Размер и динамика",
       v: "Сколько людей реально могут купить. Растёт рынок или сжимается. Куда смотрят инвесторы.",
+      tools: "Statista · Crunchbase · CB Insights",
     },
     {
       k: "Тренды и окно",
       v: "Что изменилось за 1–2 года и делает идею реалистичной именно сейчас. Технология, поведение, регуляции.",
+      tools: "Google Trends · Exploding Topics · Glimpse",
     },
     {
       k: "Незакрытые ниши",
       v: "На что жалуются пользователи, но никто не чинит. Какие сегменты игнорируют большие игроки.",
+      tools: "Reddit + GummySearch · App Store / G2 reviews",
     },
     {
       k: "Риски",
       v: "Платформенные, регуляторные, угроза от больших платформ. Где можно умереть, не начав.",
+      tools: "SimilarWeb · Wayback Machine · Product Hunt graveyard",
     },
   ];
   if (isMobile) {
@@ -1066,7 +1070,10 @@ export const S12b = () => {
                 className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
               >
                 <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[2px]">{p.k}</p>
-                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{p.v}</p>
+                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] mb-[4px]">{p.v}</p>
+                <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.6)] leading-[1.35] pt-[4px] border-t border-[hsl(var(--slide-gold)/0.15)]">
+                  <span className="uppercase tracking-[0.1em] text-[hsl(var(--slide-gold)/0.85)] font-semibold">Tools · </span>{p.tools}
+                </p>
               </div>
             ))}
           </div>
@@ -1094,7 +1101,10 @@ export const S12b = () => {
               <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">
                 {p.k}
               </p>
-              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{p.v}</p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45] mb-[14px]">{p.v}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text)/0.7)] leading-[1.45] pt-[12px] border-t border-[hsl(var(--slide-gold)/0.18)]">
+                <span className="uppercase tracking-[0.14em] text-[hsl(var(--slide-gold))] font-semibold text-[12px]">Tools · </span>{p.tools}
+              </p>
             </div>
           ))}
         </div>
