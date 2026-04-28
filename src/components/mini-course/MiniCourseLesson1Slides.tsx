@@ -2911,34 +2911,45 @@ const GAPS = [
 ];
 export const L1GapsPositioning = () => {
   const isMobile = useIsMobile();
+  const examples = [
+    {
+      bad: '"Mikey — это AI-приложение для знакомств."',
+      good: '"Mikey подбирает партнёра по ценностям через AI-диалог — без свайпов, без фейков, полностью анонимно."',
+    },
+    {
+      bad: '"MetaMinder — платформа для обучения."',
+      good: '"MetaMinder создаёт обучение для сотрудников за 5 минут с помощью AI — без методологов, без бюджета на разработку."',
+    },
+  ];
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[18px] h-full">
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
-            Шаг финальный · 3 дыры + позиционирование
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Позиционирование</p>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
+            Формула позиционирования
           </h2>
-          <p className="text-[9.5px] text-[hsl(var(--slide-text-muted))] italic mb-[8px]">Ресёрч без позиционирования — потерянное время.</p>
-          <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">3 типа дыр:</p>
-          <ul className="space-y-[3px] mb-[8px]">
-            {GAPS.map((g) => (
-              <li key={g.t} className="text-[9.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                <b className="text-[hsl(var(--slide-text))]">{g.t}</b> — {g.d}
-              </li>
-            ))}
-          </ul>
-          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[8px] mb-[8px]">
-            <p className="text-[9.5px] font-bold text-[hsl(var(--slide-text))] leading-[1.45]">
-              [Продукт] помогает [кому конкретно]<br />
-              [решить проблему / получить результат],<br />
-              в отличие от [главная альтернатива],<br />
-              который [её слабость].
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[8px] p-[12px] mb-[12px]">
+            <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.6]">
+              <span className="text-[hsl(var(--slide-gold))] font-semibold">[Продукт]</span> помогает{" "}
+              <span className="text-[hsl(var(--slide-gold))] font-semibold">[кому]</span>{" "}
+              <span className="text-[hsl(var(--slide-gold))] font-semibold">[решить проблему]</span>,{" "}
+              <span className="text-[hsl(var(--slide-gold))] font-semibold">[чем отличается от альтернатив]</span>.
             </p>
           </div>
-          <div className="border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[7px]">
-            <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] italic leading-[1.4]">
-              Хочешь, чтобы я еженедельно разбирал твою карту конкурентов и говорил, где ты обманываешь себя — TFC. <span className="text-[hsl(var(--slide-gold))] font-semibold">founders-circle.space →</span>
-            </p>
+          <div className="space-y-[8px]">
+            {examples.map((e, i) => (
+              <div key={i} className="space-y-[4px]">
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.5)] rounded-[6px] p-[8px]">
+                  <span className="text-[8.5px] uppercase tracking-[0.15em] text-[hsl(var(--slide-text-muted))] font-medium">❌ Плохо</span>
+                  <p className="text-[9.5px] text-[hsl(var(--slide-text-muted))] mt-[3px] leading-[1.45]">{e.bad}</p>
+                </div>
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[6px] p-[8px]">
+                  <span className="text-[8.5px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium">✅ Хорошо</span>
+                  <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.92)] mt-[3px] leading-[1.45]">{e.good}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <FooterMobile />
@@ -2948,37 +2959,31 @@ export const L1GapsPositioning = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px] tracking-[-0.01em]">
-          Шаг финальный · 3 дыры + позиционирование
+        <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Позиционирование</p>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px]">
+          Формула позиционирования
         </h2>
-        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] italic mb-[24px]">
-          Ресёрч без позиционирования — потерянное время.
-        </p>
-        <div className="grid grid-cols-2 gap-[36px] mb-[24px]">
-          <div>
-            <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">3 типа дыр</p>
-            <ul className="space-y-[14px]">
-              {GAPS.map((g) => (
-                <li key={g.t} className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
-                  <b className="text-[hsl(var(--slide-text))]">{g.t}</b> — {g.d}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[28px] py-[22px]">
-            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Формула позиционирования</p>
-            <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.5]">
-              [Продукт] помогает [кому конкретно]<br />
-              [решить проблему / получить результат],<br />
-              в отличие от [главная альтернатива],<br />
-              который [её слабость].
-            </p>
-          </div>
-        </div>
-        <div className="border border-[hsl(var(--slide-gold)/0.35)] rounded-[12px] px-[24px] py-[16px] bg-[hsl(var(--slide-bg-alt)/0.5)]">
-          <p className="text-[17px] text-[hsl(var(--slide-text)/0.85)] italic leading-[1.5]">
-            Это весь метод. Сделать его руками за 90 минут — реально. Сделать так, чтобы он сработал — нужны итерации. Если хочешь, чтобы я еженедельно разбирал твою карту конкурентов и говорил, где ты обманываешь себя — TFC. <span className="text-[hsl(var(--slide-gold))] font-semibold not-italic">founders-circle.space →</span>
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[12px] p-[36px] mb-[36px]">
+          <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5]">
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[Продукт]</span> помогает{" "}
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[кому конкретно]</span>{" "}
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[решить проблему / получить результат]</span>,{" "}
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">[чем отличается от альтернатив]</span>.
           </p>
+        </div>
+        <div className="space-y-[20px]">
+          {examples.map((e, i) => (
+            <div key={i} className="flex gap-[24px]">
+              <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.5)] rounded-[12px] p-[24px]">
+                <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-text-muted))] font-medium">❌ Плохо</span>
+                <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">{e.bad}</p>
+              </div>
+              <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[12px] p-[24px]">
+                <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium">✅ Хорошо</span>
+                <p className="text-[20px] text-[hsl(var(--slide-text)/0.92)] mt-[10px] leading-[1.5]">{e.good}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <Footer />
