@@ -1451,7 +1451,7 @@ export const S13 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Метод</Eyebrow>
+          <Eyebrow mobile>Якорь 3 · Customer Development</Eyebrow>
           <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
             Customer Development.
           </h2>
@@ -1471,7 +1471,7 @@ export const S13 = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Метод</Eyebrow>
+        <Eyebrow>Якорь 3 · Customer Development</Eyebrow>
         <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
           Customer Development.
         </h2>
