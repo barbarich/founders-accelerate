@@ -295,19 +295,19 @@ export const S5 = () => {
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[22px] h-full">
+        <div className="flex flex-col justify-center items-start text-left px-[22px] h-full">
           <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[18px]">
             Главное правило
           </h2>
-          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[14px] py-[18px] mb-[16px] bg-[hsl(var(--slide-gold)/0.04)]">
-            <p className="text-[14px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.3]">
+          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[14px] py-[18px] mb-[16px] bg-[hsl(var(--slide-gold)/0.04)] w-full">
+            <p className="text-[14px] text-[hsl(var(--slide-gold))] italic font-semibold text-left leading-[1.3]">
               Никто не построит и не продаст продукт за тебя.
             </p>
           </div>
-          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
+          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px] text-left">
             Знание без практики = теория.
           </p>
-          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5]">
+          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] text-left">
             Ставь на паузу. Применяй инструменты, промпты и агентов сразу.
           </p>
         </div>
@@ -317,19 +317,19 @@ export const S5 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center items-center px-[140px] h-full max-w-[1720px] mx-auto">
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[60px] text-center">
+      <div className="flex flex-col justify-center items-start text-left px-[140px] h-full" style={{ maxWidth: 1720 }}>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[60px]">
           Главное правило
         </h2>
-        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[80px] py-[64px] mb-[60px] bg-[hsl(var(--slide-gold)/0.04)] w-full max-w-[1500px]">
-          <p className="text-[52px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.2]">
+        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[64px] py-[56px] mb-[48px] bg-[hsl(var(--slide-gold)/0.04)] w-full max-w-[1500px]">
+          <p className="text-[48px] text-[hsl(var(--slide-gold))] italic font-semibold text-left leading-[1.25]">
             Никто не построит и не продаст продукт за тебя.
           </p>
         </div>
-        <p className="text-[30px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[16px] text-center">
+        <p className="text-[30px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[16px] text-left">
           Знание без практики = теория.
         </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px]">
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-left max-w-[1500px]">
           Ставь на паузу. Применяй инструменты, промпты и AI-агентов сразу.
         </p>
       </div>
@@ -344,15 +344,15 @@ export const S6 = () => {
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
-          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[14px] text-center">В следующем уроке</p>
-          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] text-center">
+        <div className="flex flex-col justify-center items-start text-left px-[24px] h-full">
+          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[14px] text-left">В следующем уроке</p>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] text-left">
             Урок 1 · Анализ рынка и конкурентов
           </h2>
-          <p className="text-[12px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[12px] text-center">
+          <p className="text-[12px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[12px] text-left">
             Как с помощью AI-инструментов оценить рынок и разобрать конкурентов — чтобы найти, куда заходить.
           </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center">
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-left">
             К концу урока ты будешь видеть свой рынок, ключевых игроков и свободные ниши, в которые можно зайти.
           </p>
         </div>
@@ -362,15 +362,15 @@ export const S6 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center items-center px-[140px] h-full max-w-[1700px] mx-auto">
-        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[22px] mb-[40px]">В следующем уроке</p>
-        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px] text-center">
+      <div className="flex flex-col justify-center items-start text-left px-[140px] h-full" style={{ maxWidth: 1700 }}>
+        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[22px] mb-[40px] text-left">В следующем уроке</p>
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px] text-left">
           Урок 1 · Анализ рынка и конкурентов
         </h2>
-        <p className="text-[34px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[32px] text-center max-w-[1500px]">
+        <p className="text-[34px] text-[hsl(var(--slide-gold))] leading-[1.4] mb-[32px] text-left max-w-[1500px]">
           Как с помощью AI-инструментов оценить рынок и разобрать конкурентов — чтобы найти, куда заходить.
         </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px]">
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-left max-w-[1500px]">
           К концу урока ты будешь видеть свой рынок, ключевых игроков и свободные ниши, в которые можно зайти.
         </p>
       </div>
