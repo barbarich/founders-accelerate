@@ -3146,19 +3146,20 @@ export const L1FullPlan = () => {
 export const slides = [
   S1,                       // 1  Title
   S2,                       // 2  Main insight (rewritten)
-  S3,                       // 3  Mirror question (rewritten)
-  S4,                       // 4  Stats
-  S4b,                      // 5  Mentor intro
-  L1WhyMarketFirst,         // 6  Why market research first (NEW)
-  S9,                       // 7  MetaMinder success case
-  L1ThreeLevels,            // 8  Three levels of competitors (NEW)
-  L1EightDimensions,        // 9  8 dimensions to check (NEW)
-  L1NegativeReviews,        // 10 Negative reviews are gold (NEW)
-  L1Perplexity,             // 11 Perplexity · 5 prompts (NEW)
-  L1VerificationTools,      // 12 SimilarWeb + Meta Ad Library + Google Trends (NEW)
-  L1GapsPositioning,        // 13 3 gaps + Positioning formula + mid CTA (NEW)
-  L1InterviewNinjaRetro,    // 14 InterviewNinja counter-case (NEW)
-  L1PracticeNow,            // 15 Practice now · 10 min (NEW)
-  L1FullPlan,               // 16 Full 90-min plan + templates (NEW)
-  L1Closing,                // 17 Closing + CTA → Lesson 2
+  S5,                       // 3  InterviewNinja — личный провальный кейс (title)
+  S6,                       // 4  InterviewNinja — анатомия (что строил + цифры)
+  S3,                       // 5  Mirror question
+  S4,                       // 6  Stats
+  S4b,                      // 7  Mentor intro
+  L1WhyMarketFirst,         // 8  Why market research first
+  S9,                       // 9  MetaMinder success case
+  L1ThreeLevels,            // 10 Three levels of competitors
+  L1EightDimensions,        // 11 8 dimensions to check
+  L1NegativeReviews,        // 12 Negative reviews are gold
+  L1Perplexity,             // 13 Perplexity · 5 prompts
+  L1VerificationTools,      // 14 SimilarWeb + Meta Ad Library + Google Trends
+  L1GapsPositioning,        // 15 3 gaps + Positioning formula + mid CTA
+  L1PracticeNow,            // 16 Practice now · 10 min
+  L1FullPlan,               // 17 Full 90-min plan + templates
+  L1Closing,                // 18 Closing + CTA → Lesson 2
 ];
