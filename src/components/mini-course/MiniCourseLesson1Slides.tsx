@@ -1145,29 +1145,49 @@ export const S12b = () => {
   );
 };
 
-/* ========== Slide 16 — Deep Research prompt ========== */
+/* ========== Slide 16 — AI 80% / Human 20% ========== */
 export const S12c = () => {
   const isMobile = useIsMobile();
+  const aiDoes = [
+    "Парсит десятки источников за один прогон",
+    "Находит конкурентов, цены, позиционирование",
+    "Достаёт цитаты пользователей с Reddit, G2, отзывов",
+    "Сводит инсайты в структурированный отчёт",
+  ];
+  const youDo = [
+    "Открой сайты топ-5 конкурентов руками",
+    "Прочитай 10–20 живых отзывов и статей",
+    "Перепроверь ключевые цифры в источниках",
+    "Сложи свою личную картину рынка в голове",
+  ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Шаг 1 · Deep Research</Eyebrow>
+          <Eyebrow mobile>Правило · AI ≠ замена тебя</Eyebrow>
           <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Один промпт — отчёт по рынку.
+            AI делает <span className="text-[hsl(var(--slide-gold))]">80%</span>. Остальные <span className="text-[hsl(var(--slide-gold))]">20%</span> — твои.
           </h2>
           <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
-            Открой ChatGPT / Claude / Gemini в режиме <span className="text-[hsl(var(--slide-gold))]">Deep Research</span>. Вставь мастер-промпт. Заполни поля в скобках. Получи 8–10 страниц с цитатами и источниками.
+            Deep Research — мощная база, но он ошибается и придумывает. Если построить продукт только на отчёте AI и он не выстрелит — обвинять будет некого. Финальная валидация всегда на фаундере.
           </p>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[12px] py-[10px] mb-[8px]">
-            <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Что внутри отчёта</p>
-            <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
-              Боль с реальными цитатами · размер рынка · топ-7 конкурентов · кто провалился и почему · незакрытые ниши · окно «почему сейчас» · риски + план на 7 дней.
-            </p>
+          <div className="grid grid-cols-2 gap-[6px] mb-[8px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[10px] py-[8px]">
+              <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[4px]">AI делает</p>
+              <ul className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4] space-y-[2px]">
+                {aiDoes.map((x) => <li key={x}>• {x}</li>)}
+              </ul>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[7px] px-[10px] py-[8px]">
+              <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[4px]">Ты делаешь</p>
+              <ul className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4] space-y-[2px]">
+                {youDo.map((x) => <li key={x}>• {x}</li>)}
+              </ul>
+            </div>
           </div>
           <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
             <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-              Готовый промпт — в материалах урока. Просто скопируй и запусти.
+              Слепо доверять AI = строить вслепую. Используй как базу — валидируй руками.
             </p>
           </div>
         </div>
@@ -1178,45 +1198,35 @@ export const S12c = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Шаг 1 · Deep Research</Eyebrow>
+        <Eyebrow>Правило · AI ≠ замена тебя</Eyebrow>
         <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
-          Один промпт — отчёт по рынку.
+          AI делает <span className="text-[hsl(var(--slide-gold))]">80%</span> работы. Остальные <span className="text-[hsl(var(--slide-gold))]">20%</span> — твои.
         </h2>
         <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
-          Открой ChatGPT / Claude / Gemini в режиме <span className="text-[hsl(var(--slide-gold))]">Deep Research</span>. Вставь мастер-промпт. Заполни поля в скобках. Получи 8–10 страниц с цитатами и источниками.
+          Deep Research — мощная база. Но AI ошибается, придумывает цифры и упускает контекст. Если построить продукт только на его отчёте и он не выстрелит — <span className="text-[hsl(var(--slide-gold))]">обвинять будет некого</span>. Финальная валидация всегда на фаундере.
         </p>
-        <div className="grid grid-cols-2 gap-[20px] max-w-[1620px]">
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1620px] mb-[24px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px]">
             <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
-              Что внутри отчёта
+              AI делает (80%)
             </p>
-            <ul className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[2px]">
-              <li>• Боль с реальными цитатами и URL</li>
-              <li>• Размер рынка обычными словами</li>
-              <li>• Топ-7 конкурентов с ценами</li>
-              <li>• Кто провалился и главный урок</li>
-              <li>• Незакрытые ниши и сегменты</li>
-              <li>• Окно «почему именно сейчас»</li>
-              <li>• Риски + план действий на 7 дней</li>
+            <ul className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[6px]">
+              {aiDoes.map((x) => <li key={x}>• {x}</li>)}
             </ul>
           </div>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px] flex flex-col">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.45)] rounded-[14px] px-[32px] py-[26px]">
             <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">
-              Правила промпта
+              Ты делаешь руками (20%)
             </p>
-            <ul className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[2px]">
-              <li>• Простой язык, без TAM/SAM/CAGR</li>
-              <li>• Каждое утверждение — с источником</li>
-              <li>• Нет данных — пишет «нет данных»</li>
-              <li>• Вердикт: ДА / НЕТ / ИЗМЕНИТЬ</li>
-              <li>• 8–10 страниц, читается за 20 минут</li>
+            <ul className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.6] space-y-[6px]">
+              {youDo.map((x) => <li key={x}>• {x}</li>)}
             </ul>
-            <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[20px] py-[14px] mt-[18px]">
-              <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.4]">
-                Готовый промпт — в материалах урока. Скопируй и запусти.
-              </p>
-            </div>
           </div>
+        </div>
+        <div className="max-w-[1620px] bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[28px] py-[18px]">
+          <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.45]">
+            Слепо доверять AI = строить вслепую. Используй как базу, но <span className="text-[hsl(var(--slide-gold))]">проверь руками</span> — иначе рискуешь построить то, что никому не нужно.
+          </p>
         </div>
       </div>
       <Footer index={16} />
