@@ -1,6 +1,7 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { QRCodeSVG } from "qrcode.react";
+import { Check, Copy } from "lucide-react";
 import titleBg from "@/assets/slides/title-bg.jpg";
 import photoMichael from "@/assets/slides/photo-michael.jpg";
 import { useSlideMeta } from "./SlideMetaContext";
@@ -3200,7 +3201,318 @@ export const L1FullPlan = () => {
   );
 };
 
-// Lesson 1 — 17 slides (Market & Competitor Research, v3 restructure)
+/* ========== Slide · Deep Research master prompt ========== */
+const DEEP_RESEARCH_PROMPT = `# РОЛЬ
+
+Ты — опытный бизнес-консультант, который 15 лет помогает предпринимателям без технического бэкграунда не вкладываться в плохие идеи и развивать хорошие.
+
+Твой собеседник — фаундер, который не программист, не MBA, не аналитик. Он строит свой первый или второй продукт. Он не знает и не обязан знать слова TAM, CAGR, unit economics, cold start problem, platform risk.
+
+Твоя задача — провести глубокий ресерч и дать ему понятный ответ на русском языке с конкретным планом действий.
+
+Ты НЕ продавец его идеи. Ты НЕ мотиватор. Ты НЕ друг, который поддерживает.
+Ты — старший партнёр, которому платят за то, чтобы он сказал правду, даже если она неприятная.
+
+Главный вопрос: **Стоит ли фаундеру строить эту идею прямо сейчас?**
+Финальный ответ: ДА / НЕТ / ИЗМЕНИТЬ НАПРАВЛЕНИЕ.
+
+---
+
+# РАССКАЖИ ПРО СВОЮ ИДЕЮ (заполни каждое поле)
+
+1. Что строишь — одним предложением? [ТВОЙ ОТВЕТ]
+2. Для кого — максимально узко? [ТВОЙ ОТВЕТ]
+3. Какую боль решаешь? [ТВОЙ ОТВЕТ]
+4. Как эту боль решают сейчас? (минимум 3 альтернативы) [ТВОЙ ОТВЕТ]
+5. Как планируешь зарабатывать? [ТВОЙ ОТВЕТ]
+6. Какая цена — в $ / € / ₪? И на чём основана? [ТВОЙ ОТВЕТ]
+7. Где продаёшь? (страна / регион / глобально) [ТВОЙ ОТВЕТ]
+8. На каком этапе сейчас? [ТВОЙ ОТВЕТ]
+9. Чем отличаешься от того, что уже есть? [ТВОЙ ОТВЕТ]
+10. Почему именно ты можешь это построить? [ТВОЙ ОТВЕТ]
+11. Сколько денег готов вложить и на какой срок? [ТВОЙ ОТВЕТ]
+12. Через сколько хочешь запустить первую версию? [ТВОЙ ОТВЕТ]
+13. Есть ли уже 3–5 реальных людей, готовых купить? [ТВОЙ ОТВЕТ]
+14. Что ты уже пробовал / проверял? [ТВОЙ ОТВЕТ]
+15. Какие у тебя сейчас главные сомнения? [ТВОЙ ОТВЕТ]
+
+---
+
+# ЧТО ИССЛЕДОВАТЬ
+Источники: Reddit, App Store / Google Play, G2, Capterra, Trustpilot, Crunchbase, Statista, Google Trends, Product Hunt, Failory.
+
+1. Реальна ли эта боль? — минимум 10 реальных цитат с URL.
+2. Сколько людей реально могут купить? — размер рынка обычными словами.
+3. Кто уже на рынке (топ-7 конкурентов) — таблица: Конкурент | Цена | Слабое место | Место для нас.
+4. Кто пробовал и провалился (3–5 кейсов) — что хотели, сколько потратили, почему упали.
+5. Где свободное место — на что жалуются, но никто не чинит. 3–5 ниш.
+6. Почему именно сейчас? — что изменилось за 1–2 года.
+7. Реальные риски — для каждого одно конкретное действие.
+
+---
+
+# КАК ПИСАТЬ ОТВЕТ
+Простой язык. Каждое утверждение — с источником. Цитаты — реальные и переведённые. Нет данных — пиши «нет данных». После каждого блока — строка «если коротко». 8–10 страниц, читается за 20 минут. Не хвали и не бей. Всегда давай план действий на 7 дней.
+
+---
+
+# СТРУКТУРА ОТВЕТА
+## 📍 Главное за 30 секунд — Вердикт ДА / НЕТ / ПЕРЕСМОТРИТЕ + 3 причины + 3 риска
+## 📍 Что я проверил и что нашёл — разбор по 7 вопросам
+## 📍 Мой вердикт развёрнуто
+## 📍 План на ближайшие 7 дней — три конкретных действия
+## 📍 Если решаешь строить — что дальше
+## 📍 Если решаешь не строить — что забрать в следующую идею
+
+---
+
+# СТАРТУЙ
+Проведи полный ресерч. Пиши простым человеческим языком. Не пропускай разделы.`;
+
+function highlightDRPrompt(text: string) {
+  const parts = text.split(/(\[[^\]]+\])/g);
+  return parts.map((part, i) => {
+    if (/^\[[^\]]+\]$/.test(part)) {
+      return (
+        <span
+          key={i}
+          className="inline-block px-[6px] py-[1px] mx-[1px] rounded-[3px] bg-[hsl(var(--slide-gold)/0.18)] border border-[hsl(var(--slide-gold))] text-[hsl(var(--slide-gold))] font-semibold"
+        >
+          {part}
+        </span>
+      );
+    }
+    return <React.Fragment key={i}>{part}</React.Fragment>;
+  });
+}
+
+export const L1DeepResearchPrompt = () => {
+  const isMobile = useIsMobile();
+  const [copied, setCopied] = React.useState(false);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(DEEP_RESEARCH_PROMPT);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col px-[20px] pt-[20px] pb-[24px] h-full gap-[8px]">
+          <Eyebrow mobile>Шаг 1 · Deep Research</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15]">
+            Недели ресёрча — за <span className="text-[hsl(var(--slide-gold))]">30 минут</span>.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">
+            Заполни <span className="text-[hsl(var(--slide-gold))]">[поля в скобках]</span> и вставь в Claude / ChatGPT / Gemini Deep Research.
+          </p>
+          <button
+            onClick={handleCopy}
+            className="self-start inline-flex items-center gap-[5px] px-[10px] py-[5px] rounded-[6px] border border-[hsl(var(--slide-gold))] text-[10px] font-mono uppercase tracking-[0.05em] text-[hsl(var(--slide-gold))] hover:bg-[hsl(var(--slide-gold)/0.1)] transition"
+          >
+            {copied ? <Check size={11} /> : <Copy size={11} />}
+            {copied ? "Скопировано" : "Копировать промпт"}
+          </button>
+          <div className="flex-1 min-h-0 overflow-y-auto bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[10px] py-[10px] font-mono text-[8px] leading-[1.55] text-[hsl(var(--slide-text)/0.9)] whitespace-pre-wrap break-words prompt-scroll">
+            {highlightDRPrompt(DEEP_RESEARCH_PROMPT)}
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col px-[140px] pt-[80px] pb-[80px] h-full gap-[20px]" style={{ minHeight: 0 }}>
+        <Eyebrow>Шаг 1 · Deep Research в ChatGPT / Gemini / Claude</Eyebrow>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
+          То, на что ушли бы <span className="text-[hsl(var(--slide-gold))]">недели</span>, теперь делается за <span className="text-[hsl(var(--slide-gold))]">30 минут</span>.
+        </h2>
+        <div className="grid gap-[28px] flex-1" style={{ gridTemplateColumns: "1fr 1.3fr", minHeight: 0 }}>
+          {/* LEFT */}
+          <div className="flex flex-col bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[36px] py-[32px] gap-[20px]" style={{ minHeight: 0 }}>
+            <p className="text-[14px] font-mono uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))]">
+              Что делает Deep Research
+            </p>
+            <ul className="text-[20px] text-[hsl(var(--slide-text)/0.92)] leading-[1.6] space-y-[6px]">
+              <li>• Парсит десятки источников за один прогон</li>
+              <li>• Сравнивает конкурентов, цены, позиционирование</li>
+              <li>• Достаёт цитаты пользователей с Reddit, G2, отзывов</li>
+              <li>• Сводит всё в структурированный отчёт со ссылками</li>
+            </ul>
+            <div className="mt-auto px-[22px] py-[18px] border-l-[4px] border-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.08)] rounded-r-[6px]">
+              <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
+                90% фаундеров пропускают этот шаг — «и так понятно». В итоге строят то, что уже есть.
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT — prompt panel */}
+          <div className="flex flex-col bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] overflow-hidden" style={{ minHeight: 0 }}>
+            <div className="flex items-center justify-between px-[24px] py-[18px] border-b border-[hsl(var(--slide-border))] bg-[hsl(var(--slide-bg)/0.4)]">
+              <div className="flex flex-col gap-[4px]">
+                <p className="text-[13px] font-mono uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))]">
+                  Мастер-промпт · бонус
+                </p>
+                <p className="text-[14px] text-[hsl(var(--slide-text-muted))]">
+                  Заполни поля в <span className="text-[hsl(var(--slide-gold))]">[квадратных скобках]</span> и вставь в Deep Research
+                </p>
+              </div>
+              <button
+                onClick={handleCopy}
+                className="inline-flex items-center gap-[8px] px-[16px] py-[10px] rounded-[8px] border border-[hsl(var(--slide-gold))] font-mono text-[13px] uppercase tracking-[0.05em] font-semibold transition whitespace-nowrap"
+                style={{
+                  background: copied ? "hsl(var(--slide-gold))" : "transparent",
+                  color: copied ? "hsl(var(--slide-bg))" : "hsl(var(--slide-gold))",
+                }}
+              >
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? "Скопировано" : "Копировать"}
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto px-[28px] py-[24px] font-mono text-[14px] leading-[1.65] text-[hsl(var(--slide-text)/0.92)] whitespace-pre-wrap break-words prompt-scroll" style={{ minHeight: 0 }}>
+              {highlightDRPrompt(DEEP_RESEARCH_PROMPT)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide · AI Agent · FoundersLens (Lens) ========== */
+const AgentSlide: React.FC<{
+  eyebrow: string;
+  titleHighlight: string;
+  titleRest: string;
+  intro: React.ReactNode;
+  cards: { k: string; v: string }[];
+  ctaTitle: React.ReactNode;
+  ctaSub: string;
+  url: string;
+  shortUrl: string;
+}> = ({ eyebrow, titleHighlight, titleRest, intro, cards, ctaTitle, ctaSub, url, shortUrl }) => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>{eyebrow}</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            <span className="text-[hsl(var(--slide-gold))]">{titleHighlight}</span> {titleRest}
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            {intro}
+          </p>
+          <div className="grid grid-cols-2 gap-[6px] mb-[8px]">
+            {cards.map((c) => (
+              <div
+                key={c.k}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[10px] py-[8px]"
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-text))]">{c.k}</p>
+                <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{c.v}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px] flex items-center gap-[10px]">
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{ctaTitle}</p>
+              <p className="text-[8.5px] font-mono text-[hsl(var(--slide-gold))] mt-[2px]">{shortUrl}</p>
+            </div>
+            <div className="bg-white p-[3px] rounded-[3px] flex-shrink-0">
+              <QRCodeSVG value={url} size={48} level="M" bgColor="#ffffff" fgColor="#0A0E1A" />
+            </div>
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          <span className="text-[hsl(var(--slide-gold))]">{titleHighlight}</span> {titleRest}
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[32px] max-w-[1500px]">
+          {intro}
+        </p>
+        <div className="grid grid-cols-4 gap-[18px] max-w-[1620px]">
+          {cards.map((c) => (
+            <div
+              key={c.k}
+              className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[24px] py-[22px]"
+            >
+              <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[8px]">{c.k}</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{c.v}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border border-[hsl(var(--slide-gold))] rounded-[12px] px-[36px] py-[22px] mt-[28px] max-w-[1620px] flex items-center justify-between gap-[24px]">
+          <div>
+            <p className="font-mono text-[13px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] mb-[6px]">
+              Бонус для участников
+            </p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.4]">{ctaTitle}</p>
+            <p className="font-mono text-[14px] text-[hsl(var(--slide-gold))] font-bold mt-[6px]">{shortUrl} →</p>
+            <p className="text-[15px] text-[hsl(var(--slide-text-muted))] mt-[4px]">{ctaSub}</p>
+          </div>
+          <div className="bg-white p-[8px] rounded-[8px] flex-shrink-0">
+            <QRCodeSVG value={url} size={120} level="M" bgColor="#ffffff" fgColor="#0A0E1A" />
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+export const L1AgentLens = () => (
+  <AgentSlide
+    eyebrow="Шаг 2 · Мой AI Research Agent"
+    titleHighlight="FoundersLens"
+    titleRest="— рыночный ресёрч на уровне McKinsey за 10 минут."
+    intro={<>Подхватывает там, где Deep Research заканчивается. <span className="text-[hsl(var(--slide-text))] font-semibold">30 конкурентов, TAM/SAM/SOM, тренды, креативы их рекламы</span> — и вердикт GO / PIVOT / NO-GO с планом на 30 дней.</>}
+    cards={[
+      { k: "Анализ рынка", v: "Размер, динамика, ключевые игроки." },
+      { k: "30 конкурентов", v: "Цены, позиционирование, слабые места." },
+      { k: "Реклама конкурентов", v: "Что крутят и на каких креативах." },
+      { k: "Вердикт + план", v: "GO / PIVOT / NO-GO, 30-дневный roadmap." },
+    ]}
+    ctaTitle={<><span className="font-bold">FoundersLens</span> — прогоняет твою идею за один запуск.</>}
+    ctaSub="~10 минут · 25-страничный HTML-отчёт · работает на твоём LLM-ключе"
+    url="https://founders-circle.space/agents/lens"
+    shortUrl="founders-circle.space/agents/lens"
+  />
+);
+
+export const L1AgentPmf = () => (
+  <AgentSlide
+    eyebrow="Шаг 3 · Мой AI Validation Agent"
+    titleHighlight="PMF Agent"
+    titleRest="— честная оценка Product-Market Fit."
+    intro={<>Когда ресёрч сделан — нужно понять: <span className="text-[hsl(var(--slide-text))] font-semibold">а есть ли у идеи шанс на PMF?</span> Агент считает 9-осевой PMF Score и не льстит. Если score &lt; 50 — Pivot Advisor предлагает альтернативные траектории.</>}
+    cards={[
+      { k: "9-осевой скор", v: "Pain, market, timing, demand, monetization, экономика." },
+      { k: "Honest-сигнал", v: "GO / VALIDATE / PIVOT — без подбадривания." },
+      { k: "Pivot Advisor", v: "Если слабо — генерирует 3 альтернативных направления." },
+      { k: "Карта рисков", v: "Что обвалит идею и как закрыть до запуска." },
+    ]}
+    ctaTitle={<><span className="font-bold">PMF Agent</span> — проверяет, готова ли идея к стройке.</>}
+    ctaSub="~10–15 минут · PMF-скоринг + pivot-сценарии · работает на твоём LLM-ключе"
+    url="https://founders-circle.space/agents/pmf"
+    shortUrl="founders-circle.space/agents/pmf"
+  />
+);
+
+// Lesson 1 — slides (Market & Competitor Research, v3 restructure)
 export const slides = [
   S1,                       // 1  Title
   S2,                       // 2  Main insight (rewritten)
@@ -3210,13 +3522,15 @@ export const slides = [
   S4,                       // 6  Stats
   S4b,                      // 7  Mentor intro
   S9,                       // 8  MetaMinder success case
-  L1ThreeLevels,            // 10 Three levels of competitors
-  L1EightDimensions,        // 11 8 dimensions to check
-  L1NegativeReviews,        // 12 Negative reviews are gold
-  L1Perplexity,             // 13 Perplexity · 5 prompts
-  L1VerificationTools,      // 14 SimilarWeb + Meta Ad Library + Google Trends
-  L1GapsPositioning,        // 15 3 gaps + Positioning formula + mid CTA
-  L1PracticeNow,            // 16 Practice now · 10 min
-  L1FullPlan,               // 17 Full 90-min plan + templates
-  L1Closing,                // 18 Closing + CTA → Lesson 2
+  L1ThreeLevels,            // 9  Three levels of competitors
+  L1EightDimensions,        // 10 8 dimensions to check
+  L1NegativeReviews,        // 11 Negative reviews are gold
+  L1Perplexity,             // 12 Perplexity · 5 prompts
+  L1DeepResearchPrompt,     // 13 Deep Research master prompt (replaces VerificationTools)
+  L1AgentLens,              // 14 FoundersLens AI agent
+  L1AgentPmf,               // 15 PMF AI agent
+  L1GapsPositioning,        // 16 3 gaps + Positioning formula + mid CTA
+  L1PracticeNow,            // 17 Practice now · 10 min
+  L1FullPlan,               // 18 Full 90-min plan + templates
+  L1Closing,                // 19 Closing + CTA → Lesson 2
 ];
