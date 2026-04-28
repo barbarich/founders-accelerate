@@ -571,18 +571,91 @@ export const S7 = () => {
   );
 };
 
-export const S8 = () => (
-  <Numbered
-    index={9}
-    eyebrow="Что я сделал бы сейчас"
-    title="Что я сделал бы сейчас"
-    items={[
-      "Спросил бы $1 до постройки",
-      "Говорил бы с теми, кто меня не любит",
-      "Слушал бы паузы, а не слова",
-    ]}
-  />
-);
+export const S8 = () => {
+  const isMobile = useIsMobile();
+  const steps = [
+    {
+      kicker: "01",
+      title: "Глубокий ресёрч рынка",
+      body: "AI-инструменты делают за день то, на что раньше уходил месяц ручной работы. Размер рынка, тренды, поведение, цены — всё в одном слое данных.",
+    },
+    {
+      kicker: "02",
+      title: "Анализ каждого конкурента",
+      body: "Каждый сайт, каждое приложение, каждый флоу. Как устроены, как монетизируют, за что платят — и платят ли вообще.",
+    },
+    {
+      kicker: "03",
+      title: "Глубинные интервью",
+      body: "Найти людей, которые реально страдают этой проблемой. В каждом разговоре валидировать: то, что я строю — им вообще нужно?",
+    },
+    {
+      kicker: "04",
+      title: "Только потом — код",
+      body: "Свести рынок + конкурентов + живые слова аудитории в одну картину. И только тогда приступать к разработке. Не раньше.",
+    },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Что я сделал бы сейчас</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Сначала — ресёрч. Код — последним.
+          </h2>
+          <div className="space-y-[7px]">
+            {steps.map((s) => (
+              <div
+                key={s.kicker}
+                className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px] flex gap-[10px]"
+              >
+                <span className="font-mono text-[12px] text-[hsl(var(--slide-gold))] font-bold leading-none shrink-0 mt-[2px]">
+                  {s.kicker}
+                </span>
+                <div>
+                  <p className="text-[11px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mb-[2px]">
+                    {s.title}
+                  </p>
+                  <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile index={9} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Что я сделал бы сейчас</Eyebrow>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em] mb-[36px] max-w-[1500px]">
+          Сначала — ресёрч. Код — последним.
+        </h2>
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1600px]">
+          {steps.map((s) => (
+            <div
+              key={s.kicker}
+              className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px] flex gap-[22px]"
+            >
+              <span className="font-mono text-[40px] text-[hsl(var(--slide-gold))] font-bold leading-none shrink-0">
+                {s.kicker}
+              </span>
+              <div>
+                <p className="text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">
+                  {s.title}
+                </p>
+                <p className="text-[19px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Footer index={9} />
+    </Stage>
+  );
+};
 
 export const S9 = () => (
   <CaseTitle
