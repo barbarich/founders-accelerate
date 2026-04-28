@@ -2148,7 +2148,7 @@ export const S20 = () => {
             founders-circle.space →
           </a>
         </div>
-        <FooterMobile index={28} />
+        <FooterMobile index={26} />
       </Stage>
     );
   }
@@ -2178,7 +2178,7 @@ export const S20 = () => {
           Узнать больше → founders-circle.space
         </a>
       </div>
-      <Footer index={28} />
+      <Footer index={26} />
     </Stage>
   );
 };
@@ -2192,14 +2192,15 @@ export const S21 = () => {
         <div className="flex flex-col justify-center px-[24px] h-full">
           <Eyebrow mobile>Закрывающая мысль</Eyebrow>
           <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[14px]">
-            <p className="text-[12px] font-medium italic text-[hsl(var(--slide-text))] leading-[1.45]">
-              «Валидация — это не доказательство. Это попытка убить идею.<br /><br />
-              Если идея пережила 10 правильных разговоров — можно строить.<br /><br />
-              Если нет — ты только что сэкономил себе 18 месяцев жизни.»
+            <p className="text-[13px] font-bold italic text-[hsl(var(--slide-text))] leading-[1.4] mb-[10px]">
+              «Валидация — это не доказательство. Это попытка убить идею.»
+            </p>
+            <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+              Рынок, конкуренты и реальные разговоры с ЦА — это три разных молотка, которыми ты бьёшь по своей гипотезе. Если она устояла — у тебя на руках не вера, а доказательства. Если развалилась — ты сэкономил себе 18 месяцев жизни и кучу денег.
             </p>
           </div>
         </div>
-        <FooterMobile index={29} />
+        <FooterMobile index={27} />
       </Stage>
     );
   }
@@ -2208,72 +2209,64 @@ export const S21 = () => {
       <div className="flex flex-col justify-center px-[140px] h-full">
         <Eyebrow>Закрывающая мысль</Eyebrow>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[44px] py-[40px] max-w-[1600px]">
-          <p className="text-[40px] font-medium italic text-[hsl(var(--slide-text))] leading-[1.4]">
-            «Валидация — это не доказательство. Это попытка убить идею.<br /><br />
-            Если идея пережила 10 правильных разговоров — можно строить.<br /><br />
-            Если нет — ты только что сэкономил себе 18 месяцев жизни.»
+          <p className="text-[44px] font-bold italic text-[hsl(var(--slide-text))] leading-[1.3] mb-[28px]">
+            «Валидация — это не доказательство. Это попытка убить идею.»
+          </p>
+          <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+            Рынок, конкуренты и реальные разговоры с ЦА — это три разных молотка, которыми ты бьёшь по своей гипотезе. Если она устояла под всеми тремя — у тебя на руках не вера, а доказательства, и можно строить. Если развалилась — ты только что сэкономил себе 18 месяцев жизни и кучу денег.
           </p>
         </div>
       </div>
-      <Footer index={29} />
+      <Footer index={27} />
     </Stage>
   );
 };
 
-/* ========== Slide 22 — Homework ========== */
+/* ========== Slide 22 — Motivation / outro ========== */
 export const S22 = () => {
   const isMobile = useIsMobile();
-  const items = [
-    "Назначь 3 разговора в ближайшие 7 дней",
-    "Запиши, что ты услышал — буквально, словами собеседника",
-    "На Уроке 2 ты будешь работать с этими записями",
-  ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>До Урока 2</Eyebrow>
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-            До Урока 2
+          <Eyebrow mobile>В завершение</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Сегодня ты получил то, что 9 из 10 фаундеров пропускают.
           </h2>
-          <ol className="space-y-[6px] mb-[12px]">
-            {items.map((t, i) => (
-              <li key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[7px] flex gap-[8px]">
-                <span className="font-mono text-[12px] text-[hsl(var(--slide-gold))] font-bold shrink-0">{i + 1}</span>
-                <span className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.35]">{t}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.4]">
-            Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.55] mb-[10px]">
+            Ты разобрался, как смотреть на рынок, как изучать конкурентов и как разговаривать с реальными людьми так, чтобы за тобой стояли данные, а не догадки.
+          </p>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.55] mb-[12px]">
+            Если ты хочешь построить продукт, которым будут реально пользоваться и за который будут платить — не клади эти знания «на потом». Открой блокнот, пройди чек-лист, поговори с 5 людьми. Это та работа, после которой решения перестают быть лотереей.
+          </p>
+          <p className="text-[11px] text-[hsl(var(--slide-gold))] font-bold italic leading-[1.4]">
+            Идея без проверки — мечта. Идея, прошедшая через рынок, конкурентов и клиентов — это уже бизнес.
           </p>
         </div>
-        <FooterMobile index={30} />
+        <FooterMobile index={28} />
       </Stage>
     );
   }
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Домашнее задание</Eyebrow>
-        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
-          До Урока 2
+        <Eyebrow>В завершение</Eyebrow>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] max-w-[1600px]">
+          Сегодня ты получил то, что 9 из 10 фаундеров пропускают.
         </h2>
-        <ol className="space-y-[14px] max-w-[1500px] mb-[36px]">
-          {items.map((t, i) => (
-            <li key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[22px] flex gap-[24px] items-baseline">
-              <span className="font-mono text-[40px] text-[hsl(var(--slide-gold))] font-bold leading-none shrink-0">{i + 1}</span>
-              <span className="text-[28px] text-[hsl(var(--slide-text))] leading-[1.4]">{t}</span>
-            </li>
-          ))}
-        </ol>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic leading-[1.4]">
-          Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.55] max-w-[1600px] mb-[18px]">
+          Ты разобрался, как смотреть на рынок, как изучать конкурентов и как разговаривать с реальными людьми так, чтобы за тобой стояли данные, а не догадки.
+        </p>
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.55] max-w-[1600px] mb-[28px]">
+          Если ты хочешь построить продукт, которым будут реально пользоваться и за который будут платить — не клади эти знания «на потом». Открой блокнот, пройди чек-лист, поговори с 5 людьми. Это та работа, после которой решения перестают быть лотереей.
+        </p>
+        <p className="text-[28px] text-[hsl(var(--slide-gold))] font-bold italic leading-[1.4] max-w-[1600px]">
+          Идея без проверки — мечта. Идея, прошедшая через рынок, конкурентов и клиентов — это уже бизнес.
         </p>
       </div>
-      <Footer index={30} />
+      <Footer index={28} />
     </Stage>
   );
 };
 
-export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S11c, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S18, S19, S20, S21, S22];
+export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S11c, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S18, S20, S21, S22];
