@@ -78,19 +78,19 @@ export const S2 = () => {
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
+        <div className="flex flex-col justify-center items-end text-right px-[24px] h-full">
           <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[16px]">
             Сделай это прямо сейчас
           </h2>
-          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[12px] py-[16px] mb-[14px] bg-[hsl(var(--slide-gold)/0.04)] overflow-hidden">
-            <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.3] font-medium whitespace-nowrap text-center">
+          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[12px] py-[16px] mb-[14px] bg-[hsl(var(--slide-gold)/0.04)] overflow-hidden w-full">
+            <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.3] font-medium whitespace-nowrap text-right">
               «Я строю <span className="text-[hsl(var(--slide-gold))] font-bold">[что]</span> для <span className="text-[hsl(var(--slide-gold))] font-bold">[кого]</span>, потому что они страдают от <span className="text-[hsl(var(--slide-gold))] font-bold">[чего]</span>.»
             </p>
           </div>
-          <p className="text-[11px] text-[hsl(var(--slide-gold))] italic leading-[1.4] mb-[10px]">
+          <p className="text-[11px] text-[hsl(var(--slide-gold))] italic leading-[1.4] mb-[10px] text-right">
             Возьми лист бумаги и напиши эту строку про свою идею. У фаундеров с чёткой идеей это занимает 60 секунд.
           </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-right">
             Если уместить идею в одну строку пока не получается — это нормально. Ты в правильном месте: именно над этим мы и начинаем работать.
           </p>
         </div>
@@ -100,19 +100,19 @@ export const S2 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1640px]">
+      <div className="flex flex-col justify-center items-end text-right px-[140px] h-full ml-auto" style={{ maxWidth: 1700 }}>
         <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[44px]">
           Сделай это прямо сейчас
         </h2>
-        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[48px] py-[56px] mb-[36px] bg-[hsl(var(--slide-gold)/0.04)] mx-auto w-full max-w-[1640px] overflow-hidden">
-          <p className="text-[32px] text-[hsl(var(--slide-text))] leading-[1.3] text-center font-medium whitespace-nowrap">
+        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[48px] py-[56px] mb-[36px] bg-[hsl(var(--slide-gold)/0.04)] w-full overflow-hidden">
+          <p className="text-[32px] text-[hsl(var(--slide-text))] leading-[1.3] text-right font-medium whitespace-nowrap">
             «Я строю <span className="text-[hsl(var(--slide-gold))] font-bold">[что]</span> для <span className="text-[hsl(var(--slide-gold))] font-bold">[кого]</span>, потому что они страдают от <span className="text-[hsl(var(--slide-gold))] font-bold">[чего]</span>.»
           </p>
         </div>
-        <p className="text-[26px] text-[hsl(var(--slide-gold))] italic leading-[1.45] mb-[20px] text-center max-w-[1500px] mx-auto">
-          Возьми лист бумаги и напиши эту строку про свою идею. У фаундеров с чёткой идеей и пониманием, что, кому и зачем они строят, это занимает 60 секунд.
+        <p className="text-[26px] text-[hsl(var(--slide-gold))] italic leading-[1.45] mb-[20px] text-right max-w-[1400px]">
+          Возьми лист бумаги и напиши эту строку про свою идею. У фаундеров с чёткой идеей это занимает 60 секунд.
         </p>
-        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px] mx-auto">
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-right max-w-[1400px]">
           Если уместить идею в одну строку пока не получается — это нормально. Ты в правильном месте: именно над этим мы и начинаем работать.
         </p>
       </div>
