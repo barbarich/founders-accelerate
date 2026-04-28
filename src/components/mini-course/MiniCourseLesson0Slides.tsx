@@ -285,18 +285,21 @@ export const S5 = () => {
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[18px]">
-            Главное правило этого курса
+        <div className="flex flex-col justify-center px-[22px] h-full">
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
+            Главное правило: ты делаешь сам
           </h2>
-          <p className="text-[16px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.35] mb-[18px]">
-            «Либо ты делаешь домашку, либо ставишь курс на паузу.»
+          <p className="text-[14px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.3] mb-[14px]">
+            «Никто не построит и не продаст продукт за тебя.»
           </p>
-          <p className="text-[12px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[10px]">
-            Не смотри четыре урока подряд «чтобы понять». Так не работает.
+          <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
+            Знание — это хорошо. Но идею валидирует, продукт строит и продажи делает только тот, кто внедряет знания на практике сразу. Иначе всё останется теорией.
           </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5]">
-            Лучше пройти один урок и применить, чем посмотреть четыре и забыть.
+          <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
+            Когда я даю инструмент, промпт или AI-агента — поставь на паузу, попробуй сам, посмотри, как это работает на твоей идее. Только это даёт результат.
+          </p>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.45]">
+            Создание стартапа — это лично твоя работа. Я рад делиться знаниями, которые тебя в этом усилят.
           </p>
         </div>
         <FooterMobile index={5} />
@@ -305,18 +308,21 @@ export const S5 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[60px]">
-          Главное правило этого курса
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1720px]">
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
+          Главное правило: ты делаешь сам
         </h2>
-        <p className="text-[54px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.3] mb-[48px] max-w-[1600px] mx-auto">
-          «Либо ты делаешь домашку, либо ставишь курс на паузу.»
+        <p className="text-[44px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.25] mb-[40px] max-w-[1600px] mx-auto">
+          «Никто не построит и не продаст продукт за тебя.»
         </p>
-        <p className="text-[28px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[20px]">
-          Не смотри четыре урока подряд «чтобы понять». Так не работает.
+        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[18px] max-w-[1600px]">
+          Знание — это хорошо. Но идею валидирует, продукт строит и продажи делает только тот, кто внедряет знания на практике сразу. Иначе всё останется теорией.
         </p>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5]">
-          Лучше пройти один урок и применить, чем посмотреть четыре и забыть.
+        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[24px] max-w-[1600px]">
+          Когда я даю инструмент, промпт или AI-агента — поставь на паузу, попробуй сам, посмотри, как это работает на твоей идее. Только это даёт результат.
+        </p>
+        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.5] max-w-[1600px]">
+          Создание стартапа — это лично твоя работа. Я рад делиться знаниями, которые тебя в этом усилят и приведут к результату.
         </p>
       </div>
       <Footer index={5} />
