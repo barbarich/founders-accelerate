@@ -1837,36 +1837,49 @@ export const S15 = () => {
 export const S16 = () => {
   const isMobile = useIsMobile();
   const pass = [
-    "Описывают ту же боль теми же словами",
-    "Сами рассказывают про костыли",
-    "Спрашивают «когда я могу попробовать?»",
-    "Готовы заплатить ДО продукта",
+    "Сами поднимают эту проблему — без наводящего вопроса",
+    "Описывают её теми же словами, что и ты",
+    "Рассказывают про костыли: таблицы, чаты, ручную работу",
+    "Называют, сколько времени / денег / нервов это съедает",
+    "Проблема не решена — и они уже пробовали что-то и бросили",
+    "7 из 10 в сегменте говорят про одно и то же",
   ];
   const fail = [
-    "«Интересная идея»",
-    "«Я бы попробовал»",
-    "«У моего друга была такая проблема»",
-    "Пауза перед ответом",
+    "Проблему называешь ты — собеседник просто кивает",
+    "«Да, бывает» — без примера и без деталей",
+    "Не могут вспомнить, когда сталкивались последний раз",
+    "«У друга / коллеги такое было» — не у них самих",
+    "Никаких костылей нет — значит, и боли нет",
+    "В сегменте про эту боль говорят 1–2 из 10",
   ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
           <Eyebrow mobile>Сигналы</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+            Мы не питчим и не продаём. Мы слушаем.
+          </h2>
+          <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[10px]">
+            На custdev никто не скажет «куплю» — и не должен. Сигнал — в том, как люди <span className="text-[hsl(var(--slide-gold))]">сами</span> говорят о боли.
+          </p>
           <div className="grid grid-cols-2 gap-[6px]">
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[6px] px-[8px] py-[8px]">
               <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[6px]">Pass</p>
-              <ul className="text-[8.5px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[3px]">
+              <ul className="text-[8px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[3px]">
                 {pass.map((t) => <li key={t}>• {t}</li>)}
               </ul>
             </div>
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[6px] px-[8px] py-[8px]">
               <p className="text-[9px] font-bold text-red-400 uppercase tracking-[0.15em] mb-[6px]">Fail</p>
-              <ul className="text-[8.5px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[3px]">
+              <ul className="text-[8px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[3px]">
                 {fail.map((t) => <li key={t}>• {t}</li>)}
               </ul>
             </div>
           </div>
+          <p className="text-[8.5px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mt-[8px]">
+            Правило: <span className="text-[hsl(var(--slide-text))]">7 из 10</span> сами говорят о проблеме → идём строить.
+          </p>
         </div>
         <FooterMobile index={24} />
       </Stage>
@@ -1876,20 +1889,29 @@ export const S16 = () => {
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full">
         <Eyebrow>Сигналы — pass / fail</Eyebrow>
+        <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px]">
+          Мы не питчим и не продаём. Мы <span className="text-[hsl(var(--slide-gold))]">слушаем</span>.
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[28px] max-w-[1500px]">
+          На custdev никто не спросит «когда я могу попробовать?» и не достанет карту — и не должен. Сигнал — в том, как люди <span className="text-[hsl(var(--slide-text))]">сами, без наводящих вопросов</span>, говорят о той самой проблеме, которую ты собираешься решать.
+        </p>
         <div className="grid grid-cols-2 gap-[28px] max-w-[1600px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[16px] px-[36px] py-[32px]">
             <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[24px]">Pass</p>
-            <ul className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.55] space-y-[10px]">
+            <ul className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.5] space-y-[10px]">
               {pass.map((t) => <li key={t}>• {t}</li>)}
             </ul>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[16px] px-[36px] py-[32px]">
             <p className="text-[24px] font-bold text-red-400 uppercase tracking-[0.15em] mb-[24px]">Fail</p>
-            <ul className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.55] space-y-[10px]">
+            <ul className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.5] space-y-[10px]">
               {fail.map((t) => <li key={t}>• {t}</li>)}
             </ul>
           </div>
         </div>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mt-[24px] max-w-[1600px]">
+          Правило большого пальца: если из 10 разговоров <span className="text-[hsl(var(--slide-gold))]">7 человек сами</span> поднимают эту боль, описывают свои костыли и считают, во что она им обходится — гипотеза подтверждена, можно идти строить.
+        </p>
       </div>
       <Footer index={24} />
     </Stage>
