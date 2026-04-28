@@ -1,6 +1,7 @@
 import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import titleBg from "@/assets/slides/title-bg.jpg";
+import photoMichael from "@/assets/slides/photo-michael.jpg";
 
 /* ========== Shared atoms (meeting7 visual language) ========== */
 
@@ -23,7 +24,7 @@ const Footer: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
   >
-    Михаэль · Урок 1 из 4 · Slide {index}/22
+    Михаэль · Урок 1 из 4 · Slide {index}/23
   </div>
 );
 
@@ -32,7 +33,7 @@ const FooterMobile: React.FC<{ index: number }> = ({ index }) => (
     className="absolute"
     style={{ right: 14, bottom: 10, color: "hsl(var(--slide-text-muted))", fontSize: 8, letterSpacing: "0.04em" }}
   >
-    Slide {index}/22
+    Slide {index}/23
   </div>
 );
 
