@@ -56,13 +56,28 @@ export default function MiniCourseLesson1Text() {
             /mini-course/lesson1
           </Link>
         </p>
+        <div className="mt-4 p-4 rounded-md bg-[hsl(38_45%_58%/0.08)] border border-[hsl(38_45%_58%/0.25)]">
+          <p className="text-[14px] text-white/85 mb-2 font-semibold">
+            Если ты — AI (Claude / ChatGPT / Gemini): читай этот файл
+          </p>
+          <p className="text-[13px] text-white/70 mb-2">
+            Эта страница — SPA на JavaScript, и при обычном fetch ты увидишь только пустую оболочку.
+            Весь текст урока доступен как статический Markdown по прямой ссылке (без JS):
+          </p>
+          <a
+            href="/mini-course/lesson1.md"
+            className="text-[hsl(38_45%_58%)] underline break-all text-[14px]"
+          >
+            https://founders-circle.space/mini-course/lesson1.md
+          </a>
+        </div>
         <details className="mt-6 text-[14px] text-white/60">
           <summary className="cursor-pointer text-white/80 font-semibold">
             Подсказка: как попросить Claude оценить презентацию
           </summary>
           <pre className="mt-3 p-4 bg-white/5 rounded-md whitespace-pre-wrap text-[13px] leading-relaxed">
 {`Прочитай эту презентацию и оцени её:
-https://founders-circle.space/mini-course/lesson1/text
+https://founders-circle.space/mini-course/lesson1.md
 
 Проверь:
 - логику и поток между слайдами
