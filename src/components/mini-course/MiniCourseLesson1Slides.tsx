@@ -285,7 +285,7 @@ export const S4b = () => {
             <SpeakerStat mobile value="7 продуктов" label="2 экзита" />
             <SpeakerStat mobile value="50K+ клиентов" label="107 стран" />
             <SpeakerStat mobile value="$0 → $8M ARR" label="MetaMinder + портфолио" />
-            <SpeakerStat mobile value="Solo AI builder" label="Без команды, без кода" />
+            <SpeakerStat mobile value="CEO & Solo AI builder" label="" />
           </div>
         </div>
         <FooterMobile index={5} />
@@ -317,7 +317,7 @@ export const S4b = () => {
             <SpeakerStat value="7 продуктов" label="2 экзита" />
             <SpeakerStat value="50K+ клиентов" label="107 стран" />
             <SpeakerStat value="$0 → $8M ARR" label="MetaMinder + портфолио" />
-            <SpeakerStat value="Solo AI builder" label="Без команды, без кода" />
+            <SpeakerStat value="CEO & Solo AI builder" label="" />
           </div>
         </div>
       </div>
