@@ -2116,37 +2116,45 @@ export const S19 = () => {
 /* ========== Slide 20 — The Founders Circle ========== */
 export const S20 = () => {
   const isMobile = useIsMobile();
-  const items = [
-    "У тебя есть идея, и ты не хочешь потерять 18 месяцев",
-    "Ты уже строишь, но застрял",
-    "Ты прошёл этот урок и понял, что хочешь, чтобы кто-то тебя вёл",
+  const socials = [
+    { label: "LinkedIn", handle: "michael-barbarich", url: "https://www.linkedin.com/in/michael-barbarich/" },
+    { label: "Instagram", handle: "@michael_barbarich", url: "https://www.instagram.com/michael_barbarich/" },
+    { label: "Facebook", handle: "barbarych", url: "https://www.facebook.com/barbarych" },
   ];
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Программа</Eyebrow>
-          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-            The Founders Circle
+          <Eyebrow mobile>Дальше — сам или вместе</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Если захочешь идти не один
           </h2>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold mb-[12px]">
-            3 месяца. 12 встреч. От идеи до первых клиентов.
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.55] mb-[10px]">
+            Этот урок ты можешь применить самостоятельно. Если захочешь поддержку, менторство и пошаговую работу в группе — у меня есть программа{" "}
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">The Founders Circle</span>: 12 недель, маленькая группа, я рядом каждую неделю.
           </p>
-          <ul className="space-y-[3px] mb-[12px]">
-            {items.map((t) => (
-              <li key={t} className="text-[9.5px] text-[hsl(var(--slide-text))] leading-[1.4]">
-                <span className="text-[hsl(var(--slide-gold))] mr-[4px]">→</span>{t}
-              </li>
-            ))}
-          </ul>
           <a
             href="https://founders-circle.space"
             target="_blank"
             rel="noreferrer"
-            className="inline-block bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[12px] py-[7px] rounded-[7px] text-[10px] font-bold no-underline self-start"
+            className="inline-block text-[hsl(var(--slide-gold))] underline text-[10px] mb-[14px] self-start"
           >
             founders-circle.space →
           </a>
+          <p className="text-[10px] text-[hsl(var(--slide-text))] font-semibold mb-[8px]">
+            Или просто добавляйся ко мне:
+          </p>
+          <div className="grid grid-cols-3 gap-[8px]">
+            {socials.map((s) => (
+              <a key={s.label} href={s.url} target="_blank" rel="noreferrer" className="flex flex-col items-center no-underline">
+                <div className="w-[68px] h-[68px] bg-white rounded-[6px] p-[4px] flex items-center justify-center mb-[4px]">
+                  <QRCodeSVG value={s.url} size={60} level="M" bgColor="white" fgColor="#1a1a1a" />
+                </div>
+                <p className="text-[9px] text-[hsl(var(--slide-gold))] font-semibold leading-tight">{s.label}</p>
+                <p className="text-[8px] text-[hsl(var(--slide-text-muted))] leading-tight truncate max-w-[72px]">{s.handle}</p>
+              </a>
+            ))}
+          </div>
         </div>
         <FooterMobile index={26} />
       </Stage>
@@ -2154,29 +2162,37 @@ export const S20 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full">
-        <Eyebrow>Программа</Eyebrow>
-        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.02em]">
-          The Founders Circle
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
+        <Eyebrow>Дальше — сам или вместе</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[24px] tracking-[-0.02em]">
+          Если захочешь идти не один
         </h2>
-        <p className="text-[28px] text-[hsl(var(--slide-gold))] font-semibold mb-[40px]">
-          3 месяца. 12 встреч. От идеи до первых клиентов.
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[16px] max-w-[1400px]">
+          Этот урок ты можешь применить самостоятельно — этого достаточно, чтобы проверить идею. Если в какой-то момент захочешь менторство, поддержку группы и пошаговую работу со мной — у меня есть программа{" "}
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">The Founders Circle</span>: 12 недель, маленькая группа, я рядом каждую неделю.
         </p>
-        <ul className="space-y-[14px] mb-[44px] max-w-[1400px]">
-          {items.map((t) => (
-            <li key={t} className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.4]">
-              <span className="text-[hsl(var(--slide-gold))] mr-[14px]">→</span>{t}
-            </li>
-          ))}
-        </ul>
         <a
           href="https://founders-circle.space"
           target="_blank"
           rel="noreferrer"
-          className="inline-block bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[36px] py-[20px] rounded-[12px] text-[24px] font-bold no-underline self-start tracking-[0.02em]"
+          className="inline-block text-[hsl(var(--slide-gold))] underline text-[22px] mb-[44px] self-start"
         >
-          Узнать больше → founders-circle.space
+          founders-circle.space →
         </a>
+        <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold mb-[20px]">
+          А ещё — давай законнектимся напрямую:
+        </p>
+        <div className="flex gap-[40px]">
+          {socials.map((s) => (
+            <a key={s.label} href={s.url} target="_blank" rel="noreferrer" className="flex flex-col items-center no-underline">
+              <div className="w-[180px] h-[180px] bg-white rounded-[14px] p-[14px] flex items-center justify-center mb-[14px]">
+                <QRCodeSVG value={s.url} size={152} level="M" bgColor="white" fgColor="#1a1a1a" />
+              </div>
+              <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold">{s.label}</p>
+              <p className="text-[16px] text-[hsl(var(--slide-text-muted))]">{s.handle}</p>
+            </a>
+          ))}
+        </div>
       </div>
       <Footer index={26} />
     </Stage>
