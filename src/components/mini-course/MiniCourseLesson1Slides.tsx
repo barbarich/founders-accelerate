@@ -59,11 +59,11 @@ export const S1 = () => {
         </div>
         <div className="relative z-10 flex flex-col justify-center px-[28px] h-full">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
-          <h1 className="font-display text-[34px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-            Урок 1.<br />Валидация
+          <h1 className="font-display text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
+            Урок 1.<br />Анализ рынка<br />и конкурентов
           </h1>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[14px] leading-[1.5]">
-            Как проверить идею до того, как написать первую строчку кода
+          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[14px] leading-[1.5] italic">
+            Откуда смотреть на рынок до того, как написать первую строчку кода
           </p>
         </div>
         <FooterMobile index={1} />
@@ -78,11 +78,11 @@ export const S1 = () => {
       </div>
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1400px] h-full">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
-        <h1 className="font-display text-[88px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          Урок 1. Валидация
+        <h1 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
+          Урок 1. Анализ рынка и конкурентов
         </h1>
-        <p className="text-[30px] text-[hsl(var(--slide-text-muted))] mt-[28px] leading-[1.4] max-w-[1100px]">
-          Как проверить идею до того, как написать первую строчку кода
+        <p className="text-[30px] text-[hsl(var(--slide-text-muted))] mt-[28px] leading-[1.4] max-w-[1300px] italic">
+          Откуда смотреть на рынок до того, как написать первую строчку кода
         </p>
       </div>
       <Footer index={1} />
