@@ -3209,8 +3209,7 @@ export const slides = [
   S3,                       // 5  Mirror question
   S4,                       // 6  Stats
   S4b,                      // 7  Mentor intro
-  L1WhyMarketFirst,         // 8  Why market research first
-  S9,                       // 9  MetaMinder success case
+  S9,                       // 8  MetaMinder success case
   L1ThreeLevels,            // 10 Three levels of competitors
   L1EightDimensions,        // 11 8 dimensions to check
   L1NegativeReviews,        // 12 Negative reviews are gold
