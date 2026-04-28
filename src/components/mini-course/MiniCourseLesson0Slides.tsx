@@ -286,20 +286,19 @@ export const S5 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[22px] h-full">
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-            Главное правило: ты делаешь сам
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[18px]">
+            Главное правило
           </h2>
-          <p className="text-[14px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.3] mb-[14px]">
-            «Никто не построит и не продаст продукт за тебя.»
+          <div className="rounded-[10px] border-2 border-[hsl(var(--slide-gold))] px-[14px] py-[18px] mb-[16px] bg-[hsl(var(--slide-gold)/0.04)]">
+            <p className="text-[14px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.3]">
+              Никто не построит и не продаст продукт за тебя.
+            </p>
+          </div>
+          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
+            Знание без практики = теория.
           </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
-            Знание — это хорошо. Но идею валидирует, продукт строит и продажи делает только тот, кто внедряет знания на практике сразу. Иначе всё останется теорией.
-          </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
-            Когда я даю инструмент, промпт или AI-агента — поставь на паузу, попробуй сам, посмотри, как это работает на твоей идее. Только это даёт результат.
-          </p>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.45]">
-            Создание стартапа — это лично твоя работа. Я рад делиться знаниями, которые тебя в этом усилят.
+          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5]">
+            Ставь на паузу. Применяй инструменты, промпты и агентов сразу.
           </p>
         </div>
         <FooterMobile index={5} />
@@ -308,21 +307,20 @@ export const S5 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1720px]">
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
-          Главное правило: ты делаешь сам
+      <div className="flex flex-col justify-center items-center px-[140px] h-full max-w-[1720px] mx-auto">
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[60px] text-center">
+          Главное правило
         </h2>
-        <p className="text-[44px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.25] mb-[40px] max-w-[1600px] mx-auto">
-          «Никто не построит и не продаст продукт за тебя.»
+        <div className="rounded-[16px] border-2 border-[hsl(var(--slide-gold))] px-[80px] py-[64px] mb-[60px] bg-[hsl(var(--slide-gold)/0.04)] w-full max-w-[1500px]">
+          <p className="text-[52px] text-[hsl(var(--slide-gold))] italic font-semibold text-center leading-[1.2]">
+            Никто не построит и не продаст продукт за тебя.
+          </p>
+        </div>
+        <p className="text-[30px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[16px] text-center">
+          Знание без практики = теория.
         </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[18px] max-w-[1600px]">
-          Знание — это хорошо. Но идею валидирует, продукт строит и продажи делает только тот, кто внедряет знания на практике сразу. Иначе всё останется теорией.
-        </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[24px] max-w-[1600px]">
-          Когда я даю инструмент, промпт или AI-агента — поставь на паузу, попробуй сам, посмотри, как это работает на твоей идее. Только это даёт результат.
-        </p>
-        <p className="text-[24px] text-[hsl(var(--slide-gold))] italic leading-[1.5] max-w-[1600px]">
-          Создание стартапа — это лично твоя работа. Я рад делиться знаниями, которые тебя в этом усилят и приведут к результату.
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] text-center max-w-[1500px]">
+          Ставь на паузу. Применяй инструменты, промпты и AI-агентов сразу.
         </p>
       </div>
       <Footer index={5} />
