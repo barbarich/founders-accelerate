@@ -396,16 +396,16 @@ export const S6 = () => {
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[12px] py-[10px]">
               <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Что строил</p>
               <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.4]">
-                Платформа подготовки к техническим собеседованиям с ментором. Match с интервьюером, mock-сессии, обратная связь.
+                AI-симулятор интервью для тех, кто ищет работу. Загружаешь резюме — получаешь вопросы под свою вакансию. Отвечаешь голосом, видео или текстом — как перед настоящим рекрутером. На выходе — детальный AI-фидбэк по каждому ответу.
               </p>
             </div>
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[12px] py-[10px]">
               <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Цифры</p>
               <ul className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5]">
-                <li>• 18 месяцев разработки</li>
+                <li>• 6 месяцев разработки</li>
                 <li>• Команда: 4 человека</li>
-                <li>• Вложено: ~$120k</li>
-                <li>• Платящих клиентов на момент закрытия: 0</li>
+                <li>• Вложено: ~$20k</li>
+                <li>• Платящих клиентов: 7</li>
               </ul>
             </div>
           </div>
@@ -421,17 +421,17 @@ export const S6 = () => {
         <div className="grid grid-cols-2 gap-[28px] max-w-[1500px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[16px] px-[36px] py-[32px]">
             <h3 className="text-[34px] font-bold text-[hsl(var(--slide-gold))] mb-[20px]">Что строил</h3>
-            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.5]">
-              Платформа подготовки к техническим собеседованиям с ментором. Match с интервьюером, mock-сессии, обратная связь.
+            <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.5]">
+              AI-симулятор интервью для тех, кто ищет работу. Загружаешь резюме — получаешь вопросы под свою вакансию. Отвечаешь <span className="text-[hsl(var(--slide-gold))]">голосом, видео или текстом</span> — как перед настоящим рекрутером. На выходе — детальный AI-фидбэк по каждому ответу.
             </p>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[16px] px-[36px] py-[32px]">
             <h3 className="text-[34px] font-bold text-[hsl(var(--slide-gold))] mb-[20px]">Цифры</h3>
             <ul className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.7] space-y-[2px]">
-              <li>• 18 месяцев разработки</li>
+              <li>• 6 месяцев разработки</li>
               <li>• Команда: 4 человека</li>
-              <li>• Вложено: ~$120k</li>
-              <li>• Платящих клиентов на момент закрытия: <span className="text-[hsl(var(--slide-gold))] font-bold">0</span></li>
+              <li>• Вложено: <span className="text-[hsl(var(--slide-gold))] font-bold">~$20k</span></li>
+              <li>• Платящих клиентов: <span className="text-[hsl(var(--slide-gold))] font-bold">7</span></li>
             </ul>
           </div>
         </div>
