@@ -238,7 +238,7 @@ const CaseTitle: React.FC<{ name: string; sub: string; punch: string; index: num
 
 export const S5 = () => (
   <CaseTitle
-    index={5}
+    index={6}
     name="InterviewNinja"
     sub="2017–2018. Стартап, который я закрыл."
     punch="18 месяцев. Команда. Деньги. Закрыто."
@@ -271,7 +271,7 @@ export const S6 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={6} />
+        <FooterMobile index={7} />
       </Stage>
     );
   }
@@ -297,7 +297,7 @@ export const S6 = () => {
           </div>
         </div>
       </div>
-      <Footer index={6} />
+      <Footer index={7} />
     </Stage>
   );
 };
@@ -355,7 +355,7 @@ const Numbered: React.FC<{ index: number; eyebrow: string; title: string; items:
 
 export const S7 = () => (
   <Numbered
-    index={7}
+    index={8}
     eyebrow="Сигналы, которые я не услышал"
     title="Сигналы, которые я не услышал"
     items={[
@@ -369,7 +369,7 @@ export const S7 = () => (
 
 export const S8 = () => (
   <Numbered
-    index={8}
+    index={9}
     eyebrow="Что я сделал бы сейчас"
     title="Что я сделал бы сейчас"
     items={[
@@ -382,7 +382,7 @@ export const S8 = () => (
 
 export const S9 = () => (
   <CaseTitle
-    index={9}
+    index={10}
     name="MetaMinder"
     sub="2019–2025. B2B SaaS LMS. Экзит."
     punch="В первой версии — никто не покупал. Во второй — нашли свою нишу. Разница — 47 разговоров."
@@ -391,7 +391,7 @@ export const S9 = () => (
 
 export const S10 = () => (
   <CaseTitle
-    index={10}
+    index={11}
     name="Mikey"
     sub="2025–сейчас. AI-matchmaking для Израиля."
     punch="Валидация — это не разовый акт. Это ритм."
@@ -400,7 +400,7 @@ export const S10 = () => (
 
 export const S11 = () => (
   <CaseTitle
-    index={11}
+    index={12}
     name="RunEverywhere"
     sub="50,000+ пользователей в 107 странах."
     punch="Я не задавал вопросы. Рынок сам говорил. Я просто умел слушать."
@@ -413,7 +413,7 @@ export const S12 = () => (
     <PullQuote sub="">
       Валидация — это не доказательство того, что идея хорошая. Это попытка её убить.
     </PullQuote>
-    <Footer index={12} />
+    <Footer index={13} />
   </div>
 );
 
@@ -434,7 +434,7 @@ export const S13 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={13} />
+        <FooterMobile index={14} />
       </Stage>
     );
   }
@@ -451,7 +451,7 @@ export const S13 = () => {
           </p>
         </div>
       </div>
-      <Footer index={13} />
+      <Footer index={14} />
     </Stage>
   );
 };
@@ -480,7 +480,7 @@ export const S14 = () => {
             «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
           </p>
         </div>
-        <FooterMobile index={14} />
+        <FooterMobile index={15} />
       </Stage>
     );
   }
@@ -503,7 +503,7 @@ export const S14 = () => {
           «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
         </p>
       </div>
-      <Footer index={14} />
+      <Footer index={15} />
     </Stage>
   );
 };
@@ -534,7 +534,7 @@ export const S15 = () => {
             «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
           </p>
         </div>
-        <FooterMobile index={15} />
+        <FooterMobile index={16} />
       </Stage>
     );
   }
@@ -560,7 +560,7 @@ export const S15 = () => {
           «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
         </p>
       </div>
-      <Footer index={15} />
+      <Footer index={16} />
     </Stage>
   );
 };
@@ -600,7 +600,7 @@ export const S16 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={16} />
+        <FooterMobile index={17} />
       </Stage>
     );
   }
@@ -623,7 +623,7 @@ export const S16 = () => {
           </div>
         </div>
       </div>
-      <Footer index={16} />
+      <Footer index={17} />
     </Stage>
   );
 };
@@ -667,7 +667,7 @@ export const S17 = () => {
             <ResourceCard mobile icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
           </div>
         </div>
-        <FooterMobile index={17} />
+        <FooterMobile index={18} />
       </Stage>
     );
   }
@@ -683,7 +683,7 @@ export const S17 = () => {
           <ResourceCard icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
         </div>
       </div>
-      <Footer index={17} />
+      <Footer index={18} />
     </Stage>
   );
 };
@@ -730,7 +730,7 @@ export const S18 = () => {
             «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
           </p>
         </div>
-        <FooterMobile index={18} />
+        <FooterMobile index={19} />
       </Stage>
     );
   }
@@ -748,7 +748,7 @@ export const S18 = () => {
           «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
         </p>
       </div>
-      <Footer index={18} />
+      <Footer index={19} />
     </Stage>
   );
 };
@@ -781,7 +781,7 @@ export const S19 = () => {
             ))}
           </div>
         </div>
-        <FooterMobile index={19} />
+        <FooterMobile index={20} />
       </Stage>
     );
   }
@@ -804,7 +804,7 @@ export const S19 = () => {
           ))}
         </div>
       </div>
-      <Footer index={19} />
+      <Footer index={20} />
     </Stage>
   );
 };
@@ -844,7 +844,7 @@ export const S20 = () => {
             founders-circle.space →
           </a>
         </div>
-        <FooterMobile index={20} />
+        <FooterMobile index={21} />
       </Stage>
     );
   }
@@ -874,7 +874,7 @@ export const S20 = () => {
           Узнать больше → founders-circle.space
         </a>
       </div>
-      <Footer index={20} />
+      <Footer index={21} />
     </Stage>
   );
 };
@@ -895,7 +895,7 @@ export const S21 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={21} />
+        <FooterMobile index={22} />
       </Stage>
     );
   }
@@ -911,7 +911,7 @@ export const S21 = () => {
           </p>
         </div>
       </div>
-      <Footer index={21} />
+      <Footer index={22} />
     </Stage>
   );
 };
@@ -944,7 +944,7 @@ export const S22 = () => {
             Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
           </p>
         </div>
-        <FooterMobile index={22} />
+        <FooterMobile index={23} />
       </Stage>
     );
   }
@@ -967,7 +967,7 @@ export const S22 = () => {
           Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
         </p>
       </div>
-      <Footer index={22} />
+      <Footer index={23} />
     </Stage>
   );
 };
