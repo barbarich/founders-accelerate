@@ -59,11 +59,19 @@ export const S1 = () => {
         </div>
         <div className="relative z-10 flex flex-col justify-center px-[28px] h-full">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
-          <h1 className="font-display text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-            Урок 1.<br />Анализ рынка<br />и конкурентов
+          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] text-[10px] font-medium mb-[10px]">
+            Урок 1 · Мини-курс
+          </p>
+          <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em]">
+            За 30 минут понять рынок,<br />на который ты заходишь —<br />и не потерять 6 месяцев впустую
           </h1>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[14px] leading-[1.5] italic">
-            Откуда смотреть на рынок до того, как написать первую строчку кода
+          <div className="mt-[18px] space-y-[8px] text-[12px] text-[hsl(var(--slide-text))] leading-[1.5]">
+            <p><span className="text-[hsl(var(--slide-gold))]">→</span> увидеть реальных конкурентов и их слабые места</p>
+            <p><span className="text-[hsl(var(--slide-gold))]">→</span> найти боли клиентов в отзывах и Reddit с AI</p>
+            <p><span className="text-[hsl(var(--slide-gold))]">→</span> сформулировать своё место на рынке за 1 фразу</p>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mt-[14px] italic">
+            Без этого код писать рано.
           </p>
         </div>
         <FooterMobile index={1} />
@@ -78,11 +86,29 @@ export const S1 = () => {
       </div>
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1400px] h-full">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
-        <h1 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          Урок 1. Анализ рынка и конкурентов
+        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] text-[20px] font-medium mb-[28px]">
+          Урок 1 · Мини-курс The Founders Circle
+        </p>
+        <h1 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] max-w-[1500px]">
+          За 30 минут понять рынок, на который ты заходишь —<br />
+          <span className="text-[hsl(var(--slide-gold))]">и не потерять 6 месяцев</span> впустую
         </h1>
-        <p className="text-[30px] text-[hsl(var(--slide-text-muted))] mt-[28px] leading-[1.4] max-w-[1300px] italic">
-          Откуда смотреть на рынок до того, как написать первую строчку кода
+        <div className="mt-[44px] grid grid-cols-3 gap-[32px] max-w-[1500px]">
+          <div className="border-l-2 border-[hsl(var(--slide-gold))] pl-[20px]">
+            <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[8px]">Увидишь</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.35]">реальных конкурентов и их слабые места</p>
+          </div>
+          <div className="border-l-2 border-[hsl(var(--slide-gold))] pl-[20px]">
+            <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[8px]">Найдёшь</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.35]">боли клиентов в отзывах и Reddit с помощью AI</p>
+          </div>
+          <div className="border-l-2 border-[hsl(var(--slide-gold))] pl-[20px]">
+            <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] mb-[8px]">Сформулируешь</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.35]">своё место на рынке одной фразой</p>
+          </div>
+        </div>
+        <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mt-[36px] italic">
+          Без этого писать код — рано. С этим — у тебя есть на что опереться.
         </p>
       </div>
       <Footer index={1} />
