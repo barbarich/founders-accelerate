@@ -752,7 +752,7 @@ export const S10 = () => {
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
               <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Триггер</p>
               <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                Увидел Bordy — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
+                Увидел Boardy — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
               </p>
             </div>
             <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
@@ -795,7 +795,7 @@ export const S10 = () => {
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
             <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Триггер</p>
             <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
-              Увидел <span className="text-[hsl(var(--slide-gold))]">Bordy</span> — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
+              Увидел <span className="text-[hsl(var(--slide-gold))]">Boardy</span> — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
             </p>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
