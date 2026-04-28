@@ -735,14 +735,95 @@ export const S9 = () => {
   );
 };
 
-export const S10 = () => (
-  <CaseTitle
-    index={11}
-    name="Mikey"
-    sub="2025–сейчас. AI-matchmaking для Израиля."
-    punch="Валидация — это не разовый акт. Это ритм."
-  />
-);
+export const S10 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Кейс — в работе</Eyebrow>
+          <h2 className="font-display text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[4px]">
+            Mikey
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">
+            2025 — сейчас. AI-matchmaking для Израиля.
+          </p>
+          <div className="space-y-[7px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Триггер</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Увидел Bordy — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Ниша</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                В нетворкинге монетизация трудна. Та же модель в дейтинге уже работает в США — есть AI-matchmaking стартапы с раундами. Перенёс модель.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Метод</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Не строил в тишине. Каждую итерацию показывал ЦА, друзьям, знакомым. Тонна критики → правки → меньше критики → лучше продукт.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Сегодня — <span className="font-bold text-[hsl(var(--slide-text))]">бета</span>. Интерфейс, тон и функционал — то, что аудитория реально просила.
+              </p>
+            </div>
+            <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] leading-[1.3]">
+              Валидация — это не разовый акт. Это ритм.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={11} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Кейс — в работе</Eyebrow>
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1] mb-[14px] tracking-[-0.02em]">
+          Mikey
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[36px]">
+          2025 — сейчас. AI-matchmaking для Израиля.
+        </p>
+        <div className="grid grid-cols-3 gap-[18px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Триггер</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Увидел <span className="text-[hsl(var(--slide-gold))]">Bordy</span> — AI-matchmaker для бизнес-нетворкинга. Никаких приложений: чат, общение, реальные знакомства. Понял — за этим будущее.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Ниша</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              В нетворкинге монетизация трудна. Та же модель в <span className="text-[hsl(var(--slide-gold))]">дейтинге</span> уже работает в США — есть AI-matchmaking стартапы с раундами. Перенёс модель.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Метод</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Не строил в тишине. Каждую итерацию показывал ЦА, друзьям, знакомым. Тонна критики → правки → меньше критики → лучше продукт.
+            </p>
+          </div>
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[22px] mt-[22px] max-w-[1620px]">
+          <p className="text-[26px] text-[hsl(var(--slide-text)/0.92)] leading-[1.3]">
+            Сегодня — <span className="text-[hsl(var(--slide-gold))] font-bold">бета</span>. Интерфейс, тон и функционал — то, что аудитория реально просила.
+          </p>
+          <p className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mt-[10px]">
+            Валидация — это не разовый акт. Это ритм.
+          </p>
+        </div>
+      </div>
+      <Footer index={11} />
+    </Stage>
+  );
+};
 
 export const S11 = () => (
   <CaseTitle
