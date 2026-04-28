@@ -966,7 +966,96 @@ const AnchorCard: React.FC<{
   </div>
 );
 
-/* ========== Slide 14 — Three anchors of validation ========== */
+/* ========== Slide 14 — Competitors are a good sign ========== */
+export const S11c = () => {
+  const isMobile = useIsMobile();
+  const points = [
+    {
+      k: "Есть конкуренты",
+      v: "Спрос подтверждён. Кто-то уже зарабатывает на этой боли — значит, рынок живой.",
+      tone: "good",
+    },
+    {
+      k: "Один-два конкурента",
+      v: "Рынок не «занят». Это значит, что проблема существует и ты копаешь в правильную сторону.",
+      tone: "good",
+    },
+    {
+      k: "Конкурентов нет совсем",
+      v: "Либо ты не сделал ресёрч, либо ниша без спроса. И то, и другое — красный флаг.",
+      tone: "bad",
+    },
+    {
+      k: "Что делать дальше",
+      v: "Найди своё уникальное позиционирование — чем ты лучше или иначе. И продавай эту разницу.",
+      tone: "good",
+    },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Перед ресёрчем · правда о конкурентах</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Конкуренты есть всегда. И это <span className="text-[hsl(var(--slide-gold))]">хорошо</span>.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            Если идея стоящая — кто-то уже её решает. Нет конкурентов = нет спроса. Не бойся их — это знак, что рынок живой.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            {points.map((p) => (
+              <div
+                key={p.k}
+                className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[7px] px-[10px] py-[8px] ${
+                  p.tone === "bad"
+                    ? "border-[hsl(var(--slide-gold)/0.45)]"
+                    : "border-[hsl(var(--slide-gold)/0.2)]"
+                }`}
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[2px]">{p.k}</p>
+                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{p.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile index={14} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Перед ресёрчем · правда о конкурентах</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          Конкуренты есть всегда. И это <span className="text-[hsl(var(--slide-gold))]">хорошо</span>.
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
+          Если идея стоящая и проблема реальна — кто-то уже её решает. <span className="text-[hsl(var(--slide-gold))]">Нет конкурентов = нет спроса.</span> Не бойся их — наоборот, это сигнал, что за это платят. Твоя задача не уничтожить их, а найти своё место рядом.
+        </p>
+        <div className="grid grid-cols-4 gap-[18px] max-w-[1620px]">
+          {points.map((p) => (
+            <div
+              key={p.k}
+              className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] px-[24px] py-[22px] ${
+                p.tone === "bad"
+                  ? "border-[hsl(var(--slide-gold)/0.5)]"
+                  : "border-[hsl(var(--slide-gold)/0.25)]"
+              }`}
+            >
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">
+                {p.k}
+              </p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{p.v}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Footer index={14} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 15 — Three anchors of validation ========== */
 export const S12a = () => {
   const isMobile = useIsMobile();
   const cards = [
