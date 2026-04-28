@@ -2294,4 +2294,129 @@ export const S22 = () => {
   );
 };
 
-export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S11c, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S18, S20, S21, S22];
+/* ========== NEW Slide — Lesson 1 checklist ========== */
+const L1_CHECKLIST: { n: string; t: React.ReactNode }[] = [
+  { n: "01", t: <><b>Market Research:</b> оцени размер рынка (TAM/SAM/SOM), тренды и динамику спроса в твоей нише. Зафиксируй источники.</> },
+  { n: "02", t: <><b>Анализ конкурентов:</b> выпиши 5–7 прямых и непрямых конкурентов. Для каждого — позиционирование, цена, на чём держатся, где слабы.</> },
+  { n: "03", t: <>Найди <b>3 «дыры» на рынке:</b> что конкуренты не делают, делают плохо или игнорируют целый сегмент.</> },
+  { n: "04", t: <>Сформулируй своё <b>узкое позиционирование:</b> одно предложение про то, чем ты отличаешься и для кого.</> },
+  { n: "05", t: <>Запусти <b>FoundersLens</b> на свою идею и сложи всё в одну картинку.</> },
+];
+
+export const L1Checklist = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Что сделать после этого урока
+          </h2>
+          <ol className="space-y-[8px] mb-[12px]">
+            {L1_CHECKLIST.map((it) => (
+              <li key={it.n} className="flex items-start gap-[8px] text-[10px] text-[hsl(var(--slide-text))] leading-[1.4]">
+                <span className="text-[hsl(var(--slide-gold))] font-bold min-w-[18px]">{it.n}</span>
+                <span>{it.t}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+            На Уроке 2 ты пойдёшь к людям и проверишь эту картинку в живых разговорах.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
+          Что сделать после этого урока
+        </h2>
+        <ol className="space-y-[20px] mb-[36px]">
+          {L1_CHECKLIST.map((it) => (
+            <li key={it.n} className="flex items-start gap-[24px] text-[24px] text-[hsl(var(--slide-text))] leading-[1.45] max-w-[1500px]">
+              <span className="text-[28px] text-[hsl(var(--slide-gold))] font-bold tracking-[0.04em] min-w-[60px]">{it.n}</span>
+              <span>{it.t}</span>
+            </li>
+          ))}
+        </ol>
+        <p className="text-[26px] text-[hsl(var(--slide-gold))] italic text-center leading-[1.4]">
+          На Уроке 2 ты пойдёшь к людям и проверишь эту картинку в живых разговорах.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== NEW Slide — Lesson 1 closing + CTA to Lesson 2 ========== */
+export const L1Closing = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center items-center text-center px-[24px] h-full">
+          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[16px]">Дальше</p>
+          <p className="text-[16px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35] mb-[14px]">
+            «Анализ рынка показывает, где ловить рыбу.<br />
+            Customer Development — что эта рыба реально ест.»
+          </p>
+          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[20px]">
+            Без обоих — ты строишь либо в пустоту, либо для воображаемого клиента.
+          </p>
+          <a
+            href="/mini-course/lesson2"
+            className="inline-flex items-center gap-2 px-[18px] py-[10px] rounded-[8px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[12px] no-underline"
+          >
+            Перейти к Уроку 2 →
+          </a>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center items-center text-center px-[140px] h-full max-w-[1700px] mx-auto">
+        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[20px] mb-[40px]">Дальше</p>
+        <p className="text-[52px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.3] mb-[36px] max-w-[1500px]">
+          «Анализ рынка показывает, где ловить рыбу.<br />
+          Customer Development — что эта рыба реально ест.»
+        </p>
+        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[56px] max-w-[1300px]">
+          Без обоих — ты строишь либо в пустоту, либо для воображаемого клиента.
+        </p>
+        <a
+          href="/mini-course/lesson2"
+          className="inline-flex items-center gap-3 px-[44px] py-[22px] rounded-[14px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[28px] no-underline hover:opacity-90 transition"
+        >
+          Перейти к Уроку 2 →
+        </a>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+// Lesson 1 — 17 slides (Market & Competitor Research)
+export const slides = [
+  S1,    // 1 Title (modified)
+  S2,    // 2 Main insight
+  S3,    // 3 Mirror question
+  S4,    // 4 Stats
+  S4b,   // 5 Mentor intro
+  S9,    // 6 MetaMinder case (source pos 10)
+  S11,   // 7 RunEverywhere case (source pos 12)
+  S12,   // 8 Main insight repeat (source pos 13)
+  S11c,  // 9 Truth about competitors (source pos 14)
+  S12a,  // 10 Three anchors of validation (source pos 15)
+  S12b,  // 11 Anchor 1 · Market Research (source pos 16)
+  S12c,  // 12 AI 80/20 (source pos 17)
+  S12d,  // 13 FoundersLens (source pos 18)
+  S12e,  // 14 Anchor 2 · Competitors (source pos 19)
+  S12f,  // 15 What to copy / not (source pos 20)
+  L1Checklist, // 16 NEW
+  L1Closing,   // 17 NEW
+];
