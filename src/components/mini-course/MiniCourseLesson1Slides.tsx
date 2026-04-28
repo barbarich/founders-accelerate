@@ -326,14 +326,63 @@ export const S4b = () => {
   );
 };
 
-export const S5 = () => (
-  <CaseTitle
-    index={6}
-    name="InterviewNinja"
-    sub="2023–2024. Стартап, который я закрыл."
-    punch="Всё казалось очевидным: рынок, проблема, спрос. Набрал команду. Тратил бюджет. Закрыл. Причина — строил наугад."
-  />
-);
+export const S5 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Кейс</Eyebrow>
+          <h2 className="font-display text-[34px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[6px]">
+            InterviewNinja
+          </h2>
+          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[16px]">
+            2023–2024. Стартап, который я закрыл.
+          </p>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[14px] space-y-[10px]">
+            <p className="text-[13px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+              Всё казалось очевидным:{" "}
+              <span className="text-[hsl(var(--slide-text))] font-semibold">рынок, проблема, спрос.</span>
+            </p>
+            <p className="text-[13px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+              Набрал команду. Тратил бюджет. Закрыл.
+            </p>
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] leading-[1.3] pt-[4px]">
+              Причина — строил наугад.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={6} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Кейс</Eyebrow>
+        <h2 className="font-display text-[88px] font-bold text-[hsl(var(--slide-text))] leading-[1] mb-[14px] tracking-[-0.02em]">
+          InterviewNinja
+        </h2>
+        <p className="text-[26px] text-[hsl(var(--slide-text-muted))] mb-[44px]">
+          2023–2024. Стартап, который я закрыл.
+        </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[40px] py-[36px] max-w-[1500px] space-y-[18px]">
+          <p className="text-[34px] text-[hsl(var(--slide-text)/0.9)] leading-[1.3]">
+            Всё казалось очевидным:{" "}
+            <span className="text-[hsl(var(--slide-text))] font-semibold">рынок, проблема, спрос.</span>
+          </p>
+          <p className="text-[34px] text-[hsl(var(--slide-text)/0.9)] leading-[1.3]">
+            Набрал команду. Тратил бюджет. Закрыл.
+          </p>
+          <p className="text-[40px] font-bold text-[hsl(var(--slide-gold))] leading-[1.2] pt-[6px]">
+            Причина — строил наугад.
+          </p>
+        </div>
+      </div>
+      <Footer index={6} />
+    </Stage>
+  );
+};
 
 /* ========== Slide 6 — Two columns ========== */
 export const S6 = () => {
