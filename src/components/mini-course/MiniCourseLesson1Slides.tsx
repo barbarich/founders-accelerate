@@ -2169,4 +2169,4 @@ export const S22 = () => {
   );
 };
 
-export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
+export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S11c, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
