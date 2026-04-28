@@ -49,6 +49,7 @@ import PublicMeeting7Shell from "@/components/presentation/meeting7/PublicMeetin
 import MiniCourseLesson1 from "./pages/MiniCourseLesson1";
 import MiniCourseLesson1Text from "./pages/MiniCourseLesson1Text";
 import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
+import MiniCourseLesson2 from "./pages/MiniCourseLesson2";
 
 const queryClient = new QueryClient();
 
@@ -162,6 +163,7 @@ const App = () => (
           <Route path="/mini-course/lesson0" element={<MiniCourseLesson0 />} />
           <Route path="/mini-course/lesson1" element={<MiniCourseLesson1 />} />
           <Route path="/mini-course/lesson1/text" element={<MiniCourseLesson1Text />} />
+          <Route path="/mini-course/lesson2" element={<MiniCourseLesson2 />} />
           <Route path="/:lang/privacy" element={<LangPrivacy />} />
           <Route path="/:lang/terms" element={<LangTerms />} />
           <Route path="/:lang/contact" element={<LangContact />} />
