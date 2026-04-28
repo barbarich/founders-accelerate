@@ -161,16 +161,16 @@ export const S3 = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
-          <Eyebrow mobile>Вопрос на старт</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mb-[14px]">
-            Назови прямо сейчас:<br />
-            5 своих конкурентов.<br />
-            Их цены. Их позиционирование.<br />
-            Что они подняли за последний год.
+          <Eyebrow mobile>Маленькая проверка</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.3] mb-[12px]">
+            Можешь ли ты сейчас назвать:<br />
+            <span className="text-[hsl(var(--slide-gold))]">5 своих конкурентов</span>, их цены, позиционирование<br />
+            и что они подняли за последний год?
           </h2>
-          <p className="text-[12px] text-[hsl(var(--slide-gold))] italic font-semibold leading-[1.4]">
-            Не можешь — строишь вслепую. Этот урок исправит это за 90 минут.
-          </p>
+          <div className="space-y-[8px] text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+            <p><span className="text-[hsl(var(--slide-gold))] font-bold">Нет?</span> Это нормально — большинство фаундеров не могут. За этим ты и пришёл. К концу урока сможешь.</p>
+            <p><span className="text-[hsl(var(--slide-gold))] font-bold">Да?</span> Отлично. Этот урок поможет проверить, не пропустил ли ты что-то важное.</p>
+          </div>
         </div>
         <FooterMobile index={3} />
       </Stage>
@@ -179,15 +179,25 @@ export const S3 = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1600px]">
-        <Eyebrow>Вопрос на старт</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[36px] tracking-[-0.01em]">
-          Назови прямо сейчас:<br />
-          5 своих конкурентов. Их цены. Их позиционирование.<br />
-          Что они подняли за последний год.
+        <Eyebrow>Маленькая проверка</Eyebrow>
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[44px] tracking-[-0.01em]">
+          Можешь ли ты сейчас назвать <span className="text-[hsl(var(--slide-gold))]">5 своих конкурентов</span>,<br />
+          их цены, позиционирование и что они подняли за последний год?
         </h2>
-        <p className="text-[28px] text-[hsl(var(--slide-gold))] italic font-semibold leading-[1.4]">
-          Не можешь — строишь вслепую. Этот урок исправит это за 90 минут.
-        </p>
+        <div className="grid grid-cols-2 gap-[28px] max-w-[1500px]">
+          <div className="border-l-[3px] border-[hsl(var(--slide-gold))] pl-[24px]">
+            <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[10px]">Нет</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              Это нормально — большинство фаундеров не могут. Именно за этим ты сюда и пришёл. К концу урока сможешь.
+            </p>
+          </div>
+          <div className="border-l-[3px] border-[hsl(var(--slide-gold))] pl-[24px]">
+            <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[10px]">Да</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+              Отлично. Этот урок поможет проверить, не пропустил ли ты что-то важное — и углубить то, что уже знаешь.
+            </p>
+          </div>
+        </div>
       </div>
       <Footer index={3} />
     </Stage>
