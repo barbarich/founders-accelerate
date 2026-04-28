@@ -966,7 +966,96 @@ const AnchorCard: React.FC<{
   </div>
 );
 
-/* ========== Slide 14 — Three anchors of validation ========== */
+/* ========== Slide 14 — Competitors are a good sign ========== */
+export const S11c = () => {
+  const isMobile = useIsMobile();
+  const points = [
+    {
+      k: "Есть конкуренты",
+      v: "Спрос подтверждён. Кто-то уже зарабатывает на этой боли — значит, рынок живой.",
+      tone: "good",
+    },
+    {
+      k: "Один-два конкурента",
+      v: "Рынок не «занят». Это значит, что проблема существует и ты копаешь в правильную сторону.",
+      tone: "good",
+    },
+    {
+      k: "Конкурентов нет совсем",
+      v: "Либо ты не сделал ресёрч, либо ниша без спроса. И то, и другое — красный флаг.",
+      tone: "bad",
+    },
+    {
+      k: "Что делать дальше",
+      v: "Найди своё уникальное позиционирование — чем ты лучше или иначе. И продавай эту разницу.",
+      tone: "good",
+    },
+  ];
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Перед ресёрчем · правда о конкурентах</Eyebrow>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Конкуренты есть всегда. И это <span className="text-[hsl(var(--slide-gold))]">хорошо</span>.
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[10px]">
+            Если идея стоящая — кто-то уже её решает. Нет конкурентов = нет спроса. Не бойся их — это знак, что рынок живой.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px]">
+            {points.map((p) => (
+              <div
+                key={p.k}
+                className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[7px] px-[10px] py-[8px] ${
+                  p.tone === "bad"
+                    ? "border-[hsl(var(--slide-gold)/0.45)]"
+                    : "border-[hsl(var(--slide-gold)/0.2)]"
+                }`}
+              >
+                <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[2px]">{p.k}</p>
+                <p className="text-[9.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{p.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile index={14} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Перед ресёрчем · правда о конкурентах</Eyebrow>
+        <h2 className="font-display text-[68px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[24px]">
+          Конкуренты есть всегда. И это <span className="text-[hsl(var(--slide-gold))]">хорошо</span>.
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[36px] max-w-[1500px]">
+          Если идея стоящая и проблема реальна — кто-то уже её решает. <span className="text-[hsl(var(--slide-gold))]">Нет конкурентов = нет спроса.</span> Не бойся их — наоборот, это сигнал, что за это платят. Твоя задача не уничтожить их, а найти своё место рядом.
+        </p>
+        <div className="grid grid-cols-4 gap-[18px] max-w-[1620px]">
+          {points.map((p) => (
+            <div
+              key={p.k}
+              className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] px-[24px] py-[22px] ${
+                p.tone === "bad"
+                  ? "border-[hsl(var(--slide-gold)/0.5)]"
+                  : "border-[hsl(var(--slide-gold)/0.25)]"
+              }`}
+            >
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">
+                {p.k}
+              </p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{p.v}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Footer index={14} />
+    </Stage>
+  );
+};
+
+/* ========== Slide 15 — Three anchors of validation ========== */
 export const S12a = () => {
   const isMobile = useIsMobile();
   const cards = [
@@ -1003,7 +1092,7 @@ export const S12a = () => {
             Сложить все три — и только тогда строить.
           </p>
         </div>
-        <FooterMobile index={14} />
+        <FooterMobile index={15} />
       </Stage>
     );
   }
@@ -1023,7 +1112,7 @@ export const S12a = () => {
           Сложить все три — и только тогда строить. Пропустишь хоть один — рискуешь повторить InterviewNinja.
         </p>
       </div>
-      <Footer index={14} />
+      <Footer index={15} />
     </Stage>
   );
 };
@@ -1098,7 +1187,7 @@ export const S12b = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={15} />
+        <FooterMobile index={16} />
       </Stage>
     );
   }
@@ -1141,7 +1230,7 @@ export const S12b = () => {
           </div>
         </div>
       </div>
-      <Footer index={15} />
+      <Footer index={16} />
     </Stage>
   );
 };
@@ -1192,7 +1281,7 @@ export const S12c = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={16} />
+        <FooterMobile index={17} />
       </Stage>
     );
   }
@@ -1230,7 +1319,7 @@ export const S12c = () => {
           </p>
         </div>
       </div>
-      <Footer index={16} />
+      <Footer index={17} />
     </Stage>
   );
 };
@@ -1286,7 +1375,7 @@ export const S12d = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={17} />
+        <FooterMobile index={18} />
       </Stage>
     );
   }
@@ -1334,7 +1423,7 @@ export const S12d = () => {
           </div>
         </div>
       </div>
-      <Footer index={17} />
+      <Footer index={18} />
     </Stage>
   );
 };
@@ -1387,7 +1476,7 @@ export const S12e = () => {
             ))}
           </div>
         </div>
-        <FooterMobile index={18} />
+        <FooterMobile index={19} />
       </Stage>
     );
   }
@@ -1423,7 +1512,7 @@ export const S12e = () => {
           Нет рекламы, нет органики, нет инвестиций, нет апдейтов — это не «нет конкурентов». Это <span className="text-[hsl(var(--slide-text))] font-semibold">нет рынка</span>.
         </p>
       </div>
-      <Footer index={18} />
+      <Footer index={19} />
     </Stage>
   );
 };
@@ -1468,7 +1557,7 @@ export const S12f = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={19} />
+        <FooterMobile index={20} />
       </Stage>
     );
   }
@@ -1514,7 +1603,7 @@ export const S12f = () => {
           </div>
         </div>
       </div>
-      <Footer index={19} />
+      <Footer index={20} />
     </Stage>
   );
 };
@@ -1539,7 +1628,7 @@ export const S13 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={20} />
+        <FooterMobile index={21} />
       </Stage>
     );
   }
@@ -1559,7 +1648,7 @@ export const S13 = () => {
           </p>
         </div>
       </div>
-      <Footer index={20} />
+      <Footer index={21} />
     </Stage>
   );
 };
@@ -1588,7 +1677,7 @@ export const S14 = () => {
             «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
           </p>
         </div>
-        <FooterMobile index={21} />
+        <FooterMobile index={22} />
       </Stage>
     );
   }
@@ -1611,7 +1700,7 @@ export const S14 = () => {
           «Ты ищешь людей, которые скажут "это не работает" — потому что только они скажут правду.»
         </p>
       </div>
-      <Footer index={21} />
+      <Footer index={22} />
     </Stage>
   );
 };
@@ -1642,7 +1731,7 @@ export const S15 = () => {
             «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
           </p>
         </div>
-        <FooterMobile index={22} />
+        <FooterMobile index={23} />
       </Stage>
     );
   }
@@ -1668,7 +1757,7 @@ export const S15 = () => {
           «Спрашивай про прошлое. Не про будущее. Прошлое — данные. Будущее — фантазии.»
         </p>
       </div>
-      <Footer index={22} />
+      <Footer index={23} />
     </Stage>
   );
 };
@@ -1708,7 +1797,7 @@ export const S16 = () => {
             </div>
           </div>
         </div>
-        <FooterMobile index={23} />
+        <FooterMobile index={24} />
       </Stage>
     );
   }
@@ -1731,7 +1820,7 @@ export const S16 = () => {
           </div>
         </div>
       </div>
-      <Footer index={23} />
+      <Footer index={24} />
     </Stage>
   );
 };
@@ -1775,7 +1864,7 @@ export const S17 = () => {
             <ResourceCard mobile icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
           </div>
         </div>
-        <FooterMobile index={24} />
+        <FooterMobile index={25} />
       </Stage>
     );
   }
@@ -1791,7 +1880,7 @@ export const S17 = () => {
           <ResourceCard icon="✅" title="Чеклист сигналов" sub="pass/fail в одной странице" />
         </div>
       </div>
-      <Footer index={24} />
+      <Footer index={25} />
     </Stage>
   );
 };
@@ -1838,7 +1927,7 @@ export const S18 = () => {
             «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
           </p>
         </div>
-        <FooterMobile index={25} />
+        <FooterMobile index={26} />
       </Stage>
     );
   }
@@ -1856,7 +1945,7 @@ export const S18 = () => {
           «Поставь видео на паузу. Сделай это руками. Иначе остаток урока бесполезен.»
         </p>
       </div>
-      <Footer index={25} />
+      <Footer index={26} />
     </Stage>
   );
 };
@@ -1889,7 +1978,7 @@ export const S19 = () => {
             ))}
           </div>
         </div>
-        <FooterMobile index={26} />
+        <FooterMobile index={27} />
       </Stage>
     );
   }
@@ -1912,7 +2001,7 @@ export const S19 = () => {
           ))}
         </div>
       </div>
-      <Footer index={26} />
+      <Footer index={27} />
     </Stage>
   );
 };
@@ -1952,7 +2041,7 @@ export const S20 = () => {
             founders-circle.space →
           </a>
         </div>
-        <FooterMobile index={27} />
+        <FooterMobile index={28} />
       </Stage>
     );
   }
@@ -1982,7 +2071,7 @@ export const S20 = () => {
           Узнать больше → founders-circle.space
         </a>
       </div>
-      <Footer index={27} />
+      <Footer index={28} />
     </Stage>
   );
 };
@@ -2003,7 +2092,7 @@ export const S21 = () => {
             </p>
           </div>
         </div>
-        <FooterMobile index={28} />
+        <FooterMobile index={29} />
       </Stage>
     );
   }
@@ -2019,7 +2108,7 @@ export const S21 = () => {
           </p>
         </div>
       </div>
-      <Footer index={28} />
+      <Footer index={29} />
     </Stage>
   );
 };
@@ -2052,7 +2141,7 @@ export const S22 = () => {
             Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
           </p>
         </div>
-        <FooterMobile index={29} />
+        <FooterMobile index={30} />
       </Stage>
     );
   }
@@ -2075,9 +2164,9 @@ export const S22 = () => {
           Урок 2 — Ресерч и позиционирование. Самый дорогой навык 2026 года.
         </p>
       </div>
-      <Footer index={29} />
+      <Footer index={30} />
     </Stage>
   );
 };
 
-export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
+export const slides = [S1, S2, S3, S4, S4b, S5, S6, S7, S8, S9, S10, S11, S12, S11c, S12a, S12b, S12c, S12d, S12e, S12f, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22];
