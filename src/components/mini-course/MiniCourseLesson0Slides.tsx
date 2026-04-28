@@ -111,7 +111,7 @@ export const S2 = () => {
   );
 };
 
-/* ========== Slide 3 — What this course does NOT promise ========== */
+/* ========== Slide 3 — What this course does NOT / DOES promise ========== */
 const NOT_ITEMS = [
   "Не сделает тебя миллионером",
   "Не научит привлекать инвестиции",
@@ -119,27 +119,57 @@ const NOT_ITEMS = [
   "Не даст готовую идею",
 ];
 
+const YES_ITEMS = [
+  "Поймёшь, что строить, для кого и зачем",
+  "Проверишь, что эта идея реально нужна людям",
+  "Научишься делать ресёрч и валидацию идеи",
+  "Соберёшь продукт с AI и запустишь его без бюджета — до первых клиентов",
+];
+
+const GREEN = "hsl(140 55% 55%)";
+const RED = "hsl(0 70% 60%)";
+
 export const S3 = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[24px] h-full">
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-            Чего этот курс НЕ обещает
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Что ты получишь — и чего здесь не будет
           </h2>
-          <ul className="space-y-[8px] mb-[14px]">
-            {NOT_ITEMS.map((t) => (
-              <li key={t} className="flex items-start gap-[8px] text-[12px] text-[hsl(var(--slide-text))] leading-[1.4]">
-                <span className="text-[hsl(0_70%_60%)]">❌</span>
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-[12px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4] mb-[10px]">
-            Здесь четыре урока про одну вещь: как из идеи получить первого платящего клиента, не потратив 18 месяцев.
+          <div className="grid grid-cols-2 gap-[10px] mb-[12px]">
+            <div>
+              <p className="uppercase tracking-[0.15em] text-[8px] font-semibold mb-[6px]" style={{ color: GREEN }}>
+                Получишь
+              </p>
+              <ul className="space-y-[6px]">
+                {YES_ITEMS.map((t) => (
+                  <li key={t} className="flex items-start gap-[6px] text-[9px] text-[hsl(var(--slide-text))] leading-[1.35]">
+                    <span style={{ color: GREEN }}>✓</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="uppercase tracking-[0.15em] text-[8px] font-semibold mb-[6px]" style={{ color: RED }}>
+                Не будет
+              </p>
+              <ul className="space-y-[6px]">
+                {NOT_ITEMS.map((t) => (
+                  <li key={t} className="flex items-start gap-[6px] text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">
+                    <span style={{ color: RED }}>✕</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4] mb-[6px]">
+            Четыре урока про одно: как из идеи получить первого платящего клиента, не потратив 18 месяцев.
           </p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5]">
+          <p className="text-[9px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5]">
             Если тебе нужно что-то другое — закрой и попроси возврат. Я его сделаю.
           </p>
         </div>
@@ -149,22 +179,42 @@ export const S3 = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
-          Чего этот курс НЕ обещает
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1760px]">
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
+          Что ты получишь — и чего здесь не будет
         </h2>
-        <ul className="space-y-[18px] mb-[40px]">
-          {NOT_ITEMS.map((t) => (
-            <li key={t} className="flex items-start gap-[20px] text-[34px] text-[hsl(var(--slide-text))] leading-[1.35]">
-              <span className="text-[hsl(0_70%_60%)]">❌</span>
-              <span>{t}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-[30px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.35] mb-[20px] max-w-[1600px]">
-          Здесь четыре урока про одну вещь: как из идеи получить первого платящего клиента, не потратив 18 месяцев.
+        <div className="grid grid-cols-2 gap-[60px] mb-[36px]">
+          <div>
+            <p className="uppercase tracking-[0.2em] text-[18px] font-semibold mb-[20px]" style={{ color: GREEN }}>
+              Получишь
+            </p>
+            <ul className="space-y-[18px]">
+              {YES_ITEMS.map((t) => (
+                <li key={t} className="flex items-start gap-[18px] text-[26px] text-[hsl(var(--slide-text))] leading-[1.35]">
+                  <span className="text-[30px] leading-[1.1]" style={{ color: GREEN }}>✓</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="uppercase tracking-[0.2em] text-[18px] font-semibold mb-[20px]" style={{ color: RED }}>
+              Не будет
+            </p>
+            <ul className="space-y-[18px]">
+              {NOT_ITEMS.map((t) => (
+                <li key={t} className="flex items-start gap-[18px] text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">
+                  <span className="text-[30px] leading-[1.1]" style={{ color: RED }}>✕</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="text-[26px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.35] mb-[14px] max-w-[1600px]">
+          Четыре урока про одно: как из идеи получить первого платящего клиента, не потратив 18 месяцев.
         </p>
-        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5] max-w-[1500px]">
+        <p className="text-[20px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5] max-w-[1500px]">
           Если тебе нужно что-то другое — закрой и попроси возврат. Я его сделаю.
         </p>
       </div>
