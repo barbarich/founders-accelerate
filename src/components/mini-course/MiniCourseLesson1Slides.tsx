@@ -3474,7 +3474,6 @@ export const slides = [
   L1AgentLens,              // 14 FoundersLens AI agent
   L1AgentPmf,               // 15 PMF AI agent
   L1GapsPositioning,        // 16 3 gaps + Positioning formula + mid CTA
-  L1PracticeNow,            // 17 Practice now · 10 min
-  L1FullPlan,               // 18 Full 90-min plan + templates
-  L1Closing,                // 19 Closing + CTA → Lesson 2
+  L1Homework,               // 17 Homework — what to do after the lesson
+  L1Closing,                // 18 Closing + CTA → Lesson 2
 ];
