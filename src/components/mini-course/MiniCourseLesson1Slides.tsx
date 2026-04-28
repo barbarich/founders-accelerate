@@ -492,19 +492,84 @@ const Numbered: React.FC<{ index: number; eyebrow: string; title: string; items:
   );
 };
 
-export const S7 = () => (
-  <Numbered
-    index={8}
-    eyebrow="Сигналы, которые я не услышал"
-    title="Сигналы, которые я не услышал"
-    items={[
-      "Никто не платил до того, как был продукт",
-      "«Интересно» вместо «когда я могу попробовать?»",
-      "Хвалили друзья. Не хвалили незнакомцы.",
-      "Я задавал вопросы, чтобы услышать «да»",
-    ]}
-  />
-);
+export const S7 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Почему не получилось</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Я думал, что знаю рынок лучше всех.
+          </h2>
+          <div className="space-y-[8px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[10px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Контекст</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Я был CEO, проводил десятки собеседований в неделю. Видел онлайн-школы, поток выпускников, как они не могут найти работу. На одну вакансию — 1 500 резюме.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[10px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Логика</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Проблема — реальная. Решение — очевидно: симулятор интервью. С аудиторией не пошёл говорить ни разу.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[10px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Что выяснилось</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Проблема была верной. Решение — нет. Людям не нужен был симулятор. Им нужен был результат — работа. А его мы не давали.
+              </p>
+            </div>
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px] mt-[10px]">
+            <p className="text-[12px] font-bold text-[hsl(var(--slide-text))] leading-[1.3]">
+              Друзья хвалили. Рынок — не платил.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={8} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Почему не получилось</Eyebrow>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em] mb-[36px] max-w-[1500px]">
+          Я думал, что знаю рынок лучше всех.
+        </h2>
+        <div className="grid grid-cols-3 gap-[20px] max-w-[1600px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Контекст</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.92)] leading-[1.45]">
+              Я был CEO, проводил десятки собеседований в неделю. Видел онлайн-школы, поток выпускников, как они не могут найти работу. На одну нашу вакансию — <span className="text-[hsl(var(--slide-gold))] font-semibold">1 500 резюме</span>.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Логика</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.92)] leading-[1.45]">
+              Проблема — реальная. Решение — очевидно: симулятор интервью. С аудиторией <span className="text-[hsl(var(--slide-text))] font-semibold">не пошёл говорить ни разу</span>.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Что выяснилось</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.92)] leading-[1.45]">
+              Проблема была верной. Решение — нет. Людям не нужен был симулятор. Им нужен был <span className="text-[hsl(var(--slide-gold))] font-semibold">результат — работа</span>. А его мы не давали.
+            </p>
+          </div>
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[24px] mt-[28px] max-w-[1600px]">
+          <p className="text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.25]">
+            Красивый интерфейс. Понятный флоу. Друзья хвалили.{" "}
+            <span className="text-[hsl(var(--slide-gold))]">Рынок — не платил.</span>
+          </p>
+        </div>
+      </div>
+      <Footer index={8} />
+    </Stage>
+  );
+};
 
 export const S8 = () => (
   <Numbered
