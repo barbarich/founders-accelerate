@@ -3,6 +3,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { QRCodeSVG } from "qrcode.react";
 import titleBg from "@/assets/slides/title-bg.jpg";
 import photoMichael from "@/assets/slides/photo-michael.jpg";
+import { useSlideMeta } from "./SlideMetaContext";
 
 /* ========== Shared atoms (meeting7 visual language) ========== */
 
@@ -20,23 +21,31 @@ const Eyebrow: React.FC<{ children: React.ReactNode; mobile?: boolean }> = ({ ch
   </p>
 );
 
-const Footer: React.FC<{ index: number }> = ({ index }) => (
-  <div
-    className="absolute"
-    style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
-  >
-    Михаэль · Урок 1 из 4 · Slide {index}/29
-  </div>
-);
+// Footer now reads index/total/lesson from SlideMetaContext.
+// The `index` prop is kept for backward-compat with existing call sites but ignored.
+const Footer: React.FC<{ index?: number }> = () => {
+  const { index, total, lesson } = useSlideMeta();
+  return (
+    <div
+      className="absolute"
+      style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
+    >
+      Михаэль · Урок {lesson} из 4 · Slide {index}/{total}
+    </div>
+  );
+};
 
-const FooterMobile: React.FC<{ index: number }> = ({ index }) => (
-  <div
-    className="absolute"
-    style={{ right: 14, bottom: 10, color: "hsl(var(--slide-text-muted))", fontSize: 8, letterSpacing: "0.04em" }}
-  >
-    Slide {index}/29
-  </div>
-);
+const FooterMobile: React.FC<{ index?: number }> = () => {
+  const { index, total } = useSlideMeta();
+  return (
+    <div
+      className="absolute"
+      style={{ right: 14, bottom: 10, color: "hsl(var(--slide-text-muted))", fontSize: 8, letterSpacing: "0.04em" }}
+    >
+      Slide {index}/{total}
+    </div>
+  );
+};
 
 /* ========== Slide 1 — Title ========== */
 export const S1 = () => {
