@@ -825,14 +825,95 @@ export const S10 = () => {
   );
 };
 
-export const S11 = () => (
-  <CaseTitle
-    index={12}
-    name="RunEverywhere"
-    sub="50,000+ пользователей в 107 странах."
-    punch="Я не задавал вопросы. Рынок сам говорил. Я просто умел слушать."
-  />
-);
+export const S11 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Кейс — поймать момент</Eyebrow>
+          <h2 className="font-display text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[4px]">
+            RunEverywhere
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">
+            2020 — ковид. Виртуальные забеги. 50 000+ клиентов в 107 странах.
+          </p>
+          <div className="space-y-[7px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Триггер</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Я сам бегаю. Ковид — все марафоны и забеги отменили. А желание бегать и соревноваться — никуда не делось.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Действие</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Мини-команда. Прототип за 3 месяца. Я сам в рынке — знаю проблему. Поговорил с десятками бегунов, провалидировал готовность платить.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Сигнал рынка</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Параллельно появлялись похожие сервисы — у них покупали много. Подтверждение: спрос есть, и он сейчас.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Запустили — <span className="font-bold text-[hsl(var(--slide-text))]">прибыль с первого месяца</span>. Полетело.
+              </p>
+            </div>
+            <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] leading-[1.3]">
+              Лучше раньше и сыро, чем вовремя и никому не нужно.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={12} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Кейс — поймать момент</Eyebrow>
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1] mb-[14px] tracking-[-0.02em]">
+          RunEverywhere
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[36px]">
+          2020 — ковид. Виртуальные забеги. 50 000+ клиентов в 107 странах.
+        </p>
+        <div className="grid grid-cols-3 gap-[18px] max-w-[1620px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Триггер</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Я сам бегаю. Ковид отменил все марафоны и забеги. А желание соревноваться — никуда не делось.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Действие</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Мини-команда. Прототип за <span className="text-[hsl(var(--slide-gold))]">3 месяца</span>. Сам в рынке — знаю проблему. Поговорил с десятками бегунов, проверил готовность платить.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Сигнал рынка</p>
+            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Параллельно появлялись похожие сервисы — у них покупали много. Спрос есть, и он <span className="text-[hsl(var(--slide-gold))]">сейчас</span>.
+            </p>
+          </div>
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[22px] mt-[22px] max-w-[1620px]">
+          <p className="text-[26px] text-[hsl(var(--slide-text)/0.92)] leading-[1.3]">
+            Запустили — <span className="text-[hsl(var(--slide-gold))] font-bold">прибыль с первого месяца</span>. Полетело.
+          </p>
+          <p className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mt-[10px]">
+            Лучше раньше и сыро, чем вовремя и никому не нужно.
+          </p>
+        </div>
+      </div>
+      <Footer index={12} />
+    </Stage>
+  );
+};
 
 /* ========== Slide 12 — Big quote ========== */
 export const S12 = () => (
