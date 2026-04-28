@@ -657,14 +657,83 @@ export const S8 = () => {
   );
 };
 
-export const S9 = () => (
-  <CaseTitle
-    index={10}
-    name="MetaMinder"
-    sub="2019–2025. B2B SaaS LMS. Экзит."
-    punch="В первой версии — никто не покупал. Во второй — нашли свою нишу. Разница — 47 разговоров."
-  />
-);
+export const S9 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[24px] h-full">
+          <Eyebrow mobile>Кейс — успех</Eyebrow>
+          <h2 className="font-display text-[30px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[4px]">
+            MetaMinder
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">
+            2023 — сейчас. B2B SaaS. Обучение сотрудников через AI-агентов.
+          </p>
+          <div className="space-y-[7px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">v1 — провал</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Долго разрабатывали. Никто не покупал. Знакомая история.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[7px] px-[12px] py-[9px]">
+              <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[3px]">Как нашли пивот</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                Анализ рынка → куда движется обучение. Кто из конкурентов поднял раунды и почему. Взяли лучшее от каждого и адаптировали под тренд: AI-агенты, полная автоматизация.
+              </p>
+            </div>
+            <div className="bg-[hsl(var(--slide-gold)/0.12)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[9px]">
+              <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                <span className="font-bold text-[hsl(var(--slide-text))]">7 месяцев</span> — первый платящий B2B-клиент. Сейчас — клиенты на всех континентах.
+              </p>
+            </div>
+            <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] leading-[1.3] pt-[2px]">
+              Сначала — кто, зачем и какую проблему. Только потом — код.
+            </p>
+          </div>
+        </div>
+        <FooterMobile index={10} />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full">
+        <Eyebrow>Кейс — успех</Eyebrow>
+        <h2 className="font-display text-[80px] font-bold text-[hsl(var(--slide-text))] leading-[1] mb-[14px] tracking-[-0.02em]">
+          MetaMinder
+        </h2>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[40px]">
+          2023 — сейчас. B2B SaaS. Обучение сотрудников через AI-агентов.
+        </p>
+        <div className="grid grid-cols-2 gap-[20px] max-w-[1600px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">v1 — провал</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Долго разрабатывали. Никто не покупал. Знакомая история.
+            </p>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[26px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Как нашли пивот</p>
+            <p className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+              Анализ рынка → куда движется обучение. Кто из конкурентов поднял раунды и почему. Взяли лучшее от каждого и адаптировали под тренд: <span className="text-[hsl(var(--slide-gold))]">AI-агенты, полная автоматизация</span>.
+            </p>
+          </div>
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[24px] mt-[24px] max-w-[1600px]">
+          <p className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.25]">
+            <span className="text-[hsl(var(--slide-gold))]">7 месяцев</span> — первый платящий B2B-клиент. Сейчас — клиенты на всех континентах.
+          </p>
+          <p className="text-[20px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] mt-[10px]">
+            Сначала определили: кто, зачем и какую проблему решаем. Только потом начали строить.
+          </p>
+        </div>
+      </div>
+      <Footer index={10} />
+    </Stage>
+  );
+};
 
 export const S10 = () => (
   <CaseTitle
