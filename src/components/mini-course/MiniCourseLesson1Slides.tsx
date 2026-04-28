@@ -122,7 +122,7 @@ const PullQuote: React.FC<{ children: React.ReactNode; sub?: string }> = ({ chil
 export const S2 = () => (
   <div className="w-full h-full relative">
     <PullQuote sub="главный инсайт этого урока">
-      Валидация — это не доказательство того, что идея хорошая. Это попытка её убить.
+      Ресёрч за 90 минут стоит 6 месяцев твоей жизни. Это самая высокая часовая ставка, которую ты когда-либо получишь.
     </PullQuote>
     <Footer index={2} />
   </div>
@@ -136,11 +136,14 @@ export const S3 = () => {
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[24px] h-full">
           <Eyebrow mobile>Вопрос на старт</Eyebrow>
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[16px]">
-            С кем из тех, кто НЕ твой друг, ты говорил про свою идею за последние две недели?
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mb-[14px]">
+            Назови прямо сейчас:<br />
+            5 своих конкурентов.<br />
+            Их цены. Их позиционирование.<br />
+            Что они подняли за последний год.
           </h2>
-          <p className="text-[12px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-            Если ноль — этот урок изменит всё, что ты делаешь дальше.
+          <p className="text-[12px] text-[hsl(var(--slide-gold))] italic font-semibold leading-[1.4]">
+            Не можешь — строишь вслепую. Этот урок исправит это за 90 минут.
           </p>
         </div>
         <FooterMobile index={3} />
@@ -151,11 +154,13 @@ export const S3 = () => {
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1600px]">
         <Eyebrow>Вопрос на старт</Eyebrow>
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em]">
-          С кем из тех, кто НЕ твой друг, ты говорил про свою идею за последние две недели?
+        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[36px] tracking-[-0.01em]">
+          Назови прямо сейчас:<br />
+          5 своих конкурентов. Их цены. Их позиционирование.<br />
+          Что они подняли за последний год.
         </h2>
-        <p className="text-[28px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Если ноль — этот урок изменит всё, что ты делаешь дальше.
+        <p className="text-[28px] text-[hsl(var(--slide-gold))] italic font-semibold leading-[1.4]">
+          Не можешь — строишь вслепую. Этот урок исправит это за 90 минут.
         </p>
       </div>
       <Footer index={3} />
