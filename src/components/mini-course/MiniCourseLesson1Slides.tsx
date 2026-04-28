@@ -1304,9 +1304,18 @@ export const S12d = () => {
             <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.4]">
               <span className="font-bold">FoundersLens</span> — агент прогоняет твою идею за один запуск.
             </p>
+            <p className="font-mono text-[14px] text-[hsl(var(--slide-gold))] font-bold mt-[6px]">
+              founders-circle.space/agents/lens →
+            </p>
           </div>
-          <div className="font-mono text-[15px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold whitespace-nowrap">
-            /agents/lens →
+          <div className="bg-white p-[10px] rounded-[8px] flex-shrink-0">
+            <QRCodeSVG
+              value="https://founders-circle.space/agents/lens"
+              size={120}
+              level="M"
+              bgColor="#ffffff"
+              fgColor="#0A0E1A"
+            />
           </div>
         </div>
       </div>
