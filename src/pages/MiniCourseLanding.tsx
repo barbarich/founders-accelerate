@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./mini-course-landing/styles.css";
 
+const michaelPhoto = "/images/michael.jpg";
+
 /**
  * Mini-course landing — built 1:1 from the user-supplied HTML mockup.
  * Sections kept as separate components for readability.
@@ -142,7 +144,7 @@ function About() {
           Этот курс — выжимка моих 16 лет в продуктах, двух экзитов и 4 активных компаний, которые я сейчас веду как CEO и фаундер. Никаких теоретических фреймворков из чужих книг — только то, что работает у меня прямо сейчас.
         </p>
         <div className="mcl-about-card">
-          <div className="mcl-about-photo-placeholder">МБ</div>
+          <img className="mcl-about-photo" src={michaelPhoto} alt="Михаэль Барбарич" loading="lazy" />
           <div>
             <div className="mcl-about-name">Михаэль Барбарич</div>
             <div className="mcl-about-role">Serial entrepreneur · Tel Aviv · 2 экзита · CEO MetaMinder · Founder Mikey AI</div>
@@ -345,7 +347,7 @@ const TESTIMONIALS = [
 
 function SocialProof() {
   return (
-    <section style={{ background: "var(--mcl-bg-elev)", borderTop: "1px solid var(--mcl-border)", borderBottom: "1px solid var(--mcl-border)" }}>
+    <section className="mcl-social-section">
       <div className="mcl-container">
         <div className="mcl-section-label">Что говорят</div>
         <h2 className="mcl-section-title">Это не первая когорта <em>обо мне как менторе.</em></h2>
