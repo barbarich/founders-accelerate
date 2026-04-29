@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./mini-course-landing/styles.css";
-import michaelPhoto from "/images/michael.jpg?url";
+
+const michaelPhoto = "/images/michael.jpg";
 
 /**
  * Mini-course landing — built 1:1 from the user-supplied HTML mockup.
