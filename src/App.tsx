@@ -9,6 +9,7 @@ import Agents from "./pages/Agents";
 import Landing from "./pages/Landing";
 import Lens from "./pages/Lens";
 import NewLanding from "./pages/NewLanding";
+import MiniCourseLanding from "./pages/MiniCourseLanding";
 import PmfAgent from "./pages/PmfAgent";
 import Accelerator from "./pages/Accelerator";
 import Apply from "./pages/Apply";
@@ -56,6 +57,20 @@ import MiniCourseLesson4 from "./pages/MiniCourseLesson4";
 const queryClient = new QueryClient();
 
 function LangLanding() {
+  const { lang } = useParams<{ lang: string }>();
+  const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "ru";
+  // Hebrew keeps the original accelerator landing (mini-course content is Russian-only).
+  if (validLang === "he") {
+    return (
+      <LanguageProvider lang={validLang}>
+        <NewLanding />
+      </LanguageProvider>
+    );
+  }
+  return <MiniCourseLanding />;
+}
+
+function LangAcceleratorLanding() {
   const { lang } = useParams<{ lang: string }>();
   const validLang = supportedLangs.includes(lang as Lang) ? (lang as Lang) : "ru";
   return (
@@ -144,6 +159,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/ru" replace />} />
           <Route path="/:lang" element={<LangLanding />} />
+          <Route path="/:lang/accelerator-landing" element={<LangAcceleratorLanding />} />
           <Route path="/:lang/accelerator" element={<LangAccelerator />} />
           <Route path="/:lang/apply" element={<LangApply />} />
           <Route path="/:lang/mentor" element={<LangMentor />} />
