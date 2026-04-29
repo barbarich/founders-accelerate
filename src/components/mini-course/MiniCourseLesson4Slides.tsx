@@ -1191,9 +1191,9 @@ const L4_TFC_FACTS = [
   { k: "8 занятий", v: "за 8 недель — путь от идеи к запуску" },
   { k: "до 8 человек", v: "мини-группа, чтобы хватало внимания каждому" },
   { k: "1 встреча в неделю", v: "по 2–2.5 часа, прорабатываем отдельный блок" },
-  { k: "Лично со мной", v: "поддержка, ответы на все вопросы, разбор твоего проекта" },
+  { k: "Доступ ко мне", v: "на всё время курса — поддержка и разбор твоего проекта" },
   { k: "Группа фаундеров", v: "комьюнити, фидбэк, нетворкинг, ранние пользователи друг другу" },
-  { k: "Цель", v: "ты запустил продукт и получил первых платящих" },
+  { k: "$990", v: "за весь курс с полной поддержкой до запуска" },
 ];
 const L4Accelerator = () => {
   const isMobile = useIsMobile();
@@ -1208,7 +1208,7 @@ const L4Accelerator = () => {
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[10px]" />
           <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Дальше с поддержкой</p>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
-            <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — акселератор
+            <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — акселераторская программа
           </h2>
           <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4] mb-[8px]">
             Если страшно, непонятно, много вопросов или нужна поддержка — это место, куда стоит прийти.
@@ -1242,7 +1242,7 @@ const L4Accelerator = () => {
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
         <p className="text-[18px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Дальше с поддержкой</p>
         <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.01em]">
-          <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — мой акселератор
+          <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — акселераторская программа
         </h2>
         <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45] mb-[24px] max-w-[1600px]">
           Если страшно, непонятно, много вопросов, или просто нужна поддержка — это место, куда стоит прийти. Цель одна: <b className="text-[hsl(var(--slide-gold))]">ты запустил продукт и получил первых платящих пользователей.</b>
