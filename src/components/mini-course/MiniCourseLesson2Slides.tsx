@@ -800,6 +800,284 @@ const L2Homework = () => {
   );
 };
 
+/* ========== Slide 9 (replaces S14) — Кого и где найти + outreach ========== */
+const L2_OUTREACH_WHERE = [
+  { icon: "🔗", k: "LinkedIn", v: "Sales Navigator: фильтр по должности + индустрии. 20 DM в день." },
+  { icon: "👽", k: "Reddit + нишевые форумы", v: "Subreddits твоей ЦА. Ищи треды, где жалуются на проблему." },
+  { icon: "💬", k: "Slack / Discord-комьюнити", v: "Профильные сообщества. Сначала помогаешь, потом просишь 15 минут." },
+  { icon: "🤝", k: "Своя сеть + рефералы", v: "Знакомые из ниши. Каждое интервью заканчивай: «Кто ещё с этим сталкивается?»" },
+];
+const L2_DM_TEMPLATE = `Привет, {имя}. Я не продаю. Изучаю, как {роль} решают {проблема}. 
+15 минут, открытые вопросы про твой опыт. Можно на этой неделе?`;
+const L2WhoToInterview = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Кого и где найти</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Друзей и семью — <span className="text-[hsl(var(--slide-gold))]">можно</span>. Если они ЦА.
+          </h2>
+          <p className="text-[9px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[8px]">
+            Главное — не <b>кого</b> ты спрашиваешь, а <b>как</b>. Но 5 разговоров с близкими ≠ сигнал — нужны и холодные.
+          </p>
+          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">Где брать холодных</p>
+          <div className="grid grid-cols-2 gap-[5px] mb-[8px]">
+            {L2_OUTREACH_WHERE.map((w) => (
+              <div key={w.k} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[8px] py-[6px]">
+                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{w.icon} {w.k}</p>
+                <p className="text-[8px] text-[hsl(var(--slide-text)/0.8)] leading-[1.35]">{w.v}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[7px]">
+            <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Шаблон сообщения</p>
+            <p className="text-[8.5px] italic text-[hsl(var(--slide-text))] leading-[1.45] whitespace-pre-line">{L2_DM_TEMPLATE}</p>
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Кого и где найти</Eyebrow>
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.01em]">
+          Друзей и семью — <span className="text-[hsl(var(--slide-gold))]">можно</span>. Если они твоя ЦА.
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1500px]">
+          Доступные люди вокруг — нормальный канал. Но 5 разговоров с близкими ≠ сигнал. Нужны и <b>холодные</b> — те, кто скажет правду без вежливости.
+        </p>
+        <div className="grid grid-cols-2 gap-[40px] max-w-[1700px]">
+          <div>
+            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Где брать холодных</p>
+            <div className="grid grid-cols-1 gap-[10px]">
+              {L2_OUTREACH_WHERE.map((w) => (
+                <div key={w.k} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[20px] py-[14px]">
+                  <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{w.icon} {w.k}</p>
+                  <p className="text-[16px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">{w.v}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">Шаблон холодного сообщения</p>
+            <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[28px] py-[24px]">
+              <p className="text-[22px] italic text-[hsl(var(--slide-text))] leading-[1.55] whitespace-pre-line">{L2_DM_TEMPLATE}</p>
+            </div>
+            <p className="text-[18px] text-[hsl(var(--slide-gold))] italic mt-[18px] leading-[1.45]">
+              Не «расскажу про идею». Не «дай feedback». Только: <b>изучаю проблему</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 10 (replaces S15) — Mom Test + Bad/Good questions ========== */
+const L2_MOM_RULES = [
+  { n: "01", t: "Не говори про свою идею", body: "Спрашивай про их жизнь. Идея — твоя проблема, не их." },
+  { n: "02", t: "Спрашивай про прошлое, а не про будущее", body: "«Когда последний раз?» вместо «купил бы?». Прошлое — данные, будущее — фантазии." },
+  { n: "03", t: "Меньше говори, больше слушай", body: "80/20. Каждое твоё слово — это твой голос вместо его." },
+];
+const L2_QA_PAIRS = [
+  { bad: "«Тебе бы пригодилось приложение, которое...?»", good: "«Расскажи, как ты решал эту задачу в последний раз?»" },
+  { bad: "«Ты бы заплатил $20 в месяц за такое?»", good: "«Сколько ты сейчас тратишь — деньгами или временем — чтобы это решать?»" },
+  { bad: "«Тебе нравится идея?»", good: "«Что ты пробовал до этого и почему перестал этим пользоваться?»" },
+];
+const L2HowToAsk = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Mom Test</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Открытые вопросы про <span className="text-[hsl(var(--slide-gold))]">прошлое</span>
+          </h2>
+          <div className="space-y-[4px] mb-[8px]">
+            {L2_MOM_RULES.map((r) => (
+              <div key={r.n} className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                <span className="text-[hsl(var(--slide-gold))] font-bold">{r.n}.</span>{" "}
+                <b className="text-[hsl(var(--slide-text))]">{r.t}.</b> {r.body}
+              </div>
+            ))}
+          </div>
+          <div className="space-y-[4px]">
+            {L2_QA_PAIRS.map((p) => (
+              <div key={p.bad} className="grid grid-cols-2 gap-[4px]">
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[5px] px-[6px] py-[5px]">
+                  <p className="text-[7px] font-bold text-red-400 uppercase tracking-[0.1em] mb-[1px]">Плохо</p>
+                  <p className="text-[8px] italic text-[hsl(var(--slide-text))] leading-[1.3]">{p.bad}</p>
+                </div>
+                <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[5px] px-[6px] py-[5px]">
+                  <p className="text-[7px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[1px]">Хорошо</p>
+                  <p className="text-[8px] italic text-[hsl(var(--slide-text))] leading-[1.3]">{p.good}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[8px] leading-[1.4]">
+            Прошлое — данные. Будущее — фантазии.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Mom Test · 3 правила</Eyebrow>
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] mb-[20px]">
+          Открытые вопросы про <span className="text-[hsl(var(--slide-gold))]">прошлое</span>
+        </h2>
+        <div className="grid grid-cols-3 gap-[20px] mb-[28px] max-w-[1700px]">
+          {L2_MOM_RULES.map((r) => (
+            <div key={r.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[22px] py-[18px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">{r.n}</p>
+              <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[6px] leading-[1.25]">{r.t}</p>
+              <p className="text-[16px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">{r.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-x-[20px] gap-y-[10px] max-w-[1700px] mb-[18px]">
+          {L2_QA_PAIRS.map((p) => (
+            <React.Fragment key={p.bad}>
+              <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[10px] px-[20px] py-[12px]">
+                <p className="text-[11px] font-bold text-red-400 uppercase tracking-[0.18em] mb-[4px]">Плохо</p>
+                <p className="text-[18px] italic text-[hsl(var(--slide-text))] leading-[1.4]">{p.bad}</p>
+              </div>
+              <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[10px] px-[20px] py-[12px]">
+                <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[4px]">Хорошо</p>
+                <p className="text-[18px] italic text-[hsl(var(--slide-text))] leading-[1.4]">{p.good}</p>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+        <p className="text-[20px] text-[hsl(var(--slide-gold))] italic leading-[1.4] max-w-[1700px]">
+          Прошлое — данные. Будущее — фантазии. Спрашивай так, чтобы человек <b className="not-italic">рассказывал историю</b>, а не отвечал «да / нет».
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 11 (replaces S16) — Pass/Fail + vitamin/painkiller + ready-to-pay ========== */
+const L2_PASS = [
+  "Сами поднимают эту боль — без наводящего вопроса",
+  "Описывают её теми же словами, что и ты",
+  "Рассказывают про костыли: таблицы, чаты, стажёр",
+  "Называют, сколько времени / денег / нервов это съедает",
+  "Уже пробовали что-то — и бросили. Проблема не решена",
+  "7 из 10 в сегменте говорят про одно и то же",
+];
+const L2_FAIL = [
+  "Проблему называешь ты — собеседник просто кивает",
+  "«Да, бывает» — без примера и без деталей",
+  "Не помнят, когда сталкивались последний раз",
+  "«У друга такое было» — не у них самих",
+  "Никаких костылей нет — значит, и боли нет",
+  "В сегменте про эту боль говорят 1–2 из 10",
+];
+const L2_READY_TO_PAY = [
+  { icon: "💸", t: "Уже тратят деньги или время", v: "На костыль, стажёра, фрилансера, подписку." },
+  { icon: "📅", t: "Готовы согласиться на демо или предоплату", v: "Не «когда выйдет — напишу». А: «когда покажешь?»" },
+  { icon: "🤝", t: "Дают рефералы сами, без просьбы", v: "«Слушай, у моего коллеги то же самое — познакомлю»." },
+];
+const L2PassFail = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[16px] h-full">
+          <Eyebrow mobile>Как читать результат</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Pass / Fail + <span className="text-[hsl(var(--slide-gold))]">painkiller</span>, не vitamin
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[6px]">
+            Vitamin = «было бы неплохо». Painkiller = «болит сейчас, плачу за обезболивающее».
+          </p>
+          <div className="grid grid-cols-2 gap-[5px] mb-[6px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[5px] px-[6px] py-[6px]">
+              <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Pass</p>
+              <ul className="text-[7px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[2px]">
+                {L2_PASS.map((t) => <li key={t}>• {t}</li>)}
+              </ul>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[5px] px-[6px] py-[6px]">
+              <p className="text-[8px] font-bold text-red-400 uppercase tracking-[0.12em] mb-[3px]">Fail</p>
+              <ul className="text-[7px] text-[hsl(var(--slide-text))] leading-[1.4] space-y-[2px]">
+                {L2_FAIL.map((t) => <li key={t}>• {t}</li>)}
+              </ul>
+            </div>
+          </div>
+          <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">3 сигнала готовности платить</p>
+          <ul className="space-y-[2px]">
+            {L2_READY_TO_PAY.map((r) => (
+              <li key={r.t} className="text-[7.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
+                {r.icon} <b>{r.t}.</b> {r.v}
+              </li>
+            ))}
+          </ul>
+          <p className="text-[8px] text-[hsl(var(--slide-gold))] italic mt-[6px] leading-[1.4]">
+            7 из 10 говорят про боль + хотя бы 1 сигнал платить → строим. Иначе — гипотеза не та.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1900px]">
+        <Eyebrow>Как читать результат</Eyebrow>
+        <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px] tracking-[-0.01em]">
+          Pass / Fail + <span className="text-[hsl(var(--slide-gold))]">painkiller</span>, не vitamin
+        </h2>
+        <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[24px] max-w-[1600px]">
+          <b className="text-[hsl(var(--slide-text))]">Vitamin</b> = «было бы неплохо», тёплая улыбка, отложили и забыли.{" "}
+          <b className="text-[hsl(var(--slide-text))]">Painkiller</b> = болит прямо сейчас, уже платят за костыль. Стройте только painkiller.
+        </p>
+        <div className="grid grid-cols-2 gap-[24px] mb-[20px] max-w-[1700px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] px-[28px] py-[20px]">
+            <p className="text-[18px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Pass</p>
+            <ul className="text-[17px] text-[hsl(var(--slide-text))] leading-[1.45] space-y-[6px]">
+              {L2_PASS.map((t) => <li key={t}>• {t}</li>)}
+            </ul>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-red-500/30 rounded-[14px] px-[28px] py-[20px]">
+            <p className="text-[18px] font-bold text-red-400 uppercase tracking-[0.18em] mb-[12px]">Fail</p>
+            <ul className="text-[17px] text-[hsl(var(--slide-text))] leading-[1.45] space-y-[6px]">
+              {L2_FAIL.map((t) => <li key={t}>• {t}</li>)}
+            </ul>
+          </div>
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[28px] py-[16px] max-w-[1700px]">
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">3 сигнала готовности платить</p>
+          <div className="grid grid-cols-3 gap-[20px]">
+            {L2_READY_TO_PAY.map((r) => (
+              <div key={r.t} className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                <p className="font-bold text-[hsl(var(--slide-text))] mb-[2px]">{r.icon} {r.t}</p>
+                <p>{r.v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="text-[20px] text-[hsl(var(--slide-gold))] italic mt-[18px] leading-[1.4] max-w-[1700px]">
+          7 из 10 говорят про боль <b className="not-italic">+ хотя бы один сигнал платить</b> → строим. Иначе — гипотеза не та, возвращайся к Уроку 1.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
 /* ========== Slide 17 — Closing (matches Lesson 1 L1Closing style, no button) ========== */
 const L2Closing = () => {
   const isMobile = useIsMobile();
@@ -856,17 +1134,17 @@ export const slides = [
   L2Title,            // 1  Title (mirrors S1)
   L2Insight,          // 2  Main insight (PullQuote style)
   L2Cost,             // 3  Цена пропущенного шага
-  L2WhyAfterMarket,   // 5  Почему custdev — после рынка
-  S10,                // 6  Mikey case (kept from Lesson 1)
-  L2WhoPays,          // 7  Кому полезно ≠ Кто заплатит
-  L2Rules,            // 8  6 правил интервью
-  L2Hypothesis,       // 9  Шаблон гипотезы
-  S14,                // 10 Who to interview (kept)
-  S15,                // 11 How to ask questions (kept)
-  S16,                // 12 Pass/Fail signals (kept)
-  L2Tools,            // 13 Инструменты + mini-CTA
-  L2NinjaRetro,       // 14 InterviewNinja counter-case
-  L2Practice,         // 15 Стартовый пакет на 7 дней
-  L2Homework,         // 16 Домашнее задание (matches L1Homework)
-  L2Closing,          // 17 Closing (matches L1Closing, no button)
+  L2WhyAfterMarket,   // 4  Почему custdev — после рынка
+  S10,                // 5  Mikey case (kept from Lesson 1)
+  L2WhoPays,          // 6  Кому полезно ≠ Кто заплатит
+  L2Rules,            // 7  6 правил интервью
+  L2Hypothesis,       // 8  Шаблон гипотезы
+  L2WhoToInterview,   // 9  Кого и где найти + outreach (доработка S14)
+  L2HowToAsk,         // 10 Mom Test + Bad/Good вопросы (доработка S15)
+  L2PassFail,         // 11 Pass/Fail + vitamin/painkiller + готовность платить (доработка S16)
+  L2Tools,            // 12 Инструменты + mini-CTA
+  L2NinjaRetro,       // 13 InterviewNinja counter-case
+  L2Practice,         // 14 Стартовый пакет на 7 дней
+  L2Homework,         // 15 Домашнее задание
+  L2Closing,          // 16 Closing
 ];
