@@ -18,7 +18,16 @@ export default function MiniCourseThankYou() {
   return (
     <div className="mcl-root" style={{ minHeight: "100vh", paddingTop: 0 }}>
       <section style={{ padding: "80px 0" }}>
-        <div className="mcl-container" style={{ maxWidth: 720, textAlign: "center" }}>
+        <div
+          className="mcl-container"
+          style={{
+            maxWidth: 720,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
           <div
             style={{
               width: 72,
@@ -26,19 +35,22 @@ export default function MiniCourseThankYou() {
               borderRadius: "50%",
               background: "rgba(74, 138, 40, 0.12)",
               border: "1px solid rgba(74, 138, 40, 0.3)",
-              display: "inline-flex",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: 28,
+              marginBottom: 24,
             }}
           >
             <CheckCircle2 size={36} style={{ color: "var(--mcl-success)" }} />
           </div>
 
-          <div className="mcl-section-label" style={{ justifyContent: "center" }}>
+          <div className="mcl-section-label" style={{ marginBottom: 20 }}>
             Оплата прошла успешно
           </div>
-          <h1 className="mcl-section-title" style={{ marginBottom: 20 }}>
+          <h1
+            className="mcl-section-title"
+            style={{ marginBottom: 20, maxWidth: "100%" }}
+          >
             Спасибо за покупку. <em>Доступ — в Telegram-боте.</em>
           </h1>
           <p
@@ -67,6 +79,8 @@ export default function MiniCourseThankYou() {
               border: "1px solid rgba(0,0,0,0.08)",
               background: "rgba(0,0,0,0.02)",
               textAlign: "left",
+              width: "100%",
+              maxWidth: 560,
             }}
           >
             <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 14 }}>
