@@ -53,6 +53,7 @@ import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
 import MiniCourseLesson2 from "./pages/MiniCourseLesson2";
 import MiniCourseLesson3 from "./pages/MiniCourseLesson3";
 import MiniCourseLesson4 from "./pages/MiniCourseLesson4";
+import MiniCourseThankYou from "./pages/MiniCourseThankYou";
 
 const queryClient = new QueryClient();
 
@@ -184,6 +185,7 @@ const App = () => (
           <Route path="/mini-course/lesson2" element={<MiniCourseLesson2 />} />
           <Route path="/mini-course/lesson3" element={<MiniCourseLesson3 />} />
           <Route path="/mini-course/lesson4" element={<MiniCourseLesson4 />} />
+          <Route path="/mini-course/thank-you" element={<MiniCourseThankYou />} />
           <Route path="/:lang/privacy" element={<LangPrivacy />} />
           <Route path="/:lang/terms" element={<LangTerms />} />
           <Route path="/:lang/contact" element={<LangContact />} />
