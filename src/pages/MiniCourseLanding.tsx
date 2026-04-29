@@ -112,10 +112,6 @@ function FounderStrip() {
   );
 }
 
-function Pain() {
-  return PainImpl();
-}
-
 function MeetMentor() {
   return (
     <section className="mcl-meet">
@@ -151,7 +147,7 @@ function MeetMentor() {
   );
 }
 
-function PainImpl() {
+function Pain() {
   const pairs = [
     {
       before: "Строишь, не поговорив ни с одним пользователем",
