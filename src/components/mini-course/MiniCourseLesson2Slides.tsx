@@ -1,3 +1,4 @@
+import React from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSlideMeta } from "./SlideMetaContext";
 import titleBg from "@/assets/slides/title-bg.jpg";
