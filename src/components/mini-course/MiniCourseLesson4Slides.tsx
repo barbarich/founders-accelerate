@@ -1283,4 +1283,5 @@ export const slides = [
   L4Tools,        // 12 Tools + mini-CTA
   L4Recap,        // 13 Резюме + следующие шаги для B2B / B2C
   L4Accelerator,  // 14 The Founders Circle — акселератор
+  L4Finale,       // 15 Финал мини-курса — поздравление и мотивация
 ];
