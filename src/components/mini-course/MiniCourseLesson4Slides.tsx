@@ -1157,6 +1157,5 @@ export const slides = [
   L4B2BTools,     // 10 B2B автоматизация · Apollo + Instantly + LinkedIn
   L4B2C,          // 11 B2C запуск
   L4Tools,        // 12 Tools + mini-CTA
-  L4Practice,     // 13 Practice 30 мин
-  L4Final,        // 14 7 дней + финальный CTA
+  L4Final,        // 13 7 дней + финальный CTA
 ];
