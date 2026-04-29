@@ -160,12 +160,10 @@ const L4Insight = () => {
 const L4_INDUSTRY = [
   { num: "+22%", text: "ROAS у тех, кто запускает Meta Advantage+ кампании вместо ручного таргета", src: "Meta · 2025" },
   { num: "15–35%", text: "bounce rate на «верифицированных» имейлах Apollo, если запускать без warmup", src: "Cleverly · 2026" },
-  { num: "88%", text: "AI-агентов не доходят до продакшена из-за слабой упаковки и пустого онбординга", src: "CIO · 2025" },
+  { num: "88%", text: "AI-продуктов не доходят до продакшена из-за слабой упаковки и пустого онбординга", src: "CIO · 2025" },
 ];
 const L4_MY = [
-  { num: "107 стран", text: "RunEverywhere — органический запуск без бюджета на платную рекламу" },
-  { num: "7 месяцев", text: "MetaMinder — sales-led: Apollo + Instantly + LinkedIn до первого B2B-клиента" },
-  { num: "Сейчас", text: "Mikey — тестирую Meta + Google на B2C, бюджет от $5/день, ICP-таргет" },
+  { num: "Первые 10 клиентов", text: "MetaMinder — с нулевым бюджетом на рекламу через Apollo, Instantly, LeadHelper, LinkedIn и собственные соцсети" },
 ];
 const L4Stats = () => {
   const isMobile = useIsMobile();
@@ -175,7 +173,7 @@ const L4Stats = () => {
         <div className="flex flex-col justify-center px-[18px] h-full">
           <Eyebrow mobile>Статистика индустрии · и мой счёт</Eyebrow>
           <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и три моих запуска
+            Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и мой кейс MetaMinder
           </h2>
           <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Индустрия</p>
           <div className="grid grid-cols-3 gap-[5px] mb-[8px]">
@@ -188,7 +186,7 @@ const L4Stats = () => {
             ))}
           </div>
           <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Мой счёт по запускам</p>
-          <div className="grid grid-cols-3 gap-[5px] mb-[8px]">
+          <div className="grid grid-cols-1 gap-[5px] mb-[8px]">
             {L4_MY.map((it) => (
               <div key={it.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[6px] py-[6px]">
                 <div className="text-[11px] font-bold text-[hsl(var(--slide-gold))] leading-[1.05]">{it.num}</div>
@@ -197,7 +195,7 @@ const L4Stats = () => {
             ))}
           </div>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Каждый запуск — это другая комбинация инструментов. Сегодня покажу обе.
+            Без бюджета на рекламу — через холодные касания и собственный нетворк.
           </p>
         </div>
         <FooterMobile />
@@ -209,7 +207,7 @@ const L4Stats = () => {
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <Eyebrow>Статистика индустрии · и мой счёт по запускам</Eyebrow>
         <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px] tracking-[-0.01em]">
-          Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и три моих запуска
+          Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и мой кейс MetaMinder
         </h2>
         <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Индустрия</p>
         <div className="grid grid-cols-3 gap-[24px] mb-[24px] max-w-[1700px]">
@@ -222,7 +220,7 @@ const L4Stats = () => {
           ))}
         </div>
         <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Мой счёт</p>
-        <div className="grid grid-cols-3 gap-[24px] mb-[20px] max-w-[1700px]">
+        <div className="grid grid-cols-1 gap-[24px] mb-[20px] max-w-[1700px]">
           {L4_MY.map((it) => (
             <div key={it.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[22px]">
               <div className="font-display text-[36px] font-bold text-[hsl(var(--slide-gold))] leading-[1.05] mb-[10px]">{it.num}</div>
@@ -231,7 +229,7 @@ const L4Stats = () => {
           ))}
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Каждый запуск — это другая комбинация инструментов. Сегодня покажу обе — B2B и B2C.
+          Первые 10 клиентов — без бюджета на рекламу. Только холодные касания и собственная сеть.
         </p>
       </div>
       <Footer />
