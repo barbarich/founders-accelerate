@@ -47,6 +47,7 @@
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: 40px; /* offset for fixed .mcl-top-bar */
 }
 
 body.mcl-body { background: #f8f8f4; }
