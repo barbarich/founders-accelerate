@@ -79,7 +79,15 @@ function FounderStrip() {
     <div className="mcl-founder-strip">
       <div className="mcl-container-wide">
         <div className="mcl-founder-strip-inner">
-          <div className="mcl-founder-strip-label">Михаэль Барбарич · 16 лет в продуктах</div>
+          <a
+            className="mcl-founder-strip-label mcl-linkedin-link"
+            href="https://www.linkedin.com/in/michael-barbarich"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Открыть LinkedIn в новой вкладке"
+          >
+            Михаэль Барбарич · 16 лет в продуктах
+          </a>
           <div className="mcl-founder-stats">
             <div>
               <div className="mcl-founder-stat-num"><em>2</em> экзита</div>
@@ -146,7 +154,15 @@ function About() {
         <div className="mcl-about-card">
           <img className="mcl-about-photo" src={michaelPhoto} alt="Михаэль Барбарич" loading="lazy" />
           <div>
-            <div className="mcl-about-name">Михаэль Барбарич</div>
+            <a
+              className="mcl-about-name mcl-linkedin-link"
+              href="https://www.linkedin.com/in/michael-barbarich"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Открыть LinkedIn в новой вкладке"
+            >
+              Михаэль Барбарич
+            </a>
             <div className="mcl-about-role">Serial entrepreneur · Tel Aviv · 2 экзита · CEO MetaMinder · Solo-founder Mikey AI</div>
             <p className="mcl-about-quote">
               «То, что раньше делала команда из 20 человек, я сейчас делаю один — с AI. И при этом мои продукты лучше, чем были тогда.»
