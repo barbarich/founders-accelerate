@@ -462,6 +462,7 @@ function SocialProof() {
 }
 
 function Pricing() {
+  const countdown = useDiscountCountdown();
   return (
     <section className="mcl-pricing" id="buy">
       <div className="mcl-container">
@@ -474,6 +475,11 @@ function Pricing() {
           <div className="mcl-pricing-badge">−61% сейчас</div>
           <div className="mcl-pricing-name">AI-продукт, который покупают</div>
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
+          <div className="mcl-pricing-timer">
+            <span className="mcl-pricing-timer-dot" aria-hidden="true" />
+            <span className="mcl-pricing-timer-label">Скидка действует ещё</span>
+            <span className="mcl-pricing-timer-value">{countdown}</span>
+          </div>
           <div className="mcl-pricing-price">
             <span className="mcl-pricing-price-currency">$</span>
             <span className="mcl-pricing-price-old">49</span>
