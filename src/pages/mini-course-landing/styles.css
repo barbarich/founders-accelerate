@@ -207,6 +207,8 @@ body.mcl-body { background: #f8f8f4; }
 .mcl-cta-primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
 .mcl-cta-primary::after { content: '→'; font-size: 18px; transition: transform 0.2s ease; }
 .mcl-cta-primary:hover::after { transform: translateX(4px); }
+.mcl-cta-primary:disabled { opacity: 0.65; cursor: wait; transform: none; filter: none; }
+.mcl-cta-primary:disabled::after { content: ''; }
 
 .mcl-hero-meta {
   display: flex; flex-wrap: wrap; justify-content: center;
