@@ -1063,3 +1063,34 @@ a.mcl-linkedin-link:hover::after {
   opacity: 1;
   transform: translate(2px, -2px);
 }
+
+/* PRICING CARD — urgency timer */
+.mcl-pricing-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 6px;
+  padding: 10px 16px;
+  background: var(--mcl-text);
+  color: #fff;
+  border-radius: var(--mcl-radius-pill);
+  font-size: 13px;
+  font-family: var(--mcl-font-mono);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.mcl-pricing-timer-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mcl-accent);
+  animation: mcl-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.mcl-pricing-timer-label { opacity: 0.75; }
+.mcl-pricing-timer-value {
+  color: var(--mcl-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 540px) {
+  .mcl-pricing-timer { font-size: 12px; padding: 9px 14px; gap: 8px; }
+}
