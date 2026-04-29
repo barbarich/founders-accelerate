@@ -144,17 +144,20 @@ function Pain() {
           <div className="mcl-stat-big">87%</div>
           <div className="mcl-stat-text">AI-проектов не доходят до продакшена. Не потому, что они плохо построены — а потому, что построены не для того, кто заплатит.</div>
         </div>
-        <div className="mcl-ba-grid">
-          <div className="mcl-ba-head mcl-ba-head--before">До курса</div>
-          <div className="mcl-ba-head mcl-ba-head--after">После курса</div>
+        <div className="mcl-ba-table" role="table" aria-label="До и после курса">
+          <div className="mcl-ba-thead" role="row">
+            <div className="mcl-ba-th mcl-ba-th--before" role="columnheader">До курса</div>
+            <div className="mcl-ba-th mcl-ba-th--after" role="columnheader">После курса</div>
+          </div>
           {pairs.map(({ before, after }) => (
-            <div key={before} className="mcl-ba-row">
-              <div className="mcl-ba-cell mcl-ba-cell--before">
-                <strong>{before}</strong>
+            <div key={before} className="mcl-ba-tr" role="row">
+              <div className="mcl-ba-td mcl-ba-td--before" role="cell">
+                <span className="mcl-ba-tag mcl-ba-tag--before" aria-hidden="true">До</span>
+                {before}
               </div>
-              <div className="mcl-ba-arrow" aria-hidden="true">→</div>
-              <div className="mcl-ba-cell mcl-ba-cell--after">
-                <strong>{after}</strong>
+              <div className="mcl-ba-td mcl-ba-td--after" role="cell">
+                <span className="mcl-ba-tag mcl-ba-tag--after" aria-hidden="true">После</span>
+                {after}
               </div>
             </div>
           ))}
