@@ -589,12 +589,12 @@ const L3BestPractices2 = () => {
           Workflow и <span className="text-[hsl(var(--slide-gold))]">контроль качества</span>
         </h2>
         <p className="text-[20px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] mb-[24px]">Часть 2 · Как давать задачи, чтобы AI выдавал результат</p>
-        <div className="grid grid-cols-5 gap-[16px] mb-[20px] max-w-[1800px]">
+        <div className="grid grid-cols-3 gap-[20px] mb-[24px] max-w-[1700px]">
           {L3_BP2.map((s) => (
-            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[18px] py-[18px]">
-              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">{s.n}</p>
-              <p className="text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[8px]">{s.t}</p>
-              <p className="text-[14px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[26px] py-[24px]">
+              <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">{s.n}</p>
+              <p className="text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">{s.t}</p>
+              <p className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
             </div>
           ))}
         </div>
