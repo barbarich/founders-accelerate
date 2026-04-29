@@ -15,7 +15,7 @@ const CHECK_ICON = (
   </svg>
 );
 
-function TopBar() {
+function useDiscountCountdown() {
   const [label, setLabel] = useState("07д 00ч 00м");
 
   useEffect(() => {
@@ -40,6 +40,11 @@ function TopBar() {
     return () => window.clearInterval(id);
   }, []);
 
+  return label;
+}
+
+function TopBar() {
+  const label = useDiscountCountdown();
   return (
     <div className="mcl-top-bar">
       Скидка 61% действует ещё <span className="mcl-countdown">{label}</span> · цена вернётся к $49
