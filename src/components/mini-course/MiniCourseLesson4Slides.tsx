@@ -1143,6 +1143,181 @@ const L4Final = () => {
   );
 };
 
+/* ========== Slide 13 — Recap всего урока 4 ========== */
+const L4_RECAP = [
+  { n: "01", t: "88% AI-продуктов умирают на упаковке, не на коде" },
+  { n: "02", t: "Упаковка = позиционирование + визуалы + креативы" },
+  { n: "03", t: "Формула: для [кого] + [что] + [как иначе] + [результат]" },
+  { n: "04", t: "50 креативов на кампанию: 50% картинки, 50% видео, AI-генерация" },
+  { n: "05", t: "B2B стартует с бренда фаундера: личные соцсети, нетворкинг, оффлайн" },
+  { n: "06", t: "B2B масштаб: Apollo + Instantly + AI-копирайтинг + LinkedIn Helper" },
+  { n: "07", t: "B2C: пиксели Meta/TikTok/Google + GA4 ставим ДО первого клика" },
+  { n: "08", t: "Вейтлист с личных страниц = первые 500 человек без бюджета" },
+  { n: "09", t: "Meta Advantage+ — основной канал, Google PMax — позже" },
+  { n: "10", t: "Аналитика — must. Без GA4 — слепой полёт" },
+];
+const L4_NEXT_B2B = ["Соберись с бренд-присутствием на FB/LinkedIn", "Сделай список 500 контактов в Apollo", "Запусти Instantly секвенцию на 500 писем", "Параллельно ходи на оффлайн-нетворкинг"];
+const L4_NEXT_B2C = ["Поставь пиксели Meta + TikTok + Google + GA4", "Открой вейтлист и запости в свои соцсети", "Найди 5 групп твоей ЦА — пригласи в вейтлист", "Подготовь 50 креативов в Nano Banana + Kling", "Запусти Meta Advantage+ от $20/день"];
+
+const L4Recap = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage>
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Урок 4 · резюме</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            Что мы прошли и <span className="text-[hsl(var(--slide-gold))]">что делать дальше</span>
+          </h2>
+          <div className="grid grid-cols-2 gap-[3px] mb-[8px]">
+            {L4_RECAP.map((r) => (
+              <div key={r.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[5px] py-[4px]">
+                <p className="text-[6.5px] font-bold text-[hsl(var(--slide-gold))] mb-[1px]">{r.n}</p>
+                <p className="text-[6.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.3]">{r.t}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4] mb-[5px]">
+            <b className="text-[hsl(var(--slide-gold))]">Определись: B2B или B2C — и выполни шаги ниже.</b>
+          </p>
+          <div className="grid grid-cols-2 gap-[5px]">
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[5px] px-[6px] py-[5px]">
+              <p className="text-[7px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">B2B → шаги</p>
+              <ul className="space-y-[1px]">
+                {L4_NEXT_B2B.map((s, i) => <li key={i} className="text-[6.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.3]">→ {s}</li>)}
+              </ul>
+            </div>
+            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[5px] px-[6px] py-[5px]">
+              <p className="text-[7px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">B2C → шаги</p>
+              <ul className="space-y-[1px]">
+                {L4_NEXT_B2C.map((s, i) => <li key={i} className="text-[6.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.3]">→ {s}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage>
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Урок 4 · резюме всего, что прошли</Eyebrow>
+        <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[18px] tracking-[-0.01em]">
+          Что мы прошли и <span className="text-[hsl(var(--slide-gold))]">что делать дальше</span>
+        </h2>
+        <div className="grid grid-cols-2 gap-x-[18px] gap-y-[8px] mb-[22px] max-w-[1700px]">
+          {L4_RECAP.map((r) => (
+            <div key={r.n} className="flex gap-[12px] items-start bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] px-[16px] py-[10px]">
+              <span className="font-display text-[20px] font-bold text-[hsl(var(--slide-gold))] leading-none">{r.n}</span>
+              <span className="text-[16px] text-[hsl(var(--slide-text)/0.92)] leading-[1.4]">{r.t}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-[20px] text-[hsl(var(--slide-text)/0.9)] mb-[14px] max-w-[1700px]">
+          <b className="text-[hsl(var(--slide-gold))]">Определись: B2B или B2C — и иди по своему треку.</b>
+        </p>
+        <div className="grid grid-cols-2 gap-[24px] max-w-[1700px]">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[24px] py-[16px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">B2B · следующие шаги</p>
+            <ul className="space-y-[4px]">
+              {L4_NEXT_B2B.map((s, i) => <li key={i} className="text-[16px] text-[hsl(var(--slide-text)/0.92)] leading-[1.45]"><span className="text-[hsl(var(--slide-gold))]">→</span> {s}</li>)}
+            </ul>
+          </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[24px] py-[16px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">B2C · следующие шаги</p>
+            <ul className="space-y-[4px]">
+              {L4_NEXT_B2C.map((s, i) => <li key={i} className="text-[16px] text-[hsl(var(--slide-text)/0.92)] leading-[1.45]"><span className="text-[hsl(var(--slide-gold))]">→</span> {s}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 14 — The Founders Circle Accelerator ========== */
+const L4_TFC_FACTS = [
+  { k: "8 занятий", v: "за 8 недель — путь от идеи к запуску" },
+  { k: "до 8 человек", v: "мини-группа, чтобы хватало внимания каждому" },
+  { k: "1 встреча в неделю", v: "по 2–2.5 часа, прорабатываем отдельный блок" },
+  { k: "Лично со мной", v: "поддержка, ответы на все вопросы, разбор твоего проекта" },
+  { k: "Группа фаундеров", v: "комьюнити, фидбэк, нетворкинг, ранние пользователи друг другу" },
+  { k: "Цель", v: "ты запустил продукт и получил первых платящих" },
+];
+const L4Accelerator = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
+        </div>
+        <div className="relative z-10 flex flex-col justify-center px-[18px] h-full">
+          <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[10px]" />
+          <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Дальше с поддержкой</p>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — акселератор
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4] mb-[8px]">
+            Если страшно, непонятно, много вопросов или нужна поддержка — это место, куда стоит прийти.
+          </p>
+          <div className="space-y-[4px] mb-[8px]">
+            {L4_TFC_FACTS.map((f, i) => (
+              <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[5px] px-[7px] py-[4px]">
+                <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))]">{f.k}</p>
+                <p className="text-[7px] text-[hsl(var(--slide-text)/0.9)] leading-[1.35]">{f.v}</p>
+              </div>
+            ))}
+          </div>
+          <a href="https://founders-circle.space" target="_blank" rel="noopener noreferrer" className="block text-center text-[10px] font-bold py-[8px] rounded-[5px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))]">
+            Записаться → founders-circle.space
+          </a>
+          <p className="text-[7px] italic text-[hsl(var(--slide-text-muted))] text-center mt-[5px]">
+            Спасибо, что дошёл до конца. Увидимся в TFC или на твоём запуске.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
+      </div>
+      <div className="relative z-10 flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
+        <p className="text-[18px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Дальше с поддержкой</p>
+        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.01em]">
+          <span className="text-[hsl(var(--slide-gold))]">The Founders Circle</span> — мой акселератор
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45] mb-[24px] max-w-[1600px]">
+          Если страшно, непонятно, много вопросов, или просто нужна поддержка — это место, куда стоит прийти. Цель одна: <b className="text-[hsl(var(--slide-gold))]">ты запустил продукт и получил первых платящих пользователей.</b>
+        </p>
+        <div className="grid grid-cols-3 gap-[16px] mb-[24px] max-w-[1700px]">
+          {L4_TFC_FACTS.map((f, i) => (
+            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[22px] py-[16px]">
+              <p className="font-display text-[24px] font-bold text-[hsl(var(--slide-gold))] leading-[1.15] mb-[4px]">{f.k}</p>
+              <p className="text-[15px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{f.v}</p>
+            </div>
+          ))}
+        </div>
+        <a href="https://founders-circle.space" target="_blank" rel="noopener noreferrer" className="inline-block text-[20px] font-bold px-[32px] py-[14px] rounded-[10px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] hover:opacity-90 transition w-fit">
+          Записаться в следующую когорту → founders-circle.space
+        </a>
+        <p className="text-[15px] italic text-[hsl(var(--slide-text-muted))] mt-[14px]">
+          Спасибо, что прошёл мини-курс до конца. Увидимся в TFC или на твоём запуске.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
 /* ========== Export slides ========== */
 export const slides = [
   L4Title,        // 1  Title
@@ -1157,5 +1332,6 @@ export const slides = [
   L4B2BTools,     // 10 B2B автоматизация · Apollo + Instantly + LinkedIn
   L4B2C,          // 11 B2C запуск
   L4Tools,        // 12 Tools + mini-CTA
-  L4Final,        // 13 7 дней + финальный CTA
+  L4Recap,        // 13 Резюме + следующие шаги для B2B / B2C
+  L4Accelerator,  // 14 The Founders Circle — акселератор
 ];
