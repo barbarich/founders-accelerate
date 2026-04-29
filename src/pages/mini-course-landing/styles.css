@@ -47,6 +47,7 @@
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
+  padding-top: 40px; /* offset for fixed .mcl-top-bar */
 }
 
 body.mcl-body { background: #f8f8f4; }
@@ -85,9 +86,12 @@ body.mcl-body { background: #f8f8f4; }
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 .mcl-top-bar strong { font-weight: 700; }
 .mcl-countdown {
