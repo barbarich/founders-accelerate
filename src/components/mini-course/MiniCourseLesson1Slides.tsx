@@ -366,7 +366,7 @@ export const S4b = () => {
     return (
       <Stage className="relative">
         <div className="h-[230px] relative shrink-0">
-          <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover object-[center_25%]" />
+          <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover object-[center_25%] [transform:scaleX(-1)]" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(var(--slide-bg))]" />
           <div className="absolute left-[16px] bottom-[14px] z-10">
             <p className="text-[12px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
@@ -397,7 +397,7 @@ export const S4b = () => {
       <div className="flex h-full">
         <div className="w-[640px] h-full relative shrink-0 p-[80px]">
           <div className="w-full h-full relative rounded-[14px] overflow-hidden border border-[hsl(var(--slide-gold)/0.25)]">
-            <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover" />
+            <img src={photoMichael} alt="Михаэль Барбарич" className="w-full h-full object-cover [transform:scaleX(-1)]" />
             <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--slide-bg))] via-transparent to-transparent" />
             <div className="absolute left-[24px] bottom-[20px] z-10">
               <p className="text-[22px] font-bold text-[hsl(var(--slide-text))]">Michael Barbarich</p>
