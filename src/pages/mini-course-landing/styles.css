@@ -1038,3 +1038,28 @@ a.mcl-linkedin-link:hover::after {
   .mcl-meet { padding: 48px 0 36px; }
   .mcl-meet-video-wrap { max-width: 300px; }
 }
+
+/* CASE LINK — clickable company name with subtle arrow */
+.mcl-case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--mcl-border-strong);
+  padding-bottom: 2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.mcl-case-link:hover {
+  color: var(--mcl-green);
+  border-bottom-color: var(--mcl-green);
+}
+.mcl-case-link-arrow {
+  opacity: 0.55;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  flex-shrink: 0;
+}
+.mcl-case-link:hover .mcl-case-link-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
