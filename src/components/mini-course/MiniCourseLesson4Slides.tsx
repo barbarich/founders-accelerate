@@ -1267,6 +1267,86 @@ const L4Accelerator = () => {
   );
 };
 
+/* ========== Slide 15 — Финал мини-курса ========== */
+const L4_JOURNEY = [
+  { n: "01", t: "Идея", v: "научился отличать боль от хотелки и валидировать спрос" },
+  { n: "02", t: "Продукт", v: "собрал MVP на AI и no-code за дни, а не месяцы" },
+  { n: "03", t: "Лендинг", v: "упаковал ценность, поставил аналитику и пиксели" },
+  { n: "04", t: "Запуск", v: "знаешь как привести первых пользователей — B2B или B2C" },
+];
+const L4Finale = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage>
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <Eyebrow mobile>Мини-курс пройден</Eyebrow>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px] mt-[6px]">
+            Ты <span className="text-[hsl(var(--slide-gold))]">дошёл до конца.</span>
+          </h2>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[14px]">
+            Большинство закрывают курс на втором уроке. Ты — нет. Это и есть главное качество фаундера: <b>доводить до конца.</b>
+          </p>
+          <div className="space-y-[6px] mb-[14px]">
+            {L4_JOURNEY.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[8px] py-[6px]">
+                <div className="flex items-baseline gap-[6px]">
+                  <span className="font-mono text-[8px] text-[hsl(var(--slide-gold))]">{s.n}</span>
+                  <span className="text-[10px] font-bold text-[hsl(var(--slide-text))]">{s.t}</span>
+                </div>
+                <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4] mt-[2px]">{s.v}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[11px] font-bold text-[hsl(var(--slide-text))] leading-[1.35] mb-[6px]">
+            У тебя <span className="text-[hsl(var(--slide-gold))]">всё есть</span>, чтобы запустить.
+          </p>
+          <p className="text-[9px] text-[hsl(var(--slide-text)/0.75)] leading-[1.5] mb-[10px]">
+            Знания, инструменты, фреймворки. Осталось одно — начать. Сегодня. Не идеально. Просто начать.
+          </p>
+          <p className="text-[9px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium text-center">
+            Жду тебя на твоём запуске
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage>
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px] mx-auto">
+        <Eyebrow>Мини-курс пройден</Eyebrow>
+        <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] mt-[12px] tracking-[-0.02em]">
+          Ты <span className="text-[hsl(var(--slide-gold))]">дошёл до конца.</span>
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[36px] max-w-[1300px]">
+          Большинство закрывают курс на втором уроке. Ты — нет.<br/>
+          Это и есть главное качество фаундера: <b className="text-[hsl(var(--slide-text))]">доводить начатое до конца.</b>
+        </p>
+        <div className="grid grid-cols-4 gap-[16px] mb-[40px]">
+          {L4_JOURNEY.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[20px] py-[18px]">
+              <p className="font-mono text-[14px] text-[hsl(var(--slide-gold))] mb-[6px]">{s.n}</p>
+              <p className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] mb-[6px] leading-[1.1]">{s.t}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text)/0.8)] leading-[1.45]">{s.v}</p>
+            </div>
+          ))}
+        </div>
+        <p className="font-display text-[40px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[14px] tracking-[-0.01em]">
+          У тебя <span className="text-[hsl(var(--slide-gold))]">всё есть</span>, чтобы запустить.
+        </p>
+        <p className="text-[20px] text-[hsl(var(--slide-text)/0.8)] leading-[1.55] mb-[28px] max-w-[1300px]">
+          Знания, инструменты, фреймворки — на руках. Осталось одно: <b className="text-[hsl(var(--slide-text))]">начать.</b> Сегодня. Не идеально. Просто начать и улучшать на ходу.
+        </p>
+        <p className="text-[16px] uppercase tracking-[0.4em] text-[hsl(var(--slide-gold))] font-medium">
+          Жду тебя на твоём запуске
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
 /* ========== Export slides ========== */
 export const slides = [
   L4Title,        // 1  Title
@@ -1283,4 +1363,5 @@ export const slides = [
   L4Tools,        // 12 Tools + mini-CTA
   L4Recap,        // 13 Резюме + следующие шаги для B2B / B2C
   L4Accelerator,  // 14 The Founders Circle — акселератор
+  L4Finale,       // 15 Финал мини-курса — поздравление и мотивация
 ];
