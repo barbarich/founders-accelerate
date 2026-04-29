@@ -275,17 +275,18 @@ const L3RunEverywhere = () => {
   );
 };
 
-/* ========== Slide 5 — Главный кейс: Mikey solo с AI ========== */
+/* ========== Slide 4 — Главный кейс: Mikey solo с AI ========== */
 const L3_MIKEY = [
-  { num: "1 человек", text: "ты, твоя ЦА в голове, твой design doc" },
-  { num: "14 дней", text: "от пустой папки до рабочего MVP, который можно отдать юзеру" },
-  { num: "$0", text: "на разработку. Подписки на AI-инструменты — < $50/мес" },
+  { num: "1 человек", text: "я один. Без команды, без сооснователя, без скиллов разработчика" },
+  { num: "3 месяца", text: "от пустого экрана до сложного продукта со своим движком матчинга" },
+  { num: "≤ $200/мес", text: "на все AI-инструменты. Никаких зарплат, серверов, подрядчиков" },
 ];
 const L3_MIKEY_HOW = [
-  "Декомпозировал MVP на 18 задач уровня «AI-джун за час»",
-  "На каждую задачу — короткий design doc (что, зачем, контракт)",
-  "AI пишет → я читаю diff → запускаю → правлю промпт, если не так",
-  "Каждый день — выкат. Каждый выкат — обратная связь от 1–2 юзеров",
+  "Lovable: собрал черновой фронтенд и дизайн продукта за пару дней",
+  "Понял, что Lovable слабо тянет сложный бэкенд — перенёс проект в Claude",
+  "В Claude три месяца писал движок матчинга, алгоритмы и AI-функционал",
+  "Построил своих AI-агентов и собственный workflow вокруг них",
+  "Продукт работает в проде. Уже есть первые живые пользователи",
 ];
 const L3MikeyCase = () => {
   const isMobile = useIsMobile();
@@ -295,7 +296,7 @@ const L3MikeyCase = () => {
         <div className="flex flex-col justify-center px-[18px] h-full">
           <Eyebrow mobile>Главный кейс · solo с AI</Eyebrow>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Mikey · от пустой папки до MVP за <span className="text-[hsl(var(--slide-gold))]">14 дней</span>
+            Mikey · сложный продукт solo за <span className="text-[hsl(var(--slide-gold))]">3 месяца</span> · я не разработчик
           </h2>
           <div className="grid grid-cols-3 gap-[5px] mb-[10px]">
             {L3_MIKEY.map((it) => (
@@ -305,14 +306,14 @@ const L3MikeyCase = () => {
               </div>
             ))}
           </div>
-          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Как это работало</p>
+          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Как это работало на практике</p>
           <ul className="space-y-[3px] mb-[8px]">
             {L3_MIKEY_HOW.map((t) => (
-              <li key={t} className="text-[8.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">→ {t}</li>
+              <li key={t} className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">→ {t}</li>
             ))}
           </ul>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Не «AI построил продукт». Я построил продукт. AI печатал.
+            Важно: я не разработчик. Я ведущий. AI — исполнитель.
           </p>
         </div>
         <FooterMobile />
@@ -324,26 +325,26 @@ const L3MikeyCase = () => {
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <Eyebrow>Главный кейс · solo с AI</Eyebrow>
         <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Mikey · от пустой папки до MVP за <span className="text-[hsl(var(--slide-gold))]">14 дней</span>
+          Mikey · сложный продукт solo за <span className="text-[hsl(var(--slide-gold))]">3 месяца</span>. И я не разработчик.
         </h2>
         <div className="grid grid-cols-3 gap-[24px] mb-[32px] max-w-[1700px]">
           {L3_MIKEY.map((it) => (
             <div key={it.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[22px]">
-              <div className="font-display text-[44px] font-bold text-[hsl(var(--slide-gold))] leading-[1.05] mb-[10px]">{it.num}</div>
+              <div className="font-display text-[40px] font-bold text-[hsl(var(--slide-gold))] leading-[1.05] mb-[10px]">{it.num}</div>
               <div className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{it.text}</div>
             </div>
           ))}
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[22px] max-w-[1700px]">
           <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Как это работало на практике</p>
-          <ul className="space-y-[8px]">
+          <ul className="space-y-[6px]">
             {L3_MIKEY_HOW.map((t) => (
-              <li key={t} className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">→ {t}</li>
+              <li key={t} className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">→ {t}</li>
             ))}
           </ul>
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic mt-[20px] leading-[1.45] max-w-[1700px]">
-          Не «AI построил продукт». <b className="not-italic">Я</b> построил продукт. AI печатал.
+          Я не разработчик. Я не писал код руками. Но <b className="not-italic">я вёл</b> — декомпозировал, ревьюил, тестировал. AI делал остальное.
         </p>
       </div>
       <Footer />
