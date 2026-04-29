@@ -610,6 +610,75 @@ const L4Creatives = () => {
 };
 
 /* ========== Slide 9 — B2B запуск ========== */
+/* ========== Slide 9 — B2B запуск · личный бренд фаундера ========== */
+const L4_FOUNDER_MOVES = [
+  { n: "01", name: "Личные соцсети", tag: "FACEBOOK · LINKEDIN · X", body: "Пиши о продукте каждый день: путь, инсайты, фейлы, скриншоты. Люди не покупают у ноунейм-бренда — покупают у фаундера, которому доверяют и за чьим путём следят." },
+  { n: "02", name: "Прямой обзвон сети", tag: "ДРУЗЬЯ · ЗНАКОМЫЕ · БЫВШИЕ КОЛЛЕГИ", body: "Открой контакты, выпиши всех, кто подходит под ICP. Пиши и звони лично: «Запустил продукт, решает X. Подходит под вас? Покажу за 15 минут». Так я закрыл первых клиентов MetaMinder." },
+  { n: "03", name: "Контент с продуктом", tag: "ПОСТЫ · ВИДЕО · DEMO", body: "Каждый запуск фичи — пост. Каждый кейс клиента — пост. Каждое возражение — пост. Подписчики, которые видят продукт в работе неделями, конвертируются сами — без cold outreach." },
+  { n: "04", name: "Networking-events", tag: "OFFLINE · MEETUPS · ПОДКАСТЫ", body: "Иди туда, где твоя ICP. Выступай, знакомься, рассказывай. Один разговор лицом к лицу даёт больше доверия, чем 100 cold email. Первые B2B-сделки рождаются из рукопожатий." },
+];
+const L4B2B = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Запуск B2B · бренд фаундера</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Первые 5 клиентов приходят <span className="text-[hsl(var(--slide-gold))]">не из Apollo, а из тебя</span>
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
+            Твой продукт — ноунейм. Никто ему не верит. Но люди верят лично тебе, твоему пути, твоей репутации. Именно это закрывает первые сделки.
+          </p>
+          <div className="space-y-[5px] mb-[6px]">
+            {L4_FOUNDER_MOVES.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[8px] py-[5px]">
+                <p className="text-[8.5px] font-bold text-[hsl(var(--slide-text))]">
+                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.name}
+                </p>
+                <p className="text-[6.5px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] mb-[2px]">{s.tag}</p>
+                <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            Первых 5 клиентов MetaMinder я привёл из своих соцсетей и личной базы. Cold outreach подключал уже после.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Запуск B2B · бренд фаундера · первые 5 клиентов</Eyebrow>
+        <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.01em]">
+          Первые клиенты приходят <span className="text-[hsl(var(--slide-gold))]">не из Apollo, а из тебя</span>
+        </h2>
+        <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[22px] max-w-[1600px]">
+          Твой продукт на старте — ноунейм. Ему никто не верит. Но люди верят лично тебе — твоему пути, репутации и нетворку. Бренд фаундера закрывает первые сделки, когда у продукта ещё нет ни кейсов, ни отзывов.
+        </p>
+        <div className="grid grid-cols-2 gap-[20px] mb-[20px] max-w-[1700px]">
+          {L4_FOUNDER_MOVES.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[26px] py-[18px]">
+              <p className="text-[13px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[6px]">{s.n}</p>
+              <p className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">{s.name}</p>
+              <p className="text-[12px] uppercase tracking-[0.14em] text-[hsl(var(--slide-gold))] mb-[8px]">{s.tag}</p>
+              <p className="text-[16px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic mt-[6px] leading-[1.45] max-w-[1700px]">
+          Первых 5 клиентов MetaMinder я привёл из личных соцсетей и обзвона своей базы знакомых. Автоматизация и cold outreach — следующий шаг, когда есть первые кейсы и социальное доказательство.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 10 — B2B автоматизация · Apollo / Instantly / LinkedIn Helper ========== */
 const L4_B2B_STEPS = [
   { n: "01", name: "Apollo.io", tag: "$49 / мес · ICP-БАЗА", body: "500 ICP-контактов: job title + company size + industry. Экспорт в CSV. Apollo даёт 65–70% точности на email — без warmup получишь 15–35% bounce." },
   { n: "02", name: "Instantly.ai", tag: "$37 / мес · WARMUP + ОТПРАВКА", body: "5–10 sender-доменов. Unlimited warmup на каждом. Максимум 30 имейлов/день/домен → 150–300 имейлов/день безопасно." },
@@ -621,15 +690,15 @@ const L4_B2B_METRICS = [
   { num: "1–3%", text: "reply rate на cold email — это норма 2026" },
   { num: "0.5–1%", text: "booked meetings от total contacts" },
 ];
-const L4B2B = () => {
+const L4B2BTools = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Запуск B2B · Apollo + Instantly + LinkedIn</Eyebrow>
+          <Eyebrow mobile>B2B автоматизация · Apollo + Instantly + LinkedIn</Eyebrow>
           <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
-            Стек, на котором MetaMinder получил <span className="text-[hsl(var(--slide-gold))]">первого B2B-клиента</span>
+            Когда есть первые кейсы — <span className="text-[hsl(var(--slide-gold))]">подключай стек</span>
           </h2>
           <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
             Workflow на 90 минут. Дальше — только мониторинг и итерации.
@@ -664,12 +733,12 @@ const L4B2B = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Запуск B2B · Apollo + Instantly + LinkedIn · workflow на 90 минут</Eyebrow>
+        <Eyebrow>B2B автоматизация · Apollo + Instantly + LinkedIn Helper · workflow на 90 минут</Eyebrow>
         <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.01em]">
-          Стек, на котором MetaMinder получил <span className="text-[hsl(var(--slide-gold))]">первого B2B-клиента</span>
+          Когда первые кейсы есть — <span className="text-[hsl(var(--slide-gold))]">подключай стек</span>
         </h2>
         <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[22px] max-w-[1600px]">
-          Четыре инструмента, 90 минут на настройку. Дальше — только мониторинг open / reply rates и еженедельные итерации.
+          Четыре инструмента, 90 минут на настройку. Дальше — только мониторинг open / reply rates и еженедельные итерации. Это масштабирование, а не первый запуск.
         </p>
         <div className="grid grid-cols-2 gap-[20px] mb-[20px] max-w-[1700px]">
           {L4_B2B_STEPS.map((s) => (
@@ -1082,9 +1151,10 @@ export const slides = [
   L4Positioning,  // 6  Кит 1 · Позиционирование
   L4Visuals,      // 7  Кит 2 · Визуалы
   L4Creatives,    // 8  Кит 3 · Креативы 2026
-  L4B2B,          // 9  B2B запуск
-  L4B2C,          // 10 B2C запуск
-  L4Tools,        // 11 Tools + mini-CTA
-  L4Practice,     // 12 Practice 30 мин
-  L4Final,        // 13 7 дней + финальный CTA
+  L4B2B,          // 9  B2B запуск · бренд фаундера
+  L4B2BTools,     // 10 B2B автоматизация · Apollo + Instantly + LinkedIn
+  L4B2C,          // 11 B2C запуск
+  L4Tools,        // 12 Tools + mini-CTA
+  L4Practice,     // 13 Practice 30 мин
+  L4Final,        // 14 7 дней + финальный CTA
 ];
