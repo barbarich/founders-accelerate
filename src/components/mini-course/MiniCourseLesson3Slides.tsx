@@ -738,84 +738,23 @@ const L3Landing = () => {
   );
 };
 
-/* ========== Slide 12 — 5 ловушек разработки с AI ========== */
-const L3_TRAPS = [
-  { n: "01", t: "Vibe coding", body: "«Сделай красиво» вместо design doc. Получаешь 1000 строк, которые не понимаешь. Чинить дороже, чем переписать." },
-  { n: "02", t: "Refactor hell", body: "Просишь поправить кнопку — AI «по дороге» переписывает 12 файлов. Без дисциплины «жди ОК на список файлов» это происходит каждый день." },
-  { n: "03", t: "Нет ручного теста", body: "«Должно работать» ≠ работает. Запусти, кликни, проверь acceptance. AI не запускает твой код." },
-  { n: "04", t: "Доверие без ревью", body: "Принимаешь diff не читая. Через неделю в проде баг, и ты не знаешь, в каком из 40 коммитов он появился." },
-  { n: "05", t: "Фича вместо ценности", body: "AI с радостью построит что угодно. Если не сверяешься с custdev — строишь функционал, а не решение боли." },
-];
-const L3Traps = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[16px] h-full">
-          <Eyebrow mobile>Чего не делать</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            5 ловушек разработки <span className="text-[hsl(var(--slide-gold))]">с AI</span>
-          </h2>
-          <div className="space-y-[5px]">
-            {L3_TRAPS.map((r) => (
-              <div key={r.n} className="bg-[hsl(0_70%_55%/0.06)] border-l-2 border-[hsl(0_70%_55%)] rounded-[6px] px-[10px] py-[6px]">
-                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">
-                  <span className="text-[hsl(0_70%_65%)]">{r.n}.</span> {r.t}
-                </p>
-                <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{r.body}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[6px] leading-[1.4]">
-            Каждая ловушка лечится одним из 5 шагов воркфлоу. Совпадение? Нет.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1900px]">
-        <Eyebrow>Чего точно не делать</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          5 ловушек разработки <span className="text-[hsl(var(--slide-gold))]">с AI</span>
-        </h2>
-        <div className="grid grid-cols-5 gap-[16px] mb-[24px]">
-          {L3_TRAPS.map((r) => (
-            <div key={r.n} className="bg-[hsl(0_70%_55%/0.06)] border-l-[4px] border-[hsl(0_70%_55%)] rounded-[12px] px-[20px] py-[20px]">
-              <p className="text-[14px] font-bold text-[hsl(0_70%_65%)] uppercase tracking-[0.18em] mb-[8px]">{r.n}</p>
-              <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] mb-[8px] leading-[1.2]">{r.t}</p>
-              <p className="text-[15px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{r.body}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Каждая ловушка лечится одним из 5 шагов воркфлоу. Совпадение? Нет — он именно так и собран.
-        </p>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
-/* ========== Slide 13 — Homework + Closing (объединено) ========== */
+/* ========== Slide 11 — Домашнее задание ========== */
 const L3_HW = [
   { t: "Возьми ОДНУ фичу из MVP", body: "Самую маленькую, которая закрывает боль из custdev. Не три. Одну." },
-  { t: "Напиши design doc", body: "По шаблону со слайда 7. 1 экран. Контракт + acceptance." },
-  { t: "Прогони через 5 шагов воркфлоу", body: "Декомпозиция → doc → промпт → ревью diff → ручной тест. Без пропусков." },
-  { t: "Собери лендинг за 30 минут", body: "По промпту со слайда 11. H1 = цитата из custdev. Одна CTA." },
+  { t: "Опиши задачу как design doc", body: "Зачем (для юзера), контракт (вход/выход), 2–3 граничных случая, acceptance — чек-лист «готово»." },
+  { t: "Дай AI по best practices", body: "Production-ready, файлы до 500 строк, план → ОК → код, ревью каждого diff. Не «vibe coding»." },
+  { t: "Собери лендинг за 30 минут", body: "По бонусному слайду. H1 = цитата из custdev. Одна CTA. Mobile-first." },
   { t: "Покажи 3 юзерам и зафиксируй реакцию", body: "Не «как тебе?». А: «что ты сделал бы прямо сейчас на этой странице?»" },
 ];
-const L3Closing = () => {
+const L3HomeworkSlide = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
-          <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">Домашнее задание · 7 дней</p>
+          <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">Домашнее задание · 7 дней до Урока 4</p>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Собрать рабочий кусок продукта + лендинг
+            Собрать рабочий кусок продукта <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
           </h2>
           <ol className="space-y-[5px] mb-[10px]">
             {L3_HW.map((s, i) => (
@@ -825,13 +764,8 @@ const L3Closing = () => {
               </li>
             ))}
           </ol>
-          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[8px]">
-            <p className="text-[9px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.4]">
-              «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
-            </p>
-          </div>
-          <p className="text-[9px] text-[hsl(var(--slide-text-muted))] mt-[6px] italic leading-[1.4]">
-            В Уроке 4 — как привести на лендинг первых платящих юзеров. Без рекламного бюджета.
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            На выходе: design doc + рабочая фича + лендинг + 3 живые реакции.
           </p>
         </div>
         <FooterMobile />
@@ -842,15 +776,15 @@ const L3Closing = () => {
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Домашнее задание · 7 дней до Урока 4</p>
-        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Собрать рабочий кусок продукта + лендинг
+        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
+          Собрать рабочий кусок продукта <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
         </h2>
-        <div className="grid grid-cols-2 gap-[40px]">
+        <div className="grid grid-cols-[1.4fr_1fr] gap-[40px]">
           <div>
             <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">5 шагов</p>
-            <ol className="space-y-[12px]">
+            <ol className="space-y-[14px]">
               {L3_HW.map((s, i) => (
-                <li key={i} className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
+                <li key={i} className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">
                   <span className="text-[hsl(var(--slide-gold))] font-bold mr-2">{i + 1}.</span>
                   <b className="text-[hsl(var(--slide-text))]">{s.t}.</b> {s.body}
                 </li>
@@ -858,17 +792,12 @@ const L3Closing = () => {
             </ol>
           </div>
           <div className="flex flex-col justify-center">
-            <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[26px] mb-[20px]">
-              <p className="text-[28px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">
-                «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
+            <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[26px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">На выходе</p>
+              <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.5]">
+                <b className="text-[hsl(var(--slide-gold))]">Design doc</b> + <b className="text-[hsl(var(--slide-gold))]">рабочая фича</b> + <b className="text-[hsl(var(--slide-gold))]">лендинг</b> + <b className="text-[hsl(var(--slide-gold))]">3 живые реакции</b> от юзеров.
               </p>
             </div>
-            <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[12px]">
-              На выходе у тебя: <b className="text-[hsl(var(--slide-gold))]">design doc + рабочая фича + лендинг + 3 живые реакции</b>.
-            </p>
-            <p className="text-[20px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5]">
-              В Уроке 4 — как привести на этот лендинг первых платящих юзеров. Без рекламного бюджета.
-            </p>
           </div>
         </div>
       </div>
@@ -877,18 +806,74 @@ const L3Closing = () => {
   );
 };
 
-// Lesson 3 — 13 slides (visual style aligned with Lessons 1–2)
+/* ========== Slide 12 — Завершение ========== */
+const L3FinalSlide = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
+        </div>
+        <div className="relative z-10 flex flex-col justify-center px-[24px] h-full">
+          <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[16px]" />
+          <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">Урок 3 · завершение</p>
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
+            Один человек + AI — это уже команда. <span className="text-[hsl(var(--slide-gold))]">Если ты ведёшь.</span>
+          </h2>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[10px] mb-[12px]">
+            <p className="text-[11px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.4]">
+              «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
+            </p>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.4]">
+            В Уроке 4 — как привести на лендинг первых платящих юзеров. Без рекламного бюджета.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
+      </div>
+      <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1700px] h-full">
+        <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[36px]" />
+        <p className="text-[20px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Урок 3 · завершение</p>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em]">
+          Один человек + AI — это уже команда.<br />
+          <span className="text-[hsl(var(--slide-gold))]">Если ты ведёшь, а не сидишь пассажиром.</span>
+        </h2>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[28px] max-w-[1500px] mb-[28px]">
+          <p className="text-[30px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">
+            «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
+          </p>
+        </div>
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5] max-w-[1500px]">
+          В Уроке 4 — как привести на этот лендинг первых платящих юзеров. Без рекламного бюджета.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+// Lesson 3 — 12 slides (visual style aligned with Lessons 1–2)
 export const slides = [
-  L3Title,         // 1  Title
-  L3Insight,       // 2  Главный инсайт (pull quote)
-  L3RunEverywhere, // 3  Контр-кейс RunEverywhere (до AI)
-  L3MikeyCase,     // 5  Главный кейс Mikey (solo с AI)
-  L3Workflow,      // 6  Agentic engineering workflow · 5 шагов
-  L3DesignDoc,     // 7  Шаги 1–2: декомпозиция + design doc
-  L3PromptSlide,   // 8  Шаг 3: промпт по design doc
-  L3Review,        // 9  Шаги 4–5: ревью diff + тест
-  L3TfcCta,        // 10 Mid-CTA · точка слома одиночки → TFC
-  L3Landing,       // 11 Лендинг за 30 минут + промпт
-  L3Traps,         // 12 5 ловушек разработки с AI
-  L3Closing,       // 13 Homework + Closing
+  L3Title,           // 1  Title
+  L3Insight,         // 2  Главный инсайт (pull quote)
+  L3RunEverywhere,   // 3  Контр-кейс MetaMinder (до AI)
+  L3MikeyCase,       // 4  Главный кейс Mikey (solo с AI)
+  L3Stack,           // 5  Мой рабочий стек: Lovable + Claude + MCP
+  L3McpAnalytics,    // 6  Кейс: MCP сэкономил €3 000 на аналитике
+  L3BestPractices1,  // 7  Best Practices Claude Code · 1/2 (качество кода)
+  L3BestPractices2,  // 8  Best Practices Claude Code · 2/2 (workflow)
+  L3TfcCta,          // 9  Точка слома одиночки → TFC
+  L3Landing,         // 10 БОНУС · Лендинг за 30 минут + промпт
+  L3HomeworkSlide,   // 11 Домашнее задание
+  L3FinalSlide,      // 12 Завершение
 ];
