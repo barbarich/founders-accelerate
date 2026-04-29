@@ -769,10 +769,12 @@ const L4B2BTools = () => {
 
 /* ========== Slide 10 — B2C запуск ========== */
 const L4_B2C_STEPS = [
-  { n: "01", name: "Подготовка ассетов", tag: "30 МИН · ~50 КОМБИНАЦИЙ", body: "1 hero-картинка (ChatGPT / Nano Banana) + 1 видео 9:16 (Kling / Veo 3) + 5 текстовых хуков + 5 headlines + 5 descriptions. ChatGPT генерит 20 — выбираешь 5." },
-  { n: "02", name: "Meta · Advantage+", tag: "$20 / ДЕНЬ МИНИМУМ", body: "НЕ настраивать узкий таргет — пусть AI сам найдёт. Залить 50 креативов в одну кампанию. Цель: Conversions (пиксель + 50 событий) или Engagement, если пиксель пустой." },
-  { n: "03", name: "Google · Performance Max", tag: "ВСЕ АССЕТЫ В ОДНУ КАМПАНИЮ", body: "Та же логика: дай Google все ассеты, не настраивай вручную. Подключи conversions tracking. ICP — как стартовая подсказка, но не constraint." },
-  { n: "04", name: "Аналитика и итерация", tag: "ЦИКЛ КАЖДЫЕ 7 ДНЕЙ", body: "Первые 3–5 дней — НЕ трогай, AI учится. На 7-й день — выключи худшие 30% креативов, залей новые 10–15. Refresh раз в неделю." },
+  { n: "01", name: "Пиксели до первого клика", tag: "ДЕНЬ 1 · ДО ЗАПУСКА", body: "Поставь Meta Pixel + TikTok Pixel + Google Tag + GA4 на лендинг ДО первого посетителя. Каждый клик уже учит алгоритм. Без пикселей первый месяц трафика — выброшен." },
+  { n: "02", name: "Вейтлист с личных страниц", tag: "0$ · 500 ЧЕЛОВЕК ЗА НЕДЕЛЮ", body: "Кейс Mikey: пока делал продукт — открыл вейтлист, писал со своих FB/IG/LinkedIn, нашёл группы целевой аудитории (знакомства), пригласил записаться. 500 человек за неделю без бюджета. Они же стали early adopters и бета-тестерами." },
+  { n: "03", name: "Креативы на AI", tag: "~50 КОМБИНАЦИЙ · 50/50 IMG+VIDEO", body: "Картинки — Nano Banana + ChatGPT. Видео — Kling. Я-аватар — HeyGen. На кампанию ~50 креативов: половина изображений, половина видео. ChatGPT генерит 20 хуков — оставляешь 5 лучших." },
+  { n: "04", name: "Meta · Advantage+", tag: "$20 / ДЕНЬ МИНИМУМ", body: "Запускаю через Advantage+ — пусть AI сам определит, кому показывать. Заливаю все 50 креативов в одну кампанию. Цель: Conversions (пиксель + 50 событий). Узкий таргет НЕ настраиваю." },
+  { n: "05", name: "Google · позже, та же логика", tag: "Performance Max · НЕ НА СТАРТЕ", body: "На запуске Google пока не использую — фокус на Meta. Когда подключаю: PMax, все ассеты в одну кампанию, обязательно conversion tracking. Логика та же — даёшь алгоритму данные, не лезешь руками." },
+  { n: "06", name: "GA4 + аналитика", tag: "MUST · БЕЗ ВАРИАНТОВ", body: "Google Analytics обязательно. Знать сколько людей заходит, как себя ведут, что делают, где отваливаются. Без аналитики ты не знаешь, что улучшать — слепой полёт." },
 ];
 const L4B2C = () => {
   const isMobile = useIsMobile();
@@ -780,12 +782,12 @@ const L4B2C = () => {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Запуск B2C · Meta + Google + AI-креативы</Eyebrow>
+          <Eyebrow mobile>Запуск B2C · Mikey · от вейтлиста до Advantage+</Eyebrow>
           <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
             Стек, который сейчас тестирую на <span className="text-[hsl(var(--slide-gold))]">Mikey</span>
           </h2>
           <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-            Бюджет от $5/день. Workflow на 90 минут — дальше алгоритм работает сам.
+            Пиксели → вейтлист с личных страниц (500 чел / 0$) → AI-креативы → Meta Advantage+ → аналитика.
           </p>
           <div className="space-y-[5px] mb-[6px]">
             {L4_B2C_STEPS.map((s) => (
@@ -809,12 +811,12 @@ const L4B2C = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Запуск B2C · Meta + Google + AI-креативы · workflow на 90 минут</Eyebrow>
+        <Eyebrow>Запуск B2C · Mikey · пиксели → вейтлист → AI-креативы → Advantage+</Eyebrow>
         <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.01em]">
           Стек, который сейчас тестирую на <span className="text-[hsl(var(--slide-gold))]">Mikey</span>
         </h2>
         <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[22px] max-w-[1600px]">
-          Бюджет от $5/день, на старте — $20/день, чтобы AI успел обучиться. После настройки алгоритм работает сам, ты только обновляешь креативы раз в неделю.
+          Пиксели Meta / TikTok / Google и GA4 ставлю с первого дня — чтобы алгоритмы учились с первого клика. Параллельно открываю вейтлист и привлекаю людей с личных соцсетей. На Mikey так получил 500 человек за неделю без бюджета — они же стали бета-тестерами.
         </p>
         <div className="grid grid-cols-2 gap-[20px] mb-[20px] max-w-[1700px]">
           {L4_B2C_STEPS.map((s) => (
@@ -827,7 +829,7 @@ const L4B2C = () => {
           ))}
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Старая модель: один креатив, тонкий таргет, ждёшь чуда. Новая 2026: <b className="not-italic">50 креативов</b>, broad audience, AI делает работу.
+          Если продукт реально нужен рынку — первые 500 человек приходят бесплатно. Платный трафик потом масштабирует то, что уже сработало органически.
         </p>
       </div>
       <Footer />
