@@ -372,10 +372,10 @@ function Comparison() {
 }
 
 const CASES = [
-  { tag: "УРОК 1 · ВАЛИДАЦИЯ", name: "InterviewNinja", stat: "SaaS для рекрутинга · 18 месяцев · продукт мёртв", lesson: "как я игнорировал сигналы провала, потому что мне «было интересно строить», и сколько это стоило в деньгах и времени." },
-  { tag: "УРОК 2 · ПОЗИЦИОНИРОВАНИЕ", name: "Mikey AI", stat: "AI-дейтинг · solo-фаундер · построен с AI", lesson: "как выбрать нишу в категории, где 200 конкурентов, и сформулировать одно отличие, которое работает." },
-  { tag: "УРОК 3 · РАЗРАБОТКА", name: "MetaMinder", stat: "B2B AI-платформа для обучения фронтлайн-персонала · клиенты на всех континентах", lesson: "как то, что раньше делала команда из 20 человек, я сейчас делаю один с AI — и почему это не магия, а воркфлоу." },
-  { tag: "УРОК 4 · ЗАПУСК", name: "RunEverywhere", stat: "B2C · 50,000+ платящих в 107 странах", lesson: "первая рекламная кампания, которая сразу вышла в плюс и принесла 10,000 пользователей — и как собрать такую же связку руками." },
+  { tag: "УРОК 1 · ВАЛИДАЦИЯ", name: "InterviewNinja", url: null, stat: "SaaS для рекрутинга · 18 месяцев · продукт мёртв", lesson: "как я игнорировал сигналы провала, потому что мне «было интересно строить», и сколько это стоило в деньгах и времени." },
+  { tag: "УРОК 2 · ПОЗИЦИОНИРОВАНИЕ", name: "Mikey AI", url: "https://mymikey.ai", stat: "AI-дейтинг · solo-фаундер · построен с AI", lesson: "как выбрать нишу в категории, где 200 конкурентов, и сформулировать одно отличие, которое работает." },
+  { tag: "УРОК 3 · РАЗРАБОТКА", name: "MetaMinder", url: "https://metaminder.com", stat: "B2B AI-платформа для обучения фронтлайн-персонала · клиенты на всех континентах", lesson: "как то, что раньше делала команда из 20 человек, я сейчас делаю один с AI — и почему это не магия, а воркфлоу." },
+  { tag: "УРОК 4 · ЗАПУСК", name: "RunEverywhere", url: null, stat: "B2C · 50,000+ платящих в 107 странах", lesson: "первая рекламная кампания, которая сразу вышла в плюс и принесла 10,000 пользователей — и как собрать такую же связку руками." },
 ] as const;
 
 function Cases() {
@@ -391,7 +391,25 @@ function Cases() {
           {CASES.map((c) => (
             <div className="mcl-case-card" key={c.name}>
               <div className="mcl-case-tag">{c.tag}</div>
-              <div className="mcl-case-name">{c.name}</div>
+              <div className="mcl-case-name">
+                {c.url ? (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mcl-case-link"
+                    title={`Открыть ${c.name} в новой вкладке`}
+                  >
+                    {c.name}
+                    <svg className="mcl-case-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M7 17L17 7" />
+                      <path d="M8 7h9v9" />
+                    </svg>
+                  </a>
+                ) : (
+                  c.name
+                )}
+              </div>
               <div className="mcl-case-stat">{c.stat}</div>
               <div className="mcl-case-lesson"><strong>Чему учит:</strong> {c.lesson}</div>
             </div>
