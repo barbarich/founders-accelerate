@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSlideMeta } from "./SlideMetaContext";
 import titleBg from "@/assets/slides/title-bg.jpg";
+import { Copy, Check, FileText, Download } from "lucide-react";
 import {
   S10, // Mikey case (Slide 6)
 } from "./MiniCourseLesson1Slides";
@@ -521,72 +522,170 @@ const L2Hypothesis = () => {
 };
 
 /* ========== Slide 13 — Инструменты + mini-CTA ========== */
+const L2_PROMPT = `Ты — продуктовый исследователь уровня senior с 15+ годами опыта проведения customer development интервью для ранних стартапов. Ты глубоко владеешь методологиями «The Mom Test» (Rob Fitzpatrick), Jobs-to-be-Done (Christensen / Ulwick), Lean Customer Development (Cindy Alvarez) и Continuous Discovery Habits (Teresa Torres).
+
+Твоя задача — на основе моей гипотезы сгенерировать сценарий проблемного интервью на 20-30 минут, который я возьму и проведу как есть.
+
+ПЕРВЫЙ ХОД ОБЯЗАТЕЛЬНО — РЕВИЗИЯ ГИПОТЕЗЫ. Прежде чем сгенерировать хоть одну строчку сценария, проверь мою гипотезу по чеклисту:
+1. Сегмент — насколько он узок? Можно ли по нему за 30 секунд отфильтровать живого респондента?
+2. Боль — конкретная и осязаемая, или абстрактная «это неудобно»?
+3. Контекст — понятно, в какой ситуации боль возникает?
+4. Альтернативы — указано, что люди делают сейчас, чтобы её обойти?
+5. Ключевые предположения — есть 3–5 проверяемых утверждений?
+
+Если в любом пункте есть пробел, размытость или сомнение — и/или у тебя есть свои уточняющие вопросы — не начинай генерацию. Выпиши все вопросы одним нумерованным списком и жди моего ответа. Только после получения уточнений переходи к сценарию.
+
+ВСТАВЬ СВОЮ ГИПОТЕЗУ ЗДЕСЬ ↓
+[ заменить эту строку на свою гипотезу из шаблона курса целиком ]
+
+ЧТО ТЫ ДЕЛАЕШЬ
+
+Шаг 1. Анализ гипотезы. Перед сценарием выдай краткую сводку: кого интервьюируем (сегмент + 3–5 квалификационных критериев), что проверяем (3–5 ключевых предположений в формате «Я предполагаю, что [сегмент] [делает / страдает от / тратит на] X в ситуации Y»), где гипотеза самая хрупкая.
+
+Шаг 2. Сценарий интервью. Структура с жёстким таймингом: 1) Разогрев и контекст 2–3 мин; 2) Профиль респондента 3–4 мин; 3) Прошлый опыт с проблемой 10–12 мин; 4) Текущие решения и обходные пути 5–7 мин; 5) Квантификация боли 3–4 мин; 6) Закрытие 2–3 мин.
+Для каждого вопроса дай: сам вопрос (точная формулировка), цель (какое предположение проверяет), 2–3 follow-up для углубления, на что слушать (сигналы, эмоции, цифры).
+
+Шаг 3. Пост-интервью чеклист: 5–7 «зелёных» сигналов (проблема реальна), 5–7 «красных» сигналов (проблемы нет), 3 типичные ошибки именно в моей теме.
+
+ЖЁСТКИЕ ПРАВИЛА.
+Запрещено: гипотетические вопросы («стали бы вы платить»), наводящие, питчинг идеи, составные вопросы, закрытые как основные, абстрактные мнения.
+Обязательно: past behavior > stated preferences > future intentions; конкретные истории (дата, место, что чувствовал); деньги и время; workarounds; 5 Whys; слушать эмоцию; пауза 5 секунд после ключевых вопросов.
+
+ФОРМАТ ОТВЕТА для каждого вопроса:
+Q [номер]. [Сам вопрос]
+Цель: [какое предположение проверяет]
+Follow-up:
+→ [углубляющий 1]
+→ [углубляющий 2]
+Слушать: [сигналы, фразы, цифры, эмоции]
+
+Между блоками — короткие переходы (1–2 предложения). В начале — скрипт открытия и согласия на запись. В конце — скрипт закрытия с просьбой о рефералах в формате «кто из ваших знакомых сталкивается с такой же ситуацией?».
+
+ЯЗЫК. Все вопросы пиши на русском, разговорным языком 2026 года. Никакого канцелярита. Если сегмент — не русскоговорящий, спроси перед началом, на каком языке нужны вопросы.`;
+
+const PDF_HREF = "/mini-course/custdev_interview_prompt.pdf";
+
 const L2Tools = () => {
   const isMobile = useIsMobile();
+  const [copied, setCopied] = useState(false);
+  const handleCopy = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigator.clipboard.writeText(L2_PROMPT);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  const stop = (e: React.MouseEvent) => e.stopPropagation();
+
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Инструменты</Eyebrow>
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
-            Что снимает 80% работы
+        <div className="flex flex-col justify-center px-[16px] h-full pb-[28px]">
+          <Eyebrow mobile>AI-промпт</Eyebrow>
+          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
+            Готовый промпт для сценария интервью
           </h2>
-          <p className="text-[10px] italic text-[hsl(var(--slide-text-muted))] mb-[10px]">
-            Два инструмента — и интервью становится управляемым процессом.
+          <p className="text-[9px] italic text-[hsl(var(--slide-text-muted))] mb-[8px] leading-[1.4]">
+            Скопируй в Claude / GPT / Gemini, вставь свою гипотезу — получи сценарий на 20–30 минут. Всегда читай результат головой и редактируй под себя.
           </p>
-          <div className="space-y-[8px] mb-[10px]">
-            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[12px] py-[10px]">
-              <p className="text-[11px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">🎙️ tl;dv <span className="text-[8px] text-[hsl(var(--slide-text-muted))] font-normal">tldv.io · бесплатно</span></p>
-              <p className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                Бот в Zoom/Meet → запись, транскрипт, саммари с цитатами.
-              </p>
-            </div>
-            <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[12px] py-[10px]">
-              <p className="text-[11px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">🤖 AI для вопросов <span className="text-[8px] text-[hsl(var(--slide-text-muted))] font-normal">ChatGPT / Claude / Gemini</span></p>
-              <p className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                Гипотеза → 10–18 вопросов за 2 минуты. Убираешь наводящие.
-              </p>
-            </div>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] p-[8px] mb-[8px] relative">
+            <button
+              onClick={handleCopy}
+              className="absolute top-[6px] right-[6px] flex items-center gap-[3px] text-[8px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] hover:bg-[hsl(var(--slide-gold)/0.22)] px-[6px] py-[3px] rounded transition-colors z-10"
+            >
+              {copied ? <Check className="w-[10px] h-[10px]" /> : <Copy className="w-[10px] h-[10px]" />}
+              {copied ? "OK" : "Copy"}
+            </button>
+            <pre className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] font-mono whitespace-pre-wrap max-h-[150px] overflow-y-auto pr-[40px]">
+              {L2_PROMPT}
+            </pre>
           </div>
-          <p className="text-[9px] italic text-[hsl(var(--slide-gold))] leading-[1.4]">
-            Сделать 10 интервью — реально. Сделать так, чтобы они привели к решению — нужны итерации и обратная связь.
-          </p>
+          <div className="flex gap-[6px]">
+            <a
+              href={PDF_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={stop}
+              className="flex-1 flex items-center justify-center gap-[4px] text-[9px] font-semibold text-[hsl(var(--slide-bg))] bg-[hsl(var(--slide-gold))] hover:bg-[hsl(var(--slide-gold)/0.85)] px-[8px] py-[7px] rounded-[6px] transition-colors"
+            >
+              <FileText className="w-[10px] h-[10px]" /> Превью PDF
+            </a>
+            <a
+              href={PDF_HREF}
+              download
+              onClick={stop}
+              className="flex-1 flex items-center justify-center gap-[4px] text-[9px] font-semibold text-[hsl(var(--slide-gold))] border border-[hsl(var(--slide-gold)/0.5)] hover:bg-[hsl(var(--slide-gold)/0.1)] px-[8px] py-[7px] rounded-[6px] transition-colors"
+            >
+              <Download className="w-[10px] h-[10px]" /> Скачать
+            </a>
+          </div>
         </div>
         <FooterMobile />
       </Stage>
     );
   }
+
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Инструменты</Eyebrow>
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px] tracking-[-0.01em]">
-          Что снимает 80% работы
+      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1800px]">
+        <Eyebrow>AI-промпт</Eyebrow>
+        <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[10px] tracking-[-0.01em]">
+          Готовый промпт для сценария интервью
         </h2>
-        <p className="text-[22px] italic text-[hsl(var(--slide-text-muted))] mb-[28px]">
-          Два инструмента — и интервью становится управляемым процессом.
+        <p className="text-[20px] italic text-[hsl(var(--slide-text-muted))] mb-[20px] max-w-[1500px] leading-[1.4]">
+          Скопируй в Claude / GPT / Gemini, замени плейсхолдер на свою гипотезу — получи сценарий проблемного интервью на 20–30 минут. Всегда читай результат головой и редактируй под себя — AI ошибается.
         </p>
-        <div className="grid grid-cols-2 gap-[28px] mb-[24px]">
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[28px]">
-            <p className="text-[30px] font-bold text-[hsl(var(--slide-text))] mb-[6px]">🎙️ tl;dv</p>
-            <p className="text-[16px] text-[hsl(var(--slide-text-muted))] mb-[12px]">tldv.io · бесплатно</p>
-            <p className="text-[20px] italic text-[hsl(var(--slide-gold))] mb-[12px]">Запись и AI-анализ интервью.</p>
-            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              Бот подключается к Zoom / Google Meet, записывает, транскрибирует, выделяет ключевые моменты. После звонка — готовое саммари с цитатами.
-            </p>
+
+        <div className="grid grid-cols-[1fr_360px] gap-[24px] items-start">
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] p-[20px] relative">
+            <button
+              onClick={handleCopy}
+              className="absolute top-[14px] right-[14px] flex items-center gap-[6px] text-[14px] font-medium text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] hover:bg-[hsl(var(--slide-gold)/0.22)] px-[14px] py-[7px] rounded-[8px] transition-colors z-10 cursor-pointer"
+            >
+              {copied ? <Check className="w-[16px] h-[16px]" /> : <Copy className="w-[16px] h-[16px]" />}
+              {copied ? "Скопировано" : "Скопировать"}
+            </button>
+            <pre className="text-[13px] text-[hsl(var(--slide-text)/0.85)] leading-[1.55] font-mono whitespace-pre-wrap max-h-[520px] overflow-y-auto pr-[160px]">
+              {L2_PROMPT}
+            </pre>
           </div>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[28px]">
-            <p className="text-[30px] font-bold text-[hsl(var(--slide-text))] mb-[6px]">🤖 AI для вопросов</p>
-            <p className="text-[16px] text-[hsl(var(--slide-text-muted))] mb-[12px]">ChatGPT / Claude / Gemini</p>
-            <p className="text-[20px] italic text-[hsl(var(--slide-gold))] mb-[12px]">Генерирует custdev-вопросы за 2 минуты.</p>
-            <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              Вставляешь шаблон гипотезы → AI выдаёт 10–18 вопросов. Убираешь наводящие, проверяешь логику, проводишь интервью.
+
+          <div className="flex flex-col gap-[14px]">
+            <a
+              href={PDF_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={stop}
+              className="group flex flex-col gap-[8px] bg-[hsl(var(--slide-gold))] hover:bg-[hsl(var(--slide-gold)/0.9)] text-[hsl(var(--slide-bg))] rounded-[14px] px-[22px] py-[18px] transition-colors cursor-pointer"
+            >
+              <div className="flex items-center gap-[10px]">
+                <FileText className="w-[22px] h-[22px]" />
+                <span className="text-[20px] font-bold">Превью PDF</span>
+              </div>
+              <span className="text-[14px] opacity-80 leading-[1.4]">
+                Открыть полную версию промпта с памяткой интервьюера в новой вкладке
+              </span>
+            </a>
+
+            <a
+              href={PDF_HREF}
+              download
+              onClick={stop}
+              className="group flex flex-col gap-[8px] border-2 border-[hsl(var(--slide-gold)/0.5)] hover:border-[hsl(var(--slide-gold))] hover:bg-[hsl(var(--slide-gold)/0.08)] text-[hsl(var(--slide-text))] rounded-[14px] px-[22px] py-[18px] transition-colors cursor-pointer"
+            >
+              <div className="flex items-center gap-[10px] text-[hsl(var(--slide-gold))]">
+                <Download className="w-[22px] h-[22px]" />
+                <span className="text-[20px] font-bold">Скачать PDF</span>
+              </div>
+              <span className="text-[14px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
+                5 страниц · промпт + 3-шаговая инструкция + памятка до/во время/после интервью
+              </span>
+            </a>
+
+            <p className="text-[13px] italic text-[hsl(var(--slide-text-muted))] leading-[1.45] mt-[4px]">
+              Промпт — стартовая точка, а не финал. Прочитай сценарий, выкини лишнее, добавь своё. Думай головой.
             </p>
           </div>
         </div>
-        <p className="text-[22px] italic text-[hsl(var(--slide-gold))] leading-[1.45]">
-          Сделать 10 интервью — реально. Сделать так, чтобы они привели к решению — нужны итерации и обратная связь.
-        </p>
       </div>
       <Footer />
     </Stage>
