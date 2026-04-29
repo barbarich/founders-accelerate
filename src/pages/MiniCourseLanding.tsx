@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
@@ -41,6 +42,30 @@ function useDiscountCountdown() {
   }, []);
 
   return label;
+}
+
+function useCheckout() {
+  const [loading, setLoading] = useState(false);
+
+  const startCheckout = async () => {
+    if (loading) return;
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: {},
+      });
+      if (error) throw error;
+      const url = (data as { url?: string } | null)?.url;
+      if (!url) throw new Error("Checkout URL was not returned");
+      window.location.href = url;
+    } catch (err) {
+      console.error("Checkout error:", err);
+      alert("Не удалось начать оплату. Попробуйте ещё раз или напишите нам.");
+      setLoading(false);
+    }
+  };
+
+  return { startCheckout, loading };
 }
 
 function TopBar() {
