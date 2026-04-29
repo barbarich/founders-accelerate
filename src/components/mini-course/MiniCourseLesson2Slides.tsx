@@ -858,8 +858,7 @@ const L2Closing = () => {
 export const slides = [
   L2Title,            // 1  Title (mirrors S1)
   L2Insight,          // 2  Main insight (PullQuote style)
-  L2Mirror,           // 3  Mirror question
-  L2Cost,             // 4  Цена пропущенного шага
+  L2Cost,             // 3  Цена пропущенного шага
   L2WhyAfterMarket,   // 5  Почему custdev — после рынка
   S10,                // 6  Mikey case (kept from Lesson 1)
   L2WhoPays,          // 7  Кому полезно ≠ Кто заплатит
