@@ -197,16 +197,19 @@ const L3Mirror = () => {
   );
 };
 
-/* ========== Slide 4 — Контр-кейс RunEverywhere (до AI) ========== */
+/* ========== Slide 3 — Контр-кейс MetaMinder (до AI) ========== */
 const L3_RUN_BEFORE = [
-  { num: "6 мес", text: "от идеи до первой версии — фронт, бэк, инфра вручную" },
-  { num: "3 человека", text: "команда: я + фронт + бэк. Зарплаты, созвоны, ревью PR" },
-  { num: "≈ $40K", text: "сожжено до того, как первый юзер сказал «не пользуюсь»" },
+  { num: "20 человек", text: "команда: фронт, бэк, QA, дизайн, PM. Каждому — зарплата каждый месяц" },
+  { num: "Месяцы", text: "на одну фичу: разработка, тестирование, ревью, релизы — всё руками" },
+  { num: "Сотни $K", text: "сожжено на разработку продукта до того, как он стал зарабатывать" },
 ];
 const L3_RUN_AFTER = [
-  "Сейчас тот же скоуп — solo, 2–3 недели, $0 на разработку",
-  "AI закрывает позиции фронта и бэка на уровне крепкого джуна",
-  "Мой job сменился: я не пишу код. Я декомпозирую, ревьюю и тестирую",
+  "Внедрили AI: вся команда инженеров работает через Cloud-агентов",
+  "Заменили продакт-менеджера и дизайнера на AI-воркфлоу",
+  "Построили QA-агентов — автотесты пишутся и гоняются без людей",
+  "Сократили команду до 4 человек. Скорость — выросла, не упала",
+  "Деливерим функционал за недели, а не за месяцы. Качество — то же или выше",
+  "Команда воодушевлена. Клиенты счастливы. Так выглядит разработка с AI в 2026",
 ];
 const L3RunEverywhere = () => {
   const isMobile = useIsMobile();
@@ -216,7 +219,7 @@ const L3RunEverywhere = () => {
         <div className="flex flex-col justify-center px-[18px] h-full">
           <Eyebrow mobile>Контр-кейс · до AI</Eyebrow>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            RunEverywhere · 2022. Как мы строили <span className="text-[hsl(var(--slide-gold))]">до</span> AI
+            MetaMinder · как мы строили <span className="text-[hsl(var(--slide-gold))]">до</span> AI
           </h2>
           <div className="space-y-[6px] mb-[10px]">
             {L3_RUN_BEFORE.map((it) => (
@@ -226,14 +229,14 @@ const L3RunEverywhere = () => {
               </div>
             ))}
           </div>
-          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Что изменилось в 2024</p>
+          <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Что изменилось в 2026</p>
           <ul className="space-y-[3px] mb-[8px]">
             {L3_RUN_AFTER.map((t) => (
-              <li key={t} className="text-[8.5px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">→ {t}</li>
+              <li key={t} className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">→ {t}</li>
             ))}
           </ul>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Те же задачи. Цена и скорость — другие на порядок.
+            20 человек → 4. Месяцы → недели. То же качество. Так работает разработка с AI в 2026.
           </p>
         </div>
         <FooterMobile />
@@ -245,7 +248,7 @@ const L3RunEverywhere = () => {
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <Eyebrow>Контр-кейс · как было до AI</Eyebrow>
         <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          RunEverywhere · 2022. Как мы строили <span className="text-[hsl(var(--slide-gold))]">до</span> AI
+          MetaMinder · как мы строили <span className="text-[hsl(var(--slide-gold))]">до</span> AI
         </h2>
         <div className="grid grid-cols-3 gap-[24px] mb-[32px] max-w-[1700px]">
           {L3_RUN_BEFORE.map((it) => (
@@ -256,15 +259,15 @@ const L3RunEverywhere = () => {
           ))}
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[22px] max-w-[1700px]">
-          <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Что изменилось в 2024</p>
-          <ul className="space-y-[8px]">
+          <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Что изменилось в 2026</p>
+          <ul className="space-y-[6px]">
             {L3_RUN_AFTER.map((t) => (
-              <li key={t} className="text-[20px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">→ {t}</li>
+              <li key={t} className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">→ {t}</li>
             ))}
           </ul>
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic mt-[20px] leading-[1.45] max-w-[1700px]">
-          Те же задачи. Цена и скорость — другие на порядок. Но только если ты ведёшь, а не «договариваешься» с моделью.
+          20 человек → 4. Месяцы → недели. То же качество. Команда воодушевлена, клиенты счастливы. Так выглядит разработка с AI в 2026.
         </p>
       </div>
       <Footer />
