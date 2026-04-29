@@ -285,12 +285,13 @@ function Comparison() {
             </div>
             {rows.map((r) => (
               <div className="mcl-compare-row" key={r[0] as string}>
-                <div className="mcl-compare-cell">{r[0]}</div>
+                <div className="mcl-compare-cell mcl-compare-cell--label">{r[0]}</div>
                 {[1, 2, 3, 4].map((i) => {
                   const [cls, txt] = r[i] as [string, string];
                   const highlight = i === 3 ? " mcl-highlight" : "";
+                  const colLabel = ["YouTube", "ChatGPT", "Этот курс", "Ментор $5K"][i - 1];
                   return (
-                    <div className={`mcl-compare-cell${highlight}`} key={i}>
+                    <div className={`mcl-compare-cell${highlight}`} data-label={colLabel} key={i}>
                       <span className={`mcl-${cls}`} style={i === 3 && r[0] === "Цена" ? { fontWeight: 700 } : undefined}>{txt}</span>
                     </div>
                   );
