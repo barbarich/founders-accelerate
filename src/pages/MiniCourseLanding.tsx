@@ -577,6 +577,7 @@ export default function MiniCourseLanding() {
       <TopBar />
       <Hero />
       <FounderStrip />
+      <MeetMentor />
       <About />
       <Curriculum />
       <Pain />
