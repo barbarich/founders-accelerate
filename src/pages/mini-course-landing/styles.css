@@ -698,9 +698,13 @@ body.mcl-body { background: #f8f8f4; }
 .mcl-testimonial-text {
   font-family: var(--mcl-font-display);
   font-size: 17px; line-height: 1.55; color: var(--mcl-text);
-  margin-bottom: 18px; font-weight: 500;
+  margin-bottom: 32px; font-weight: 500;
 }
-.mcl-testimonial-author { display: flex; align-items: center; gap: 12px; }
+.mcl-testimonial-author {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--mcl-border);
+}
 .mcl-testimonial-avatar {
   width: 42px; height: 42px; border-radius: 50%;
   background: var(--mcl-accent);
