@@ -47,7 +47,12 @@ function TopBar() {
   const label = useDiscountCountdown();
   return (
     <div className="mcl-top-bar">
-      Скидка 61% действует ещё <span className="mcl-countdown">{label}</span> · цена вернётся к $49
+      <span className="mcl-top-bar-full">
+        Скидка 61% действует ещё <span className="mcl-countdown">{label}</span> · цена вернётся к $49
+      </span>
+      <span className="mcl-top-bar-short">
+        −61% ещё <span className="mcl-countdown">{label}</span> · потом $49
+      </span>
     </div>
   );
 }

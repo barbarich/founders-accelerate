@@ -92,8 +92,17 @@ body.mcl-body { background: #f8f8f4; }
   right: 0;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
 }
 .mcl-top-bar strong { font-weight: 700; }
+.mcl-top-bar-full { display: inline; }
+.mcl-top-bar-short { display: none; }
+@media (max-width: 560px) {
+  .mcl-top-bar { font-size: 12px; padding: 9px 10px; }
+  .mcl-top-bar-full { display: none; }
+  .mcl-top-bar-short { display: inline; }
+  .mcl-top-bar .mcl-countdown { font-size: 11px; padding: 2px 6px; margin: 0 3px; }
+}
 .mcl-countdown {
   font-family: var(--mcl-font-mono);
   font-weight: 700;
