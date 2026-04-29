@@ -173,7 +173,7 @@ const L4Stats = () => {
         <div className="flex flex-col justify-center px-[18px] h-full">
           <Eyebrow mobile>Статистика индустрии · и мой счёт</Eyebrow>
           <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и три моих запуска
+            Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и мой кейс MetaMinder
           </h2>
           <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Индустрия</p>
           <div className="grid grid-cols-3 gap-[5px] mb-[8px]">
@@ -195,7 +195,7 @@ const L4Stats = () => {
             ))}
           </div>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Каждый запуск — это другая комбинация инструментов. Сегодня покажу обе.
+            Без бюджета на рекламу — через холодные касания и собственный нетворк.
           </p>
         </div>
         <FooterMobile />
@@ -207,7 +207,7 @@ const L4Stats = () => {
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <Eyebrow>Статистика индустрии · и мой счёт по запускам</Eyebrow>
         <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px] tracking-[-0.01em]">
-          Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и три моих запуска
+          Что показывают <span className="text-[hsl(var(--slide-gold))]">данные 2026</span> — и мой кейс MetaMinder
         </h2>
         <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Индустрия</p>
         <div className="grid grid-cols-3 gap-[24px] mb-[24px] max-w-[1700px]">
@@ -229,7 +229,7 @@ const L4Stats = () => {
           ))}
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Каждый запуск — это другая комбинация инструментов. Сегодня покажу обе — B2B и B2C.
+          Первые 10 клиентов — без бюджета на рекламу. Только холодные касания и собственная сеть.
         </p>
       </div>
       <Footer />
