@@ -359,7 +359,7 @@ body.mcl-body { background: #f8f8f4; }
   font-weight: 600;
   font-size: 16px;
   color: var(--mcl-sage-text);
-  margin-bottom: 6px;
+  margin-bottom: 0;
   line-height: 1.35;
 }
 .mcl-ba-cell span {
