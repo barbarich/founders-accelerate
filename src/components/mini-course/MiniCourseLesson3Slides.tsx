@@ -607,29 +607,42 @@ const L3BestPractices2 = () => {
   );
 };
 
-/* ========== Slide 10 — TFC CTA · точка слома одиночки ========== */
+/* ========== Slide 9 — Не строй в вакууме · фидбэк живых людей ========== */
+const L3_FEEDBACK_STEPS = [
+  { n: "01", t: "Покажи прототип сразу", body: "Как только что-то работает — давай людям ссылку. Не жди «идеального» — его не будет." },
+  { n: "02", t: "Дай понажимать", body: "Молча наблюдай, как человек кликает. Где он застрял — там твоя следующая задача для AI." },
+  { n: "03", t: "Спроси прямо", body: "«Что нравится? Что бесит? Что бы ты убрал?» Конкретные вопросы → конкретные правки." },
+  { n: "04", t: "Возвращайся с обновлением", body: "Через 3 дня — «я починил то, что ты сказал». Так рождаются первые евангелисты продукта." },
+];
 const L3TfcCta = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[20px] h-full">
-          <Eyebrow mobile>Точка слома одиночки</Eyebrow>
+          <Eyebrow mobile>Главное правило фаундера</Eyebrow>
           <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Solo с AI ускоряет всё. <span className="text-[hsl(var(--slide-gold))]">И ошибки тоже.</span>
+            Не строй в <span className="text-[hsl(var(--slide-gold))]">вакууме</span>
           </h2>
-          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[8px]">
-            Одиночке некому сказать: «ты строишь фичу вместо ценности». AI поддакнет. Друг похвалит. Через 3 недели ты — один с красивым продуктом, в который никто не платит.
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[10px]">
+            Фаундер всегда зацикливается и перестаёт видеть продукт со стороны. Лекарство одно — <b>живые люди</b>, которые трогают твой продукт и говорят правду.
           </p>
-          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[10px] mb-[10px]">
-            <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[4px]">The Founders Circle</p>
-            <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.5]">
-              Группа 5–7 фаундеров. Каждую неделю — ревью того, что ты строишь, против того, что говорят юзеры. Без вежливости.
+          <div className="space-y-[5px] mb-[10px]">
+            {L3_FEEDBACK_STEPS.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[8px] py-[5px]">
+                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">
+                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.t}
+                </p>
+                <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold)/0.6)] rounded-[6px] px-[10px] py-[7px]">
+            <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">P.S. Группа усиливает</p>
+            <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">
+              Когда рядом единомышленники, идущие тем же путём — результат ускоряется. На The Founders Circle я менторю группы до 8 человек: ведём от идеи до готового продукта.
             </p>
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            AI не остановит тебя. Группа — да.
-          </p>
         </div>
         <FooterMobile />
       </Stage>
@@ -637,25 +650,29 @@ const L3TfcCta = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
-        <Eyebrow>Точка слома одиночки</Eyebrow>
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px] tracking-[-0.01em]">
-          Solo с AI ускоряет всё. <span className="text-[hsl(var(--slide-gold))]">И ошибки тоже.</span>
+      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1800px]">
+        <Eyebrow>Главное правило фаундера</Eyebrow>
+        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[18px] tracking-[-0.01em]">
+          Не строй в <span className="text-[hsl(var(--slide-gold))]">вакууме</span>
         </h2>
-        <p className="text-[24px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[28px] max-w-[1500px]">
-          Одиночке <b>некому</b> сказать: «ты строишь фичу вместо ценности». AI поддакнет. Друг похвалит.
-          Через 3 недели ты — один с красивым продуктом, в который никто не платит.
+        <p className="text-[24px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45] mb-[26px] max-w-[1600px]">
+          Фаундер всегда зацикливается и перестаёт видеть продукт со стороны. Лекарство одно — <b>живые люди</b>, которые трогают твой продукт и говорят правду. Не AI. Не друзья из вежливости. Реальный фидбэк от тех, для кого ты строишь.
         </p>
-        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[26px] max-w-[1500px] mb-[24px]">
-          <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] mb-[12px]">The Founders Circle</p>
-          <p className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.5]">
-            Группа 5–7 фаундеров. Каждую неделю — ревью того, что ты строишь, против того, что говорят юзеры.
-            <b className="text-[hsl(var(--slide-gold))]"> Без вежливости.</b> С разбором твоего design doc и diff.
+        <div className="grid grid-cols-4 gap-[18px] mb-[24px] max-w-[1700px]">
+          {L3_FEEDBACK_STEPS.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[22px] py-[20px]">
+              <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">{s.n}</p>
+              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">{s.t}</p>
+              <p className="text-[16px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[3px] border-[hsl(var(--slide-gold)/0.6)] rounded-[10px] px-[28px] py-[18px] max-w-[1700px]">
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] mb-[8px]">P.S. Группа усиливает эффект</p>
+          <p className="text-[19px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
+            Когда рядом единомышленники, идущие тем же путём — поддержка и ответственность ускоряют результат. На <b className="text-[hsl(var(--slide-gold))]">The Founders Circle</b> я менторю группы до 8 человек: ведём от идеи до готового продукта.
           </p>
         </div>
-        <p className="text-[24px] italic text-[hsl(var(--slide-gold))] leading-[1.45] max-w-[1500px]">
-          AI не остановит тебя, когда ты бежишь не туда. Группа — да.
-        </p>
       </div>
       <Footer />
     </Stage>
