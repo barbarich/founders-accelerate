@@ -83,6 +83,7 @@ function TopBar() {
 }
 
 function Hero() {
+  const { startCheckout, loading } = useCheckout();
   return (
     <header className="mcl-hero">
       <div className="mcl-container">
@@ -97,7 +98,9 @@ function Hero() {
           <span className="mcl-price-discount">−61%</span>
         </div>
         <div>
-          <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
+          <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
+            {loading ? "Открываем оплату…" : "Купить курс за $19"}
+          </button>
         </div>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
