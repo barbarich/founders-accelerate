@@ -3,6 +3,9 @@ import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
 
+// Stripe Payment Link — Mini-Course AI-Founder, $19 USD, redirects to /mini-course/thank-you
+const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803";
+
 /**
  * Mini-course landing — built 1:1 from the user-supplied HTML mockup.
  * Sections kept as separate components for readability.
@@ -72,7 +75,7 @@ function Hero() {
           <span className="mcl-price-discount">−61%</span>
         </div>
         <div>
-          <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
+          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
         </div>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
@@ -502,7 +505,7 @@ function Pricing() {
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
           </ul>
-          <a href="#" className="mcl-cta-primary">Купить курс за $19</a>
+          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
           <div className="mcl-guarantee">
             <div className="mcl-guarantee-icon">✓</div>
             <div className="mcl-guarantee-text">
@@ -524,7 +527,7 @@ const FAQ_ITEMS = [
   { q: "Почему так дёшево? В чём подвох?", a: ["Подвоха нет, и я отвечу честно. Этот курс — top-of-funnel в мою менторскую программу The Founders Circle (TFC). Если после курса ты захочешь пойти глубже — у тебя будет такая опция. Если нет — просто пользуешься курсом, и мы оба довольны.", "$19 это импульсная цена, на которой я не зарабатываю много, но при этом фильтрую тех, кто реально хочет учиться, от тех, кто скачает «потому что бесплатно» и не откроет."] },
   { q: "Что если мне не подойдёт?", a: ["7 дней на возврат. Просто пишешь мне на почту — я возвращаю $19. Никаких форм, обоснований и удерживающих звонков.", "Я делаю это потому что уверен в материале. Но если он не для тебя — не хочу держать твои деньги."] },
   { q: "На каком языке курс?", a: ["Все видео на русском. Презентации, шаблоны и промпты — на русском и английском (так чтобы ты мог использовать их с международными командами и AI-агентами без перевода)."] },
-  { q: "Как происходит оплата и доступ?", a: ["Оплата через Stripe — карты, Apple Pay, Google Pay. Сразу после оплаты ты получаешь email со ссылкой на платформу курса, паролем и доступом ко всем материалам. Уже с первой минуты можешь смотреть."] },
+  { q: "Как происходит оплата и доступ?", a: ["Оплата через Stripe — карты, Apple Pay, Google Pay. Сразу после успешной оплаты ты попадаешь на страницу благодарности, где открываешь нашего Telegram-бота: внутри лежат все 5 уроков, презентации, AI-агенты и бонусы. Доступ навсегда. Чек об оплате Stripe пришлёт на email."] },
 ] as const;
 
 function FAQ() {
@@ -561,7 +564,7 @@ function FinalCTA() {
         <p>
           Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За $19 это, возможно, самая короткая дорога, которую я могу тебе предложить.
         </p>
-        <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
+        <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
