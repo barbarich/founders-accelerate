@@ -868,3 +868,17 @@ body.mcl-body { background: #f8f8f4; }
   .mcl-founder-strip-inner { flex-direction: row; align-items: center; text-align: left; gap: 32px; }
   .mcl-founder-stats { flex: 1; }
 }
+
+/* LinkedIn link — inherits style, subtle hover */
+a.mcl-linkedin-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+}
+a.mcl-linkedin-link:hover {
+  text-decoration-color: var(--mcl-accent);
+}
