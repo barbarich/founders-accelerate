@@ -351,9 +351,9 @@ function SocialProof() {
     <section className="mcl-social-section">
       <div className="mcl-container">
         <div className="mcl-section-label">Что говорят</div>
-        <h2 className="mcl-section-title">Это не первая когорта <em>обо мне как менторе.</em></h2>
+        <h2 className="mcl-section-title">Люди, которые уже работают <em>со мной по этой методологии.</em></h2>
         <div className="mcl-social-note">
-          <strong>Честно:</strong> курс новый — отзывы про сам курс ещё впереди. Зато есть отзывы участников моей менторской программы The Founders Circle, которые работали со мной по той же методологии, что в курсе. Первая группа поставила <strong>10 из 10</strong>. Вот несколько голосов.
+          Это фаундеры, которые проходят или уже прошли обучение со мной — по тем же принципам и инструментам, что и в курсе. Говорят как есть, без прикрас.
         </div>
         <div className="mcl-testimonials">
           {TESTIMONIALS.map((t) => (
