@@ -882,8 +882,7 @@ const L3Closing = () => {
 export const slides = [
   L3Title,         // 1  Title
   L3Insight,       // 2  Главный инсайт (pull quote)
-  L3Mirror,        // 3  Mirror question
-  L3RunEverywhere, // 4  Контр-кейс RunEverywhere (до AI)
+  L3RunEverywhere, // 3  Контр-кейс RunEverywhere (до AI)
   L3MikeyCase,     // 5  Главный кейс Mikey (solo с AI)
   L3Workflow,      // 6  Agentic engineering workflow · 5 шагов
   L3DesignDoc,     // 7  Шаги 1–2: декомпозиция + design doc
