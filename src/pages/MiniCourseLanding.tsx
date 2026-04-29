@@ -112,6 +112,41 @@ function FounderStrip() {
   );
 }
 
+function MeetMentor() {
+  return (
+    <section className="mcl-meet">
+      <div className="mcl-container-wide">
+        <div className="mcl-meet-grid">
+          <div className="mcl-meet-video-wrap">
+            <video
+              className="mcl-meet-video"
+              src="/videos/michael-intro.mp4"
+              poster="/videos/michael-intro-poster.jpg"
+              controls
+              playsInline
+              preload="metadata"
+            />
+          </div>
+          <div className="mcl-meet-copy">
+            <div className="mcl-section-label">Знакомство</div>
+            <h2 className="mcl-section-title" style={{ marginBottom: 18 }}>
+              Привет. Я <em>Михаэль</em> — и за 75 секунд расскажу, кто будет тебя учить.
+            </h2>
+            <p className="mcl-meet-lede">
+              Без слайдов и заготовок. Просто в камеру: чем я занимался последние 16 лет, что построил, на чём обжёгся и почему именно этот курс.
+            </p>
+            <ul className="mcl-meet-points">
+              <li>{CHECK_ICON} 2 экзита, 50,000+ платящих пользователей в 107 странах</li>
+              <li>{CHECK_ICON} Сейчас веду 2 активных AI-стартапа</li>
+              <li>{CHECK_ICON} Тот же воркфлоу, который преподаю — использую сам каждый день</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Pain() {
   const pairs = [
     {
@@ -542,6 +577,7 @@ export default function MiniCourseLanding() {
       <TopBar />
       <Hero />
       <FounderStrip />
+      <MeetMentor />
       <About />
       <Curriculum />
       <Pain />
