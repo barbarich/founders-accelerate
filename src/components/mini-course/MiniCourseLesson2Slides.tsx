@@ -715,63 +715,6 @@ const L2NinjaRetro = () => {
   );
 };
 
-/* ========== Slide 15 — Practice now (recorded format, no timeline) ========== */
-const L2_PRACTICE = [
-  { n: "01", title: "Сформулируй гипотезу", body: "По шаблону: «[сегмент] страдает от [боль] когда [контекст], готов платить за [формат]»." },
-  { n: "02", title: "Сгенерируй вопросы с AI", body: "Открой ChatGPT / Claude → дай гипотезу → попроси 10–18 custdev-вопросов." },
-  { n: "03", title: "Почисти вопросы", body: "Убери наводящие и дубли. Оставь только открытые — про прошлый опыт, текущее решение и бюджет." },
-  { n: "04", title: "Собери список 5 человек", body: "С которыми ты проведёшь интервью на этой неделе. Минимум один — НЕ друг и НЕ из твоего пузыря." },
-];
-const L2Practice = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Подготовка</Eyebrow>
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-            Стартовый пакет на 7 дней
-          </h2>
-          <ol className="space-y-[6px] mb-[10px]">
-            {L2_PRACTICE.map((it) => (
-              <li key={it.n} className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">
-                <span className="text-[hsl(var(--slide-gold))] font-bold">{it.n}.</span>{" "}
-                <b className="text-[hsl(var(--slide-text))]">{it.title}.</b> {it.body}
-              </li>
-            ))}
-          </ol>
-          <p className="text-[9px] italic text-[hsl(var(--slide-gold))] leading-[1.4]">
-            На выходе: гипотеза + список вопросов + 5 имён.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Подготовка</Eyebrow>
-        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Стартовый пакет на 7 дней
-        </h2>
-        <ol className="space-y-[16px] mb-[28px]">
-          {L2_PRACTICE.map((it) => (
-            <li key={it.n} className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] max-w-[1600px]">
-              <span className="text-[hsl(var(--slide-gold))] font-bold mr-[14px]">{it.n}.</span>
-              <b className="text-[hsl(var(--slide-text))]">{it.title}.</b> {it.body}
-            </li>
-          ))}
-        </ol>
-        <p className="text-[22px] italic text-[hsl(var(--slide-gold))] leading-[1.4]">
-          На выходе: гипотеза + список вопросов + 5 имён. Это твой стартовый пакет на ближайшие 7 дней.
-        </p>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
 /* ========== Slide 14 — Homework (объединено с бывшим Practice) ========== */
 const L2_HOMEWORK_STEPS = [
   { title: "Сформулируй гипотезу", body: "По шаблону: «[сегмент] страдает от [боль] когда [контекст], готов платить за [формат]»." },
@@ -1216,7 +1159,6 @@ export const slides = [
   L2PassFail,         // 11 Pass/Fail + vitamin/painkiller + готовность платить (доработка S16)
   L2Tools,            // 12 Инструменты + mini-CTA
   L2NinjaRetro,       // 13 InterviewNinja counter-case
-  L2Practice,         // 14 Стартовый пакет на 7 дней
-  L2Homework,         // 15 Домашнее задание
-  L2Closing,          // 16 Closing
+  L2Homework,         // 14 Домашнее задание (объединённое: подготовка + интервью + анализ)
+  L2Closing,          // 15 Closing
 ];
