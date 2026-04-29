@@ -279,48 +279,6 @@ export type Database = {
         }
         Relationships: []
       }
-      orders: {
-        Row: {
-          amount_cents: number
-          created_at: string
-          currency: string
-          customer_email: string | null
-          id: string
-          metadata: Json | null
-          product_name: string
-          status: string
-          stripe_payment_intent_id: string | null
-          stripe_session_id: string
-          updated_at: string
-        }
-        Insert: {
-          amount_cents: number
-          created_at?: string
-          currency?: string
-          customer_email?: string | null
-          id?: string
-          metadata?: Json | null
-          product_name: string
-          status?: string
-          stripe_payment_intent_id?: string | null
-          stripe_session_id: string
-          updated_at?: string
-        }
-        Update: {
-          amount_cents?: number
-          created_at?: string
-          currency?: string
-          customer_email?: string | null
-          id?: string
-          metadata?: Json | null
-          product_name?: string
-          status?: string
-          stripe_payment_intent_id?: string | null
-          stripe_session_id?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       participant_meetings: {
         Row: {
           created_at: string

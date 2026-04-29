@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
@@ -44,30 +43,6 @@ function useDiscountCountdown() {
   return label;
 }
 
-function useCheckout() {
-  const [loading, setLoading] = useState(false);
-
-  const startCheckout = async () => {
-    if (loading) return;
-    setLoading(true);
-    try {
-      const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: {},
-      });
-      if (error) throw error;
-      const url = (data as { url?: string } | null)?.url;
-      if (!url) throw new Error("Checkout URL was not returned");
-      window.location.href = url;
-    } catch (err) {
-      console.error("Checkout error:", err);
-      alert("Не удалось начать оплату. Попробуйте ещё раз или напишите нам.");
-      setLoading(false);
-    }
-  };
-
-  return { startCheckout, loading };
-}
-
 function TopBar() {
   const label = useDiscountCountdown();
   return (
@@ -83,7 +58,6 @@ function TopBar() {
 }
 
 function Hero() {
-  const { startCheckout, loading } = useCheckout();
   return (
     <header className="mcl-hero">
       <div className="mcl-container">
@@ -98,9 +72,7 @@ function Hero() {
           <span className="mcl-price-discount">−61%</span>
         </div>
         <div>
-          <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
-            {loading ? "Открываем оплату…" : "Купить курс за $19"}
-          </button>
+          <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
         </div>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
@@ -496,7 +468,6 @@ function SocialProof() {
 
 function Pricing() {
   const countdown = useDiscountCountdown();
-  const { startCheckout, loading } = useCheckout();
   return (
     <section className="mcl-pricing" id="buy">
       <div className="mcl-container">
@@ -531,9 +502,7 @@ function Pricing() {
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
           </ul>
-          <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
-            {loading ? "Открываем оплату…" : "Купить курс за $19"}
-          </button>
+          <a href="#" className="mcl-cta-primary">Купить курс за $19</a>
           <div className="mcl-guarantee">
             <div className="mcl-guarantee-icon">✓</div>
             <div className="mcl-guarantee-text">
@@ -585,7 +554,6 @@ function FAQ() {
 }
 
 function FinalCTA() {
-  const { startCheckout, loading } = useCheckout();
   return (
     <section className="mcl-final-cta">
       <div className="mcl-container">
@@ -593,9 +561,7 @@ function FinalCTA() {
         <p>
           Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За $19 это, возможно, самая короткая дорога, которую я могу тебе предложить.
         </p>
-        <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
-          {loading ? "Открываем оплату…" : "Купить курс за $19"}
-        </button>
+        <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
