@@ -156,47 +156,6 @@ const L3Insight = () => {
   );
 };
 
-/* ========== Slide 3 — Mirror question ========== */
-const L3Mirror = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[20px] h-full">
-          <Eyebrow mobile>Вопрос на старт</Eyebrow>
-          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-            Покажи последний diff, который ты прочитал — строка за строкой — перед тем как принять.
-          </h2>
-          <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[10px]">
-            Не помнишь? Значит, ты не разработчик с AI. Ты пассажир.
-          </p>
-          <p className="text-[10px] italic text-[hsl(var(--slide-gold))] leading-[1.4]">
-            После этого урока ты будешь сидеть за рулём, а AI — печатать.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1700px]">
-        <Eyebrow>Вопрос на старт</Eyebrow>
-        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em] max-w-[1500px]">
-          Покажи последний diff, который ты прочитал — строка за строкой — перед тем как принять.
-        </h2>
-        <p className="text-[26px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[24px] max-w-[1400px]">
-          Не помнишь? Значит, ты не разработчик с AI. Ты <b>пассажир</b>, который надеется, что водитель не врежется.
-        </p>
-        <p className="text-[24px] italic text-[hsl(var(--slide-gold))] leading-[1.45] max-w-[1500px]">
-          После этого урока ты будешь сидеть за рулём. AI — только печатает.
-        </p>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
 /* ========== Slide 3 — Контр-кейс MetaMinder (до AI) ========== */
 const L3_RUN_BEFORE = [
   { num: "20 человек", text: "команда: фронт, бэк, QA, дизайн, PM. Каждому — зарплата каждый месяц" },
