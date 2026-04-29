@@ -496,6 +496,7 @@ function SocialProof() {
 
 function Pricing() {
   const countdown = useDiscountCountdown();
+  const { startCheckout, loading } = useCheckout();
   return (
     <section className="mcl-pricing" id="buy">
       <div className="mcl-container">
@@ -530,7 +531,9 @@ function Pricing() {
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
           </ul>
-          <a href="#" className="mcl-cta-primary">Купить курс за $19</a>
+          <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
+            {loading ? "Открываем оплату…" : "Купить курс за $19"}
+          </button>
           <div className="mcl-guarantee">
             <div className="mcl-guarantee-icon">✓</div>
             <div className="mcl-guarantee-text">
