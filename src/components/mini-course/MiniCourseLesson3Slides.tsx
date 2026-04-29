@@ -757,11 +757,11 @@ const L3Landing = () => {
 
 /* ========== Slide 11 — Домашнее задание ========== */
 const L3_HW = [
-  { t: "Возьми ОДНУ фичу из MVP", body: "Самую маленькую, которая закрывает боль из custdev. Не три. Одну." },
-  { t: "Опиши задачу как design doc", body: "Зачем (для юзера), контракт (вход/выход), 2–3 граничных случая, acceptance — чек-лист «готово»." },
-  { t: "Дай AI по best practices", body: "Production-ready, файлы до 500 строк, план → ОК → код, ревью каждого diff. Не «vibe coding»." },
-  { t: "Собери лендинг за 30 минут", body: "По бонусному слайду. H1 = цитата из custdev. Одна CTA. Mobile-first." },
-  { t: "Покажи 3 юзерам и зафиксируй реакцию", body: "Не «как тебе?». А: «что ты сделал бы прямо сейчас на этой странице?»" },
+  { t: "Начни с ОДНОЙ ключевой фичи", body: "Не строй сразу большой продукт. Возьми одну фичу, которая решает одну конкретную проблему. Фокус на проблеме, а не на масштабе." },
+  { t: "Напиши задачу по фреймворку", body: "Используй фреймворк из урока: цель, контракт (вход/выход), граничные случаи, acceptance. На выходе — production-ready код, документация и юнит-тесты сразу." },
+  { t: "Собери лендинг с Value Proposition", body: "Сразу понятно: какую проблему и для кого решаешь. Не пытайся рассказать всё и для всех — фокус на конкретном сегменте и конкретной боли." },
+  { t: "Активно показывай людям", body: "Чем большему количеству людей — тем лучше. Проси тестировать, делиться, давать фидбэк. Не работай в вакууме." },
+  { t: "Собирай и применяй фидбэк", body: "Возвращайся к юзерам с обновлениями. Дорабатывай продукт на основе реальных реакций, а не догадок фаундера." },
 ];
 const L3HomeworkSlide = () => {
   const isMobile = useIsMobile();
@@ -771,7 +771,7 @@ const L3HomeworkSlide = () => {
         <div className="flex flex-col justify-center px-[18px] h-full">
           <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">Домашнее задание · 7 дней до Урока 4</p>
           <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Собрать рабочий кусок продукта <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
+            Собрать рабочий MVP <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
           </h2>
           <ol className="space-y-[5px] mb-[10px]">
             {L3_HW.map((s, i) => (
@@ -782,7 +782,7 @@ const L3HomeworkSlide = () => {
             ))}
           </ol>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            На выходе: design doc + рабочая фича + лендинг + 3 живые реакции.
+            На выходе: MVP + полная документация + лендинг + постоянный фидбэк от пользователей.
           </p>
         </div>
         <FooterMobile />
@@ -794,7 +794,7 @@ const L3HomeworkSlide = () => {
       <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
         <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Домашнее задание · 7 дней до Урока 4</p>
         <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Собрать рабочий кусок продукта <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
+          Собрать рабочий MVP <span className="text-[hsl(var(--slide-gold))]">+ лендинг</span>
         </h2>
         <div className="grid grid-cols-[1.4fr_1fr] gap-[40px]">
           <div>
@@ -812,7 +812,7 @@ const L3HomeworkSlide = () => {
             <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[26px]">
               <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">На выходе</p>
               <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.5]">
-                <b className="text-[hsl(var(--slide-gold))]">Design doc</b> + <b className="text-[hsl(var(--slide-gold))]">рабочая фича</b> + <b className="text-[hsl(var(--slide-gold))]">лендинг</b> + <b className="text-[hsl(var(--slide-gold))]">3 живые реакции</b> от юзеров.
+                <b className="text-[hsl(var(--slide-gold))]">MVP</b> + <b className="text-[hsl(var(--slide-gold))]">полная документация</b> + <b className="text-[hsl(var(--slide-gold))]">лендинг</b> + <b className="text-[hsl(var(--slide-gold))]">постоянный фидбэк</b> от пользователей.
               </p>
             </div>
           </div>
