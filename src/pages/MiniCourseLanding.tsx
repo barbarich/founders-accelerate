@@ -585,6 +585,7 @@ function FAQ() {
 }
 
 function FinalCTA() {
+  const { startCheckout, loading } = useCheckout();
   return (
     <section className="mcl-final-cta">
       <div className="mcl-container">
@@ -592,7 +593,9 @@ function FinalCTA() {
         <p>
           Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За $19 это, возможно, самая короткая дорога, которую я могу тебе предложить.
         </p>
-        <a href="#buy" className="mcl-cta-primary">Купить курс за $19</a>
+        <button type="button" onClick={startCheckout} disabled={loading} className="mcl-cta-primary">
+          {loading ? "Открываем оплату…" : "Купить курс за $19"}
+        </button>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
