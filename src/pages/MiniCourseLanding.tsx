@@ -543,8 +543,8 @@ function Footer() {
       <div className="mcl-container">
         <div className="mcl-footer-links">
           <a href="mailto:michael.barbarych@gmail.com">michael.barbarych@gmail.com</a>
-          <a href="/privacy">Privacy Policy</a>
-          <a href="/terms">Terms of Service</a>
+          <a href="/ru/privacy">Privacy Policy</a>
+          <a href="/ru/terms">Terms of Service</a>
         </div>
         <div>© 2026 Michael Barbarich</div>
       </div>
