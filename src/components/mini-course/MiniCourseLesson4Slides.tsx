@@ -1305,7 +1305,7 @@ const L4Finale = () => {
             Знания, инструменты, фреймворки. Осталось одно — начать. Сегодня. Не идеально. Просто начать.
           </p>
           <p className="text-[9px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium text-center">
-            Жду тебя на твоём запуске
+            Удачи с запуском продукта!
           </p>
         </div>
         <FooterMobile />
@@ -1339,7 +1339,7 @@ const L4Finale = () => {
           Знания, инструменты, фреймворки — на руках. Осталось одно: <b className="text-[hsl(var(--slide-text))]">начать.</b> Сегодня. Не идеально. Просто начать и улучшать на ходу.
         </p>
         <p className="text-[16px] uppercase tracking-[0.4em] text-[hsl(var(--slide-gold))] font-medium">
-          Жду тебя на твоём запуске
+          Удачи с запуском продукта!
         </p>
       </div>
       <Footer />
