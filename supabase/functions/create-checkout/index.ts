@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
         },
       ],
       allow_promotion_codes: true,
-      success_url: `${origin}/ru/thank-you?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/ru/mini-course/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/ru#buy`,
       metadata: {
         product: "mini-course-ai-founder",
