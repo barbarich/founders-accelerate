@@ -140,9 +140,6 @@ function Pain() {
       <div className="mcl-container">
         <div className="mcl-section-label">До и после курса</div>
         <h2 className="mcl-section-title">Где ты сейчас — и где будешь <em>через 5 уроков</em>.</h2>
-        <p className="mcl-section-intro">
-          Слева — то, что я вижу почти у каждого фаундера, который ко мне приходит. Справа — состояние, в которое тебя приводит курс. Не «вдохновение», а конкретные артефакты: интервью, позиционирование, воркфлоу, скрипт продаж, первые платящие.
-        </p>
         <div className="mcl-stat-callout">
           <div className="mcl-stat-big">87%</div>
           <div className="mcl-stat-text">AI-проектов не доходят до продакшена. Не потому, что они плохо построены — а потому, что построены не для того, кто заплатит.</div>
