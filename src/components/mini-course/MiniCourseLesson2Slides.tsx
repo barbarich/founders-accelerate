@@ -4,9 +4,6 @@ import { useSlideMeta } from "./SlideMetaContext";
 import titleBg from "@/assets/slides/title-bg.jpg";
 import {
   S10, // Mikey case (Slide 6)
-  S14, // Who to interview (Slide 10)
-  S15, // How to ask questions (Slide 11)
-  S16, // Pass/Fail signals (Slide 12)
 } from "./MiniCourseLesson1Slides";
 
 /* ========== Shared atoms (matched to Lesson 1) ========== */
