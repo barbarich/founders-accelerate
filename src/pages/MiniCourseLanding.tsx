@@ -520,12 +520,11 @@ function Footer() {
     <footer className="mcl-footer">
       <div className="mcl-container">
         <div className="mcl-footer-links">
-          <a href="mailto:hello@founders-circle.space">hello@founders-circle.space</a>
-          <a href="#">Условия</a>
-          <a href="#">Политика возврата</a>
-          <a href="https://founders-circle.space" target="_blank" rel="noopener">The Founders Circle →</a>
+          <a href="mailto:michael.barbarych@gmail.com">michael.barbarych@gmail.com</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
         </div>
-        <div>© 2026 Mikhael Barbarich · Tel Aviv, Israel</div>
+        <div>© 2026 Michael Barbarich</div>
       </div>
     </footer>
   );
