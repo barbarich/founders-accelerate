@@ -352,36 +352,270 @@ const L3MikeyCase = () => {
   );
 };
 
-/* ========== Slide 6 — Agentic Engineering Workflow (5 шагов) ========== */
-const L3_WORKFLOW = [
-  { n: "01", t: "Декомпозиция", body: "Разбей фичу на задачи уровня «джун за час». Если задача шире — она ещё не задача." },
-  { n: "02", t: "Design doc", body: "Что, зачем, контракт (вход/выход), границы. 1 экран текста на задачу." },
-  { n: "03", t: "Промпт по design doc", body: "Не «сделай красиво». Скармливаешь doc + контекст файлов. AI пишет diff." },
-  { n: "04", t: "Ревью diff", body: "Читаешь каждое изменение. Не понял строку — спрашиваешь AI «зачем это». Не отвечает внятно — откатываешь." },
-  { n: "05", t: "Тест → выкат", body: "Запустил, кликнул, проверил кейс из design doc. Только потом — merge." },
+/* ========== Slide 5 — Мой рабочий стек: Lovable + Claude + MCP ========== */
+const L3_STACK = [
+  {
+    n: "01",
+    name: "Lovable",
+    tag: "ФРОНТЕНД · ДИЗАЙН · ПРОТОТИПЫ",
+    body: "Сюда иду первым делом. Лучше всех отдаёт дизайн и прорабатывает элементы. Простой инструмент — все прототипы, лендинги и UI-куски делаю здесь.",
+  },
+  {
+    n: "02",
+    name: "Claude Code",
+    tag: "ПОЛНОЦЕННЫЙ ПРОДУКТ · БЭКЕНД · ИНФРА",
+    body: "Когда нужна работающая система — подключаю Claude. Накручены десятки скиллов и воркфлоу. Закрывает фронт, бэк, рефакторинг, оптимизацию и интеграции.",
+  },
+  {
+    n: "03",
+    name: "MCP",
+    tag: "ПРЯМОЕ ПОДКЛЮЧЕНИЕ К СЕРВИСАМ",
+    body: "Вместо ручной настройки — Claude сам подключается к Mixpanel, Stripe, Supabase, Figma, Gmail и настраивает всё под задачу.",
+  },
 ];
-const L3Workflow = () => {
+const L3Stack = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
       <Stage className="relative">
         <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Главный сдвиг</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Agentic engineering workflow — <span className="text-[hsl(var(--slide-gold))]">5 шагов</span>
+          <Eyebrow mobile>Мой рабочий стек · на примере Mikey</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
+            За 4 месяца от идеи до продукта в рынке — связка из <span className="text-[hsl(var(--slide-gold))]">трёх инструментов</span>.
           </h2>
+          <p className="text-[9px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[8px]">
+            Начал в Lovable — красиво, но довести до ума не получалось. Перенёс в Claude Code — серьёзная работа возможна только в профессиональном инструменте. Визуал — в Lovable, систему — в Claude.
+          </p>
           <div className="space-y-[5px]">
-            {L3_WORKFLOW.map((s) => (
-              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[10px] py-[6px]">
+            {L3_STACK.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[6px]">
                 <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">
-                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.t}
+                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.name}
                 </p>
+                <p className="text-[7px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] mb-[2px]">{s.tag}</p>
                 <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
               </div>
             ))}
           </div>
           <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[8px] leading-[1.4]">
-            Пропустил шаг — получил мусор и не понял, в каком месте сломалось.
+            Связка Lovable + Claude Code + MCP — Mikey уже в рынке, с реальными пользователями.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Мой рабочий стек · на примере Mikey</Eyebrow>
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[18px] tracking-[-0.01em]">
+          За 4 месяца от идеи до продукта в рынке — связка из <span className="text-[hsl(var(--slide-gold))]">трёх инструментов</span>.
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1600px]">
+          Я начал Mikey в Lovable. Казалось — космос, всё получается, выглядит красиво. Но довести до ума технически не получалось. Перенёс в Claude Code — и понял: серьёзная работа над сложным продуктом возможна только в профессиональном инструменте. С тех пор визуал делаю в Lovable, всю остальную систему — в Claude.
+        </p>
+        <div className="grid grid-cols-3 gap-[24px] mb-[20px] max-w-[1700px]">
+          {L3_STACK.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[24px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">{s.n}</p>
+              <p className="font-display text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">{s.name}</p>
+              <p className="text-[12px] uppercase tracking-[0.14em] text-[hsl(var(--slide-gold))] mb-[10px]">{s.tag}</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
+          Связка <b className="not-italic">Lovable + Claude Code + MCP</b> — Mikey уже в рынке, с реальными пользователями.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 6 — Кейс: MCP сэкономил €3 000 на аналитике ========== */
+const L3_MCP_BEFORE = [
+  "Брифинг и согласование событий",
+  "Подрядчик настраивает Mixpanel",
+  "Жду дашборды, согласую правки",
+  "Каждый новый ивент — снова через него",
+];
+const L3_MCP_AFTER = [
+  "Claude сам сформировал список ивентов",
+  "Через MCP настроил их в Mixpanel",
+  "Собрал воронки и визуализации",
+  "Дашборды для продуктовых решений готовы",
+];
+const L3McpAnalytics = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[18px] h-full">
+          <Eyebrow mobile>Кейс · Mikey × Claude × MCP × Mixpanel</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Как MCP сэкономил мне <span className="text-[hsl(var(--slide-gold))]">€3 000</span> на продуктовой аналитике.
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[8px]">
+            Раньше нанимал спеца за €3 000 под ключ. В этот раз отдал задачу Claude через MCP.
+          </p>
+          <div className="grid grid-cols-2 gap-[6px] mb-[8px]">
+            <div className="bg-[hsl(0_70%_55%/0.06)] border-l-2 border-[hsl(0_70%_55%)] rounded-[6px] px-[8px] py-[6px]">
+              <p className="text-[8px] font-bold text-[hsl(0_70%_65%)] uppercase tracking-[0.1em] mb-[2px]">Раньше · аналитик</p>
+              <p className="text-[10px] font-bold text-[hsl(var(--slide-text))] mb-[4px]">€3 000 · 2–3 недели</p>
+              <ul className="space-y-[2px]">
+                {L3_MCP_BEFORE.map((t) => (
+                  <li key={t} className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.35]">→ {t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[8px] py-[6px]">
+              <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[2px]">Сейчас · Claude + MCP</p>
+              <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">€0 · несколько часов</p>
+              <ul className="space-y-[2px]">
+                {L3_MCP_AFTER.map((t) => (
+                  <li key={t} className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.35]">✓ {t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            От «мне нужна аналитика» до полноценного трекинга и графиков — за один вечер. Без подрядчика, без ожидания.
+          </p>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <Eyebrow>Кейс · Mikey × Claude × MCP × Mixpanel</Eyebrow>
+        <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[18px] tracking-[-0.01em]">
+          Как MCP сэкономил мне <span className="text-[hsl(var(--slide-gold))]">€3 000</span> на продуктовой аналитике.
+        </h2>
+        <p className="text-[22px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1600px]">
+          В Mikey мне нужна была полноценная продуктовая аналитика. Я не аналитик — понимаю как это работает, но сам никогда не настраивал. Раньше нанимал спеца за €3 000 под ключ. В этот раз отдал задачу Claude через MCP.
+        </p>
+        <div className="grid grid-cols-2 gap-[28px] mb-[24px] max-w-[1700px]">
+          <div className="bg-[hsl(0_70%_55%/0.06)] border-l-[4px] border-[hsl(0_70%_55%)] rounded-[14px] px-[28px] py-[22px]">
+            <p className="text-[14px] font-bold text-[hsl(0_70%_65%)] uppercase tracking-[0.18em] mb-[10px]">Раньше · с аналитиком</p>
+            <p className="font-display text-[34px] font-bold text-[hsl(0_70%_65%)] leading-[1.05] mb-[14px]">€3 000 · 2–3 недели</p>
+            <ul className="space-y-[8px]">
+              {L3_MCP_BEFORE.map((t) => (
+                <li key={t} className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45]">→ {t}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[28px] py-[22px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Сейчас · Claude + MCP</p>
+            <p className="font-display text-[34px] font-bold text-[hsl(var(--slide-gold))] leading-[1.05] mb-[14px]">€0 · несколько часов</p>
+            <ul className="space-y-[8px]">
+              {L3_MCP_AFTER.map((t) => (
+                <li key={t} className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45]">✓ {t}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
+          От «мне нужна аналитика» до полноценного трекинга и графиков — <b className="not-italic">за один вечер</b>. Теперь принимаю взвешенные продуктовые решения — без подрядчика и без ожидания.
+        </p>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 7 — Best Practices · Claude Code · 1/2 ========== */
+const L3_BP1 = [
+  { n: "01", t: "Документация и тесты с первого промпта", body: "Без них проект не масштабируется и не передаётся разработчику. Закладывай сразу." },
+  { n: "02", t: "Файлы до 500 строк", body: "Большие файлы = баги и конфликты. Claude сам разобьёт — качество кода вырастет в разы." },
+  { n: "03", t: "Сложная задача — топовая модель", body: "Claude Opus 4.7 для архитектуры и сложной логики. На простом — экономь, на важном — нет." },
+  { n: "04", t: "Production-ready, а не MVP", body: "Слово «прототип» = поверхностный код. Проси сразу production-quality." },
+  { n: "05", t: "Адаптивность с самого начала", body: "Все устройства, ОС, браузеры. Заложено в архитектуре — не переделываешь потом." },
+  { n: "06", t: "CLAUDE.md — правила проекта", body: "Стек, конвенции, запреты. Один раз написал — Claude следует им всегда." },
+];
+const L3BestPractices1 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[16px] h-full">
+          <Eyebrow mobile>Best Practices · Claude Code · 1/2</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Как пишут промпты в NVIDIA, Google — <span className="text-[hsl(var(--slide-gold))]">и как пишу я</span>
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[6px]">Часть 1 · Качество кода и архитектура</p>
+          <div className="space-y-[4px]">
+            {L3_BP1.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[8px] py-[5px]">
+                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">
+                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.t}
+                </p>
+                <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FooterMobile />
+      </Stage>
+    );
+  }
+  return (
+    <Stage className="relative">
+      <div className="flex flex-col justify-center px-[120px] h-full max-w-[1900px]">
+        <Eyebrow>Best Practices · Claude Code · 1/2</Eyebrow>
+        <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px] tracking-[-0.01em]">
+          Как пишут промпты в NVIDIA, Google — <span className="text-[hsl(var(--slide-gold))]">и как пишу я</span>
+        </h2>
+        <p className="text-[20px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] mb-[28px]">Часть 1 · Качество кода и архитектура</p>
+        <div className="grid grid-cols-3 gap-[20px] max-w-[1800px]">
+          {L3_BP1.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[22px] py-[20px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">{s.n}</p>
+              <p className="text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[8px]">{s.t}</p>
+              <p className="text-[15px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Footer />
+    </Stage>
+  );
+};
+
+/* ========== Slide 8 — Best Practices · Claude Code · 2/2 ========== */
+const L3_BP2 = [
+  { n: "07", t: "Юнит-тесты под каждую фичу", body: "Без тестов AI ломает старое, делая новое. С тестами — качество держится месяцами." },
+  { n: "08", t: "Одна задача — один промпт", body: "Не пихай 5 фич в один запрос. Атомарность = контроль качества и контекста." },
+  { n: "09", t: "Контекст решает всё", body: "Давай примеры, ТЗ, ссылки на код. Не знаешь как — обсуди с Claude, пока не сложится картина." },
+  { n: "10", t: "Сначала план — потом код", body: "Проси Claude план, читай, правь. Реализация по согласованному плану на порядок чище." },
+  { n: "11", t: "Второе мнение от другой модели", body: "План от Claude → отдай Codex или Antigravity. Альтернативная модель ловит уязвимости и логические дыры." },
+];
+const L3BestPractices2 = () => {
+  const isMobile = useIsMobile();
+  if (isMobile) {
+    return (
+      <Stage className="relative">
+        <div className="flex flex-col justify-center px-[16px] h-full">
+          <Eyebrow mobile>Best Practices · Claude Code · 2/2</Eyebrow>
+          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+            Workflow и <span className="text-[hsl(var(--slide-gold))]">контроль качества</span>
+          </h2>
+          <p className="text-[8.5px] text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[6px]">Часть 2 · Как давать задачи, чтобы AI выдавал результат</p>
+          <div className="space-y-[4px] mb-[6px]">
+            {L3_BP2.map((s) => (
+              <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[8px] py-[5px]">
+                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">
+                  <span className="text-[hsl(var(--slide-gold))]">{s.n}.</span> {s.t}
+                </p>
+                <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{s.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
+            Эти 11 правил отделяют vibe-coding от инженерии с AI. Первое — забавно. Второе — выводит продукт в рынок.
           </p>
         </div>
         <FooterMobile />
@@ -391,220 +625,22 @@ const L3Workflow = () => {
   return (
     <Stage className="relative">
       <div className="flex flex-col justify-center px-[120px] h-full max-w-[1900px]">
-        <Eyebrow>Главный сдвиг — мышление, а не инструмент</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
-          Agentic engineering workflow · <span className="text-[hsl(var(--slide-gold))]">5 шагов</span>, всегда в этом порядке
+        <Eyebrow>Best Practices · Claude Code · 2/2</Eyebrow>
+        <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px] tracking-[-0.01em]">
+          Workflow и <span className="text-[hsl(var(--slide-gold))]">контроль качества</span>
         </h2>
-        <div className="grid grid-cols-5 gap-[18px] mb-[24px]">
-          {L3_WORKFLOW.map((s) => (
-            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[20px] py-[20px]">
-              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">{s.n}</p>
-              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[8px]">{s.t}</p>
-              <p className="text-[15px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">{s.body}</p>
+        <p className="text-[20px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] mb-[24px]">Часть 2 · Как давать задачи, чтобы AI выдавал результат</p>
+        <div className="grid grid-cols-5 gap-[16px] mb-[20px] max-w-[1800px]">
+          {L3_BP2.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[18px] py-[18px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">{s.n}</p>
+              <p className="text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[8px]">{s.t}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{s.body}</p>
             </div>
           ))}
         </div>
         <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Пропустил шаг — получил мусор и не понял, в каком месте сломалось. Эти 5 шагов — единственная разница между «AI работает» и «AI меня бесит».
-        </p>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
-/* ========== Slide 7 — Декомпозиция + Design Doc (шаблон) ========== */
-const L3_DESIGN_DOC = `# Задача: <короткое имя, глагол + объект>
-
-## Зачем (для юзера)
-1 предложение. Какая боль закрывается.
-Ссылка на цитату из custdev.
-
-## Контракт
-- Вход: что приходит (данные, событие, клик)
-- Выход: что должно произойти (UI, запись в БД, ответ API)
-- Граничные случаи: 2–3 сценария «что если»
-
-## Не делать
-- Что НЕ входит в задачу (чтобы AI не уехал в сторону)
-
-## Acceptance
-- [ ] Кейс 1: …
-- [ ] Кейс 2: …
-- [ ] Кейс 3: …`;
-const L3DesignDoc = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[16px] h-full">
-          <Eyebrow mobile>Шаги 1–2 · фундамент</Eyebrow>
-          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
-            Декомпозиция → <span className="text-[hsl(var(--slide-gold))]">Design doc</span>
-          </h2>
-          <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-            Правило: задача = 1 экран design doc. Шире — режь.
-          </p>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[8px]">
-            <pre className="text-[7px] text-[hsl(var(--slide-text))] leading-[1.4] whitespace-pre-wrap font-mono">{L3_DESIGN_DOC}</pre>
-          </div>
-          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[8px] leading-[1.4]">
-            Без doc — AI угадывает. И почти всегда — мимо.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Шаги 1–2 · фундамент всего урока</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.01em]">
-          Декомпозиция → <span className="text-[hsl(var(--slide-gold))]">Design doc</span> на каждую задачу
-        </h2>
-        <p className="text-[22px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[28px] max-w-[1500px]">
-          Правило: задача = ровно 1 экран design doc. Если doc не помещается — задача не декомпозирована.
-          Без doc AI угадывает контракт. И почти всегда — мимо.
-        </p>
-        <div className="grid grid-cols-[1fr_1.2fr] gap-[28px]">
-          <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[24px] py-[20px]">
-            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Зачем design doc</p>
-            <ul className="space-y-[8px] text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              <li>→ ты сам понимаешь, что строишь</li>
-              <li>→ AI получает контракт, а не настроение</li>
-              <li>→ у тебя есть критерий «готово» (acceptance)</li>
-              <li>→ через неделю помнишь, зачем это вообще</li>
-            </ul>
-          </div>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[24px] py-[18px]">
-            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">Шаблон design doc</p>
-            <pre className="text-[14px] text-[hsl(var(--slide-text))] leading-[1.5] whitespace-pre-wrap font-mono">{L3_DESIGN_DOC}</pre>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
-/* ========== Slide 8 — Шаг 3: промпт по design doc ========== */
-const L3_PROMPT = `Ты — senior-инженер. Я даю тебе design doc одной задачи.
-
-Контекст проекта: <стек: React + Vite + Tailwind, Supabase, ...>
-Файлы, которые тебе нужно знать: <список путей>
-
-Design doc:
-«««
-<вставь сюда design doc из шаблона>
-»»»
-
-Что от тебя нужно:
-1. Кратко (3–5 строк) перескажи задачу своими словами. Если ты её понял иначе — мы разойдёмся ДО кода.
-2. Перечисли файлы, которые ты собираешься менять/создавать. Жди моего ОК.
-3. Только после ОК — выдай diff. Не весь файл, а изменения.
-4. В конце — ручной чек-лист: как мне за 2 минуты убедиться, что acceptance выполнен.
-
-Если в design doc чего-то не хватает — задай 1–3 уточняющих вопроса. Не выдумывай.`;
-const L3PromptSlide = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[16px] h-full">
-          <Eyebrow mobile>Шаг 3 · промпт</Eyebrow>
-          <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
-            Промпт, который не даёт AI <span className="text-[hsl(var(--slide-gold))]">убежать</span>
-          </h2>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[7px]">
-            <pre className="text-[6.5px] text-[hsl(var(--slide-text))] leading-[1.4] whitespace-pre-wrap font-mono">{L3_PROMPT}</pre>
-          </div>
-          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic mt-[6px] leading-[1.4]">
-            «Перескажи задачу» + «жди ОК» + «задай вопросы» — три ловушки, в которые AI чаще всего попадает.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Шаг 3 · промпт по design doc</Eyebrow>
-        <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] tracking-[-0.01em]">
-          Промпт, который не даёт AI <span className="text-[hsl(var(--slide-gold))]">убежать в сторону</span>
-        </h2>
-        <div className="grid grid-cols-[1.4fr_1fr] gap-[28px]">
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[24px] py-[18px]">
-            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[8px]">Шаблон промпта</p>
-            <pre className="text-[14px] text-[hsl(var(--slide-text))] leading-[1.55] whitespace-pre-wrap font-mono">{L3_PROMPT}</pre>
-          </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[24px] py-[20px]">
-            <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Что в нём важно</p>
-            <ul className="space-y-[12px] text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              <li><b className="text-[hsl(var(--slide-text))]">Перескажи своими словами.</b> Ловишь расхождение в понимании ДО написания кода.</li>
-              <li><b className="text-[hsl(var(--slide-text))]">Жди ОК на список файлов.</b> 80% мусора AI рождается, когда он молча трогает «не те» файлы.</li>
-              <li><b className="text-[hsl(var(--slide-text))]">Задай вопросы, не выдумывай.</b> Это разрешение AI признать пробел — без него он галлюцинирует.</li>
-              <li><b className="text-[hsl(var(--slide-text))]">Чек-лист в конце.</b> Не «всё работает», а конкретные шаги ручной проверки.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </Stage>
-  );
-};
-
-/* ========== Slide 9 — Шаги 4–5: Ревью diff и тест ========== */
-const L3_REVIEW = [
-  { t: "Читай diff построчно", body: "Не «листай красивое». Каждое изменение — вопрос: зачем оно здесь?" },
-  { t: "Спроси «почему», если не понял", body: "AI должен объяснить. Не объяснил внятно — откатываешь и переписываешь промпт." },
-  { t: "Лови «улучшения по дороге»", body: "AI любит подкрутить смежный код. Это самый частый источник тихих багов. Удаляй." },
-  { t: "Никаких merge без acceptance", body: "Прошёл по чек-листу из design doc руками. Не прошло — не merge. Точка." },
-];
-const L3Review = () => {
-  const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <Stage className="relative">
-        <div className="flex flex-col justify-center px-[18px] h-full">
-          <Eyebrow mobile>Шаги 4–5 · контроль</Eyebrow>
-          <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-            Ревью diff + ручной тест — <span className="text-[hsl(var(--slide-gold))]">всегда</span>
-          </h2>
-          <div className="space-y-[5px] mb-[8px]">
-            {L3_REVIEW.map((r) => (
-              <div key={r.t} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.22)] rounded-[6px] px-[10px] py-[6px]">
-                <p className="text-[9px] font-bold text-[hsl(var(--slide-text))]">{r.t}</p>
-                <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{r.body}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-[9px] text-[hsl(var(--slide-gold))] italic leading-[1.4]">
-            Без ревью diff AI ломает прод тихо. Ты узнаёшь через неделю — от юзера.
-          </p>
-        </div>
-        <FooterMobile />
-      </Stage>
-    );
-  }
-  return (
-    <Stage className="relative">
-      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
-        <Eyebrow>Шаги 4–5 · ревью diff и тест</Eyebrow>
-        <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
-          Здесь ты <span className="text-[hsl(var(--slide-gold))]">снова инженер</span>, а не пассажир
-        </h2>
-        <div className="grid grid-cols-2 gap-[24px] mb-[28px] max-w-[1700px]">
-          {L3_REVIEW.map((r) => (
-            <div key={r.t} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[28px] py-[20px]">
-              <p className="text-[24px] font-bold text-[hsl(var(--slide-text))] mb-[8px] leading-[1.25]">{r.t}</p>
-              <p className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{r.body}</p>
-            </div>
-          ))}
-        </div>
-        <p className="text-[22px] text-[hsl(var(--slide-gold))] italic leading-[1.45] max-w-[1700px]">
-          Без ревью diff AI ломает прод <b className="not-italic">тихо</b>. Ты узнаёшь через неделю — от юзера. Дешевле потратить 5 минут на чтение, чем 5 часов на разбор.
+          Эти 11 правил отделяют <code className="text-[hsl(var(--slide-text))] not-italic">vibe-coding</code> от инженерии с AI. Первое — забавно. Второе — выводит продукт в рынок.
         </p>
       </div>
       <Footer />
