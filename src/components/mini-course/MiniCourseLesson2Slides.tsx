@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSlideMeta } from "./SlideMetaContext";
 import titleBg from "@/assets/slides/title-bg.jpg";
+import { Copy, Check, FileText, Download } from "lucide-react";
 import {
   S10, // Mikey case (Slide 6)
 } from "./MiniCourseLesson1Slides";
