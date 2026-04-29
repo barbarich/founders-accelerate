@@ -837,16 +837,22 @@ const L3FinalSlide = () => {
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[16px]" />
           <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">Урок 3 · завершение</p>
           <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-            Один человек + AI — это уже команда. <span className="text-[hsl(var(--slide-gold))]">Если ты ведёшь.</span>
+            Я не разработчик. <span className="text-[hsl(var(--slide-gold))]">И всё равно построил сложный продукт.</span>
           </h2>
+          <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[12px]">
+            Без команды, без CTO, без бюджета на разработку. Только AI, фреймворк и дисциплина. Если получилось у меня — получится и у тебя.
+          </p>
           <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[10px] mb-[12px]">
             <p className="text-[11px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.4]">
-              «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
+              Следуй фреймворку и знаниям из этого курса — и у тебя точно всё получится.
             </p>
           </div>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.4]">
-            В Уроке 4 — как привести на лендинг первых платящих юзеров. Без рекламного бюджета.
-          </p>
+          <div className="border-t border-[hsl(var(--slide-border)/0.4)] pt-[10px]">
+            <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Дальше · Урок 4</p>
+            <p className="text-[11px] font-semibold text-[hsl(var(--slide-text))] leading-[1.4]">
+              Первые платящие юзеры — без рекламного бюджета.
+            </p>
+          </div>
         </div>
         <FooterMobile />
       </Stage>
@@ -861,18 +867,25 @@ const L3FinalSlide = () => {
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1700px] h-full">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[36px]" />
         <p className="text-[20px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">Урок 3 · завершение</p>
-        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em]">
-          Один человек + AI — это уже команда.<br />
-          <span className="text-[hsl(var(--slide-gold))]">Если ты ведёшь, а не сидишь пассажиром.</span>
+        <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em]">
+          Я не разработчик.<br />
+          <span className="text-[hsl(var(--slide-gold))]">И всё равно построил сложный продукт.</span>
         </h2>
-        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[28px] max-w-[1500px] mb-[28px]">
-          <p className="text-[30px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">
-            «AI убрал из уравнения время и команду. Не убрал — мышление, дисциплину и юзеров.»
+        <p className="text-[26px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] max-w-[1500px] mb-[32px]">
+          Без команды, без CTO, без бюджета на разработку. Только AI, фреймворк и дисциплина.<br />
+          <span className="text-[hsl(var(--slide-text))] font-semibold">Если получилось у меня — получится и у тебя.</span>
+        </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[26px] max-w-[1500px] mb-[32px]">
+          <p className="text-[28px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">
+            Следуй фреймворку и знаниям из этого курса — и у тебя точно всё получится.
           </p>
         </div>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5] max-w-[1500px]">
-          В Уроке 4 — как привести на этот лендинг первых платящих юзеров. Без рекламного бюджета.
-        </p>
+        <div className="border-t border-[hsl(var(--slide-border)/0.4)] pt-[20px] max-w-[1500px]">
+          <p className="text-[16px] uppercase tracking-[0.22em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">Дальше · Урок 4</p>
+          <p className="text-[24px] font-semibold text-[hsl(var(--slide-text))] leading-[1.4]">
+            Первые платящие юзеры — без рекламного бюджета. Каналы, которые работают для solo-фаундера.
+          </p>
+        </div>
       </div>
       <Footer />
     </Stage>
