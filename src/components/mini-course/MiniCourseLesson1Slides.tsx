@@ -2447,21 +2447,23 @@ export const L1Closing = () => {
   if (isMobile) {
     return (
       <Stage className="relative">
-        <div className="flex flex-col justify-center items-center text-center px-[24px] h-full">
-          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] text-[10px] mb-[16px]">Дальше</p>
-          <p className="text-[16px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35] mb-[14px]">
-            «Анализ рынка показывает, где ловить рыбу.<br />
-            Customer Development — что эта рыба реально ест.»
-          </p>
-          <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[20px]">
+        <div className="flex flex-col justify-center px-[20px] h-full">
+          <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Дальше — Урок 2</p>
+          <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
+            Рынок показал «где». Люди покажут «что».
+          </h2>
+          <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[10px] mb-[12px]">
+            <p className="text-[11px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.4]">
+              «Анализ рынка показывает, где ловить рыбу.<br />
+              Customer Development — что эта рыба реально ест.»
+            </p>
+          </div>
+          <p className="text-[10px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[8px]">
             Без обоих — ты строишь либо в пустоту, либо для воображаемого клиента.
           </p>
-          <a
-            href="/mini-course/lesson2"
-            className="inline-flex items-center gap-2 px-[18px] py-[10px] rounded-[8px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[12px] no-underline"
-          >
-            Перейти к Уроку 2 →
-          </a>
+          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+            В Уроке 2 — как за 10 разговоров с клиентами проверить гипотезу, которую ты сегодня собрал.
+          </p>
         </div>
         <FooterMobile />
       </Stage>
@@ -2469,21 +2471,23 @@ export const L1Closing = () => {
   }
   return (
     <Stage className="relative">
-      <div className="flex flex-col justify-center items-center text-center px-[140px] h-full max-w-[1700px] mx-auto">
-        <p className="uppercase tracking-[0.25em] text-[hsl(var(--slide-text-muted))] text-[20px] mb-[40px]">Дальше</p>
-        <p className="text-[52px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.3] mb-[36px] max-w-[1500px]">
-          «Анализ рынка показывает, где ловить рыбу.<br />
-          Customer Development — что эта рыба реально ест.»
-        </p>
-        <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[56px] max-w-[1300px]">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px]">
+        <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Дальше — Урок 2</p>
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px] tracking-[-0.01em]">
+          Рынок показал «где». Люди покажут «что».
+        </h2>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[40px] py-[32px] mb-[36px] max-w-[1500px]">
+          <p className="text-[36px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">
+            «Анализ рынка показывает, где ловить рыбу.<br />
+            Customer Development — что эта рыба реально ест.»
+          </p>
+        </div>
+        <p className="text-[26px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[16px] max-w-[1500px]">
           Без обоих — ты строишь либо в пустоту, либо для воображаемого клиента.
         </p>
-        <a
-          href="/mini-course/lesson2"
-          className="inline-flex items-center gap-3 px-[44px] py-[22px] rounded-[14px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] font-bold text-[28px] no-underline hover:opacity-90 transition"
-        >
-          Перейти к Уроку 2 →
-        </a>
+        <p className="text-[22px] text-[hsl(var(--slide-text-muted))] italic leading-[1.5] max-w-[1500px]">
+          В Уроке 2 — как за 10 разговоров с клиентами проверить гипотезу, которую ты сегодня собрал.
+        </p>
       </div>
       <Footer />
     </Stage>
