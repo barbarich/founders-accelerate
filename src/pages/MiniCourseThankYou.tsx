@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { CheckCircle2, Send, Mail } from "lucide-react";
 import "./mini-course-landing/styles.css";
 
-const TELEGRAM_BOT_URL = "https://t.me/your_bot";
+const TELEGRAM_BOT_URL = "https://t.me/AI_founders_course_bot";
 
 export default function MiniCourseThankYou() {
   useEffect(() => {
@@ -88,8 +88,8 @@ export default function MiniCourseThankYou() {
             </h3>
             <ol style={{ paddingLeft: 20, margin: 0, lineHeight: 1.7, listStyle: "decimal" }}>
               <li>Нажми кнопку «Открыть Telegram-бота» выше.</li>
-              <li>В Telegram нажми <strong>Start</strong> — бот сразу выдаст доступ к курсу.</li>
-              <li>Начни с вводного урока — он короткий и задаёт всю оптику курса.</li>
+              <li>В Telegram нажми <strong>Start</strong>.</li>
+              <li>Пришли боту <strong>email, с которого ты только что оплачивал</strong>. Бот найдёт твою покупку и сразу выдаст доступ - вводный урок и урок 1 придут в течение минуты.</li>
             </ol>
           </div>
 
