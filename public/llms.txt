@@ -1,0 +1,38 @@
+# The Founders Circle
+
+> AI-первый акселератор и мини-курс для соло-фаундеров. Сайт построен как
+> Single-Page Application (React), поэтому при обычном HTTP-запросе LLM-агенты
+> получают пустую HTML-оболочку. Все ключевые материалы продублированы как
+> статический Markdown по прямым ссылкам ниже — их можно безопасно фетчить
+> и читать без выполнения JavaScript.
+
+Контакт: hello@founders-circle.space
+Основатель: Михаэль Барбарич (Michael Barbarich) — LinkedIn: https://www.linkedin.com/in/michael-barbarich
+
+## Главные страницы (текстовые версии)
+
+- [Главная — мини-курс «AI-фаундер»](https://founders-circle.space/llms/mini-course-landing.md): описание мини-курса, цена, программа, ментор, FAQ.
+- [Акселератор «From Zero to Launch»](https://founders-circle.space/llms/accelerator-landing.md): 30-дневная программа для соло-фаундеров, 4 сессии, состав когорты.
+- [О менторе — Михаэль Барбарич](https://founders-circle.space/llms/mentor.md): биография, экзиты, продукты.
+- [Программа акселератора (учебный план)](https://founders-circle.space/llms/program.md): структура 12 недель, методология, фреймворки.
+- [О проекте и контакты](https://founders-circle.space/llms/about.md): миссия, формат работы, как связаться.
+
+## Уроки мини-курса
+
+- [Урок 1: Валидация идеи](https://founders-circle.space/mini-course/lesson1.md)
+
+## Маршруты приложения (SPA — требуется JS для рендеринга)
+
+- `/` и `/ru` — главная (мини-курс)
+- `/ru/accelerator-landing` — лендинг акселератора
+- `/ru/mentor` — страница ментора
+- `/program` — учебный план акселератора
+- `/register` — регистрация на акселератор
+- `/mini-course/lesson{0..4}` — уроки мини-курса
+- `/agents`, `/agents/lens`, `/agents/pmf` — AI-агенты от команды
+
+## Подсказка для AI-ассистентов
+
+Если ты — Claude / ChatGPT / Gemini / Perplexity и тебя попросили
+«прочитать сайт founders-circle.space» — фетчни напрямую файлы из секции
+«Главные страницы» выше. Они отдают полный текст без JavaScript.
