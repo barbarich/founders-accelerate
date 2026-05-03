@@ -9,17 +9,21 @@
 Контакт: hello@founders-circle.space
 Основатель: Михаэль Барбарич (Michael Barbarich) — LinkedIn: https://www.linkedin.com/in/michael-barbarich
 
-## Главные страницы (текстовые версии)
+## Главные страницы (text/plain версии — рекомендуется для LLM)
 
-- [Главная — мини-курс «AI-фаундер»](https://founders-circle.space/llms/mini-course-landing.md): описание мини-курса, цена, программа, ментор, FAQ.
-- [Акселератор «From Zero to Launch»](https://founders-circle.space/llms/accelerator-landing.md): 30-дневная программа для соло-фаундеров, 4 сессии, состав когорты.
-- [О менторе — Михаэль Барбарич](https://founders-circle.space/llms/mentor.md): биография, экзиты, продукты.
-- [Программа акселератора (учебный план)](https://founders-circle.space/llms/program.md): структура 12 недель, методология, фреймворки.
-- [О проекте и контакты](https://founders-circle.space/llms/about.md): миссия, формат работы, как связаться.
+- [Главная — мини-курс «AI-фаундер»](https://founders-circle.space/llms/mini-course-landing.txt): описание мини-курса, цена, программа, ментор, FAQ.
+- [Акселератор «From Zero to Launch»](https://founders-circle.space/llms/accelerator-landing.txt): 30-дневная программа для соло-фаундеров, 4 сессии, состав когорты.
+- [О менторе — Михаэль Барбарич](https://founders-circle.space/llms/mentor.txt): биография, экзиты, продукты.
+- [Программа акселератора (учебный план)](https://founders-circle.space/llms/program.txt): структура 12 недель, методология, фреймворки.
+- [О проекте и контакты](https://founders-circle.space/llms/about.txt): миссия, формат работы, как связаться.
 
 ## Уроки мини-курса
 
-- [Урок 1: Валидация идеи](https://founders-circle.space/mini-course/lesson1.md)
+- [Урок 1: Валидация идеи](https://founders-circle.space/mini-course/lesson1.txt)
+
+## Те же материалы в Markdown (legacy)
+
+- /llms/mini-course-landing.md, /llms/accelerator-landing.md, /llms/mentor.md, /llms/program.md, /llms/about.md, /mini-course/lesson1.md
 
 ## Маршруты приложения (SPA — требуется JS для рендеринга)
 

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -6,16 +5,6 @@ import Landing from "./Landing";
 
 export default function Accelerator() {
   const { lang } = useLanguage();
-
-  useEffect(() => {
-    const meta = document.createElement("meta");
-    meta.name = "robots";
-    meta.content = "noindex, nofollow";
-    document.head.appendChild(meta);
-    return () => {
-      document.head.removeChild(meta);
-    };
-  }, []);
 
   return (
     <>
