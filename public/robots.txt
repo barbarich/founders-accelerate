@@ -60,5 +60,6 @@ Allow: /
 User-agent: *
 Allow: /
 
-# AI-friendly site map (full text of key pages, no JS required)
+# Sitemaps
+Sitemap: https://founders-circle.space/sitemap.xml
 Sitemap: https://founders-circle.space/llms.txt
