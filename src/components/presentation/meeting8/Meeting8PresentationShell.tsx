@@ -10,10 +10,7 @@ import M8Slide03ShockNumber from "./M8Slide03ShockNumber";
 import M8Slide04FourReasons from "./M8Slide04FourReasons";
 import M8Slide05JargonTranslator from "./M8Slide05JargonTranslator";
 import M8BlockHeader from "./M8BlockHeader";
-import M8Slide06HookFormula from "./M8Slide06HookFormula";
-import M8Slide07DuolingoCase from "./M8Slide07DuolingoCase";
-import M8Slide08NotionAntiCase from "./M8Slide08NotionAntiCase";
-import M8Slide09Exercise1 from "./M8Slide09Exercise1";
+import M8Slide06Principle from "./M8Slide06Principle";
 import M8Slide10NotificationLast from "./M8Slide10NotificationLast";
 import M8Slide11Mechanic1Streak from "./M8Slide11Mechanic1Streak";
 import M8Slide12Mechanic2Unfinished from "./M8Slide12Mechanic2Unfinished";
@@ -37,11 +34,7 @@ const slideNames = [
   "Цифра-удар: 77%",
   "4 причины невозврата",
   "Переводчик жаргона D1/D7/D30",
-  "Блок 2 · Формула возврата",
-  "Hook: 4 шага",
-  "Кейс Duolingo",
-  "Анти-кейс Notion",
-  "Упражнение 1",
+  "Принцип возврата · одна петля",
   "Блок 3 · 5 механик",
   "Уведомление — это финал",
   "Механика 1 · Streak",
@@ -71,36 +64,32 @@ function getSlideContent(index: number) {
     case 2: return <M8Slide03ShockNumber />;
     case 3: return <M8Slide04FourReasons />;
     case 4: return <M8Slide05JargonTranslator />;
-    case 5: return <M8BlockHeader blockNumber={2} title="Формула возврата" subtitle="~15 минут" />;
-    case 6: return <M8Slide06HookFormula />;
-    case 7: return <M8Slide07DuolingoCase />;
-    case 8: return <M8Slide08NotionAntiCase />;
-    case 9: return <M8Slide09Exercise1 />;
-    case 10: return <M8BlockHeader blockNumber={3} title="5 механик возврата" subtitle="встроенных в продукт" />;
-    case 11: return <M8Slide10NotificationLast />;
-    case 12: return <M8Slide11Mechanic1Streak />;
-    case 13: return <M8Slide12Mechanic2Unfinished />;
-    case 14: return <M8Slide13Mechanic3Social />;
-    case 15: return <M8Slide14Mechanic4FreshContent />;
-    case 16: return <M8Slide15Mechanic5Deadline />;
-    case 17: return <M8BlockHeader blockNumber={4} title="Wow-инструменты без кода" />;
-    case 18: return <M8Slide16NoCodeStack />;
-    case 19: return <M8Slide17AIPrompt />;
-    case 20: return <M8Slide18LiveDemo />;
-    case 21: return <M8Slide19AISegmentation />;
-    case 22: return <M8BlockHeader blockNumber={5} title="Анти-паттерны" subtitle="что не делать никогда" />;
-    case 23: return <M8Slide20FiveAntiPatterns />;
-    case 24: return <M8Slide21PersonalCase />;
-    case 25: return <M8Slide22Checklist />;
-    case 26: return <M8BlockHeader blockNumber={6} title="Реактивация и домашка" />;
-    case 27: return <M8Slide23WinBack />;
-    case 28: return <M8Slide24Homework />;
-    case 29: return <M8Slide25NextWeek />;
+    case 5: return <M8Slide06Principle />;
+    case 6: return <M8BlockHeader blockNumber={2} title="5 механик возврата" subtitle="встроенных в продукт" />;
+    case 7: return <M8Slide10NotificationLast />;
+    case 8: return <M8Slide11Mechanic1Streak />;
+    case 9: return <M8Slide12Mechanic2Unfinished />;
+    case 10: return <M8Slide13Mechanic3Social />;
+    case 11: return <M8Slide14Mechanic4FreshContent />;
+    case 12: return <M8Slide15Mechanic5Deadline />;
+    case 13: return <M8BlockHeader blockNumber={3} title="Wow-инструменты без кода" />;
+    case 14: return <M8Slide16NoCodeStack />;
+    case 15: return <M8Slide17AIPrompt />;
+    case 16: return <M8Slide18LiveDemo />;
+    case 17: return <M8Slide19AISegmentation />;
+    case 18: return <M8BlockHeader blockNumber={4} title="Анти-паттерны" subtitle="что не делать никогда" />;
+    case 19: return <M8Slide20FiveAntiPatterns />;
+    case 20: return <M8Slide21PersonalCase />;
+    case 21: return <M8Slide22Checklist />;
+    case 22: return <M8BlockHeader blockNumber={5} title="Реактивация и домашка" />;
+    case 23: return <M8Slide23WinBack />;
+    case 24: return <M8Slide24Homework />;
+    case 25: return <M8Slide25NextWeek />;
     default: return null;
   }
 }
 
-const TOTAL = 30;
+const TOTAL = 26;
 
 export default function Meeting8PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
