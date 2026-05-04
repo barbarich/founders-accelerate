@@ -21,7 +21,6 @@ import M8Slide16NoCodeStack from "./M8Slide16NoCodeStack";
 import M8Slide17AIPrompt from "./M8Slide17AIPrompt";
 import M8Slide18LiveDemo from "./M8Slide18LiveDemo";
 import M8Slide18bMessageFromInsight from "./M8Slide18bMessageFromInsight";
-import M8Slide19AISegmentation from "./M8Slide19AISegmentation";
 import M8Slide20FiveAntiPatterns from "./M8Slide20FiveAntiPatterns";
 import M8Slide21PersonalCase from "./M8Slide21PersonalCase";
 import M8Slide22Checklist from "./M8Slide22Checklist";
@@ -48,7 +47,6 @@ const slideNames = [
   "AI-промпт: 7 писем",
   "Live-демо: Claude × Mixpanel (MCP)",
   "Промпт: инсайт → сообщение",
-  "AI-сегментация",
   "Блок 5 · Анти-паттерны",
   "5 способов убить retention",
   "Личный кейс: -40% базы",
@@ -79,20 +77,19 @@ function getSlideContent(index: number) {
     case 15: return <M8Slide17AIPrompt />;
     case 16: return <M8Slide18LiveDemo />;
     case 17: return <M8Slide18bMessageFromInsight />;
-    case 18: return <M8Slide19AISegmentation />;
-    case 19: return <M8BlockHeader blockNumber={4} title="Анти-паттерны" subtitle="что не делать никогда" />;
-    case 20: return <M8Slide20FiveAntiPatterns />;
-    case 21: return <M8Slide21PersonalCase />;
-    case 22: return <M8Slide22Checklist />;
-    case 23: return <M8BlockHeader blockNumber={5} title="Реактивация и домашка" />;
-    case 24: return <M8Slide23WinBack />;
-    case 25: return <M8Slide24Homework />;
-    case 26: return <M8Slide25NextWeek />;
+    case 18: return <M8BlockHeader blockNumber={4} title="Анти-паттерны" subtitle="что не делать никогда" />;
+    case 19: return <M8Slide20FiveAntiPatterns />;
+    case 20: return <M8Slide21PersonalCase />;
+    case 21: return <M8Slide22Checklist />;
+    case 22: return <M8BlockHeader blockNumber={5} title="Реактивация и домашка" />;
+    case 23: return <M8Slide23WinBack />;
+    case 24: return <M8Slide24Homework />;
+    case 25: return <M8Slide25NextWeek />;
     default: return null;
   }
 }
 
-const TOTAL = 27;
+const TOTAL = 26;
 
 export default function Meeting8PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
