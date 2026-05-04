@@ -85,7 +85,7 @@ export default function M8Slide20RetentionStackFree() {
         Запусти весь retention-движок за вечер. Заплати, только когда вырастешь.
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[28px] max-w-[1300px]">
-        Шесть инструментов, free-tier которых хватит до первых 500 платящих юзеров. Дальше — формула «когда пора платить» и за что именно.
+        Шесть инструментов, бесплатного тарифа которых хватит до первых 500 платящих пользователей. Дальше — формула «когда пора платить» и за что именно.
       </p>
       <div className="grid grid-cols-3 gap-[14px] max-w-[1700px]">
         {tools.map((tool) => (
