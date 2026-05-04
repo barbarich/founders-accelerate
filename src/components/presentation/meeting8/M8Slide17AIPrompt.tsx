@@ -62,7 +62,7 @@ const promptLines = [
   "",
   "# В КОНЦЕ ДОБАВЬ",
   "1. Чек-лист deliverability (SPF/DKIM/DMARC, warm-up, list-unsubscribe).",
-  "2. Карту событий, которые надо трекать в Mixpanel/PostHog для каждой ветки.",
+  "2. Карту событий, которые надо трекать в Mixpanel для каждой ветки (триггеры для SendPulse / Resend / Intercom Fin).",
   "3. 3 гипотезы для A/B-тестов на следующий цикл.",
   "",
   "# САМОПРОВЕРКА (выполни перед выдачей)",
