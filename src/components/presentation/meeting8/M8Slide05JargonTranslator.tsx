@@ -1,9 +1,9 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const rows = [
-  { metric: "D1", human: "Вернулся завтра", saas: "30–40%", social: "50–70%", utility: "20–30%", market: "25–35%" },
-  { metric: "D7", human: "Вернулся через неделю", saas: "20–25%", social: "35–50%", utility: "10–15%", market: "15–20%" },
-  { metric: "D30", human: "Вернулся через месяц", saas: "10–15%", social: "20–35%", utility: "5–8%", market: "8–12%" },
+  { metric: "D1", human: "Вернулся хотя бы раз в течение 1 дня после установки", saas: "30–40%", social: "50–70%", utility: "20–30%", market: "25–35%" },
+  { metric: "D7", human: "Возвращался хотя бы раз за первые 7 дней", saas: "20–25%", social: "35–50%", utility: "10–15%", market: "15–20%" },
+  { metric: "D30", human: "Возвращался хотя бы раз за первые 30 дней", saas: "10–15%", social: "20–35%", utility: "5–8%", market: "8–12%" },
 ];
 
 export default function M8Slide05JargonTranslator() {
