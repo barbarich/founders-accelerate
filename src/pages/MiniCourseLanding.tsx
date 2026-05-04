@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SEO, breadcrumb } from "@/components/SEO";
 import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
@@ -598,6 +599,53 @@ export default function MiniCourseLanding() {
 
   return (
     <div className="mcl-root">
+      <SEO
+        path="/ru"
+        title="AI-продукт, который покупают — мини-курс Михаэля Барбарича"
+        description="Мини-курс соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $19, единоразовый платёж через Stripe."
+        alternates={[
+          { lang: "ru", path: "/ru" },
+          { lang: "en", path: "/en" },
+          { lang: "he", path: "/he" },
+          { lang: "x-default", path: "/ru" },
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: "AI-продукт, который покупают — мини-курс",
+            description:
+              "5 уроков, около 4 часов, от первого интервью до первых платящих клиентов.",
+            provider: {
+              "@type": "Organization",
+              name: "The Founders Circle",
+              url: "https://founders-circle.space",
+            },
+            instructor: {
+              "@type": "Person",
+              name: "Michael Barbarich",
+              url: "https://founders-circle.space/ru/mentor",
+            },
+            inLanguage: "ru",
+            offers: {
+              "@type": "Offer",
+              price: "19",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: STRIPE_CHECKOUT_URL,
+            },
+            hasCourseInstance: {
+              "@type": "CourseInstance",
+              courseMode: "online",
+              courseWorkload: "PT4H",
+            },
+          },
+          breadcrumb([
+            { name: "Главная", path: "/" },
+            { name: "Мини-курс", path: "/ru" },
+          ]),
+        ]}
+      />
       <TopBar />
       <Hero />
       <FounderStrip />

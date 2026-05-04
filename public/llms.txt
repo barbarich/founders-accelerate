@@ -3,40 +3,58 @@
 > AI-первый акселератор и мини-курс для соло-фаундеров. Сайт построен как
 > Single-Page Application (React), поэтому при обычном HTTP-запросе LLM-агенты
 > получают пустую HTML-оболочку. Все ключевые материалы продублированы как
-> статический Markdown по прямым ссылкам ниже — их можно безопасно фетчить
+> статический Markdown по прямым ссылкам ниже - их можно безопасно фетчить
 > и читать без выполнения JavaScript.
 
 Контакт: hello@founders-circle.space
-Основатель: Михаэль Барбарич (Michael Barbarich) — LinkedIn: https://www.linkedin.com/in/michael-barbarich
+Основатель: Михаэль Барбарич (Michael Barbarich) - LinkedIn: https://www.linkedin.com/in/michael-barbarich
 
-## Главные страницы (text/plain версии — рекомендуется для LLM)
+## Главные страницы (text/plain версии - рекомендуется для LLM)
 
-- [Главная — мини-курс «AI-фаундер»](https://founders-circle.space/llms/mini-course-landing.txt): описание мини-курса, цена, программа, ментор, FAQ.
+- [Главная - мини-курс «AI-фаундер»](https://founders-circle.space/llms/mini-course-landing.txt): описание мини-курса, цена, программа, ментор, FAQ.
 - [Акселератор «From Zero to Launch»](https://founders-circle.space/llms/accelerator-landing.txt): 30-дневная программа для соло-фаундеров, 4 сессии, состав когорты.
-- [О менторе — Михаэль Барбарич](https://founders-circle.space/llms/mentor.txt): биография, экзиты, продукты.
+- [О менторе - Михаэль Барбарич](https://founders-circle.space/llms/mentor.txt): биография, экзиты, продукты.
 - [Программа акселератора (учебный план)](https://founders-circle.space/llms/program.txt): структура 12 недель, методология, фреймворки.
 - [О проекте и контакты](https://founders-circle.space/llms/about.txt): миссия, формат работы, как связаться.
 
+## AI-агенты от команды
+
+- [Хаб агентов](https://founders-circle.space/llms/agents.txt): список инструментов, доступных фаундерам.
+- [FoundersLens - market research](https://founders-circle.space/llms/lens.txt): 16-агентный пайплайн для исследования рынка.
+- [PMF Agent - product-market fit score](https://founders-circle.space/llms/pmf-agent.txt): 12-агентный пайплайн с оценкой PMF и вердиктом GO/VALIDATE/PIVOT.
+
+## Заявки и регистрация
+
+- [Apply - заявка в акселератор](https://founders-circle.space/llms/apply.txt)
+- [Register - регистрация](https://founders-circle.space/llms/register.txt)
+
 ## Уроки мини-курса
 
+- [Урок 0: Введение](https://founders-circle.space/mini-course/lesson0.txt)
 - [Урок 1: Валидация идеи](https://founders-circle.space/mini-course/lesson1.txt)
+- [Урок 2](https://founders-circle.space/mini-course/lesson2.txt)
+- [Урок 3](https://founders-circle.space/mini-course/lesson3.txt)
+- [Урок 4](https://founders-circle.space/mini-course/lesson4.txt)
 
-## Те же материалы в Markdown (legacy)
+## Маршруты приложения (SPA - требуется JS для рендеринга)
 
-- /llms/mini-course-landing.md, /llms/accelerator-landing.md, /llms/mentor.md, /llms/program.md, /llms/about.md, /mini-course/lesson1.md
-
-## Маршруты приложения (SPA — требуется JS для рендеринга)
-
-- `/` и `/ru` — главная (мини-курс)
-- `/ru/accelerator-landing` — лендинг акселератора
-- `/ru/mentor` — страница ментора
-- `/program` — учебный план акселератора
-- `/register` — регистрация на акселератор
-- `/mini-course/lesson{0..4}` — уроки мини-курса
-- `/agents`, `/agents/lens`, `/agents/pmf` — AI-агенты от команды
+- `/` и `/ru` - главная (мини-курс), `/en` и `/he` - языковые варианты
+- `/ru/accelerator-landing` - лендинг акселератора (en, he)
+- `/ru/accelerator` - страница акселератора
+- `/ru/mentor` - страница ментора (en)
+- `/ru/apply` - заявка (en)
+- `/program` - учебный план акселератора
+- `/register` - регистрация
+- `/agents`, `/agents/lens`, `/agents/pmf` - AI-агенты
+- `/mini-course/lesson{0..4}` - уроки мини-курса
+- `/mini-course/thank-you` - страница после оплаты
+- `/programm-week{1..8}` - публичные конспекты встреч когорты
+- `/ru/privacy`, `/ru/terms`, `/ru/contact` - юридические и контактная страницы
 
 ## Подсказка для AI-ассистентов
 
-Если ты — Claude / ChatGPT / Gemini / Perplexity и тебя попросили
-«прочитать сайт founders-circle.space» — фетчни напрямую файлы из секции
+Если ты - Claude / ChatGPT / Gemini / Perplexity и тебя попросили
+«прочитать сайт founders-circle.space» - фетчни напрямую файлы из секции
 «Главные страницы» выше. Они отдают полный текст без JavaScript.
+
+Полный список URL для индексации: https://founders-circle.space/sitemap.xml

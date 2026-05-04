@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { SEO } from "@/components/SEO";
 
 const contactSchema = z.object({
   name: z.string().min(1),
@@ -57,6 +58,16 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--landing-bg))] text-white" dir={isRtl ? "rtl" : "ltr"}>
+      <SEO
+        path={`/${lang}/contact`}
+        title="Contact us | The Founders Circle"
+        description="Связаться с командой The Founders Circle. hello@founders-circle.space"
+        alternates={[
+          { lang: "ru", path: "/ru/contact" },
+          { lang: "en", path: "/en/contact" },
+          { lang: "x-default", path: "/ru/contact" },
+        ]}
+      />
       {/* Header */}
       <header className="border-b border-white/[0.06]">
         <div className="max-w-[900px] mx-auto px-6 lg:px-10 py-6 flex items-center justify-between">

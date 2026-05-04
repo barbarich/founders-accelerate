@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-r
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson2Slides";
 import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
+import { SEO } from "@/components/SEO";
 
 const TOTAL = slides.length;
 const LESSON = 2;
@@ -105,6 +106,11 @@ export default function MiniCourseLesson2() {
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: "#0A0E1A" }}>
+      <SEO
+        path="/mini-course/lesson2"
+        title="Урок 2: Понять рынок - мини-курс AI-фаундера"
+        description="Урок 2: понять рынок за 30 минут - конкуренты, отзывы, Reddit, карта позиционирования. Полный текст: /mini-course/lesson2.txt"
+      />
       <div
         ref={stageRef}
         className="flex-1 relative cursor-pointer select-none"

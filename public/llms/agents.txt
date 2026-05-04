@@ -1,0 +1,41 @@
+# Founders Circle · Agents
+
+> AI-агенты, которые делают за фаундера нудную работу: рыночный ресерч, PMF-валидацию, аутрич.
+
+URL: https://founders-circle.space/agents
+
+## О чём страница
+
+Каталог AI-агентов, построенных командой The Founders Circle. Каждый агент - специалист в одной задаче. Бесплатно для резидентов акселератора (используется свой LLM-ключ).
+
+## Текущие агенты
+
+### FoundersLens · Research
+Рыночный ресерч на уровне McKinsey за 10 минут.
+
+Полный market research по идее: 30 конкурентов, TAM/SAM/SOM, тренды, креативы их рекламы, вердикт GO / PIVOT / NO-GO и конкретный план действий на 30 дней.
+
+- Время: ~10 мин
+- Стоимость: ~$1.50 (твой LLM-ключ)
+- Выход: 25-страничный HTML-отчёт
+- Запустить: https://founders-circle.space/agents/lens
+
+### PMF Agent · Validation
+Оценка Product-Market Fit с honest-сигналом.
+
+9-осевой PMF Score: pain, market, timing, competitive whitespace, demand, monetization, unit economics, regulatory, execution. Если score < 50 - Pivot Advisor генерирует альтернативные траектории. Честный эксперт, не льстит.
+
+- Время: ~10-15 мин
+- Стоимость: твой LLM-ключ
+- Выход: PMF-скоринг + pivot-сценарии
+- Запустить: https://founders-circle.space/agents/pmf
+
+## Скоро
+
+### Outreach Agent · Sales
+Холодный аутрич на автопилоте. Пишет персонализированные письма под ICP, ищет контакты, ведёт follow-up. Используется твой Gmail/Slack API - команда не трогает твои списки. Статус: в разработке.
+
+## Контакт
+
+hello@founders-circle.space
+URL: https://founders-circle.space/agents

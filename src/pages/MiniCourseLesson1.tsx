@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson1Slides";
 import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
+import { SEO, breadcrumb } from "@/components/SEO";
 
 const TOTAL = slides.length;
 const LESSON = 1;
@@ -108,6 +109,30 @@ export default function MiniCourseLesson1() {
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: "#0A0E1A" }}>
+      <SEO
+        path="/mini-course/lesson1"
+        title="Урок 1: Валидация идеи - мини-курс AI-фаундера"
+        description="Урок 1 мини-курса: первая победа за 5 минут, формулировка идеи, аудитория и боль. Полный текст урока: /mini-course/lesson1.txt"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            name: "Урок 1: Валидация идеи",
+            inLanguage: "ru",
+            isPartOf: {
+              "@type": "Course",
+              name: "Мини-курс AI-фаундера",
+              url: "https://founders-circle.space/ru",
+            },
+            educationalLevel: "Beginner",
+          },
+          breadcrumb([
+            { name: "Главная", path: "/" },
+            { name: "Мини-курс", path: "/ru" },
+            { name: "Урок 1", path: "/mini-course/lesson1" },
+          ]),
+        ]}
+      />
       <div
         ref={stageRef}
         className="flex-1 relative cursor-pointer select-none"

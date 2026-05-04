@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-r
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson3Slides";
 import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
+import { SEO } from "@/components/SEO";
 
 const TOTAL = slides.length;
 const LESSON = 3;
@@ -105,6 +106,11 @@ export default function MiniCourseLesson3() {
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: "#0A0E1A" }}>
+      <SEO
+        path="/mini-course/lesson3"
+        title="Урок 3: Услышать правду от рынка - мини-курс AI-фаундера"
+        description="Урок 3: услышать правду от рынка за 10 разговоров - интервью с клиентами, pass/fail-сигналы. Полный текст: /mini-course/lesson3.txt"
+      />
       <div
         ref={stageRef}
         className="flex-1 relative cursor-pointer select-none"

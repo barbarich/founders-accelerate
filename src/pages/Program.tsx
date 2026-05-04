@@ -4,6 +4,7 @@ import { useState } from "react";
 import { months, type Week } from "@/data/program";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { SEO, breadcrumb } from "@/components/SEO";
 
 function SectionBlock({
   label,
@@ -105,6 +106,17 @@ export default function Program() {
 
   return (
     <div className="min-h-screen landing-wrapper">
+      <SEO
+        path="/program"
+        title="Программа акселератора - 12 недель | The Founders Circle"
+        description="Учебный план акселератора The Founders Circle: 12 недель от идеи к запуску, customer development, AI-инструменты, agentic engineering, продажи, упаковка и масштабирование."
+        jsonLd={[
+          breadcrumb([
+            { name: "Главная", path: "/" },
+            { name: "Программа", path: "/program" },
+          ]),
+        ]}
+      />
       {/* Stripes background */}
       <div className="landing-stripes" />
 

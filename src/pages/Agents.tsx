@@ -8,6 +8,7 @@
 
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const C = {
   bg: "#f8f8f4",
@@ -99,6 +100,11 @@ export default function Agents() {
         fontFamily: "-apple-system, system-ui, sans-serif",
       }}
     >
+      <SEO
+        path="/agents"
+        title="AI Agents - FoundersLens, PMF Agent | The Founders Circle"
+        description="Каталог AI-агентов от The Founders Circle: FoundersLens (16-агентный пайплайн market research), PMF Agent (12-агентный пайплайн с PMF-скором и вердиктом)."
+      />
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "64px 24px 96px" }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 48 }}>

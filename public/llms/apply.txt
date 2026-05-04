@@ -1,0 +1,32 @@
+# Заявка в The Founders Circle
+
+> Форма подачи заявки в акселератор The Founders Circle. После отправки - подтверждение и созвон.
+
+URL: https://founders-circle.space/ru/apply
+Доступно на: RU, EN, UA, HE
+
+## Что в форме
+
+Форма заявки в 12-недельный акселератор для соло-фаундеров на AI-стеке. Поля:
+
+- Имя
+- Email
+- Телефон
+- Идея / описание проекта (до 2000 символов)
+- Стадия (выбор: только идея / есть прототип / есть пользователи / есть выручка / другое)
+- Предпочтительный язык программы (EN / RU / UA / HE)
+
+Заявка уходит ментору (Михаэль Барбарич) на ревью. После - персональный созвон.
+
+## Что дальше
+
+После отправки - редирект на /thank-you с подтверждением. Ментор смотрит каждую заявку лично, не SDR-команда.
+
+Подробности про программу: https://founders-circle.space/llms/program.txt
+Про ментора: https://founders-circle.space/llms/mentor.txt
+Про акселератор: https://founders-circle.space/llms/accelerator-landing.txt
+
+## Контакт
+
+hello@founders-circle.space
+URL: https://founders-circle.space/ru/apply

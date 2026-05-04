@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
 import { ArrowLeft } from "lucide-react";
 import NewNavbar from "@/components/NewNavbar";
+import { SEO } from "@/components/SEO";
 
 export default function TermsOfService() {
   const { t, lang } = useLanguage();
@@ -17,6 +18,16 @@ export default function TermsOfService() {
 
   return (
     <div className="min-h-screen" style={{ background: "#f8f8f4", color: "#0d0d0d", fontFamily: "var(--nl-font-body, 'DM Sans', sans-serif)" }} dir={isRtl ? "rtl" : "ltr"}>
+      <SEO
+        path={`/${lang}/terms`}
+        title="Terms of Service | The Founders Circle"
+        description="Terms of service of The Founders Circle - rules for using the program and services."
+        alternates={[
+          { lang: "ru", path: "/ru/terms" },
+          { lang: "en", path: "/en/terms" },
+          { lang: "x-default", path: "/ru/terms" },
+        ]}
+      />
       <NewNavbar lang={lang} />
 
       {/* Back link */}

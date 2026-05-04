@@ -10,6 +10,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, CheckCircle2, Sparkles } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 const WEB3FORMS_KEY = "1340b491-9687-45e3-914d-3c6e4f777a0f";
 
@@ -78,6 +79,24 @@ export default function Apply() {
 
   return (
     <div className="min-h-screen landing-wrapper">
+      <SEO
+        path={`/${lang}/apply`}
+        title={
+          lang === "en"
+            ? "Apply - AI Founder Program | The Founders Circle"
+            : "Заявка в акселератор | The Founders Circle"
+        }
+        description={
+          lang === "en"
+            ? "Apply for the 30-day AI Founder Program with Michael Barbarich. Tell us about your idea and we'll get back within 48 hours."
+            : "Подать заявку на 30-дневный AI Founder Program. Расскажите об идее - ответим в течение 48 часов."
+        }
+        alternates={[
+          { lang: "ru", path: "/ru/apply" },
+          { lang: "en", path: "/en/apply" },
+          { lang: "x-default", path: "/ru/apply" },
+        ]}
+      />
       {/* Stripes background */}
       <div className="landing-stripes" />
 

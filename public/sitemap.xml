@@ -1,23 +1,392 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://founders-circle.space/</loc><priority>1.0</priority></url>
-  <url><loc>https://founders-circle.space/ru</loc><priority>1.0</priority></url>
-  <url><loc>https://founders-circle.space/ru/accelerator-landing</loc><priority>0.9</priority></url>
-  <url><loc>https://founders-circle.space/ru/mentor</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/program</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/register</loc><priority>0.7</priority></url>
-  <url><loc>https://founders-circle.space/mini-course/thank-you</loc><priority>0.3</priority></url>
-  <url><loc>https://founders-circle.space/llms.txt</loc><priority>1.0</priority></url>
-  <url><loc>https://founders-circle.space/llms/mini-course-landing.txt</loc><priority>1.0</priority></url>
-  <url><loc>https://founders-circle.space/llms/accelerator-landing.txt</loc><priority>0.9</priority></url>
-  <url><loc>https://founders-circle.space/llms/mentor.txt</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/llms/program.txt</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/llms/about.txt</loc><priority>0.7</priority></url>
-  <url><loc>https://founders-circle.space/mini-course/lesson1.txt</loc><priority>0.7</priority></url>
-  <url><loc>https://founders-circle.space/llms/mini-course-landing.md</loc><priority>1.0</priority></url>
-  <url><loc>https://founders-circle.space/llms/accelerator-landing.md</loc><priority>0.9</priority></url>
-  <url><loc>https://founders-circle.space/llms/mentor.md</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/llms/program.md</loc><priority>0.8</priority></url>
-  <url><loc>https://founders-circle.space/llms/about.md</loc><priority>0.7</priority></url>
-  <url><loc>https://founders-circle.space/mini-course/lesson1.md</loc><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main entry / language variants -->
+  <url>
+    <loc>https://founders-circle.space/</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/ru</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/he</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru" />
+  </url>
+
+  <!-- Accelerator landing -->
+  <url>
+    <loc>https://founders-circle.space/ru/accelerator-landing</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/accelerator-landing" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/accelerator-landing</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="he" href="https://founders-circle.space/he/accelerator-landing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/accelerator-landing" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/he/accelerator-landing</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Accelerator info -->
+  <url>
+    <loc>https://founders-circle.space/ru/accelerator</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/accelerator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/accelerator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/accelerator" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/accelerator</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/accelerator" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/accelerator" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/accelerator" />
+  </url>
+
+  <!-- Apply -->
+  <url>
+    <loc>https://founders-circle.space/ru/apply</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/apply" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/apply" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/apply" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/apply</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/apply" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/apply" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/apply" />
+  </url>
+
+  <!-- Mentor profile -->
+  <url>
+    <loc>https://founders-circle.space/ru/mentor</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/mentor" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/mentor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/mentor" />
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/mentor</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru/mentor" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://founders-circle.space/en/mentor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru/mentor" />
+  </url>
+
+  <!-- Program / register -->
+  <url>
+    <loc>https://founders-circle.space/program</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/register</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- AI agents -->
+  <url>
+    <loc>https://founders-circle.space/agents</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/agents/lens</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/agents/pmf</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Mini-course lessons -->
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson0</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson1</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson2</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson3</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson4</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/thank-you</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Programm weeks (public meeting recaps) -->
+  <url>
+    <loc>https://founders-circle.space/programm-week1</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week2</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week3</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week4</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week5</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week6</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week7</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/programm-week8</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Legal / contact -->
+  <url>
+    <loc>https://founders-circle.space/ru/privacy</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/ru/terms</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/ru/contact</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/privacy</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/terms</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/en/contact</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- LLM-friendly plain-text versions (high priority for AI crawlers) -->
+  <url>
+    <loc>https://founders-circle.space/llms.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/mini-course-landing.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/accelerator-landing.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/mentor.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/program.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/about.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/agents.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/lens.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/pmf-agent.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/apply.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/llms/register.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson1.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson0.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson2.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson3.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://founders-circle.space/mini-course/lesson4.txt</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

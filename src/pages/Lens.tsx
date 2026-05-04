@@ -20,6 +20,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, type Provider as ProviderLib } from "@/lib/llmModels";
+import { SEO } from "@/components/SEO";
 
 const C = {
   bg: "#f8f8f4",
@@ -376,6 +377,11 @@ export default function Lens() {
         "--ring": "76 100% 50%",
       } as React.CSSProperties}
     >
+      <SEO
+        path="/agents/lens"
+        title="FoundersLens - AI market research agent | The Founders Circle"
+        description="FoundersLens - 16-агентный пайплайн глубокого исследования рынка для соло-фаундеров. От идеи до отчёта о возможности, конкурентах и рисках за минуты."
+      />
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px" }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 48 }}>

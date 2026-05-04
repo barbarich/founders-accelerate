@@ -17,6 +17,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, type Provider as ProviderLib } from "@/lib/llmModels";
+import { SEO } from "@/components/SEO";
 
 const C = {
   bg: "#f8f8f4",
@@ -364,6 +365,11 @@ export default function PmfAgent() {
         "--ring": "76 100% 50%",
       } as React.CSSProperties}
     >
+      <SEO
+        path="/agents/pmf"
+        title="PMF Agent - product-market fit score | The Founders Circle"
+        description="PMF Agent - 12-агентный пайплайн оценки product-market fit. 9-осевой PMF score и вердикт GO/VALIDATE/PIVOT с 12-15 страничным PDF-отчётом."
+      />
       <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "48px 24px" }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 48 }}>

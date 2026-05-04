@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Copy, Check, Building2, Smartphone, Send } from "lucide-react";
+import { SEO } from "@/components/SEO";
 
 function CopyField({ label, value }: { label: string; value: string }) {
   const [copied, setCopied] = useState(false);
@@ -29,6 +30,11 @@ function CopyField({ label, value }: { label: string; value: string }) {
 export default function Register() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-y-auto">
+      <SEO
+        path="/register"
+        title="Регистрация - The Founders Circle"
+        description="Регистрация участников программы The Founders Circle. Реквизиты и контакты для оплаты."
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">

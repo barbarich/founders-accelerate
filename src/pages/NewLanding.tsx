@@ -4,6 +4,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { getNewLandingT } from "@/components/landing/newLandingTranslations";
 import { useInView } from "@/hooks/useInView";
 import NewNavbar from "@/components/NewNavbar";
+import { SEO, breadcrumb } from "@/components/SEO";
 
 const WEB3FORMS_KEY = "1340b491-9687-45e3-914d-3c6e4f777a0f";
 
@@ -92,8 +93,60 @@ export default function NewLanding() {
   const beforeEmojis = ["\u{1F636}", "\u{1F300}", "\u{1F937}", "\u{1F630}", "\u{23F3}", "\u{1F9E9}"];
   const afterEmojis = ["\u{2705}", "\u{1F680}", "\u{1F4E3}", "\u{1F4B0}", "\u{26A1}", "\u{1F916}"];
 
+  const seoTitle =
+    lang === "en"
+      ? "AI Founder Program — From Zero to Launch in 30 days | The Founders Circle"
+      : lang === "he"
+      ? "AI Founder Program - From Zero to Launch | The Founders Circle"
+      : "AI Founder Program - акселератор «From Zero to Launch» за 30 дней";
+  const seoDescription =
+    lang === "en"
+      ? "Build and launch your AI product solo in 30 days. 4 live sessions with Michael Barbarich - serial founder, 2 exits, 50,000+ paying users."
+      : lang === "he"
+      ? "Build and launch your AI product solo in 30 days with Michael Barbarich."
+      : "30-дневный акселератор для соло-фаундеров: от идеи до первых платящих клиентов. 4 живые сессии с Михаэлем Барбаричем - serial founder с 2 экзитами.";
+
   return (
     <div className="nl-page" style={{ background: S.bg, fontFamily: "'DM Sans', sans-serif" }}>
+      <SEO
+        path={`/${lang}/accelerator-landing`}
+        title={seoTitle}
+        description={seoDescription}
+        alternates={[
+          { lang: "ru", path: "/ru/accelerator-landing" },
+          { lang: "en", path: "/en/accelerator-landing" },
+          { lang: "he", path: "/he/accelerator-landing" },
+          { lang: "x-default", path: "/ru/accelerator-landing" },
+        ]}
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: "AI Founder Program - From Zero to Launch",
+            description: seoDescription,
+            provider: {
+              "@type": "Organization",
+              name: "The Founders Circle",
+              url: "https://founders-circle.space",
+            },
+            instructor: {
+              "@type": "Person",
+              name: "Michael Barbarich",
+              url: "https://founders-circle.space/ru/mentor",
+            },
+            inLanguage: lang,
+            hasCourseInstance: {
+              "@type": "CourseInstance",
+              courseMode: "online",
+              courseWorkload: "P30D",
+            },
+          },
+          breadcrumb([
+            { name: "Главная", path: "/" },
+            { name: "Акселератор", path: `/${lang}/accelerator-landing` },
+          ]),
+        ]}
+      />
       <NewNavbar lang={lang} />
 
       {/* ════════════════════ S1 — HERO ════════════════════ */}

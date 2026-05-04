@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-react";
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson0Slides";
+import { SEO } from "@/components/SEO";
 
 const TOTAL = slides.length;
 
@@ -101,6 +102,11 @@ export default function MiniCourseLesson0() {
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: "#0A0E1A" }}>
+      <SEO
+        path="/mini-course/lesson0"
+        title="Урок 0: Введение - мини-курс AI-фаундера"
+        description="Вступительный урок мини-курса: формат, ожидаемые результаты, как работать с материалом. Полный текст: /mini-course/lesson0.txt"
+      />
       <div ref={stageRef} className="flex-1 relative cursor-pointer select-none" onClick={onStageClick}>
         <div
           className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? "opacity-0" : "opacity-100"}`}

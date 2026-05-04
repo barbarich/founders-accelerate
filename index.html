@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>From Zero to Launch — AI Founder Program | Michael Barbarich</title>
-    <meta name="description" content="Build your AI product solo in 30 days. From idea to first paying customers. 4 live sessions with Michael Barbarich — serial founder, 2 exits.">
+    <!-- Default head tags - per-page values are injected by react-helmet-async -->
+    <title>The Founders Circle — AI-первый акселератор для соло-фаундеров</title>
+    <meta name="description" content="Мини-курс и 30-дневный акселератор для соло-фаундеров. От идеи до первых платящих клиентов. Ментор - Михаэль Барбарич, serial founder с 2 экзитами.">
     <meta name="author" content="Michael Barbarich" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <link rel="canonical" href="https://founders-circle.space/">
-    <!-- AI-friendly: full text of key pages available as static Markdown -->
+
+    <!-- Default hreflang - per-page Helmet may override -->
+    <link rel="alternate" hreflang="ru" href="https://founders-circle.space/ru" />
+    <link rel="alternate" hreflang="en" href="https://founders-circle.space/en" />
+    <link rel="alternate" hreflang="he" href="https://founders-circle.space/he" />
+    <link rel="alternate" hreflang="x-default" href="https://founders-circle.space/ru" />
+
+    <!-- AI-friendly: full text of key pages available as static text -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site index" />
     <link rel="alternate" type="text/plain" href="/llms/mini-course-landing.txt" title="Mini-course landing (text)" />
     <link rel="alternate" type="text/plain" href="/llms/accelerator-landing.txt" title="Accelerator landing (text)" />
@@ -19,15 +26,36 @@
     <link rel="alternate" type="text/plain" href="/llms/about.txt" title="About the project (text)" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="From Zero to Launch — AI Founder Program">
-    <meta property="og:description" content="Build and launch your AI product solo in 30 days.">
-    <meta property="og:image" content="/og-image.png">
+    <!-- og:site_name only (per-page Helmet provides og:title/description/url/image; keeping site_name global is safe) -->
+    <meta property="og:site_name" content="The Founders Circle" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="From Zero to Launch — AI Founder Program">
-    <meta name="twitter:description" content="Build and launch your AI product solo in 30 days.">
-    <meta name="twitter:image" content="/og-image.png">
+    <!-- Organization schema (global) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "The Founders Circle",
+      "url": "https://founders-circle.space",
+      "logo": "https://founders-circle.space/og-image.png",
+      "email": "hello@founders-circle.space",
+      "founder": {
+        "@type": "Person",
+        "name": "Michael Barbarich",
+        "url": "https://www.linkedin.com/in/michael-barbarich",
+        "jobTitle": "Founder, Mentor"
+      },
+      "sameAs": ["https://www.linkedin.com/in/michael-barbarich"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "The Founders Circle",
+      "url": "https://founders-circle.space",
+      "inLanguage": ["ru", "en", "he"]
+    }
+    </script>
 
     <!-- Fonts: Syne + DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

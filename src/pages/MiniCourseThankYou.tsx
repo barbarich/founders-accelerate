@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { CheckCircle2, Send, Mail } from "lucide-react";
+import { SEO } from "@/components/SEO";
 import "./mini-course-landing/styles.css";
 
 const TELEGRAM_BOT_URL = "https://t.me/AI_founders_course_bot";
@@ -17,6 +18,12 @@ export default function MiniCourseThankYou() {
 
   return (
     <div className="mcl-root" style={{ minHeight: "100vh", paddingTop: 0 }}>
+      <SEO
+        path="/mini-course/thank-you"
+        title="Спасибо за покупку - AI-продукт, который покупают"
+        description="Подтверждение покупки мини-курса. Дальше - бот в Telegram для активации."
+        noindex
+      />
       <section style={{ padding: "80px 0" }}>
         <div
           className="mcl-container"

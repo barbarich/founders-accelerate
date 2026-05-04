@@ -3,6 +3,7 @@ import { CheckCircle2, ArrowLeft, Calendar } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import NewNavbar from "@/components/NewNavbar";
+import { SEO } from "@/components/SEO";
 
 const thankYouTexts = {
   en: {
@@ -63,6 +64,12 @@ export default function ThankYou() {
 
   return (
     <div className="nl-page min-h-screen" style={{ background: "#f8f8f4", fontFamily: "var(--nl-font-body, 'DM Sans', sans-serif)" }}>
+      <SEO
+        path={`/${lang}/thank-you`}
+        title="Thank you - The Founders Circle"
+        description="Application received. We'll get back within 48 hours."
+        noindex
+      />
       <NewNavbar lang={lang} />
 
       <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">

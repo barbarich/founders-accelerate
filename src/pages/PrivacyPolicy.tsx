@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
 import { ArrowLeft } from "lucide-react";
 import NewNavbar from "@/components/NewNavbar";
+import { SEO } from "@/components/SEO";
 
 export default function PrivacyPolicy() {
   const { t, lang } = useLanguage();
@@ -17,6 +18,16 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen" style={{ background: "#f8f8f4", color: "#0d0d0d", fontFamily: "var(--nl-font-body, 'DM Sans', sans-serif)" }} dir={isRtl ? "rtl" : "ltr"}>
+      <SEO
+        path={`/${lang}/privacy`}
+        title="Privacy Policy | The Founders Circle"
+        description="Privacy policy of The Founders Circle - how we collect, use, and protect your data."
+        alternates={[
+          { lang: "ru", path: "/ru/privacy" },
+          { lang: "en", path: "/en/privacy" },
+          { lang: "x-default", path: "/ru/privacy" },
+        ]}
+      />
       <NewNavbar lang={lang} />
 
       {/* Back link */}

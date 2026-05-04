@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Maximize, Minimize, Printer } from "lucide-r
 import ScaledSlide from "@/components/presentation/ScaledSlide";
 import { slides } from "@/components/mini-course/MiniCourseLesson4Slides";
 import { SlideMetaProvider } from "@/components/mini-course/SlideMetaContext";
+import { SEO } from "@/components/SEO";
 
 const TOTAL = slides.length;
 const LESSON = 4;
@@ -105,6 +106,11 @@ export default function MiniCourseLesson4() {
 
   return (
     <div className="w-full h-screen flex flex-col" style={{ background: "#0A0E1A" }}>
+      <SEO
+        path="/mini-course/lesson4"
+        title="Урок 4: Упаковка и запуск - мини-курс AI-фаундера"
+        description="Урок 4: упаковка и запуск - лендинг, cold outreach, pre-sale, первые платящие клиенты. Полный текст: /mini-course/lesson4.txt"
+      />
       <div
         ref={stageRef}
         className="flex-1 relative cursor-pointer select-none"

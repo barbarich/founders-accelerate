@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supportedLangs, langLabels } from "@/i18n/translations";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
+import { SEO, PERSON_MICHAEL_LD, breadcrumb } from "@/components/SEO";
 
 import photo from "@/assets/slides/photo-michael.jpg";
 
@@ -21,6 +22,32 @@ export default function Mentor() {
 
   return (
     <div className="min-h-screen landing-wrapper">
+      <SEO
+        path={`/${lang}/mentor`}
+        title={
+          lang === "en"
+            ? "Michael Barbarich - Mentor & Founder | The Founders Circle"
+            : "Михаэль Барбарич - ментор и основатель The Founders Circle"
+        }
+        description={
+          lang === "en"
+            ? "Serial entrepreneur from Tel Aviv, 16 years in product, 2 exits. CEO MetaMinder, solo-founder Mikey AI. Built RunEverywhere with 50,000+ paying users."
+            : "Serial entrepreneur из Tel Aviv, 16 лет в продуктах, 2 экзита. CEO MetaMinder, solo-founder Mikey AI. Построил RunEverywhere с 50 000+ платящих пользователей."
+        }
+        ogType="profile"
+        alternates={[
+          { lang: "ru", path: "/ru/mentor" },
+          { lang: "en", path: "/en/mentor" },
+          { lang: "x-default", path: "/ru/mentor" },
+        ]}
+        jsonLd={[
+          PERSON_MICHAEL_LD,
+          breadcrumb([
+            { name: "Главная", path: "/" },
+            { name: "Ментор", path: `/${lang}/mentor` },
+          ]),
+        ]}
+      />
       {/* Stripes background */}
       <div className="landing-stripes" />
       <div className="landing-content">
