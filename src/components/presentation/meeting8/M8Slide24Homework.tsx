@@ -14,7 +14,7 @@ export default function M8Slide24Homework() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Домашка · к встрече 9
+          Задание · к встрече 9
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
           4 действия. Все no-code.
@@ -42,7 +42,7 @@ export default function M8Slide24Homework() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
-        Домашка · к встрече 9
+        Задание · к встрече 9
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
         4 действия. Все no-code.

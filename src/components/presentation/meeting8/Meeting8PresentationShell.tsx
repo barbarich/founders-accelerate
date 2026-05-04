@@ -47,9 +47,9 @@ const slideNames = [
   "Промпт: инсайт → сообщение",
   "Блок 5 · Стек и чек-лист",
   "Retention-стек за $0 на старте",
-  "Блок 6 · Реактивация и домашка",
+  "Блок 6 · Реактивация и задание",
   "Реактивация · 6 инсайтов",
-  "Домашка",
+  "Задание",
   "Неделя 9",
 ];
 
@@ -75,7 +75,7 @@ function getSlideContent(index: number) {
     case 17: return <M8Slide18bMessageFromInsight />;
     case 18: return <M8BlockHeader blockNumber={4} title="Стек и чек-лист" subtitle="запусти всё за вечер" />;
     case 19: return <M8Slide20RetentionStackFree />;
-    case 20: return <M8BlockHeader blockNumber={5} title="Реактивация и домашка" />;
+    case 20: return <M8BlockHeader blockNumber={5} title="Реактивация и задание" />;
     case 21: return <M8Slide22ReactivationInsights />;
     case 22: return <M8Slide24Homework />;
     case 23: return <M8Slide25NextWeek />;
