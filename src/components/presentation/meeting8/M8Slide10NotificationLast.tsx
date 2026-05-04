@@ -13,11 +13,11 @@ export default function M8Slide10NotificationLast() {
           Уведомление — это финал петли. Не начало.
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.55] mb-[10px]">
-          Сначала встроить в продукт причину вернуться. Потом — напомнить о ней. В обратном порядке push становится спамом, а email — отпиской.
+          Сначала встроить в продукт причину вернуться. Потом — напомнить о ней. В обратном порядке push становится спамом, а email уходит в отписку.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[8px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-            Дальше — 5 механик. Это «причина», которую видит юзер. Push — это «напоминание о причине».
+            Дальше — 5 механик. Это «причина», которую видит пользователь. Push — это «напоминание о причине».
           </p>
         </div>
       </div>
@@ -34,11 +34,11 @@ export default function M8Slide10NotificationLast() {
       </h2>
       <p className="text-[26px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1400px] mb-[24px]">
         Сначала встройте в продукт причину вернуться. Потом — напомните о ней.
-        В обратном порядке push становится спамом, а email — отпиской.
+        В обратном порядке push становится спамом, а email уходит в отписку.
       </p>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[22px] max-w-[1400px]">
         <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-          Дальше — 5 механик. Это «причина», которую видит юзер.<br />Push и email — это «напоминание о причине».
+          Дальше — 5 механик. Это «причина», которую видит пользователь.<br />Push и email — это «напоминание о причине».
         </p>
       </div>
     </div>
