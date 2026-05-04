@@ -118,7 +118,7 @@ export default function M8Slide17AIPrompt() {
           7 писем onboarding-серии за 60 секунд.
         </h2>
         <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[24px]">
-          Замени <span className="text-[hsl(var(--slide-gold))]">[скобки]</span> на свои данные. Вставь в ChatGPT / Lovable AI / Claude — получи готовую серию для Loops или Customer.io.
+          Замени <span className="text-[hsl(var(--slide-gold))]">[скобки]</span> на свои данные. Вставь в ChatGPT / Lovable AI / Claude — получи готовую серию для SendPulse или Resend.
         </p>
         <button onClick={handleCopy} className="flex items-center gap-[8px] bg-[hsl(var(--slide-gold)/0.1)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[20px] py-[12px] hover:bg-[hsl(var(--slide-gold)/0.2)] transition-colors cursor-pointer">
           <span className="text-[20px]">{copied ? "✅" : "📋"}</span>
