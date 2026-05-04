@@ -33,7 +33,7 @@ export default function M8Slide03ShockNumber() {
           Цифра, после которой не уснёшь
         </p>
         <p className="text-[44px] font-semibold text-[hsl(var(--slide-text))] leading-[1.2] mb-[28px] max-w-[900px]">
-          мобильных пользователей не возвращаются на 3-й день после установки.
+          <span className="text-[hsl(var(--slide-gold))]">77%</span> мобильных пользователей не возвращаются на 3-й день после установки.
         </p>
         <div className="space-y-[14px] mb-[24px]">
           <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.4]"><span className="text-[hsl(var(--slide-gold))] mr-[10px]">→</span>Через 30 дней — уходит 90%.</p>
