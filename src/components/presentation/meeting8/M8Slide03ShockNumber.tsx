@@ -16,13 +16,13 @@ export default function M8Slide03ShockNumber() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Бенчмарки · Терять юзеров — это норма
+          Бенчмарки · Терять пользователей — это норма
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
           Даже у лучших уходит большинство.
         </h2>
         <p className="text-[10.5px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[10px]">
-          % юзеров, которые возвращаются хотя бы раз за период:
+          % пользователей, которые возвращаются хотя бы раз за период:
         </p>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] overflow-hidden">
           <div className="grid grid-cols-[1fr_36px_36px_36px] gap-[4px] px-[8px] py-[5px] bg-[hsl(var(--slide-gold)/0.08)] text-[8px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))]">
@@ -50,13 +50,13 @@ export default function M8Slide03ShockNumber() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Бенчмарки retention · Терять юзеров — это норма
+        Бенчмарки retention · Терять пользователей — это норма
       </p>
       <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
         Даже у лучших уходит большинство. <span className="text-[hsl(var(--slide-text-muted))]">Это математика, а не катастрофа.</span>
       </h2>
       <p className="text-[19px] text-[hsl(var(--slide-text-muted))] mb-[22px] max-w-[1200px]">
-        Процент юзеров, которые возвращаются <span className="text-[hsl(var(--slide-text))] font-semibold">хотя бы раз</span> в течение D1 / D7 / D30 после первого захода:
+        Процент пользователей, которые возвращаются <span className="text-[hsl(var(--slide-text))] font-semibold">хотя бы раз</span> в течение D1 / D7 / D30 после первого захода:
       </p>
 
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] overflow-hidden max-w-[1500px]">
