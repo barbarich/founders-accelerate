@@ -2,7 +2,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const tools = [
   { cat: "Аналитика ретеншена", name: "Mixpanel", price: "Бесплатно до 1M событий", what: "Retention-кривая, когорты, funnels — за 10 минут. Всё, что раньше требовало аналитика." },
-  { cat: "Письма + push-уведомления", name: "SendPulse", price: "От $0", what: "Триггерные письма и web/mobile push из одной панели. «Не вернулся 3 дня» → письмо или пуш. Без кода, на русском интерфейсе." },
+  { cat: "Триггерные письма", name: "SendPulse", price: "От $0", what: "Письмо отправляется по событию. «Не вернулся 3 дня» → письмо. Без кода, на русском интерфейсе." },
+  { cat: "Push-уведомления", name: "SendPulse", price: "Бесплатно до 10k подписчиков", what: "Web + mobile push из той же панели, что и письма. Один сервис — два канала возврата." },
   { cat: "AI-чат, который возвращает", name: "Intercom Fin", price: "От $39", what: "Бот отвечает на возражения, доводит до действия. Возврат через диалог, а не через рассылку." },
   { cat: "Email-капельница без CRM", name: "Resend + Lovable AI", price: "От $0", what: "Edge-функция шлёт письмо при событии. AI пишет тело под пользователя на лету." },
 ];
@@ -41,7 +42,7 @@ export default function M8Slide16NoCodeStack() {
         Стек ретеншена · 0 разработчиков · стартовый бюджет $0
       </p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px]">
-        Всё, что нужно — пять сервисов.
+        Всё, что нужно — четыре сервиса.
       </h2>
       <div className="space-y-[12px] max-w-[1500px]">
         {tools.map((t) => (
