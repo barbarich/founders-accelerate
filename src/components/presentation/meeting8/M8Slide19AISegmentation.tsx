@@ -5,7 +5,7 @@ const promptLines = [
   "Ты — продуктовый аналитик. Дам тебе 5 событий пользователя за последние 14 дней.",
   "",
   "Событие | Дата | Контекст",
-  "[список событий из PostHog]",
+  "[список событий из Mixpanel]",
   "",
   "Задача:",
   "1. Определи стадию: новый / активный / угасает / ушёл / реактивирован.",
@@ -37,7 +37,7 @@ export default function M8Slide19AISegmentation() {
           GPT читает события — пишет персональное сообщение.
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[8px]">
-          PostHog → Edge-функция → Lovable AI → Loops/OneSignal. Один промпт заменяет CRM-сегменты.
+          Mixpanel → Edge-функция → Lovable AI → SendPulse / Intercom Fin. Один промпт заменяет CRM-сегменты.
         </p>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[7px] overflow-y-auto max-h-[55%]">
           <pre className="text-[7.5px] text-[hsl(var(--slide-text-muted))] leading-[1.5] whitespace-pre-wrap font-mono">
@@ -59,10 +59,10 @@ export default function M8Slide19AISegmentation() {
           AI-сегментация · без аналитика
         </p>
         <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] tracking-[-0.02em]">
-          GPT читает события из PostHog — пишет персональное сообщение.
+          GPT читает события из Mixpanel — пишет персональное сообщение.
         </h2>
         <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[20px] max-w-[650px]">
-          Один промпт заменяет три месяца настройки CRM-сегментов. PostHog → edge-функция → Lovable AI → канал.
+          Один промпт заменяет три месяца настройки CRM-сегментов. Mixpanel → edge-функция → Lovable AI → канал (SendPulse / push / Intercom).
         </p>
         <p className="text-[20px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4] mb-[24px] max-w-[650px]">
           Цена ответа Gemini Flash: ~$0.0002. Дешевле SMS в 100 раз.

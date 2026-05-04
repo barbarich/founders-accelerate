@@ -13,7 +13,7 @@ export default function M8Slide12Mechanic2Unfinished() {
       ],
       screen: "Прогресс-бар со списком: ✓ ✓ ◯ ◯ ◯. Видна следующая микро-задача на 1 клик.",
       howToApply: "Разбей путь до ценности на 5 шагов. Покажи прогресс-бар на главной и в боте. Каждое возвращение = закрыть один шаг и увидеть, как растёт процент.",
-      noCode: "Tally / Lovable: чек-лист в profiles.onboarding_steps[]. WhatsApp-бот: напоминание через 24ч на следующем шаге. Email через Loops для веба.",
+      noCode: "Tally / Lovable: чек-лист в profiles.onboarding_steps[]. WhatsApp-бот: напоминание через 24ч на следующем шаге. Email через SendPulse для веба.",
     }} />
   );
 }
