@@ -53,7 +53,7 @@ export default function M8Slide25NextWeek() {
         </div>
       </div>
       <p className="text-[24px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1400px] leading-[1.4]">
-        Без retention монетизация — это утечка. Сегодня — фундамент. Не пропусти.
+        Без retention маркетинг — это утечка. Сегодня — фундамент. Не пропусти.
       </p>
     </div>
   );
