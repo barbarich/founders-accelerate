@@ -15,11 +15,11 @@ export default function M8Slide25NextWeek() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Следующая встреча</p>
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          Неделя 9:<br />Первые деньги. Без угадайки.
+          Неделя 9:<br />Маркетинг. Первые пользователи.
         </h2>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[12px] py-[10px] mb-[10px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.5] mb-[6px]">
-            Сегодня встроили причину возвращаться. На M9 — научимся брать за это деньги.
+            Сегодня встроили причину возвращаться. На M9 — научимся привлекать новых пользователей через рекламу.
           </p>
           <div className="space-y-[3px]">
             {topics.map((t, i) => (
