@@ -1,10 +1,10 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const tasks = [
-  { n: "1", t: "Подключи Mixpanel", d: "Бесплатно до 1M событий. Один скрипт. Завтра увидишь свою честную D1/D7-кривую — впервые." },
-  { n: "2", t: "Напиши свою петлю Hook", d: "Триггер → Действие → Награда → Инвестиция. Одна страница. Прислать в чат." },
-  { n: "3", t: "Запусти 1 триггерное письмо", d: "SendPulse или Resend. Любое одно событие. Главное — чтобы ушло автоматически." },
-  { n: "4", t: "Выбери 1 из 5 механик", d: "Streak / незаконченное / соц / контент / дедлайн. Внеси в продукт за неделю." },
+  { n: "1", t: "Финализируйте MVP", d: "Минимальная рабочая версия продукта. Один ключевой сценарий должен работать от начала до конца — без багов и заглушек." },
+  { n: "2", t: "Подключите аналитику", d: "Mixpanel или GA4. Настройте ключевое действие и базовые события. Без данных запускать рекламу нельзя." },
+  { n: "3", t: "Встройте 1 механику возврата", d: "Выберите одну из пяти: streak, незаконченное, социальная, свежий контент или дедлайн. Внедрите в продукт." },
+  { n: "4", t: "Подготовьте посадочную страницу", d: "Чёткое обещание, один CTA, форма регистрации. Это точка приземления для будущего трафика." },
 ];
 
 export default function M8Slide24Homework() {
@@ -17,7 +17,7 @@ export default function M8Slide24Homework() {
           Задание · к встрече 9
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          4 действия. Все no-code.
+          Финализируйте продукт перед запуском маркетинга
         </h2>
         <div className="space-y-[5px] mb-[8px]">
           {tasks.map((t) => (
@@ -32,7 +32,7 @@ export default function M8Slide24Homework() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[6px]">
           <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">Бонус: </span>оба промпта (письма + сегментация) — у вас в руках. Скопируй и применяй.
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>к встрече 9 у вас должен быть продукт, на который можно вести трафик.
           </p>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default function M8Slide24Homework() {
         Задание · к встрече 9
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
-        4 действия. Все no-code.
+        Финализируйте продукт перед запуском маркетинга
       </h2>
       <div className="grid grid-cols-2 gap-[18px] max-w-[1500px] mb-[24px]">
         {tasks.map((t) => (
@@ -60,7 +60,7 @@ export default function M8Slide24Homework() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[20px] max-w-[1500px]">
         <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">Бонус в подарок: </span>оба AI-промпта (7 писем + сегментация) уже у вас. Не переписывайте — копируйте и применяйте.
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>к встрече 9 у вас должен быть готовый продукт, на который можно вести трафик и тестировать рекламу.
         </p>
       </div>
     </div>
