@@ -17,6 +17,7 @@ import M8Slide12Mechanic2Unfinished from "./M8Slide12Mechanic2Unfinished";
 import M8Slide13Mechanic3Social from "./M8Slide13Mechanic3Social";
 import M8Slide14Mechanic4FreshContent from "./M8Slide14Mechanic4FreshContent";
 import M8Slide15Mechanic5Deadline from "./M8Slide15Mechanic5Deadline";
+import M8Slide13bWorkshop from "./M8Slide13bWorkshop";
 import M8Slide16NoCodeStack from "./M8Slide16NoCodeStack";
 import M8Slide17AIPrompt from "./M8Slide17AIPrompt";
 import M8Slide18LiveDemo from "./M8Slide18LiveDemo";
@@ -40,6 +41,7 @@ const slideNames = [
   "Механика 3 · Социальный долг",
   "Механика 4 · Свежий контент",
   "Механика 5 · Дедлайн",
+  "Практика · карта возврата",
   "Блок 4 · Wow-инструменты",
   "No-code стек",
   "AI-промпт: 7 писем",
@@ -68,22 +70,23 @@ function getSlideContent(index: number) {
     case 10: return <M8Slide13Mechanic3Social />;
     case 11: return <M8Slide14Mechanic4FreshContent />;
     case 12: return <M8Slide15Mechanic5Deadline />;
-    case 13: return <M8BlockHeader blockNumber={3} title="Wow-инструменты без кода" />;
-    case 14: return <M8Slide16NoCodeStack />;
-    case 15: return <M8Slide17AIPrompt />;
-    case 16: return <M8Slide18LiveDemo />;
-    case 17: return <M8Slide18bMessageFromInsight />;
-    case 18: return <M8BlockHeader blockNumber={4} title="Стек и чек-лист" subtitle="запусти всё за вечер" />;
-    case 19: return <M8Slide20RetentionStackFree />;
-    case 20: return <M8BlockHeader blockNumber={5} title="Реактивация и задание" />;
-    case 21: return <M8Slide22ReactivationInsights />;
-    case 22: return <M8Slide24Homework />;
-    case 23: return <M8Slide25NextWeek />;
+    case 13: return <M8Slide13bWorkshop />;
+    case 14: return <M8BlockHeader blockNumber={3} title="Wow-инструменты без кода" />;
+    case 15: return <M8Slide16NoCodeStack />;
+    case 16: return <M8Slide17AIPrompt />;
+    case 17: return <M8Slide18LiveDemo />;
+    case 18: return <M8Slide18bMessageFromInsight />;
+    case 19: return <M8BlockHeader blockNumber={4} title="Стек и чек-лист" subtitle="запусти всё за вечер" />;
+    case 20: return <M8Slide20RetentionStackFree />;
+    case 21: return <M8BlockHeader blockNumber={5} title="Реактивация и задание" />;
+    case 22: return <M8Slide22ReactivationInsights />;
+    case 23: return <M8Slide24Homework />;
+    case 24: return <M8Slide25NextWeek />;
     default: return null;
   }
 }
 
-const TOTAL = 24;
+const TOTAL = 25;
 
 export default function Meeting8PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
