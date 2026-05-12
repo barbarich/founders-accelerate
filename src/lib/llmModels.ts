@@ -1,6 +1,6 @@
 /**
  * LLM model catalog — kept in one place so Lens.tsx and PmfAgent.tsx share it.
- * Last synced 2026-04-20 from:
+ * Last synced 2026-05-12 from:
  *   - docs.anthropic.com/en/docs/about-claude/models/overview
  *   - openai-python SDK ChatModel literal type (main branch)
  *   - ai.google.dev/gemini-api/docs/models
@@ -45,7 +45,7 @@ export const MODELS: Record<Provider, ModelChoice[]> = {
   ],
 
   // =========================================================================
-  // OpenAI — source: openai-python SDK ChatModel type (2026-04-20)
+  // OpenAI — source: openai-python SDK ChatModel type (2026-05-12)
   // Skipped audio/search/tts/vision preview variants (не нужны для research flow).
   // =========================================================================
   openai: [
@@ -53,18 +53,21 @@ export const MODELS: Record<Provider, ModelChoice[]> = {
     { id: "gpt-5.4",                      label: "GPT-5.4",                note: "новейший флагман, 2026-03",                    tier: "premium"  },
     { id: "gpt-5.4-mini",                 label: "GPT-5.4 mini",           note: "младший 5.4, баланс цены",                     tier: "balanced" },
     { id: "gpt-5.4-nano",                 label: "GPT-5.4 nano",           note: "самый быстрый и дешёвый 5.4",                  tier: "fast"     },
-    // GPT-5.2 / 5.3 (late 2025)
+    // GPT-5.3 / 5.2
     { id: "gpt-5.3-chat-latest",          label: "GPT-5.3 chat (latest)",  note: "всегда-свежий 5.3 для чата",                   tier: "balanced" },
     { id: "gpt-5.2-pro",                  label: "GPT-5.2 pro",            note: "премиум 5.2",                                  tier: "premium"  },
     { id: "gpt-5.2",                      label: "GPT-5.2",                note: "стабильный 5.2",                               tier: "balanced" },
+    { id: "gpt-5.2-chat-latest",          label: "GPT-5.2 chat (latest)",  note: "всегда-свежий 5.2 для чата",                   tier: "balanced" },
     // GPT-5.1
     { id: "gpt-5.1",                      label: "GPT-5.1",                note: "улучшенный 5.0, 2025-11",                      tier: "balanced" },
     { id: "gpt-5.1-codex",                label: "GPT-5.1 codex",          note: "специализирован для кода",                     tier: "balanced" },
     { id: "gpt-5.1-mini",                 label: "GPT-5.1 mini",           note: "младший 5.1",                                  tier: "balanced" },
+    { id: "gpt-5.1-chat-latest",          label: "GPT-5.1 chat (latest)",  note: "всегда-свежий 5.1 для чата",                   tier: "balanced" },
     // GPT-5 (original)
     { id: "gpt-5",                        label: "GPT-5",                  note: "оригинальный 5.0, 2025-08 (дефолт)",           tier: "balanced" },
     { id: "gpt-5-mini",                   label: "GPT-5 mini",             note: "младший GPT-5",                                tier: "fast"     },
     { id: "gpt-5-nano",                   label: "GPT-5 nano",             note: "самый дешёвый GPT-5",                          tier: "fast"     },
+    { id: "gpt-5-chat-latest",            label: "GPT-5 chat (latest)",    note: "всегда-свежий GPT-5 для чата",                 tier: "balanced" },
     // GPT-4.1 family — long context
     { id: "gpt-4.1",                      label: "GPT-4.1",                note: "1M контекст, код",                             tier: "balanced" },
     { id: "gpt-4.1-mini",                 label: "GPT-4.1 mini",           note: "длинный контекст, дешевле",                    tier: "fast"     },
@@ -84,14 +87,15 @@ export const MODELS: Record<Provider, ModelChoice[]> = {
   ],
 
   // =========================================================================
-  // Google Gemini — source: ai.google.dev/gemini-api/docs/models (2026-04-20)
+  // Google Gemini — source: ai.google.dev/gemini-api/docs/models (2026-05-12)
   // Skipped realtime-voice + TTS + native-audio variants.
   // =========================================================================
   gemini: [
     // Gemini 3.x family — current frontier
     { id: "gemini-3.1-pro-preview",       label: "Gemini 3.1 Pro",         note: "флагман 3.x, complex reasoning (preview)",     tier: "premium"  },
     { id: "gemini-3-flash-preview",       label: "Gemini 3 Flash",         note: "скорость 3.x, frontier performance (preview)", tier: "balanced" },
-    { id: "gemini-3.1-flash-lite-preview",label: "Gemini 3.1 Flash Lite",  note: "самый дешёвый 3.x (preview)",                  tier: "fast"     },
+    { id: "gemini-3.1-flash-lite",        label: "Gemini 3.1 Flash Lite",  note: "самый дешёвый 3.x (stable)",                   tier: "fast"     },
+    { id: "gemini-3.1-flash-lite-preview",label: "Gemini 3.1 Flash Lite preview", note: "preview-трек того же 3.1 Flash Lite",  tier: "fast"     },
     // Gemini 2.5 family — production-stable
     { id: "gemini-2.5-pro",               label: "Gemini 2.5 Pro",         note: "production флагман (дефолт)",                  tier: "premium"  },
     { id: "gemini-2.5-flash",             label: "Gemini 2.5 Flash",       note: "production баланс цены / качества",            tier: "balanced" },
