@@ -278,7 +278,7 @@ def chat_with_intake(messages: list[dict], provider: str, api_key: str, model: s
         conv = [{"role": "system", "content": INTAKE_SYSTEM}]
         for m in messages:
             conv.append({"role": ("user" if m["role"] == "user" else "assistant"), "content": m["content"]})
-        response = client.chat.completions.create(model=model, messages=conv, max_tokens=2048)
+        response = client.chat.completions.create(model=model, messages=conv, max_completion_tokens=2048)
         return response.choices[0].message.content or ""
 
     raise ValueError(f"Unknown provider: {provider}")
@@ -1137,7 +1137,7 @@ PMF analysis results:
                         conv = [{"role": "system", "content": followup_system}]
                         for m in convo:
                             conv.append({"role": ("user" if m["role"] == "user" else "assistant"), "content": m["content"]})
-                        resp = client.chat.completions.create(model=model, messages=conv, max_tokens=2048)
+                        resp = client.chat.completions.create(model=model, messages=conv, max_completion_tokens=2048)
                         answer = resp.choices[0].message.content or "Could you rephrase?"
                     else:
                         answer = f"Unknown provider: {provider}"

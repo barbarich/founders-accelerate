@@ -509,15 +509,18 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             raw_text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
         elif provider == "openai":
             from openai import AsyncOpenAI
-            resp = await client.chat.completions.create(
-                model=model_id,
-                max_tokens=1500,
-                response_format={"type": "json_object"},
-                messages=[
+            is_reasoning = model_id.startswith(("o1", "o3", "o4"))
+            kwargs = {
+                "model": model_id,
+                "max_completion_tokens": 1500,
+                "messages": [
                     {"role": "system", "content": EVALUATOR_SYSTEM + "\nReturn JSON only."},
                     {"role": "user", "content": user_text},
                 ],
-            )
+            }
+            if not is_reasoning:
+                kwargs["response_format"] = {"type": "json_object"}
+            resp = await client.chat.completions.create(**kwargs)
             raw_text = resp.choices[0].message.content or "{}"
         elif provider == "gemini":
             mdl = client.models

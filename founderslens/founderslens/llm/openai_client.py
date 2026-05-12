@@ -56,7 +56,7 @@ async def complete(
     client = _get_client()
     resp = await client.chat.completions.create(
         model=model,
-        max_tokens=max_tokens,
+        max_completion_tokens=max_tokens,
         temperature=temperature,
         messages=[
             {"role": "system", "content": system},
@@ -88,7 +88,7 @@ async def extract_json(
     json_schema = schema.model_json_schema()
     resp = await client.chat.completions.create(
         model=model,
-        max_tokens=max_tokens,
+        max_completion_tokens=max_tokens,
         temperature=temperature,
         response_format={
             "type": "json_schema",

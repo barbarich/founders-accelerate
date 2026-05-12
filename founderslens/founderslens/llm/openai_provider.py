@@ -29,7 +29,7 @@ class OpenAIProvider(LLMProvider):
     ) -> LLMResponse:
         model = model or self.default_models["main"]
         resp = await self._client.chat.completions.create(
-            model=model, max_tokens=max_tokens, temperature=temperature,
+            model=model, max_completion_tokens=max_tokens, temperature=temperature,
             messages=[
                 {"role": "system", "content": system},
                 {"role": "user", "content": user},
@@ -50,7 +50,7 @@ class OpenAIProvider(LLMProvider):
     ) -> tuple[T, LLMResponse]:
         model = model or self.default_models["main"]
         resp = await self._client.chat.completions.create(
-            model=model, max_tokens=max_tokens, temperature=temperature,
+            model=model, max_completion_tokens=max_tokens, temperature=temperature,
             response_format={
                 "type": "json_schema",
                 "json_schema": {
