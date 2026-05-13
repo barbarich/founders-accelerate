@@ -12,30 +12,32 @@ export default function FOM1Slide22MikhaelDiagnosis() {
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[14px] md:p-[24px]">
           <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">Где сейчас</p>
           <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
-            <li>· Рабочий продукт на airecom.io, 0 платящих, цена 250 шек, Freemium</li>
-            <li>· ICP: «малый и средний бизнес + маркетинговые агентства»</li>
-            <li>· Канал: личные связи в нише, «где любят тишину»</li>
+            <li>· Рабочий продукт на airecom.io: проверка AI-видимости бизнеса в ChatGPT, Gemini, Perplexity</li>
+            <li>· Анализ структуры сайта, контента, доверительных сигналов и технической готовности к AI-поиску</li>
+            <li>· ICP пока широкий: «SMB + агентства + владельцы сайтов», цена 250 ₪, Freemium</li>
           </ul>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] p-[14px] md:p-[24px]" style={{ borderColor: "hsl(0 70% 60% / 0.4)" }}>
           <p className="uppercase tracking-[0.2em] text-[10px] md:text-[14px]" style={{ color: "hsl(0 70% 60%)" }}>Что не работает</p>
           <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
-            <li>· ICP «SMB + agencies» — это не ICP, это рынок. Слишком широко.</li>
-            <li>· Freemium при 0 paying = модель неверная или value prop слишком слабый</li>
-            <li>· Главные конкуренты не Profound и не AthenaHQ — а маркетинговое агентство клиента, которое уже делает SEO, и ChatGPT, в который владелец сам вбивает свой сайт</li>
+            <li>· «SMB + agencies + владельцы сайтов» — это рынок, а не ICP. Под кого писать лендинг — непонятно</li>
+            <li>· Value prop «AI-видимость» абстрактный: клиент не понимает, что он теряет и сколько это стоит в деньгах</li>
+            <li>· Главные конкуренты — не Profound и AthenaHQ, а SEO-агентство клиента и сам ChatGPT, куда владелец вбивает свой сайт «чтоб проверить»</li>
           </ul>
         </div>
       </div>
       <div className="mt-[10px] md:mt-[16px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
         <p className="text-[hsl(var(--slide-gold))] font-semibold">Гипотеза на эту неделю</p>
         <p className="text-[hsl(var(--slide-text))]">
-          Выбрать ОДИН вертикал из трёх: local services / e-commerce / B2B SaaS.
-          Переписать позиционирование под него по формуле результата.
+          Выбрать ОДИН вертикал, где «быть рекомендованным AI» = деньги уже завтра:
+          local services (стоматологи, юристы, клиники), e-commerce DTC-бренды или B2B-агентства.
+          Переписать позиционирование под него: не «AI-видимость», а конкретный результат — «клиенты, которые приходят, когда ChatGPT советует именно вас».
         </p>
         <p className="mt-[4px] text-[hsl(var(--slide-text-muted))]">
-          <span className="text-[hsl(var(--slide-text))] font-semibold">Reframe:</span> код у тебя есть. Не выкидываем. Переупаковываем под одного ICP.
+          <span className="text-[hsl(var(--slide-text))] font-semibold">Reframe:</span> продукт есть и работает. Задача недели — найти ту нишу, где боль «нас не рекомендует AI» уже осознана, и упаковать AIRecom под неё одним лендингом.
         </p>
       </div>
     </FOM1SlideBase>
   );
 }
+
