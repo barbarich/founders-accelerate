@@ -3,7 +3,7 @@ import FOM1SlideBase from "./FOM1SlideBase";
 export default function FOM1Slide12WhoPays() {
   return (
     <FOM1SlideBase
-      slide={12}
+      slide={13}
       eyebrow="Целевая аудитория"
       title="Кто заплатит vs кому полезно"
       subtitle="Один — рынок. Второй — фантазия"

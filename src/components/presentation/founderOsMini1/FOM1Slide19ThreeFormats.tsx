@@ -24,7 +24,7 @@ const formats = [
 export default function FOM1Slide19ThreeFormats() {
   return (
     <FOM1SlideBase
-      slide={19}
+      slide={20}
       eyebrow="Адаптация"
       title="Один результат — три формулировки"
       subtitle="Один результат адаптируется под канал коммуникации"

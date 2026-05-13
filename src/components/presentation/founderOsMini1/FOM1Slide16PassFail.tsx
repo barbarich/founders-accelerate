@@ -61,7 +61,7 @@ export default function FOM1Slide16PassFail() {
         </p>
       </div>
 
-      <FOM1Footer slide={16} />
+      <FOM1Footer slide={17} />
     </div>
   );
 }

@@ -18,7 +18,7 @@ const you = [
 export default function FOM1Slide27AIRule() {
   return (
     <FOM1SlideBase
-      slide={27}
+      slide={28}
       eyebrow="AI-стек"
       title="AI ≠ замена тебя"
       subtitle="Правило 80/20"

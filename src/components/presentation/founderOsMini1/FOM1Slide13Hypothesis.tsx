@@ -10,7 +10,7 @@ const checks = [
 export default function FOM1Slide13Hypothesis() {
   return (
     <FOM1SlideBase
-      slide={13}
+      slide={14}
       eyebrow="Customer Development"
       title="Сначала гипотеза — потом интервью"
       subtitle="Без гипотезы интервью превращается в болтовню. Ты должен знать, что проверяешь — до того, как откроешь рот"

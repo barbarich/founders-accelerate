@@ -10,7 +10,7 @@ const rules = [
 export default function FOM1Slide18Formula() {
   return (
     <FOM1SlideBase
-      slide={18}
+      slide={19}
       eyebrow="Формула позиционирования"
       title="Формула результата"
       subtitle="[Кто] получает [конкретный результат] с помощью [продукт], без [боль / старый способ]"

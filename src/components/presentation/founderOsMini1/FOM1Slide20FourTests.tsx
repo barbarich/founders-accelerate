@@ -9,7 +9,7 @@ const tests = [
 export default function FOM1Slide20FourTests() {
   return (
     <FOM1SlideBase
-      slide={20}
+      slide={21}
       eyebrow="Валидация"
       title="Четыре теста перед запуском"
       subtitle="Проверка позиционирования"

@@ -12,7 +12,7 @@ const sessions = [
 export default function FOM1Slide29SixSessions() {
   return (
     <FOM1SlideBase
-      slide={29}
+      slide={30}
       eyebrow="Карта программы"
       title="Куда мы идём"
       subtitle="6 сессий — 30 дней — первый клиент"
