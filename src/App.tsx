@@ -48,6 +48,8 @@ import PublicMeeting5Shell from "@/components/presentation/meeting5/PublicMeetin
 import PublicMeeting6Shell from "@/components/presentation/meeting6/PublicMeeting6Shell";
 import PublicMeeting7Shell from "@/components/presentation/meeting7/PublicMeeting7Shell";
 import PublicMeeting8Shell from "@/components/presentation/meeting8/PublicMeeting8Shell";
+import PublicFOM1Shell from "@/components/presentation/founderOsMini1/PublicFOM1Shell";
+import FOM1Shell from "@/components/presentation/founderOsMini1/FOM1Shell";
 import MiniCourseLesson1 from "./pages/MiniCourseLesson1";
 import MiniCourseLesson1Text from "./pages/MiniCourseLesson1Text";
 import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
