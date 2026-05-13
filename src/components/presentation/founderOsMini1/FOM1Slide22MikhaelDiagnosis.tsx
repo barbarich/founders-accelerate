@@ -4,37 +4,47 @@ export default function FOM1Slide22MikhaelDiagnosis() {
   return (
     <FOM1SlideBase
       slide={23}
-      eyebrow="Применение · участник 1"
-      title="Михаэль Резник · AIRecom"
-      subtitle="Диагностика и точка фокуса"
+      eyebrow="Домашнее задание · к среде"
+      title="Одно задание · для Михаэля и Маргариты"
+      subtitle="Сделать всё, что разобрали сегодня — на своём проекте"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] md:gap-[20px] max-w-[1800px] text-[12px] md:text-[22px]">
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[14px] md:p-[24px]">
-          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">Где сейчас</p>
-          <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
-            <li>· Рабочий продукт на airecom.io: проверка AI-видимости бизнеса в ChatGPT, Gemini, Perplexity</li>
-            <li>· Анализ структуры сайта, контента, доверительных сигналов и технической готовности к AI-поиску</li>
-            <li>· ICP пока широкий: «SMB + агентства + владельцы сайтов», цена 250 ₪, Freemium</li>
-          </ul>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[14px] md:gap-[24px] max-w-[1800px] text-[13px] md:text-[20px] leading-[1.4]">
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[26px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">1 · ICP за 24 часа</p>
+          <p className="mt-[8px] text-[hsl(var(--slide-text))]">
+            Сузить аудиторию до <b>одного</b> сегмента. Не «SMB» и не «founders» — а конкретный человек: роль, размер компании, в какой момент у него болит.
+          </p>
+          <p className="mt-[6px] text-[hsl(var(--slide-text-muted))] text-[12px] md:text-[17px]">
+            Михаэль · один вертикал для AIRecom · Маргарита · один сценарий ChampionVibes
+          </p>
         </div>
-        <div className="bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] p-[14px] md:p-[24px]" style={{ borderColor: "hsl(0 70% 60% / 0.4)" }}>
-          <p className="uppercase tracking-[0.2em] text-[10px] md:text-[14px]" style={{ color: "hsl(0 70% 60%)" }}>Что не работает</p>
-          <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
-            <li>· «SMB + agencies + владельцы сайтов» — это рынок, а не ICP. Под кого писать лендинг — непонятно</li>
-            <li>· Value prop «AI-видимость» абстрактный: клиент не понимает, что он теряет и сколько это стоит в деньгах</li>
-            <li>· Главные конкуренты — не Profound и AthenaHQ, а SEO-агентство клиента и сам ChatGPT, куда владелец вбивает свой сайт «чтоб проверить»</li>
-          </ul>
+
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[26px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">2 · Ресёрч конкурентов</p>
+          <p className="mt-[8px] text-[hsl(var(--slide-text))]">
+            Прогнать Deep Research промпт в Perplexity. Собрать <b>10–15 конкурентов</b> по 3 уровням, проверить трафик в SimilarWeb, выписать <b>3 негативных отзыва</b> на каждого из топ-5.
+          </p>
+        </div>
+
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[26px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">3 · 5–7 интервью по Mom Test</p>
+          <p className="mt-[8px] text-[hsl(var(--slide-text))]">
+            Не питчим — слушаем. Считаем pass/fail сигналы: сами поднимают боль, называют костыли, считают потери. Цель — <b>7 из 10</b> подтверждают одну и ту же проблему.
+          </p>
+        </div>
+
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[26px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">4 · Позиционирование</p>
+          <p className="mt-[8px] text-[hsl(var(--slide-text))]">
+            Собрать одну строку по формуле <b>[Кто] получает [результат] за [время] — без [боли]</b>. Сделать <b>3 формулировки</b> и прогнать через <b>4 теста</b>: ясность, конкретика, желание, отстройка.
+          </p>
         </div>
       </div>
-      <div className="mt-[10px] md:mt-[16px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
-        <p className="text-[hsl(var(--slide-gold))] font-semibold">Гипотеза на эту неделю</p>
+
+      <div className="mt-[14px] md:mt-[22px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[14px] max-w-[1800px] text-[13px] md:text-[20px] leading-[1.45]">
+        <p className="text-[hsl(var(--slide-gold))] font-semibold">Что приносим в среду</p>
         <p className="text-[hsl(var(--slide-text))]">
-          Выбрать ОДИН вертикал, где «быть рекомендованным AI» = деньги уже завтра:
-          local services (стоматологи, юристы, клиники), e-commerce DTC-бренды или B2B-агентства.
-          Переписать позиционирование под него: не «AI-видимость», а конкретный результат — «клиенты, которые приходят, когда ChatGPT советует именно вас».
-        </p>
-        <p className="mt-[4px] text-[hsl(var(--slide-text-muted))]">
-          <span className="text-[hsl(var(--slide-text))] font-semibold">Reframe:</span> продукт есть и работает. Задача недели — найти ту нишу, где боль «нас не рекомендует AI» уже осознана, и упаковать AIRecom под неё одним лендингом.
+          Один ICP · карта 10–15 конкурентов с дырами · ≥ 5 интервью с отметками pass/fail · одно позиционирование, прошедшее 4 теста. Всё на 1–2 страницах.
         </p>
       </div>
     </FOM1SlideBase>
