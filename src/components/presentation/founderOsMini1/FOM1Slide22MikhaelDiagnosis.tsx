@@ -37,3 +37,7 @@ export default function FOM1Slide22MikhaelDiagnosis() {
           <span className="text-[hsl(var(--slide-text))] font-semibold">Reframe:</span> продукт есть и работает. Задача недели — найти ту нишу, где боль «нас не рекомендует AI» уже осознана, и упаковать AIRecom под неё одним лендингом.
         </p>
       </div>
+    </FOM1SlideBase>
+  );
+}
+
