@@ -1,7 +1,12 @@
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useSlideMeta } from "@/components/mini-course/SlideMetaContext";
 
 export default function FOM1Footer({ slide }: { slide: number }) {
   const isMobile = useIsMobile();
+  const meta = useSlideMeta();
+  const idx = meta.total > 1 ? meta.index : slide;
+  const total = meta.total > 1 ? meta.total : 31;
+  const label = meta.footerLabel ?? "Михаэль · Сессия 1 из 6";
   if (isMobile) {
     return (
       <div
@@ -14,7 +19,7 @@ export default function FOM1Footer({ slide }: { slide: number }) {
           letterSpacing: "0.04em",
         }}
       >
-        Slide {slide}/31
+        Slide {idx}/{total}
       </div>
     );
   }
@@ -29,7 +34,7 @@ export default function FOM1Footer({ slide }: { slide: number }) {
         letterSpacing: "0.04em",
       }}
     >
-      Михаэль · Сессия 1 из 6 · Slide {slide}/31
+      {label} · Slide {idx}/{total}
     </div>
   );
 }
