@@ -23,21 +23,21 @@ export default function FOM1Slide27AIRule() {
       title="AI ≠ замена тебя"
       subtitle="Правило 80/20"
     >
-      <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] max-w-[1800px] text-[9.5px] md:text-[15px]">
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[10px] p-[10px] md:p-[16px]">
-          <p className="font-semibold text-[hsl(var(--slide-gold))] text-[11px] md:text-[18px]">AI делает (80%)</p>
+      <div className="grid grid-cols-2 gap-[10px] md:gap-[20px] max-w-[1800px] text-[10.5px] md:text-[18px]">
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] p-[14px] md:p-[24px]">
+          <p className="font-semibold text-[hsl(var(--slide-gold))] text-[12px] md:text-[22px]">AI делает (80%)</p>
           <ul className="mt-[6px] space-y-[3px] text-[hsl(var(--slide-text))]">
             {ai.map((x, i) => <li key={i}>· {x}</li>)}
           </ul>
         </div>
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] p-[10px] md:p-[16px]">
-          <p className="font-semibold text-[hsl(var(--slide-text))] text-[11px] md:text-[18px]">Ты делаешь руками (20%)</p>
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[14px] md:p-[24px]">
+          <p className="font-semibold text-[hsl(var(--slide-text))] text-[12px] md:text-[22px]">Ты делаешь руками (20%)</p>
           <ul className="mt-[6px] space-y-[3px] text-[hsl(var(--slide-text))]">
             {you.map((x, i) => <li key={i}>· {x}</li>)}
           </ul>
         </div>
       </div>
-      <div className="mt-[10px] md:mt-[16px] border-l-[3px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[9.5px] md:text-[15px]">
+      <div className="mt-[10px] md:mt-[16px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[10.5px] md:text-[18px]">
         <p>
           💡 2026 контекст: Anthropic в апреле опубликовал, как они провели 1 250 интервью через AI-Interviewer для собственного research.
           Pattern публичный — ты можешь запустить 30 первичных текстовых интервью за выходные.

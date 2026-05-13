@@ -17,7 +17,7 @@ export default function FOM1Slide11Competitors() {
       <div className="space-y-[12px] max-w-[1700px]">
         {levels.map((x, i) => (
           <div key={i} className="flex items-baseline gap-[14px]">
-            <span className="text-[18px] md:text-[26px]">{x.e}</span>
+            <span className="text-[20px] md:text-[30px]">{x.e}</span>
             <p>
               <span className="text-[hsl(var(--slide-text))] font-semibold">{x.t}</span>
               <span className="text-[hsl(var(--slide-text-muted))]"> — {x.d}</span>
@@ -25,7 +25,7 @@ export default function FOM1Slide11Competitors() {
           </div>
         ))}
       </div>
-      <div className="mt-[24px] border-l-[3px] border-[hsl(var(--slide-gold))] pl-[16px] max-w-[1700px]">
+      <div className="mt-[24px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[16px] max-w-[1700px]">
         <p>
           💡 В RunEverywhere наш конкурент — не другое беговое приложение. Это бар и YouTube.
           Потому что вечером человек выбирает: выйти на пробежку или остаться на диване.

@@ -17,10 +17,10 @@ export default function FOM1Slide28Stack() {
       title="Стек на эту неделю"
       subtitle="Минимум инструментов — максимум данных"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[8px] md:gap-[14px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[8px] md:gap-[14px] max-w-[1800px] text-[12px] md:text-[22px]">
         {tools.map(([e, t, d], i) => (
           <div key={i} className="flex items-baseline gap-[10px]">
-            <span className="text-[14px] md:text-[22px]">{e}</span>
+            <span className="text-[16px] md:text-[26px]">{e}</span>
             <p>
               <span className="font-semibold text-[hsl(var(--slide-text))]">{t}</span>
               <span className="text-[hsl(var(--slide-text-muted))]"> — {d}</span>

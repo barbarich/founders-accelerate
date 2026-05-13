@@ -18,14 +18,14 @@ export default function FOM1Slide05Agenda() {
         {blocks.map((b) => (
           <div
             key={b.n}
-            className="border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] p-[16px] md:p-[24px] bg-[hsl(var(--slide-bg-alt))]"
+            className="border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[24px] bg-[hsl(var(--slide-bg-alt))]"
           >
             <p className="font-mono text-[hsl(var(--slide-gold))] text-[12px] md:text-[16px]">{b.n}</p>
-            <p className="text-[18px] md:text-[28px] mt-[6px]">{b.e}</p>
-            <h3 className="font-display text-[14px] md:text-[24px] font-bold text-[hsl(var(--slide-text))] mt-[6px]">
+            <p className="text-[22px] md:text-[36px] mt-[6px]">{b.e}</p>
+            <h3 className="font-display text-[16px] md:text-[28px] font-bold text-[hsl(var(--slide-text))] mt-[6px]">
               {b.t}
             </h3>
-            <p className="text-[10.5px] md:text-[18px] text-[hsl(var(--slide-text-muted))] mt-[6px] leading-[1.45]">
+            <p className="text-[11px] md:text-[22px] text-[hsl(var(--slide-text-muted))] mt-[6px] leading-[1.45]">
               {b.d}
             </p>
           </div>

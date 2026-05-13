@@ -17,7 +17,7 @@ export default function FOM1Slide29SixSessions() {
       title="Куда мы идём"
       subtitle="6 сессий — 30 дней — первый клиент"
     >
-      <div className="space-y-[6px] md:space-y-[10px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="space-y-[6px] md:space-y-[10px] max-w-[1800px] text-[12px] md:text-[22px]">
         {sessions.map(([w, t, d], i) => (
           <div key={i} className="grid grid-cols-[110px_1fr] md:grid-cols-[200px_1fr] gap-[8px] md:gap-[20px] items-baseline border-b border-[hsl(var(--slide-border)/0.2)] pb-[6px]">
             <span className="text-[hsl(var(--slide-gold))] font-mono">{w}</span>
@@ -28,7 +28,7 @@ export default function FOM1Slide29SixSessions() {
           </div>
         ))}
       </div>
-      <div className="mt-[12px] border-l-[3px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="mt-[12px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
         <p>💡 Каждая сессия — отдельный блок с практическим результатом. Без выполненного ДЗ следующая сессия не работает.</p>
       </div>
     </FOM1SlideBase>

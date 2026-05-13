@@ -26,7 +26,7 @@ export default function FOM1Slide18Formula() {
           </li>
         ))}
       </ul>
-      <div className="mt-[20px] border-l-[3px] border-[hsl(var(--slide-gold))] pl-[14px] max-w-[1700px]">
+      <div className="mt-[20px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[14px] max-w-[1700px]">
         <p>💡 Тест простоты: если ваша бабушка не поняла, что вы делаете — переписывайте.</p>
       </div>
     </FOM1SlideBase>

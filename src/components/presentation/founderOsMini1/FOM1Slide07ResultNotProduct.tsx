@@ -17,7 +17,7 @@ export default function FOM1Slide07ResultNotProduct() {
       <div className="space-y-[14px] max-w-[1600px]">
         {examples.map((x, i) => (
           <div key={i} className="flex items-baseline gap-[14px]">
-            <span className="text-[18px] md:text-[28px]">{x.e}</span>
+            <span className="text-[22px] md:text-[36px]">{x.e}</span>
             <p>
               <span className="text-[hsl(var(--slide-text-muted))]">{x.a}</span>
               <span className="text-[hsl(var(--slide-gold))]"> → </span>
@@ -26,7 +26,7 @@ export default function FOM1Slide07ResultNotProduct() {
           </div>
         ))}
       </div>
-      <div className="mt-[28px] border-l-[3px] border-[hsl(var(--slide-gold))] pl-[16px] max-w-[1600px]">
+      <div className="mt-[28px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[16px] max-w-[1600px]">
         <p className="text-[hsl(var(--slide-text))]">
           💡 Сегодня всё через эту линзу: позиционирование = обещание результата,
           цена = стоимость результата, MVP = минимум для доставки результата.

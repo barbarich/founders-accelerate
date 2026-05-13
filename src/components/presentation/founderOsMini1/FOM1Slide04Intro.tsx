@@ -22,7 +22,7 @@ export default function FOM1Slide04Intro() {
         {items.map((x, i) => (
           <div key={i} className="flex items-baseline gap-[14px]">
             <span className="text-[hsl(var(--slide-gold))] font-mono text-[14px] md:text-[18px] w-[18px]">{i + 1}</span>
-            <span className="text-[18px] md:text-[24px]">{x.e}</span>
+            <span className="text-[20px] md:text-[28px]">{x.e}</span>
             <div>
               <span className="font-semibold text-[hsl(var(--slide-text))]">{x.t}</span>
               <span className="text-[hsl(var(--slide-text-muted))]"> — {x.d}</span>

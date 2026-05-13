@@ -36,7 +36,7 @@ export default function FOM1Slide09Top5Mistakes() {
       title="Топ-5 ошибок позиционирования"
       subtitle="Если узнали себя — переписываем сегодня"
     >
-      <div className="space-y-[10px] md:space-y-[14px] max-w-[1700px] text-[10.5px] md:text-[18px]">
+      <div className="space-y-[10px] md:space-y-[14px] max-w-[1700px] text-[11px] md:text-[22px]">
         {items.map((x) => (
           <div key={x.n} className="flex gap-[10px] md:gap-[16px]">
             <span className="font-mono text-[hsl(var(--slide-gold))] font-bold w-[14px] md:w-[24px]">{x.n}</span>

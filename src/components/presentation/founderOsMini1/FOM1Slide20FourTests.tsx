@@ -14,18 +14,18 @@ export default function FOM1Slide20FourTests() {
       title="Четыре теста перед запуском"
       subtitle="Проверка позиционирования"
     >
-      <div className="space-y-[8px] md:space-y-[12px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="space-y-[8px] md:space-y-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
         {tests.map((t, i) => (
           <div key={i} className="flex gap-[10px]">
-            <span className="text-[14px] md:text-[22px]">{t.e}</span>
+            <span className="text-[16px] md:text-[26px]">{t.e}</span>
             <p>
               <span className="font-semibold text-[hsl(var(--slide-text))]">{t.t}</span>{" "}
               <span className="text-[hsl(var(--slide-text-muted))]">— {t.d}</span>
             </p>
           </div>
         ))}
-        <div className="border border-[hsl(var(--slide-gold)/0.4)] bg-[hsl(var(--slide-bg-alt))] rounded-[10px] p-[10px] md:p-[16px] mt-[6px]">
-          <p className="font-semibold text-[hsl(var(--slide-gold))] text-[11px] md:text-[18px]">
+        <div className="border border-[hsl(var(--slide-gold)/0.4)] bg-[hsl(var(--slide-bg-alt))] rounded-[14px] p-[14px] md:p-[24px] mt-[6px]">
+          <p className="font-semibold text-[hsl(var(--slide-gold))] text-[12px] md:text-[22px]">
             📢 Тест рекламой в Meta (самый показательный)
           </p>
           <ul className="mt-[4px] text-[hsl(var(--slide-text))] space-y-[2px]">
@@ -35,7 +35,7 @@ export default function FOM1Slide20FourTests() {
             <li>· Обзвон заявок — короткое интервью с теми, кто оставил контакт</li>
           </ul>
         </div>
-        <div className="border-l-[3px] border-[hsl(var(--slide-gold))] pl-[12px] mt-[8px]">
+        <div className="border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] mt-[8px]">
           <p>
             💡 Хотите узнать, продаётся ли ваше позиционирование? $30 на Meta за выходные.
             CTR &lt; 1% — не работает. Появились заявки — есть рынок. Это валидация рынком, не друзьями.
