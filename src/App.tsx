@@ -183,6 +183,8 @@ const App = () => (
           <Route path="/programm-week6" element={<PublicMeeting6Shell />} />
           <Route path="/programm-week7" element={<PublicMeeting7Shell />} />
           <Route path="/programm-week8" element={<PublicMeeting8Shell />} />
+          <Route path="/founder-os-mini-session1" element={<PublicFOM1Shell />} />
+          <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
           <Route path="/mini-course/lesson0" element={<MiniCourseLesson0 />} />
           <Route path="/mini-course/lesson1" element={<MiniCourseLesson1 />} />
           <Route path="/mini-course/lesson1/text" element={<MiniCourseLesson1Text />} />
