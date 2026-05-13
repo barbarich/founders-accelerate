@@ -20,7 +20,7 @@ const dont = [
 export default function FOM1Slide15InterviewRules() {
   return (
     <FOM1SlideBase
-      slide={15}
+      slide={16}
       eyebrow="Mom Test"
       title="Правила custdev-интервью"
       subtitle="Цель — не «поговорить с людьми», а проверить гипотезу"

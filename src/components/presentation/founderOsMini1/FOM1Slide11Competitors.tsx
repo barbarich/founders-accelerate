@@ -9,7 +9,7 @@ const levels = [
 export default function FOM1Slide11Competitors() {
   return (
     <FOM1SlideBase
-      slide={11}
+      slide={12}
       eyebrow="Конкуренты"
       title="Три уровня конкурентов"
       subtitle="Ваши конкуренты — это не те, кто делает то же самое"

@@ -12,7 +12,7 @@ const tools = [
 export default function FOM1Slide28Stack() {
   return (
     <FOM1SlideBase
-      slide={28}
+      slide={29}
       eyebrow="AI-стек"
       title="Стек на эту неделю"
       subtitle="Минимум инструментов — максимум данных"

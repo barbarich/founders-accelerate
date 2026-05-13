@@ -12,6 +12,7 @@ import FOM1Slide05Agenda from "./FOM1Slide05Agenda";
 import FOM1Slide07ResultNotProduct from "./FOM1Slide07ResultNotProduct";
 import FOM1Slide08ProcessVsResult from "./FOM1Slide08ProcessVsResult";
 import FOM1Slide09Top5Mistakes from "./FOM1Slide09Top5Mistakes";
+import FOM1Slide10FormulaIntro from "./FOM1Slide10FormulaIntro";
 import FOM1Slide11Competitors from "./FOM1Slide11Competitors";
 import FOM1Slide12WhoPays from "./FOM1Slide12WhoPays";
 import FOM1Slide13Hypothesis from "./FOM1Slide13Hypothesis";
@@ -40,6 +41,7 @@ export const slideNames = [
   "Никто не покупает продукт",
   "Процесс vs Результат",
   "Топ-5 ошибок позиционирования",
+  "Формула позиционирования — кратко",
   "Раздел 2 · Кто заплатит",
   "Три уровня конкурентов",
   "Кто заплатит vs кому полезно",
@@ -74,32 +76,33 @@ export function getSlideContent(index: number) {
     case 6: return <FOM1Slide07ResultNotProduct />;
     case 7: return <FOM1Slide08ProcessVsResult />;
     case 8: return <FOM1Slide09Top5Mistakes />;
-    case 9: return <FOM1BlockHeader blockNumber={2} title="Кто заплатит" time="~15 минут" slide={10} />;
-    case 10: return <FOM1Slide11Competitors />;
-    case 11: return <FOM1Slide12WhoPays />;
-    case 12: return <FOM1Slide13Hypothesis />;
-    case 13: return <FOM1BlockHeader blockNumber={3} title="Mom Test — как спрашивать" time="~10 минут" slide={14} />;
-    case 14: return <FOM1Slide15InterviewRules />;
-    case 15: return <FOM1Slide16PassFail />;
-    case 16: return <FOM1BlockHeader blockNumber={4} title="Формула позиционирования" time="~15 минут" slide={17} />;
-    case 17: return <FOM1Slide18Formula />;
-    case 18: return <FOM1Slide19ThreeFormats />;
-    case 19: return <FOM1Slide20FourTests />;
-    case 20: return <FOM1BlockHeader blockNumber={5} title="Применение к вашим проектам" time="~25 минут" slide={21} />;
-    case 21: return <FOM1Slide22MikhaelDiagnosis />;
-    case 22: return <FOM1Slide23MikhaelHomework />;
-    case 23: return <FOM1Slide24MargaritaDiagnosis />;
-    case 24: return <FOM1Slide25MargaritaHomework />;
-    case 25: return <FOM1BlockHeader blockNumber={6} title="AI-стек на эту неделю" time="~10 минут" slide={26} />;
-    case 26: return <FOM1Slide27AIRule />;
-    case 27: return <FOM1Slide28Stack />;
-    case 28: return <FOM1Slide29SixSessions />;
-    case 29: return <FOM1Slide30Closing />;
+    case 9: return <FOM1Slide10FormulaIntro />;
+    case 10: return <FOM1BlockHeader blockNumber={2} title="Кто заплатит" time="~15 минут" slide={11} />;
+    case 11: return <FOM1Slide11Competitors />;
+    case 12: return <FOM1Slide12WhoPays />;
+    case 13: return <FOM1Slide13Hypothesis />;
+    case 14: return <FOM1BlockHeader blockNumber={3} title="Mom Test — как спрашивать" time="~10 минут" slide={15} />;
+    case 15: return <FOM1Slide15InterviewRules />;
+    case 16: return <FOM1Slide16PassFail />;
+    case 17: return <FOM1BlockHeader blockNumber={4} title="Формула позиционирования" time="~15 минут" slide={18} />;
+    case 18: return <FOM1Slide18Formula />;
+    case 19: return <FOM1Slide19ThreeFormats />;
+    case 20: return <FOM1Slide20FourTests />;
+    case 21: return <FOM1BlockHeader blockNumber={5} title="Применение к вашим проектам" time="~25 минут" slide={22} />;
+    case 22: return <FOM1Slide22MikhaelDiagnosis />;
+    case 23: return <FOM1Slide23MikhaelHomework />;
+    case 24: return <FOM1Slide24MargaritaDiagnosis />;
+    case 25: return <FOM1Slide25MargaritaHomework />;
+    case 26: return <FOM1BlockHeader blockNumber={6} title="AI-стек на эту неделю" time="~10 минут" slide={27} />;
+    case 27: return <FOM1Slide27AIRule />;
+    case 28: return <FOM1Slide28Stack />;
+    case 29: return <FOM1Slide29SixSessions />;
+    case 30: return <FOM1Slide30Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 30;
+export const TOTAL = 31;
 
 export default function FOM1Shell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

@@ -3,7 +3,7 @@ import FOM1SlideBase from "./FOM1SlideBase";
 export default function FOM1Slide24MargaritaDiagnosis() {
   return (
     <FOM1SlideBase
-      slide={24}
+      slide={25}
       eyebrow="Применение · участник 2"
       title="Маргарита · ChampionVibes AI"
       subtitle="Диагностика и точка фокуса"

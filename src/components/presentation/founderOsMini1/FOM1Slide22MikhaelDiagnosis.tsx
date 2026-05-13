@@ -3,7 +3,7 @@ import FOM1SlideBase from "./FOM1SlideBase";
 export default function FOM1Slide22MikhaelDiagnosis() {
   return (
     <FOM1SlideBase
-      slide={22}
+      slide={23}
       eyebrow="Применение · участник 1"
       title="Михаэль Резник · AIRecom"
       subtitle="Диагностика и точка фокуса"

@@ -28,7 +28,7 @@ export default function FOM1Slide30Closing() {
       <p className={`mt-[16px] md:mt-[36px] font-display font-bold text-[hsl(var(--slide-gold))] ${isMobile ? "text-[24px]" : "text-[64px]"}`}>
         🚀 Поехали.
       </p>
-      <FOM1Footer slide={30} />
+      <FOM1Footer slide={31} />
     </div>
   );
 }

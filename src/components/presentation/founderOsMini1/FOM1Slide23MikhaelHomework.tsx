@@ -11,7 +11,7 @@ const tasks = [
 export default function FOM1Slide23MikhaelHomework() {
   return (
     <FOM1SlideBase
-      slide={23}
+      slide={24}
       eyebrow="Задание · участник 1"
       title="Михаэль — твоё ДЗ на неделю"
       subtitle="Что приносишь на С2"
