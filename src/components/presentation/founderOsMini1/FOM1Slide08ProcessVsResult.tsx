@@ -1,5 +1,4 @@
-import { useIsMobile } from "@/hooks/use-mobile";
-import FOM1Footer from "./FOM1Footer";
+import FOM1SlideBase from "./FOM1SlideBase";
 
 const pairs = [
   {
@@ -23,45 +22,35 @@ const pairs = [
 ];
 
 export default function FOM1Slide08ProcessVsResult() {
-  const isMobile = useIsMobile();
-  const pad = isMobile ? "px-[18px] pt-[20px] pb-[36px]" : "px-[140px] pt-[60px] pb-[80px]";
-
   return (
-    <div className={`w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col relative ${pad}`}>
-      <p className={`uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium ${isMobile ? "text-[9px] mb-[6px]" : "text-[16px] mb-[12px]"}`}>
-        Процесс vs Результат
-      </p>
-      <h2 className={`font-display font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em] ${isMobile ? "text-[20px]" : "text-[44px]"}`}>
-        Процесс vs Результат
-      </h2>
-      <p className={`text-[hsl(var(--slide-text-muted))] ${isMobile ? "text-[10.5px] mt-[6px]" : "text-[20px] mt-[10px]"}`}>
-        Три примера — плохо/хорошо
-      </p>
-
-      <div className={`flex-1 mt-[14px] grid gap-[10px] ${isMobile ? "" : "gap-[16px]"}`}>
+    <FOM1SlideBase
+      slide={8}
+      eyebrow="Процесс vs Результат"
+      title="Процесс vs Результат"
+      subtitle="Три примера — плохо / хорошо"
+    >
+      <div className="space-y-[10px] md:space-y-[16px] max-w-[1700px]">
         {pairs.map((p, i) => (
           <div
             key={i}
-            className={`bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] ${isMobile ? "p-[10px]" : "p-[18px]"}`}
+            className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[12px] md:p-[20px]"
           >
-            <div className={isMobile ? "text-[10px]" : "text-[18px]"}>
-              <span className="text-[hsl(var(--destructive,0_70%_60%))]" style={{ color: "hsl(0 70% 60%)" }}>❌ </span>
+            <p className="text-[11px] md:text-[22px] leading-[1.5]">
+              <span style={{ color: "hsl(0 70% 60%)" }}>❌ </span>
               <span className="text-[hsl(var(--slide-text-muted))]">Процесс: </span>
-              {p.bad}
-            </div>
-            <div className={`mt-[6px] ${isMobile ? "text-[10px]" : "text-[18px]"}`}>
+              <span className="text-[hsl(var(--slide-text))]">{p.bad}</span>
+            </p>
+            <p className="mt-[4px] md:mt-[8px] text-[11px] md:text-[22px] leading-[1.5]">
               <span style={{ color: "hsl(140 50% 55%)" }}>✅ </span>
               <span className="text-[hsl(var(--slide-text-muted))]">Результат: </span>
-              <span className="text-[hsl(var(--slide-text))]">{p.good}</span>
-            </div>
-            <p className={`mt-[6px] text-[hsl(var(--slide-gold))] ${isMobile ? "text-[9px]" : "text-[15px]"}`}>
+              <span className="text-[hsl(var(--slide-text))] font-semibold">{p.good}</span>
+            </p>
+            <p className="mt-[4px] md:mt-[8px] text-[10px] md:text-[18px] text-[hsl(var(--slide-gold))]">
               Результат: {p.res}. Без: {p.no}
             </p>
           </div>
         ))}
       </div>
-
-      <FOM1Footer slide={8} />
-    </div>
+    </FOM1SlideBase>
   );
 }
