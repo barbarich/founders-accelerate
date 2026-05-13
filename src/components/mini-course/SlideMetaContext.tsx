@@ -4,6 +4,8 @@ export type SlideMeta = {
   index: number;
   total: number;
   lesson: number;
+  /** Optional override for footer label. If set, replaces "Урок {lesson} из N". */
+  footerLabel?: string;
 };
 
 const SlideMetaContext = createContext<SlideMeta>({ index: 1, total: 1, lesson: 1 });
