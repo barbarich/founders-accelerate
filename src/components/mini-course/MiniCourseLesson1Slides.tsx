@@ -25,13 +25,13 @@ const Eyebrow: React.FC<{ children: React.ReactNode; mobile?: boolean }> = ({ ch
 // Footer now reads index/total/lesson from SlideMetaContext.
 // The `index` prop is kept for backward-compat with existing call sites but ignored.
 const Footer: React.FC<{ index?: number }> = () => {
-  const { index, total, lesson } = useSlideMeta();
+  const { index, total, lesson, footerLabel } = useSlideMeta();
   return (
     <div
       className="absolute"
       style={{ right: 48, bottom: 28, color: "hsl(var(--slide-text-muted))", fontSize: 14, letterSpacing: "0.04em" }}
     >
-      Михаэль · Урок {lesson} из 4 · Slide {index}/{total}
+      {footerLabel ?? `Михаэль · Урок ${lesson} из 4`} · Slide {index}/{total}
     </div>
   );
 };
