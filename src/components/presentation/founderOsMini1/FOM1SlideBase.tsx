@@ -10,8 +10,8 @@ export default function FOM1SlideBase({
   slide,
 }: {
   eyebrow?: string;
-  title: string;
-  subtitle?: string;
+  title: ReactNode;
+  subtitle?: ReactNode;
   children: ReactNode;
   slide: number;
 }) {
@@ -19,20 +19,24 @@ export default function FOM1SlideBase({
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col px-[20px] pt-[24px] pb-[36px] relative overflow-hidden">
-        {eyebrow && (
-          <p className="text-[9px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-            {eyebrow}
-          </p>
-        )}
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.12] tracking-[-0.01em]">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mt-[6px] leading-[1.45]">{subtitle}</p>
-        )}
-        <div className="flex-1 mt-[12px] overflow-hidden text-[hsl(var(--slide-text))] text-[11px] leading-[1.5]">
-          {children}
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col relative">
+        <div className="flex flex-col justify-center px-[20px] h-full pb-[24px]">
+          {eyebrow && (
+            <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium text-[9px] mb-[8px]">
+              {eyebrow}
+            </p>
+          )}
+          <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] tracking-[-0.01em]">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mt-[8px]">
+              {subtitle}
+            </p>
+          )}
+          <div className="mt-[14px] text-[hsl(var(--slide-text))] text-[11px] leading-[1.5]">
+            {children}
+          </div>
         </div>
         <FOM1Footer slide={slide} />
       </div>
@@ -40,22 +44,24 @@ export default function FOM1SlideBase({
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col px-[140px] pt-[80px] pb-[80px] relative overflow-hidden">
-      {eyebrow && (
-        <p className="text-[16px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-          {eyebrow}
-        </p>
-      )}
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-        {title}
-      </h2>
-      {subtitle && (
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[14px] leading-[1.35] max-w-[1500px]">
-          {subtitle}
-        </p>
-      )}
-      <div className="flex-1 mt-[36px] text-[hsl(var(--slide-text))] text-[22px] leading-[1.5]">
-        {children}
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col relative">
+      <div className="flex flex-col justify-center px-[140px] h-full max-w-[1800px] py-[80px]">
+        {eyebrow && (
+          <p className="uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium text-[18px] mb-[20px]">
+            {eyebrow}
+          </p>
+        )}
+        <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em]">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="text-[24px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45] mt-[18px] max-w-[1500px]">
+            {subtitle}
+          </p>
+        )}
+        <div className="mt-[36px] text-[hsl(var(--slide-text))] text-[22px] leading-[1.5]">
+          {children}
+        </div>
       </div>
       <FOM1Footer slide={slide} />
     </div>
