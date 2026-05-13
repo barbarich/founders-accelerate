@@ -29,12 +29,12 @@ export default function FOM1Slide19ThreeFormats() {
       title="Один результат — три формулировки"
       subtitle="Один результат адаптируется под канал коммуникации"
     >
-      <div className="space-y-[10px] md:space-y-[14px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="space-y-[10px] md:space-y-[14px] max-w-[1800px] text-[12px] md:text-[22px]">
         {formats.map((f, i) => (
-          <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] p-[10px] md:p-[16px]">
+          <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[14px] md:p-[24px]">
             <div className="flex items-baseline gap-[8px]">
-              <span className="text-[14px] md:text-[22px]">{f.e}</span>
-              <span className="font-display font-bold text-[hsl(var(--slide-gold))] text-[12px] md:text-[20px]">{f.t}</span>
+              <span className="text-[16px] md:text-[26px]">{f.e}</span>
+              <span className="font-display font-bold text-[hsl(var(--slide-gold))] text-[16px] md:text-[28px]">{f.t}</span>
             </div>
             <p className="text-[hsl(var(--slide-text))] mt-[4px]">{f.body}</p>
             <p className="text-[hsl(var(--slide-text-muted))] mt-[4px] italic">💡 {f.why}</p>

@@ -15,7 +15,7 @@ export default function FOM1Slide13Hypothesis() {
       title="Сначала гипотеза — потом интервью"
       subtitle="Без гипотезы интервью превращается в болтовню. Ты должен знать, что проверяешь — до того, как откроешь рот"
     >
-      <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] p-[12px] md:p-[20px] max-w-[1700px]">
+      <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[16px] md:p-[28px] max-w-[1700px]">
         <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[9px] md:text-[14px] mb-[6px]">Шаблон</p>
         <p className="text-[hsl(var(--slide-text))]">
           Я верю, что <span className="text-[hsl(var(--slide-gold))]">[сегмент]</span> испытывает проблему{" "}

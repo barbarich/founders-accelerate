@@ -42,7 +42,7 @@ export default function FOM1Slide08ProcessVsResult() {
         {pairs.map((p, i) => (
           <div
             key={i}
-            className={`bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] ${isMobile ? "p-[10px]" : "p-[18px]"}`}
+            className={`bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] ${isMobile ? "p-[10px]" : "p-[18px]"}`}
           >
             <div className={isMobile ? "text-[10px]" : "text-[18px]"}>
               <span className="text-[hsl(var(--destructive,0_70%_60%))]" style={{ color: "hsl(0 70% 60%)" }}>❌ </span>

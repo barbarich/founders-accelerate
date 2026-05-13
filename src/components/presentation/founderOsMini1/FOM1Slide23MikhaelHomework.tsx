@@ -16,7 +16,7 @@ export default function FOM1Slide23MikhaelHomework() {
       title="Михаэль — твоё ДЗ на неделю"
       subtitle="Что приносишь на С2"
     >
-      <div className="space-y-[8px] md:space-y-[12px] max-w-[1800px] text-[10px] md:text-[16px]">
+      <div className="space-y-[8px] md:space-y-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
         {tasks.map(([t, d], i) => (
           <div key={i} className="flex gap-[10px]">
             <span className="font-mono text-[hsl(var(--slide-gold))] font-bold w-[20px]">{i + 1}️⃣</span>

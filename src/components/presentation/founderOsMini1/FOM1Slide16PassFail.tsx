@@ -35,7 +35,7 @@ export default function FOM1Slide16PassFail() {
       </p>
 
       <div className={`flex-1 mt-[12px] grid grid-cols-2 gap-[10px] md:gap-[20px]`}>
-        <div className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[10px] ${isMobile ? "p-[10px]" : "p-[18px]"}`} style={{ borderColor: "hsl(140 50% 55% / 0.4)" }}>
+        <div className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] ${isMobile ? "p-[10px]" : "p-[18px]"}`} style={{ borderColor: "hsl(140 50% 55% / 0.4)" }}>
           <p className={`font-semibold ${isMobile ? "text-[11px]" : "text-[20px]"}`} style={{ color: "hsl(140 50% 55%)" }}>
             ✅ Pass
           </p>
@@ -43,7 +43,7 @@ export default function FOM1Slide16PassFail() {
             {pass.map((p, i) => <li key={i}>· {p}</li>)}
           </ul>
         </div>
-        <div className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[10px] ${isMobile ? "p-[10px]" : "p-[18px]"}`} style={{ borderColor: "hsl(0 70% 60% / 0.4)" }}>
+        <div className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[14px] ${isMobile ? "p-[10px]" : "p-[18px]"}`} style={{ borderColor: "hsl(0 70% 60% / 0.4)" }}>
           <p className={`font-semibold ${isMobile ? "text-[11px]" : "text-[20px]"}`} style={{ color: "hsl(0 70% 60%)" }}>
             ❌ Fail
           </p>
@@ -53,7 +53,7 @@ export default function FOM1Slide16PassFail() {
         </div>
       </div>
 
-      <div className={`border-l-[3px] border-[hsl(var(--slide-gold))] pl-[12px] mt-[10px] md:mt-[16px] ${isMobile ? "text-[9.5px]" : "text-[16px]"}`}>
+      <div className={`border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] mt-[10px] md:mt-[16px] ${isMobile ? "text-[9.5px]" : "text-[16px]"}`}>
         <p className="text-[hsl(var(--slide-text))]">
           💡 Правило большого пальца: если из 10 разговоров 7 человек сами поднимают эту боль,
           описывают свои костыли и считают, во что она им обходится — гипотеза подтверждена.
