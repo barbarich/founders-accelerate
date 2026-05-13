@@ -1,36 +1,35 @@
 import FOM1SlideBase from "./FOM1SlideBase";
 
-const levels = [
-  { e: "⚔️", t: "Прямые", d: "делают то же самое для той же аудитории" },
-  { e: "🔄", t: "Косвенные", d: "решают ту же проблему другим способом" },
-  { e: "📋", t: "Замена", d: "что клиент делает СЕЙЧАС вместо вашего продукта (Excel, стажёр, ChatGPT, ручной процесс)" },
-];
-
 export default function FOM1Slide11Competitors() {
   return (
     <FOM1SlideBase
       slide={12}
-      eyebrow="Конкуренты"
-      title="Три уровня конкурентов"
-      subtitle="Ваши конкуренты — это не те, кто делает то же самое"
+      eyebrow="Зачем смотреть на конкурентов"
+      title="Не изобретай велосипед — посмотри, как его уже сделали"
+      subtitle="Если у тебя появилась идея — кто-то её уже реализовал. Если проблема настоящая — она уже решается. Задача — найти, как именно"
     >
-      <div className="space-y-[12px] max-w-[1700px]">
-        {levels.map((x, i) => (
-          <div key={i} className="flex items-baseline gap-[14px]">
-            <span className="text-[20px] md:text-[30px]">{x.e}</span>
-            <p>
-              <span className="text-[hsl(var(--slide-text))] font-semibold">{x.t}</span>
-              <span className="text-[hsl(var(--slide-text-muted))]"> — {x.d}</span>
-            </p>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px] md:gap-[20px] max-w-[1800px] text-[12px] md:text-[22px]">
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] p-[14px] md:p-[24px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">Что у конкурентов уже есть</p>
+          <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
+            <li>· Они набили шишек, которых вы избежите</li>
+            <li>· Их продукт уже работает и приносит деньги</li>
+            <li>· Они проверили десятки гипотез — оставили то, что сработало</li>
+            <li>· У них есть pricing, флоу продажи, лендинг, юзкейсы — на всё это можно смотреть</li>
+          </ul>
+        </div>
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] p-[14px] md:p-[24px]">
+          <p className="text-[hsl(var(--slide-gold))] uppercase tracking-[0.2em] text-[10px] md:text-[14px]">Что вы получаете</p>
+          <ul className="mt-[6px] text-[hsl(var(--slide-text))] space-y-[3px]">
+            <li>· Не выдумываете решение — заимствуете то, что доказано</li>
+            <li>· Не повторяете чужие ошибки — учитесь на них бесплатно</li>
+            <li>· Понимаете, где конкурент слаб — там ваша точка входа</li>
+            <li>· Видите, за что люди уже платят — это ваш будущий чек</li>
+          </ul>
+        </div>
       </div>
-      <div className="mt-[24px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[16px] max-w-[1700px]">
-        <p>
-          💡 В RunEverywhere наш конкурент — не другое беговое приложение. Это бар и YouTube.
-          Потому что вечером человек выбирает: выйти на пробежку или остаться на диване.
-          Конкурент Netflix — сон. Думайте шире.
-        </p>
+      <div className="mt-[12px] md:mt-[20px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
+        <p>💡 «Нет конкурентов» = либо вы плохо искали, либо рынка нет. Конкурент — это доказательство, что проблема настоящая.</p>
       </div>
     </FOM1SlideBase>
   );

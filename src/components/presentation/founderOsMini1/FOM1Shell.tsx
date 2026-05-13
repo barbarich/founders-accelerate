@@ -42,10 +42,10 @@ export const slideNames = [
   "Процесс vs Результат",
   "Топ-5 ошибок позиционирования",
   "Формула позиционирования — кратко",
-  "Раздел 2 · Кто заплатит",
-  "Три уровня конкурентов",
-  "Кто заплатит vs кому полезно",
-  "Гипотеза перед интервью",
+  "Раздел 2 · Анализ конкурентов",
+  "Зачем смотреть на конкурентов",
+  "Три уровня конкурентов · где искать",
+  "Deep Research + SimilarWeb",
   "Раздел 3 · Mom Test",
   "Правила custdev-интервью",
   "Сигналы pass / fail",
@@ -77,7 +77,7 @@ export function getSlideContent(index: number) {
     case 7: return <FOM1Slide08ProcessVsResult />;
     case 8: return <FOM1Slide09Top5Mistakes />;
     case 9: return <FOM1Slide10FormulaIntro />;
-    case 10: return <FOM1BlockHeader blockNumber={2} title="Кто заплатит" time="~15 минут" slide={11} />;
+    case 10: return <FOM1BlockHeader blockNumber={2} title="Анализ конкурентов" time="~20 минут" slide={11} />;
     case 11: return <FOM1Slide11Competitors />;
     case 12: return <FOM1Slide12WhoPays />;
     case 13: return <FOM1Slide13Hypothesis />;
