@@ -14,7 +14,7 @@ export default function FOM1Footer({ slide }: { slide: number }) {
           letterSpacing: "0.04em",
         }}
       >
-        Slide {slide}/30
+        Slide {slide}/31
       </div>
     );
   }
@@ -29,7 +29,7 @@ export default function FOM1Footer({ slide }: { slide: number }) {
         letterSpacing: "0.04em",
       }}
     >
-      Михаэль · Сессия 1 из 6 · Slide {slide}/30
+      Михаэль · Сессия 1 из 6 · Slide {slide}/31
     </div>
   );
 }
