@@ -15,7 +15,7 @@ import M6SlideHomework from "./M6Slide15Homework";
 import M6SlideNextWeek from "./M6Slide16NextWeek";
 import M6SlideClosing from "./M6Slide17Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Тема: первая сессия в продукте",
   "Aha живёт в продукте",
@@ -28,7 +28,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M6Slide01Welcome />;
     case 1: return <M6Slide03Theme />;
@@ -44,7 +44,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 10;
+export const TOTAL = 10;
 
 export default function Meeting6PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

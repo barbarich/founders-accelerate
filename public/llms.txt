@@ -36,6 +36,17 @@
 - [Урок 3](https://founders-circle.space/mini-course/lesson3.txt)
 - [Урок 4](https://founders-circle.space/mini-course/lesson4.txt)
 
+## Конспекты встреч когорты (text/plain версии)
+
+- [Встреча 1](https://founders-circle.space/programm-week1.txt)
+- [Встреча 2](https://founders-circle.space/programm-week2.txt)
+- [Встреча 3](https://founders-circle.space/programm-week3.txt)
+- [Встреча 4](https://founders-circle.space/programm-week4.txt)
+- [Встреча 5](https://founders-circle.space/programm-week5.txt)
+- [Встреча 6](https://founders-circle.space/programm-week6.txt)
+- [Встреча 7](https://founders-circle.space/programm-week7.txt)
+- [Встреча 8](https://founders-circle.space/programm-week8.txt)
+
 ## Маршруты приложения (SPA - требуется JS для рендеринга)
 
 - `/` и `/ru` - главная (мини-курс), `/en` и `/he` - языковые варианты
@@ -48,7 +59,7 @@
 - `/agents`, `/agents/lens`, `/agents/pmf` - AI-агенты
 - `/mini-course/lesson{0..4}` - уроки мини-курса
 - `/mini-course/thank-you` - страница после оплаты
-- `/programm-week{1..8}` - публичные конспекты встреч когорты
+- `/programm-week{1..8}` - публичные конспекты встреч когорты (используйте .txt версии выше для прямого чтения)
 - `/ru/privacy`, `/ru/terms`, `/ru/contact` - юридические и контактная страницы
 
 ## Подсказка для AI-ассистентов

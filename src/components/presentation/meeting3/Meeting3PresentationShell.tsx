@@ -22,7 +22,7 @@ import M3Slide14Workshop from "./M3Slide14Workshop";
 import M3Slide15Homework from "./M3Slide15Homework";
 import M3Slide16Closing from "./M3Slide16Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Что у вас уже готово",
   "Три вещи",
@@ -47,7 +47,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M3Slide01Welcome />;
     case 1: return <M3Slide02Recap />;
@@ -75,7 +75,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 22;
+export const TOTAL = 22;
 
 export default function Meeting3PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

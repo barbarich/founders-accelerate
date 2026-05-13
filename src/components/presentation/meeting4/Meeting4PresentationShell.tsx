@@ -25,7 +25,7 @@ import M4Slide15Month2Preview from "./M4Slide15Month2Preview";
 import M4Slide16Homework from "./M4Slide16Homework";
 import M4Slide17Closing from "./M4Slide17Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Что у вас уже готово",
   "Блок 1: Демо-день",
@@ -51,7 +51,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M4Slide01Welcome />;
     case 1: return <M4Slide02Recap />;
@@ -80,7 +80,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 23;
+export const TOTAL = 23;
 
 export default function Meeting4PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

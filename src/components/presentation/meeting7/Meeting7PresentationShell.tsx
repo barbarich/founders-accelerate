@@ -30,7 +30,7 @@ import M7Slide24CircleShare from "./M7Slide24CircleShare";
 import M7Slide25Homework from "./M7Slide25Homework";
 import M7Slide26NextWeek from "./M7Slide26NextWeek";
 
-const slideNames = [
+export const slideNames = [
   "Заглавный",
   "Главная мысль",
   "Покажи свой телефон",
@@ -58,7 +58,7 @@ const slideNames = [
   "Неделя 8",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M7Slide01Welcome />;
     case 1: return <M7Slide02MainThesis />;
@@ -89,7 +89,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 25;
+export const TOTAL = 25;
 
 export default function Meeting7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

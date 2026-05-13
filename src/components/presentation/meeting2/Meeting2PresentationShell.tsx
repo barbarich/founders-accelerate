@@ -31,7 +31,7 @@ import M2Slide24Step3 from "./M2Slide24Step3";
 import M2Slide25Homework from "./M2Slide25Homework";
 import M2Slide26Closing from "./M2Slide26Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Прошлая неделя",
   "Три вещи",
@@ -65,7 +65,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M2Slide01Welcome />;
     case 1: return <M2Slide02Recap />;
@@ -102,7 +102,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 31;
+export const TOTAL = 31;
 
 export default function Meeting2PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

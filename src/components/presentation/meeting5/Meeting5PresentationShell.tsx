@@ -28,7 +28,7 @@ import M5Slide21Homework from "./M5Slide21Homework";
 import M5Slide22NextWeek from "./M5Slide22NextWeek";
 import M5Slide23Closing from "./M5Slide23Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Два навыка сегодня",
   "Блок 1 — MVP за вечер",
@@ -53,7 +53,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M5Slide01Welcome />;
     case 1: return <M5Slide02Wall />;
@@ -81,7 +81,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 22;
+export const TOTAL = 22;
 
 export default function Meeting5PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

@@ -39,7 +39,7 @@ import M1Slide29NextMeeting from "./M1Slide29NextMeeting";
 import M1Slide30Toolkit from "./M1Slide30Toolkit";
 import M1Slide31Closing from "./M1Slide31Closing";
 
-const slideNames = [
+export const slideNames = [
   "Добро пожаловать",
   "Знакомство: питч идей",
   "Главная ошибка",
@@ -80,7 +80,7 @@ const slideNames = [
   "Закрытие",
 ];
 
-function getSlideContent(index: number) {
+export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M1Slide01Welcome />;
     case 1: return <M1Slide25ReviewFormat />;
@@ -124,7 +124,7 @@ function getSlideContent(index: number) {
   }
 }
 
-const TOTAL = 38;
+export const TOTAL = 38;
 
 export default function Meeting1PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
