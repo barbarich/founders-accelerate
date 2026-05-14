@@ -23,7 +23,7 @@ export default function M9Slide06PositioningFormula() {
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[7px] mb-[8px]">
           <p className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.5]">
-            <b className="text-[hsl(var(--slide-gold))]">[Продукт]</b> помогает <b className="text-[hsl(var(--slide-gold))]">[узкий сегмент]</b> достичь <b className="text-[hsl(var(--slide-gold))]">[конкретный результат]</b> через <b className="text-[hsl(var(--slide-gold))]">[уникальный механизм]</b>, в отличие от <b className="text-[hsl(var(--slide-gold))]">[альтернатива]</b>, которая <b className="text-[hsl(var(--slide-gold))]">[её слабость]</b>.
+            <b className="text-[hsl(var(--slide-gold))]">[Продукт]</b> помогает <b className="text-[hsl(var(--slide-gold))]">[узкий сегмент]</b> достичь <b className="text-[hsl(var(--slide-gold))]">[конкретный результат]</b> через <b className="text-[hsl(var(--slide-gold))]">[уникальный механизм]</b>, в отличие от <b className="text-[hsl(var(--slide-gold))]">[альтернатива]</b>.
           </p>
         </div>
         <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Три теста</p>
@@ -53,7 +53,7 @@ export default function M9Slide06PositioningFormula() {
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[28px] mb-[22px] max-w-[1700px]">
         <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Финальная формула</p>
         <p className="text-[26px] text-[hsl(var(--slide-text))] leading-[1.5]">
-          <b className="text-[hsl(var(--slide-gold))]">[Продукт]</b> помогает <b className="text-[hsl(var(--slide-gold))]">[узкий сегмент]</b> достичь <b className="text-[hsl(var(--slide-gold))]">[конкретный результат]</b> через <b className="text-[hsl(var(--slide-gold))]">[уникальный механизм]</b>, в отличие от <b className="text-[hsl(var(--slide-gold))]">[альтернатива]</b>, которая <b className="text-[hsl(var(--slide-gold))]">[её слабость]</b>.
+          <b className="text-[hsl(var(--slide-gold))]">[Продукт]</b> помогает <b className="text-[hsl(var(--slide-gold))]">[узкий сегмент]</b> достичь <b className="text-[hsl(var(--slide-gold))]">[конкретный результат]</b> через <b className="text-[hsl(var(--slide-gold))]">[уникальный механизм]</b>, в отличие от <b className="text-[hsl(var(--slide-gold))]">[альтернатива]</b>.
         </p>
       </div>
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[20px] max-w-[1700px]">
