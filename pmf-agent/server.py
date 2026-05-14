@@ -114,6 +114,92 @@ CONFIG = load_config()
 
 
 # ---------------------------------------------------------------------------
+# Defensive shape normalization
+#
+# Several dataclass fields are declared `list[dict]` but the underlying agents
+# call LLMs and occasionally get back `list[str]` (or a mix). Every renderer
+# (HTML, PDF, emitter.finding) calls `.get(...)` on the elements, which
+# crashes with `AttributeError: 'str' object has no attribute 'get'` and
+# returns 500 from `/api/research/report/{id}` and `.../pdf`.
+#
+# Fix: at the end of the pipeline (and right after the parallel-agent block)
+# coerce every known list[dict] field — wrap any non-dict element so the
+# string is reachable under every common primary key the renderers probe.
+# ---------------------------------------------------------------------------
+_DICT_LIST_FIELDS: dict[str, tuple[str, ...]] = {
+    "MarketData": ("key_facts", "growth_drivers", "market_segments", "source_credibility"),
+    "CompetitorMatrix": ("blue_ocean_canvas", "strategic_groups"),
+    "PainProfile": ("journey_pain_map", "demand_signals"),
+    "TimingAnalysis": ("tailwinds", "headwinds", "adjacent_analogies",
+                       "google_trends_signals", "regulatory_catalysts",
+                       "market_events_timeline"),
+    "DemandAnalysis": ("search_queries", "social_media_signals",
+                       "community_sizes", "content_demand"),
+    "UnitEconomicsAnalysis": ("pricing_benchmarks", "monetization_models"),
+    "RegulatoryAnalysis": ("regulations", "legal_risks"),
+}
+
+# Keys probed by HTML/PDF renderers across all sections. Mapping the raw
+# string to every key keeps the same value visible no matter which key the
+# renderer reaches for first.
+_STRING_VALUE_KEYS: tuple[str, ...] = (
+    "driver", "name", "signal", "trend", "risk", "regulation", "fact",
+    "platform", "community", "model", "competitor", "query", "keyword",
+    "source", "metric", "value", "title", "group_name", "description",
+    "impact", "severity", "size", "members", "rationale", "evidence",
+    "mitigation", "jurisdiction", "region", "segment", "type",
+)
+
+
+def _ensure_dict(x: Any) -> dict:
+    """Coerce a non-dict list element into a renderer-safe dict.
+
+    LLMs occasionally return list[str] for a field declared list[dict];
+    rather than drop information, map the string to every key the
+    renderers probe so the value still appears in the output.
+    """
+    if isinstance(x, dict):
+        return x
+    if x is None:
+        return {}
+    s = str(x).strip()
+    return {k: s for k in _STRING_VALUE_KEYS}
+
+
+def _coerce_dict_fields(obj: Any, field_names: tuple[str, ...]) -> None:
+    """Walk a section's list[dict] fields; wrap any rogue non-dict elements."""
+    if obj is None:
+        return
+    for fname in field_names:
+        v = getattr(obj, fname, None)
+        if not isinstance(v, list) or not v:
+            continue
+        if all(isinstance(x, dict) for x in v):
+            continue
+        setattr(obj, fname, [_ensure_dict(x) for x in v])
+
+
+def _coerce_report_lists(
+    *,
+    market: Optional[MarketData] = None,
+    competitors: Optional[CompetitorMatrix] = None,
+    pain: Optional[PainProfile] = None,
+    timing: Optional[TimingAnalysis] = None,
+    demand: Optional[DemandAnalysis] = None,
+    unit_economics: Optional[UnitEconomicsAnalysis] = None,
+    regulatory: Optional[RegulatoryAnalysis] = None,
+) -> None:
+    """Normalize every list[dict] field across all section dataclasses."""
+    _coerce_dict_fields(market, _DICT_LIST_FIELDS["MarketData"])
+    _coerce_dict_fields(competitors, _DICT_LIST_FIELDS["CompetitorMatrix"])
+    _coerce_dict_fields(pain, _DICT_LIST_FIELDS["PainProfile"])
+    _coerce_dict_fields(timing, _DICT_LIST_FIELDS["TimingAnalysis"])
+    _coerce_dict_fields(demand, _DICT_LIST_FIELDS["DemandAnalysis"])
+    _coerce_dict_fields(unit_economics, _DICT_LIST_FIELDS["UnitEconomicsAnalysis"])
+    _coerce_dict_fields(regulatory, _DICT_LIST_FIELDS["RegulatoryAnalysis"])
+
+
+# ---------------------------------------------------------------------------
 # EventEmitter — duck-typed replacement for ThinkingLog
 # Logic inside run_analysis is identical; only sink changes from Streamlit HTML
 # to in-memory buffer + FastAPI SSE consumers read it.
@@ -241,6 +327,17 @@ async def run_analysis_api(
     demand_data = _safe(4, DemandAnalysis())
     regulatory_data = _safe(5, RegulatoryAnalysis())
 
+    # Normalize any list[dict] fields that arrived as list[str] from the LLM.
+    # Has to happen BEFORE the emitter.finding calls below, which call .get().
+    _coerce_report_lists(
+        market=market_data,
+        competitors=competitor_data,
+        pain=pain_data,
+        timing=timing_data,
+        demand=demand_data,
+        regulatory=regulatory_data,
+    )
+
     emitter.agent_done("Market", f"TAM: {market_data.tam[:80]}")
     emitter.finding(f"SAM: {market_data.sam[:80]} · CAGR: {market_data.cagr}")
     if market_data.market_maturity:
@@ -276,6 +373,7 @@ async def run_analysis_api(
     except Exception as e:
         emitter.finding(f"⚠️ Unit Economics error (using defaults): {e}")
         unit_econ_data = UnitEconomicsAnalysis()
+    _coerce_report_lists(unit_economics=unit_econ_data)
     emitter.agent_done("Unit Economics", f"Economics score: {unit_econ_data.unit_economics_score}/100")
     if unit_econ_data.estimated_arpu:
         emitter.finding(f"ARPU: {unit_econ_data.estimated_arpu} · LTV/CAC: {unit_econ_data.ltv_cac_ratio}")
