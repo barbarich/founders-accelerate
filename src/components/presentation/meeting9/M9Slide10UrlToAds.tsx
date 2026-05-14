@@ -1,17 +1,17 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const alts = [
-  { name: "Pencil · Genius.ai", tag: "ОЛДСКУЛ", body: "Старший игрок в категории URL→ads. Хорош для брендов с готовым brand kit." },
-  { name: "Icon.me", tag: "ПРЕМИУМ ВИДЕО", body: "AI UGC-видео из URL. Актёры в кадре говорят твой оффер. Когда нужно «лицо», а не картинка." },
-  { name: "Creatify", tag: "БЫСТРОЕ ВИДЕО", body: "Короткие ад-видео из URL за минуты. Pricing-friendly старт от $39/мес." },
+  { name: "Adobe Express", tag: "ЭКОСИСТЕМА", body: "Тесная интеграция с Photoshop и Illustrator. Хорош, если команда уже на Adobe." },
+  { name: "Kittl (ex Heritage)", tag: "ВЕКТОР + AI", body: "AI-генерация векторных иллюстраций, логотипов и принтов. Быстрее Canva для сложной графики." },
+  { name: "Microsoft Designer", tag: "БЕСПЛАТНО", body: "Бесплатный AI-генератор от Microsoft. Интеграция с Copilot. Отличная стартовая точка с нуля." },
 ];
 
 const steps = [
-  "Вставляешь URL лендинга в AdCreative.ai",
-  "Сервис пулит позиционирование, цвета, лого, типографику",
-  "Выдаёт 100+ ад-креативов под все форматы: square, story, banner, vertical",
-  "Скоринг от AI — какой креатив сильнее «зайдёт» (обучен на $300M+ ad spend)",
-  "Экспорт в Meta Ads Manager одной кнопкой",
+  "Загружаешь продукт, скриншот или референс в Canva",
+  "Magic Design генерирует макеты под любой формат: пост, story, баннер, презентация",
+  "Magic Write пишет тексты, хедлайны и CTA на основе одного промпта",
+  "Magic Edit меняет объекты, удаляет фон, дорисовывает детали — без навыков дизайна",
+  "Экспорт в нужном формате — загружаешь прямо в Meta Ads, Google Ads, TikTok",
 ];
 
 export default function M9Slide10UrlToAds() {
@@ -21,13 +21,13 @@ export default function M9Slide10UrlToAds() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Wow-инструмент · URL → 100+ ад-креативов
+          Wow-инструмент · AI-дизайн для фаундеров
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          AdCreative.ai — <span className="text-[hsl(var(--slide-gold))]">за час делает работу агентства за месяц</span>
+          Canva + Magic Studio — <span className="text-[hsl(var(--slide-gold))]">дизайн без дизайнера за $13/мес</span>
         </h2>
         <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-          3000+ клиентов, включая Renault, Nestlé, Greenpeace. Y Combinator. Старт $29/мес. <b className="text-[hsl(var(--slide-gold))]">adcreative.ai</b>
+          200M+ пользователей. AI-генерация изображений, видео, текста и презентаций. Pro $12.99/мес. <b className="text-[hsl(var(--slide-gold))]">canva.com</b>
         </p>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[10px] py-[6px] mb-[6px]">
           <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Workflow за 1 час</p>
@@ -56,13 +56,13 @@ export default function M9Slide10UrlToAds() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Wow-инструмент · URL → 100+ ад-креативов
+        Wow-инструмент · AI-дизайн для фаундеров
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
-        <span className="text-[hsl(var(--slide-gold))]">AdCreative.ai</span> — за час делает работу агентства за месяц
+        <span className="text-[hsl(var(--slide-gold))]">Canva + Magic Studio</span> — дизайн без дизайнера
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[22px] max-w-[1600px]">
-        3000+ клиентов, включая Renault, Nestlé, Greenpeace. Y Combinator. Стартер $29/мес. <b className="text-[hsl(var(--slide-gold))]">adcreative.ai</b>
+        200M+ пользователей. AI-генерация изображений, видео, текста и презентаций. Pro $12.99/мес. <b className="text-[hsl(var(--slide-gold))]">canva.com</b>
       </p>
       <div className="grid grid-cols-[1.3fr_1fr] gap-[24px] max-w-[1700px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[20px]">
