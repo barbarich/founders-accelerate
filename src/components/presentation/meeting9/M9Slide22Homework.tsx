@@ -17,7 +17,7 @@ export default function M9Slide22Homework() {
           Домашка · к встрече 10
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          Запустить — а не только переупаковать
+          Полностью подготовиться к запуску рекламной кампании
         </h2>
         <div className="space-y-[5px] mb-[8px]">
           {tasks.map((t) => (
@@ -46,7 +46,7 @@ export default function M9Slide22Homework() {
         Домашка · к встрече 10
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
-        Запустить — а не только переупаковать
+        Полностью подготовиться к запуску рекламной кампании
       </h2>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1700px] mb-[24px]">
         {tasks.map((t) => (
