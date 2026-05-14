@@ -139,6 +139,15 @@ _DICT_LIST_FIELDS: dict[str, tuple[str, ...]] = {
     "RegulatoryAnalysis": ("regulations", "legal_risks"),
 }
 
+# Single-dict fields touched by renderer/PDF without type checks. If an agent
+# returns one of these as a string (LLM shape drift), `.get()` / `.items()`
+# crashes downstream. Coerce to empty dict — the renderer guards already skip
+# the section when the field is falsy.
+_DICT_FIELDS: dict[str, tuple[str, ...]] = {
+    "CompetitorMatrix": ("errc", "funding_landscape"),
+    "UnitEconomicsAnalysis": ("revenue_projection",),
+}
+
 # Keys probed by HTML/PDF renderers across all sections. Mapping the raw
 # string to every key keeps the same value visible no matter which key the
 # renderer reaches for first.
@@ -179,6 +188,19 @@ def _coerce_dict_fields(obj: Any, field_names: tuple[str, ...]) -> None:
         setattr(obj, fname, [_ensure_dict(x) for x in v])
 
 
+def _coerce_single_dict_fields(obj: Any, field_names: tuple[str, ...]) -> None:
+    """If a declared `dict` field arrived as a non-dict (LLM returned a string,
+    list, or None for it), replace with empty dict so downstream `.get()` /
+    `.items()` doesn't crash. Renderer guards `if obj.field:` then skip cleanly.
+    """
+    if obj is None:
+        return
+    for fname in field_names:
+        v = getattr(obj, fname, None)
+        if v is not None and not isinstance(v, dict):
+            setattr(obj, fname, {})
+
+
 def _coerce_report_lists(
     *,
     market: Optional[MarketData] = None,
@@ -189,7 +211,7 @@ def _coerce_report_lists(
     unit_economics: Optional[UnitEconomicsAnalysis] = None,
     regulatory: Optional[RegulatoryAnalysis] = None,
 ) -> None:
-    """Normalize every list[dict] field across all section dataclasses."""
+    """Normalize every list[dict] field and single-dict field across sections."""
     _coerce_dict_fields(market, _DICT_LIST_FIELDS["MarketData"])
     _coerce_dict_fields(competitors, _DICT_LIST_FIELDS["CompetitorMatrix"])
     _coerce_dict_fields(pain, _DICT_LIST_FIELDS["PainProfile"])
@@ -197,6 +219,8 @@ def _coerce_report_lists(
     _coerce_dict_fields(demand, _DICT_LIST_FIELDS["DemandAnalysis"])
     _coerce_dict_fields(unit_economics, _DICT_LIST_FIELDS["UnitEconomicsAnalysis"])
     _coerce_dict_fields(regulatory, _DICT_LIST_FIELDS["RegulatoryAnalysis"])
+    _coerce_single_dict_fields(competitors, _DICT_FIELDS["CompetitorMatrix"])
+    _coerce_single_dict_fields(unit_economics, _DICT_FIELDS["UnitEconomicsAnalysis"])
 
 
 # ---------------------------------------------------------------------------
@@ -1147,6 +1171,34 @@ def _render_html_report(report: IdeaReport, run_id: str = "") -> str:
 </html>"""
 
 
+def _render_minimal_fallback(report: Optional[IdeaReport], run_id: str, err: str) -> str:
+    """Last-resort HTML when full renderer crashes. Shows scalars only so the
+    user still gets verdict/score and isn't met with a 500."""
+    if report is None:
+        return ("<html><body style='font-family:sans-serif;padding:40px;'>"
+                "<h2>Отчёт не готов</h2></body></html>")
+    pmf = report.pmf_score
+    verdict = pmf.verdict if pmf else "—"
+    score = int(pmf.weighted_total) if pmf else 0
+    summary = (pmf.summary if pmf else "")[:600]
+    idea_title = report.idea.title if report.idea else "—"
+    pdf_url = f"/api/research/report/{run_id}/pdf"
+    return f"""<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<title>PMF Agent — отчёт</title>
+<style>body{{font-family:-apple-system,sans-serif;max-width:760px;margin:40px auto;padding:0 24px;line-height:1.55;color:#1a1a1a;background:#f8f8f4;}}
+h1{{margin:0 0 8px;}}.score{{font-size:48px;font-weight:900;}}.muted{{color:#666;font-size:13px;}}
+.box{{background:#fff;border:1px solid #eee;border-radius:10px;padding:24px;margin:16px 0;}}
+a.btn{{display:inline-block;padding:10px 18px;background:#1a1a1a;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;margin-top:12px;}}</style>
+</head><body>
+<h1>{esc(idea_title)}</h1>
+<div class="box"><div class="muted">PMF Score</div><div class="score">{score}/100</div>
+<div style="font-weight:700;font-size:18px;margin-top:8px;">{esc(verdict)}</div>
+<p>{esc(summary)}</p>
+<a class="btn" href="{pdf_url}">Скачать PDF</a></div>
+<p class="muted">Подробная веб-версия временно недоступна (внутренняя ошибка отрисовки секций — она уже залогирована). PDF и базовая сводка работают. Run: {esc(run_id)}</p>
+</body></html>"""
+
+
 @app.get("/api/research/report/{run_id}", response_class=HTMLResponse)
 async def research_report(run_id: str):
     state = _get_run(run_id)
@@ -1160,7 +1212,12 @@ async def research_report(run_id: str):
         )
     if state.report is None:
         raise HTTPException(status_code=409, detail="report not ready — pipeline still running")
-    return HTMLResponse(content=_render_html_report(state.report, run_id=run_id))
+    try:
+        return HTMLResponse(content=_render_html_report(state.report, run_id=run_id))
+    except Exception as e:
+        log.exception("html renderer crashed for run %s — serving minimal fallback", run_id)
+        return HTMLResponse(content=_render_minimal_fallback(state.report, run_id, str(e)),
+                            status_code=200)
 
 
 # In-process cache so repeat downloads of the same report don't regenerate the
