@@ -16,7 +16,6 @@ import M9Slide08Workshop1 from "./M9Slide08Workshop1";
 import M9Slide09VisualStack from "./M9Slide09VisualStack";
 import M9Slide10UrlToAds from "./M9Slide10UrlToAds";
 import M9Slide11OneStyleRule from "./M9Slide11OneStyleRule";
-import M9Slide12Workshop2 from "./M9Slide12Workshop2";
 import M9Slide13OldVsNew from "./M9Slide13OldVsNew";
 import M9Slide14AdAnatomy from "./M9Slide14AdAnatomy";
 import M9Slide15AIPromptCreatives from "./M9Slide15AIPromptCreatives";
@@ -44,7 +43,6 @@ export const slideNames = [
   "AI-стек 2026",
   "URL → 100+ ад-креативов",
   "Правило одного стиля",
-  "Воркшоп 2 · hero-секция",
   "Блок 4 · Креативы 2026",
   "Что сломалось · 2024 vs 2026",
   "Анатомия креатива",
@@ -77,26 +75,25 @@ export function getSlideContent(index: number) {
     case 11: return <M9Slide09VisualStack />;
     case 12: return <M9Slide10UrlToAds />;
     case 13: return <M9Slide11OneStyleRule />;
-    case 14: return <M9Slide12Workshop2 />;
-    case 15: return <M9BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
-    case 16: return <M9Slide13OldVsNew />;
-    case 17: return <M9Slide14AdAnatomy />;
-    case 18: return <M9Slide15AIPromptCreatives />;
-    case 19: return <M9BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
-    case 20: return <M9Slide16Funnel />;
-    case 21: return <M9Slide17Metrics />;
-    case 22: return <M9BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
-    case 23: return <M9Slide18B2BPath />;
-    case 24: return <M9Slide19B2CPath />;
-    case 25: return <M9Slide20FullStack />;
-    case 26: return <M9Slide21Workshop3 />;
-    case 27: return <M9Slide22Homework />;
-    case 28: return <M9Slide23NextWeek />;
+    case 14: return <M9BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
+    case 15: return <M9Slide13OldVsNew />;
+    case 16: return <M9Slide14AdAnatomy />;
+    case 17: return <M9Slide15AIPromptCreatives />;
+    case 18: return <M9BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
+    case 19: return <M9Slide16Funnel />;
+    case 20: return <M9Slide17Metrics />;
+    case 21: return <M9BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
+    case 22: return <M9Slide18B2BPath />;
+    case 23: return <M9Slide19B2CPath />;
+    case 24: return <M9Slide20FullStack />;
+    case 25: return <M9Slide21Workshop3 />;
+    case 26: return <M9Slide22Homework />;
+    case 27: return <M9Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 29;
+export const TOTAL = 28;
 
 export default function Meeting9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
