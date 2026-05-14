@@ -23,7 +23,6 @@ import M9Slide17Metrics from "./M9Slide17Metrics";
 import M9Slide18B2BPath from "./M9Slide18B2BPath";
 import M9Slide19B2CPath from "./M9Slide19B2CPath";
 import M9Slide20FullStack from "./M9Slide20FullStack";
-import M9Slide21Workshop3 from "./M9Slide21Workshop3";
 import M9Slide22Homework from "./M9Slide22Homework";
 import M9Slide23NextWeek from "./M9Slide23NextWeek";
 
@@ -52,7 +51,6 @@ export const slideNames = [
   "B2B путь · бренд фаундера",
   "B2C путь · Mikey",
   "Полный стек с ценами",
-  "Воркшоп 3 · 7-day plan",
   "Домашка к M10",
   "M10 + M11",
 ];
@@ -83,14 +81,13 @@ export function getSlideContent(index: number) {
     case 21: return <M9Slide18B2BPath />;
     case 22: return <M9Slide19B2CPath />;
     case 23: return <M9Slide20FullStack />;
-    case 24: return <M9Slide21Workshop3 />;
-    case 25: return <M9Slide22Homework />;
-    case 26: return <M9Slide23NextWeek />;
+    case 24: return <M9Slide22Homework />;
+    case 25: return <M9Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 27;
+export const TOTAL = 26;
 
 export default function Meeting9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
