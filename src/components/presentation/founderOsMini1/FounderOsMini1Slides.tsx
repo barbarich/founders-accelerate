@@ -52,7 +52,8 @@ export const slides = [
   L1EightDimensions,             // 12 — 8 измерений анализа
   L1NegativeReviews,             // 13 — Негативные отзывы — золото
   L1Perplexity,                  // 14 — Perplexity · 5 промптов
-  FOM1Slide13Hypothesis,         // 15 — Deep Research + SimilarWeb (наш промпт + ручной чек-лист)
+  L1DeepResearchPrompt,          // 15 — Deep Research master prompt
+  FOM1Slide13Hypothesis,         // 16 — Deep Research + SimilarWeb (наш промпт + ручной чек-лист)
   L1AgentLens,                   // 17 — FoundersLens AI Agent
   L1AgentPmf,                    // 18 — PMF AI Agent
   FOM1Slide16PassFail,           // 19 — Сигналы pass / fail в интервью
