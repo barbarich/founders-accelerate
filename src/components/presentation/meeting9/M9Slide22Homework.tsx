@@ -1,10 +1,10 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const tasks = [
-  { n: "1", t: "Переупакуй лендинг", d: "Финальная формула в H1. Новый hero-image, сделанный AI. Один CTA, один результат. Никаких трёх кнопок." },
-  { n: "2", t: "Пройди свой 7-day plan", d: "Без отговорок. B2B — Apollo + Instantly + 100 имейлов. B2C — 30 креативов, пиксели, Advantage+ от $20/день." },
-  { n: "3", t: "Запиши цифры", d: "Что получилось — open rate, reply rate, CTR, leads. Без цифр на M10 разговаривать будет не о чем." },
-  { n: "4", t: "Принеси на M10", d: "Скриншот переупакованного лендинга + скриншот цифр первой недели запуска. Из них будем разбирать продажи." },
+  { n: "1", t: "10–20 рекламных креативов", d: "Сделай первые 10–20 креативов: изображения и видео + рекламные тексты. AI-инструменты — Higgsfield, Nano Banana, ChatGPT, Claude." },
+  { n: "2", t: "Выбери площадку для старта", d: "Определись: Meta или Google. Один канал, без распыления. От него зависит формат креативов и воронка." },
+  { n: "3", t: "Поставь пиксели на сайт", d: "Meta Pixel + Google Tag + TikTok Pixel — на лендинг до запуска рекламы. Без них данных не будет." },
+  { n: "4", t: "Настрой трекинг конверсий", d: "Если есть покупка — thank you page с событием. Если лид — отдельная страница / событие для трекинга." },
 ];
 
 export default function M9Slide22Homework() {
@@ -33,7 +33,7 @@ export default function M9Slide22Homework() {
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[6px]">
           <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.4]">
             <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-            к встрече 10 у каждого есть переупакованный лендинг и первые цифры запуска. Без цифр M10 пройдёт впустую.
+            к M10 — 10–20 креативов, выбранная площадка, пиксели на сайте и работающий трекинг конверсий.
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function M9Slide22Homework() {
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[20px] max-w-[1700px]">
         <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.45]">
           <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-          к встрече 10 у каждого есть переупакованный лендинг и первые цифры запуска. Без цифр M10 пройдёт впустую — разбирать будет нечего.
+          к M10 — 10–20 креативов готовы, площадка выбрана, пиксели стоят, трекинг конверсий работает. Можно запускать.
         </p>
       </div>
     </div>
