@@ -1,0 +1,256 @@
+import { useState, useEffect, useCallback, useRef } from "react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid3X3, X, ArrowLeft } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useNavigate } from "react-router-dom";
+import ScaledSlide from "../ScaledSlide";
+
+import M9Slide01Welcome from "./M9Slide01Welcome";
+import M9Slide02MainThesis from "./M9Slide02MainThesis";
+import M9BlockHeader from "./M9BlockHeader";
+import M9Slide03Stats from "./M9Slide03Stats";
+import M9Slide04SoloFounders from "./M9Slide04SoloFounders";
+import M9Slide05ThreePillars from "./M9Slide05ThreePillars";
+import M9Slide06PositioningFormula from "./M9Slide06PositioningFormula";
+import M9Slide07PositioningExamples from "./M9Slide07PositioningExamples";
+import M9Slide08Workshop1 from "./M9Slide08Workshop1";
+import M9Slide09VisualStack from "./M9Slide09VisualStack";
+import M9Slide10UrlToAds from "./M9Slide10UrlToAds";
+import M9Slide11OneStyleRule from "./M9Slide11OneStyleRule";
+import M9Slide12Workshop2 from "./M9Slide12Workshop2";
+import M9Slide13OldVsNew from "./M9Slide13OldVsNew";
+import M9Slide14AdAnatomy from "./M9Slide14AdAnatomy";
+import M9Slide15AIPromptCreatives from "./M9Slide15AIPromptCreatives";
+import M9Slide16Funnel from "./M9Slide16Funnel";
+import M9Slide17Metrics from "./M9Slide17Metrics";
+import M9Slide18B2BPath from "./M9Slide18B2BPath";
+import M9Slide19B2CPath from "./M9Slide19B2CPath";
+import M9Slide20FullStack from "./M9Slide20FullStack";
+import M9Slide21Workshop3 from "./M9Slide21Workshop3";
+import M9Slide22Homework from "./M9Slide22Homework";
+import M9Slide23NextWeek from "./M9Slide23NextWeek";
+
+export const slideNames = [
+  "Заглавный",
+  "Главная мысль",
+  "Блок 1 · Зачем упаковка",
+  "Цифры 2026 + мой счёт",
+  "Одиночки-фаундеры 2026",
+  "Framework · 3 кита",
+  "Блок 2 · Позиционирование",
+  "Формула + 3 теста",
+  "Шесть примеров формул",
+  "Воркшоп 1 · твоя формула",
+  "Блок 3 · Визуалы",
+  "AI-стек 2026",
+  "URL → 100+ ад-креативов",
+  "Правило одного стиля",
+  "Воркшоп 2 · hero-секция",
+  "Блок 4 · Креативы 2026",
+  "Что сломалось · 2024 vs 2026",
+  "Анатомия креатива",
+  "Промпт · 30 креативов",
+  "Блок 5 · Каналы и воронка",
+  "Воронка 101",
+  "Метрики 2026",
+  "Блок 6 · Два пути запуска",
+  "B2B путь · бренд фаундера",
+  "B2C путь · Mikey",
+  "Полный стек с ценами",
+  "Воркшоп 3 · 7-day plan",
+  "Домашка к M10",
+  "M10 + M11",
+];
+
+export function getSlideContent(index: number) {
+  switch (index) {
+    case 0: return <M9Slide01Welcome />;
+    case 1: return <M9Slide02MainThesis />;
+    case 2: return <M9BlockHeader blockNumber={1} title="Зачем упаковка" subtitle="после продукта, но до продаж" />;
+    case 3: return <M9Slide03Stats />;
+    case 4: return <M9Slide04SoloFounders />;
+    case 5: return <M9Slide05ThreePillars />;
+    case 6: return <M9BlockHeader blockNumber={2} title="Кит 1 · Позиционирование" subtitle="одна фраза, на которой держится всё" />;
+    case 7: return <M9Slide06PositioningFormula />;
+    case 8: return <M9Slide07PositioningExamples />;
+    case 9: return <M9Slide08Workshop1 />;
+    case 10: return <M9BlockHeader blockNumber={3} title="Кит 2 · Визуалы" subtitle="AI-стек 2026" />;
+    case 11: return <M9Slide09VisualStack />;
+    case 12: return <M9Slide10UrlToAds />;
+    case 13: return <M9Slide11OneStyleRule />;
+    case 14: return <M9Slide12Workshop2 />;
+    case 15: return <M9BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
+    case 16: return <M9Slide13OldVsNew />;
+    case 17: return <M9Slide14AdAnatomy />;
+    case 18: return <M9Slide15AIPromptCreatives />;
+    case 19: return <M9BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
+    case 20: return <M9Slide16Funnel />;
+    case 21: return <M9Slide17Metrics />;
+    case 22: return <M9BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
+    case 23: return <M9Slide18B2BPath />;
+    case 24: return <M9Slide19B2CPath />;
+    case 25: return <M9Slide20FullStack />;
+    case 26: return <M9Slide21Workshop3 />;
+    case 27: return <M9Slide22Homework />;
+    case 28: return <M9Slide23NextWeek />;
+    default: return null;
+  }
+}
+
+export const TOTAL = 29;
+
+export default function Meeting9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
+  const isMobile = useIsMobile();
+  const navigate = useNavigate();
+  const [current, setCurrent] = useState(0);
+  const [displayed, setDisplayed] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
+  const [controlsVisible, setControlsVisible] = useState(true);
+
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const goTo = useCallback((index: number) => {
+    if (index === displayed || transitioning) return;
+    setTransitioning(true);
+    setTimeout(() => {
+      setDisplayed(index);
+      setCurrent(index);
+      requestAnimationFrame(() => setTransitioning(false));
+    }, 200);
+  }, [displayed, transitioning]);
+
+  const next = useCallback(() => goTo(Math.min(current + 1, TOTAL - 1)), [current, goTo]);
+  const prev = useCallback(() => goTo(Math.max(current - 1, 0)), [current, goTo]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); next(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
+      if (e.key === "Escape" && showGrid) { setShowGrid(false); return; }
+      if (e.key === "Escape" && isFullscreen) document.exitFullscreen?.();
+      if (e.key === "F5") { e.preventDefault(); document.documentElement.requestFullscreen?.(); }
+      if (e.key === "g" || e.key === "G") setShowGrid(v => !v);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [next, prev, showGrid, isFullscreen]);
+
+  useEffect(() => {
+    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", handler);
+    return () => document.removeEventListener("fullscreenchange", handler);
+  }, []);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const show = () => { setControlsVisible(true); clearTimeout(timer); timer = setTimeout(() => setControlsVisible(false), 3000); };
+    window.addEventListener("mousemove", show);
+    show();
+    return () => { window.removeEventListener("mousemove", show); clearTimeout(timer); };
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (document.fullscreenElement) document.exitFullscreen?.();
+    else document.documentElement.requestFullscreen?.();
+  };
+
+  if (showGrid) {
+    return (
+      <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl font-semibold text-foreground">Встреча 9 — Все слайды</h2>
+          <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
+        </div>
+        <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>
+          {Array.from({ length: TOTAL }, (_, i) => (
+            <button key={i} onClick={() => { setCurrent(i); setDisplayed(i); setShowGrid(false); }}
+              className={`aspect-video relative rounded-lg overflow-hidden border-2 transition-all hover:border-primary ${i === current ? "border-primary ring-2 ring-primary/30" : "border-border"}`}>
+              <ScaledSlide>{getSlideContent(i)}</ScaledSlide>
+              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                <span className="text-xs text-white/80">{i + 1}. {slideNames[i]}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full h-screen bg-[hsl(var(--background))] flex overflow-hidden relative">
+      {!isMobile && showSidebar && (
+        <div className="w-[220px] h-full bg-[hsl(var(--card))] border-r border-border overflow-y-auto shrink-0 flex flex-col">
+          <div className="p-3 border-b border-border flex items-center justify-between">
+            <span className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Слайды</span>
+            <button onClick={() => setShowSidebar(false)} className="text-muted-foreground hover:text-foreground"><X size={14} /></button>
+          </div>
+          {Array.from({ length: TOTAL }, (_, i) => (
+            <button key={i} onClick={() => { setCurrent(i); setDisplayed(i); }}
+              className={`p-2 mx-2 my-1 rounded aspect-video relative overflow-hidden border transition-all ${i === current ? "border-primary" : "border-transparent hover:border-border"}`}>
+              <ScaledSlide>{getSlideContent(i)}</ScaledSlide>
+              <div className="absolute bottom-0 inset-x-0 bg-black/60 px-1.5 py-0.5"><span className="text-[9px] text-white/70">{i + 1}</span></div>
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="flex-1 relative flex flex-col">
+        <div className="flex-1 relative"
+          onTouchStart={(e) => { touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }; }}
+          onTouchEnd={(e) => {
+            if (!touchStartRef.current) return;
+            const t = e.changedTouches[0];
+            const dx = t.clientX - touchStartRef.current.x;
+            const dy = t.clientY - touchStartRef.current.y;
+            touchStartRef.current = null;
+            if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { dx < 0 ? next() : prev(); }
+          }}>
+          <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+          </div>
+        </div>
+
+        <div className={`absolute bottom-0 inset-x-0 transition-opacity duration-300 ${controlsVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+          <div className="h-[3px] bg-[hsl(var(--border))]">
+            <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((current + 1) / TOTAL) * 100}%` }} />
+          </div>
+          <div className={`flex items-center justify-between ${isMobile ? 'px-3 py-2' : 'px-6 py-3'} bg-[hsl(var(--card)/0.9)] backdrop-blur-sm`}>
+            <div className="flex items-center gap-3">
+              <button onClick={(e) => { e.stopPropagation(); navigate(backTo); }}
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded" title="Назад">
+                <ArrowLeft size={16} />
+              </button>
+              {!isMobile && !showSidebar && (
+                <button onClick={(e) => { e.stopPropagation(); setShowSidebar(true); }}
+                  className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded" title="Показать слайды">
+                  <ChevronRight size={16} />
+                </button>
+              )}
+              <button onClick={(e) => { e.stopPropagation(); setShowGrid(true); }}
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded" title="Все слайды (G)">
+                <Grid3X3 size={isMobile ? 14 : 16} />
+              </button>
+            </div>
+            <div className="flex items-center gap-4">
+              <button onClick={(e) => { e.stopPropagation(); prev(); }}
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded disabled:opacity-30" disabled={current === 0}>
+                <ChevronLeft size={18} />
+              </button>
+              <span className="text-sm text-muted-foreground font-mono min-w-[60px] text-center">{current + 1} / {TOTAL}</span>
+              <button onClick={(e) => { e.stopPropagation(); next(); }}
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded disabled:opacity-30" disabled={current === TOTAL - 1}>
+                <ChevronRight size={18} />
+              </button>
+            </div>
+            <button onClick={(e) => { e.stopPropagation(); toggleFullscreen(); }}
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded" title="Полный экран (F5)">
+              {isFullscreen ? <Minimize size={16} /> : <Maximize size={16} />}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
