@@ -69,7 +69,7 @@ export default function M10Slide17EventsBestPractices() {
             </div>
           ))}
         </div>
-        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">CAPI стек · где готовое</p>
+        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">Готовые решения · без программиста</p>
         <div className="grid grid-cols-2 gap-[3px]">
           {stack.map((s) => (
             <div key={s.tool} className="bg-[hsl(var(--slide-gold)/0.06)] border-l border-[hsl(var(--slide-gold))] rounded-[4px] px-[6px] py-[2px]">
