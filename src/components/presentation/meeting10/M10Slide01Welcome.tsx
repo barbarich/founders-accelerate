@@ -17,7 +17,7 @@ export default function M10Slide01Welcome() {
             Реклама в Meta.<br />От пустого Ads Manager до запущенной кампании за одну встречу.
           </h1>
           <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Встреча 10 · Платный трафик B2C
+            Встреча 10 · Платный трафик B2C + B2B
           </p>
           <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
             Один большой воркшоп вживую. Настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
@@ -41,7 +41,7 @@ export default function M10Slide01Welcome() {
           От пустого Ads Manager до запущенной кампании за одну встречу.
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Встреча 10 · Платный трафик B2C
+          Встреча 10 · Платный трафик B2C + B2B
         </p>
         <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1200px]">
           Один большой воркшоп вживую. Настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
