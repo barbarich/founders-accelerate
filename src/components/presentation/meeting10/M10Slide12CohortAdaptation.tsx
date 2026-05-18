@@ -3,28 +3,28 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const founders = [
   {
     name: "Mila · Hobbix",
-    track: "B2C · Sales / Leads",
-    body: "Objective = Leads (signup на первую сессию) или Sales, если уже монетизация. Креативы — скриншоты first session + hook про результат, который человек получит за один заход.",
+    track: "B2C · Leads → Zoom-звонок",
+    body: "Цель — лиды, которых ты закрываешь на Zoom-звонке. Objective = Leads, форма с выбором времени созвона. Креативы: «преврати своё хобби в доход» — кейсы людей, которые начали зарабатывать на хобби. Hook про прибыль, не про «попробуй платформу».",
   },
   {
     name: "Lea · Default She",
-    track: "B2C · Leads",
-    body: "Objective = Leads с email collection через лендинг. Креативы — скриншоты first result (empty state → результат). Hook: «за 5 минут вместо часов».",
+    track: "B2C · Регистрации на платформе",
+    body: "Платформа для женщин с подбором безопасных товаров. Цель — переход на платформу и регистрация. Objective = Sales/Conversions (событие = Registration). Креативы: «безопасные товары, проверенные для женщин» — конкретные категории, скриншоты подбора, отзывы.",
   },
   {
     name: "Vlad",
-    track: "Валидация спроса",
-    body: "Цель — собрать вейтлист. Objective = Leads с минимальной формой (email + 1 вопрос). Бюджет $10–15/день для валидации, не для роста.",
+    track: "B2C · Регистрация + оплата",
+    body: "Платформа для создания подкастов. Цель — регистрация на платформе и оплата подписки. Objective = Sales (событие = Purchase, fallback = Registration). Креативы: «запиши подкаст за вечер без студии» — демо интерфейса, до/после, цена подписки в кадре.",
   },
   {
     name: "Inna + Aleksandra · Dira.click",
-    track: "B2C · Messages / Housing",
-    body: "Special Ad Category = Housing — обязательно. Conversion location = Messenger. CTA = Send Message → click-to-WhatsApp. Креатив: «найди квартиру через WhatsApp за 5 минут».",
+    track: "B2C · WhatsApp-бот · переход в бота",
+    body: "WhatsApp-бот для подбора квартир. Целевое действие = переход в бота. Special Ad Category = Housing — обязательно. Conversion location = Messenger, CTA = Send Message → click-to-WhatsApp. Креатив: «найди квартиру через WhatsApp за 5 минут» — скриншот диалога с ботом.",
   },
   {
     name: "Laura · QA / RA",
-    track: "B2B · смотришь, переносишь",
-    body: "Meta — не твой канал. Сегодня смотришь логику воронки и креативных тестов. На M11 берём LinkedIn Ads + Apollo + Instantly — твой стек разбираем под продукт.",
+    track: "B2B · лидген-воронка, не баннеры",
+    body: "Прямые «купи продукт» креативы в B2B не работают. Твой формат — воронка для сбора лидов: lead-magnet (чеклист «10 ошибок QA/RA-документации», мини-гайд, бенчмарк). Objective = Leads, форма с email + компания. Дальше — nurture-цепочка и звонок. На M11 добавим LinkedIn Ads + Apollo + Instantly.",
   },
 ];
 
