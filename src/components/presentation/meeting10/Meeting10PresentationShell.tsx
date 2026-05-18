@@ -71,7 +71,7 @@ export function getSlideContent(index: number) {
     case 17: return <M10Slide12CohortAdaptation />;
     case 18: return <M10BlockHeader blockNumber={5} title="Семь ошибок" subtitle="на которых ломаются первые кампании" />;
     case 19: return <M10Slide13Top7Mistakes />;
-    case 20: return <M10BlockHeader blockNumber={6} title="Домашнее задание" subtitle="кампания живёт, данные собираются, ты не паникуешь" />;
+    case 20: return <M10BlockHeader blockNumber={6} title="Домашнее задание" subtitle="кампания запущена, данные собираются" />;
     case 21: return <M10Slide14Homework />;
     case 22: return <M10Slide15NextWeek />;
     default: return null;
