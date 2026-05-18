@@ -53,10 +53,10 @@ export default function M10Slide17EventsBestPractices() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Топ-практики событий · 18 мая 2026
+          Топ-правила отслеживания · 18 мая 2026
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          Без этих шести вещей <span className="text-[hsl(var(--slide-gold))]">пиксель — это 50% правды</span>
+          Без этих шести шагов <span className="text-[hsl(var(--slide-gold))]">ты видишь половину правды</span>
         </h2>
         <div className="grid grid-cols-2 gap-[4px] mb-[5px]">
           {practices.map((p) => (
