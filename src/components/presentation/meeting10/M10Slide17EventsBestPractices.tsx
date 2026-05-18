@@ -3,47 +3,47 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const practices = [
   {
     n: "01",
-    t: "CAPI обязателен, не опционален",
+    t: "Отправляй данные с сервера, не только из браузера",
     tag: "ЕСТЬ ДУБЛЁР · ЕСТЬ ДАННЫЕ",
-    body: "iOS 14.5+ ATT + Brave / Safari / ad-blockers режут browser pixel на 30–50%. Conversions API шлёт события с сервера — их не зарежет ничего. Без CAPI 2026 = слепая кампания.",
+    body: "Блокировщики рекламы и новые правила iOS скрывают до половины покупок. Если отправлять данные напрямую с твоего сервера — их не заблокировать. Без этого ты видишь только половину правды.",
   },
   {
     n: "02",
-    t: "Deduplication через event_id",
+    t: "Один номер — одна покупка",
     tag: "ОДНО СОБЫТИЕ · НЕ ДВА",
-    body: "И pixel в браузере, и CAPI с сервера отправляют ОДНО событие с одинаковым event_id (например, order_xxx или pi_xxx из Stripe). Meta схлопывает дубль автоматически. Без event_id — двойной счёт, кривая оптимизация.",
+    body: "Браузер и сервер оба видят одну покупку. Дай каждой покупке свой номер — тогда система поймёт, что это одно и то же, и не посчитает дважды.",
   },
   {
     n: "03",
-    t: "Value + Currency · всегда",
-    tag: "БЕЗ НИХ НЕТ ROAS",
-    body: "fbq('track', 'Purchase', {value: 19, currency: 'USD'}). Без value Meta оптимизирует на количество, а не на доход. Для Lead — ставь оценочный value (например, $50 за качественный лид).",
+    t: "Всегда указывай сумму покупки",
+    tag: "БЕЗ НИХ НЕТ ПРИБЫЛИ",
+    body: "Если передаёшь только факт покупки, система ищет любую покупку. Если передаёшь сумму — ищет самые крупные. Для заявок указывай примерную ценность (например, $50 за качественного клиента).",
   },
   {
     n: "04",
-    t: "Aggregated Event Measurement (AEM)",
+    t: "Расставь приоритеты событий",
     tag: "8 ПРИОРИТЕТОВ НА ДОМЕН",
-    body: "iOS режет до 8 событий на домен. В Events Manager → Aggregated Event Measurement → расставь приоритеты. Самое ценное событие (Purchase) — позиция 1. ViewContent — 8 или вне списка.",
+    body: "iOS ограничивает, сколько действий можно отследить. Зайди в настройки Events Manager и расставь приоритеты. Покупка — на первом месте. Просмотр страницы — последним или убери совсем.",
   },
   {
     n: "05",
-    t: "Test Events перед запуском",
+    t: "Проверь всё до запуска",
     tag: "5 МИНУТ · СПАСАЕТ НЕДЕЛИ",
-    body: "Events Manager → Test Events → вводишь URL → проходишь сценарий → видишь события в реал-тайме. Если Purchase не пришёл — чинишь до Publish, а не после слива $200.",
+    body: "В Events Manager есть режим тестирования: проходишь сценарий покупки и видишь, приходят ли данные. Если нет — чинишь ДО запуска рекламы, а не после слива денег.",
   },
   {
     n: "06",
-    t: "GA4 параллельно, не вместо",
+    t: "Сверяй данные из двух источников",
     tag: "ДВА ИСТОЧНИКА ПРАВДЫ",
-    body: "Meta-метрики живут в Ads Manager. Поведение на сайте — в GA4. UTM в URL рекламы (utm_source=meta · utm_campaign=...) сшивает оба источника. Без GA4 ты не видишь что человек делал ПОСЛЕ клика.",
+    body: "Рекламный кабинет показывает клики. Google Analytics — что человек делал на сайте после. Добавь метки в ссылки рекламы, чтобы связывать оба источника.",
   },
 ];
 
 const stack = [
-  { tool: "Stripe", note: "→ Webhook → CAPI fetch. event_id = pi_xxx" },
-  { tool: "Supabase Edge Function", note: "Server-side trigger → fetch graph.facebook.com" },
-  { tool: "Stape · CAPI Gateway", note: "Managed proxy, $20/мес, без своего бэкенда" },
-  { tool: "Shopify · Meta channel", note: "Native интеграция с CAPI из коробки" },
+  { tool: "Stripe", note: "Оплата через Stripe → автоматически отправляет данные о покупке" },
+  { tool: "Supabase Edge Function", note: "Свой сервер для отправки данных о покупках" },
+  { tool: "Stape · CAPI Gateway", note: "Готовый сервис-прокси, $20/мес, программист не нужен" },
+  { tool: "Shopify · Meta channel", note: "Встроенная интеграция для магазинов на Shopify" },
 ];
 
 export default function M10Slide17EventsBestPractices() {
@@ -53,10 +53,10 @@ export default function M10Slide17EventsBestPractices() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Топ-практики событий · 18 мая 2026
+          Топ-правила отслеживания · 18 мая 2026
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          Без этих шести вещей <span className="text-[hsl(var(--slide-gold))]">пиксель — это 50% правды</span>
+          Без этих шести шагов <span className="text-[hsl(var(--slide-gold))]">ты видишь половину правды</span>
         </h2>
         <div className="grid grid-cols-2 gap-[4px] mb-[5px]">
           {practices.map((p) => (
@@ -69,7 +69,7 @@ export default function M10Slide17EventsBestPractices() {
             </div>
           ))}
         </div>
-        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">CAPI стек · где готовое</p>
+        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">Готовые решения · без программиста</p>
         <div className="grid grid-cols-2 gap-[3px]">
           {stack.map((s) => (
             <div key={s.tool} className="bg-[hsl(var(--slide-gold)/0.06)] border-l border-[hsl(var(--slide-gold))] rounded-[4px] px-[6px] py-[2px]">
@@ -85,10 +85,10 @@ export default function M10Slide17EventsBestPractices() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        Топ-практики событий · состояние на 18 мая 2026
+        Топ-правила отслеживания · 18 мая 2026
       </p>
       <h2 className="font-display text-[42px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
-        Без этих шести вещей <span className="text-[hsl(var(--slide-gold))]">пиксель отдаёт 50% правды</span>
+        Без этих шести шагов <span className="text-[hsl(var(--slide-gold))]">ты видишь половину правды</span>
       </h2>
       <div className="grid grid-cols-3 gap-[14px] mb-[16px] max-w-[1700px]">
         {practices.map((p) => (
@@ -102,7 +102,7 @@ export default function M10Slide17EventsBestPractices() {
           </div>
         ))}
       </div>
-      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">CAPI стек одиночки · готовые рельсы без своего бэкенда</p>
+      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Готовые решения · без программиста</p>
       <div className="grid grid-cols-4 gap-[14px] max-w-[1700px]">
         {stack.map((s) => (
           <div key={s.tool} className="bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[8px] px-[18px] py-[10px]">
