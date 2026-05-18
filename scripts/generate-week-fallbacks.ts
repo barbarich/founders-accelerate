@@ -1,5 +1,5 @@
 /**
- * Generates AI-friendly plain-text fallbacks for /programm-week{1..8}.
+ * Generates AI-friendly plain-text fallbacks for /programm-week{1..N}.
  *
  * Why: the site is a React SPA — LLM agents fetching /programm-weekN over plain HTTP
  * see only the empty app shell. This script SSR-renders each slide of every meeting
@@ -57,7 +57,11 @@ const MEETINGS = [
   { n: 6, file: "src/components/presentation/meeting6/Meeting6PresentationShell.tsx" },
   { n: 7, file: "src/components/presentation/meeting7/Meeting7PresentationShell.tsx" },
   { n: 8, file: "src/components/presentation/meeting8/Meeting8PresentationShell.tsx" },
+  { n: 9, file: "src/components/presentation/meeting9/Meeting9PresentationShell.tsx" },
+  { n: 10, file: "src/components/presentation/meeting10/Meeting10PresentationShell.tsx" },
 ];
+
+const TOTAL_MEETINGS = 12;
 
 type Shell = {
   slideNames: string[];
@@ -101,7 +105,7 @@ function formatSlide(args: {
   const { slideNumber, title, body, meetingN, total } = args;
   // Body may already start with the title text (e.g. h1 in JSX matches slideNames).
   // Keep the explicit **title** line either way — matches lesson1.txt format.
-  const footer = `Михаэль · Встреча ${meetingN} из 8 · Slide ${slideNumber}/${total}`;
+  const footer = `Михаэль · Встреча ${meetingN} из ${TOTAL_MEETINGS} · Slide ${slideNumber}/${total}`;
   return `## Слайд ${slideNumber}\n**${title}**\n${body}\n${footer}\n`;
 }
 
