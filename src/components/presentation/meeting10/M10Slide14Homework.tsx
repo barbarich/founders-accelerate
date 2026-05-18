@@ -27,7 +27,7 @@ export default function M10Slide14Homework() {
           Домашка · к встрече 11
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          Кампания живёт, данные собираются, ты не паникуешь
+          Кампания запущена, <span className="text-[hsl(var(--slide-gold))]">данные собираются</span>
         </h2>
         <div className="space-y-[4px] mb-[6px]">
           {tasks.map((t) => (
@@ -58,7 +58,7 @@ export default function M10Slide14Homework() {
         Домашка · к встрече 11
       </p>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[24px] tracking-[-0.02em]">
-        Кампания живёт, данные собираются, <span className="text-[hsl(var(--slide-gold))]">ты не паникуешь</span>
+        Кампания запущена, <span className="text-[hsl(var(--slide-gold))]">данные собираются</span>
       </h2>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1700px] mb-[20px]">
         {tasks.map((t) => (
