@@ -21,7 +21,6 @@ import FOM2Slide02MainInsight from "./FOM2Slide02MainInsight";
 import FOM2Slide03Recap from "./FOM2Slide03Recap";
 import FOM2Slide06AIQaPrompt from "./FOM2Slide06AIQaPrompt";
 import FOM2BlockPricing from "./FOM2BlockPricing";
-import FOM2Slide13PricingPrompt from "./FOM2Slide13PricingPrompt";
 import FOM2Slide14LivePricing from "./FOM2Slide14LivePricing";
 import FOM2BlockMVP from "./FOM2BlockMVP";
 import FOM2Slide20MVPPrompt from "./FOM2Slide20MVPPrompt";
