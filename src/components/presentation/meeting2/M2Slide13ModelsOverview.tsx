@@ -45,28 +45,28 @@ export default function M2Slide13ModelsOverview() {
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Монетизация</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px]">7 моделей монетизации</h2>
-      <div className="grid grid-cols-3 gap-[16px] max-w-[1100px] mb-[24px]">
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px]">
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[18px]">Монетизация</p>
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">7 моделей монетизации</h2>
+      <div className="grid grid-cols-3 gap-[20px] max-w-[1200px] mb-[28px]">
         {classicModels.map((m, i) => (
-          <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[18px] py-[14px]">
-            <span className="text-[24px]">{m.icon}</span>
-            <p className="text-[17px] font-semibold text-[hsl(var(--slide-text))] mt-[6px] mb-[3px]">{m.name}</p>
-            <p className="text-[13px] text-[hsl(var(--slide-gold))] mb-[2px]">{m.example}</p>
-            <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{m.when}</p>
+          <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[22px] py-[18px]">
+            <span className="text-[28px]">{m.icon}</span>
+            <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] mt-[8px] mb-[4px]">{m.name}</p>
+            <p className="text-[15px] text-[hsl(var(--slide-gold))] mb-[3px]">{m.example}</p>
+            <p className="text-[14px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{m.when}</p>
           </div>
         ))}
       </div>
-      <div className="bg-[hsl(var(--slide-gold)/0.06)] border-2 border-[hsl(var(--slide-gold)/0.4)] rounded-[16px] px-[32px] py-[22px] max-w-[1100px] flex items-start gap-[24px]">
-        <span className="text-[24px] shrink-0">🤖</span>
+      <div className="bg-[hsl(var(--slide-gold)/0.06)] border-2 border-[hsl(var(--slide-gold)/0.4)] rounded-[18px] px-[36px] py-[26px] max-w-[1200px] flex items-start gap-[28px]">
+        <span className="text-[28px] shrink-0">🤖</span>
         <div className="flex-1">
-          <div className="flex items-center gap-[12px] mb-[3px]">
-            <p className="text-[17px] font-semibold text-[hsl(var(--slide-text))]">Оплата за результат (Outcome-based)</p>
-            <span className="text-[11px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[8px] py-[2px] rounded-full font-bold uppercase tracking-wider">Тренд 2026</span>
+          <div className="flex items-center gap-[14px] mb-[5px]">
+            <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))]">Оплата за результат (Outcome-based)</p>
+            <span className="text-[12px] bg-[hsl(var(--slide-gold))] text-[hsl(var(--slide-bg))] px-[10px] py-[3px] rounded-full font-bold uppercase tracking-wider">Тренд 2026</span>
           </div>
-          <p className="text-[13px] text-[hsl(var(--slide-gold))] mb-[2px]">Devin, AI SDR-агенты, AI-рекрутеры</p>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
+          <p className="text-[15px] text-[hsl(var(--slide-gold))] mb-[3px]">Devin, AI SDR-агенты, AI-рекрутеры</p>
+          <p className="text-[14px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
             AI-агенты меняют правила: клиент платит не за доступ, а за выполненную работу. Нет результата — нет оплаты.
           </p>
         </div>
