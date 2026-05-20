@@ -39,22 +39,22 @@ export default function M2Slide15PricingPsychology() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">Ценообразование</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">Психология цены</h2>
-      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[36px] italic">Цена — это не математика, это эмоция. Люди не считают — они чувствуют.</p>
-      <div className="grid grid-cols-2 gap-[20px] max-w-[1100px] mb-[24px]">
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Ценообразование</p>
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">Психология цены</h2>
+      <p className="text-[26px] text-[hsl(var(--slide-text-muted))] mb-[40px] italic">Цена — это не математика, это эмоция. Люди не считают — они чувствуют.</p>
+      <div className="grid grid-cols-2 gap-[28px] max-w-[1200px] mb-[28px]">
         {principles.map((p, i) => (
-          <div key={i} className="flex items-start gap-[16px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[18px]">
-            <span className="text-[30px] shrink-0">{p.icon}</span>
+          <div key={i} className="flex items-start gap-[20px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[28px] py-[22px]">
+            <span className="text-[36px] shrink-0">{p.icon}</span>
             <div>
-              <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] mb-[4px]">{p.title}</p>
-              <p className="text-[16px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">{p.desc}</p>
+              <p className="text-[24px] font-semibold text-[hsl(var(--slide-text))] mb-[6px]">{p.title}</p>
+              <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">{p.desc}</p>
             </div>
           </div>
         ))}
       </div>
-      <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[28px] py-[16px] max-w-[1100px]">
-        <p className="text-[18px] text-[hsl(var(--slide-text))]">
+      <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[14px] px-[32px] py-[20px] max-w-[1200px]">
+        <p className="text-[20px] text-[hsl(var(--slide-text))]">
           💡 Люди не сравнивают вашу цену с себестоимостью — они сравнивают с ощущением: «это выгодно или нет?». Управляйте ощущением, а не калькулятором.
         </p>
       </div>
