@@ -58,8 +58,8 @@ export const slides = [
   M2Slide19OneFeature,          // 16 — One feature принцип
   M2Slide20KillFeatures,        // 17 — Упражнение «убей фичи» 10→3→1
   M2Slide21MVPChecklist,        // 18 — MoSCoW чеклист
-  FOM2Slide20MVPPrompt,         // 19 — AI-промпт #3: прорежь мой MVP
-  FOM2Slide21LiveReview,        // 20 — Универсальный шаблон разбора + директорий
+  FOM2Slide21LiveReview,        // 19 — Каждый — по очереди
+  FOM2Slide20MVPPrompt,         // 20 — FAQ · вопросы и ответы
   FOM2Slide22Homework,          // 21 — ДЗ к С3
   FOM2Slide23Closing,           // 22 — Закрытие
 ];
