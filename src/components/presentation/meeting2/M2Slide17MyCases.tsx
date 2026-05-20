@@ -3,33 +3,45 @@ import { useIsMobile } from "@/hooks/use-mobile";
 export default function M2Slide17MyCases() {
   const isMobile = useIsMobile();
 
+  const approach = [
+    { n: "1", label: "Цены конкурентов и рынка" },
+    { n: "2", label: "Ценность, которую даём клиенту" },
+    { n: "3", label: "Юнит-экономика: стоимость продажи и LTV" },
+  ];
+
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Мой опыт</p>
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Мой опыт</p>
+        <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
           Кейсы ценообразования
         </h2>
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[10px] py-[8px] mb-[10px]">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">В обоих кейсах я смотрел</p>
+          {approach.map((a) => (
+            <p key={a.n} className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.4]"><span className="text-[hsl(var(--slide-gold))] font-bold">{a.n}.</span> {a.label}</p>
+          ))}
+        </div>
         {/* RunEverywhere */}
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] p-[10px] mb-[6px]">
-          <p className="text-[12px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">RunEverywhere</p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[4px]">Виртуальные забеги с реальными медалями</p>
-          <p className="text-[9px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5] mb-[4px]">
-            Тестировали разные цены в маркетинге. Дороже $40 — не покупают. Дешевле — не зарабатываем. Подстроили расходы: $30 (маркетинг + медали + доставка) → $10 прибыль.
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] p-[12px] mb-[8px]">
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] mb-[3px]">RunEverywhere</p>
+          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[6px]">Виртуальные забеги с реальными медалями</p>
+          <p className="text-[11px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[6px]">
+            Рынок — $30–50 за забег. Ценность для клиента — $40. Юнит-экономика: медали + доставка + маркетинг = $30 → цена $40 → $10 прибыли с продажи.
           </p>
-          <p className="text-[9px] font-semibold text-[hsl(var(--slide-gold))]">Подход: найди потолок клиента → подстрой экономику</p>
+          <p className="text-[11px] font-semibold text-[hsl(var(--slide-gold))]">Цену задал рынок — экономику подстроили под него</p>
         </div>
         {/* MetaMinder */}
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] p-[10px] mb-[8px]">
-          <p className="text-[12px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">MetaMinder</p>
-          <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[4px]">AI-платформа для обучения сотрудников</p>
-          <p className="text-[9px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5] mb-[4px]">
-            Enterprise-сделки тянулись 6-12 месяцев. Добавили SaaS (Free → $49 → $99) и пошли снизу вверх: продавали HR-ам обучение 1-2 отделов, те продвигали внутри компании → enterprise от $360/мес.
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] p-[12px] mb-[10px]">
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] mb-[3px]">MetaMinder</p>
+          <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[6px]">AI-платформа для обучения сотрудников</p>
+          <p className="text-[11px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[6px]">
+            Рынок — enterprise от $20k/год, сделки 6–12 мес. Ценность — заменяем тренеров и LMS. Чтобы CAC окупался на коротком цикле, добавили SaaS Free → $49 → $99 и заходили снизу вверх до enterprise от $360/мес.
           </p>
-          <p className="text-[9px] font-semibold text-[hsl(var(--slide-gold))]">Подход: зайди снизу → вырасти внутри компании</p>
+          <p className="text-[11px] font-semibold text-[hsl(var(--slide-gold))]">Зашли снизу — выросли через LTV внутри компании</p>
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] px-[10px] py-[8px]">
-          <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold text-center">
+          <p className="text-[12px] text-[hsl(var(--slide-text))] font-semibold text-center leading-[1.35]">
             Цена — это не решение на один раз. Это эксперимент, который никогда не заканчивается.
           </p>
         </div>
@@ -39,51 +51,59 @@ export default function M2Slide17MyCases() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Мой опыт</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">Кейсы ценообразования</h2>
-      <div className="flex gap-[28px] max-w-[1100px] mb-[28px]">
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Мой опыт</p>
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px]">Кейсы ценообразования</h2>
+      <div className="flex flex-wrap items-center gap-x-[28px] gap-y-[8px] max-w-[1640px] mb-[28px]">
+        <span className="text-[18px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold">В обоих кейсах смотрел</span>
+        {approach.map((a) => (
+          <span key={a.n} className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.3]">
+            <span className="text-[hsl(var(--slide-gold))] font-bold">{a.n}.</span> {a.label}
+          </span>
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-[32px] max-w-[1640px] mb-[28px]">
         {/* RunEverywhere */}
-        <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] p-[28px] flex flex-col">
-          <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">RunEverywhere</p>
-          <p className="text-[16px] text-[hsl(var(--slide-text-muted))] mb-[16px]">Виртуальные забеги с реальными медалями</p>
-          <p className="text-[18px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[14px]">
-            Тестировали разные цены в маркетинге. Дороже <span className="text-[hsl(var(--slide-gold))] font-semibold">$40</span> — не покупают. Дешевле — не зарабатываем.
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[16px] p-[36px] flex flex-col">
+          <p className="text-[32px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">RunEverywhere</p>
+          <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mb-[20px]">Виртуальные забеги с реальными медалями</p>
+          <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[18px]">
+            Рынок задавал потолок: дороже <span className="text-[hsl(var(--slide-gold))] font-semibold">$40</span> — не покупают. Ценность для клиента — медаль и эмоция финиша. Поэтому фиксировали цену и уже под неё подстраивали юнит-экономику.
           </p>
-          <div className="flex items-center gap-[8px] mb-[16px] font-mono text-[16px]">
-            <span className="bg-[hsl(var(--slide-bg))] px-[12px] py-[6px] rounded-[6px] text-[hsl(var(--slide-text-muted))]">расходы $30</span>
+          <div className="flex flex-wrap items-center gap-[10px] mb-[18px] font-mono text-[18px]">
+            <span className="bg-[hsl(var(--slide-bg))] px-[14px] py-[8px] rounded-[8px] text-[hsl(var(--slide-text-muted))]">CAC + медали + доставка = $30</span>
             <span className="text-[hsl(var(--slide-text-muted))]">→</span>
-            <span className="bg-[hsl(var(--slide-bg))] px-[12px] py-[6px] rounded-[6px] text-[hsl(var(--slide-text))]">цена $40</span>
+            <span className="bg-[hsl(var(--slide-bg))] px-[14px] py-[8px] rounded-[8px] text-[hsl(var(--slide-text))]">цена $40</span>
             <span className="text-[hsl(var(--slide-text-muted))]">→</span>
-            <span className="bg-[hsl(var(--slide-gold)/0.15)] px-[12px] py-[6px] rounded-[6px] text-[hsl(var(--slide-gold))] font-bold">$10 прибыль</span>
+            <span className="bg-[hsl(var(--slide-gold)/0.15)] px-[14px] py-[8px] rounded-[8px] text-[hsl(var(--slide-gold))] font-bold">$10 прибыль</span>
           </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[16px] py-[10px] mt-auto">
-            <p className="text-[16px] text-[hsl(var(--slide-text))]">💡 Найди потолок клиента → подстрой экономику под него</p>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] px-[20px] py-[14px] mt-auto">
+            <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.4]">💡 Цену задаёт рынок — экономику подстраиваем под неё</p>
           </div>
         </div>
 
         {/* MetaMinder */}
-        <div className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] p-[28px] flex flex-col">
-          <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">MetaMinder</p>
-          <p className="text-[16px] text-[hsl(var(--slide-text-muted))] mb-[16px]">AI-платформа для обучения сотрудников</p>
-          <p className="text-[18px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[14px]">
-            Enterprise-сделки тянулись <span className="text-[hsl(var(--slide-gold))] font-semibold">6-12 месяцев</span>. Не было ресурса ждать. Пошли снизу вверх: продавали HR-ам обучение 1-2 отделов → те продвигали нас внутри компании.
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[16px] p-[36px] flex flex-col">
+          <p className="text-[32px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">MetaMinder</p>
+          <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mb-[20px]">AI-платформа для обучения сотрудников</p>
+          <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[18px]">
+            Рынок — enterprise от $20k/год, цикл сделки <span className="text-[hsl(var(--slide-gold))] font-semibold">6–12 мес</span>. Ценность — заменяем тренеров и LMS. Чтобы CAC окупался быстрее, добавили SaaS и зашли снизу: HR покупал 1–2 отдела и сам продвигал нас внутри. LTV рос за счёт расширения аккаунта.
           </p>
-          <div className="flex items-center gap-[6px] mb-[16px] font-mono text-[15px]">
-            <span className="bg-[hsl(var(--slide-bg))] px-[10px] py-[5px] rounded-[6px] text-[hsl(var(--slide-text-muted))]">Free</span>
+          <div className="flex flex-wrap items-center gap-[8px] mb-[18px] font-mono text-[17px]">
+            <span className="bg-[hsl(var(--slide-bg))] px-[12px] py-[7px] rounded-[8px] text-[hsl(var(--slide-text-muted))]">Free</span>
             <span className="text-[hsl(var(--slide-text-muted))]">→</span>
-            <span className="bg-[hsl(var(--slide-bg))] px-[10px] py-[5px] rounded-[6px] text-[hsl(var(--slide-text))]">$49/мес</span>
+            <span className="bg-[hsl(var(--slide-bg))] px-[12px] py-[7px] rounded-[8px] text-[hsl(var(--slide-text))]">$49/мес</span>
             <span className="text-[hsl(var(--slide-text-muted))]">→</span>
-            <span className="bg-[hsl(var(--slide-bg))] px-[10px] py-[5px] rounded-[6px] text-[hsl(var(--slide-text))]">$99/мес</span>
+            <span className="bg-[hsl(var(--slide-bg))] px-[12px] py-[7px] rounded-[8px] text-[hsl(var(--slide-text))]">$99/мес</span>
             <span className="text-[hsl(var(--slide-text-muted))]">→</span>
-            <span className="bg-[hsl(var(--slide-gold)/0.15)] px-[10px] py-[5px] rounded-[6px] text-[hsl(var(--slide-gold))] font-bold">Enterprise от $360/мес</span>
+            <span className="bg-[hsl(var(--slide-gold)/0.15)] px-[12px] py-[7px] rounded-[8px] text-[hsl(var(--slide-gold))] font-bold">Enterprise от $360/мес</span>
           </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[16px] py-[10px] mt-auto">
-            <p className="text-[16px] text-[hsl(var(--slide-text))]">💡 Зайди снизу через сотрудников → вырасти внутри компании</p>
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] px-[20px] py-[14px] mt-auto">
+            <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.4]">💡 Зайди снизу — расти через LTV внутри компании</p>
           </div>
         </div>
       </div>
-      <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[28px] py-[16px] max-w-[1100px]">
-        <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold text-center">
+      <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[20px] max-w-[1640px]">
+        <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold text-center leading-[1.35]">
           Цена — это не решение на один раз. Это эксперимент, который никогда не заканчивается.
         </p>
       </div>
