@@ -12,24 +12,24 @@ export default function M2Slide15PricingPsychology() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Ценообразование</p>
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+        <p className="text-[12px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Ценообразование</p>
+        <h2 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
           Психология цены
         </h2>
-        <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[10px] italic">Цена — это не математика, это эмоция</p>
-        <div className="space-y-[6px] mb-[8px]">
+        <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mb-[14px] italic">Цена — это не математика, это эмоция</p>
+        <div className="space-y-[10px] mb-[10px]">
           {principles.map((p, i) => (
-            <div key={i} className="flex items-start gap-[8px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[10px] py-[7px]">
-              <span className="text-[16px] shrink-0">{p.icon}</span>
+            <div key={i} className="flex items-start gap-[10px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[14px] py-[10px]">
+              <span className="text-[20px] shrink-0">{p.icon}</span>
               <div>
-                <p className="text-[11px] font-semibold text-[hsl(var(--slide-text))]">{p.title}</p>
-                <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.desc}</p>
+                <p className="text-[13px] font-semibold text-[hsl(var(--slide-text))]">{p.title}</p>
+                <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{p.desc}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[6px]">
-          <p className="text-[9px] text-[hsl(var(--slide-text))]">
+        <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[14px] py-[10px]">
+          <p className="text-[11px] text-[hsl(var(--slide-text))]">
             💡 Люди не сравнивают цену с себестоимостью. Они сравнивают с ощущением: «это выгодно или нет?»
           </p>
         </div>
