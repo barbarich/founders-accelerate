@@ -13,7 +13,7 @@ export default function FOM2Slide22Homework() {
     <FOM2SlideBase
       slide={22}
       eyebrow="Домашнее задание · к С3 «Build & Land»"
-      title="Что приносим через 5 дней"
+      title="Что приносим через 7 дней"
       subtitle="К следующей встрече у каждого — список фич MVP, цена, и обратная связь от 3 человек"
     >
       <div className="space-y-[8px] md:space-y-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
