@@ -11,6 +11,11 @@ from typing import Any, Optional, Type
 
 from founderslens.llm.anthropic_provider import _inline_refs
 from founderslens.llm.base import LLMProvider, LLMResponse, T
+from founderslens.llm.temperature_compat import (
+    is_temperature_rejection,
+    register_no_temperature,
+    supports_custom_temperature,
+)
 from founderslens.utils.retry import retry_async
 
 log = logging.getLogger(__name__)
@@ -83,6 +88,31 @@ class GeminiProvider(LLMProvider):
     def _model(self, model_id: str):
         return self._genai.GenerativeModel(model_id)
 
+    def _gen_config(self, model_id: str, *, max_tokens: int, temperature: float, **extra: Any) -> dict:
+        """Build generation_config, omitting temperature for models that reject it."""
+        cfg: dict[str, Any] = {"max_output_tokens": max_tokens, **extra}
+        if supports_custom_temperature(self.provider_name, model_id):
+            cfg["temperature"] = temperature
+        return cfg
+
+    async def _generate(self, mdl, prompt: str, model_id: str, *, max_tokens: int, temperature: float, **extra: Any):
+        """Wrap generate_content_async with the same temperature self-heal as the other providers."""
+        cfg = self._gen_config(model_id, max_tokens=max_tokens, temperature=temperature, **extra)
+        had_temp = "temperature" in cfg
+        try:
+            return await mdl.generate_content_async(prompt, generation_config=cfg)
+        except Exception as e:
+            if not had_temp or not is_temperature_rejection(e):
+                raise
+            log.warning(
+                "gemini model %r rejected temperature=%s — retrying without; "
+                "future calls will skip the param.",
+                model_id, temperature,
+            )
+            register_no_temperature(self.provider_name, model_id)
+            cfg.pop("temperature", None)
+            return await mdl.generate_content_async(prompt, generation_config=cfg)
+
     @retry_async(exceptions=(Exception,))
     async def complete(
         self, *, system: str, user: str,
@@ -92,12 +122,8 @@ class GeminiProvider(LLMProvider):
         mdl = self._model(model_id)
         # Gemini uses system instruction on the model itself; combine into one prompt
         prompt = f"{system}\n\n---\n\n{user}"
-        resp = await mdl.generate_content_async(
-            prompt,
-            generation_config={
-                "max_output_tokens": max_tokens,
-                "temperature": temperature,
-            },
+        resp = await self._generate(
+            mdl, prompt, model_id, max_tokens=max_tokens, temperature=temperature,
         )
         text = ""
         try:
@@ -128,18 +154,19 @@ class GeminiProvider(LLMProvider):
         # Try strict response_schema first; if Gemini rejects the schema, fall
         # back to prompt-driven JSON extraction so the user's request still
         # completes instead of failing the whole pipeline on a schema quirk.
+        # `_generate` handles temperature self-heal under the hood.
         resp = None
         try:
-            resp = await mdl.generate_content_async(
-                prompt,
-                generation_config={
-                    "max_output_tokens": max_tokens,
-                    "temperature": temperature,
-                    "response_mime_type": "application/json",
-                    "response_schema": _prepare_gemini_schema(schema),
-                },
+            resp = await self._generate(
+                mdl, prompt, model_id,
+                max_tokens=max_tokens, temperature=temperature,
+                response_mime_type="application/json",
+                response_schema=_prepare_gemini_schema(schema),
             )
         except Exception as schema_err:
+            # Don't swallow temperature rejections here — _generate already handled them.
+            if is_temperature_rejection(schema_err):
+                raise
             log.warning("gemini response_schema rejected (%s) — falling back to prompt-only JSON", schema_err)
             schema_hint = json.dumps(_prepare_gemini_schema(schema), ensure_ascii=False)
             fallback_prompt = (
@@ -147,13 +174,10 @@ class GeminiProvider(LLMProvider):
                 f"Return ONLY a valid JSON object matching this shape:\n```json\n{schema_hint}\n```\n"
                 "No prose, no markdown fences in your output."
             )
-            resp = await mdl.generate_content_async(
-                fallback_prompt,
-                generation_config={
-                    "max_output_tokens": max_tokens,
-                    "temperature": temperature,
-                    "response_mime_type": "application/json",
-                },
+            resp = await self._generate(
+                mdl, fallback_prompt, model_id,
+                max_tokens=max_tokens, temperature=temperature,
+                response_mime_type="application/json",
             )
 
         raw = ""

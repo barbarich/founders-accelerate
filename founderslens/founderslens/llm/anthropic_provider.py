@@ -1,16 +1,31 @@
-"""Anthropic (Claude) provider. Uses tool-use for reliable JSON extraction."""
+"""Anthropic (Claude) provider. Uses tool-use for reliable JSON extraction.
+
+Temperature handling: Anthropic Opus 4.7+ deprecated `temperature` (extended
+thinking requires the default). For maximum forward-compatibility we route
+every call through `temperature_compat` — same self-heal pattern as the OpenAI
+provider, so if a future Claude model adopts the same restriction we don't
+need a code change to keep working.
+"""
 
 from __future__ import annotations
 
 import copy
 import json
+import logging
 from typing import Any, Optional, Type
 
 from anthropic import AsyncAnthropic
 from pydantic import BaseModel
 
 from founderslens.llm.base import LLMProvider, LLMResponse, T
+from founderslens.llm.temperature_compat import (
+    is_temperature_rejection,
+    register_no_temperature,
+    supports_custom_temperature,
+)
 from founderslens.utils.retry import retry_async
+
+log = logging.getLogger(__name__)
 
 
 def _inline_refs(schema: dict[str, Any]) -> dict[str, Any]:
@@ -50,20 +65,35 @@ class AnthropicProvider(LLMProvider):
         super().__init__(api_key)
         self._client = AsyncAnthropic(api_key=api_key)
 
+    async def _create(self, *, model: str, temperature: float, **kwargs: Any):
+        """Wrap messages.create with temperature self-heal (mirrors OpenAI provider)."""
+        if supports_custom_temperature(self.provider_name, model):
+            try:
+                return await self._client.messages.create(
+                    model=model, temperature=temperature, **kwargs,
+                )
+            except Exception as e:
+                if not is_temperature_rejection(e):
+                    raise
+                log.warning(
+                    "anthropic model %r rejected temperature=%s — retrying without; "
+                    "future calls will skip the param.",
+                    model, temperature,
+                )
+                register_no_temperature(self.provider_name, model)
+        return await self._client.messages.create(model=model, **kwargs)
+
     @retry_async(exceptions=(Exception,))
     async def complete(
         self, *, system: str, user: str,
         model: Optional[str] = None, max_tokens: int = 2048, temperature: float = 0.3,
     ) -> LLMResponse:
         model = model or self.default_models["main"]
-        kwargs: dict[str, Any] = {
-            "model": model, "system": system, "max_tokens": max_tokens,
-            "messages": [{"role": "user", "content": user}],
-        }
-        # Opus 4.7 deprecated `temperature` (extended thinking mode requires default).
-        if "opus" not in model.lower():
-            kwargs["temperature"] = temperature
-        msg = await self._client.messages.create(**kwargs)
+        msg = await self._create(
+            model=model, temperature=temperature,
+            system=system, max_tokens=max_tokens,
+            messages=[{"role": "user", "content": user}],
+        )
         text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
         return LLMResponse(
             text=text, tokens_in=msg.usage.input_tokens, tokens_out=msg.usage.output_tokens,
@@ -77,19 +107,17 @@ class AnthropicProvider(LLMProvider):
     ) -> tuple[T, LLMResponse]:
         model = model or self.default_models["main"]
         tool_name = f"emit_{schema.__name__.lower()}"
-        kwargs: dict[str, Any] = {
-            "model": model, "system": system, "max_tokens": max_tokens,
-            "tools": [{
+        msg = await self._create(
+            model=model, temperature=temperature,
+            system=system, max_tokens=max_tokens,
+            tools=[{
                 "name": tool_name,
                 "description": f"Emit a {schema.__name__} result.",
                 "input_schema": _inline_refs(schema.model_json_schema()),
             }],
-            "tool_choice": {"type": "tool", "name": tool_name},
-            "messages": [{"role": "user", "content": user}],
-        }
-        if "opus" not in model.lower():
-            kwargs["temperature"] = temperature
-        msg = await self._client.messages.create(**kwargs)
+            tool_choice={"type": "tool", "name": tool_name},
+            messages=[{"role": "user", "content": user}],
+        )
         tool_input: Optional[dict[str, Any]] = None
         for b in msg.content:
             if getattr(b, "type", "") == "tool_use" and b.name == tool_name:
