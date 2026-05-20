@@ -76,29 +76,29 @@ export default function M2Slide20KillFeatures() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">MVP</p>
-      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">Метод MoSCoW</h2>
-      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[32px]">Как выбрать что строить для MVP, а что — нет</p>
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">MVP</p>
+      <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">Метод MoSCoW</h2>
+      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[36px]">Как выбрать что строить для MVP, а что — нет</p>
 
-      <div className="flex gap-[16px] max-w-[1100px] mb-[24px]">
+      <div className="flex gap-[20px] max-w-[1100px] mb-[28px]">
         {categories.map((cat, i) => (
-          <div key={i} className={`flex-1 ${cat.bgColor} border ${cat.borderColor} rounded-[12px] p-[20px] flex flex-col`}>
-            <div className="flex items-center gap-[8px] mb-[10px]">
-              <span className="text-[22px]">{cat.emoji}</span>
-              <span className={`text-[14px] font-bold ${cat.color} uppercase tracking-wider`}>{cat.name}</span>
+          <div key={i} className={`flex-1 ${cat.bgColor} border ${cat.borderColor} rounded-[14px] p-[24px] flex flex-col`}>
+            <div className="flex items-center gap-[10px] mb-[12px]">
+              <span className="text-[26px]">{cat.emoji}</span>
+              <span className={`text-[16px] font-bold ${cat.color} uppercase tracking-wider`}>{cat.name}</span>
             </div>
-            <p className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[10px] flex-1">{cat.rule}</p>
-            <p className="text-[14px] text-[hsl(var(--slide-text-muted))] italic">Пример: {cat.example}</p>
+            <p className="text-[18px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[12px] flex-1">{cat.rule}</p>
+            <p className="text-[16px] text-[hsl(var(--slide-text-muted))] italic">Пример: {cat.example}</p>
           </div>
         ))}
       </div>
 
-      <div className="flex gap-[16px] max-w-[1100px]">
-        <div className="flex-1 bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[24px] py-[16px]">
-          <p className="text-[18px] text-[hsl(var(--slide-text))] font-semibold">💡 Твой MVP = только MUST HAVE. Всё остальное — после запуска.</p>
+      <div className="flex gap-[20px] max-w-[1100px]">
+        <div className="flex-1 bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[20px]">
+          <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold">💡 Твой MVP = только MUST HAVE. Всё остальное — после запуска.</p>
         </div>
-        <div className="flex-[0.7] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[24px] py-[16px]">
-          <p className="text-[18px] text-[hsl(var(--slide-text-muted))]">⚠️ Если MUST больше 3-4 фичей — ты обманываешь себя. Перечитай каждую.</p>
+        <div className="flex-[0.7] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[28px] py-[20px]">
+          <p className="text-[20px] text-[hsl(var(--slide-text-muted))]">⚠️ Если MUST больше 3-4 фичей — ты обманываешь себя. Перечитай каждую.</p>
         </div>
       </div>
     </div>
