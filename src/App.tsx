@@ -52,6 +52,8 @@ import PublicMeeting9Shell from "@/components/presentation/meeting9/PublicMeetin
 import PublicMeeting10Shell from "@/components/presentation/meeting10/PublicMeeting10Shell";
 import PublicFOM1Shell from "@/components/presentation/founderOsMini1/PublicFOM1Shell";
 import FOM1Shell from "@/components/presentation/founderOsMini1/FOM1Shell";
+import PublicFOM2Shell from "@/components/presentation/founderOsMini2/PublicFOM2Shell";
+import FOM2Shell from "@/components/presentation/founderOsMini2/FOM2Shell";
 import MiniCourseLesson1 from "./pages/MiniCourseLesson1";
 import MiniCourseLesson1Text from "./pages/MiniCourseLesson1Text";
 import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
@@ -189,6 +191,8 @@ const App = () => (
           <Route path="/programm-week10" element={<PublicMeeting10Shell />} />
           <Route path="/founder-os-mini-session1" element={<PublicFOM1Shell />} />
           <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
+          <Route path="/founder-os-mini-session2" element={<PublicFOM2Shell />} />
+          <Route path="/admin/founder-os-mini-session2" element={<FOM2Shell />} />
           <Route path="/mini-course/lesson0" element={<MiniCourseLesson0 />} />
           <Route path="/mini-course/lesson1" element={<MiniCourseLesson1 />} />
           <Route path="/mini-course/lesson1/text" element={<MiniCourseLesson1Text />} />
