@@ -45,29 +45,29 @@ export default function M2Slide20KillFeatures() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">MVP</p>
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+        <p className="text-[12px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">MVP</p>
+        <h2 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
           Метод MoSCoW
         </h2>
-        <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[10px]">Как выбрать что строить, а что — нет</p>
-        <div className="space-y-[5px] mb-[8px]">
+        <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mb-[14px]">Как выбрать что строить, а что — нет</p>
+        <div className="space-y-[6px] mb-[10px]">
           {categories.map((cat, i) => (
-            <div key={i} className={`${cat.bgColor} border ${cat.borderColor} rounded-[6px] px-[10px] py-[6px]`}>
-              <div className="flex items-center gap-[6px] mb-[2px]">
-                <span className="text-[12px]">{cat.emoji}</span>
-                <span className={`text-[10px] font-bold ${cat.color} uppercase tracking-wider`}>{cat.name}</span>
+            <div key={i} className={`${cat.bgColor} border ${cat.borderColor} rounded-[8px] px-[12px] py-[8px]`}>
+              <div className="flex items-center gap-[8px] mb-[3px]">
+                <span className="text-[14px]">{cat.emoji}</span>
+                <span className={`text-[12px] font-bold ${cat.color} uppercase tracking-wider`}>{cat.name}</span>
               </div>
-              <p className="text-[9px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{cat.rule}</p>
-              <p className="text-[8px] text-[hsl(var(--slide-text-muted))] italic">Пример: {cat.example}</p>
+              <p className="text-[11px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{cat.rule}</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic">Пример: {cat.example}</p>
             </div>
           ))}
         </div>
-        <div className="space-y-[4px]">
-          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[6px]">
-            <p className="text-[9px] text-[hsl(var(--slide-text))]">💡 Твой MVP = только MUST HAVE</p>
+        <div className="space-y-[6px]">
+          <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[8px] px-[12px] py-[8px]">
+            <p className="text-[11px] text-[hsl(var(--slide-text))]">💡 Твой MVP = только MUST HAVE</p>
           </div>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
-            <p className="text-[9px] text-[hsl(var(--slide-text-muted))]">⚠️ Если MUST больше 3-4 — ты обманываешь себя</p>
+          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[8px]">
+            <p className="text-[11px] text-[hsl(var(--slide-text-muted))]">⚠️ Если MUST больше 3-4 — ты обманываешь себя</p>
           </div>
         </div>
       </div>
