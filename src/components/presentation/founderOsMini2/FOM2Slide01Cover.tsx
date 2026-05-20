@@ -18,8 +18,8 @@ export default function FOM2Slide01Cover() {
             The Founders Circle · Сессия 2 из 6
           </p>
           <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em]">
-            Цена и MVP-скоуп.<br />
-            <span className="text-[hsl(var(--slide-gold))]">Сколько берём,</span> за что, что строим минимум.
+            Цена и MVP.<br />
+            <span className="text-[hsl(var(--slide-gold))]">Сколько берём</span> и что строим первым.
           </h1>
           <div className="mt-[18px] space-y-[8px] text-[12px] text-[hsl(var(--slide-text))] leading-[1.5]">
             <p><span className="text-[hsl(var(--slide-gold))]">→</span> 120 минут · 2 фаундера · разбор по готовности</p>
@@ -44,8 +44,8 @@ export default function FOM2Slide01Cover() {
           The Founders Circle · Сессия 2 из 6
         </p>
         <h1 className="font-display text-[88px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em] max-w-[1500px]">
-          Цена и MVP-скоуп.<br />
-          <span className="text-[hsl(var(--slide-gold))]">Сколько берём,</span> за что, что строим минимум.
+          Цена и MVP.<br />
+          <span className="text-[hsl(var(--slide-gold))]">Сколько берём</span> и что строим первым.
         </h1>
         <div className="mt-[44px] grid grid-cols-3 gap-[32px] max-w-[1500px]">
           <div className="border-l-2 border-[hsl(var(--slide-gold))] pl-[20px]">
