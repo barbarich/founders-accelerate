@@ -1,46 +1,63 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function M2Slide16FirstPrice() {
-  const b2b = [
-    { label: "Экономит время", example: "Reply.io: экономит $2000/мес (40 ч × $50) → берёт $500/мес ≈ 25%" },
-    { label: "Увеличивает доход", example: "Apollo.io: приносит +$5000-10000 выручки → берёт $99-399/мес ≈ 2-4%" },
-    { label: "Заменяет сотрудника", example: "Jasper AI: заменяет копирайтера $2000-3000/мес → берёт $49-125/мес ≈ 2-4%" },
+  const steps = [
+    {
+      n: "1",
+      title: "Найди альтернативу",
+      desc: "Что клиент делает сейчас вместо твоего продукта и сколько это стоит ему в деньгах или времени.",
+      example: "B2B: нанимает копирайтера за $2 500/мес.\nB2C: ходит к репетитору — 8 × $40 = $320/мес.",
+    },
+    {
+      n: "2",
+      title: "Посчитай ценность в деньгах",
+      desc: "Сколько клиент экономит или зарабатывает с твоим продуктом за месяц. Это твой потолок цены.",
+      example: "B2B: экономия $2 500/мес.\nB2C: экономия $320/мес.",
+    },
+    {
+      n: "3",
+      title: "Возьми 10% от ценности",
+      desc: "Правило десяти: клиент готов платить ~10% от того, что ты ему даёшь. Это и стартовая цена.",
+      example: "B2B: $2 500 × 10% → $250/мес.\nB2C: $320 × 10% → $30/мес → округляем до $19.",
+    },
   ];
-  const b2c = [
-    { label: "Заменяет специалиста", example: "Peloton: тренер $500/мес (8 × $60) → приложение $13/мес ≈ 2.5%" },
-    { label: "Делает доступным", example: "Duolingo: репетитор $300/мес (8 × $40) → подписка $7-13/мес ≈ 2-4%" },
+  const rules = [
+    "B2B — ориентир 5–15% от экономии или прироста выручки",
+    "B2C — ориентир 1/10 от оффлайн-альтернативы, цена «не думая» $7–19/мес",
+    "Не ниже $19/мес для подписки — иначе экономика не сходится",
+    "Лучше начать дороже и дать скидку, чем начать дёшево и не поднять",
   ];
   const isMobile = useIsMobile();
 
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Ценообразование</p>
-        <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          Цена = стоимость результата
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Ценообразование</p>
+        <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
+          Формула первой цены
         </h2>
-        <p className="text-[9px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">B2B — цена = 1-10% от результата в деньгах</p>
-        <div className="space-y-[4px] mb-[8px]">
-          {b2b.map((item, i) => (
-            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
-              <p className="text-[10px] font-semibold text-[hsl(var(--slide-text))]">{item.label}</p>
-              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{item.example}</p>
+        <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[10px]">
+          3 шага, чтобы поставить цену осознанно, а не наугад
+        </p>
+        <div className="space-y-[6px] mb-[10px]">
+          {steps.map((s) => (
+            <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[10px] py-[8px]">
+              <div className="flex items-center gap-[8px] mb-[3px]">
+                <span className="text-[11px] font-bold text-[hsl(var(--slide-bg))] bg-[hsl(var(--slide-gold))] rounded-full w-[18px] h-[18px] flex items-center justify-center">{s.n}</span>
+                <p className="text-[12px] font-semibold text-[hsl(var(--slide-text))]">{s.title}</p>
+              </div>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[3px]">{s.desc}</p>
+              <p className="text-[10px] text-[hsl(var(--slide-gold)/0.9)] leading-[1.4] whitespace-pre-line">{s.example}</p>
             </div>
           ))}
         </div>
-        <p className="text-[9px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">B2C — в 5-10× дешевле оффлайн-альтернативы</p>
-        <div className="space-y-[4px] mb-[8px]">
-          {b2c.map((item, i) => (
-            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
-              <p className="text-[10px] font-semibold text-[hsl(var(--slide-text))]">{item.label}</p>
-              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{item.example}</p>
-            </div>
-          ))}
-        </div>
-        <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[6px]">
-          <p className="text-[10px] text-[hsl(var(--slide-text))]">
-            💡 Лучше начать дороже и дать скидку, чем начать дёшево и не смочь поднять
-          </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[10px] py-[8px]">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[4px]">Ориентиры 2026</p>
+          <ul className="space-y-[3px]">
+            {rules.map((r, i) => (
+              <li key={i} className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.35]">• {r}</li>
+            ))}
+          </ul>
         </div>
       </div>
     );
@@ -48,50 +65,32 @@ export default function M2Slide16FirstPrice() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Ценообразование</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px]">Цена = стоимость результата</h2>
-      <div className="flex gap-[32px] max-w-[1100px] mb-[28px]">
-        <div className="flex-1">
-          <div className="flex items-center gap-[10px] mb-[14px]">
-            <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold">B2B</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text-muted))]">—</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">1-10% от результата в деньгах</span>
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">Ценообразование</p>
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[10px]">
+        Формула первой цены
+      </h2>
+      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.35] mb-[32px] max-w-[1100px]">
+        Три шага, чтобы поставить цену осознанно — а не «как у конкурентов» или «наугад»
+      </p>
+      <div className="grid grid-cols-3 gap-[24px] max-w-[1640px] mb-[28px]">
+        {steps.map((s) => (
+          <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[16px] px-[28px] py-[24px] flex flex-col">
+            <div className="flex items-center gap-[14px] mb-[12px]">
+              <span className="text-[22px] font-bold text-[hsl(var(--slide-bg))] bg-[hsl(var(--slide-gold))] rounded-full w-[42px] h-[42px] flex items-center justify-center">{s.n}</span>
+              <p className="text-[24px] font-semibold text-[hsl(var(--slide-text))] leading-[1.15]">{s.title}</p>
+            </div>
+            <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[14px]">{s.desc}</p>
+            <p className="text-[17px] text-[hsl(var(--slide-gold)/0.95)] leading-[1.5] whitespace-pre-line mt-auto">{s.example}</p>
           </div>
-          <div className="space-y-[12px]">
-            {b2b.map((item, i) => (
-              <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[20px] py-[14px]">
-                <p className="text-[17px] font-semibold text-[hsl(var(--slide-gold))] mb-[3px]">{item.label}</p>
-                <p className="text-[15px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">{item.example}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="w-[1px] bg-[hsl(var(--slide-border)/0.3)]" />
-        <div className="flex-1">
-          <div className="flex items-center gap-[10px] mb-[14px]">
-            <span className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold">B2C</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text-muted))]">—</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text))] font-medium">В 20-50× дешевле оффлайн-альтернативы</span>
-          </div>
-          <div className="space-y-[12px]">
-            {b2c.map((item, i) => (
-              <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[20px] py-[14px]">
-                <p className="text-[17px] font-semibold text-[hsl(var(--slide-gold))] mb-[3px]">{item.label}</p>
-                <p className="text-[15px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">{item.example}</p>
-              </div>
-            ))}
-          </div>
-          <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[20px] py-[12px] mt-[12px]">
-            <p className="text-[14px] text-[hsl(var(--slide-text))]">
-              💡 B2C: цена «не думая» — $7-15/мес. Человек сравнивает не с ROI, а с ценой кофе
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
-      <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[28px] py-[16px] max-w-[1100px]">
-        <p className="text-[18px] text-[hsl(var(--slide-text))]">
-          💡 В обоих случаях: лучше начать дороже и дать скидку первым клиентам, чем начать дёшево и не смочь поднять цену
-        </p>
+      <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[16px] px-[32px] py-[20px] max-w-[1640px]">
+        <p className="text-[14px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-semibold mb-[10px]">Ориентиры 2026</p>
+        <div className="grid grid-cols-2 gap-x-[28px] gap-y-[6px]">
+          {rules.map((r, i) => (
+            <p key={i} className="text-[17px] text-[hsl(var(--slide-text))] leading-[1.4]">• {r}</p>
+          ))}
+        </div>
       </div>
     </div>
   );
