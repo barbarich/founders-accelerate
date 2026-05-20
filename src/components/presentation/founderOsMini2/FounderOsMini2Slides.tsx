@@ -53,13 +53,13 @@ export const slides = [
   M2Slide16FirstPrice,          // 11 — Первая цена
   M2Slide17MyCases,             // 12 — Мои кейсы (ForexTester · MetaMinder · Mikey)
   FOM2Slide14LivePricing,       // 13 — Лайв-упражнение: ставим цену
-  FOM2BlockMVP,                 // 15 — Block 2 header «MVP-скоуп»
-  M2Slide18MVPMyths,            // 16 — 5 мифов про MVP
-  M2Slide19OneFeature,          // 17 — One feature принцип
-  M2Slide20KillFeatures,        // 18 — Упражнение «убей фичи» 10→3→1
-  M2Slide21MVPChecklist,        // 19 — MoSCoW чеклист
-  FOM2Slide20MVPPrompt,         // 20 — AI-промпт #3: прорежь мой MVP
-  FOM2Slide21LiveReview,        // 21 — Универсальный шаблон разбора + директорий
-  FOM2Slide22Homework,          // 22 — ДЗ к С3
-  FOM2Slide23Closing,           // 23 — Закрытие
+  FOM2BlockMVP,                 // 14 — Block 2 header «MVP-скоуп»
+  M2Slide18MVPMyths,            // 15 — 5 мифов про MVP
+  M2Slide19OneFeature,          // 16 — One feature принцип
+  M2Slide20KillFeatures,        // 17 — Упражнение «убей фичи» 10→3→1
+  M2Slide21MVPChecklist,        // 18 — MoSCoW чеклист
+  FOM2Slide20MVPPrompt,         // 19 — AI-промпт #3: прорежь мой MVP
+  FOM2Slide21LiveReview,        // 20 — Универсальный шаблон разбора + директорий
+  FOM2Slide22Homework,          // 21 — ДЗ к С3
+  FOM2Slide23Closing,           // 22 — Закрытие
 ];
