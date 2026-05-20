@@ -52,8 +52,7 @@ export const slides = [
   M2Slide15PricingPsychology,   // 10 — Психология цены
   M2Slide16FirstPrice,          // 11 — Первая цена
   M2Slide17MyCases,             // 12 — Мои кейсы (ForexTester · MetaMinder · Mikey)
-  FOM2Slide13PricingPrompt,     // 13 — AI-промпт #2: первая цена
-  FOM2Slide14LivePricing,       // 14 — Лайв-упражнение: ставим цену
+  FOM2Slide14LivePricing,       // 13 — Лайв-упражнение: ставим цену
   FOM2BlockMVP,                 // 15 — Block 2 header «MVP-скоуп»
   M2Slide18MVPMyths,            // 16 — 5 мифов про MVP
   M2Slide19OneFeature,          // 17 — One feature принцип
