@@ -1,11 +1,26 @@
 import FOM2SlideBase from "./FOM2SlideBase";
 
-const steps = [
-  { n: "1", t: "Каждый называет цену прямо сейчас", d: "Без подготовки. Одно число — основной тариф. Записываем на доску." },
-  { n: "2", t: "Каждый называет 2 числа вокруг", d: "Стартовый (-50% или Free) и якорь (+2×). 3 тарифа = Free/Starter / Pro / Business." },
-  { n: "3", t: "Аргументация средней цены", d: "30 секунд: сколько денег / времени / нервов экономит клиент в месяц. Какой % от этой суммы — твоя цена. Если меньше 5% — поднимай. Больше 30% — режь скоуп или ICP." },
-  { n: "4", t: "Тест «скажи вслух дорогому клиенту»", d: "Произнеси цену вслух как если перед клиентом. Если запнулся или хочется добавить «но мы можем подумать» — цена низкая." },
-  { n: "5", t: "Зафиксировать выходную цену", d: "Та, с которой выходим на С3 (лендинг будем строить с этой ценой)." },
+const tasks = [
+  {
+    n: "1",
+    t: "Напиши 3 цены для своего продукта",
+    d: "Например: $9 / $29 / $99. Минимум — кто только пробует. Средняя — основной клиент. Максимум — кто хочет больше.",
+  },
+  {
+    n: "2",
+    t: "Реши, как продаёшь",
+    d: "Тарифы (Starter / Pro / Business) — массовый продукт. Энтерпрайз (цена по запросу) — крупные клиенты под задачу.",
+  },
+  {
+    n: "3",
+    t: "Оплата сразу или free trial?",
+    d: "Сразу — когда ценность видна за 1 минуту. Free trial 7–14 дней — когда нужно время, чтобы её почувствовать.",
+  },
+  {
+    n: "4",
+    t: "Опиши ценность — за что платят",
+    d: "Одной фразой: какую проблему решаешь и что человек получает. «Платят за то, что…» — продолжи.",
+  },
 ];
 
 export default function FOM2Slide14LivePricing() {
@@ -13,22 +28,29 @@ export default function FOM2Slide14LivePricing() {
     <FOM2SlideBase
       slide={14}
       eyebrow="Лайв-упражнение · 5 минут"
-      title="Назначаем цену за столом"
-      subtitle="К концу упражнения у каждого фаундера — 3 тарифа с обоснованием и одно «выходное» число для лендинга"
+      title="Поставь цену своему продукту"
+      subtitle="К концу упражнения у тебя 3 цены, понятная модель продаж и одна фраза о ценности"
     >
-      <div className="space-y-[6px] md:space-y-[12px] max-w-[1800px] text-[12px] md:text-[22px]">
-        {steps.map((s, i) => (
-          <div key={i} className="flex gap-[10px] md:gap-[16px] items-baseline">
-            <span className="font-mono text-[hsl(var(--slide-gold))] font-bold w-[20px] md:w-[34px] shrink-0 text-[14px] md:text-[28px]">{s.n}</span>
+      <div className="space-y-[10px] md:space-y-[20px] max-w-[1800px] text-[13px] md:text-[24px]">
+        {tasks.map((s, i) => (
+          <div
+            key={i}
+            className="flex gap-[12px] md:gap-[20px] items-baseline rounded-[8px] md:rounded-[14px] bg-[hsl(var(--slide-text)/0.04)] border border-[hsl(var(--slide-text)/0.08)] p-[10px_12px] md:p-[18px_24px]"
+          >
+            <span className="font-mono text-[hsl(var(--slide-gold))] font-bold w-[22px] md:w-[42px] shrink-0 text-[16px] md:text-[34px]">
+              {s.n}
+            </span>
             <div>
               <p className="font-semibold text-[hsl(var(--slide-text))]">{s.t}</p>
-              <p className="text-[hsl(var(--slide-text-muted))] mt-[2px] leading-[1.4]">{s.d}</p>
+              <p className="text-[hsl(var(--slide-text-muted))] mt-[3px] md:mt-[6px] leading-[1.45] text-[12px] md:text-[20px]">
+                {s.d}
+              </p>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-[12px] md:mt-[20px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] md:pl-[16px] max-w-[1800px] text-[11px] md:text-[20px]">
-        <p>💡 Не «может, рынок не готов». Готов или нет — узнаём из метрик первого месяца, а не из головы.</p>
+      <div className="mt-[14px] md:mt-[28px] border-l-[4px] border-[hsl(var(--slide-gold))] pl-[12px] md:pl-[18px] max-w-[1800px] text-[12px] md:text-[20px]">
+        <p>💡 Цена — это гипотеза. Правильная она или нет — покажут первые 10 клиентов, а не размышления.</p>
       </div>
     </FOM2SlideBase>
   );
