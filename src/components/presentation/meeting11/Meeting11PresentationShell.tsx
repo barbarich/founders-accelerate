@@ -8,6 +8,7 @@ import M11Slide01Welcome from "./M11Slide01Welcome";
 import M11Slide02MainThesis from "./M11Slide02MainThesis";
 import M11BlockHeader from "./M11BlockHeader";
 import M11Slide03MotionMap from "./M11Slide03MotionMap";
+import M11Slide03bCRM from "./M11Slide03bCRM";
 import M11Slide04KillerICP from "./M11Slide04KillerICP";
 import M11Slide04bWhatIsICP from "./M11Slide04bWhatIsICP";
 import M11Slide05Dream50 from "./M11Slide05Dream50";
