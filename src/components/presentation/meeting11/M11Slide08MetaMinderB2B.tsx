@@ -1,16 +1,16 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const rules = [
-  { n: "1", t: "Холл, не зал", d: "Доклады смотришь в записи. На конференции — кофе, регистрация, очередь к speaker'у. Там твоя ICP." },
-  { n: "2", t: "Pre-conference scheduler", d: "Brella · Swapcard · Grip · Web Summit Connect. Цель: 60-70% calendar заполнен ДО прилёта. Список attendees → 30 целевых → personal DM с reference на эвент." },
-  { n: "3", t: "Демо букается в моменте", d: "Calendar открыт на телефоне с 30-мин слотами. «У меня вторник 14:00 свободен — кидаю инвайт». Инвайт улетает до того, как ты пожал руку второй раз." },
-  { n: "4", t: "Voice memo вместо визиток", d: "30 сек после каждого: имя, компания, о чём говорили, что обещал. К вечеру — всё в CRM. Визитки = death." },
+  { n: "1", t: "Стояй в холле, а не в зале", d: "На доклады ходи в записи. Главное — кофе-паузы, регистрация, очередь после выступления. Именно там твои будущие клиенты." },
+  { n: "2", t: "Договаривайся о встречах заранее", d: "Используй приложения конференции. Цель: забить 60-70% времени ДО прилёта. Найди список участников → выбери 30 подходящих → напиши лично, что тоже будешь на этом мероприятии." },
+  { n: "3", t: "Назначай встречу сразу на месте", d: "На телефоне открой расписание с 30-минутными окнами. «У меня вторник в 14:00 свободен — пришлю приглашение». Приглашение уходит до того, как вы попрощались." },
+  { n: "4", t: "Записывай голосовые заметки вместо визиток", d: "30 секунд после каждого разговора: имя, компания, о чём говорили, что пообещал. К вечеру — всё в таблице. Визитки без записи = потерянный контакт." },
 ];
 
 const numbers = [
-  { n: "70%", l: "явка на демо, забуканное в моменте на конференции" },
-  { n: "15%", l: "явка на демо «давай созвонимся через неделю»" },
-  { n: "4.5×", l: "разница в конверсии · вот почему «в моменте» — единственное правильное" },
+  { n: "70%", l: "приходят на встречу, если назначили прямо на конференции" },
+  { n: "15%", l: "приходят, если сказали «давай созвонимся через неделю»" },
+  { n: "4.5×", l: "разница в конверсии · именно поэтому «сейчас» — единственное правильное время" },
 ];
 
 export default function M11Slide08MetaMinderB2B() {
@@ -20,13 +20,13 @@ export default function M11Slide08MetaMinderB2B() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
-          🔥 Кейс MetaMinder · события как B2B-канал
+          🔥 Кейс MetaMinder · события как канал продаж
         </p>
         <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
-          Конференция = <span className="text-[hsl(var(--slide-gold))]">форсированный warm intro в массе</span>
+          Конференция = <span className="text-[hsl(var(--slide-gold))]">сотни личных знакомств за 2 дня</span>
         </h2>
         <p className="text-[7.5px] text-[hsl(var(--slide-text-muted))] mb-[5px] leading-[1.45]">
-          В MetaMinder сотни B2B-клиентов пришли через офлайн-нетворк. Не через ads, не через SDR — через личные разговоры в перерывах. Одно правило: <span className="text-[hsl(var(--slide-gold))] font-semibold">демо букается прямо в моменте.</span>
+          В MetaMinder сотни клиентов пришли через офлайн-нетворк. Не через рекламу и не через холодные звонки — через личные разговоры в перерывах. Одно правило: <span className="text-[hsl(var(--slide-gold))] font-semibold">встречу назначаем сразу на месте.</span>
         </p>
         <div className="space-y-[3px] mb-[5px]">
           {rules.map((r) => (
@@ -54,13 +54,13 @@ export default function M11Slide08MetaMinderB2B() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        🔥 Кейс MetaMinder · события как B2B-канал
+        🔥 Кейс MetaMinder · события как канал продаж
       </p>
       <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.02em]">
-        Конференция = <span className="text-[hsl(var(--slide-gold))]">форсированный warm intro в массе</span>
+        Конференция = <span className="text-[hsl(var(--slide-gold))]">сотни личных знакомств за 2 дня</span>
       </h2>
       <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[20px] max-w-[1700px] leading-[1.45]">
-        В MetaMinder сотни B2B-клиентов пришли через офлайн-нетворк. Не через ads, не через SDR — через личные разговоры в перерывах. Одно правило: <span className="text-[hsl(var(--slide-gold))] font-semibold">демо букается прямо в моменте, иначе оно не происходит.</span>
+        В MetaMinder сотни клиентов пришли через офлайн-нетворк. Не через рекламу и не через холодные звонки — через личные разговоры в перерывах. Одно правило: <span className="text-[hsl(var(--slide-gold))] font-semibold">встречу назначаем сразу на месте, иначе она не случится.</span>
       </p>
       <div className="grid grid-cols-2 gap-[18px] mb-[18px] max-w-[1700px]">
         {rules.map((r) => (
@@ -84,3 +84,4 @@ export default function M11Slide08MetaMinderB2B() {
     </div>
   );
 }
+
