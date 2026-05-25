@@ -15,7 +15,7 @@ export default function M11Slide17LiveExercise() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[16px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">
-          Живое задание · 10 минут на встрече
+          Домашнее задание · до следующей встречи
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
           1 реальная компания · <span className="text-[hsl(var(--slide-gold))]">5 строк</span>
