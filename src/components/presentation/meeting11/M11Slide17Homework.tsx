@@ -1,12 +1,12 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const tasks = [
-  { n: "1", t: "Killer ICP · 7 фильтров", d: "Определи свой ICP по 7 пунктам в одной странице Notion. Перепиши свой текущий «ICP» если он размазан." },
-  { n: "2", t: "Dream 50 + 150 имён", d: "Построй target list в Apollo / LinkedIn Sales Nav. 50 счетов × 3 stakeholder'а. Tier A/B/C." },
-  { n: "3", t: "10 trigger-based outreach", d: "10 personalized DM/email на конкретный trigger из Tier A. Не «ваш ICP» — конкретный сигнал." },
-  { n: "4", t: "3 discovery-звонка с pre-call promprt'ом", d: "Применяй главный AI-промпт перед каждым. 5 вопросов дословно. Если в pipeline пусто — на звонок идёт ближайший знакомый из 4-го круга." },
-  { n: "5", t: "1 closed deal ИЛИ 1 MAP подписан", d: "Минимум: подписанный Mutual Action Plan с реальным клиентом на pilot. Если есть закрытая сделка — ещё лучше." },
-  { n: "6", t: "5-мин питч готов к M12", d: "Проблема (1м) · решение (1м) · traction (1м) · команда+ask (1м) · CTA (1м). Прорепетирован вслух 3 раза." },
+  { n: "1", t: "Идеальный клиент · 7 фильтров", d: "Опиши своего идеального клиента по 7 пунктам на одной странице. Если сейчас описание размытое — перепиши чётко." },
+  { n: "2", t: "Список из 50 компаний + 150 контактов", d: "Найди 50 компаний и 3 контакта в каждой через Apollo или LinkedIn. Разбей на приоритеты: A — горячие, B — тёплые, C — холодные." },
+  { n: "3", t: "10 персональных сообщений по поводу", d: "Напиши 10 сообщений (DM или email) с причиной для конкретного человека. Не шаблон «мы крутые» — а конкретный повод, почему ему это нужно." },
+  { n: "4", t: "3 звонка с подготовкой через промпт", d: "Используй AI-промпт перед каждым звонком. 5 вопросов заранее. Если некому звонить — позови ближайшего знакомого из списка контактов." },
+  { n: "5", t: "1 продажа ИЛИ план действий с клиентом", d: "Минимум: подписанный план действий с реальным клиентом на тестовый период. Если уже есть продажа — ещё лучше." },
+  { n: "6", t: "5-минутная презентация готова к M12", d: "Проблема (1 мин) · решение (1 мин) · результат (1 мин) · команда и запрос (1 мин) · призыв к действию (1 мин). Потренируй вслух 3 раза." },
 ];
 
 export default function M11Slide17Homework() {
@@ -19,7 +19,7 @@ export default function M11Slide17Homework() {
           Домашка · к встрече 12 (финал)
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
-          Запусти motion · <span className="text-[hsl(var(--slide-gold))]">не теорию</span>
+          Запусти продажи · <span className="text-[hsl(var(--slide-gold))]">не теорию</span>
         </h2>
         <div className="space-y-[3px]">
           {tasks.map((t) => (
@@ -42,7 +42,7 @@ export default function M11Slide17Homework() {
         Домашка · к встрече 12 (финал)
       </p>
       <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[24px] tracking-[-0.02em]">
-        Запусти motion · <span className="text-[hsl(var(--slide-gold))]">не теорию</span>
+        Запусти продажи · <span className="text-[hsl(var(--slide-gold))]">не теорию</span>
       </h2>
       <div className="grid grid-cols-2 gap-[18px] max-w-[1700px]">
         {tasks.map((t) => (
