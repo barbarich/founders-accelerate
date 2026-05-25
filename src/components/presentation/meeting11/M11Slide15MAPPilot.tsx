@@ -35,32 +35,32 @@ export default function M11Slide15MAPPilot() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col px-[14px] py-[10px]">
-        <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col px-[20px] py-[14px]">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
           🔥 MAP · pilot → paid
         </p>
-        <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
+        <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
           Mutual Action Plan = <span className="text-[hsl(var(--slide-gold))]">3× конверсия пилотов</span>
         </h2>
-        <div className="grid grid-cols-3 gap-[2px] mb-[3px]">
+        <div className="grid grid-cols-3 gap-[5px] mb-[6px]">
           {why.map((w, i) => (
-            <div key={i} className="bg-[hsl(var(--slide-gold)/0.1)] rounded-[3px] px-[4px] py-[2px]">
-              <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] leading-none">{w.stat}</p>
-              <p className="text-[6px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{w.l}</p>
+            <div key={i} className="bg-[hsl(var(--slide-gold)/0.1)] rounded-[6px] px-[8px] py-[5px]">
+              <p className="text-[13px] font-bold text-[hsl(var(--slide-gold))] leading-none">{w.stat}</p>
+              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">{w.l}</p>
             </div>
           ))}
         </div>
-        <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[5px] px-[6px] py-[4px] flex-1 min-h-0 flex flex-col">
-          <div className="flex items-center justify-between mb-[2px] pb-[2px] border-b border-[hsl(var(--slide-border)/0.25)]">
-            <p className="text-[7px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))]">MAP — одностраничный шаблон</p>
+        <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[6px] px-[10px] py-[6px] flex-1 min-h-0 flex flex-col">
+          <div className="flex items-center justify-between mb-[4px] pb-[4px] border-b border-[hsl(var(--slide-border)/0.25)]">
+            <p className="text-[9px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))]">MAP — одностраничный шаблон</p>
             <div role="button" tabIndex={0} onClick={onClick} onKeyDown={onKey}
-              className="shrink-0 flex items-center gap-[2px] text-[7px] font-semibold text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] px-[4px] py-[1px] rounded-[3px] cursor-pointer select-none">
-              {copied ? <Check size={8} /> : <Copy size={8} />}
+              className="shrink-0 flex items-center gap-[2px] text-[9px] font-semibold text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] px-[6px] py-[2px] rounded-[4px] cursor-pointer select-none">
+              {copied ? <Check size={10} /> : <Copy size={10} />}
               {copied ? "OK" : "Копир."}
             </div>
           </div>
-          <div className="flex-1 min-h-0 overflow-y-auto pr-[2px] prompt-scroll">
-            <p className="font-mono text-[5.5px] text-[hsl(var(--slide-text))] leading-[1.5] whitespace-pre-wrap">{MAP_TEMPLATE}</p>
+          <div className="flex-1 min-h-0 overflow-y-auto pr-[4px] prompt-scroll">
+            <p className="font-mono text-[7px] text-[hsl(var(--slide-text))] leading-[1.5] whitespace-pre-wrap">{MAP_TEMPLATE}</p>
           </div>
         </div>
       </div>
