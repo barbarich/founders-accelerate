@@ -42,7 +42,7 @@ export const slideNames = [
   "🔥 Кейс MetaMinder · события",
   "Trigger-based outreach",
   "Блок 4 · The Call",
-  "Discovery · 5 вопросов дословно",
+  "Demo flow · 6 шагов структуры",
   "🔥 Главный промпт · Pre-call research",
   "Demo that closes · 6 правил",
   "5 возражений · полные диалоги",
