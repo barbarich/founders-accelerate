@@ -49,8 +49,7 @@ export default function M11Slide17LiveExercise() {
         Живое задание · 10 минут прямо на встрече
       </p>
       <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.02em]">
-        1 реальная компания · <span class
-="text-[hsl(var(--slide-gold))]">5 строк</span>
+        1 реальная компания · <span className="text-[hsl(var(--slide-gold))]">5 строк</span>
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[24px] max-w-[1400px]">
         Возьми 1 компанию из своего списка — клиента, партнёра или прямого пользователя (B2B или B2C, неважно). Заполни 5 строк ниже как есть сейчас. Без идеала.
