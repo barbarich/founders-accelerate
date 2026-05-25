@@ -38,21 +38,21 @@ export default function M11Slide10Discovery() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[12px]">
-        <p className="text-[8.5px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px]">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
           Demo, который продаёт · 6 шагов
         </p>
-        <h2 className="font-display text-[15px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
+        <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
           Структура флоу, <span className="text-[hsl(var(--slide-gold))]">а не случайные экраны</span>
         </h2>
-        <div className="space-y-[3px]">
+        <div className="space-y-[5px]">
           {steps.map((it) => (
-            <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[3px] px-[5px] py-[2px]">
-              <div className="flex items-baseline gap-[3px]">
-                <span className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))]">{it.n}</span>
-                <span className="text-[7px] text-[hsl(var(--slide-text))] leading-[1.4]">{it.q}</span>
+            <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
+              <div className="flex items-baseline gap-[5px]">
+                <span className="text-[12px] font-bold text-[hsl(var(--slide-gold))]">{it.n}</span>
+                <span className="text-[11px] text-[hsl(var(--slide-text))] leading-[1.4]">{it.q}</span>
               </div>
-              <p className="text-[6.5px] text-[hsl(var(--slide-text-muted))] italic leading-[1.4] ml-[12px]">→ {it.listen}</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic leading-[1.45] ml-[17px]">→ {it.listen}</p>
             </div>
           ))}
         </div>
@@ -62,20 +62,20 @@ export default function M11Slide10Discovery() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
         Demo, который продаёт · 6 шагов
       </p>
-      <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px] tracking-[-0.02em]">
+      <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] tracking-[-0.02em]">
         Структура флоу, <span className="text-[hsl(var(--slide-gold))]">а не случайные экраны</span>
       </h2>
       <div className="space-y-[10px] max-w-[1700px]">
         {steps.map((it) => (
-          <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[22px] py-[10px]">
+          <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[24px] py-[14px]">
             <div className="flex items-start gap-[14px]">
-              <span className="font-display text-[28px] font-bold text-[hsl(var(--slide-gold))] leading-none shrink-0">{it.n}</span>
+              <span className="font-display text-[32px] font-bold text-[hsl(var(--slide-gold))] leading-none shrink-0">{it.n}</span>
               <div className="flex-1">
-                <p className="text-[16px] text-[hsl(var(--slide-text))] leading-[1.45] mb-[3px]">{it.q}</p>
-                <p className="text-[13px] text-[hsl(var(--slide-text-muted))] italic leading-[1.45]"><span className="text-[hsl(var(--slide-gold))] not-italic font-bold">зачем:</span> {it.listen}</p>
+                <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.45] mb-[4px]">{it.q}</p>
+                <p className="text-[16px] text-[hsl(var(--slide-text-muted))] italic leading-[1.45]"><span className="text-[hsl(var(--slide-gold))] not-italic font-bold">зачем:</span> {it.listen}</p>
               </div>
             </div>
           </div>
