@@ -18,27 +18,27 @@ export default function M11Slide06Multithreading() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
-        <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px]">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
           Multithreading с первого дня
         </p>
-        <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
+        <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
           1 контакт = <span className="text-[hsl(var(--slide-gold))]">мёртвая сделка</span>
         </h2>
-        <div className="grid grid-cols-3 gap-[3px] mb-[5px]">
+        <div className="grid grid-cols-3 gap-[6px] mb-[8px]">
           {stats.map((s) => (
-            <div key={s.n} className="bg-[hsl(var(--slide-gold)/0.1)] rounded-[3px] px-[5px] py-[2px]">
-              <p className="text-[12px] font-bold text-[hsl(var(--slide-gold))] leading-none">{s.n}</p>
-              <p className="text-[6px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{s.l}</p>
+            <div key={s.n} className="bg-[hsl(var(--slide-gold)/0.1)] rounded-[6px] px-[8px] py-[5px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] leading-none">{s.n}</p>
+              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">{s.l}</p>
             </div>
           ))}
         </div>
-        <div className="space-y-[3px]">
+        <div className="space-y-[5px]">
           {roles.map((r) => (
-            <div key={r.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[4px] px-[6px] py-[3px]">
-              <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))]">{r.name}</p>
-              <p className="text-[7px] text-[hsl(var(--slide-text))] leading-[1.4]"><span className="italic">{r.who}</span></p>
-              <p className="text-[7px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">→ {r.do}</p>
+            <div key={r.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
+              <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))]">{r.name}</p>
+              <p className="text-[9.5px] text-[hsl(var(--slide-text))] leading-[1.45]"><span className="italic">{r.who}</span></p>
+              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">→ {r.do}</p>
             </div>
           ))}
         </div>
