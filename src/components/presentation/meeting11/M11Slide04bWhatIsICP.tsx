@@ -57,25 +57,25 @@ export default function M11Slide04bWhatIsICP() {
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px]">
+      <p className="text-[22px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[18px]">
         Что такое ICP и почему это критично
       </p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px] tracking-[-0.02em]">
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[22px] tracking-[-0.02em]">
         ICP = <span className="text-[hsl(var(--slide-gold))]">Ideal Customer Profile</span>
       </h2>
-      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[36px] max-w-[1600px]">
+      <p className="text-[28px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[40px] max-w-[1700px]">
         Точный портрет компании и человека, которому твой продукт нужен <span className="text-[hsl(var(--slide-text))] font-medium">сильнее всего, прямо сейчас, и кто готов за него платить</span>.
         Не «целевая аудитория». Не «B2B SaaS». Конкретный клиент, на котором сходится боль, бюджет и триггер.
       </p>
-      <div className="grid grid-cols-2 gap-x-[28px] gap-y-[16px] max-w-[1700px]">
+      <div className="grid grid-cols-2 gap-x-[36px] gap-y-[24px] max-w-[1700px]">
         {reasons.map((r) => (
-          <div key={r.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[26px] py-[18px]">
-            <div className="flex items-baseline gap-[14px] mb-[6px]">
-              <span className="font-display text-[32px] font-bold text-[hsl(var(--slide-gold))] leading-none">{r.n}</span>
-              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))]">{r.title}</p>
+          <div key={r.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[36px] py-[28px]">
+            <div className="flex items-baseline gap-[20px] mb-[12px]">
+              <span className="font-display text-[52px] font-bold text-[hsl(var(--slide-gold))] leading-none">{r.n}</span>
+              <p className="text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.15]">{r.title}</p>
             </div>
-            <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.45] ml-[46px]">{r.text}</p>
+            <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.45] ml-[62px]">{r.text}</p>
           </div>
         ))}
       </div>
