@@ -17,28 +17,29 @@ export default function M11Slide14Closing() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
-        <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px]">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
           Closing · 3 фразы без извинений
         </p>
-        <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
-          Никогда не заканчиваешь <span className="text-[hsl(var(--slide-gold))]">без даты в календаре</span>
+        <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
+          Никогда не заканчивай <span className="text-[hsl(var(--slide-gold))]">без даты в календаре</span>
         </h2>
-        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[4px] px-[6px] py-[3px] mb-[5px]">
-          <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] uppercase mb-[1px]">3 фразы про деньги дословно</p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[6px] mb-[8px]">
+          <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] uppercase mb-[4px]">3 фразы про деньги</p>
           {phrases.map((p, i) => (
-            <div key={i} className="mb-[2px]">
-              <p className="text-[7px] text-[hsl(var(--slide-text-muted))] italic">{p.ctx}:</p>
-              <p className="text-[7px] text-[hsl(var(--slide-text)/0.95)] leading-[1.4]">→ {p.say}</p>
+            <div key={i} className="mb-[4px]">
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] italic">{p.ctx}:</p>
+              <p className="text-[10.5px] text-[hsl(var(--slide-text)/0.95)] leading-[1.4]">→ {p.say}</p>
+              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] italic leading-[1.35]">{p.why}</p>
             </div>
           ))}
         </div>
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[4px] px-[6px] py-[3px]">
-          <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] uppercase mb-[1px]">Next step с датой</p>
+        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
+          <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] uppercase mb-[4px]">Следующий шаг — всегда с датой</p>
           {next.map((n, i) => (
-            <div key={i} className="mb-[2px]">
-              <p className="text-[7px] font-bold text-[hsl(var(--slide-text))]">{n.t}</p>
-              <p className="text-[6.5px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{n.d}</p>
+            <div key={i} className="mb-[4px]">
+              <p className="text-[10.5px] font-bold text-[hsl(var(--slide-text))]">{n.t}</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{n.d}</p>
             </div>
           ))}
         </div>
