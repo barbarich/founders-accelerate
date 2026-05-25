@@ -1,18 +1,18 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const steps = [
-  { day: "Day 30 после signing", action: "Mid-success звонок с champion'ом", ask: "Конкретный результат за месяц + что улучшить. Пока ничего не просишь." },
-  { day: "Day 45", action: "Запрос #1: case-study (1 страница)", ask: "«Можно я напишу одностраничник по нашему результату? Покажу тебе перед публикацией. Это поможет нам обоим — тебе как case продемонстрировать impact внутри.»" },
-  { day: "Day 60", action: "Запрос #2: 3 referrals (точечный)", ask: "«У тебя в твоей сети есть 3 человека в похожей роли в [индустрия] — кому это могло бы помочь? Не нужно продавать — просто познакомь меня им если ок.»" },
-  { day: "Day 75", action: "Запрос #3: testimonial + LinkedIn пост", ask: "«Можешь написать 1 абзац про результат + опубликовать у себя? Я подготовлю draft, ты отредактируешь.»" },
-  { day: "Day 90", action: "Expansion разговор с champion + EB", ask: "Расширение: больше seats / новые модули / годовой контракт со скидкой. Сейчас у тебя данные за квартал — это твой козырь." },
+  { day: "День 30", action: "Проверочный звонок", ask: "Спроси: какой результат уже есть и что можно улучшить. Пока ничего не продавай — просто слушай." },
+  { day: "День 45", action: "Попросить историю успеха", ask: "«Можно я напишу короткую историю о том, что мы сделали вместе? Покажу вам перед публикацией.»" },
+  { day: "День 60", action: "Попросить 3 знакомства", ask: "«Знаете ли вы 3 человека в похожей роли, кому это тоже может помочь? Просто познакомьте нас — я сам всё расскажу.»" },
+  { day: "День 75", action: "Попросить отзыв и пост", ask: "«Можете написать пару строк про результат? Я подготовлю текст — вы просто одобрите.»" },
+  { day: "День 90", action: "Предложить расширение", ask: "«У вас уже есть данные за квартал — давайте обсудим: больше мест, новые функции или годовой договор со скидкой.»" },
 ];
 
 const math = [
-  { n: "1", l: "первая закрытая сделка" },
-  { n: "→ 3", l: "warm intros по реферал-запросу (если champion реальный)" },
-  { n: "→ 0.8", l: "из этих 3 закрываются (warm intro = 30% conversion)" },
-  { n: "= 4 deals", l: "из 1 за 90 дней. Это твой compounding loop." },
+  { n: "1", l: "первая продажа" },
+  { n: "→ 3", l: "знакомства через довольного клиента" },
+  { n: "→ 1", l: "из 3 тоже покупает (через доверие)" },
+  { n: "= 4", l: "продажи из одной за 90 дней" },
 ];
 
 export default function M11Slide16ExpansionLoop() {
@@ -22,7 +22,7 @@ export default function M11Slide16ExpansionLoop() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[12px]">
         <p className="text-[8.5px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
-          Expansion loop · после первой сделки
+          После первой продажи
         </p>
         <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
           1 сделка = <span className="text-[hsl(var(--slide-gold))]">4 сделки за 90 дней</span>
@@ -53,7 +53,7 @@ export default function M11Slide16ExpansionLoop() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        Expansion loop · после первой сделки
+        После первой продажи
       </p>
       <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[10px] tracking-[-0.02em]">
         1 сделка = <span className="text-[hsl(var(--slide-gold))]">4 сделки за 90 дней</span>
