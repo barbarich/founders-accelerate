@@ -3,7 +3,7 @@ import { Copy, Check } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { PRE_CALL_RESEARCH_PROMPT } from "./promptTemplates";
 
-export default function M11Slide13MainPrompt() {
+export default function M11Slide11PreCallPrompt() {
   const isMobile = useIsMobile();
   const [copied, setCopied] = useState(false);
 
@@ -29,7 +29,7 @@ export default function M11Slide13MainPrompt() {
           Pre-call research<br /><span className="text-[hsl(var(--slide-gold))]">за 60 секунд</span>
         </h2>
         <p className="text-[8px] text-[hsl(var(--slide-text-muted))] mb-[6px] leading-[1.4]">
-          Дай Claude / Perplexity / GPT-5 этот промпт перед каждым демо. Получишь brief: ICP-fit · pain points · 5 discovery-вопросов · угол pitch · вероятные возражения · next step. Сильнее 95% продавцов в индустрии.
+          Дай Claude / Perplexity / GPT-5 этот промпт перед каждым демо. Получишь brief: ICP-fit · pain points · 5 discovery-вопросов · stakeholders · возражения · next step. Сильнее 95% продавцов в индустрии.
         </p>
         <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[6px] px-[8px] py-[5px] flex-1 min-h-0 flex flex-col">
           <div className="flex items-center justify-between mb-[3px] pb-[3px] border-b border-[hsl(var(--slide-border)/0.25)]">
@@ -62,7 +62,7 @@ export default function M11Slide13MainPrompt() {
         Pre-call research <span className="text-[hsl(var(--slide-gold))]">за 60 секунд</span>
       </h2>
       <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[22px] max-w-[1700px] leading-[1.4]">
-        Дай AI этот промпт перед каждым демо. Получишь brief: ICP-fit · pain points · 5 discovery-вопросов · угол pitch · возражения · next step. Делает тебя сильнее 95% продавцов индустрии.
+        Дай AI этот промпт перед каждым демо. Получишь brief: ICP-fit · pain points · 5 discovery-вопросов · stakeholders · возражения · next step. Сильнее 95% продавцов индустрии.
       </p>
       <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[14px] px-[28px] py-[20px] flex-1 min-h-0 flex flex-col max-w-[1700px] w-full">
         <div className="flex items-start justify-between gap-[16px] mb-[12px] pb-[12px] border-b border-[hsl(var(--slide-border)/0.25)]">

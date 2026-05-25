@@ -14,7 +14,7 @@ const after = [
   "Возможность стать speaker'ом на следующих когортах + кейс на сайте",
 ];
 
-export default function M11Slide24NextWeek() {
+export default function M11Slide18NextWeek() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -43,7 +43,7 @@ export default function M11Slide24NextWeek() {
           </div>
         </div>
         <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Приходи на M12 с первой закрытой сделкой и готовым 5-мин питчем — финал должен быть victory lap, не еще одно обучение.
+          Приходи на M12 с подписанным MAP или первой сделкой и готовым 5-мин питчем — финал должен быть victory lap, не обучение.
         </p>
       </div>
     );
@@ -78,7 +78,7 @@ export default function M11Slide24NextWeek() {
         </div>
       </div>
       <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1700px] leading-[1.4]">
-        Приходи на M12 с первой закрытой сделкой и готовым 5-мин питчем — финал должен быть victory lap, не еще одно обучение.
+        Приходи на M12 с подписанным MAP или первой сделкой и готовым 5-мин питчем — финал должен быть victory lap, не ещё одно обучение.
       </p>
     </div>
   );

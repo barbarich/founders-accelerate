@@ -7,62 +7,46 @@ import ScaledSlide from "../ScaledSlide";
 import M11Slide01Welcome from "./M11Slide01Welcome";
 import M11Slide02MainThesis from "./M11Slide02MainThesis";
 import M11BlockHeader from "./M11BlockHeader";
-import M11Slide03PipelineOS from "./M11Slide03PipelineOS";
-import M11Slide04Where50Contacts from "./M11Slide04Where50Contacts";
-import M11Slide05FourCircles from "./M11Slide05FourCircles";
-import M11Slide06WarmIntros from "./M11Slide06WarmIntros";
-import M11Slide07TFCCase from "./M11Slide07TFCCase";
-import M11Slide08Conferences from "./M11Slide08Conferences";
-import M11Slide09MetaMinderCase from "./M11Slide09MetaMinderCase";
-import M11Slide10StageQR from "./M11Slide10StageQR";
-import M11Slide11EventFunnel from "./M11Slide11EventFunnel";
-import M11Slide12DemoAnatomy from "./M11Slide12DemoAnatomy";
-import M11Slide13MainPrompt from "./M11Slide13MainPrompt";
-import M11Slide14Objections from "./M11Slide14Objections";
-import M11Slide15Pricing from "./M11Slide15Pricing";
-import M11Slide16ContentFunnel from "./M11Slide16ContentFunnel";
-import M11Slide17Community from "./M11Slide17Community";
-import M11Slide18PreSales from "./M11Slide18PreSales";
-import M11Slide19CRMMinimum from "./M11Slide19CRMMinimum";
-import M11Slide20MetricsErrors from "./M11Slide20MetricsErrors";
-import M11Slide21Cohort from "./M11Slide21Cohort";
-import M11Slide22First24Hours from "./M11Slide22First24Hours";
-import M11Slide23Homework from "./M11Slide23Homework";
-import M11Slide24NextWeek from "./M11Slide24NextWeek";
+import M11Slide03MotionMap from "./M11Slide03MotionMap";
+import M11Slide04KillerICP from "./M11Slide04KillerICP";
+import M11Slide05Dream50 from "./M11Slide05Dream50";
+import M11Slide06Multithreading from "./M11Slide06Multithreading";
+import M11Slide07ChannelPriority from "./M11Slide07ChannelPriority";
+import M11Slide08MetaMinderB2B from "./M11Slide08MetaMinderB2B";
+import M11Slide09TriggerOutreach from "./M11Slide09TriggerOutreach";
+import M11Slide10Discovery from "./M11Slide10Discovery";
+import M11Slide11PreCallPrompt from "./M11Slide11PreCallPrompt";
+import M11Slide12DemoThatCloses from "./M11Slide12DemoThatCloses";
+import M11Slide13Objections from "./M11Slide13Objections";
+import M11Slide14Closing from "./M11Slide14Closing";
+import M11Slide15MAPPilot from "./M11Slide15MAPPilot";
+import M11Slide16ExpansionLoop from "./M11Slide16ExpansionLoop";
+import M11Slide17Homework from "./M11Slide17Homework";
+import M11Slide18NextWeek from "./M11Slide18NextWeek";
 
 export const slideNames = [
   "Заглавный",
   "Главная мысль",
-  "Блок 1 · Pipeline OS",
-  "5 каналов · карта всего",
-  "Блок 2 · Network",
-  "Где взять 50 контактов",
-  "4 круга нетворка",
-  "Warm intros · pocket prompt #1",
-  "Кейс · The Founders Circle",
-  "Блок 3 · Events",
-  "Конференции Q2–Q4 2026",
-  "🔥 Кейс MetaMinder · холл важнее зала",
-  "🔥 Сцена · канал #1",
-  "Воронка · ДО / НА / ПОСЛЕ + pocket prompt #2",
-  "Блок 4 · Demo",
-  "Анатомия 15-мин + 5 discovery",
+  "Блок 1 · Карта motion",
+  "7 этапов · один путь",
+  "Блок 2 · ICP + List",
+  "Killer ICP · 7 фильтров",
+  "Dream 50 · target list",
+  "Multithreading · 4 роли",
+  "Блок 3 · Outreach",
+  "Приоритет каналов",
+  "🔥 Кейс MetaMinder · события",
+  "Trigger-based outreach",
+  "Блок 4 · The Call",
+  "Discovery · 5 вопросов дословно",
   "🔥 Главный промпт · Pre-call research",
-  "Блок 5 · Возражения + цена",
+  "Demo that closes · 6 правил",
   "5 возражений · полные диалоги",
-  "Pricing 2026 + 3 фразы",
-  "Блок 6 · Content & Community",
-  "Content → Call funnel",
-  "Кейс · Community as pipeline",
-  "Блок 7 · Pre-sales",
-  "5 LOI до строчки кода + pocket prompt #3",
-  "Блок 8 · Инфраструктура",
-  "CRM-минимум за 5 минут",
-  "5 метрик · 5 anti-patterns",
-  "Блок 9 · Когорта",
-  "Адаптация · первое действие в 24 часа",
-  "Блок 10 · Финал",
-  "Первые 24 часа после встречи",
+  "Closing · 3 фразы + next step",
+  "Блок 5 · After close",
+  "🔥 MAP · Mutual Action Plan",
+  "Expansion loop · 1 сделка → 4",
+  "Блок 6 · Финал",
   "Домашка к M12",
   "M12 + alumni",
 ];
@@ -71,43 +55,33 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <M11Slide01Welcome />;
     case 1: return <M11Slide02MainThesis />;
-    case 2: return <M11BlockHeader blockNumber={1} title="Founder Pipeline OS" subtitle="карта всего — 5 каналов работают одновременно" />;
-    case 3: return <M11Slide03PipelineOS />;
-    case 4: return <M11BlockHeader blockNumber={2} title="Network" subtitle="пайплайн #1 для одиночки-фаундера" />;
-    case 5: return <M11Slide04Where50Contacts />;
-    case 6: return <M11Slide05FourCircles />;
-    case 7: return <M11Slide06WarmIntros />;
-    case 8: return <M11Slide07TFCCase />;
-    case 9: return <M11BlockHeader blockNumber={3} title="Events" subtitle="конференции, сцена, нетворк в холле — то, что AI не заменит" />;
-    case 10: return <M11Slide08Conferences />;
-    case 11: return <M11Slide09MetaMinderCase />;
-    case 12: return <M11Slide10StageQR />;
-    case 13: return <M11Slide11EventFunnel />;
-    case 14: return <M11BlockHeader blockNumber={4} title="Demo" subtitle="где деньги — 15 минут × правильная структура" />;
-    case 15: return <M11Slide12DemoAnatomy />;
-    case 16: return <M11Slide13MainPrompt />;
-    case 17: return <M11BlockHeader blockNumber={5} title="Возражения + цена" subtitle="полные мини-диалоги, 3 фразы про деньги без извинений" />;
-    case 18: return <M11Slide14Objections />;
-    case 19: return <M11Slide15Pricing />;
-    case 20: return <M11BlockHeader blockNumber={6} title="Content & Community" subtitle="inbound, который работает на тебя пока ты спишь" />;
-    case 21: return <M11Slide16ContentFunnel />;
-    case 22: return <M11Slide17Community />;
-    case 23: return <M11BlockHeader blockNumber={7} title="Pre-sales" subtitle="продаём до того, как написана строчка кода" />;
-    case 24: return <M11Slide18PreSales />;
-    case 25: return <M11BlockHeader blockNumber={8} title="Инфраструктура" subtitle="CRM-минимум и метрики здоровья pipeline" />;
-    case 26: return <M11Slide19CRMMinimum />;
-    case 27: return <M11Slide20MetricsErrors />;
-    case 28: return <M11BlockHeader blockNumber={9} title="Когорта" subtitle="первое действие в 24 часа — для каждого" />;
-    case 29: return <M11Slide21Cohort />;
-    case 30: return <M11BlockHeader blockNumber={10} title="Финал" subtitle="первые 24 часа · домашка · что после акселератора" />;
-    case 31: return <M11Slide22First24Hours />;
-    case 32: return <M11Slide23Homework />;
-    case 33: return <M11Slide24NextWeek />;
+    case 2: return <M11BlockHeader blockNumber={1} title="Карта motion" subtitle="7 этапов от пустого CRM до подписанной сделки" />;
+    case 3: return <M11Slide03MotionMap />;
+    case 4: return <M11BlockHeader blockNumber={2} title="ICP + Target list" subtitle="на ком фокусируешься — определяет всё, что ниже" />;
+    case 5: return <M11Slide04KillerICP />;
+    case 6: return <M11Slide05Dream50 />;
+    case 7: return <M11Slide06Multithreading />;
+    case 8: return <M11BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
+    case 9: return <M11Slide07ChannelPriority />;
+    case 10: return <M11Slide08MetaMinderB2B />;
+    case 11: return <M11Slide09TriggerOutreach />;
+    case 12: return <M11BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
+    case 13: return <M11Slide10Discovery />;
+    case 14: return <M11Slide11PreCallPrompt />;
+    case 15: return <M11Slide12DemoThatCloses />;
+    case 16: return <M11Slide13Objections />;
+    case 17: return <M11Slide14Closing />;
+    case 18: return <M11BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
+    case 19: return <M11Slide15MAPPilot />;
+    case 20: return <M11Slide16ExpansionLoop />;
+    case 21: return <M11BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что после акселератора" />;
+    case 22: return <M11Slide17Homework />;
+    case 23: return <M11Slide18NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 34;
+export const TOTAL = 24;
 
 export default function Meeting11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
