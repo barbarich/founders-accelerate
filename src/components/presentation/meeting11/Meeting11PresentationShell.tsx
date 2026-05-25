@@ -23,7 +23,7 @@ import M11Slide13Objections from "./M11Slide13Objections";
 import M11Slide14Closing from "./M11Slide14Closing";
 import M11Slide15MAPPilot from "./M11Slide15MAPPilot";
 import M11Slide16ExpansionLoop from "./M11Slide16ExpansionLoop";
-import M11Slide17Homework from "./M11Slide17Homework";
+import M11Slide17LiveExercise from "./M11Slide17LiveExercise";
 import M11Slide18NextWeek from "./M11Slide18NextWeek";
 
 export const slideNames = [
@@ -51,7 +51,7 @@ export const slideNames = [
   "🔥 MAP · Mutual Action Plan",
   "Expansion loop · 1 сделка → 4",
   "Блок 6 · Финал",
-  "Домашка к M12",
+  "Живое задание · 1 компания · 5 строк",
   "M12 + alumni",
 ];
 
@@ -81,7 +81,7 @@ export function getSlideContent(index: number) {
     case 21: return <M11Slide15MAPPilot />;
     case 22: return <M11Slide16ExpansionLoop />;
     case 23: return <M11BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что после акселератора" />;
-    case 24: return <M11Slide17Homework />;
+    case 24: return <M11Slide17LiveExercise />;
     case 25: return <M11Slide18NextWeek />;
     default: return null;
   }
