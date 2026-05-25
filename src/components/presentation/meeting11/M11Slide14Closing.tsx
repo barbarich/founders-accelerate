@@ -50,28 +50,28 @@ export default function M11Slide14Closing() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Closing · 3 фразы про деньги + next step
+        Closing · 3 фразы про деньги + следующий шаг
       </p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] tracking-[-0.02em]">
-        Никогда не заканчиваешь звонок <span className="text-[hsl(var(--slide-gold))]">без даты в календаре</span>
+        Никогда не заканчивай звонок <span className="text-[hsl(var(--slide-gold))]">без даты в календаре</span>
       </h2>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1700px]">
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[24px] py-[16px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[10px]">3 фразы про деньги дословно</p>
+          <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[10px]">3 фразы про деньги</p>
           {phrases.map((p, i) => (
             <div key={i} className="mb-[10px]">
-              <p className="text-[13px] text-[hsl(var(--slide-text-muted))] italic mb-[2px]">{p.ctx}:</p>
-              <p className="text-[15px] text-[hsl(var(--slide-text)/0.95)] leading-[1.5] mb-[2px]">→ {p.say}</p>
-              <p className="text-[12px] text-[hsl(var(--slide-text-muted))] italic">{p.why}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text-muted))] italic mb-[2px]">{p.ctx}:</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text)/0.95)] leading-[1.5] mb-[2px]">→ {p.say}</p>
+              <p className="text-[14px] text-[hsl(var(--slide-text-muted))] italic">{p.why}</p>
             </div>
           ))}
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[24px] py-[16px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[10px]">Next step ВСЕГДА с датой</p>
+          <p className="text-[16px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.15em] mb-[10px]">Следующий шаг — всегда с датой</p>
           {next.map((n, i) => (
             <div key={i} className="mb-[10px]">
-              <p className="text-[17px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{n.t}</p>
-              <p className="text-[14px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{n.d}</p>
+              <p className="text-[18px] font-bold text-[hsl(var(--slide-text))] mb-[2px]">{n.t}</p>
+              <p className="text-[15px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{n.d}</p>
             </div>
           ))}
         </div>
