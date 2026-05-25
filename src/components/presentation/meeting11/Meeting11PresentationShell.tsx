@@ -45,7 +45,7 @@ export const slideNames = [
   "Demo flow · 6 шагов структуры",
   "🔥 Главный промпт · Pre-call research",
   "Demo that closes · 6 правил",
-  "5 возражений · полные диалоги",
+  "3 возражения · знай ответ заранее",
   "Closing · 3 фразы + next step",
   "Блок 5 · After close",
   "🔥 MAP · Mutual Action Plan",
