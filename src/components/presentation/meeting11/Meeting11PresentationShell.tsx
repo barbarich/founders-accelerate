@@ -51,7 +51,7 @@ export const slideNames = [
   "🔥 MAP · Mutual Action Plan",
   "Expansion loop · 1 сделка → 4",
   "Блок 6 · Финал",
-  "Живое задание · 1 компания · 5 строк",
+  "Домашнее задание · 1 компания · 5 строк",
   "M12 + alumni",
 ];
 

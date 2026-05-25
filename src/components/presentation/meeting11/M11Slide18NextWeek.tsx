@@ -34,7 +34,7 @@ export default function M11Slide18NextWeek() {
             </div>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[10px] py-[6px]">
-            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">После акселератора</p>
+            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">После сегодняшней встречи</p>
             <div className="space-y-[2px]">
               {after.map((t, i) => (
                 <p key={i} className="text-[8px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">→ {t}</p>
@@ -67,7 +67,7 @@ export default function M11Slide18NextWeek() {
           </div>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[24px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">После акселератора · alumni</p>
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">После сегодняшней встречи · alumni</p>
           <div className="space-y-[8px]">
             {after.map((t, i) => (
               <p key={i} className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
