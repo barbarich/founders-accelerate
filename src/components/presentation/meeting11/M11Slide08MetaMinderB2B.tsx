@@ -22,28 +22,28 @@ export default function M11Slide08MetaMinderB2B() {
         <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
           🔥 Кейс MetaMinder · события как канал продаж
         </p>
-        <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
+        <h2 className="font-display text-[21px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
           Конференция = <span className="text-[hsl(var(--slide-gold))]">сотни личных знакомств за 2 дня</span>
         </h2>
-        <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[10px] leading-[1.45]">
+        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[10px] leading-[1.45]">
           В MetaMinder сотни клиентов пришли через офлайн-нетворк. Не через рекламу и не через холодные звонки — через личные разговоры в перерывах. Одно правило: <span className="text-[hsl(var(--slide-gold))] font-semibold">встречу назначаем сразу на месте.</span>
         </p>
-        <div className="space-y-[6px] mb-[10px]">
+        <div className="space-y-[5px] mb-[10px]">
           {rules.map((r) => (
             <div key={r.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[6px]">
               <div className="flex items-baseline gap-[6px]">
-                <span className="text-[12px] font-bold text-[hsl(var(--slide-gold))]">{r.n}</span>
-                <span className="text-[11px] font-bold text-[hsl(var(--slide-text))]">{r.t}</span>
+                <span className="text-[13px] font-bold text-[hsl(var(--slide-gold))]">{r.n}</span>
+                <span className="text-[12px] font-bold text-[hsl(var(--slide-text))]">{r.t}</span>
               </div>
-              <p className="text-[9.5px] text-[hsl(var(--slide-text-muted))] leading-[1.45] ml-[18px]">{r.d}</p>
+              <p className="text-[10.5px] text-[hsl(var(--slide-text-muted))] leading-[1.45] ml-[19px]">{r.d}</p>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-3 gap-[6px]">
           {numbers.map((m) => (
             <div key={m.n} className="bg-[hsl(var(--slide-gold)/0.1)] border-l border-[hsl(var(--slide-gold))] rounded-[4px] px-[8px] py-[6px]">
-              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] leading-none">{m.n}</p>
-              <p className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">{m.l}</p>
+              <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] leading-none">{m.n}</p>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.35]">{m.l}</p>
             </div>
           ))}
         </div>
