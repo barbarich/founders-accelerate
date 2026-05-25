@@ -53,28 +53,28 @@ export default function M11Slide13Objections() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
+      <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
         Возражения
       </p>
-      <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px] tracking-[-0.02em]">
+      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] tracking-[-0.02em]">
         Не учи скрипты наизусть —{" "}
         <span className="text-[hsl(var(--slide-gold))]">знай ответ заранее</span>
       </h2>
-      <div className="space-y-[10px] max-w-[1700px]">
+      <div className="space-y-[12px] max-w-[1700px]">
         {objections.map((o, i) => (
           <div
             key={i}
-            className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[22px] py-[12px]"
+            className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[26px] py-[16px]"
           >
             <div className="flex items-start gap-[14px]">
-              <span className="font-display text-[28px] font-bold text-[hsl(var(--slide-gold))] leading-none shrink-0">
+              <span className="font-display text-[32px] font-bold text-[hsl(var(--slide-gold))] leading-none shrink-0">
                 {i + 1}
               </span>
               <div className="flex-1">
-                <p className="text-[15px] text-[hsl(var(--slide-text-muted))] italic mb-[3px]">
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] italic mb-[4px]">
                   Возражение: {o.objection}
                 </p>
-                <p className="text-[15px] text-[hsl(var(--slide-text))] leading-[1.45]">
+                <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.5]">
                   <span className="text-[hsl(var(--slide-gold))] font-bold">Ответ:</span>{" "}
                   {o.answer}
                 </p>
