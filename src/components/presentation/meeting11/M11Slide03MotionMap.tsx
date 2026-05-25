@@ -1,13 +1,13 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const steps = [
-  { n: "1", name: "ICP", goal: "7 фильтров", out: "не «все», а конкретный портрет" },
-  { n: "2", name: "Dream 50", goal: "150 имён", out: "50 счетов × 3 stakeholder'а" },
-  { n: "3", name: "Multi-touch", goal: "trigger-based", out: "warm > event > DM > email" },
-  { n: "4", name: "Discovery", goal: "5 вопросов", out: "вытаскиваешь факт, не мнение" },
-  { n: "5", name: "Demo", goal: "один use-case", out: "из discovery, не tour" },
-  { n: "6", name: "Close", goal: "MAP подписан", out: "next step с датой" },
-  { n: "7", name: "Expand", goal: "3 рефералки", out: "из сделки #1 — сделки #2-5" },
+  { n: "1", name: "Кому продаём", goal: "портрет клиента", out: "описываем одного конкретного клиента, а не «всех подряд»" },
+  { n: "2", name: "Список 50", goal: "150 живых имён", out: "берём 50 компаний и по 3 человека в каждой — это наш список на охоту" },
+  { n: "3", name: "Как заходим", goal: "через повод", out: "пишем не «в холодную», а когда у клиента случилось что-то важное" },
+  { n: "4", name: "Первый звонок", goal: "5 вопросов", out: "не продаём — слушаем. Узнаём, что у человека реально болит" },
+  { n: "5", name: "Показ продукта", goal: "под его боль", out: "показываем не всё подряд, а решение именно той проблемы, что услышали" },
+  { n: "6", name: "Закрытие", goal: "договор + дата", out: "уходим со встречи с конкретным следующим шагом, а не «я подумаю»" },
+  { n: "7", name: "Рост через клиента", goal: "3 рекомендации", out: "из одной сделки получаем ещё 3 — клиент сам приводит новых" },
 ];
 
 export default function M11Slide03MotionMap() {
@@ -20,10 +20,10 @@ export default function M11Slide03MotionMap() {
           Карта motion
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          7 этапов · <span className="text-[hsl(var(--slide-gold))]">один путь</span>
+          7 шагов · <span className="text-[hsl(var(--slide-gold))]">от «никто не знает» до сделки</span>
         </h2>
         <p className="text-[8.5px] text-[hsl(var(--slide-text-muted))] mb-[8px] leading-[1.4]">
-          Каждый блок встречи привязан к этапу. Прыгать через этап нельзя — ломается всё ниже по воронке.
+          Это путь, по которому клиент идёт от первого касания до покупки. Пропустить шаг нельзя — дальше всё посыпется.
         </p>
         <div className="space-y-[3px]">
           {steps.map((s) => (
@@ -47,10 +47,10 @@ export default function M11Slide03MotionMap() {
         Карта motion
       </p>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[16px] tracking-[-0.02em]">
-        7 этапов · <span className="text-[hsl(var(--slide-gold))]">один путь от пустого CRM до сделки</span>
+        7 шагов · <span className="text-[hsl(var(--slide-gold))]">от «нас никто не знает» до первой сделки</span>
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mb-[28px] max-w-[1700px] leading-[1.45]">
-        Каждый блок этой встречи привязан к этапу. Прыгать через этап нельзя — ломается всё ниже по воронке. Если discovery провален — demo не закроет. Если ICP размазан — discovery не разговорит.
+        Это путь, по которому клиент идёт от первого знакомства до покупки. Пропустить шаг нельзя: если плохо описали клиента — некому писать; если не услышали боль на звонке — нечего показывать; если не договорились о дате — сделка зависнет.
       </p>
       <div className="grid grid-cols-4 gap-[20px] max-w-[1700px]">
         {steps.map((s) => (
