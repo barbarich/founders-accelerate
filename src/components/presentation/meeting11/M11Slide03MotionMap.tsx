@@ -52,13 +52,13 @@ export default function M11Slide03MotionMap() {
       <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mb-[28px] max-w-[1700px] leading-[1.45]">
         Каждый блок этой встречи привязан к этапу. Прыгать через этап нельзя — ломается всё ниже по воронке. Если discovery провален — demo не закроет. Если ICP размазан — discovery не разговорит.
       </p>
-      <div className="grid grid-cols-7 gap-[14px] max-w-[1700px]">
+      <div className="grid grid-cols-4 gap-[20px] max-w-[1700px]">
         {steps.map((s) => (
-          <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[16px] py-[14px]">
-            <p className="font-display text-[36px] font-bold text-[hsl(var(--slide-gold))] leading-none mb-[6px]">{s.n}</p>
-            <p className="text-[18px] font-bold text-[hsl(var(--slide-text))] mb-[3px]">{s.name}</p>
-            <p className="text-[12px] text-[hsl(var(--slide-gold))] mb-[8px]">{s.goal}</p>
-            <p className="text-[13px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{s.out}</p>
+          <div key={s.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[24px] py-[20px]">
+            <p className="font-display text-[48px] font-bold text-[hsl(var(--slide-gold))] leading-none mb-[8px]">{s.n}</p>
+            <p className="text-[24px] font-bold text-[hsl(var(--slide-text))] mb-[4px]">{s.name}</p>
+            <p className="text-[16px] text-[hsl(var(--slide-gold))] mb-[10px]">{s.goal}</p>
+            <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{s.out}</p>
           </div>
         ))}
       </div>
