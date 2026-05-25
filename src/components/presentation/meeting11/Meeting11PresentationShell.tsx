@@ -8,6 +8,7 @@ import M11Slide01Welcome from "./M11Slide01Welcome";
 import M11Slide02MainThesis from "./M11Slide02MainThesis";
 import M11BlockHeader from "./M11BlockHeader";
 import M11Slide03MotionMap from "./M11Slide03MotionMap";
+import M11Slide03bCRM from "./M11Slide03bCRM";
 import M11Slide04KillerICP from "./M11Slide04KillerICP";
 import M11Slide04bWhatIsICP from "./M11Slide04bWhatIsICP";
 import M11Slide05Dream50 from "./M11Slide05Dream50";
@@ -30,6 +31,7 @@ export const slideNames = [
   "Главная мысль",
   "Блок 1 · Карта motion",
   "7 этапов · один путь",
+  "CRM · первые дни",
   "Блок 2 · ICP + List",
   "Что такое ICP и почему это критично",
   "Killer ICP · 7 фильтров",
@@ -59,32 +61,33 @@ export function getSlideContent(index: number) {
     case 1: return <M11Slide02MainThesis />;
     case 2: return <M11BlockHeader blockNumber={1} title="Карта motion" subtitle="7 этапов от пустого CRM до подписанной сделки" />;
     case 3: return <M11Slide03MotionMap />;
-    case 4: return <M11BlockHeader blockNumber={2} title="ICP + Target list" subtitle="на ком фокусируешься — определяет всё, что ниже" />;
-    case 5: return <M11Slide04bWhatIsICP />;
-    case 6: return <M11Slide04KillerICP />;
-    case 7: return <M11Slide05Dream50 />;
-    case 8: return <M11Slide06Multithreading />;
-    case 9: return <M11BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
-    case 10: return <M11Slide07ChannelPriority />;
-    case 11: return <M11Slide08MetaMinderB2B />;
-    case 12: return <M11Slide09TriggerOutreach />;
-    case 13: return <M11BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
-    case 14: return <M11Slide10Discovery />;
-    case 15: return <M11Slide11PreCallPrompt />;
-    case 16: return <M11Slide12DemoThatCloses />;
-    case 17: return <M11Slide13Objections />;
-    case 18: return <M11Slide14Closing />;
-    case 19: return <M11BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
-    case 20: return <M11Slide15MAPPilot />;
-    case 21: return <M11Slide16ExpansionLoop />;
-    case 22: return <M11BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что после акселератора" />;
-    case 23: return <M11Slide17Homework />;
-    case 24: return <M11Slide18NextWeek />;
+    case 4: return <M11Slide03bCRM />;
+    case 5: return <M11BlockHeader blockNumber={2} title="ICP + Target list" subtitle="на ком фокусируешься — определяет всё, что ниже" />;
+    case 6: return <M11Slide04bWhatIsICP />;
+    case 7: return <M11Slide04KillerICP />;
+    case 8: return <M11Slide05Dream50 />;
+    case 9: return <M11Slide06Multithreading />;
+    case 10: return <M11BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
+    case 11: return <M11Slide07ChannelPriority />;
+    case 12: return <M11Slide08MetaMinderB2B />;
+    case 13: return <M11Slide09TriggerOutreach />;
+    case 14: return <M11BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
+    case 15: return <M11Slide10Discovery />;
+    case 16: return <M11Slide11PreCallPrompt />;
+    case 17: return <M11Slide12DemoThatCloses />;
+    case 18: return <M11Slide13Objections />;
+    case 19: return <M11Slide14Closing />;
+    case 20: return <M11BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
+    case 21: return <M11Slide15MAPPilot />;
+    case 22: return <M11Slide16ExpansionLoop />;
+    case 23: return <M11BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что после акселератора" />;
+    case 24: return <M11Slide17Homework />;
+    case 25: return <M11Slide18NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 26;
 
 export default function Meeting11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
