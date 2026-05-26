@@ -23,7 +23,7 @@ export default function L13Slide10WorkshopPublish() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          🔴 Воркшоп · Шаг 4 · Review → Publish
+          Walkthrough · Шаг 4 · Review → Publish
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
           Чек-лист перед кнопкой. <span className="text-[hsl(var(--slide-gold))]">И что будет дальше.</span>
@@ -52,7 +52,7 @@ export default function L13Slide10WorkshopPublish() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        🔴 Воркшоп · Шаг 4 · Review → Publish → Learning phase
+        Walkthrough · Шаг 4 · Review → Publish → Learning phase
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[18px] tracking-[-0.02em]">
         Чек-лист перед кнопкой. <span className="text-[hsl(var(--slide-gold))]">И что будет дальше.</span>

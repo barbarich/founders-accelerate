@@ -56,8 +56,8 @@ export const slideNames = [
   "Отзывы конкурентов",
   "Продуктовый teardown",
   "Бизнес-модель",
-  "Блок 2: Практика — сделай сейчас",
-  "Шаг 1: Конкуренты",
+  "Блок 2: Пошаговый план",
+  "5 шагов · конкуренты",
   "Блок 3: Задание",
   "ДЗ: Конкуренты",
   "Блок 4: Инструменты",
@@ -83,7 +83,7 @@ export function getSlideContent(index: number) {
     case 12: return <L1Slide11Reviews />;
     case 13: return <L1Slide12Teardown />;
     case 14: return <L1Slide13BusinessModel />;
-    case 15: return <L1BlockHeader blockNumber={2} title="Практика — сделай сейчас" subtitle="Открой Claude/ChatGPT и пройди один шаг" />;
+    case 15: return <L1BlockHeader blockNumber={2} title="Пошаговый план" subtitle="открой Claude или ChatGPT и пройди 5 шагов" />;
     case 16: return <L1Slide22Step1 />;
     case 17: return <L1BlockHeader blockNumber={3} title="Задание на неделю" />;
     case 18: return <L1Slide26HWCompetitors />;

@@ -47,8 +47,8 @@ export const slideNames = [
   "Payment Link за 10 минут",
   "Refund vs Chargeback",
   "Stripe Atlas · для нерезидентов США",
-  "Блок 5: Сделай сейчас",
-  "Два трека",
+  "Блок 5: Два пути запуска",
+  "Лендинг с нуля или улучшение",
   "Блок 6: Задание",
   "Домашка",
   "Саммари · 5 мыслей",
@@ -76,7 +76,7 @@ export function getSlideContent(index: number) {
     case 16: return <L4SlidePaymentLink />;
     case 17: return <L4SlideRefundFlow />;
     case 18: return <L4SlideStripeAtlas />;
-    case 19: return <L4BlockHeader blockNumber={5} title="Сделай сейчас" subtitle="2 трека · реши какой твой и иди" />;
+    case 19: return <L4BlockHeader blockNumber={5} title="Два пути запуска" subtitle="лендинг с нуля или улучшение существующего" />;
     case 20: return <L4Slide14Workshop />;
     case 21: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
     case 22: return <L4Slide15Homework />;

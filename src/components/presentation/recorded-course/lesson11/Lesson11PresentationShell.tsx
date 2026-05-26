@@ -30,8 +30,8 @@ export const slideNames = [
   "GO / VALIDATE / PIVOT",
   "Блок 3: Что чинить",
   "Матрица: продукт или маркетинг",
-  "Блок 4: Сделай сейчас",
-  "Подключи стек + запусти Sean Ellis · 60 мин",
+  "Блок 4: Пошаговый план",
+  "Подключи стек + запусти Sean Ellis · 6 шагов",
   "Блок 5: Задание",
   "Домашка",
   "Саммари · 5 мыслей",
@@ -51,7 +51,7 @@ export function getSlideContent(index: number) {
     case 8: return <L11SlideVerdict />;
     case 9: return <L11BlockHeader blockNumber={3} title="Что чинить — продукт или маркетинг" subtitle="не угадывай · читай по цифрам" />;
     case 10: return <L11SlideWhatToFix />;
-    case 11: return <L11BlockHeader blockNumber={4} title="Сделай сейчас" subtitle="60 минут — стек + первый Sean Ellis опрос" />;
+    case 11: return <L11BlockHeader blockNumber={4} title="Пошаговый план" subtitle="подключи стек и запусти первый Sean Ellis опрос" />;
     case 12: return <L11SlideActionNow />;
     case 13: return <L11BlockHeader blockNumber={5} title="Задание на эту неделю" />;
     case 14: return <L11SlideHomework />;

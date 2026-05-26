@@ -35,7 +35,7 @@ export const slideNames = [
   "Старый vs новый Meta",
   "Andromeda + Advantage+",
   "Бюджет и learning phase",
-  "Блок 3 · 🔴 Live workshop",
+  "Блок 3 · Walkthrough Meta-кампании",
   "Шаг 1 · Business Manager → Campaign",
   "Шаг 2 · Ad Set · Advantage+ Audience",
   "Шаг 3 · Ad · Dynamic Creative",
@@ -63,7 +63,7 @@ export function getSlideContent(index: number) {
     case 7: return <L13Slide04OldVsNewMeta />;
     case 8: return <L13Slide05Andromeda />;
     case 9: return <L13Slide06BudgetLearningPhase />;
-    case 10: return <L13BlockHeader blockNumber={3} title="🔴 Live workshop" subtitle="настраиваем кампанию на моём кабинете — ты повторяешь у себя" />;
+    case 10: return <L13BlockHeader blockNumber={3} title="Walkthrough · настройка кампании" subtitle="пошагово на моём кабинете — повторяешь у себя" />;
     case 11: return <L13Slide07WorkshopCampaign />;
     case 12: return <L13Slide08WorkshopAdSet />;
     case 13: return <L13Slide09WorkshopAd />;

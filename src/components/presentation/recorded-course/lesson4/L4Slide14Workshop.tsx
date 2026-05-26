@@ -35,10 +35,10 @@ export default function L4Slide14Workshop() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">
-          20 минут
+          Два пути · выбери свой
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          Два трека — выберите свой
+          Лендинг с нуля или улучшение существующего
         </h2>
         <div className="space-y-[10px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border-2 border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] px-[10px] py-[8px]">
@@ -79,10 +79,10 @@ export default function L4Slide14Workshop() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[100px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        20 минут
+        Два пути · выбери свой
       </p>
       <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">
-        Два трека — выберите свой
+        Лендинг <span className="text-[hsl(var(--slide-gold))]">с нуля</span> или улучшение существующего
       </h2>
 
       <div className="grid grid-cols-2 gap-[28px] max-w-[1300px]">

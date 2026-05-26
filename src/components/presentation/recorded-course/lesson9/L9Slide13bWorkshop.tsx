@@ -46,13 +46,13 @@ export default function L9Slide13bWorkshop() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px] py-[20px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Практика · 12 минут
+          Шаблон · карта возврата
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
-          Карта возврата вашего продукта
+          Карта возврата твоего продукта
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[10px] leading-[1.4]">
-          Заполните 6 пунктов для своего продукта. Один лист — один контур возврата.
+          Заполни 6 пунктов для своего продукта. Один лист — один контур возврата. AI-coach промпт: «Я фаундер, мой продукт [тип]. Помоги заполнить карту возврата по этим 6 пунктам».
         </p>
         <div className="space-y-[5px]">
           {rows.map((r) => (
@@ -75,15 +75,15 @@ export default function L9Slide13bWorkshop() {
       <div className="flex items-end justify-between mb-[20px]">
         <div>
           <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-            Практика в группе · 12 минут
+            Шаблон · карта возврата
           </p>
           <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-            Карта возврата вашего продукта
+            Карта возврата <span className="text-[hsl(var(--slide-gold))]">твоего продукта</span>
           </h2>
         </div>
-        <p className="text-[18px] text-[hsl(var(--slide-text-muted))] max-w-[480px] text-right leading-[1.4]">
-          Заполните 6 пунктов для своего продукта.<br />
-          Затем — 2 минуты на разбор у каждого.
+        <p className="text-[18px] text-[hsl(var(--slide-text-muted))] max-w-[520px] text-right leading-[1.4]">
+          Заполни 6 пунктов для своего продукта.<br />
+          AI-coach промпт: «Я фаундер, продукт [тип]. Помоги заполнить карту возврата».
         </p>
       </div>
 

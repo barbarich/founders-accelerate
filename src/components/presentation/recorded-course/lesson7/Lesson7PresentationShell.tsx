@@ -29,8 +29,8 @@ export const slideNames = [
   "Универсальный промпт · Aha-detector",
   "Блок 4: Первый экран = путь к Aha",
   "5 правил первого экрана",
-  "Блок 5: Сделай сейчас",
-  "Найди свой Aha · 60 минут",
+  "Блок 5: Пошаговый план",
+  "Найди свой Aha · 5 шагов",
   "Блок 6: Задание",
   "Домашка",
   "Саммари · 5 мыслей",
@@ -50,7 +50,7 @@ export function getSlideContent(index: number) {
     case 8: return <L7SlideFindAhaPrompt />;
     case 9: return <L7BlockHeader blockNumber={4} title="Первый экран = путь к Aha" subtitle="5 правил, чтобы добраться за 60 сек" />;
     case 10: return <L7SlideFirstScreen />;
-    case 11: return <L7BlockHeader blockNumber={5} title="Сделай сейчас" subtitle="60 минут · Loom + AI + redesign" />;
+    case 11: return <L7BlockHeader blockNumber={5} title="Пошаговый план" subtitle="как найти Aha и спроектировать экран" />;
     case 12: return <L7SlideActionNow />;
     case 13: return <L7BlockHeader blockNumber={6} title="Задание на эту неделю" />;
     case 14: return <L7SlideHomework />;

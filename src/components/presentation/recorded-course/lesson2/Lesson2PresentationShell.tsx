@@ -65,8 +65,8 @@ export const slideNames = [
   "Стек: Tally / Typeform / Google Forms",
   "4 канала дистрибуции",
   "PASS / FAIL критерий + Action gate",
-  "Блок 3: Практика — сделай сейчас",
-  "Шаг 1: 12 вопросов для своего custdev",
+  "Блок 3: Пошаговый план",
+  "5 шагов · вопросы для custdev",
   "Блок 4: Задание",
   "ДЗ: 10 интервью + 100 опросов",
   "Саммари · 5 мыслей",
@@ -92,7 +92,7 @@ export function getSlideContent(index: number) {
     case 14: return <L2SlideSurveysStack />;
     case 15: return <L2SlideSurveysDistribution />;
     case 16: return <L2SlidePassFail />;
-    case 17: return <L2BlockHeader blockNumber={3} title="Практика — сделай сейчас" subtitle="открой Claude/ChatGPT и составь свой custdev" />;
+    case 17: return <L2BlockHeader blockNumber={3} title="Пошаговый план" subtitle="открой Claude или ChatGPT и составь свой custdev" />;
     case 18: return <L2Slide23Step2 />;
     case 19: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
     case 20: return <L2Slide27HWCustdev />;
