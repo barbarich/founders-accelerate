@@ -1,0 +1,80 @@
+import { useIsMobile } from "@/hooks/use-mobile";
+
+export default function L1Slide25ReviewFormat() {
+  const points = [
+    { emoji: "👋", label: "Кто вы", hint: "Имя, бэкграунд" },
+    { emoji: "💡", label: "Идея / продукт", hint: "Что делаете — в одном предложении" },
+    { emoji: "😤", label: "Проблема → решение", hint: "Какая боль и как закрываете" },
+    { emoji: "👥", label: "Для кого", hint: "Кто заплатит" },
+    { emoji: "📍", label: "Стадия", hint: "Идея, прототип, MVP?" },
+    { emoji: "🤝", label: "Команда", hint: "Один или с кем-то" },
+    { emoji: "🎯", label: "Чего хотите", hint: "Запрос на 12 недель" },
+  ];
+  const isMobile = useIsMobile();
+
+  if (isMobile) {
+    return (
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Давайте познакомимся 🙌</p>
+        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
+          Расскажите о себе и идее
+        </h2>
+        <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">
+          У каждого 5 минут. Свободный рассказ — без оценок.
+        </p>
+        <div className="space-y-[6px] mb-[10px]">
+          {points.map((p, i) => (
+            <div key={i} className="flex items-center gap-[8px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[6px] px-[10px] py-[7px]">
+              <span className="font-mono text-[9px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 1}</span>
+              <span className="text-[16px] shrink-0">{p.emoji}</span>
+              <span className="text-[11px] font-semibold text-[hsl(var(--slide-text))]">{p.label}</span>
+              <span className="text-[9px] text-[hsl(var(--slide-text-muted))]">— {p.hint}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-[6px]">
+          <span className="font-mono text-[9px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[8px] py-[4px] rounded">5 мин × 5 = 25 мин</span>
+          <span className="text-[9px] text-[hsl(var(--slide-text-muted))]">Нет неправильных ответов</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">Давайте познакомимся 🙌</p>
+      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">Расскажите о себе и своей идее</h2>
+      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[44px]">У каждого 5 минут. Свободный рассказ — без оценок и вопросов. Просто знакомимся.</p>
+      <div className="flex gap-[32px] max-w-[1100px]">
+        <div className="flex-1 flex flex-col gap-[16px]">
+          {points.slice(0, 4).map((p, i) => (
+            <div key={i} className="flex items-start gap-[14px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[16px]">
+              <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[30px] h-[30px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 1}</span>
+              <span className="text-[28px] shrink-0">{p.emoji}</span>
+              <div>
+                <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.3]">{p.label}</p>
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.hint}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex-1 flex flex-col gap-[16px]">
+          {points.slice(4).map((p, i) => (
+            <div key={i} className="flex items-start gap-[14px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[22px] py-[16px]">
+              <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.12)] w-[30px] h-[30px] rounded-full flex items-center justify-center shrink-0 font-bold">{i + 5}</span>
+              <span className="text-[28px] shrink-0">{p.emoji}</span>
+              <div>
+                <p className="text-[20px] font-semibold text-[hsl(var(--slide-text))] leading-[1.3]">{p.label}</p>
+                <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{p.hint}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-[36px] flex items-center gap-[12px]">
+        <span className="font-mono text-[17px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[6px] rounded">5 мин × 5 человек = 25 мин</span>
+        <span className="text-[18px] text-[hsl(var(--slide-text-muted))]">Нет неправильных ответов — рассказывайте как есть</span>
+      </div>
+    </div>
+  );
+}

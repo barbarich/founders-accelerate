@@ -52,6 +52,8 @@ import PublicMeeting9Shell from "@/components/presentation/meeting9/PublicMeetin
 import PublicMeeting10Shell from "@/components/presentation/meeting10/PublicMeeting10Shell";
 import PublicMeeting11Shell from "@/components/presentation/meeting11/PublicMeeting11Shell";
 import PublicLesson0Shell from "@/components/presentation/recorded-course/lesson0/PublicLesson0Shell";
+import PublicLesson1Shell from "@/components/presentation/recorded-course/lesson1/PublicLesson1Shell";
+import PublicLesson2Shell from "@/components/presentation/recorded-course/lesson2/PublicLesson2Shell";
 import PublicLesson3Shell from "@/components/presentation/recorded-course/lesson3/PublicLesson3Shell";
 import PublicLesson12Shell from "@/components/presentation/recorded-course/lesson12/PublicLesson12Shell";
 import PublicLesson13Shell from "@/components/presentation/recorded-course/lesson13/PublicLesson13Shell";
@@ -197,6 +199,8 @@ const App = () => (
           <Route path="/programm-week10" element={<PublicMeeting10Shell />} />
           <Route path="/programm-week11" element={<PublicMeeting11Shell />} />
           <Route path="/recorded-course/lesson0" element={<PublicLesson0Shell />} />
+          <Route path="/recorded-course/lesson1" element={<PublicLesson1Shell />} />
+          <Route path="/recorded-course/lesson2" element={<PublicLesson2Shell />} />
           <Route path="/recorded-course/lesson3" element={<PublicLesson3Shell />} />
           <Route path="/recorded-course/lesson12" element={<PublicLesson12Shell />} />
           <Route path="/recorded-course/lesson13" element={<PublicLesson13Shell />} />
