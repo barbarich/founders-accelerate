@@ -3,32 +3,32 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const events = [
   {
     name: "Purchase",
-    when: "На thank-you page · после оплаты",
-    body: "Главное событие для e-commerce / SaaS. Параметры: value · currency · content_ids. Без value Meta не может оптимизировать на ROAS.",
-    who: "Maker A (если есть платный план)",
+    when: "На странице «спасибо за покупку»",
+    body: "Главное событие для e-commerce и SaaS. Передаёшь сумму покупки — Meta понимает что выгодно показывать дороже. Без суммы алгоритм оптимизирует слепо.",
+    who: "Платная подписка / магазин",
   },
   {
     name: "Lead",
-    when: "После отправки формы / вейтлист submit",
-    body: "Главное событие для lead-gen. Используется когда продажа далеко (B2B, дорогая подписка, демо-сейлз).",
-    who: "Maker C · Maker B · Maker E",
+    when: "После отправки формы / вейтлиста",
+    body: "Главное событие когда продажа далеко: B2B, дорогая подписка, демо-звонок. Юзер оставил контакт — это лид для тебя.",
+    who: "B2B · агентства · marketplaces",
   },
   {
     name: "CompleteRegistration",
-    when: "После создания аккаунта / signup",
-    body: "Для freemium / триал-флоу. Отличается от Lead тем, что регистрация = бóльшая глубина намерения, чем email-сбор.",
-    who: "Maker A · Maker B",
+    when: "После создания аккаунта",
+    body: "Для бесплатной регистрации и trial-флоу. Это глубже чем Lead — юзер сделал не только email, но и создал аккаунт.",
+    who: "SaaS · freemium · приложения",
   },
   {
     name: "Contact",
     when: "Клик на «Написать в WhatsApp / Telegram»",
-    body: "Когда основной CTA = диалог в мессенджере. Вешается на onClick кнопки. Custom event если нужны детали (район/тип/бюджет).",
-    who: "WhatsApp-бот аренды",
+    body: "Когда главный CTA — диалог в мессенджере, а не на сайте. Вешается на кнопку. Подходит для услуг и B2C с менеджером.",
+    who: "WhatsApp-боты · услуги",
   },
   {
     name: "ViewContent",
-    when: "Открытие ключевой страницы (продукт / прайс)",
-    body: "Fallback, когда покупок/лидов пока мало (< 50 в неделю). Кормишь алгоритм объёмом верхних событий, пока низ воронки не наберёт массу.",
+    when: "Открытие важной страницы (продукт / прайс)",
+    body: "Запасное событие, когда покупок и лидов мало (< 50 в неделю). Кормишь алгоритм объёмом вверху воронки, пока низ не наберёт массу.",
     who: "Все на старте",
   },
 ];
@@ -36,18 +36,21 @@ const events = [
 const methods = [
   {
     n: "01",
-    t: "Pixel script · в <head>",
-    body: "Base code (PageView fires auto) + ручной fbq('track', 'Purchase', {value, currency}) на success-странице. Минимум. Работает везде.",
+    t: "Pixel — код в шапке сайта",
+    body: "Базовый код от Meta. Вставляется один раз. Лучше доверить Claude — он сам вставит и проверит в шапку. На странице покупки добавляется отдельный код события Purchase с суммой.",
+    when: "Подходит всем — это минимум",
   },
   {
     n: "02",
     t: "Google Tag Manager",
-    body: "Без кода. Trigger «page url contains /thank-you» → Meta Pixel tag → Purchase. Удобно для Lovable / Webflow / Wix лендингов.",
+    body: "Без кода. Внутри GTM правило: «если URL содержит /thank-you → отправь Meta событие Purchase». Удобно для лендингов на Lovable / Webflow / Wix.",
+    when: "Если не хочешь трогать код",
   },
   {
     n: "03",
-    t: "Conversions API (CAPI)",
-    body: "Server-side. Stripe webhook / Supabase Edge Function / Shopify pixel → fetch на Meta. Обязательно для 2026 — см. следующий слайд.",
+    t: "Серверная отправка (CAPI)",
+    body: "Серверная отправка событий напрямую с твоего бэка на Meta. Нужна потому что iOS блокирует обычный пиксель. Реализуется через Claude — он подключает Stripe и пишет код за тебя (см. Урок 6, MCP-подключение).",
+    when: "Обязательно в 2026 — см. следующий слайд",
   },
 ];
 
@@ -58,12 +61,12 @@ export default function L13Slide16EventsSetup() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          События на пикселе · что вешаем и куда
+          События на пикселе · что и куда вешать
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          Пять событий <span className="text-[hsl(var(--slide-gold))]">покрывают 95% продуктов</span>
+          5 событий <span className="text-[hsl(var(--slide-gold))]">покрывают 95% продуктов</span>
         </h2>
-        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">Standard Events</p>
+        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">События Meta · выбери под свою воронку</p>
         <div className="space-y-[3px] mb-[5px]">
           {events.map((e) => (
             <div key={e.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[7px] py-[3px]">
@@ -77,7 +80,7 @@ export default function L13Slide16EventsSetup() {
             </div>
           ))}
         </div>
-        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">Способы установки</p>
+        <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.1em] mb-[3px]">Как поставить · 3 способа</p>
         <div className="grid grid-cols-3 gap-[4px]">
           {methods.map((m) => (
             <div key={m.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[6px] py-[3px]">
@@ -85,6 +88,7 @@ export default function L13Slide16EventsSetup() {
                 <span className="text-[hsl(var(--slide-gold))]">{m.n}.</span> {m.t}
               </p>
               <p className="text-[6.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.35]">{m.body}</p>
+              <p className="text-[6px] italic text-[hsl(var(--slide-gold)/0.75)] mt-[1px]">{m.when}</p>
             </div>
           ))}
         </div>
@@ -95,12 +99,12 @@ export default function L13Slide16EventsSetup() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        События на пикселе · что вешаем и куда
+        События на пикселе · что и куда вешать
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
-        Пять событий <span className="text-[hsl(var(--slide-gold))]">покрывают 95% продуктов</span> в когорте
+        5 событий <span className="text-[hsl(var(--slide-gold))]">покрывают 95% продуктов</span>
       </h2>
-      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Standard Events Meta · выбираешь под свою воронку</p>
+      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">События Meta · выбери под свою воронку</p>
       <div className="grid grid-cols-5 gap-[12px] mb-[18px] max-w-[1700px]">
         {events.map((e) => (
           <div key={e.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[10px] px-[16px] py-[12px]">
@@ -111,7 +115,7 @@ export default function L13Slide16EventsSetup() {
           </div>
         ))}
       </div>
-      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Три способа поставить событие</p>
+      <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[10px]">Как поставить · 3 способа</p>
       <div className="grid grid-cols-3 gap-[18px] max-w-[1700px]">
         {methods.map((m) => (
           <div key={m.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[10px] px-[22px] py-[14px]">
@@ -119,7 +123,8 @@ export default function L13Slide16EventsSetup() {
               <span className="font-display text-[24px] font-bold text-[hsl(var(--slide-gold))] leading-none">{m.n}</span>
               <span className="text-[18px] font-bold text-[hsl(var(--slide-text))]">{m.t}</span>
             </div>
-            <p className="text-[14px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] ml-[36px]">{m.body}</p>
+            <p className="text-[14px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] ml-[36px] mb-[4px]">{m.body}</p>
+            <p className="text-[12px] italic text-[hsl(var(--slide-gold)/0.85)] ml-[36px]">{m.when}</p>
           </div>
         ))}
       </div>

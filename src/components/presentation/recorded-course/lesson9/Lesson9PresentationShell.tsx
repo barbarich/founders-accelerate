@@ -46,7 +46,7 @@ export const slideNames = [
   "Блок 4 · Wow-инструменты",
   "No-code стек",
   "AI-промпт: 7 писем",
-  "Live-демо: Claude × Mixpanel (MCP)",
+  "Кейс: Claude + Mixpanel",
   "Промпт: инсайт → сообщение",
   "Блок 5 · Стек и чек-лист",
   "Retention-стек за $0 на старте",

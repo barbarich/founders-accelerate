@@ -40,10 +40,10 @@ const practices = [
 ];
 
 const stack = [
-  { tool: "Stripe", note: "Оплата через Stripe → автоматически отправляет данные о покупке" },
-  { tool: "Supabase Edge Function", note: "Свой сервер для отправки данных о покупках" },
-  { tool: "Stape · CAPI Gateway", note: "Готовый сервис-прокси, $20/мес, программист не нужен" },
-  { tool: "Shopify · Meta channel", note: "Встроенная интеграция для магазинов на Shopify" },
+  { tool: "Stripe", note: "Принимаешь оплаты через Stripe → события покупок отправляются автоматически" },
+  { tool: "Supabase + Claude", note: "Свой бэк где Claude напишет код для отправки. См. Урок 6 — Supabase MCP" },
+  { tool: "Stape", note: "Готовый сервис-посредник, $20/мес. Без своего сервера и кода." },
+  { tool: "Shopify", note: "Встроенный канал Meta. Для магазинов на Shopify — один клик." },
 ];
 
 export default function L13Slide17EventsBestPractices() {
