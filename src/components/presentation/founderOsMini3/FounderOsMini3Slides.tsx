@@ -25,7 +25,7 @@ import FOM3Slide03Recap from "./FOM3Slide03Recap";
 import FOM3BlockBuild from "./FOM3BlockBuild";
 import FOM3BlockLanding from "./FOM3BlockLanding";
 import FOM3Slide17Workshop from "./FOM3Slide17Workshop";
-import FOM3Slide18SixtySecondTest from "./FOM3Slide18SixtySecondTest";
+import FOM3Slide18Publish from "./FOM3Slide18Publish";
 import FOM3Slide19Checklist from "./FOM3Slide19Checklist";
 import FOM3Slide20Homework from "./FOM3Slide20Homework";
 import FOM3Slide21NextWeek from "./FOM3Slide21NextWeek";
@@ -61,8 +61,8 @@ export const slides = [
   M3Slide12AuthPayments,         // 15 — Авторизация + оплата (Supabase Auth · Stripe/Grow)
   M3Slide13Analytics,            // 16 — Аналитика с первого дня (GA · пиксели · Mixpanel · Hotjar)
 
-  FOM3Slide17Workshop,           // 17 — Workshop вживую: 5 фаз × 25-30 мин
-  FOM3Slide18SixtySecondTest,    // 18 — 60-секундный тест: AI как холодный клиент
+  FOM3Slide17Workshop,           // 17 — Workshop вживую: лендинг в Lovable за 25 мин
+  FOM3Slide18Publish,            // 18 — Publish: GoDaddy → one-click → live за минуту
 
   FOM3Slide19Checklist,          // 19 — Чек-лист готовности «MVP + лендинг к С4»
   FOM3Slide20Homework,           // 20 — ДЗ к С4
