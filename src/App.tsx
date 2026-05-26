@@ -65,6 +65,8 @@ import PublicLesson11Shell from "@/components/presentation/recorded-course/lesso
 import PublicLesson12Shell from "@/components/presentation/recorded-course/lesson12/PublicLesson12Shell";
 import PublicLesson13Shell from "@/components/presentation/recorded-course/lesson13/PublicLesson13Shell";
 import PublicLesson14Shell from "@/components/presentation/recorded-course/lesson14/PublicLesson14Shell";
+import PublicLesson15Shell from "@/components/presentation/recorded-course/lesson15/PublicLesson15Shell";
+import PublicLesson16Shell from "@/components/presentation/recorded-course/lesson16/PublicLesson16Shell";
 import PublicFOM1Shell from "@/components/presentation/founderOsMini1/PublicFOM1Shell";
 import FOM1Shell from "@/components/presentation/founderOsMini1/FOM1Shell";
 import PublicFOM2Shell from "@/components/presentation/founderOsMini2/PublicFOM2Shell";
@@ -219,6 +221,8 @@ const App = () => (
           <Route path="/recorded-course/lesson12" element={<PublicLesson12Shell />} />
           <Route path="/recorded-course/lesson13" element={<PublicLesson13Shell />} />
           <Route path="/recorded-course/lesson14" element={<PublicLesson14Shell />} />
+          <Route path="/recorded-course/lesson15" element={<PublicLesson15Shell />} />
+          <Route path="/recorded-course/lesson16" element={<PublicLesson16Shell />} />
           <Route path="/founder-os-mini-session1" element={<PublicFOM1Shell />} />
           <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
           <Route path="/founder-os-mini-session2" element={<PublicFOM2Shell />} />
