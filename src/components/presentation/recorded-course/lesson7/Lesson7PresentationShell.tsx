@@ -15,6 +15,7 @@ import L7SlideFirstScreen from "./L7SlideFirstScreen";
 import L7SlideActionNow from "./L7SlideActionNow";
 import L7SlideHomework from "./L7SlideHomework";
 import L7SlideClosing from "./L7SlideClosing";
+import L7SlideLessonSummary from "./L7SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -32,6 +33,7 @@ export const slideNames = [
   "Найди свой Aha · 60 минут",
   "Блок 6: Задание",
   "Домашка",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -52,12 +54,13 @@ export function getSlideContent(index: number) {
     case 12: return <L7SlideActionNow />;
     case 13: return <L7BlockHeader blockNumber={6} title="Задание на эту неделю" />;
     case 14: return <L7SlideHomework />;
-    case 15: return <L7SlideClosing />;
+    case 15: return <L7SlideLessonSummary />;
+    case 16: return <L7SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 16;
+export const TOTAL = 17;
 
 export default function Lesson7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

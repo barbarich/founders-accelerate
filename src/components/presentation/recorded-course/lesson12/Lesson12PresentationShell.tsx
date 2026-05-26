@@ -25,6 +25,7 @@ import L12Slide19B2CPath from "./L12Slide19B2CPath";
 import L12Slide20FullStack from "./L12Slide20FullStack";
 import L12Slide22Homework from "./L12Slide22Homework";
 import L12Slide23NextWeek from "./L12Slide23NextWeek";
+import L12SlideLessonSummary from "./L12SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -51,6 +52,7 @@ export const slideNames = [
   "B2C путь · Mikey",
   "Полный стек с ценами",
   "Домашка к L13",
+  "Саммари · 5 мыслей",
   "Что дальше · L13 и L14",
 ];
 
@@ -80,12 +82,13 @@ export function getSlideContent(index: number) {
     case 21: return <L12Slide19B2CPath />;
     case 22: return <L12Slide20FullStack />;
     case 23: return <L12Slide22Homework />;
-    case 24: return <L12Slide23NextWeek />;
+    case 24: return <L12SlideLessonSummary />;
+    case 25: return <L12Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 26;
 
 export default function Lesson12PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

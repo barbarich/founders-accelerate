@@ -25,6 +25,7 @@ import L4SlideStripeAtlas from "./L4SlideStripeAtlas";
 import L4Slide14Workshop from "./L4Slide14Workshop";
 import L4Slide15Homework from "./L4Slide15Homework";
 import L4Slide16Closing from "./L4Slide16Closing";
+import L4SlideLessonSummary from "./L4SlideLessonSummary";
 
 export const slideNames = [
   "Добро пожаловать",
@@ -50,6 +51,7 @@ export const slideNames = [
   "Два трека",
   "Блок 6: Задание",
   "Домашка",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -78,12 +80,13 @@ export function getSlideContent(index: number) {
     case 20: return <L4Slide14Workshop />;
     case 21: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
     case 22: return <L4Slide15Homework />;
-    case 23: return <L4Slide16Closing />;
+    case 23: return <L4SlideLessonSummary />;
+    case 24: return <L4Slide16Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 24;
+export const TOTAL = 25;
 
 export default function Lesson4PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

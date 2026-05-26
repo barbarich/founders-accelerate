@@ -25,6 +25,7 @@ import L14Slide15MAPPilot from "./L14Slide15MAPPilot";
 import L14Slide16ExpansionLoop from "./L14Slide16ExpansionLoop";
 import L14Slide17LiveExercise from "./L14Slide17LiveExercise";
 import L14Slide18NextWeek from "./L14Slide18NextWeek";
+import L14SlideLessonSummary from "./L14SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -51,6 +52,7 @@ export const slideNames = [
   "🔥 MAP · Mutual Action Plan",
   "Expansion loop · 1 сделка → 4",
   "Блок 6 · Финал",
+  "Саммари · 5 мыслей",
   "Домашнее задание · 1 компания · 5 строк",
 ];
 
@@ -80,12 +82,13 @@ export function getSlideContent(index: number) {
     case 21: return <L14Slide15MAPPilot />;
     case 22: return <L14Slide16ExpansionLoop />;
     case 23: return <L14BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что дальше" />;
-    case 24: return <L14Slide17LiveExercise />;
+    case 24: return <L14SlideLessonSummary />;
+    case 25: return <L14Slide17LiveExercise />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 26;
 
 export default function Lesson14PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

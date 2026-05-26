@@ -22,6 +22,7 @@ import L13Slide12CohortAdaptation from "./L13Slide12CohortAdaptation";
 import L13Slide13Top7Mistakes from "./L13Slide13Top7Mistakes";
 import L13Slide14Homework from "./L13Slide14Homework";
 import L13Slide15NextWeek from "./L13Slide15NextWeek";
+import L13SlideLessonSummary from "./L13SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -46,6 +47,7 @@ export const slideNames = [
   "Семь ошибок одиночек",
   "Блок 6 · Домашнее задание",
   "Домашнее задание к L14",
+  "Саммари · 5 мыслей",
   "L14 + L15",
 ];
 
@@ -73,12 +75,13 @@ export function getSlideContent(index: number) {
     case 19: return <L13Slide13Top7Mistakes />;
     case 20: return <L13BlockHeader blockNumber={6} title="Домашнее задание" subtitle="кампания запущена, данные собираются" />;
     case 21: return <L13Slide14Homework />;
-    case 22: return <L13Slide15NextWeek />;
+    case 22: return <L13SlideLessonSummary />;
+    case 23: return <L13Slide15NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 23;
+export const TOTAL = 24;
 
 export default function Lesson13PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

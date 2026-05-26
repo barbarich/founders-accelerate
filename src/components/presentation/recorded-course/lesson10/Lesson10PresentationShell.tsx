@@ -13,6 +13,7 @@ import L10SlideAIStack from "./L10SlideAIStack";
 import L10SlideBuildingInPublic from "./L10SlideBuildingInPublic";
 import L10SlideHomework from "./L10SlideHomework";
 import L10SlideClosing from "./L10SlideClosing";
+import L10SlideLessonSummary from "./L10SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -26,6 +27,7 @@ export const slideNames = [
   "4 правила · делись путём, не результатом",
   "Блок 4: Задание",
   "Домашка · запусти контент-систему",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -42,12 +44,13 @@ export function getSlideContent(index: number) {
     case 8: return <L10SlideBuildingInPublic />;
     case 9: return <L10BlockHeader blockNumber={4} title="Задание на эту неделю" />;
     case 10: return <L10SlideHomework />;
-    case 11: return <L10SlideClosing />;
+    case 11: return <L10SlideLessonSummary />;
+    case 12: return <L10SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 12;
+export const TOTAL = 13;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

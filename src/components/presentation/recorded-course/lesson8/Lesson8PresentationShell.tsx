@@ -29,6 +29,7 @@ import L8Slide22Exercise3 from "./L8Slide22Exercise3";
 import L8Slide24CircleShare from "./L8Slide24CircleShare";
 import L8Slide25Homework from "./L8Slide25Homework";
 import L8Slide26NextWeek from "./L8Slide26NextWeek";
+import L8SlideLessonSummary from "./L8SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -55,6 +56,7 @@ export const slideNames = [
   "Упражнение 3",
   "Круг · каждый показывает",
   "Домашнее задание",
+  "Саммари · 5 мыслей",
   "Неделя 8",
 ];
 
@@ -84,12 +86,13 @@ export function getSlideContent(index: number) {
     case 21: return <L8Slide22Exercise3 />;
     case 22: return <L8Slide24CircleShare />;
     case 23: return <L8Slide25Homework />;
-    case 24: return <L8Slide26NextWeek />;
+    case 24: return <L8SlideLessonSummary />;
+    case 25: return <L8Slide26NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 26;
 
 export default function Lesson8PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

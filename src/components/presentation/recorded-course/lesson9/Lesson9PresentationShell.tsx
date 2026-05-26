@@ -26,6 +26,7 @@ import L9Slide20RetentionStackFree from "./L9Slide20RetentionStackFree";
 import L9Slide22ReactivationInsights from "./L9Slide22ReactivationInsights";
 import L9Slide24Homework from "./L9Slide24Homework";
 import L9Slide25NextWeek from "./L9Slide25NextWeek";
+import L9SlideLessonSummary from "./L9SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -52,6 +53,7 @@ export const slideNames = [
   "Блок 6 · Реактивация и задание",
   "Реактивация · 6 инсайтов",
   "Задание",
+  "Саммари · 5 мыслей",
   "Неделя 9",
 ];
 
@@ -81,12 +83,13 @@ export function getSlideContent(index: number) {
     case 21: return <L9BlockHeader blockNumber={5} title="Реактивация и задание" />;
     case 22: return <L9Slide22ReactivationInsights />;
     case 23: return <L9Slide24Homework />;
-    case 24: return <L9Slide25NextWeek />;
+    case 24: return <L9SlideLessonSummary />;
+    case 25: return <L9Slide25NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 26;
 
 export default function Lesson9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

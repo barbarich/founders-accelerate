@@ -45,6 +45,7 @@ import L2Slide28HWPositioning from "./L2Slide28HWPositioning";
 import L2Slide29NextMeeting from "./L2Slide29NextMeeting";
 import L2Slide30Toolkit from "./L2Slide30Toolkit";
 import L2Slide31Closing from "./L2Slide31Closing";
+import L2SlideLessonSummary from "./L2SlideLessonSummary";
 
 export const slideNames = [
   "Добро пожаловать",
@@ -68,6 +69,7 @@ export const slideNames = [
   "Шаг 1: 12 вопросов для своего custdev",
   "Блок 4: Задание",
   "ДЗ: 10 интервью + 100 опросов",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -94,12 +96,13 @@ export function getSlideContent(index: number) {
     case 18: return <L2Slide23Step2 />;
     case 19: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
     case 20: return <L2Slide27HWCustdev />;
-    case 21: return <L2Slide31Closing />;
+    case 21: return <L2SlideLessonSummary />;
+    case 22: return <L2Slide31Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 22;
+export const TOTAL = 23;
 
 export default function Lesson2PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

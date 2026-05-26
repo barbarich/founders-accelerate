@@ -12,6 +12,7 @@ import L16SlideFindPartner from "./L16SlideFindPartner";
 import L16SlideMoats from "./L16SlideMoats";
 import L16SlideHomework from "./L16SlideHomework";
 import L16SlideClosing from "./L16SlideClosing";
+import L16SlideLessonSummary from "./L16SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -24,6 +25,7 @@ export const slideNames = [
   "Network · Data · Brand moats",
   "Блок 4: Финальное задание",
   "Домашка · 5 партнёров + moat-стратегия",
+  "Саммари · 5 мыслей",
   "Закрытие · 16 уроков пройдены",
 ];
 
@@ -39,12 +41,13 @@ export function getSlideContent(index: number) {
     case 7: return <L16SlideMoats />;
     case 8: return <L16BlockHeader blockNumber={4} title="Финальное задание" subtitle="5 партнёров + первые сообщения" />;
     case 9: return <L16SlideHomework />;
-    case 10: return <L16SlideClosing />;
+    case 10: return <L16SlideLessonSummary />;
+    case 11: return <L16SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 11;
+export const TOTAL = 12;
 
 export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

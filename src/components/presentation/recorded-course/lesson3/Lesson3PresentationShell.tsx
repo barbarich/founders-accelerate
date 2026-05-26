@@ -30,6 +30,7 @@ import L3Slide23Step2 from "./L3Slide23Step2";
 import L3Slide24Step3 from "./L3Slide24Step3";
 import L3Slide25Homework from "./L3Slide25Homework";
 import L3Slide26Closing from "./L3Slide26Closing";
+import L3SlideLessonSummary from "./L3SlideLessonSummary";
 
 export const slideNames = [
   "Добро пожаловать",
@@ -58,6 +59,7 @@ export const slideNames = [
   "Шаг 3: Определяем цену",
   "Блок 5: Задание",
   "Домашка",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -89,12 +91,13 @@ export function getSlideContent(index: number) {
     case 23: return <L3Slide24Step3 />;
     case 24: return <L3BlockHeader blockNumber={5} title="Задание на неделю" />;
     case 25: return <L3Slide25Homework />;
-    case 26: return <L3Slide26Closing />;
+    case 26: return <L3SlideLessonSummary />;
+    case 27: return <L3Slide26Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 27;
+export const TOTAL = 28;
 
 export default function Lesson3PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

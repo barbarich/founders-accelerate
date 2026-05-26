@@ -13,6 +13,7 @@ import L15SlideOutreach from "./L15SlideOutreach";
 import L15SlideTermSheet from "./L15SlideTermSheet";
 import L15SlideHomework from "./L15SlideHomework";
 import L15SlideClosing from "./L15SlideClosing";
+import L15SlideLessonSummary from "./L15SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -27,6 +28,7 @@ export const slideNames = [
   "SAFE / Convertible / Priced round",
   "Блок 5: Задание",
   "Домашка · pitch deck v1",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -44,12 +46,13 @@ export function getSlideContent(index: number) {
     case 9: return <L15SlideTermSheet />;
     case 10: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
     case 11: return <L15SlideHomework />;
-    case 12: return <L15SlideClosing />;
+    case 12: return <L15SlideLessonSummary />;
+    case 13: return <L15SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 13;
+export const TOTAL = 14;
 
 export default function Lesson15PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

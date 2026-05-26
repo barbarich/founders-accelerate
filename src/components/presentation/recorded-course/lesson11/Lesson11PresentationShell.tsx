@@ -16,6 +16,7 @@ import L11SlideWhatToFix from "./L11SlideWhatToFix";
 import L11SlideActionNow from "./L11SlideActionNow";
 import L11SlideHomework from "./L11SlideHomework";
 import L11SlideClosing from "./L11SlideClosing";
+import L11SlideLessonSummary from "./L11SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
@@ -33,6 +34,7 @@ export const slideNames = [
   "Подключи стек + запусти Sean Ellis · 60 мин",
   "Блок 5: Задание",
   "Домашка",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -53,12 +55,13 @@ export function getSlideContent(index: number) {
     case 12: return <L11SlideActionNow />;
     case 13: return <L11BlockHeader blockNumber={5} title="Задание на эту неделю" />;
     case 14: return <L11SlideHomework />;
-    case 15: return <L11SlideClosing />;
+    case 15: return <L11SlideLessonSummary />;
+    case 16: return <L11SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 16;
+export const TOTAL = 17;
 
 export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

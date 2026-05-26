@@ -38,6 +38,7 @@ import L1Slide28HWPositioning from "./L1Slide28HWPositioning";
 import L1Slide29NextMeeting from "./L1Slide29NextMeeting";
 import L1Slide30Toolkit from "./L1Slide30Toolkit";
 import L1Slide31Closing from "./L1Slide31Closing";
+import L1SlideLessonSummary from "./L1SlideLessonSummary";
 
 export const slideNames = [
   "Добро пожаловать",
@@ -61,6 +62,7 @@ export const slideNames = [
   "ДЗ: Конкуренты",
   "Блок 4: Инструменты",
   "Набор инструментов",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -87,12 +89,13 @@ export function getSlideContent(index: number) {
     case 18: return <L1Slide26HWCompetitors />;
     case 19: return <L1BlockHeader blockNumber={4} title="Набор инструментов" />;
     case 20: return <L1Slide30Toolkit />;
-    case 21: return <L1Slide31Closing />;
+    case 21: return <L1SlideLessonSummary />;
+    case 22: return <L1Slide31Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 22;
+export const TOTAL = 23;
 
 export default function Lesson1PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

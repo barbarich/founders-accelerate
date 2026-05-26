@@ -23,6 +23,7 @@ import L5Slide17Closing from "./L5Slide17Closing";
 import L5SlideWhyPresale from "./L5SlideWhyPresale";
 import L5SlideWaitlist from "./L5SlideWaitlist";
 import L5SlideActionNow from "./L5SlideActionNow";
+import L5SlideLessonSummary from "./L5SlideLessonSummary";
 
 export const slideNames = [
   "Добро пожаловать",
@@ -43,6 +44,7 @@ export const slideNames = [
   "Напиши 10 outreach-сообщений · 60 минут",
   "Блок 5: Задание на неделю",
   "Домашка",
+  "Саммари · 5 мыслей",
   "Закрытие",
 ];
 
@@ -66,12 +68,13 @@ export function getSlideContent(index: number) {
     case 15: return <L5SlideActionNow />;
     case 16: return <L5BlockHeader blockNumber={5} title="Задание на эту неделю" />;
     case 17: return <L5Slide16Homework />;
-    case 18: return <L5Slide17Closing />;
+    case 18: return <L5SlideLessonSummary />;
+    case 19: return <L5Slide17Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 19;
+export const TOTAL = 20;
 
 export default function Lesson5PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
