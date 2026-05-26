@@ -14,7 +14,7 @@ export default function L13Slide01Welcome() {
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
           <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.08] tracking-[-0.02em]">
-            Реклама в Meta.<br />От пустого Ads Manager до запущенной кампании за одну встречу.
+            Реклама в Meta.<br />От пустого Ads Manager до запущенной кампании за один урок.
           </h1>
           <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
             Урок 13 · Платный трафик B2C + B2B
@@ -38,7 +38,7 @@ export default function L13Slide01Welcome() {
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
         <h1 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
           Реклама в Meta.<br />
-          От пустого Ads Manager до запущенной кампании за одну встречу.
+          От пустого Ads Manager до запущенной кампании за один урок.
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
           Урок 13 · Платный трафик B2C + B2B
