@@ -2,10 +2,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Link, useNavigate } from "react-router-dom";
 import { supportedLangs, langLabels } from "@/i18n/translations";
 import { useState } from "react";
-
-declare global {
-  interface Window { fbq?: (...args: any[]) => void; }
-}
+import { track } from "@/lib/analytics";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -59,9 +56,7 @@ export default function Apply() {
       });
       const result = await res.json();
       if (!result.success) throw new Error(result.message);
-      if (window.fbq) {
-        window.fbq('track', 'Lead', { content_name: 'Application Form' });
-      }
+      track("generate_lead", { content_name: "Application Form" });
       navigate(`/${lang}/thank-you`);
     } catch (err) {
       console.error("Submit error:", err);

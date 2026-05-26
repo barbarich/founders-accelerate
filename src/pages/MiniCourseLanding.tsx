@@ -1,11 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SEO, breadcrumb } from "@/components/SEO";
+import {
+  trackBeginCheckout,
+  trackViewItem,
+  trackViewItemList,
+} from "@/lib/analytics";
 import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
 
 // Stripe Payment Link — Mini-Course AI-Founder, $19 USD, redirects to /mini-course/thank-you
 const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803";
+
+/**
+ * Fire begin_checkout in dataLayer, then let the anchor navigate to Stripe.
+ * We don't preventDefault — dataLayer.push is synchronous, GTM tags fire
+ * before navigation; if Stripe loads before they finish, sendBeacon-equipped
+ * tags will still deliver.
+ */
+function onBuyClick(cta: string): void {
+  trackBeginCheckout(cta);
+}
 
 /**
  * Mini-course landing — built 1:1 from the user-supplied HTML mockup.
@@ -76,7 +91,7 @@ function Hero() {
           <span className="mcl-price-discount">−61%</span>
         </div>
         <div>
-          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
+          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("hero")}>Купить курс за $19</a>
         </div>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
@@ -506,7 +521,7 @@ function Pricing() {
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
           </ul>
-          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
+          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("pricing")}>Купить курс за $19</a>
           <div className="mcl-guarantee">
             <div className="mcl-guarantee-icon">✓</div>
             <div className="mcl-guarantee-text">
@@ -565,7 +580,7 @@ function FinalCTA() {
         <p>
           Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За $19 это, возможно, самая короткая дорога, которую я могу тебе предложить.
         </p>
-        <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary">Купить курс за $19</a>
+        <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("final_cta")}>Купить курс за $19</a>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
@@ -591,10 +606,38 @@ function Footer() {
 }
 
 export default function MiniCourseLanding() {
+  const viewItemFired = useRef(false);
+
   useEffect(() => {
     document.title = "AI-продукт, который покупают — мини-курс Михаэля Барбарича";
     document.body.classList.add("mcl-body");
-    return () => { document.body.classList.remove("mcl-body"); };
+
+    // Top-of-funnel signal: landing rendered.
+    trackViewItemList("mini-course-landing");
+
+    // Qualified intent: pricing section visible.
+    const pricingEl = document.getElementById("buy");
+    let observer: IntersectionObserver | undefined;
+    if (pricingEl && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting && !viewItemFired.current) {
+              viewItemFired.current = true;
+              trackViewItem();
+              observer?.disconnect();
+            }
+          }
+        },
+        { threshold: 0.4 },
+      );
+      observer.observe(pricingEl);
+    }
+
+    return () => {
+      document.body.classList.remove("mcl-body");
+      observer?.disconnect();
+    };
   }, []);
 
   return (

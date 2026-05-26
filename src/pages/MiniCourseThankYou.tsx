@@ -1,15 +1,41 @@
 import { useEffect } from "react";
 import { CheckCircle2, Send, Mail } from "lucide-react";
 import { SEO } from "@/components/SEO";
+import { trackPurchase, trackSelectContent } from "@/lib/analytics";
 import "./mini-course-landing/styles.css";
 
 const TELEGRAM_BOT_URL = "https://t.me/AI_founders_course_bot";
+const COURSE_PRICE_USD = 19;
+
+/**
+ * Resolve a stable transaction id for the purchase event.
+ * Preference order:
+ *   1. Stripe checkout session id from `?session_id=cs_xxx` (best — matches webhook).
+ *   2. Stored event_id from begin_checkout (lets us link click → purchase).
+ *   3. Synthetic id (last resort — still enables localStorage dedup on refresh).
+ */
+function resolveTransactionId(): string {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+    if (sessionId) return sessionId;
+    const stored = sessionStorage.getItem("mc_last_event_id");
+    if (stored) return stored;
+  } catch {
+    /* ignore */
+  }
+  return `tx_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+}
 
 export default function MiniCourseThankYou() {
   useEffect(() => {
     document.body.classList.add("mcl-body");
     const prevTitle = document.title;
     document.title = "Спасибо за покупку — AI-продукт, который покупают";
+
+    const transactionId = resolveTransactionId();
+    trackPurchase({ transactionId, value: COURSE_PRICE_USD, currency: "USD" });
+
     return () => {
       document.body.classList.remove("mcl-body");
       document.title = prevTitle;
@@ -73,6 +99,7 @@ export default function MiniCourseThankYou() {
             rel="noopener noreferrer"
             className="mcl-cta-primary"
             style={{ fontSize: 18, padding: "18px 32px" }}
+            onClick={() => trackSelectContent("telegram_bot", "AI_founders_course_bot")}
           >
             <Send size={18} style={{ marginRight: 4 }} />
             Открыть Telegram-бота

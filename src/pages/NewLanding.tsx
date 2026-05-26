@@ -5,6 +5,7 @@ import { getNewLandingT } from "@/components/landing/newLandingTranslations";
 import { useInView } from "@/hooks/useInView";
 import NewNavbar from "@/components/NewNavbar";
 import { SEO, breadcrumb } from "@/components/SEO";
+import { track } from "@/lib/analytics";
 
 const WEB3FORMS_KEY = "1340b491-9687-45e3-914d-3c6e4f777a0f";
 
@@ -49,7 +50,7 @@ export default function NewLanding() {
   useEffect(() => {
     const prev = document.body.style.backgroundColor;
     document.body.style.backgroundColor = "#f8f8f4";
-    if ((window as any).fbq) (window as any).fbq("track", "ViewContent");
+    track("view_content", { content_name: "New Landing" });
     return () => { document.body.style.backgroundColor = prev; };
   }, []);
 
@@ -78,7 +79,7 @@ export default function NewLanding() {
         }),
       });
       if (res.ok) {
-        if ((window as any).fbq) (window as any).fbq("track", "Lead");
+        track("generate_lead", { content_name: "New Landing Form" });
         navigate(`/${lang}/thank-you`);
       }
     } catch {

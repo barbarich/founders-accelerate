@@ -2,10 +2,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { Link } from "react-router-dom";
 import { supportedLangs, langLabels, type Lang } from "@/i18n/translations";
 import { useState, useEffect } from "react";
-
-declare global {
-  interface Window { fbq?: (...args: any[]) => void; }
-}
+import { track } from "@/lib/analytics";
 import { Menu, X, ArrowRight, ChevronRight, ChevronDown, Users, Clock } from "lucide-react";
 import { useInView } from "@/hooks/useInView";
 
@@ -154,9 +151,7 @@ export default function Landing() {
   const applyUrl = `/${lang}/apply`;
 
   useEffect(() => {
-    if (window.fbq) {
-      window.fbq('track', 'ViewContent', { content_name: 'Landing Page' });
-    }
+    track("view_content", { content_name: "Landing Page" });
   }, []);
 
   return (
