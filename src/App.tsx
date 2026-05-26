@@ -58,6 +58,7 @@ import PublicLesson3Shell from "@/components/presentation/recorded-course/lesson
 import PublicLesson4Shell from "@/components/presentation/recorded-course/lesson4/PublicLesson4Shell";
 import PublicLesson5Shell from "@/components/presentation/recorded-course/lesson5/PublicLesson5Shell";
 import PublicLesson6Shell from "@/components/presentation/recorded-course/lesson6/PublicLesson6Shell";
+import PublicLesson7Shell from "@/components/presentation/recorded-course/lesson7/PublicLesson7Shell";
 import PublicLesson8Shell from "@/components/presentation/recorded-course/lesson8/PublicLesson8Shell";
 import PublicLesson9Shell from "@/components/presentation/recorded-course/lesson9/PublicLesson9Shell";
 import PublicLesson11Shell from "@/components/presentation/recorded-course/lesson11/PublicLesson11Shell";
@@ -211,6 +212,7 @@ const App = () => (
           <Route path="/recorded-course/lesson4" element={<PublicLesson4Shell />} />
           <Route path="/recorded-course/lesson5" element={<PublicLesson5Shell />} />
           <Route path="/recorded-course/lesson6" element={<PublicLesson6Shell />} />
+          <Route path="/recorded-course/lesson7" element={<PublicLesson7Shell />} />
           <Route path="/recorded-course/lesson8" element={<PublicLesson8Shell />} />
           <Route path="/recorded-course/lesson9" element={<PublicLesson9Shell />} />
           <Route path="/recorded-course/lesson11" element={<PublicLesson11Shell />} />
