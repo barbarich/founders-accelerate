@@ -6,6 +6,7 @@ import ScaledSlide from "../../ScaledSlide";
 
 import L6Slide01Welcome from "./L6Slide01Welcome";
 import L6Slide02MainThesis from "./L6Slide02MainThesis";
+import L6SlideSixSkills from "./L6SlideSixSkills";
 import L6BlockHeader from "./L6BlockHeader";
 import L6Slide03HubVsHelper from "./L6Slide03HubVsHelper";
 import L6Slide04ClaudeMdHierarchy from "./L6Slide04ClaudeMdHierarchy";
@@ -18,8 +19,6 @@ import L6Slide10SupabaseMcpWalkthrough from "./L6Slide10SupabaseMcpWalkthrough";
 import L6Slide11McpSetupSteps from "./L6Slide11McpSetupSteps";
 import L6Slide12PlanModeAdvanced from "./L6Slide12PlanModeAdvanced";
 import L6Slide13SecondModelReview from "./L6Slide13SecondModelReview";
-import L6Slide14SubAgentsParallel from "./L6Slide14SubAgentsParallel";
-import L6Slide15Worktrees from "./L6Slide15Worktrees";
 import L6Slide16FiveUnblockTechniques from "./L6Slide16FiveUnblockTechniques";
 import L6Slide17ObservabilityStack from "./L6Slide17ObservabilityStack";
 import L6Slide18RealProductionCase from "./L6Slide18RealProductionCase";
@@ -30,30 +29,29 @@ import L6Slide22Closing from "./L6Slide22Closing";
 
 export const slideNames = [
   "Добро пожаловать",
-  "Главный тезис: AI cofounder",
-  "Блок 1 — Production Setup",
-  "Claude как hub, Lovable как витрина",
-  "Иерархия CLAUDE.md",
-  "3 production CLAUDE.md шаблона",
-  "Skills library + свой skill",
-  "Slash commands + кастомные",
-  "Блок 2 — MCP Deep Dive",
-  "MCP под капотом",
-  "Stripe MCP walkthrough",
-  "Supabase MCP walkthrough",
-  "MCP setup + top-7 серверов",
-  "Блок 3 — Workflow",
-  "Plan Mode advanced",
-  "Second-model review",
-  "Sub-agents + parallel",
-  "Git worktrees",
-  "Блок 4 — Debug & Ship",
-  "5 техник unblock",
-  "Observability через MCP",
-  "Реальный кейс Bug #30",
-  "Production checklist",
-  "Саммари · 5 инсайтов",
-  "Домашка · 7 действий",
+  "Главный тезис: команда из одного",
+  "6 навыков на выходе",
+  "Блок 1 — Настройка один раз",
+  "Lovable vs Claude",
+  "Файл CLAUDE.md · 2 уровня",
+  "Готовый шаблон CLAUDE.md",
+  "10 скиллов Claude",
+  "4 slash-команды",
+  "Блок 2 — Подключи к сервисам",
+  "Что такое MCP",
+  "Stripe через MCP",
+  "Supabase через MCP",
+  "Как подключить MCP",
+  "Блок 3 — Управляй Claude",
+  "Plan Mode · 3 шага",
+  "Вторая модель для проверки",
+  "Блок 4 — Когда ломается",
+  "3 техники unblock",
+  "Sentry + Claude видит прод",
+  "Кейс: белый экран",
+  "Чек-лист перед запуском",
+  "Саммари · 5 мыслей",
+  "Домашка · 5 действий",
   "Закрытие · Урок 7",
 ];
 
@@ -61,35 +59,34 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L6Slide01Welcome />;
     case 1: return <L6Slide02MainThesis />;
-    case 2: return <L6BlockHeader blockNumber={1} title="Production Setup" subtitle="Настроить Claude так, чтобы он работал как сеньор, а не джун" />;
-    case 3: return <L6Slide03HubVsHelper />;
-    case 4: return <L6Slide04ClaudeMdHierarchy />;
-    case 5: return <L6Slide05ProductionTemplates />;
-    case 6: return <L6Slide06SkillsLibrary />;
-    case 7: return <L6Slide07SlashCommands />;
-    case 8: return <L6BlockHeader blockNumber={2} title="MCP Deep Dive" subtitle="Claude работает в твоих сервисах, а не вокруг них" />;
-    case 9: return <L6Slide08McpUnderHood />;
-    case 10: return <L6Slide09StripeMcpWalkthrough />;
-    case 11: return <L6Slide10SupabaseMcpWalkthrough />;
-    case 12: return <L6Slide11McpSetupSteps />;
-    case 13: return <L6BlockHeader blockNumber={3} title="Workflow" subtitle="Как давать задачи, чтобы результат был с первой попытки" />;
-    case 14: return <L6Slide12PlanModeAdvanced />;
-    case 15: return <L6Slide13SecondModelReview />;
-    case 16: return <L6Slide14SubAgentsParallel />;
-    case 17: return <L6Slide15Worktrees />;
-    case 18: return <L6BlockHeader blockNumber={4} title="Debug & Ship" subtitle="Когда что-то ломается — как разблокироваться и довести до прода" />;
-    case 19: return <L6Slide16FiveUnblockTechniques />;
-    case 20: return <L6Slide17ObservabilityStack />;
-    case 21: return <L6Slide18RealProductionCase />;
-    case 22: return <L6Slide19ProductionChecklist />;
-    case 23: return <L6Slide20LessonSummary />;
-    case 24: return <L6Slide21HomeworkChecklist />;
-    case 25: return <L6Slide22Closing />;
+    case 2: return <L6SlideSixSkills />;
+    case 3: return <L6BlockHeader blockNumber={1} title="Настройка Claude один раз" subtitle="Чтобы он работал на месяцы вперёд, а не каждую сессию с нуля" />;
+    case 4: return <L6Slide03HubVsHelper />;
+    case 5: return <L6Slide04ClaudeMdHierarchy />;
+    case 6: return <L6Slide05ProductionTemplates />;
+    case 7: return <L6Slide06SkillsLibrary />;
+    case 8: return <L6Slide07SlashCommands />;
+    case 9: return <L6BlockHeader blockNumber={2} title="Подключи Claude к своим сервисам" subtitle="Платежи, базы, аналитика — Claude работает в них напрямую" />;
+    case 10: return <L6Slide08McpUnderHood />;
+    case 11: return <L6Slide09StripeMcpWalkthrough />;
+    case 12: return <L6Slide10SupabaseMcpWalkthrough />;
+    case 13: return <L6Slide11McpSetupSteps />;
+    case 14: return <L6BlockHeader blockNumber={3} title="Управляй Claude правильно" subtitle="Сначала план, потом код. Вторая модель для проверки" />;
+    case 15: return <L6Slide12PlanModeAdvanced />;
+    case 16: return <L6Slide13SecondModelReview />;
+    case 17: return <L6BlockHeader blockNumber={4} title="Когда что-то ломается" subtitle="Как разблокироваться и довести продукт до прода" />;
+    case 18: return <L6Slide16FiveUnblockTechniques />;
+    case 19: return <L6Slide17ObservabilityStack />;
+    case 20: return <L6Slide18RealProductionCase />;
+    case 21: return <L6Slide19ProductionChecklist />;
+    case 22: return <L6Slide20LessonSummary />;
+    case 23: return <L6Slide21HomeworkChecklist />;
+    case 24: return <L6Slide22Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 25;
 
 export default function Lesson6PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

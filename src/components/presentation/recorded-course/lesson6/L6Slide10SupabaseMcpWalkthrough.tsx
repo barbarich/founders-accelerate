@@ -1,48 +1,41 @@
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const supabasePrompt = `Подготовь Supabase для SaaS с подписками.
+const supabasePrompt = `Сделай базу данных для моего продукта.
 
-Контекст:
-- Multi-tenant: каждый user видит ТОЛЬКО свои данные
-- Тенант = user (для простоты). Скейлится потом.
-- Подписки Stripe → таблица subscriptions, статус active/canceled/past_due
+О продукте:
+- Что: [ВСТАВЬ: например, SaaS с подписками]
+- Каждый юзер должен видеть только свои данные (никогда чужие)
 
 Через Supabase MCP сделай:
 
-1. Миграция: создай таблицы
-   - profiles (id uuid PK = auth.uid(), email text, full_name text, created_at)
-   - subscriptions (id, user_id FK → profiles.id, stripe_customer_id, stripe_sub_id,
-     status text, current_period_end timestamp, created_at, updated_at)
-   - projects (id, user_id FK, name, created_at) — пример tenant-данных
+1. Таблицы:
+   - profiles — данные юзера (email, имя)
+   - subscriptions — статус подписки юзера (active/canceled)
+   - projects — что юзер создаёт внутри продукта (твоё основное)
 
-2. RLS политики — обязательно на каждой таблице:
-   - profiles: user читает только свой profile (id = auth.uid())
-   - subscriptions: user читает только свои (user_id = auth.uid()), no insert/update from client
-   - projects: user читает/пишет только свои (user_id = auth.uid())
+2. Защита данных:
+   - На каждой таблице — правило: «юзер видит только свои строки»
+   - Никаких чужих данных, даже случайно
 
-3. Триггер: при insert в auth.users → автосоздание profile
+3. Автоматика:
+   - Когда юзер регистрируется → автоматически создаётся его profile
+   - Когда приходит оплата Stripe → автоматически обновляется его подписка
 
-4. Edge Function stripe-webhook:
-   - Принимает Stripe webhook (verify signature)
-   - События: customer.subscription.created / updated / deleted
-   - Апдейтит subscriptions через service_role key
-   - Логи через console.error + Sentry
+4. Готовые типы для фронта:
+   - Сгенери TypeScript-типы для всех таблиц
+   - Чтобы я мог писать код с автоподсказками
 
-5. Сгенери TypeScript типы: \`supabase gen types typescript --project-id <id>\`
-
-Верни:
-- migration SQL (один файл, named timestamp_init.sql)
-- edge function код (index.ts)
-- команды CLI для применения
-- скриншот таблиц в Studio после миграции`;
+Что НЕ делай:
+- Не создавай админские права для юзеров
+- Не отключай защиту «вижу только своё»
+- Если не уверен — спроси меня`;
 
 const artifacts = [
-  { label: "Tables", value: "profiles · subscriptions · projects" },
-  { label: "RLS policies", value: "9 (3 на таблицу: select / insert / update)" },
-  { label: "Triggers", value: "on_auth_user_created → handle_new_user()" },
-  { label: "Edge Function", value: "stripe-webhook · verify + dispatch + update" },
-  { label: "Types", value: "Database type → frontend autocomplete" },
+  { label: "Таблицы", value: "3 связанные таблицы готовы" },
+  { label: "Защита данных", value: "Юзер видит только своё, ничего лишнего" },
+  { label: "Автоматика", value: "Регистрация и оплата работают сами" },
+  { label: "Время", value: "~30 минут вместо 3 дней работы DBA" },
 ];
 
 export default function L6Slide10SupabaseMcpWalkthrough() {
@@ -61,13 +54,13 @@ export default function L6Slide10SupabaseMcpWalkthrough() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[2px]">
-          Walkthrough · Supabase MCP
+          Кейс · Supabase через MCP
         </p>
         <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
-          Multi-tenant SaaS с RLS за один промпт
+          База данных за один промпт
         </h2>
-        <p className="text-[7.5px] text-[hsl(var(--slide-text-muted))] mb-[5px] leading-[1.4]">
-          Миграция + RLS + триггер + edge function + типы. Раньше = 3 дня работы DBA. Сейчас = 30 минут.
+        <p className="text-[7.5px] text-[hsl(var(--slide-text-muted))] mb-[4px] leading-[1.4]">
+          Раньше: 3 дня работы с DBA. Сейчас: 30 минут с Claude. Главное — сразу прописать «юзер видит только своё».
         </p>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[7px] py-[4px] overflow-y-auto mb-[4px]" style={{ maxHeight: "44%" }}>
           <pre className="text-[5.5px] font-mono text-[hsl(var(--slide-text))] leading-[1.55] whitespace-pre-wrap">{supabasePrompt}</pre>
@@ -85,12 +78,11 @@ export default function L6Slide10SupabaseMcpWalkthrough() {
         >
           {copied ? "✓ Скопировано" : "📋 Скопировать промпт"}
         </button>
-        <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[2px]">Артефакты на выходе</p>
         <div className="space-y-[2px]">
           {artifacts.map((a) => (
-            <div key={a.label} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[4px] px-[5px] py-[2px]">
+            <div key={a.label} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[3px] px-[5px] py-[2px]">
               <p className="text-[6.5px] font-bold text-[hsl(var(--slide-gold))]">
-                {a.label}: <span className="text-[hsl(var(--slide-text-muted))] font-normal font-mono">{a.value}</span>
+                {a.label}: <span className="text-[hsl(var(--slide-text-muted))] font-normal">{a.value}</span>
               </p>
             </div>
           ))}
@@ -102,20 +94,20 @@ export default function L6Slide10SupabaseMcpWalkthrough() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[80px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-        Walkthrough · Supabase MCP
+        Кейс · Supabase через MCP
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[6px]">
-        Multi-tenant SaaS с <span className="text-[hsl(var(--slide-gold))]">RLS</span> · один промпт
+        База данных <span className="text-[hsl(var(--slide-gold))]">за один промпт</span>
       </h2>
       <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[16px] max-w-[1500px] leading-[1.45]">
-        Миграция + RLS политики + триггер автосоздания profile + edge function для Stripe webhook + TypeScript типы. Раньше = 3 дня работы DBA + бэкендера. Сейчас = 30 минут.
+        Раньше: 3 дня работы с DBA + бэкендером. Сейчас: 30 минут с Claude. Главное — сразу прописать «юзер видит только свои данные» — это самая частая дыра у соло-фаундеров.
       </p>
 
       <div className="grid grid-cols-[1.5fr_1fr] gap-[20px] max-w-[1700px]">
         <div>
           <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[8px]">Промпт · адаптируй под свой проект</p>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] px-[18px] py-[14px] overflow-y-auto" style={{ maxHeight: "440px" }}>
-            <pre className="text-[12px] font-mono text-[hsl(var(--slide-text))] leading-[1.65] whitespace-pre-wrap">{supabasePrompt}</pre>
+            <pre className="text-[12.5px] font-mono text-[hsl(var(--slide-text))] leading-[1.7] whitespace-pre-wrap">{supabasePrompt}</pre>
           </div>
           <button
             onPointerDown={(e) => e.stopPropagation()}
@@ -128,27 +120,27 @@ export default function L6Slide10SupabaseMcpWalkthrough() {
               border: `1px solid hsl(var(--slide-gold) / ${copied ? "1" : "0.4"})`,
             }}
           >
-            {copied ? "✓ Скопировано в буфер" : "📋 Скопировать промпт"}
+            {copied ? "✓ Скопировано" : "📋 Скопировать промпт"}
           </button>
         </div>
 
         <div className="flex flex-col gap-[14px]">
           <div>
-            <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[8px]">Артефакты на выходе</p>
-            <div className="space-y-[6px]">
+            <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[8px]">Что получишь на выходе</p>
+            <div className="space-y-[8px]">
               {artifacts.map((a) => (
-                <div key={a.label} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[8px]">
-                  <p className="text-[11px] uppercase text-[hsl(var(--slide-text-muted))] tracking-[0.14em] font-bold">{a.label}</p>
-                  <p className="text-[13px] font-mono text-[hsl(var(--slide-gold)/0.9)] leading-[1.4] mt-[2px]">{a.value}</p>
+                <div key={a.label} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[14px] py-[10px]">
+                  <p className="text-[12px] uppercase text-[hsl(var(--slide-text-muted))] tracking-[0.14em] font-bold mb-[3px]">{a.label}</p>
+                  <p className="text-[15px] text-[hsl(var(--slide-gold))] leading-[1.4] font-semibold">{a.value}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[3px] border-[hsl(var(--slide-gold))] rounded-[8px] px-[16px] py-[12px]">
-            <p className="text-[12px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[6px]">RLS — обязательно</p>
+            <p className="text-[13px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[6px]">Без этого — катастрофа</p>
             <p className="text-[14px] text-[hsl(var(--slide-text))] leading-[1.5]">
-              Без RLS любой залогиненный user видит чужие данные. Это самый частый прокол solo-фаундеров. Всегда явно требуй «RLS на каждой таблице».
+              Если забыть про защиту «вижу только своё», любой залогиненный юзер увидит данные других. Самая частая дыра у соло-фаундеров. Всегда требуй защиту явно.
             </p>
           </div>
         </div>

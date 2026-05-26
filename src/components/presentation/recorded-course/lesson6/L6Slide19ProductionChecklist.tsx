@@ -1,62 +1,45 @@
 import { useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const checklist = `# Production-Ready Checklist · перед каждым релизом
+const checklist = `# Чек-лист перед запуском · отдай Claude один раз
+
+Привет Claude, перед тем как я запущу продукт в прод, прогони его по этому списку.
+Для каждого пункта скажи: ✅ сделано, ⚠️ частично, ❌ не сделано.
+Где ❌ — предложи что починить первым.
 
 ## Безопасность
-[ ] Все секреты в env переменных (не в коде, не в репо)
-[ ] .env / .env.local в .gitignore
-[ ] RLS политики на ВСЕХ таблицах Supabase
-[ ] Restricted API keys (не unrestricted) для Stripe / Supabase service
-[ ] CORS правила настроены
-[ ] Rate limiting на publish endpoints (минимум IP-based)
-[ ] Input validation через zod на каждом endpoint
+[ ] Секретные ключи (Stripe, Supabase) только в .env, не в коде
+[ ] Файл .env в .gitignore, не залит в репо
+[ ] Юзер видит только свои данные, не чужие
+[ ] Защита от спама на формах (rate limit или капча)
+[ ] Все ключи API — ограниченные, не полные
 
-## UX состояния
-[ ] Loading state на каждой кнопке / асинхронной операции
-[ ] Empty state на каждом списке / экране данных
-[ ] Error state с понятным сообщением (не stack trace)
-[ ] Success feedback (toast / inline confirmation)
-[ ] Disabled state на кнопках после клика (защита от двойного клика)
+## Что видит юзер
+[ ] Загрузка показывается на каждой кнопке (спиннер или skeleton)
+[ ] Пустой экран показывает понятное сообщение (не просто белое)
+[ ] Ошибка показывает понятный текст (не код)
+[ ] Кнопки отключаются после клика (защита от двойного клика)
 
-## Адаптивность
-[ ] Mobile 375px — все экраны работают без overflow
-[ ] Tablet 768px — переходный layout
-[ ] Desktop 1440px — основной layout
-[ ] Touch targets ≥ 44×44px на mobile
-[ ] Проверено в Chrome + Safari + Firefox
+## Мобильная версия
+[ ] Все экраны нормально открываются на 375px (iPhone)
+[ ] Кнопки достаточно большие для пальца (44 пикселя минимум)
+[ ] Проверено в Chrome И Safari И Firefox
 
-## Производительность
-[ ] Lighthouse Performance ≥ 85 на mobile
-[ ] Все API ручки кэшируются где можно
-[ ] Изображения lazy-loaded + правильного размера
-[ ] Нет N+1 запросов (профилировал главные ручки)
-[ ] Тяжёлая работа в очереди / Edge Function, не блокирует UI
+## Аналитика и мониторинг
+[ ] Sentry подключён, видит ошибки в проде
+[ ] Аналитика подключена (Mixpanel или PostHog)
+[ ] Минимум 4 события трекаются: регистрация, первое действие, оплата, отписка
 
-## Observability
-[ ] Sentry подключён · ошибки видны
-[ ] Аналитика подключена · минимум события: signup / first_value / paid / churn_risk
-[ ] Structured logs с trace_id для дебага
-[ ] Health-check endpoint /health возвращает 200
+## SEO и юридическое
+[ ] Privacy Policy опубликована (хотя бы одна страница)
+[ ] Terms of Service опубликованы
+[ ] sitemap.xml есть в корне сайта
+[ ] OG-теги для шейринга в соцсетях есть на главной
 
-## Тесты и CI
-[ ] Unit-тесты на критическую логику (auth, billing)
-[ ] 1 integration test happy path
-[ ] CI прогоняет typecheck + tests + lint перед merge
-[ ] Preview URL на каждом PR
-
-## Юридически + SEO
-[ ] Privacy Policy / ToS опубликованы
-[ ] Cookie consent если EU траффик
-[ ] sitemap.xml + robots.txt
-[ ] OG-теги + favicon на каждой странице
-[ ] llms.txt для AI-индексации (если делаешь SEO)
-
-## Перед deploy
-[ ] git status чистый
-[ ] CI зелёный
-[ ] Миграции применены на проде (если есть)
-[ ] Откат план готов (как rollback если что-то сломалось)`;
+## Перед самой кнопкой Deploy
+[ ] git status чистый, ничего лишнего не коммитится
+[ ] CI зелёный (тесты прошли)
+[ ] План отката готов — что делать если что-то сломается`;
 
 export default function L6Slide19ProductionChecklist() {
   const isMobile = useIsMobile();
@@ -74,13 +57,13 @@ export default function L6Slide19ProductionChecklist() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[2px]">
-          Артефакт · production-ready checklist
+          Чек-лист перед запуском
         </p>
         <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
-          8 разделов · ~35 пунктов
+          Отдай Claude — пусть проверит твой проект
         </h2>
         <p className="text-[7.5px] text-[hsl(var(--slide-text-muted))] mb-[4px] leading-[1.4]">
-          Дай Claude этот checklist перед релизом: «прогони мой проект по этому списку, отметь что не сделано».
+          Скопируй промпт ниже в Claude. Он пройдёт по списку, скажет что готово, а что забыл. Поможет починить.
         </p>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[7px] py-[4px] overflow-y-auto mb-[4px]" style={{ maxHeight: "75%" }}>
           <pre className="text-[5.5px] font-mono text-[hsl(var(--slide-text))] leading-[1.5] whitespace-pre-wrap">{checklist}</pre>
@@ -96,7 +79,7 @@ export default function L6Slide19ProductionChecklist() {
             border: `1px solid hsl(var(--slide-gold) / ${copied ? "1" : "0.3"})`,
           }}
         >
-          {copied ? "✓ Скопировано" : "📋 Чеклист"}
+          {copied ? "✓ Скопировано" : "📋 Чек-лист"}
         </button>
       </div>
     );
@@ -105,13 +88,13 @@ export default function L6Slide19ProductionChecklist() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[80px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-        Артефакт · production-ready checklist
+        Чек-лист перед запуском
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[6px]">
-        8 разделов · ~35 пунктов · <span className="text-[hsl(var(--slide-gold))]">перед каждым релизом</span>
+        Отдай Claude — пусть <span className="text-[hsl(var(--slide-gold))]">проверит твой проект</span>
       </h2>
       <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[16px] max-w-[1500px] leading-[1.45]">
-        Дай Claude этот checklist перед релизом: «прогони мой проект по этому списку, отметь что не сделано, начни закрывать сверху». За одну сессию Claude проходит весь список.
+        Скопируй промпт ниже в Claude. Он пройдёт по списку, отметит что готово, а что забыл. За одну сессию закроешь весь список.
       </p>
 
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[24px] py-[18px] overflow-y-auto max-w-[1700px]" style={{ maxHeight: "440px" }}>
@@ -129,7 +112,7 @@ export default function L6Slide19ProductionChecklist() {
           border: `1px solid hsl(var(--slide-gold) / ${copied ? "1" : "0.4"})`,
         }}
       >
-        {copied ? "✓ Скопировано в буфер" : "📋 Скопировать чеклист"}
+        {copied ? "✓ Скопировано в буфер" : "📋 Скопировать чек-лист"}
       </button>
     </div>
   );

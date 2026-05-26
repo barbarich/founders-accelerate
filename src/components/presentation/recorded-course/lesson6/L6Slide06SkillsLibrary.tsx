@@ -1,33 +1,17 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const builtIn = [
-  { name: "engineering", desc: "Архитектура, ревью кода, тесты, debugging" },
-  { name: "design", desc: "UI/UX, доступность, palettes, шрифты" },
-  { name: "brand-voice", desc: "Пишет в твоём тоне со стоп-словами" },
-  { name: "marketing", desc: "Копирайт, SEO, email-sequences, креативы" },
-  { name: "sales", desc: "Outreach, voice/email, возражения, follow-up" },
-  { name: "product-management", desc: "PRD, roadmap, метрики, custdev" },
-  { name: "data", desc: "SQL, аналитика, A/B-тесты, графики" },
-  { name: "legal", desc: "ToS, privacy policy, NDA, DPA" },
-  { name: "pdf-viewer", desc: "Читать, заполнять, подписывать PDF" },
-  { name: "mempalace", desc: "Долгосрочная память между сессиями" },
+const skills = [
+  { name: "engineering", what: "Claude помогает с архитектурой, ревью кода, тестами. Включается когда ты строишь сам продукт." },
+  { name: "design", what: "Подсказывает UI/UX, проверяет доступность, советует цвета и шрифты. Полезно при работе над лендингом." },
+  { name: "brand-voice", what: "Пишет в твоём тоне со стоп-словами. Один раз настроил — тексты звучат как твои." },
+  { name: "marketing", what: "Копирайт, SEO, email-рассылки, креативы для рекламы. Маркетолог в одном промпте." },
+  { name: "sales", what: "Письма прямого аутрича, ответы на возражения, follow-up. Помощник по продажам." },
+  { name: "product-management", what: "Спеки фич, roadmap, метрики, custdev-интервью. Продакт-менеджер на проекте." },
+  { name: "data", what: "SQL-запросы, аналитика, графики. Когда нужно понять что происходит в продукте." },
+  { name: "legal", what: "Условия использования, политика конфиденциальности, NDA. Не заменяет юриста, но первая версия — за минуту." },
+  { name: "pdf-viewer", what: "Читать, заполнять, подписывать PDF прямо в чате. Договора, формы, акты." },
+  { name: "mempalace", what: "Долгая память Claude между сессиями. Когда у тебя много проектов — помнит контекст каждого." },
 ];
-
-const customSkillSpec = `---
-name: ship-feature
-description: Полный workflow от идеи до PR — план, реализация, тесты, deploy
-metadata:
-  triggers: ["ship", "release", "deploy feature"]
----
-
-# Ship Feature
-
-1. Спроси: «Какая фича? Какие файлы?»
-2. Plan Mode: составь план изменений
-3. После approval — реализуй
-4. Запусти typecheck + tests
-5. Создай PR через gh CLI
-6. Verify в preview URL`;
 
 export default function L6Slide06SkillsLibrary() {
   const isMobile = useIsMobile();
@@ -36,28 +20,24 @@ export default function L6Slide06SkillsLibrary() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[2px]">
-          Skills · специализированные эксперты
+          Скиллы Claude · 10 готовых экспертов
         </p>
         <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[4px]">
-          10 встроенных + свои собственные
+          Команда в одной программе
         </h2>
         <p className="text-[8px] text-[hsl(var(--slide-text-muted))] mb-[6px] leading-[1.4]">
-          Skill активируется автоматически когда задача матчит триггер. Промпт не нужен.
+          Скилл — это специализация Claude. Когда задача похожа на маркетинг — Claude автоматически думает как маркетолог. Включаешь один раз в настройках.
         </p>
-        <div className="grid grid-cols-2 gap-[3px] mb-[5px]">
-          {builtIn.map((s) => (
+        <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] mb-[3px]">
+          claude.ai → Settings → Skills → Включить все 10
+        </p>
+        <div className="grid grid-cols-2 gap-[3px]">
+          {skills.map((s) => (
             <div key={s.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[4px] px-[6px] py-[3px]">
               <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] font-mono">{s.name}</p>
-              <p className="text-[6.5px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{s.desc}</p>
+              <p className="text-[6.5px] text-[hsl(var(--slide-text-muted))] leading-[1.3]">{s.what}</p>
             </div>
           ))}
-        </div>
-        <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[2px]">Свой скилл</p>
-        <p className="text-[7px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[3px]">
-          <span className="font-mono text-[6.5px]">.claude/skills/[name]/SKILL.md</span> · фронтматтер + инструкция
-        </p>
-        <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.2)] rounded-[5px] px-[7px] py-[4px] overflow-y-auto" style={{ maxHeight: "28%" }}>
-          <pre className="text-[5.5px] font-mono text-[hsl(var(--slide-gold)/0.85)] leading-[1.5] whitespace-pre-wrap">{customSkillSpec}</pre>
         </div>
       </div>
     );
@@ -66,39 +46,25 @@ export default function L6Slide06SkillsLibrary() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[100px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">
-        Skills · специализированные эксперты внутри Claude
+        Скиллы Claude · 10 готовых экспертов
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[8px]">
-        10 встроенных + <span className="text-[hsl(var(--slide-gold))]">свои собственные</span>
+        Команда <span className="text-[hsl(var(--slide-gold))]">в одной программе</span>
       </h2>
-      <p className="text-[19px] text-[hsl(var(--slide-text-muted))] mb-[20px] max-w-[1500px] leading-[1.45]">
-        Skill — это микро-эксперт, который активируется автоматически когда задача матчит триггер. Не нужно писать в промпте «играй роль маркетолога» — Claude сам подхватывает marketing-skill при запросе на копирайт.
+      <p className="text-[19px] text-[hsl(var(--slide-text-muted))] mb-[10px] max-w-[1500px] leading-[1.45]">
+        Скилл — это специализация Claude. Когда задача про маркетинг — Claude автоматически думает как маркетолог. Когда про код — как разработчик. Не нужно писать «играй роль...» — он сам подхватывает нужный режим.
+      </p>
+      <p className="text-[16px] font-mono text-[hsl(var(--slide-gold))] mb-[18px]">
+        Включить: claude.ai → Settings → Skills → все 10
       </p>
 
-      <div className="grid grid-cols-[1.3fr_1fr] gap-[24px] max-w-[1700px]">
-        <div>
-          <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[10px]">10 встроенных скиллов</p>
-          <div className="grid grid-cols-2 gap-[8px]">
-            {builtIn.map((s) => (
-              <div key={s.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[8px]">
-                <p className="text-[15px] font-bold text-[hsl(var(--slide-gold))] font-mono leading-[1.2]">{s.name}</p>
-                <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mt-[2px]">{s.desc}</p>
-              </div>
-            ))}
+      <div className="grid grid-cols-5 gap-[10px] max-w-[1700px]">
+        {skills.map((s) => (
+          <div key={s.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[10px]">
+            <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] font-mono leading-[1.2] mb-[4px]">{s.name}</p>
+            <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.45]">{s.what}</p>
           </div>
-        </div>
-
-        <div>
-          <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-bold mb-[10px]">Свой кастомный skill</p>
-          <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[10px] px-[16px] py-[12px] mb-[10px]">
-            <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[6px]">
-              Создай файл <span className="font-mono text-[hsl(var(--slide-gold))]">.claude/skills/[name]/SKILL.md</span> в корне проекта. Frontmatter + инструкция = персональный эксперт.
-            </p>
-          </div>
-          <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[10px] px-[14px] py-[12px] overflow-y-auto" style={{ maxHeight: "300px" }}>
-            <pre className="text-[10.5px] font-mono text-[hsl(var(--slide-gold)/0.9)] leading-[1.6] whitespace-pre-wrap">{customSkillSpec}</pre>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
