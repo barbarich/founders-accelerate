@@ -23,7 +23,7 @@ MUST NOT: файлы >500 строк
   },
   {
     num: "3",
-    title: "Claude Opus 4.6 — лучшие практики",
+    title: "Claude Opus 4.7 — лучшие практики",
     why: "С /think Opus решает на уровне senior. Без него — junior. Та же цена, другой результат.",
     artifact: `Для сложных решений используй
 extended thinking: напиши /think

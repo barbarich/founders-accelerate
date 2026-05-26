@@ -5,7 +5,7 @@ const steps = [
     num: "1",
     title: "Найдите 2–3 референса",
     text: "Pinterest, Dribbble, awwwards.com, или просто сайты которые вам нравятся. Сохраните скриншоты.",
-    tip: "Ищите: «SaaS landing page dark», «fintech website minimal», «startup landing 2025»",
+    tip: "Ищите: «SaaS landing page dark», «fintech website minimal», «startup landing 2026»",
   },
   {
     num: "2",
