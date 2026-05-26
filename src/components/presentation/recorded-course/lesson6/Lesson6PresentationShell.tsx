@@ -5,83 +5,91 @@ import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
 import L6Slide01Welcome from "./L6Slide01Welcome";
-import L6Slide02Wall from "./L6Slide02Wall";
-import L6Slide03Recap from "./L6Slide03Recap";
-import L6Slide04ThreeThings from "./L6Slide04ThreeThings";
+import L6Slide02MainThesis from "./L6Slide02MainThesis";
 import L6BlockHeader from "./L6BlockHeader";
-import L6Slide05Stack from "./L6Slide05Stack";
-import L6Slide06SwitchSignals from "./L6Slide06SwitchSignals";
-import L6Slide07AntiPatterns from "./L6Slide07AntiPatterns";
-import L6Slide08Observability from "./L6Slide08Observability";
-import L6Slide10P1Scaffolder from "./L6Slide10P1Scaffolder";
-import L6Slide11P2Debug from "./L6Slide11P2Debug";
-import L6Slide12DemoScope from "./L6Slide12DemoScope";
-import L6Slide13Storytelling from "./L6Slide13Storytelling";
-
-import L6Slide14Metrics from "./L6Slide14Metrics";
-import L6Slide15StoryShift from "./L6Slide15StoryShift";
-import L6Slide16UnityIdea from "./L6Slide16UnityIdea";
-import L6Slide17Hooks from "./L6Slide17Hooks";
-import L6Slide19S1StoryPrompt from "./L6Slide19S1StoryPrompt";
-import L6Slide20Workshop from "./L6Slide20Workshop";
-import L6Slide21Homework from "./L6Slide21Homework";
-import L6Slide22NextWeek from "./L6Slide22NextWeek";
-import L6Slide23Closing from "./L6Slide23Closing";
+import L6Slide03HubVsHelper from "./L6Slide03HubVsHelper";
+import L6Slide04ClaudeMdHierarchy from "./L6Slide04ClaudeMdHierarchy";
+import L6Slide05ProductionTemplates from "./L6Slide05ProductionTemplates";
+import L6Slide06SkillsLibrary from "./L6Slide06SkillsLibrary";
+import L6Slide07SlashCommands from "./L6Slide07SlashCommands";
+import L6Slide08McpUnderHood from "./L6Slide08McpUnderHood";
+import L6Slide09StripeMcpWalkthrough from "./L6Slide09StripeMcpWalkthrough";
+import L6Slide10SupabaseMcpWalkthrough from "./L6Slide10SupabaseMcpWalkthrough";
+import L6Slide11McpSetupSteps from "./L6Slide11McpSetupSteps";
+import L6Slide12PlanModeAdvanced from "./L6Slide12PlanModeAdvanced";
+import L6Slide13SecondModelReview from "./L6Slide13SecondModelReview";
+import L6Slide14SubAgentsParallel from "./L6Slide14SubAgentsParallel";
+import L6Slide15Worktrees from "./L6Slide15Worktrees";
+import L6Slide16FiveUnblockTechniques from "./L6Slide16FiveUnblockTechniques";
+import L6Slide17ObservabilityStack from "./L6Slide17ObservabilityStack";
+import L6Slide18RealProductionCase from "./L6Slide18RealProductionCase";
+import L6Slide19ProductionChecklist from "./L6Slide19ProductionChecklist";
+import L6Slide20LessonSummary from "./L6Slide20LessonSummary";
+import L6Slide21HomeworkChecklist from "./L6Slide21HomeworkChecklist";
+import L6Slide22Closing from "./L6Slide22Closing";
 
 export const slideNames = [
   "Добро пожаловать",
-  "Два навыка сегодня",
-  "Блок 1 — MVP за вечер",
-  "Стек: 3 инструмента",
-  "Первый запуск за 5 мин",
-  "CLAUDE.md",
-  "Skills в Claude Code",
-  "5 правил промпта",
-  "Supabase + Vercel",
-  "P1 MVP Scaffolder",
-  "P2 Debug Partner",
-  "Демо — таймлайн",
-  "Сторителлинг",
-  "Найди историю в продукте",
-  "Клиент — герой, ты — проводник",
-  "Конфликт = боль клиента",
-  "Трансформация: до/после",
-  "Деталь = доверие",
-  "Хук + структура + удержание",
-  "ДЗ: 3 ссылки",
-  "Неделя 6",
-  "Закрытие",
+  "Главный тезис: AI cofounder",
+  "Блок 1 — Production Setup",
+  "Claude как hub, Lovable как витрина",
+  "Иерархия CLAUDE.md",
+  "3 production CLAUDE.md шаблона",
+  "Skills library + свой skill",
+  "Slash commands + кастомные",
+  "Блок 2 — MCP Deep Dive",
+  "MCP под капотом",
+  "Stripe MCP walkthrough",
+  "Supabase MCP walkthrough",
+  "MCP setup + top-7 серверов",
+  "Блок 3 — Workflow",
+  "Plan Mode advanced",
+  "Second-model review",
+  "Sub-agents + parallel",
+  "Git worktrees",
+  "Блок 4 — Debug & Ship",
+  "5 техник unblock",
+  "Observability через MCP",
+  "Реальный кейс Bug #30",
+  "Production checklist",
+  "Саммари · 5 инсайтов",
+  "Домашка · 7 действий",
+  "Закрытие · Урок 7",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L6Slide01Welcome />;
-    case 1: return <L6Slide02Wall />;
-    case 2: return <L6BlockHeader blockNumber={1} title="Вайбкодинг" subtitle="Claude Code · Supabase · Vercel — строишь продукт, не пишешь код" />;
-    case 3: return <L6Slide03Recap />;
-    case 4: return <L6Slide04ThreeThings />;
-    case 5: return <L6Slide05Stack />;
-    case 6: return <L6Slide06SwitchSignals />;
-    case 7: return <L6Slide07AntiPatterns />;
-    case 8: return <L6Slide08Observability />;
-    case 9: return <L6Slide10P1Scaffolder />;
-    case 10: return <L6Slide11P2Debug />;
-    case 11: return <L6Slide12DemoScope />;
-    case 12: return <L6Slide13Storytelling />;
-    case 13: return <L6Slide16UnityIdea />;
-    case 14: return <L6Slide17Hooks />;
-    case 15: return <L6Slide14Metrics />;
-    case 16: return <L6Slide15StoryShift />;
-    case 17: return <L6Slide19S1StoryPrompt />;
-    case 18: return <L6Slide20Workshop />;
-    case 19: return <L6Slide21Homework />;
-    case 20: return <L6Slide22NextWeek />;
-    case 21: return <L6Slide23Closing />;
+    case 1: return <L6Slide02MainThesis />;
+    case 2: return <L6BlockHeader blockNumber={1} title="Production Setup" subtitle="Настроить Claude так, чтобы он работал как сеньор, а не джун" />;
+    case 3: return <L6Slide03HubVsHelper />;
+    case 4: return <L6Slide04ClaudeMdHierarchy />;
+    case 5: return <L6Slide05ProductionTemplates />;
+    case 6: return <L6Slide06SkillsLibrary />;
+    case 7: return <L6Slide07SlashCommands />;
+    case 8: return <L6BlockHeader blockNumber={2} title="MCP Deep Dive" subtitle="Claude работает в твоих сервисах, а не вокруг них" />;
+    case 9: return <L6Slide08McpUnderHood />;
+    case 10: return <L6Slide09StripeMcpWalkthrough />;
+    case 11: return <L6Slide10SupabaseMcpWalkthrough />;
+    case 12: return <L6Slide11McpSetupSteps />;
+    case 13: return <L6BlockHeader blockNumber={3} title="Workflow" subtitle="Как давать задачи, чтобы результат был с первой попытки" />;
+    case 14: return <L6Slide12PlanModeAdvanced />;
+    case 15: return <L6Slide13SecondModelReview />;
+    case 16: return <L6Slide14SubAgentsParallel />;
+    case 17: return <L6Slide15Worktrees />;
+    case 18: return <L6BlockHeader blockNumber={4} title="Debug & Ship" subtitle="Когда что-то ломается — как разблокироваться и довести до прода" />;
+    case 19: return <L6Slide16FiveUnblockTechniques />;
+    case 20: return <L6Slide17ObservabilityStack />;
+    case 21: return <L6Slide18RealProductionCase />;
+    case 22: return <L6Slide19ProductionChecklist />;
+    case 23: return <L6Slide20LessonSummary />;
+    case 24: return <L6Slide21HomeworkChecklist />;
+    case 25: return <L6Slide22Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 22;
+export const TOTAL = 26;
 
 export default function Lesson6PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

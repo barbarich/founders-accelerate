@@ -20,7 +20,7 @@ export default function L6Slide01Welcome() {
             Урок 6
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Два навыка за вечер.<br />MVP на Claude Code + история о нём.
+            Claude Code — твой AI cofounder.<br />Production-grade vibe coding.
           </p>
         </div>
       </div>
@@ -41,9 +41,9 @@ export default function L6Slide01Welcome() {
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
           Урок 6
         </p>
-        <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[800px]">
-          Два навыка за вечер.<br />
-          MVP на Claude Code + история о нём.
+        <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[900px]">
+          Claude Code — твой AI cofounder.<br />
+          Production-grade vibe coding.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
