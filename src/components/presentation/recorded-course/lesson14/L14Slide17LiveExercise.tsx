@@ -67,7 +67,7 @@ export default function L14Slide17LiveExercise() {
       </div>
       <div className="mt-[20px] bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[26px] py-[14px] max-w-[1700px]">
         <p className="text-[17px] text-[hsl(var(--slide-text))] leading-[1.5]">
-          <span className="font-bold text-[hsl(var(--slide-gold))]">Шеринг в группе:</span> каждый зачитывает строку №4 (первое сообщение) за 30 секунд. Группа даёт 1 короткий фидбек — что цепляет, что переписать.
+          <span className="font-bold text-[hsl(var(--slide-gold))]">AI-coach проверка:</span> открой Claude/ChatGPT. Промпт: «Отыграй роль [роль в ICP] из [компания]. Я пришлю первое сообщение — скажи открыл бы / удалил бы / ответил бы. Без политкорректности».
         </p>
       </div>
     </div>

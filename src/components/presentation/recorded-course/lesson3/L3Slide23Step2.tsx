@@ -2,10 +2,10 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function L3Slide23Step2() {
   const steps = [
-    { time: "0–3", action: "Запишите ВСЕ фичи вашего продукта — от самых важных до «было бы круто»" },
-    { time: "3–6", action: "Каждой фиче присвойте приоритет по MoSCoW: MUST / SHOULD / COULD / WON'T" },
-    { time: "6–8", action: "Вычеркните COULD и WON'T. Отложите SHOULD на после запуска" },
-    { time: "8–10", action: "Что осталось? Только MUST — это ваш MVP. Обсудите с группой — хватит ли этого для первого клиента?" },
+    { time: "0–3", action: "Запиши ВСЕ фичи своего продукта — от самых важных до «было бы круто». Не фильтруй" },
+    { time: "3–6", action: "Каждой присвой приоритет по MoSCoW: MUST / SHOULD / COULD / WON'T" },
+    { time: "6–8", action: "Вычеркни COULD и WON'T. Отложи SHOULD на после запуска" },
+    { time: "8–10", action: "Только MUST = твой MVP. Открой Claude/ChatGPT. Промпт: «вот мои MUST-фичи для [продукт]. Хватит ли этого для первого платящего клиента? Что лишнее? Что критично упустил?»" },
   ];
   const isMobile = useIsMobile();
 
@@ -43,10 +43,10 @@ export default function L3Slide23Step2() {
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">Приоритизация фичей: MoSCoW</h2>
       <div className="space-y-[20px] max-w-[1100px]">
         {[
-          { time: "0–3 мин", action: "Запишите ВСЕ фичи вашего продукта — от самых важных до «было бы круто». Не фильтруйте" },
-          { time: "3–6 мин", action: "Каждой фиче присвойте приоритет по MoSCoW: MUST / SHOULD / COULD / WON'T. Правило: без этой фичи клиент получит результат? Если да — это не MUST" },
-          { time: "6–8 мин", action: "Вычеркните COULD и WON'T. Отложите SHOULD на после запуска. Оставьте только MUST" },
-          { time: "8–10 мин", action: "Что осталось? Только MUST HAVE — это ваш MVP. Обсудите с группой — хватит ли этого для первого платящего клиента?" },
+          { time: "0–3 мин", action: "Запиши ВСЕ фичи своего продукта — от самых важных до «было бы круто». Не фильтруй" },
+          { time: "3–6 мин", action: "Каждой фиче присвой приоритет по MoSCoW: MUST / SHOULD / COULD / WON'T. Правило: без этой фичи клиент получит результат? Если да — это не MUST" },
+          { time: "6–8 мин", action: "Вычеркни COULD и WON'T. Отложи SHOULD на после запуска. Оставь только MUST" },
+          { time: "8–10 мин", action: "Только MUST HAVE — это твой MVP. Открой Claude/ChatGPT. Промпт: «вот мои MUST-фичи для [твой продукт]. Хватит ли для первого платящего клиента? Что лишнее? Что критично упустил?»" },
         ].map((s, i) => (
           <div key={i} className="flex items-start gap-[16px]">
             <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[8px] rounded shrink-0 min-w-[90px] text-center">{s.time}</span>
