@@ -72,6 +72,8 @@ import PublicFOM1Shell from "@/components/presentation/founderOsMini1/PublicFOM1
 import FOM1Shell from "@/components/presentation/founderOsMini1/FOM1Shell";
 import PublicFOM2Shell from "@/components/presentation/founderOsMini2/PublicFOM2Shell";
 import FOM2Shell from "@/components/presentation/founderOsMini2/FOM2Shell";
+import PublicFOM3Shell from "@/components/presentation/founderOsMini3/PublicFOM3Shell";
+import FOM3Shell from "@/components/presentation/founderOsMini3/FOM3Shell";
 import MiniCourseLesson1 from "./pages/MiniCourseLesson1";
 import MiniCourseLesson1Text from "./pages/MiniCourseLesson1Text";
 import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
@@ -229,6 +231,8 @@ const App = () => (
           <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
           <Route path="/founder-os-mini-session2" element={<PublicFOM2Shell />} />
           <Route path="/admin/founder-os-mini-session2" element={<FOM2Shell />} />
+          <Route path="/founder-os-mini-session3" element={<PublicFOM3Shell />} />
+          <Route path="/admin/founder-os-mini-session3" element={<FOM3Shell />} />
           <Route path="/mini-course/lesson0" element={<MiniCourseLesson0 />} />
           <Route path="/mini-course/lesson1" element={<MiniCourseLesson1 />} />
           <Route path="/mini-course/lesson1/text" element={<MiniCourseLesson1Text />} />
