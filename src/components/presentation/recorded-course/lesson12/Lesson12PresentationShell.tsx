@@ -36,7 +36,6 @@ export const slideNames = [
   "Блок 2 · Позиционирование",
   "Формула + 3 теста",
   "Шесть примеров формул",
-  "Воркшоп 1 · твоя формула",
   "Блок 3 · Визуалы",
   "AI-стек 2026",
   "Canva · AI-дизайн без дизайнера",
@@ -51,8 +50,8 @@ export const slideNames = [
   "B2B путь · бренд фаундера",
   "B2C путь · Mikey",
   "Полный стек с ценами",
-  "Домашка к M10",
-  "M10 + M11",
+  "Домашка к L13",
+  "Что дальше · L13 и L14",
 ];
 
 export function getSlideContent(index: number) {
@@ -66,28 +65,27 @@ export function getSlideContent(index: number) {
     case 6: return <L12BlockHeader blockNumber={2} title="Кит 1 · Позиционирование" subtitle="одна фраза, на которой держится всё" />;
     case 7: return <L12Slide06PositioningFormula />;
     case 8: return <L12Slide07PositioningExamples />;
-    case 9: return <L12Slide08Workshop1 />;
-    case 10: return <L12BlockHeader blockNumber={3} title="Кит 2 · Визуалы" subtitle="AI-стек 2026" />;
-    case 11: return <L12Slide09VisualStack />;
-    case 12: return <L12Slide10UrlToAds />;
-    case 13: return <L12Slide11OneStyleRule />;
-    case 14: return <L12BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
-    case 15: return <L12Slide13OldVsNew />;
-    case 16: return <L12Slide14AdAnatomy />;
-    case 17: return <L12BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
-    case 18: return <L12Slide16Funnel />;
-    case 19: return <L12Slide17Metrics />;
-    case 20: return <L12BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
-    case 21: return <L12Slide18B2BPath />;
-    case 22: return <L12Slide19B2CPath />;
-    case 23: return <L12Slide20FullStack />;
-    case 24: return <L12Slide22Homework />;
-    case 25: return <L12Slide23NextWeek />;
+    case 9: return <L12BlockHeader blockNumber={3} title="Кит 2 · Визуалы" subtitle="AI-стек 2026" />;
+    case 10: return <L12Slide09VisualStack />;
+    case 11: return <L12Slide10UrlToAds />;
+    case 12: return <L12Slide11OneStyleRule />;
+    case 13: return <L12BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
+    case 14: return <L12Slide13OldVsNew />;
+    case 15: return <L12Slide14AdAnatomy />;
+    case 16: return <L12BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
+    case 17: return <L12Slide16Funnel />;
+    case 18: return <L12Slide17Metrics />;
+    case 19: return <L12BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
+    case 20: return <L12Slide18B2BPath />;
+    case 21: return <L12Slide19B2CPath />;
+    case 22: return <L12Slide20FullStack />;
+    case 23: return <L12Slide22Homework />;
+    case 24: return <L12Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 25;
 
 export default function Lesson12PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

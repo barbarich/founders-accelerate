@@ -33,7 +33,7 @@ export default function L12Slide22Homework() {
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[6px]">
           <p className="text-[10px] text-[hsl(var(--slide-text))] leading-[1.4]">
             <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-            к M10 — 10–20 креативов, выбранная площадка, пиксели на сайте и работающий трекинг конверсий.
+            к L13 — 10–20 креативов, выбранная площадка, пиксели на сайте и работающий трекинг конверсий.
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function L12Slide22Homework() {
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[20px] max-w-[1700px]">
         <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.45]">
           <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-          к M10 — 10–20 креативов готовы, площадка выбрана, пиксели стоят, трекинг конверсий работает. Можно запускать.
+          к L13 — 10–20 креативов готовы, площадка выбрана, пиксели стоят, трекинг конверсий работает. Можно запускать.
         </p>
       </div>
     </div>

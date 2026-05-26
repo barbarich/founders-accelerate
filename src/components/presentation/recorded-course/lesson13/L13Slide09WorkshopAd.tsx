@@ -68,7 +68,7 @@ export default function L13Slide09WorkshopAd() {
         5–10 креативов в одну группу. <span className="text-[hsl(var(--slide-gold))]">Meta микширует.</span>
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[20px] max-w-[1600px]">
-        Грузишь медиа из домашки M9. Тексты — Claude / GPT генерит за 5 минут. Главное — объём вариантов, не идеальность одного.
+        Грузишь медиа из домашки L12. Тексты — Claude / GPT генерит за 5 минут. Главное — объём вариантов, не идеальность одного.
       </p>
       <div className="grid grid-cols-4 gap-[14px] max-w-[1700px]">
         {blocks.map((b) => (

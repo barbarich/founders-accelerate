@@ -33,34 +33,30 @@ import L3Slide26Closing from "./L3Slide26Closing";
 
 export const slideNames = [
   "Добро пожаловать",
-  "Прошлая неделя",
   "Три вещи",
-  "Блок 1: Разбор домашнего задания",
-  "Что узнали из интервью",
-  "Презентация результатов",
-  "Блок 2: Позиционирование",
+  "Блок 1: Позиционирование",
   "Никто не покупает продукт",
   "Формула результата",
   "Процесс vs Результат",
   "Три формулировки",
   "AI-промпты",
   "Топ-5 ошибок",
-  "Блок 3: Цена и монетизация",
+  "Блок 2: Цена и монетизация",
   "7 моделей",
   "Как выбрать модель",
   "Психология цены",
   "Цена = стоимость результата",
   "Мои кейсы",
-  "Блок 4: MVP",
+  "Блок 3: MVP",
   "MVP — не убогая версия",
   "Правило одной фичи",
   "Метод MoSCoW",
   "Чеклист MVP",
-  "Блок 5: Практика",
+  "Блок 4: Практика — сделай сейчас",
   "Шаг 1: Позиционирование",
   "Шаг 2: MoSCoW",
   "Шаг 3: Определяем цену",
-  "Блок 6: Задание",
+  "Блок 5: Задание",
   "Домашка",
   "Закрытие",
 ];
@@ -68,41 +64,37 @@ export const slideNames = [
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L3Slide01Welcome />;
-    case 1: return <L3Slide02Recap />;
-    case 2: return <L3Slide03ThreeThings />;
-    case 3: return <L3BlockHeader blockNumber={1} title="Разбор домашнего задания" subtitle="~20 минут" />;
-    case 4: return <L3Slide04InterviewResults />;
-    case 5: return <L3Slide05PresentResults />;
-    case 6: return <L3BlockHeader blockNumber={2} title="Позиционирование" />;
-    case 7: return <L3Slide07WhyMatters />;
-    case 8: return <L3Slide08Formula />;
-    case 9: return <L3Slide09GoodVsBad />;
-    case 10: return <L3Slide10FourTests />;
-    case 11: return <L3Slide11AIPrompts />;
-    case 12: return <L3Slide12CommonMistakes />;
-    case 13: return <L3BlockHeader blockNumber={3} title="Цена и монетизация" />;
-    case 14: return <L3Slide13ModelsOverview />;
-    case 15: return <L3Slide14HowToChoose />;
-    case 16: return <L3Slide15PricingPsychology />;
-    case 17: return <L3Slide16FirstPrice />;
-    case 18: return <L3Slide17MyCases />;
-    case 19: return <L3BlockHeader blockNumber={4} title="MVP — что строить, а что нет" />;
-    case 20: return <L3Slide18MVPMyths />;
-    case 21: return <L3Slide19OneFeature />;
-    case 22: return <L3Slide20KillFeatures />;
-    case 23: return <L3Slide21MVPChecklist />;
-    case 24: return <L3BlockHeader blockNumber={5} title="Делаем вместе" subtitle="30 минут" />;
-    case 25: return <L3Slide22Step1 />;
-    case 26: return <L3Slide23Step2 />;
-    case 27: return <L3Slide24Step3 />;
-    case 28: return <L3BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 29: return <L3Slide25Homework />;
-    case 30: return <L3Slide26Closing />;
+    case 1: return <L3Slide03ThreeThings />;
+    case 2: return <L3BlockHeader blockNumber={1} title="Позиционирование" />;
+    case 3: return <L3Slide07WhyMatters />;
+    case 4: return <L3Slide08Formula />;
+    case 5: return <L3Slide09GoodVsBad />;
+    case 6: return <L3Slide10FourTests />;
+    case 7: return <L3Slide11AIPrompts />;
+    case 8: return <L3Slide12CommonMistakes />;
+    case 9: return <L3BlockHeader blockNumber={2} title="Цена и монетизация" />;
+    case 10: return <L3Slide13ModelsOverview />;
+    case 11: return <L3Slide14HowToChoose />;
+    case 12: return <L3Slide15PricingPsychology />;
+    case 13: return <L3Slide16FirstPrice />;
+    case 14: return <L3Slide17MyCases />;
+    case 15: return <L3BlockHeader blockNumber={3} title="MVP — что строить, а что нет" />;
+    case 16: return <L3Slide18MVPMyths />;
+    case 17: return <L3Slide19OneFeature />;
+    case 18: return <L3Slide20KillFeatures />;
+    case 19: return <L3Slide21MVPChecklist />;
+    case 20: return <L3BlockHeader blockNumber={4} title="Практика — сделай сейчас" subtitle="Открой Claude/ChatGPT и пройди 3 шага" />;
+    case 21: return <L3Slide22Step1 />;
+    case 22: return <L3Slide23Step2 />;
+    case 23: return <L3Slide24Step3 />;
+    case 24: return <L3BlockHeader blockNumber={5} title="Задание на неделю" />;
+    case 25: return <L3Slide25Homework />;
+    case 26: return <L3Slide26Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 31;
+export const TOTAL = 27;
 
 export default function Lesson3PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

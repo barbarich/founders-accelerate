@@ -20,13 +20,13 @@ export default function L13Slide15NextWeek() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Дальше · M11 → M12</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Дальше · L14 → L15</p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
           Что закрываем в финале программы
         </h2>
         <div className="space-y-[6px] mb-[8px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[10px] py-[6px]">
-            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">M11 · B2B продажи и оптимизация</p>
+            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">L14 · B2B продажи и оптимизация</p>
             <div className="space-y-[2px]">
               {m11.map((t, i) => (
                 <p key={i} className="text-[8px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">→ {t}</p>
@@ -34,7 +34,7 @@ export default function L13Slide15NextWeek() {
             </div>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[10px] py-[6px]">
-            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">M12 · Демо-день + 90 дней</p>
+            <p className="text-[9px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">L15 · Демо-день + 90 дней</p>
             <div className="space-y-[2px]">
               {m12.map((t, i) => (
                 <p key={i} className="text-[8px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">→ {t}</p>
@@ -43,7 +43,7 @@ export default function L13Slide15NextWeek() {
           </div>
         </div>
         <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Без запущенной кампании на этой неделе — на M11 разбирать в твоих данных будет нечего.
+          Без запущенной кампании на этой неделе — на L14 разбирать в твоих данных будет нечего.
         </p>
       </div>
     );
@@ -51,13 +51,13 @@ export default function L13Slide15NextWeek() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Дальше · M11 → M12</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Дальше · L14 → L15</p>
       <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
         Что закрываем <span className="text-[hsl(var(--slide-gold))]">в финале программы</span>
       </h2>
       <div className="grid grid-cols-2 gap-[24px] max-w-[1700px] mb-[24px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[24px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">M11 · B2B продажи + оптимизация трафика</p>
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">L14 · B2B продажи + оптимизация трафика</p>
           <div className="space-y-[8px]">
             {m11.map((t, i) => (
               <p key={i} className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
@@ -67,7 +67,7 @@ export default function L13Slide15NextWeek() {
           </div>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[24px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">M12 · Финальный демо-день + 90 дней</p>
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[14px]">L15 · Финальный демо-день + 90 дней</p>
           <div className="space-y-[8px]">
             {m12.map((t, i) => (
               <p key={i} className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
@@ -78,7 +78,7 @@ export default function L13Slide15NextWeek() {
         </div>
       </div>
       <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1700px] leading-[1.4]">
-        Запусти кампанию сегодня — на M11 будем разбирать твои реальные цифры, не теорию.
+        Запусти кампанию сегодня — на L14 будем разбирать твои реальные цифры, не теорию.
       </p>
     </div>
   );

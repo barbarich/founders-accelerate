@@ -2,10 +2,10 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function L3Slide22Step1() {
   const steps = [
-    { time: "0–3", action: "Сформулируйте результат клиента: [Кто] получает [результат] с помощью [продукт], без [боль]" },
-    { time: "3–5", action: "Адаптируйте в три формата: лендинг, холодное сообщение, 30-сек питч" },
-    { time: "5–8", action: "Elevator pitch: 30 секунд питч партнёру. Не понял — переделываем" },
-    { time: "8–10", action: "Группа голосует: «сколько бы заплатил за этот результат?»" },
+    { time: "0–3", action: "Сформулируй результат клиента: [Кто] получает [результат] с помощью [продукт], без [боль]" },
+    { time: "3–5", action: "Адаптируй в три формата: лендинг, холодное сообщение, 30-сек питч" },
+    { time: "5–8", action: "Открой Claude/ChatGPT. Промпт: «Отыграй роль моего клиента. Я говорю питч 30 сек, ты — реакция и 3 вопроса»" },
+    { time: "8–10", action: "Перепиши с учётом фидбека AI. Спроси: «сколько бы ты заплатил за этот результат?»" },
   ];
   const isMobile = useIsMobile();
 
@@ -38,15 +38,15 @@ export default function L3Slide22Step1() {
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <div className="flex items-center gap-[16px] mb-[16px]">
         <span className="font-mono text-[18px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[16px] py-[8px] rounded">10 мин</span>
-        <span className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium">Делаем вместе — Шаг 1</span>
+        <span className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium">Сделай сейчас — Шаг 1</span>
       </div>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">Пишем позиционирование</h2>
       <div className="space-y-[20px] max-w-[1100px]">
         {[
-          { time: "0–3 мин", action: "Сформулируйте результат клиента по формуле: [Кто] получает [результат] с помощью [продукт], без [боль]" },
-          { time: "3–5 мин", action: "Адаптируйте в три формата: заголовок лендинга, холодное сообщение, 30-секундный питч" },
-          { time: "5–8 мин", action: "Elevator pitch battle: встаёте, 30 секунд питч партнёру. Если не понял — позиционирование не работает" },
-          { time: "8–10 мин", action: "Перепишите с учётом фидбека. Группа голосует: «сколько бы заплатил за этот результат?»" },
+          { time: "0–3 мин", action: "Сформулируй результат клиента по формуле: [Кто] получает [результат] с помощью [продукт], без [боль]" },
+          { time: "3–5 мин", action: "Адаптируй в три формата: заголовок лендинга, холодное сообщение, 30-секундный питч" },
+          { time: "5–8 мин", action: "Открой Claude/ChatGPT. Промпт: «Отыграй роль моего клиента. Я говорю питч 30 сек, ты — даёшь реакцию + 3 уточняющих вопроса»" },
+          { time: "8–10 мин", action: "Перепиши с учётом фидбека AI. Спроси: «сколько бы ты заплатил за этот результат?»" },
         ].map((s, i) => (
           <div key={i} className="flex items-start gap-[16px]">
             <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[8px] rounded shrink-0 min-w-[90px] text-center">{s.time}</span>

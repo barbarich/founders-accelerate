@@ -24,7 +24,7 @@ const founders = [
   {
     name: "Maker E · B2B QA-RA SaaS",
     track: "B2B · лидген-воронка, не баннеры",
-    body: "Прямые «купи продукт» креативы в B2B не работают. Твой формат — воронка для сбора лидов: lead-magnet (чеклист «10 ошибок QA/RA-документации», мини-гайд, бенчмарк). Objective = Leads, форма с email + компания. Дальше — nurture-цепочка и звонок. На M11 добавим LinkedIn Ads + Apollo + Instantly.",
+    body: "Прямые «купи продукт» креативы в B2B не работают. Твой формат — воронка для сбора лидов: lead-magnet (чеклист «10 ошибок QA/RA-документации», мини-гайд, бенчмарк). Objective = Leads, форма с email + компания. Дальше — nurture-цепочка и звонок. На L14 добавим LinkedIn Ads + Apollo + Instantly.",
   },
 ];
 

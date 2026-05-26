@@ -18,9 +18,9 @@ export default function L12Slide23NextWeek() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Дальше · M10</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Дальше · L13</p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          Что разбираем на следующей встрече
+          Что разбираем на следующему уроку
         </h2>
         <div className="space-y-[6px] mb-[8px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[6px] px-[10px] py-[6px]">
@@ -41,7 +41,7 @@ export default function L12Slide23NextWeek() {
           </div>
         </div>
         <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Без подготовки к запуску на этой неделе — разбирать на M10 будет нечего.
+          Без подготовки к запуску на этой неделе — разбирать в L13 обсудить будет нечего.
         </p>
       </div>
     );
@@ -49,9 +49,9 @@ export default function L12Slide23NextWeek() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Дальше · M10</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Дальше · L13</p>
       <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.02em]">
-        Что разбираем <span className="text-[hsl(var(--slide-gold))]">на следующей встрече</span>
+        Что разбираем <span className="text-[hsl(var(--slide-gold))]">на следующему уроку</span>
       </h2>
       <div className="grid grid-cols-2 gap-[24px] max-w-[1700px] mb-[24px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[24px]">
@@ -76,7 +76,7 @@ export default function L12Slide23NextWeek() {
         </div>
       </div>
       <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1700px] leading-[1.4]">
-        Подготовь запуск на этой неделе — на M10 будем оптимизировать и разбирать твои реальные кампании.
+        Подготовь запуск на этой неделе — в L13 будем оптимизировать и разбирать твои реальные кампании.
       </p>
     </div>
   );

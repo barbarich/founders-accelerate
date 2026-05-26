@@ -52,7 +52,7 @@ export const slideNames = [
   "Expansion loop · 1 сделка → 4",
   "Блок 6 · Финал",
   "Домашнее задание · 1 компания · 5 строк",
-  "M12 + alumni",
+  "L15 + alumni",
 ];
 
 export function getSlideContent(index: number) {

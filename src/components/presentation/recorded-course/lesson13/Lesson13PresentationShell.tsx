@@ -45,8 +45,8 @@ export const slideNames = [
   "Блок 5 · Ошибки",
   "Семь ошибок одиночек",
   "Блок 6 · Домашнее задание",
-  "Домашнее задание к M11",
-  "M11 + M12",
+  "Домашнее задание к L14",
+  "L14 + L15",
 ];
 
 export function getSlideContent(index: number) {
