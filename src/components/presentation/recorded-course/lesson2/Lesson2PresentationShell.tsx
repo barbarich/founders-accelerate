@@ -8,6 +8,7 @@ import L2Slide01Welcome from "./L2Slide01Welcome";
 import L2Slide02MainMistake from "./L2Slide02MainMistake";
 import L2Slide03ThreeThings from "./L2Slide03ThreeThings";
 import L2BlockHeader from "./L2BlockHeader";
+import L2SlideMyWorkflow from "./L2SlideMyWorkflow";
 import L2SlideSurveysIntro from "./L2SlideSurveysIntro";
 import L2SlideSurveysStack from "./L2SlideSurveysStack";
 import L2SlideSurveysDistribution from "./L2SlideSurveysDistribution";
@@ -46,6 +47,7 @@ import L2Slide31Closing from "./L2Slide31Closing";
 export const slideNames = [
   "Добро пожаловать",
   "Главная ошибка",
+  "Как я строю продукт сейчас · 7 шагов",
   "Три вещи",
   "Блок 1: Кто заплатит и как с ним поговорить",
   "Кто заплатит",
@@ -69,28 +71,29 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L2Slide01Welcome />;
     case 1: return <L2Slide02MainMistake />;
-    case 2: return <L2Slide03ThreeThings />;
-    case 3: return <L2BlockHeader blockNumber={1} title="Кто заплатит и как с ним поговорить" subtitle="качественный custdev: 10 интервью" />;
-    case 4: return <L2Slide14WhoWillPay />;
-    case 5: return <L2Slide15Interview />;
-    case 6: return <L2Slide15bHypothesis />;
-    case 7: return <L2Slide16FindPeople />;
-    case 8: return <L2Slide17Tldv />;
-    case 9: return <L2BlockHeader blockNumber={2} title="Количественные опросы" subtitle="100+ ответов: измеряем размер боли" />;
-    case 10: return <L2SlideSurveysIntro />;
-    case 11: return <L2SlideSurveysStack />;
-    case 12: return <L2SlideSurveysDistribution />;
-    case 13: return <L2SlidePassFail />;
-    case 14: return <L2BlockHeader blockNumber={3} title="Практика — сделай сейчас" subtitle="открой Claude/ChatGPT и составь свой custdev" />;
-    case 15: return <L2Slide23Step2 />;
-    case 16: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
-    case 17: return <L2Slide27HWCustdev />;
-    case 18: return <L2Slide31Closing />;
+    case 2: return <L2SlideMyWorkflow />;
+    case 3: return <L2Slide03ThreeThings />;
+    case 4: return <L2BlockHeader blockNumber={1} title="Кто заплатит и как с ним поговорить" subtitle="качественный custdev: 10 интервью" />;
+    case 5: return <L2Slide14WhoWillPay />;
+    case 6: return <L2Slide15Interview />;
+    case 7: return <L2Slide15bHypothesis />;
+    case 8: return <L2Slide16FindPeople />;
+    case 9: return <L2Slide17Tldv />;
+    case 10: return <L2BlockHeader blockNumber={2} title="Количественные опросы" subtitle="100+ ответов: измеряем размер боли" />;
+    case 11: return <L2SlideSurveysIntro />;
+    case 12: return <L2SlideSurveysStack />;
+    case 13: return <L2SlideSurveysDistribution />;
+    case 14: return <L2SlidePassFail />;
+    case 15: return <L2BlockHeader blockNumber={3} title="Практика — сделай сейчас" subtitle="открой Claude/ChatGPT и составь свой custdev" />;
+    case 16: return <L2Slide23Step2 />;
+    case 17: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
+    case 18: return <L2Slide27HWCustdev />;
+    case 19: return <L2Slide31Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 19;
+export const TOTAL = 20;
 
 export default function Lesson2PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
