@@ -10,27 +10,34 @@ export default function L0Slide06Truth4() {
           Правда 4 из 5
         </p>
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] tracking-[-0.01em]">
-          Кофаундер в 2026 = ты в 2 раза медленнее, не быстрее
+          Кофаундер — сила или груз.<br />Зависит от первого месяца.
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[10px]">
-          В 2020 кофаундер закрывал нехватку рук: ты технарь — нужен маркетолог. Ты маркетолог — нужен технарь.
-        </p>
-        <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[10px]">
-          В 2026 <span className="text-[hsl(var(--slide-text))] font-medium">AI-стек закрывает эту нехватку на 80%</span>. Claude Code заменяет джуна-разраба. Lovable — фронтенд-команду. ChatGPT/Claude — копирайтера. HeyGen — видеографа.
+          Делать всё одному — интересно, но сложно. Кофаундер может удвоить твою скорость или развалить компанию.
         </p>
         <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[14px]">
-          Кофаундер 2026 = коммуникация ×2, делёж equity, конфликты приоритетов. <span className="text-[hsl(var(--slide-text))] font-medium">Это замедление, не ускорение.</span>
+          <span className="text-[hsl(var(--slide-gold))] font-bold">70%</span> споров между кофаундерами — из-за того что не договорились в первый месяц.
         </p>
-        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold)/0.5)] px-[14px] py-[12px] mb-[14px]">
-          <p className="text-[11px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Топ соло-фаундеры 2026</p>
-          <p className="text-[12px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-            Pieter Levels — $200K/mo один.<br />Marc Lou — $50K/mo один.<br />Tibo — $40K/mo один.
-          </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[12px] mb-[12px]">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">3 разговора в первый месяц</p>
+          <ul className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] space-y-[4px]">
+            <li>· Кто за что отвечает (product / tech / sales / marketing)</li>
+            <li>· Кто принимает финальное решение в каждой зоне</li>
+            <li>· Что если один уходит (vesting + 1-year cliff)</li>
+          </ul>
+        </div>
+        <div className="border border-[hsl(var(--slide-text-muted)/0.2)] px-[14px] py-[10px] mb-[14px]">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-[hsl(var(--slide-text-muted))] font-medium mb-[6px]">Плохие причины брать кофаундера</p>
+          <ul className="text-[11px] text-[hsl(var(--slide-text-muted))] leading-[1.5] space-y-[3px]">
+            <li>· «Просто чтобы не одному»</li>
+            <li>· «Он мой друг — мы сработаемся»</li>
+            <li>· «Equity 50/50 потому что справедливо»</li>
+          </ul>
         </div>
         <div className="border-t border-[hsl(var(--slide-gold)/0.2)] pt-[12px]">
           <p className="text-[10px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Что делать</p>
           <p className="text-[12px] text-[hsl(var(--slide-text))] leading-[1.5]">
-            Бери AI-стек. Нанимай VA по факту, не заранее. Кофаундера ищи <span className="text-[hsl(var(--slide-gold))]">только когда есть PMF</span> и идёшь в enterprise.
+            Уже есть кофаундер — проведите эти 3 разговора на этой неделе. Ищешь — <span className="text-[hsl(var(--slide-gold))]">выбирай по дополняемости навыков</span>, а не по дружбе.
           </p>
         </div>
       </div>
@@ -42,34 +49,35 @@ export default function L0Slide06Truth4() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[20px]">
         Правда 4 из 5
       </p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em] max-w-[1600px]">
-        Кофаундер в 2026 = ты в 2 раза медленнее, не быстрее
+      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] tracking-[-0.01em] max-w-[1700px]">
+        Кофаундер — сила или груз. Зависит от первого месяца.
       </h2>
-      <div className="grid grid-cols-2 gap-[40px] max-w-[1700px] mb-[28px]">
-        <div className="space-y-[16px]">
-          <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">
-            В 2020 кофаундер закрывал нехватку рук: ты технарь — нужен маркетолог. Ты маркетолог — нужен технарь.
-          </p>
-          <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">
-            В 2026 <span className="text-[hsl(var(--slide-text))] font-semibold">AI-стек закрывает эту нехватку на 80%</span>. Claude Code заменяет джуна-разраба. Lovable — фронтенд-команду. ChatGPT/Claude — копирайтера. HeyGen — видеографа.
-          </p>
-          <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">
-            Кофаундер 2026 = коммуникация ×2, делёж equity, конфликты приоритетов. <span className="text-[hsl(var(--slide-text))] font-semibold">Это замедление.</span>
-          </p>
+      <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] mb-[28px] max-w-[1700px]">
+        Делать всё одному — интересно, но сложно. Кофаундер может удвоить твою скорость или развалить компанию. <span className="text-[hsl(var(--slide-text))] font-semibold"><span className="text-[hsl(var(--slide-gold))]">70%</span> споров</span> между кофаундерами — из-за того что не договорились в первый месяц.
+      </p>
+      <div className="grid grid-cols-2 gap-[32px] max-w-[1700px] mb-[28px]">
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[28px] py-[24px]">
+          <p className="text-[15px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">3 разговора в первый месяц</p>
+          <ul className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.6] space-y-[10px]">
+            <li>· Кто за что отвечает (product / tech / sales / marketing)</li>
+            <li>· Кто принимает финальное решение в каждой зоне</li>
+            <li>· Что если один уходит (vesting + 1-year cliff)</li>
+          </ul>
         </div>
-        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold)/0.5)] px-[28px] py-[24px]">
-          <p className="text-[16px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[18px]">Топ соло-фаундеры 2026</p>
-          <p className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.7]">
-            <span className="font-semibold">Pieter Levels</span> — <span className="text-[hsl(var(--slide-gold))] font-bold">$200K/mo</span> один<br />
-            <span className="font-semibold">Marc Lou</span> — <span className="text-[hsl(var(--slide-gold))] font-bold">$50K/mo</span> один<br />
-            <span className="font-semibold">Tibo</span> — <span className="text-[hsl(var(--slide-gold))] font-bold">$40K/mo</span> один
-          </p>
+        <div className="border border-[hsl(var(--slide-text-muted)/0.25)] px-[28px] py-[24px]">
+          <p className="text-[15px] uppercase tracking-[0.2em] text-[hsl(var(--slide-text-muted))] font-medium mb-[16px]">Плохие причины брать кофаундера</p>
+          <ul className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.6] space-y-[10px]">
+            <li>· «Просто чтобы не одному»</li>
+            <li>· «Он мой друг — мы сработаемся»</li>
+            <li>· «Я не умею то, чему он умеет»</li>
+            <li>· «Equity 50/50 — потому что справедливо»</li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-[hsl(var(--slide-gold)/0.2)] pt-[20px] max-w-[1700px]">
         <p className="text-[16px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">Что делать</p>
         <p className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.5]">
-          Бери AI-стек. Нанимай VA по факту, не заранее. Кофаундера ищи <span className="text-[hsl(var(--slide-gold))] font-semibold">только когда есть PMF</span> и идёшь в enterprise.
+          Уже есть кофаундер — проведите эти 3 разговора на этой неделе. Ищешь — <span className="text-[hsl(var(--slide-gold))] font-semibold">выбирай по дополняемости навыков</span>, а не по дружбе.
         </p>
       </div>
     </div>

@@ -20,7 +20,7 @@ export default function L0Slide01Welcome() {
             5 правд,<br />которые убивают<br />90% соло-фаундеров
           </h1>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.5]">
-            Если хотя бы одна из них тебя не разозлит — этот курс не для тебя.
+            5 правд, которые я бы хотел знать<br />в начале своего первого стартапа.
           </p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function L0Slide01Welcome() {
           5 правд, которые убивают<br />90% соло-фаундеров
         </h1>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[32px] leading-[1.4] max-w-[1100px]">
-          Если хотя бы одна из них тебя не разозлит — этот курс не для тебя.
+          5 правд, которые я бы хотел знать<br />в начале своего первого стартапа.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
