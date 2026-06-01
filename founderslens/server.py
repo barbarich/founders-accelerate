@@ -47,7 +47,7 @@ init_schema()
 
 app = FastAPI(
     title="FoundersLens API",
-    version="0.1.0",
+    version="0.2.0",
     description="Multi-agent market research pipeline.",
 )
 app.add_middleware(
@@ -140,6 +140,62 @@ class IntakeEval(BaseModel):
     idea_input: Optional[IdeaInput] = None
 
 
+# Substrings that mark an auth/permission failure — the user's API key is theirs
+# to fix, so we surface those as 401 instead of silently proceeding into a
+# pipeline that would also fail on every call.
+_AUTH_ERROR_CUES = (
+    "api key", "api_key", "apikey", "unauthorized", "permission", "invalid key",
+    "invalid api key", "incorrect api key", "authentication", "permission_denied",
+    "api key not valid", "invalid x-api-key", "401", "403",
+)
+
+
+def _is_auth_error(exc: BaseException) -> bool:
+    t = str(exc).lower()
+    return any(cue in t for cue in _AUTH_ERROR_CUES)
+
+
+def _heuristic_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
+    """Deterministic fallback when the LLM intake evaluator is unavailable.
+
+    Guarantees the user is never hard-blocked at the gate. With enough signal in
+    the raw input we proceed straight to research; otherwise we ask a fixed set
+    of clarifying questions. This is the last line of defence — the providers
+    already floor token budgets, escalate on truncation, and salvage partial
+    JSON, so reaching here should be rare.
+    """
+    idea = (req.idea or "").strip()
+    has_user = bool((req.target_user or "").strip())
+    enough = len(idea) >= 60 or (len(idea) >= 30 and has_user) or bool(req.prior_questions)
+    if enough:
+        return IntakeEvaluateResponse(
+            ready=True,
+            completeness_score=70,
+            idea_input=IdeaInput(
+                raw_idea=idea or "(описание не указано)",
+                target_user=req.target_user,
+                geography=req.geography,
+                monetization_hypothesis=req.monetization_hypothesis,
+                reference_products=req.reference_products,
+                already_tried=req.already_tried,
+                language=req.language,
+            ),
+        )
+    if req.language == "en":
+        questions = [
+            "What exactly does the product do — what task does it solve, and for whom?",
+            "Who is your target user (role / segment)?",
+            "What's the format — mobile app, web, messenger, B2B SaaS?",
+        ]
+    else:
+        questions = [
+            "Что именно делает продукт — какую задачу решает и для кого?",
+            "Кто твой целевой пользователь (роль или сегмент)?",
+            "Какой формат — мобильное приложение, веб, мессенджер, B2B SaaS?",
+        ]
+    return IntakeEvaluateResponse(ready=False, completeness_score=30, questions=questions)
+
+
 @app.post("/api/intake/evaluate", response_model=IntakeEvaluateResponse)
 async def intake_evaluate(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
     try:
@@ -176,10 +232,17 @@ async def intake_evaluate(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
             system=EVALUATOR_SYSTEM,
             user=user,
             model=req.model,  # user-chosen model (None → provider default)
-            max_tokens=1500,
+            max_tokens=config.LLM_JSON_INTAKE_TOKENS,
         )
     except Exception as e:
-        raise HTTPException(status_code=502, detail=f"LLM call failed: {e}")
+        # A bad / unauthorized key is the user's to fix — surface it clearly.
+        if _is_auth_error(e):
+            raise HTTPException(status_code=401, detail=f"LLM-ключ отклонён провайдером: {e}")
+        # Anything else (transient hiccup, schema quirk, pathological truncation
+        # the provider couldn't salvage) must NOT hard-block the user. Degrade to
+        # a deterministic heuristic so the flow always continues to research.
+        log.warning("intake evaluate degraded to heuristic after LLM failure: %s", e)
+        return _heuristic_intake(req)
 
     return IntakeEvaluateResponse(
         ready=result.ready,
@@ -466,7 +529,7 @@ async def research_creative(run_id: str, filename: str):
 # ---------------------------------------------------------------------------
 @app.get("/api/health")
 async def health() -> dict[str, str]:
-    return {"status": "ok", "service": "founderslens", "version": "0.1.0"}
+    return {"status": "ok", "service": "founderslens", "version": "0.2.0"}
 
 
 if __name__ == "__main__":

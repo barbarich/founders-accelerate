@@ -7,18 +7,19 @@ self-heal on the first 400 from anything else — see `temperature_compat`.
 
 from __future__ import annotations
 
-import json
 import logging
 from typing import Any, Optional, Type
 
 from openai import AsyncOpenAI
 
+from founderslens import config
 from founderslens.llm.base import LLMProvider, LLMResponse, T
 from founderslens.llm.temperature_compat import (
     is_temperature_rejection,
     register_no_temperature,
     supports_custom_temperature,
 )
+from founderslens.utils.json_extract import loads_lenient
 from founderslens.utils.retry import retry_async
 
 log = logging.getLogger(__name__)
@@ -80,34 +81,80 @@ class OpenAIProvider(LLMProvider):
             model=resp.model, provider=self.provider_name, stop_reason=choice.finish_reason,
         )
 
+    def _mk_response(self, raw: str, resp: Any) -> LLMResponse:
+        usage = getattr(resp, "usage", None) if resp is not None else None
+        try:
+            finish = resp.choices[0].finish_reason if resp is not None else None
+        except Exception:
+            finish = None
+        return LLMResponse(
+            text=raw,
+            tokens_in=usage.prompt_tokens if usage else 0,
+            tokens_out=usage.completion_tokens if usage else 0,
+            model=getattr(resp, "model", "") if resp is not None else "",
+            provider=self.provider_name, stop_reason=finish,
+        )
+
     @retry_async(exceptions=(Exception,))
     async def extract_json(
         self, *, schema: Type[T], system: str, user: str,
         model: Optional[str] = None, max_tokens: int = 4096, temperature: float = 0.0,
     ) -> tuple[T, LLMResponse]:
         model = model or self.default_models["main"]
-        resp = await self._create(
-            model=model, temperature=temperature,
-            max_completion_tokens=max_tokens,
-            response_format={
-                "type": "json_schema",
-                "json_schema": {
-                    "name": schema.__name__,
-                    "schema": schema.model_json_schema(),
-                    "strict": False,
-                },
+        messages = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+        response_format = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": schema.__name__,
+                "schema": schema.model_json_schema(),
+                "strict": False,
             },
-            messages=[
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-        )
-        choice = resp.choices[0]
-        raw = choice.message.content or "{}"
-        parsed = schema.model_validate(json.loads(raw))
-        return parsed, LLMResponse(
-            text=raw,
-            tokens_in=resp.usage.prompt_tokens if resp.usage else 0,
-            tokens_out=resp.usage.completion_tokens if resp.usage else 0,
-            model=resp.model, provider=self.provider_name, stop_reason=choice.finish_reason,
-        )
+        }
+
+        # Reasoning models (o-series, gpt-5 line) spend completion-token budget on
+        # hidden reasoning before the JSON, so a small cap truncates the answer
+        # (finish_reason == "length"). Floor the budget, escalate on truncation,
+        # then salvage. Same defence as the Gemini provider.
+        budget = max(max_tokens, config.LLM_JSON_MIN_TOKENS)
+        ceiling = config.LLM_JSON_MAX_TOKENS_CEILING
+        last_raw, last_resp = "", None
+
+        while True:
+            resp = await self._create(
+                model=model, temperature=temperature,
+                max_completion_tokens=budget,
+                response_format=response_format,
+                messages=messages,
+            )
+            choice = resp.choices[0]
+            raw = choice.message.content or ""
+            if raw:
+                last_raw, last_resp = raw, resp
+
+            if getattr(choice, "finish_reason", None) != "length":
+                try:
+                    parsed = schema.model_validate(loads_lenient(raw))
+                    return parsed, self._mk_response(raw, resp)
+                except Exception as e:
+                    log.warning("openai extract_json finished but unparseable (%s) — escalating budget", e)
+
+            if budget >= ceiling:
+                break
+            budget = min(budget * 2, ceiling)
+            log.warning(
+                "openai extract_json truncated (model=%s, schema=%s) — retrying with max_completion_tokens=%d",
+                model, schema.__name__, budget,
+            )
+
+        try:
+            parsed = schema.model_validate(loads_lenient(last_raw))
+            log.warning("openai extract_json: salvaged %s from truncated output", schema.__name__)
+            return parsed, self._mk_response(last_raw, last_resp)
+        except Exception as e:
+            raise RuntimeError(
+                f"openai extract_json: no valid {schema.__name__} after escalating to "
+                f"{budget} tokens — {e}; raw[:120]={last_raw[:120]!r}"
+            ) from e

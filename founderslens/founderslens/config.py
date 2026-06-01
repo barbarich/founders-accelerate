@@ -93,6 +93,25 @@ PHASE_TIME_CEILINGS: dict[str, int] = {
 TOOL_RETRY_ATTEMPTS = 3
 TOOL_RETRY_BASE_DELAY = 1.0  # seconds, exponential backoff base
 
+# ---------------------------------------------------------------------------
+# LLM structured-output token budgets
+# ---------------------------------------------------------------------------
+# "Thinking" models (Gemini 2.5+/3.x, OpenAI o-series / gpt-5) spend part of the
+# output-token budget on hidden reasoning BEFORE they emit the JSON answer. If
+# the budget is too small the visible JSON is truncated mid-string and parsing
+# blows up ("Unterminated string ..."). Every provider's extract_json floors the
+# requested max_tokens to LLM_JSON_MIN_TOKENS so there's headroom for reasoning +
+# answer. A response that still comes back truncated is regenerated with an
+# escalated budget (doubling up to LLM_JSON_MAX_TOKENS_CEILING) before we fall
+# back to lenient JSON salvage. max_output_tokens is a ceiling, not a charge —
+# non-thinking models still stop after ~hundreds of tokens, so this costs nothing
+# extra for them while making thinking models reliable.
+LLM_JSON_MIN_TOKENS = int(os.getenv("FOUNDERSLENS_LLM_JSON_MIN_TOKENS", "8192"))
+LLM_JSON_MAX_TOKENS_CEILING = int(os.getenv("FOUNDERSLENS_LLM_JSON_CEILING", "32768"))
+# Intake clarifying-question call — small answer, but the model may still "think"
+# first, so it gets the same headroom.
+LLM_JSON_INTAKE_TOKENS = int(os.getenv("FOUNDERSLENS_LLM_JSON_INTAKE", "8192"))
+
 
 # ---------------------------------------------------------------------------
 # API keys (resolved here so agents don't re-read os.environ everywhere)

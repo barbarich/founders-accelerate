@@ -9,6 +9,7 @@ import json
 import logging
 from typing import Any, Optional, Type
 
+from founderslens import config
 from founderslens.llm.anthropic_provider import _inline_refs
 from founderslens.llm.base import LLMProvider, LLMResponse, T
 from founderslens.llm.temperature_compat import (
@@ -16,9 +17,31 @@ from founderslens.llm.temperature_compat import (
     register_no_temperature,
     supports_custom_temperature,
 )
+from founderslens.utils.json_extract import loads_lenient
 from founderslens.utils.retry import retry_async
 
 log = logging.getLogger(__name__)
+
+
+def _finish_reason_truncated(resp: Any) -> bool:
+    """True if Gemini stopped because it hit max_output_tokens.
+
+    On thinking models the hidden reasoning can exhaust the budget before the
+    JSON answer is complete — finish_reason == MAX_TOKENS is the signal to
+    regenerate with more headroom. Defensive against the enum/int/str shapes the
+    SDK has used across versions.
+    """
+    try:
+        cands = getattr(resp, "candidates", None)
+        if not cands:
+            return False
+        fr = getattr(cands[0], "finish_reason", None)
+        if fr is None:
+            return False
+        name = getattr(fr, "name", None) or str(fr)
+        return "MAX_TOKEN" in name.upper()
+    except Exception:
+        return False
 
 # Gemini's response_schema accepts a subset of OpenAPI 3.0. Keys it tolerates:
 # type, format, description, nullable, enum, items, properties, required, anyOf.
@@ -142,6 +165,70 @@ class GeminiProvider(LLMProvider):
             stop_reason=str(getattr(resp.candidates[0], "finish_reason", "")) if resp.candidates else None,
         )
 
+    async def _generate_structured(
+        self, mdl, prompt: str, model_id: str, gemini_schema: dict,
+        *, max_tokens: int, temperature: float,
+    ):
+        """Generate JSON: strict response_schema first, prompt-only on schema rejection.
+
+        `_generate` handles temperature self-heal under the hood.
+        """
+        try:
+            return await self._generate(
+                mdl, prompt, model_id,
+                max_tokens=max_tokens, temperature=temperature,
+                response_mime_type="application/json",
+                response_schema=gemini_schema,
+            )
+        except Exception as schema_err:
+            # Don't swallow temperature rejections — _generate already handled them.
+            if is_temperature_rejection(schema_err):
+                raise
+            log.warning("gemini response_schema rejected (%s) — falling back to prompt-only JSON", schema_err)
+            schema_hint = json.dumps(gemini_schema, ensure_ascii=False)
+            fallback_prompt = (
+                f"{prompt}\n\n---\n\n"
+                f"Верни ТОЛЬКО валидный JSON-объект по этой схеме:\n```json\n{schema_hint}\n```\n"
+                "Без пояснений и без markdown-ограждений."
+            )
+            return await self._generate(
+                mdl, fallback_prompt, model_id,
+                max_tokens=max_tokens, temperature=temperature,
+                response_mime_type="application/json",
+            )
+
+    @staticmethod
+    def _response_text(resp: Any) -> str:
+        """Robustly pull text out of a Gemini response (handles blocked / no-parts)."""
+        try:
+            t = resp.text
+            if t:
+                return t
+        except Exception:
+            pass
+        try:
+            if getattr(resp, "candidates", None):
+                parts = getattr(resp.candidates[0].content, "parts", [])
+                return "".join(getattr(p, "text", "") for p in parts)
+        except Exception:
+            pass
+        return ""
+
+    def _llm_response(self, raw: str, resp: Any, model_id: str) -> LLMResponse:
+        usage = getattr(resp, "usage_metadata", None) if resp is not None else None
+        stop = None
+        if resp is not None:
+            try:
+                stop = str(getattr(resp.candidates[0], "finish_reason", "")) if resp.candidates else None
+            except Exception:
+                stop = None
+        return LLMResponse(
+            text=raw,
+            tokens_in=getattr(usage, "prompt_token_count", 0) if usage else 0,
+            tokens_out=getattr(usage, "candidates_token_count", 0) if usage else 0,
+            model=model_id, provider=self.provider_name, stop_reason=stop,
+        )
+
     @retry_async(exceptions=(Exception,))
     async def extract_json(
         self, *, schema: Type[T], system: str, user: str,
@@ -150,56 +237,49 @@ class GeminiProvider(LLMProvider):
         model_id = model or self.default_models["main"]
         mdl = self._model(model_id)
         prompt = f"{system}\n\n---\n\n{user}"
+        gemini_schema = _prepare_gemini_schema(schema)
 
-        # Try strict response_schema first; if Gemini rejects the schema, fall
-        # back to prompt-driven JSON extraction so the user's request still
-        # completes instead of failing the whole pipeline on a schema quirk.
-        # `_generate` handles temperature self-heal under the hood.
-        resp = None
-        try:
-            resp = await self._generate(
-                mdl, prompt, model_id,
-                max_tokens=max_tokens, temperature=temperature,
-                response_mime_type="application/json",
-                response_schema=_prepare_gemini_schema(schema),
+        # Floor the budget so a thinking model has room for hidden reasoning AND
+        # the JSON answer. If it still truncates (finish_reason == MAX_TOKENS),
+        # regenerate with double the budget up to the ceiling. Only after that do
+        # we fall back to salvaging whatever partial JSON we got.
+        budget = max(max_tokens, config.LLM_JSON_MIN_TOKENS)
+        ceiling = config.LLM_JSON_MAX_TOKENS_CEILING
+        last_raw, last_resp = "", None
+
+        while True:
+            resp = await self._generate_structured(
+                mdl, prompt, model_id, gemini_schema,
+                max_tokens=budget, temperature=temperature,
             )
-        except Exception as schema_err:
-            # Don't swallow temperature rejections here — _generate already handled them.
-            if is_temperature_rejection(schema_err):
-                raise
-            log.warning("gemini response_schema rejected (%s) — falling back to prompt-only JSON", schema_err)
-            schema_hint = json.dumps(_prepare_gemini_schema(schema), ensure_ascii=False)
-            fallback_prompt = (
-                f"{prompt}\n\n---\n\n"
-                f"Return ONLY a valid JSON object matching this shape:\n```json\n{schema_hint}\n```\n"
-                "No prose, no markdown fences in your output."
-            )
-            resp = await self._generate(
-                mdl, fallback_prompt, model_id,
-                max_tokens=max_tokens, temperature=temperature,
-                response_mime_type="application/json",
+            raw = self._response_text(resp)
+            if raw:
+                last_raw, last_resp = raw, resp
+
+            if not _finish_reason_truncated(resp):
+                # Model reports it finished — parse should work. If it somehow
+                # doesn't, escalating the budget won't hurt and may help.
+                try:
+                    parsed = schema.model_validate(loads_lenient(raw))
+                    return parsed, self._llm_response(raw, resp, model_id)
+                except Exception as e:
+                    log.warning("gemini extract_json finished but unparseable (%s) — escalating budget", e)
+
+            if budget >= ceiling:
+                break
+            budget = min(budget * 2, ceiling)
+            log.warning(
+                "gemini extract_json truncated (model=%s, schema=%s) — retrying with max_output_tokens=%d",
+                model_id, schema.__name__, budget,
             )
 
-        raw = ""
+        # Budgets exhausted — salvage the best (partial) response we received.
         try:
-            raw = resp.text or "{}"
-        except Exception:
-            if resp.candidates:
-                parts = getattr(resp.candidates[0].content, "parts", [])
-                raw = "".join(getattr(p, "text", "") for p in parts) or "{}"
-        # Models occasionally wrap JSON in ```json fences despite instructions
-        raw_stripped = raw.strip()
-        if raw_stripped.startswith("```"):
-            raw_stripped = raw_stripped.strip("`")
-            if raw_stripped.lower().startswith("json"):
-                raw_stripped = raw_stripped[4:]
-            raw_stripped = raw_stripped.strip()
-        parsed = schema.model_validate(json.loads(raw_stripped))
-        usage = getattr(resp, "usage_metadata", None)
-        return parsed, LLMResponse(
-            text=raw,
-            tokens_in=getattr(usage, "prompt_token_count", 0) if usage else 0,
-            tokens_out=getattr(usage, "candidates_token_count", 0) if usage else 0,
-            model=model_id, provider=self.provider_name,
-            stop_reason=str(getattr(resp.candidates[0], "finish_reason", "")) if resp.candidates else None,
-        )
+            parsed = schema.model_validate(loads_lenient(last_raw))
+            log.warning("gemini extract_json: salvaged %s from truncated/dirty output", schema.__name__)
+            return parsed, self._llm_response(last_raw, last_resp, model_id)
+        except Exception as e:
+            raise RuntimeError(
+                f"gemini extract_json: no valid {schema.__name__} after escalating to "
+                f"{budget} output tokens — {e}; raw[:120]={last_raw[:120]!r}"
+            ) from e

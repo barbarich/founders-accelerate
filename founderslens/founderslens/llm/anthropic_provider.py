@@ -17,6 +17,7 @@ from typing import Any, Optional, Type
 from anthropic import AsyncAnthropic
 from pydantic import BaseModel
 
+from founderslens import config
 from founderslens.llm.base import LLMProvider, LLMResponse, T
 from founderslens.llm.temperature_compat import (
     is_temperature_rejection,
@@ -100,6 +101,14 @@ class AnthropicProvider(LLMProvider):
             model=msg.model, provider=self.provider_name, stop_reason=msg.stop_reason,
         )
 
+    def _mk_response(self, tool_input: dict[str, Any], msg: Any, model_id: str) -> LLMResponse:
+        return LLMResponse(
+            text=json.dumps(tool_input, ensure_ascii=False),
+            tokens_in=msg.usage.input_tokens, tokens_out=msg.usage.output_tokens,
+            model=getattr(msg, "model", model_id), provider=self.provider_name,
+            stop_reason=getattr(msg, "stop_reason", None), raw_tool_input=tool_input,
+        )
+
     @retry_async(exceptions=(Exception,))
     async def extract_json(
         self, *, schema: Type[T], system: str, user: str,
@@ -107,28 +116,61 @@ class AnthropicProvider(LLMProvider):
     ) -> tuple[T, LLMResponse]:
         model = model or self.default_models["main"]
         tool_name = f"emit_{schema.__name__.lower()}"
-        msg = await self._create(
-            model=model, temperature=temperature,
-            system=system, max_tokens=max_tokens,
-            tools=[{
-                "name": tool_name,
-                "description": f"Emit a {schema.__name__} result.",
-                "input_schema": _inline_refs(schema.model_json_schema()),
-            }],
-            tool_choice={"type": "tool", "name": tool_name},
-            messages=[{"role": "user", "content": user}],
-        )
-        tool_input: Optional[dict[str, Any]] = None
-        for b in msg.content:
-            if getattr(b, "type", "") == "tool_use" and b.name == tool_name:
-                tool_input = b.input
+        tools = [{
+            "name": tool_name,
+            "description": f"Emit a {schema.__name__} result.",
+            "input_schema": _inline_refs(schema.model_json_schema()),
+        }]
+
+        # tool_use returns a structured dict (no string parsing), so the only way
+        # it fails is a budget truncation: stop_reason == "max_tokens" with the
+        # tool call cut off (partial/absent input). Floor the budget and escalate
+        # on truncation — mirrors the Gemini/OpenAI providers.
+        budget = max(max_tokens, config.LLM_JSON_MIN_TOKENS)
+        ceiling = config.LLM_JSON_MAX_TOKENS_CEILING
+        last_input: Optional[dict[str, Any]] = None
+        last_msg: Any = None
+
+        while True:
+            msg = await self._create(
+                model=model, temperature=temperature,
+                system=system, max_tokens=budget,
+                tools=tools,
+                tool_choice={"type": "tool", "name": tool_name},
+                messages=[{"role": "user", "content": user}],
+            )
+            tool_input: Optional[dict[str, Any]] = None
+            for b in msg.content:
+                if getattr(b, "type", "") == "tool_use" and b.name == tool_name:
+                    tool_input = b.input
+                    break
+            if tool_input is not None:
+                last_input, last_msg = tool_input, msg
+            truncated = getattr(msg, "stop_reason", None) == "max_tokens"
+
+            if tool_input is not None and not truncated:
+                try:
+                    return schema.model_validate(tool_input), self._mk_response(tool_input, msg, model)
+                except Exception as e:
+                    log.warning("anthropic extract_json tool input invalid (%s) — escalating budget", e)
+
+            if budget >= ceiling:
                 break
-        if tool_input is None:
-            raise RuntimeError(f"anthropic: no tool_use block returned (stop={msg.stop_reason})")
-        parsed = schema.model_validate(tool_input)
-        return parsed, LLMResponse(
-            text=json.dumps(tool_input, ensure_ascii=False),
-            tokens_in=msg.usage.input_tokens, tokens_out=msg.usage.output_tokens,
-            model=msg.model, provider=self.provider_name, stop_reason=msg.stop_reason,
-            raw_tool_input=tool_input,
+            budget = min(budget * 2, ceiling)
+            log.warning(
+                "anthropic extract_json truncated (model=%s, schema=%s) — retrying with max_tokens=%d",
+                model, schema.__name__, budget,
+            )
+
+        if last_input is not None:
+            try:
+                return schema.model_validate(last_input), self._mk_response(last_input, last_msg, model)
+            except Exception as e:
+                raise RuntimeError(
+                    f"anthropic extract_json: tool input for {schema.__name__} invalid after "
+                    f"escalating to {budget} tokens — {e}"
+                ) from e
+        raise RuntimeError(
+            f"anthropic extract_json: no tool_use block for {schema.__name__} "
+            f"(stop={getattr(last_msg, 'stop_reason', None)}, budget={budget})"
         )
