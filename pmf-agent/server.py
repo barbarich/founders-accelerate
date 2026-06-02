@@ -44,6 +44,9 @@ from sse_starlette.sse import EventSourceResponse
 # Load .env for tool keys (but LLM keys come per-request from user)
 load_dotenv(Path(__file__).parent / ".env")
 
+# Lenient JSON salvage — recovers truncated/empty LLM JSON (reasoning models)
+from json_extract import loads_lenient
+
 # Pipeline imports — use existing PMF agents untouched
 from agents.base import build_client
 from agents.competitors import CompetitorAgent
@@ -487,7 +490,7 @@ def _get_run(run_id: str) -> Optional[RunState]:
 # ---------------------------------------------------------------------------
 # FastAPI app
 # ---------------------------------------------------------------------------
-app = FastAPI(title="PMF Agent API", version="0.1.0")
+app = FastAPI(title="PMF Agent API", version="0.2.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # dev: open. Tighten to founders-circle.space in prod.
@@ -588,6 +591,32 @@ Prior_questions + prior_answers учитывай, не повторяй.
 }
 """
 
+# Reasoning models (gpt-5.x, o-series, gemini-2.5/3.x) spend output-token budget
+# on hidden reasoning BEFORE the JSON answer. A tight cap (was 1500) gets fully
+# consumed by reasoning → empty/truncated content → the intake loops forever on
+# the safety-net questions. Give generous headroom; max_tokens is a ceiling, not
+# a charge — non-reasoning models still stop after a few hundred tokens.
+INTAKE_MAX_TOKENS = 8192
+
+
+def _idea_input_from_raw(req: "IntakeEvaluateRequest") -> "IdeaInputPayload":
+    """Build a usable idea_input from the raw idea + the founder's clarifying
+    answers. Used by the anti-loop guard so a user who has already answered a
+    round of questions always proceeds to research instead of being re-asked."""
+    parts = [(req.idea or "").strip()]
+    for q, a in zip(req.prior_questions, req.prior_answers or []):
+        if a and a.strip():
+            parts.append(f"{q.strip()} — {a.strip()}")
+    description = "\n".join(p for p in parts if p) or (req.idea or "(нет описания)")
+    return IdeaInputPayload(
+        id=f"idea_{uuid.uuid4().hex[:6]}",
+        title=(req.idea or "Идея")[:80],
+        description=description,
+        market=req.market,
+        stage=req.stage,
+        founder="User",
+    )
+
 
 async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse:
     """Uses user's LLM key to judge idea completeness + generate clarifying Qs."""
@@ -624,7 +653,7 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             import anthropic
             msg = await client.messages.create(
                 model=model_id,
-                max_tokens=1500,
+                max_tokens=INTAKE_MAX_TOKENS,
                 system=EVALUATOR_SYSTEM + '\n\nВыведи JSON между ```json и ```.',
                 messages=[{"role": "user", "content": user_text}],
             )
@@ -634,7 +663,7 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             is_reasoning = model_id.startswith(("o1", "o3", "o4"))
             kwargs = {
                 "model": model_id,
-                "max_completion_tokens": 1500,
+                "max_completion_tokens": INTAKE_MAX_TOKENS,
                 "messages": [
                     {"role": "system", "content": EVALUATOR_SYSTEM + "\nReturn JSON only."},
                     {"role": "user", "content": user_text},
@@ -649,32 +678,25 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             resp = mdl.generate_content(
                 model=model_id,
                 contents=EVALUATOR_SYSTEM + "\n\n" + user_text + "\n\nReturn JSON only.",
-                config={"response_mime_type": "application/json"},
+                config={"response_mime_type": "application/json", "max_output_tokens": INTAKE_MAX_TOKENS},
             )
             raw_text = resp.text or "{}"
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"LLM intake call failed: {e}")
 
-    # Extract JSON
-    def _extract(t: str) -> dict:
-        t = t.strip()
-        if "```json" in t:
-            t = t.split("```json")[1].split("```")[0].strip()
-        elif "```" in t:
-            t = t.split("```")[1].split("```")[0].strip()
-        start, end = t.find("{"), t.rfind("}") + 1
-        if start == -1 or end <= start:
-            return {}
-        return json.loads(t[start:end])
-
+    # Extract JSON — lenient: recovers truncated / fenced / prose-wrapped output
+    # instead of dropping to {} (an empty parse is exactly what fed the infinite
+    # question loop on reasoning models).
     try:
-        parsed = _extract(raw_text)
+        parsed = loads_lenient(raw_text)
+        if not isinstance(parsed, dict):
+            parsed = {}
     except Exception as e:
-        log.warning("intake JSON parse failed: %s — raw: %s", e, raw_text[:200])
+        log.warning("intake JSON parse failed: %s — raw: %s", e, (raw_text or "")[:200])
         parsed = {}
 
     ready = bool(parsed.get("ready"))
-    score = int(parsed.get("completeness_score", 0))
+    score = int(parsed.get("completeness_score", 0) or 0)
     questions = parsed.get("questions", []) or []
     idea_input_raw = parsed.get("idea_input")
 
@@ -693,8 +715,25 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             log.warning("idea_input normalization failed: %s", e)
             ready = False
 
+    # Anti-loop guard: the user already answered a round of clarifying questions
+    # but the evaluator still won't green-light (typically a reasoning model
+    # burned its token budget and returned empty/partial JSON, or it keeps
+    # nitpicking). Never trap the user in a loop — proceed to research with the
+    # idea + their answers. Effectively: one round of questions max, then move on.
+    if not ready and req.prior_questions:
+        log.info(
+            "intake anti-loop: proceeding after prior answers (prior_q=%d, score=%d)",
+            len(req.prior_questions), score,
+        )
+        ready = True
+        idea_input_payload = _idea_input_from_raw(req)
+        questions = []
+        score = max(score, 70)
+
     if not ready and not questions:
-        # Safety net: if LLM said not ready but gave no questions, synthesize basics
+        # Safety net: LLM said not ready but gave no questions → synthesize basics.
+        # Only reachable on the FIRST round now (prior_questions empty) — every
+        # later round is handled by the anti-loop guard above.
         questions = [
             "Что именно будет делать твой продукт?",
             "Кто твой целевой пользователь?",
@@ -1277,7 +1316,7 @@ async def health() -> dict[str, Any]:
     return {
         "status": "ok",
         "service": "pmf-agent-api",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "active_runs": len(_RUNS),
     }
 
