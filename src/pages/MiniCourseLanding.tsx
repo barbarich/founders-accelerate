@@ -773,7 +773,7 @@ function MiniCourseLandingInner() {
     document.body.classList.add("mcl-body");
 
     // Top-of-funnel signal: landing rendered.
-    trackViewItemList("mini-course-landing");
+    trackViewItemList("mini-course-landing", computeOffer(readDeadline()).price);
 
     // Qualified intent: pricing section visible.
     const pricingEl = document.getElementById("buy");

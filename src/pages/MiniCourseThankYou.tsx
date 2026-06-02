@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { CheckCircle2, Send, Mail } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { trackPurchase, trackSelectContent } from "@/lib/analytics";
+import { trackPurchase, trackSelectContent, getCheckoutValue } from "@/lib/analytics";
 import "./mini-course-landing/styles.css";
 
 const TELEGRAM_BOT_URL = "https://t.me/AI_founders_course_bot";
-const COURSE_PRICE_USD = 19;
+// Fallback only — the real amount ($19 or $49) is captured at begin_checkout
+// and read via getCheckoutValue(). Used when that value is unavailable
+// (e.g. direct visit to /thank-you without a prior checkout in this tab).
+const FALLBACK_PRICE_USD = 19;
 
 /**
  * Resolve a stable transaction id for the purchase event.
@@ -34,7 +37,8 @@ export default function MiniCourseThankYou() {
     document.title = "Спасибо за покупку — AI-продукт, который покупают";
 
     const transactionId = resolveTransactionId();
-    trackPurchase({ transactionId, value: COURSE_PRICE_USD, currency: "USD" });
+    const value = getCheckoutValue() ?? FALLBACK_PRICE_USD;
+    trackPurchase({ transactionId, value, currency: "USD" });
 
     return () => {
       document.body.classList.remove("mcl-body");

@@ -61,11 +61,31 @@ const MINI_COURSE_ITEM = {
 };
 
 /** Mini-course landing first rendered — top-of-funnel signal. */
-export function trackViewItemList(listName: string = "mini-course-landing"): void {
+export function trackViewItemList(listName: string = "mini-course-landing", value: number = 19): void {
   track("view_item_list", {
     item_list_name: listName,
-    items: [MINI_COURSE_ITEM],
+    items: [{ ...MINI_COURSE_ITEM, price: value }],
   });
+}
+
+const CHECKOUT_VALUE_KEY = "mc_last_value";
+
+/**
+ * The price the buyer began checkout at. Persisted at begin_checkout and read
+ * on /thank-you so the purchase event reports the real amount ($19 or $49).
+ * sessionStorage survives the same-tab redirect out to Stripe and back.
+ */
+export function getCheckoutValue(): number | null {
+  try {
+    const raw = sessionStorage.getItem(CHECKOUT_VALUE_KEY);
+    if (raw != null) {
+      const n = Number(raw);
+      if (Number.isFinite(n) && n > 0) return n;
+    }
+  } catch {
+    /* private mode — ignore */
+  }
+  return null;
 }
 
 /** Pricing section scrolled into view — qualified intent signal. */
@@ -87,6 +107,7 @@ export function trackBeginCheckout(cta: string, value: number = 19): string {
   try {
     sessionStorage.setItem("mc_last_event_id", eventId);
     sessionStorage.setItem("mc_last_event_ts", String(Date.now()));
+    sessionStorage.setItem(CHECKOUT_VALUE_KEY, String(value));
   } catch {
     /* private mode — ignore */
   }
