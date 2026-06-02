@@ -69,11 +69,11 @@ export function trackViewItemList(listName: string = "mini-course-landing"): voi
 }
 
 /** Pricing section scrolled into view — qualified intent signal. */
-export function trackViewItem(): void {
+export function trackViewItem(value: number = 19): void {
   track("view_item", {
     currency: "USD",
-    value: 19,
-    items: [MINI_COURSE_ITEM],
+    value,
+    items: [{ ...MINI_COURSE_ITEM, price: value }],
   });
 }
 
@@ -82,7 +82,7 @@ export function trackViewItem(): void {
  * Returns the generated event_id so the caller can persist it for dedup
  * with the subsequent `purchase` event.
  */
-export function trackBeginCheckout(cta: string): string {
+export function trackBeginCheckout(cta: string, value: number = 19): string {
   const eventId = `bc_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
   try {
     sessionStorage.setItem("mc_last_event_id", eventId);
@@ -94,8 +94,8 @@ export function trackBeginCheckout(cta: string): string {
     event_id: eventId,
     cta_location: cta,
     currency: "USD",
-    value: 19,
-    items: [MINI_COURSE_ITEM],
+    value,
+    items: [{ ...MINI_COURSE_ITEM, price: value }],
     ...getFirstTouch(),
   });
   return eventId;

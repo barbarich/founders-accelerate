@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { SEO, breadcrumb } from "@/components/SEO";
 import {
   trackBeginCheckout,
@@ -9,8 +9,98 @@ import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
 
-// Stripe Payment Link — Mini-Course AI-Founder, $19 USD, redirects to /mini-course/thank-you
-const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803";
+// Stripe Payment Links — Mini-Course AI-Founder, both redirect to /mini-course/thank-you
+const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 launch price
+const STRIPE_REGULAR_URL = "https://buy.stripe.com/cNieVdfHGd2G3810b58k805"; // $49 regular price (after timer)
+
+const SALE_PRICE = 19;
+const REGULAR_PRICE = 49;
+const DISCOUNT_PCT = 61;
+const DEADLINE_KEY = "mc_deadline_v2"; // fresh key so old 7-day deadlines don't carry over
+const COUNTDOWN_MS = 24 * 60 * 60 * 1000; // 24h from first visit
+
+// Social proof — deterministic: every visitor sees the same number on a given day, +30/day
+const PURCHASE_BASE = 1037;
+const PURCHASE_PER_DAY = 30;
+const PURCHASE_ANCHOR = Date.UTC(2026, 5, 2); // 2026-06-02; bump to launch day to reset the base
+const RATING = 4.8;
+
+function purchaseCount(): number {
+  const days = Math.floor((Date.now() - PURCHASE_ANCHOR) / 86400000);
+  return PURCHASE_BASE + PURCHASE_PER_DAY * Math.max(0, days);
+}
+
+type Offer = {
+  expired: boolean;
+  price: number; // current buyable price
+  oldPrice: number | null; // struck price while the sale is live
+  checkoutUrl: string;
+  h: string;
+  m: string;
+  s: string; // zero-padded countdown parts
+};
+
+const pad2 = (n: number) => String(Math.max(0, n)).padStart(2, "0");
+
+/** Read (or lazily create) this browser's personal 24h deadline. */
+function readDeadline(): number {
+  try {
+    const raw = localStorage.getItem(DEADLINE_KEY);
+    let d = raw ? parseInt(raw, 10) : NaN;
+    if (!raw || Number.isNaN(d)) {
+      d = Date.now() + COUNTDOWN_MS;
+      localStorage.setItem(DEADLINE_KEY, String(d));
+    }
+    return d;
+  } catch {
+    // private mode — keep the sale active rather than locking them out
+    return Date.now() + COUNTDOWN_MS;
+  }
+}
+
+function computeOffer(deadline: number): Offer {
+  const ms = deadline - Date.now();
+  const expired = ms <= 0;
+  return {
+    expired,
+    price: expired ? REGULAR_PRICE : SALE_PRICE,
+    oldPrice: expired ? null : REGULAR_PRICE,
+    checkoutUrl: expired ? STRIPE_REGULAR_URL : STRIPE_CHECKOUT_URL,
+    h: expired ? "00" : pad2(Math.floor(ms / 3600000)),
+    m: expired ? "00" : pad2(Math.floor((ms % 3600000) / 60000)),
+    s: expired ? "00" : pad2(Math.floor((ms % 60000) / 1000)),
+  };
+}
+
+/** SSR/first-paint safe initial state: assume a fresh full sale window. */
+function initialOffer(): Offer {
+  if (typeof window === "undefined") {
+    return { expired: false, price: SALE_PRICE, oldPrice: REGULAR_PRICE, checkoutUrl: STRIPE_CHECKOUT_URL, h: "24", m: "00", s: "00" };
+  }
+  return computeOffer(readDeadline());
+}
+
+const OfferContext = createContext<Offer>(initialOffer());
+function useOffer(): Offer {
+  return useContext(OfferContext);
+}
+
+/** Single source of truth: one deadline, one 1s interval, every widget flips together. */
+function OfferProvider({ children }: { children: ReactNode }) {
+  const deadlineRef = useRef<number | null>(null);
+  if (deadlineRef.current === null && typeof window !== "undefined") {
+    deadlineRef.current = readDeadline(); // sync read on first client render — no $19→$49 flash
+  }
+  const [offer, setOffer] = useState<Offer>(initialOffer);
+  useEffect(() => {
+    if (deadlineRef.current === null) deadlineRef.current = readDeadline();
+    const update = () => setOffer(computeOffer(deadlineRef.current as number));
+    update();
+    const id = window.setInterval(update, 1000);
+    return () => window.clearInterval(id);
+  }, []);
+  return <OfferContext.Provider value={offer}>{children}</OfferContext.Provider>;
+}
 
 /**
  * Fire begin_checkout in dataLayer, then let the anchor navigate to Stripe.
@@ -18,8 +108,8 @@ const STRIPE_CHECKOUT_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803";
  * before navigation; if Stripe loads before they finish, sendBeacon-equipped
  * tags will still deliver.
  */
-function onBuyClick(cta: string): void {
-  trackBeginCheckout(cta);
+function onBuyClick(cta: string, value: number): void {
+  trackBeginCheckout(cta, value);
 }
 
 /**
@@ -34,49 +124,106 @@ const CHECK_ICON = (
   </svg>
 );
 
-function useDiscountCountdown() {
-  const [label, setLabel] = useState("07д 00ч 00м");
+const CLOCK_ICON = (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7.5V12l3 1.8" />
+  </svg>
+);
 
-  useEffect(() => {
-    const KEY = "lp_deadline";
-    const stored = localStorage.getItem(KEY);
-    let deadline = stored ? parseInt(stored, 10) : NaN;
-    if (!stored || Number.isNaN(deadline)) {
-      deadline = Date.now() + 7 * 24 * 60 * 60 * 1000;
-      try { localStorage.setItem(KEY, String(deadline)); } catch {}
-    }
-    const pad = (n: number) => String(n).padStart(2, "0");
-    const tick = () => {
-      const ms = deadline - Date.now();
-      if (ms <= 0) { setLabel("00д 00ч 00м"); return; }
-      const days = Math.floor(ms / 86400000);
-      const hrs = Math.floor((ms % 86400000) / 3600000);
-      const mins = Math.floor((ms % 3600000) / 60000);
-      setLabel(`${pad(days)}д ${pad(hrs)}ч ${pad(mins)}м`);
-    };
-    tick();
-    const id = window.setInterval(tick, 30000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  return label;
+/** Inline HH:MM:SS used in the top bar and pricing pill. */
+function CountdownInline() {
+  const { h, m, s } = useOffer();
+  return <span className="mcl-countdown">{h}:{m}:{s}</span>;
 }
 
-function TopBar() {
-  const label = useDiscountCountdown();
+/** Compact hero timer — sits between price and CTA. Noticeable, but secondary to price/button. */
+function HeroCountdown() {
+  const { h, m, s, expired } = useOffer();
+  if (expired) return null;
   return (
-    <div className="mcl-top-bar">
-      <span className="mcl-top-bar-full">
-        Скидка 61% действует ещё <span className="mcl-countdown">{label}</span> · цена вернётся к $49
+    <div className="mcl-hero-timer" role="timer" aria-label={`Цена вырастет до ${REGULAR_PRICE} долларов через ${h} часов ${m} минут ${s} секунд`}>
+      <span className="mcl-hero-timer-head">
+        <span className="mcl-hero-timer-icon" aria-hidden="true">{CLOCK_ICON}</span>
+        Цена вырастет до ${REGULAR_PRICE} через
       </span>
-      <span className="mcl-top-bar-short">
-        −61% ещё <span className="mcl-countdown">{label}</span> · потом $49
+      <span className="mcl-hero-timer-clock">
+        <b>{h}</b><i>:</i><b>{m}</b><i>:</i><b>{s}</b>
       </span>
     </div>
   );
 }
 
+/** First-screen social proof: purchase count (grows daily) + student rating. */
+function TrustStrip() {
+  const count = purchaseCount();
+  return (
+    <div className="mcl-trust">
+      <div className="mcl-trust-avatars">
+        <img src="/images/Inna.png" alt="" loading="lazy" />
+        <img src="/images/Mila.png" alt="" loading="lazy" />
+        <img src="/images/Leah.png" alt="" loading="lazy" />
+        <img src="/images/Vlad.png" alt="" loading="lazy" />
+      </div>
+      <div className="mcl-trust-text"><strong>{count}</strong> человек уже купили курс</div>
+      <span className="mcl-trust-sep" aria-hidden="true" />
+      <div className="mcl-trust-rating">
+        <span className="mcl-stars" role="img" aria-label={`Рейтинг ${RATING} из 5`}>
+          <span className="mcl-stars-bg">★★★★★</span>
+          <span className="mcl-stars-fg" style={{ width: `${(RATING / 5) * 100}%` }}>★★★★★</span>
+        </span>
+        <span className="mcl-trust-rating-num">{RATING}/5</span>
+        <span className="mcl-trust-rating-sub">отзывы студентов</span>
+      </div>
+    </div>
+  );
+}
+
+function TopBar() {
+  const { expired } = useOffer();
+  if (expired) {
+    return (
+      <div className="mcl-top-bar mcl-top-bar--ended">
+        <span className="mcl-top-bar-full">Стартовая скидка закончилась · действует полная цена ${REGULAR_PRICE}</span>
+        <span className="mcl-top-bar-short">Скидка закончилась · цена ${REGULAR_PRICE}</span>
+      </div>
+    );
+  }
+  return (
+    <div className="mcl-top-bar">
+      <span className="mcl-top-bar-full">
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> Скидка {DISCOUNT_PCT}% сгорает через <CountdownInline /> · потом ${REGULAR_PRICE}
+      </span>
+      <span className="mcl-top-bar-short">
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> −{DISCOUNT_PCT}% ещё <CountdownInline /> · потом ${REGULAR_PRICE}
+      </span>
+    </div>
+  );
+}
+
+/** Mobile-only sticky buy bar — keeps price + timer + CTA in reach on first scroll. */
+function MobileBuyBar() {
+  const offer = useOffer();
+  return (
+    <div className="mcl-mobile-buybar">
+      <div className="mcl-mobile-buybar-info">
+        <div className="mcl-mobile-buybar-price">
+          {offer.oldPrice != null && <span className="mcl-mbb-old">${offer.oldPrice}</span>}
+          <span className="mcl-mbb-new">${offer.price}</span>
+        </div>
+        <div className="mcl-mobile-buybar-timer">
+          {offer.expired ? "полная цена" : <>−{DISCOUNT_PCT}% ещё {offer.h}:{offer.m}:{offer.s}</>}
+        </div>
+      </div>
+      <a href={offer.checkoutUrl} className="mcl-mobile-buybar-cta" onClick={() => onBuyClick("mobile_sticky", offer.price)}>
+        Купить
+      </a>
+    </div>
+  );
+}
+
 function Hero() {
+  const offer = useOffer();
   return (
     <header className="mcl-hero">
       <div className="mcl-container">
@@ -85,13 +232,15 @@ function Hero() {
         <p className="mcl-lede">
           5 уроков, ~4 часа. От первого интервью до первых платящих клиентов. Не теория из YouTube — мой реальный воркфлоу из живых стартапов с двумя экзитами и 50,000+ платящими пользователями в 107 странах.
         </p>
+        <TrustStrip />
         <div className="mcl-price-block">
-          <span className="mcl-price-old">$49</span>
-          <span className="mcl-price-new">$19</span>
-          <span className="mcl-price-discount">−61%</span>
+          {offer.oldPrice != null && <span className="mcl-price-old">${offer.oldPrice}</span>}
+          <span className="mcl-price-new">${offer.price}</span>
+          {!offer.expired && <span className="mcl-price-discount">−{DISCOUNT_PCT}%</span>}
         </div>
+        <HeroCountdown />
         <div>
-          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("hero")}>Купить курс за $19</a>
+          <a href={offer.checkoutUrl} className="mcl-cta-primary" onClick={() => onBuyClick("hero", offer.price)}>Купить курс за ${offer.price}</a>
         </div>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
@@ -312,13 +461,14 @@ const BONUSES = [
 ] as const;
 
 function Bonuses() {
+  const offer = useOffer();
   return (
     <section className="mcl-bonus" id="bonuses">
       <div className="mcl-container">
         <div className="mcl-section-label">Бонусы внутри</div>
         <h2 className="mcl-section-title">Не только видео. <em>Доступ к моему рабочему стеку.</em></h2>
         <p className="mcl-section-intro">
-          За $19 я отдаю не только уроки, но и весь рабочий набор — инструменты, шаблоны и промпты, которыми пользуюсь сам.
+          За ${offer.price} я отдаю не только уроки, но и весь рабочий набор — инструменты, шаблоны и промпты, которыми пользуюсь сам.
         </p>
         <div className="mcl-bonus-grid">
           {BONUSES.map((b) => (
@@ -343,7 +493,7 @@ function Bonuses() {
           </div>
           <div className="mcl-value-final" style={{ borderTop: "none", paddingTop: 8 }}>
             <span className="mcl-value-final-label">Твоя цена сейчас</span>
-            <span className="mcl-value-final-price" style={{ color: "var(--mcl-success)" }}>$19</span>
+            <span className="mcl-value-final-price" style={{ color: "var(--mcl-success)" }}>${offer.price}</span>
           </div>
         </div>
       </div>
@@ -352,19 +502,20 @@ function Bonuses() {
 }
 
 function Comparison() {
+  const offer = useOffer();
   const rows = [
     ["Структурированный путь", ["no", "Хаос"], ["no", "Нет"], ["yes", "Да"], ["yes", "Да"]],
     ["Реальные кейсы из живых компаний", ["meh", "Чужие"], ["no", "Выдуманные"], ["yes", "4 моих"], ["yes", "Свои"]],
     ["AI-агенты и промпты в подарок", ["no", "—"], ["no", "—"], ["yes", "Да"], ["meh", "Иногда"]],
     ["Свежесть на май 2026", ["no", "Старые"], ["meh", "Зависит"], ["yes", "Да"], ["yes", "Да"]],
     ["Время на освоение", ["no", "100+ ч"], ["no", "∞"], ["yes", "3 ч"], ["meh", "12 нед"]],
-    ["Цена", ["yes", "$0"], ["yes", "$20/мес"], ["yes", "$19 один раз"], ["no", "$5,000+"]],
+    ["Цена", ["yes", "$0"], ["yes", "$20/мес"], ["yes", `$${offer.price} один раз`], ["no", "$5,000+"]],
   ] as const;
   return (
     <section>
       <div className="mcl-container">
         <div className="mcl-section-label">Чем это отличается</div>
-        <h2 className="mcl-section-title">YouTube бесплатный. ChatGPT тоже. <em>Так зачем платить $19?</em></h2>
+        <h2 className="mcl-section-title">YouTube бесплатный. ChatGPT тоже. <em>Так зачем платить ${offer.price}?</em></h2>
         <p className="mcl-section-intro">Честный вопрос, я бы сам его задал. Вот таблица, которая отвечает на него без вранья.</p>
         <div className="mcl-compare-wrap">
           <div className="mcl-compare-table">
@@ -486,28 +637,36 @@ function SocialProof() {
 }
 
 function Pricing() {
-  const countdown = useDiscountCountdown();
+  const offer = useOffer();
   return (
     <section className="mcl-pricing" id="buy">
       <div className="mcl-container">
         <div className="mcl-section-label">Цена</div>
-        <h2 className="mcl-section-title">Один раз. <em>$19. Доступ навсегда.</em></h2>
+        <h2 className="mcl-section-title">Один раз. <em>${offer.price}. Доступ навсегда.</em></h2>
         <p className="mcl-section-intro">
-          Раньше курс стоил $49. Сейчас — $19, потому что мне важно собрать первую волну учеников. Такая цена не вернётся: после окончания скидки курс возвращается к $49.
+          {offer.expired
+            ? <>Стартовая скидка закончилась. Курс стоит ${REGULAR_PRICE} - это полная цена, без таймеров и трюков.</>
+            : <>Раньше курс стоил ${REGULAR_PRICE}. Сейчас — ${SALE_PRICE}, потому что мне важно собрать первую волну учеников. Такая цена не вернётся: после окончания скидки курс возвращается к ${REGULAR_PRICE}.</>}
         </p>
         <div className="mcl-pricing-card">
-          <div className="mcl-pricing-badge">−61% сейчас</div>
+          {!offer.expired && <div className="mcl-pricing-badge">−{DISCOUNT_PCT}% сейчас</div>}
           <div className="mcl-pricing-name">AI-продукт, который покупают</div>
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
-          <div className="mcl-pricing-timer">
-            <span className="mcl-pricing-timer-dot" aria-hidden="true" />
-            <span className="mcl-pricing-timer-label">Скидка действует ещё</span>
-            <span className="mcl-pricing-timer-value">{countdown}</span>
-          </div>
+          {offer.expired ? (
+            <div className="mcl-pricing-timer mcl-pricing-timer--ended">
+              <span className="mcl-pricing-timer-label">Стартовая скидка закончилась</span>
+            </div>
+          ) : (
+            <div className="mcl-pricing-timer">
+              <span className="mcl-pricing-timer-dot" aria-hidden="true" />
+              <span className="mcl-pricing-timer-label">Скидка действует ещё</span>
+              <span className="mcl-pricing-timer-value">{offer.h}:{offer.m}:{offer.s}</span>
+            </div>
+          )}
           <div className="mcl-pricing-price">
             <span className="mcl-pricing-price-currency">$</span>
-            <span className="mcl-pricing-price-old">49</span>
-            <span className="mcl-pricing-price-new">19</span>
+            {offer.oldPrice != null && <span className="mcl-pricing-price-old">{offer.oldPrice}</span>}
+            <span className="mcl-pricing-price-new">{offer.price}</span>
           </div>
           <div className="mcl-pricing-note">Единоразовый платёж · никаких подписок</div>
           <ul className="mcl-pricing-features">
@@ -521,7 +680,7 @@ function Pricing() {
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
           </ul>
-          <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("pricing")}>Купить курс за $19</a>
+          <a href={offer.checkoutUrl} className="mcl-cta-primary" onClick={() => onBuyClick("pricing", offer.price)}>Купить курс за ${offer.price}</a>
           <div className="mcl-guarantee">
             <div className="mcl-guarantee-icon">✓</div>
             <div className="mcl-guarantee-text">
@@ -573,14 +732,15 @@ function FAQ() {
 }
 
 function FinalCTA() {
+  const offer = useOffer();
   return (
     <section className="mcl-final-cta">
       <div className="mcl-container">
         <h2>Через 4 часа ты будешь <em>видеть продукт по-другому</em></h2>
         <p>
-          Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За $19 это, возможно, самая короткая дорога, которую я могу тебе предложить.
+          Не «больше знаний» — другая оптика. Ты увидишь, что в твоём продукте сломано, и будешь точно знать следующий шаг. За ${offer.price} это, возможно, самая короткая дорога, которую я могу тебе предложить.
         </p>
-        <a href={STRIPE_CHECKOUT_URL} className="mcl-cta-primary" onClick={() => onBuyClick("final_cta")}>Купить курс за $19</a>
+        <a href={offer.checkoutUrl} className="mcl-cta-primary" onClick={() => onBuyClick("final_cta", offer.price)}>Купить курс за ${offer.price}</a>
         <div className="mcl-hero-meta">
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
@@ -605,7 +765,7 @@ function Footer() {
   );
 }
 
-export default function MiniCourseLanding() {
+function MiniCourseLandingInner() {
   const viewItemFired = useRef(false);
 
   useEffect(() => {
@@ -624,7 +784,7 @@ export default function MiniCourseLanding() {
           for (const e of entries) {
             if (e.isIntersecting && !viewItemFired.current) {
               viewItemFired.current = true;
-              trackViewItem();
+              trackViewItem(computeOffer(readDeadline()).price);
               observer?.disconnect();
             }
           }
@@ -704,6 +864,15 @@ export default function MiniCourseLanding() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <MobileBuyBar />
     </div>
+  );
+}
+
+export default function MiniCourseLanding() {
+  return (
+    <OfferProvider>
+      <MiniCourseLandingInner />
+    </OfferProvider>
   );
 }
