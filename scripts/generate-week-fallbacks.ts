@@ -59,6 +59,8 @@ const MEETINGS = [
   { n: 8, file: "src/components/presentation/meeting8/Meeting8PresentationShell.tsx" },
   { n: 9, file: "src/components/presentation/meeting9/Meeting9PresentationShell.tsx" },
   { n: 10, file: "src/components/presentation/meeting10/Meeting10PresentationShell.tsx" },
+  { n: 11, file: "src/components/presentation/meeting11/Meeting11PresentationShell.tsx" },
+  { n: 12, file: "src/components/presentation/meeting12/Meeting12PresentationShell.tsx" },
 ];
 
 const TOTAL_MEETINGS = 12;

@@ -51,6 +51,7 @@ import PublicMeeting8Shell from "@/components/presentation/meeting8/PublicMeetin
 import PublicMeeting9Shell from "@/components/presentation/meeting9/PublicMeeting9Shell";
 import PublicMeeting10Shell from "@/components/presentation/meeting10/PublicMeeting10Shell";
 import PublicMeeting11Shell from "@/components/presentation/meeting11/PublicMeeting11Shell";
+import PublicMeeting12Shell from "@/components/presentation/meeting12/PublicMeeting12Shell";
 import PublicLesson0Shell from "@/components/presentation/recorded-course/lesson0/PublicLesson0Shell";
 import PublicLesson1Shell from "@/components/presentation/recorded-course/lesson1/PublicLesson1Shell";
 import PublicLesson2Shell from "@/components/presentation/recorded-course/lesson2/PublicLesson2Shell";
@@ -212,6 +213,7 @@ const App = () => (
           <Route path="/programm-week9" element={<PublicMeeting9Shell />} />
           <Route path="/programm-week10" element={<PublicMeeting10Shell />} />
           <Route path="/programm-week11" element={<PublicMeeting11Shell />} />
+          <Route path="/programm-week12" element={<PublicMeeting12Shell />} />
           <Route path="/recorded-course/lesson0" element={<PublicLesson0Shell />} />
           <Route path="/recorded-course/lesson1" element={<PublicLesson1Shell />} />
           <Route path="/recorded-course/lesson2" element={<PublicLesson2Shell />} />
