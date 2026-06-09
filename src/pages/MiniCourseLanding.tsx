@@ -16,8 +16,8 @@ const STRIPE_REGULAR_URL = "https://buy.stripe.com/cNieVdfHGd2G3810b58k805"; // 
 const SALE_PRICE = 19;
 const REGULAR_PRICE = 49;
 const DISCOUNT_PCT = 61;
-const DEADLINE_KEY = "mc_deadline_v2"; // fresh key so old 7-day deadlines don't carry over
-const COUNTDOWN_MS = 24 * 60 * 60 * 1000; // 24h from first visit
+const DEADLINE_KEY = "mc_deadline_v3"; // fresh key so old 24h deadlines don't carry over
+const COUNTDOWN_MS = 72 * 60 * 60 * 1000; // 72h from first visit
 
 // Social proof — deterministic: every visitor sees the same number on a given day, +30/day
 const PURCHASE_BASE = 1037;
@@ -42,7 +42,7 @@ type Offer = {
 
 const pad2 = (n: number) => String(Math.max(0, n)).padStart(2, "0");
 
-/** Read (or lazily create) this browser's personal 24h deadline. */
+/** Read (or lazily create) this browser's personal 72h deadline. */
 function readDeadline(): number {
   try {
     const raw = localStorage.getItem(DEADLINE_KEY);
@@ -75,7 +75,7 @@ function computeOffer(deadline: number): Offer {
 /** SSR/first-paint safe initial state: assume a fresh full sale window. */
 function initialOffer(): Offer {
   if (typeof window === "undefined") {
-    return { expired: false, price: SALE_PRICE, oldPrice: REGULAR_PRICE, checkoutUrl: STRIPE_CHECKOUT_URL, h: "24", m: "00", s: "00" };
+    return { expired: false, price: SALE_PRICE, oldPrice: REGULAR_PRICE, checkoutUrl: STRIPE_CHECKOUT_URL, h: "72", m: "00", s: "00" };
   }
   return computeOffer(readDeadline());
 }
