@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,87 +6,91 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import { supportedLangs, type Lang } from "@/i18n/translations";
-import Agents from "./pages/Agents";
-import Landing from "./pages/Landing";
-import Lens from "./pages/Lens";
-import NewLanding from "./pages/NewLanding";
-import MiniCourseLanding from "./pages/MiniCourseLanding";
-import PmfAgent from "./pages/PmfAgent";
-import Accelerator from "./pages/Accelerator";
-import Apply from "./pages/Apply";
-import Mentor from "./pages/Mentor";
-import PresentationShell from "@/components/presentation/PresentationShell";
-import Pitch1Shell from "@/components/presentation/pitch1/Pitch1Shell";
-import Register from "./pages/Register";
-import Program from "./pages/Program";
-import NotFound from "./pages/NotFound";
-import ThankYou from "./pages/ThankYou";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import ContactUs from "./pages/ContactUs";
-import AdminLayout from "./pages/admin/AdminLayout";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminPresentations from "./pages/admin/AdminPresentations";
-import AdminMonthlyPlans from "./pages/admin/AdminMonthlyPlans";
-import AdminMeetings from "./pages/admin/AdminMeetings";
-import AdminUsers from "./pages/admin/AdminUsers";
-import AdminCohorts from "./pages/admin/AdminCohorts";
-import AdminCohortDetail from "./pages/admin/AdminCohortDetail";
-import AdminAnnouncements from "./pages/admin/AdminAnnouncements";
 import { AdminGuard } from "@/components/admin/AdminGuard";
-import AdminLogin from "./pages/admin/AdminLogin";
-import CabinetLayout from "./pages/cabinet/CabinetLayout";
-import CabinetLogin from "./pages/cabinet/CabinetLogin";
-import CabinetDashboard from "./pages/cabinet/CabinetDashboard";
-import CabinetProgram from "./pages/cabinet/CabinetProgram";
-import CabinetResources from "./pages/cabinet/CabinetResources";
-import Meeting1PresentationShell from "@/components/presentation/meeting1/Meeting1PresentationShell";
-import PublicMeeting1Shell from "@/components/presentation/meeting1/PublicMeeting1Shell";
-import PublicMeeting2Shell from "@/components/presentation/meeting2/PublicMeeting2Shell";
-import PublicMeeting3Shell from "@/components/presentation/meeting3/PublicMeeting3Shell";
-import PublicMeeting4Shell from "@/components/presentation/meeting4/PublicMeeting4Shell";
-import PublicMeeting5Shell from "@/components/presentation/meeting5/PublicMeeting5Shell";
-import PublicMeeting6Shell from "@/components/presentation/meeting6/PublicMeeting6Shell";
-import PublicMeeting7Shell from "@/components/presentation/meeting7/PublicMeeting7Shell";
-import PublicMeeting8Shell from "@/components/presentation/meeting8/PublicMeeting8Shell";
-import PublicMeeting9Shell from "@/components/presentation/meeting9/PublicMeeting9Shell";
-import PublicMeeting10Shell from "@/components/presentation/meeting10/PublicMeeting10Shell";
-import PublicMeeting11Shell from "@/components/presentation/meeting11/PublicMeeting11Shell";
-import PublicMeeting12Shell from "@/components/presentation/meeting12/PublicMeeting12Shell";
-import PublicLesson0Shell from "@/components/presentation/recorded-course/lesson0/PublicLesson0Shell";
-import PublicLesson1Shell from "@/components/presentation/recorded-course/lesson1/PublicLesson1Shell";
-import PublicLesson2Shell from "@/components/presentation/recorded-course/lesson2/PublicLesson2Shell";
-import PublicLesson3Shell from "@/components/presentation/recorded-course/lesson3/PublicLesson3Shell";
-import PublicLesson4Shell from "@/components/presentation/recorded-course/lesson4/PublicLesson4Shell";
-import PublicLesson5Shell from "@/components/presentation/recorded-course/lesson5/PublicLesson5Shell";
-import PublicLesson6Shell from "@/components/presentation/recorded-course/lesson6/PublicLesson6Shell";
-import PublicLesson7Shell from "@/components/presentation/recorded-course/lesson7/PublicLesson7Shell";
-import PublicLesson8Shell from "@/components/presentation/recorded-course/lesson8/PublicLesson8Shell";
-import PublicLesson9Shell from "@/components/presentation/recorded-course/lesson9/PublicLesson9Shell";
-import PublicLesson10Shell from "@/components/presentation/recorded-course/lesson10/PublicLesson10Shell";
-import PublicLesson11Shell from "@/components/presentation/recorded-course/lesson11/PublicLesson11Shell";
-import PublicLesson12Shell from "@/components/presentation/recorded-course/lesson12/PublicLesson12Shell";
-import PublicLesson13Shell from "@/components/presentation/recorded-course/lesson13/PublicLesson13Shell";
-import PublicLesson14Shell from "@/components/presentation/recorded-course/lesson14/PublicLesson14Shell";
-import PublicLesson15Shell from "@/components/presentation/recorded-course/lesson15/PublicLesson15Shell";
-import PublicLesson16Shell from "@/components/presentation/recorded-course/lesson16/PublicLesson16Shell";
-import PublicFOM1Shell from "@/components/presentation/founderOsMini1/PublicFOM1Shell";
-import FOM1Shell from "@/components/presentation/founderOsMini1/FOM1Shell";
-import PublicFOM2Shell from "@/components/presentation/founderOsMini2/PublicFOM2Shell";
-import FOM2Shell from "@/components/presentation/founderOsMini2/FOM2Shell";
-import PublicFOM3Shell from "@/components/presentation/founderOsMini3/PublicFOM3Shell";
-import FOM3Shell from "@/components/presentation/founderOsMini3/FOM3Shell";
-import PublicFOM4Shell from "@/components/presentation/founderOsMini4/PublicFOM4Shell";
-import FOM4Shell from "@/components/presentation/founderOsMini4/FOM4Shell";
-import PublicFOM5Shell from "@/components/presentation/founderOsMini5/PublicFOM5Shell";
-import FOM5Shell from "@/components/presentation/founderOsMini5/FOM5Shell";
-import MiniCourseLesson1 from "./pages/MiniCourseLesson1";
-import MiniCourseLesson1Text from "./pages/MiniCourseLesson1Text";
-import MiniCourseLesson0 from "./pages/MiniCourseLesson0";
-import MiniCourseLesson2 from "./pages/MiniCourseLesson2";
-import MiniCourseLesson3 from "./pages/MiniCourseLesson3";
-import MiniCourseLesson4 from "./pages/MiniCourseLesson4";
-import MiniCourseThankYou from "./pages/MiniCourseThankYou";
+
+// Eager: default route (/ -> /ru) must paint without an extra network round-trip.
+import MiniCourseLanding from "./pages/MiniCourseLanding";
+import NotFound from "./pages/NotFound";
+
+// Everything else is code-split: each route loads its own chunk on demand,
+// keeping the main bundle small (was a single ~4.3 MB bundle with all decks).
+const Agents = lazy(() => import("./pages/Agents"));
+const Lens = lazy(() => import("./pages/Lens"));
+const NewLanding = lazy(() => import("./pages/NewLanding"));
+const PmfAgent = lazy(() => import("./pages/PmfAgent"));
+const Accelerator = lazy(() => import("./pages/Accelerator"));
+const Apply = lazy(() => import("./pages/Apply"));
+const Mentor = lazy(() => import("./pages/Mentor"));
+const PresentationShell = lazy(() => import("@/components/presentation/PresentationShell"));
+const Pitch1Shell = lazy(() => import("@/components/presentation/pitch1/Pitch1Shell"));
+const Register = lazy(() => import("./pages/Register"));
+const Program = lazy(() => import("./pages/Program"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const ContactUs = lazy(() => import("./pages/ContactUs"));
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const AdminPresentations = lazy(() => import("./pages/admin/AdminPresentations"));
+const AdminMonthlyPlans = lazy(() => import("./pages/admin/AdminMonthlyPlans"));
+const AdminMeetings = lazy(() => import("./pages/admin/AdminMeetings"));
+const AdminUsers = lazy(() => import("./pages/admin/AdminUsers"));
+const AdminCohorts = lazy(() => import("./pages/admin/AdminCohorts"));
+const AdminCohortDetail = lazy(() => import("./pages/admin/AdminCohortDetail"));
+const AdminAnnouncements = lazy(() => import("./pages/admin/AdminAnnouncements"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const CabinetLayout = lazy(() => import("./pages/cabinet/CabinetLayout"));
+const CabinetLogin = lazy(() => import("./pages/cabinet/CabinetLogin"));
+const CabinetDashboard = lazy(() => import("./pages/cabinet/CabinetDashboard"));
+const CabinetProgram = lazy(() => import("./pages/cabinet/CabinetProgram"));
+const CabinetResources = lazy(() => import("./pages/cabinet/CabinetResources"));
+const Meeting1PresentationShell = lazy(() => import("@/components/presentation/meeting1/Meeting1PresentationShell"));
+const PublicMeeting1Shell = lazy(() => import("@/components/presentation/meeting1/PublicMeeting1Shell"));
+const PublicMeeting2Shell = lazy(() => import("@/components/presentation/meeting2/PublicMeeting2Shell"));
+const PublicMeeting3Shell = lazy(() => import("@/components/presentation/meeting3/PublicMeeting3Shell"));
+const PublicMeeting4Shell = lazy(() => import("@/components/presentation/meeting4/PublicMeeting4Shell"));
+const PublicMeeting5Shell = lazy(() => import("@/components/presentation/meeting5/PublicMeeting5Shell"));
+const PublicMeeting6Shell = lazy(() => import("@/components/presentation/meeting6/PublicMeeting6Shell"));
+const PublicMeeting7Shell = lazy(() => import("@/components/presentation/meeting7/PublicMeeting7Shell"));
+const PublicMeeting8Shell = lazy(() => import("@/components/presentation/meeting8/PublicMeeting8Shell"));
+const PublicMeeting9Shell = lazy(() => import("@/components/presentation/meeting9/PublicMeeting9Shell"));
+const PublicMeeting10Shell = lazy(() => import("@/components/presentation/meeting10/PublicMeeting10Shell"));
+const PublicMeeting11Shell = lazy(() => import("@/components/presentation/meeting11/PublicMeeting11Shell"));
+const PublicMeeting12Shell = lazy(() => import("@/components/presentation/meeting12/PublicMeeting12Shell"));
+const PublicLesson0Shell = lazy(() => import("@/components/presentation/recorded-course/lesson0/PublicLesson0Shell"));
+const PublicLesson1Shell = lazy(() => import("@/components/presentation/recorded-course/lesson1/PublicLesson1Shell"));
+const PublicLesson2Shell = lazy(() => import("@/components/presentation/recorded-course/lesson2/PublicLesson2Shell"));
+const PublicLesson3Shell = lazy(() => import("@/components/presentation/recorded-course/lesson3/PublicLesson3Shell"));
+const PublicLesson4Shell = lazy(() => import("@/components/presentation/recorded-course/lesson4/PublicLesson4Shell"));
+const PublicLesson5Shell = lazy(() => import("@/components/presentation/recorded-course/lesson5/PublicLesson5Shell"));
+const PublicLesson6Shell = lazy(() => import("@/components/presentation/recorded-course/lesson6/PublicLesson6Shell"));
+const PublicLesson7Shell = lazy(() => import("@/components/presentation/recorded-course/lesson7/PublicLesson7Shell"));
+const PublicLesson8Shell = lazy(() => import("@/components/presentation/recorded-course/lesson8/PublicLesson8Shell"));
+const PublicLesson9Shell = lazy(() => import("@/components/presentation/recorded-course/lesson9/PublicLesson9Shell"));
+const PublicLesson10Shell = lazy(() => import("@/components/presentation/recorded-course/lesson10/PublicLesson10Shell"));
+const PublicLesson11Shell = lazy(() => import("@/components/presentation/recorded-course/lesson11/PublicLesson11Shell"));
+const PublicLesson12Shell = lazy(() => import("@/components/presentation/recorded-course/lesson12/PublicLesson12Shell"));
+const PublicLesson13Shell = lazy(() => import("@/components/presentation/recorded-course/lesson13/PublicLesson13Shell"));
+const PublicLesson14Shell = lazy(() => import("@/components/presentation/recorded-course/lesson14/PublicLesson14Shell"));
+const PublicLesson15Shell = lazy(() => import("@/components/presentation/recorded-course/lesson15/PublicLesson15Shell"));
+const PublicLesson16Shell = lazy(() => import("@/components/presentation/recorded-course/lesson16/PublicLesson16Shell"));
+const PublicFOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/PublicFOM1Shell"));
+const FOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/FOM1Shell"));
+const PublicFOM2Shell = lazy(() => import("@/components/presentation/founderOsMini2/PublicFOM2Shell"));
+const FOM2Shell = lazy(() => import("@/components/presentation/founderOsMini2/FOM2Shell"));
+const PublicFOM3Shell = lazy(() => import("@/components/presentation/founderOsMini3/PublicFOM3Shell"));
+const FOM3Shell = lazy(() => import("@/components/presentation/founderOsMini3/FOM3Shell"));
+const PublicFOM4Shell = lazy(() => import("@/components/presentation/founderOsMini4/PublicFOM4Shell"));
+const FOM4Shell = lazy(() => import("@/components/presentation/founderOsMini4/FOM4Shell"));
+const PublicFOM5Shell = lazy(() => import("@/components/presentation/founderOsMini5/PublicFOM5Shell"));
+const FOM5Shell = lazy(() => import("@/components/presentation/founderOsMini5/FOM5Shell"));
+const MiniCourseLesson1 = lazy(() => import("./pages/MiniCourseLesson1"));
+const MiniCourseLesson1Text = lazy(() => import("./pages/MiniCourseLesson1Text"));
+const MiniCourseLesson0 = lazy(() => import("./pages/MiniCourseLesson0"));
+const MiniCourseLesson2 = lazy(() => import("./pages/MiniCourseLesson2"));
+const MiniCourseLesson3 = lazy(() => import("./pages/MiniCourseLesson3"));
+const MiniCourseLesson4 = lazy(() => import("./pages/MiniCourseLesson4"));
+const MiniCourseThankYou = lazy(() => import("./pages/MiniCourseThankYou"));
 
 const queryClient = new QueryClient();
 
@@ -189,6 +194,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        {/* fallback={null}: the inline script in index.html already paints the
+            correct background, so no spinner is needed while a chunk loads. */}
+        <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<Navigate to="/ru" replace />} />
           <Route path="/:lang" element={<LangLanding />} />
@@ -279,6 +287,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

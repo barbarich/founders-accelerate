@@ -57,10 +57,21 @@
     }
     </script>
 
-    <!-- Fonts: Syne + DM Sans -->
+    <!-- Instant-hide of the static SEO fallback when JS is available + first-paint background
+         matching the destination page (no unstyled-text flash, no white flash). -->
+    <script>
+      document.documentElement.classList.add('js');
+      var p = location.pathname;
+      var dark = /^\/(programm-week|recorded-course|founder-os-mini|admin|cabinet|pitch|mini-course\/lesson)/.test(p);
+      document.documentElement.style.background = dark ? '#0a0a0a' : '#f8f8f4';
+    </script>
+    <style>html.js #seo-fallback{display:none}</style>
+
+    <!-- Fonts: single consolidated stylesheet (all families used across landing + decks).
+         Kept here instead of CSS @import so the download starts in parallel with the JS bundle. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Google Tag Manager — loads GA4 + Meta Pixel + future ad platforms. -->
     <script>
@@ -106,7 +117,7 @@
       </div>
     </noscript>
     <div id="root">
-      <main style="max-width:920px;margin:0 auto;padding:48px 24px;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.65;color:#111;background:#f8f8f4;">
+      <main id="seo-fallback" style="max-width:920px;margin:0 auto;padding:48px 24px;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.65;color:#111;background:#f8f8f4;">
         <h1 style="font-size:42px;line-height:1.05;margin:0 0 18px;">Как построить AI-продукт, который покупают</h1>
         <p style="font-size:20px;margin:0 0 28px;color:#333;">Мини-курс Михаэля Барбарича: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Страница содержит статический HTML-фолбэк, чтобы поисковые системы и LLM-модели могли читать сайт без JavaScript.</p>
         <section aria-labelledby="course-summary">

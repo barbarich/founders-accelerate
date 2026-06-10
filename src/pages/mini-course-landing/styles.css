@@ -1,7 +1,7 @@
 /* Mini-course landing — restyled to match the NewLanding (light cream / lime accent) look. */
 /* Scoped via .mcl-root and .mcl-body class on <body>. */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+/* Fonts (Space Grotesk, DM Sans, JetBrains Mono) are loaded via the consolidated <link> in index.html. */
 
 .mcl-root {
   /* Palette mirrors NewLanding (S.* tokens) */
