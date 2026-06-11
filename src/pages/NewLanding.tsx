@@ -185,7 +185,7 @@ export default function NewLanding() {
 
                 {/* quote card */}
                 <div style={{ marginTop: 36, background: S.surface, borderRadius: 16, padding: "20px 24px", boxShadow: cardShadow, display: "flex", gap: 16, alignItems: "center" }}>
-                  <img src="/images/Leah.png" alt="Leah" style={{ width: 44, height: 44, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
+                  <img src="/images/Leah.png" alt="Leah, program participant" style={{ width: 44, height: 44, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
                   <div>
                     <p style={{ fontSize: 14, color: S.secondary, lineHeight: 1.55, margin: 0, fontStyle: "italic" }}>&ldquo;{t.hero.quote}&rdquo;</p>
                     <div style={{ marginTop: 6 }}>
@@ -552,7 +552,7 @@ export default function NewLanding() {
                       const photoMap: Record<string, string> = { "Leah": "/images/Leah.png", "Inna & Alexandra": "/images/Inna.png", "\u0418\u043d\u043d\u0430 \u0438 \u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440\u0430": "/images/Inna.png", "Vlad": "/images/Vlad.png", "\u0412\u043b\u0430\u0434": "/images/Vlad.png", "Mila": "/images/Mila.png", "\u041c\u0438\u043b\u0430": "/images/Mila.png" };
                       const src = photoMap[r.name];
                       return src ? (
-                        <img src={src} alt={r.name} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
+                        <img src={src} alt={`${r.name}, program participant`} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
                       ) : (
                         <div style={{ width: 40, height: 40, borderRadius: "50%", background: r.bgColor, color: r.textColor, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700 }}>{r.initials}</div>
                       );
