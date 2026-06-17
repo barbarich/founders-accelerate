@@ -29,6 +29,18 @@
     <!-- og:site_name only (per-page Helmet provides og:title/description/url/image; keeping site_name global is safe) -->
     <meta property="og:site_name" content="The Founders Circle" />
 
+    <!-- Static OG/Twitter fallback for non-JS social crawlers (LinkedIn, Slack, Facebook).
+         Per-page Helmet replaces these for JS-executing crawlers. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://founders-circle.space/" />
+    <meta property="og:title" content="The Founders Circle — AI-первый акселератор для соло-фаундеров" />
+    <meta property="og:description" content="Мини-курс и 30-дневный акселератор для соло-фаундеров. От идеи до первых платящих клиентов." />
+    <meta property="og:image" content="https://founders-circle.space/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Founders Circle — AI-первый акселератор для соло-фаундеров" />
+    <meta name="twitter:description" content="Мини-курс и 30-дневный акселератор для соло-фаундеров. От идеи до первых платящих клиентов." />
+    <meta name="twitter:image" content="https://founders-circle.space/og-image.png" />
+
     <!-- Organization schema (global) -->
     <script type="application/ld+json">
     {
