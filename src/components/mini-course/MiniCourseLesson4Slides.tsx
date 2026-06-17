@@ -690,7 +690,7 @@ const L4_B2B_METRICS = [
   { num: "1–3%", text: "reply rate на cold email — это норма 2026" },
   { num: "0.5–1%", text: "booked meetings от total contacts" },
 ];
-const L4B2BTools = () => {
+export const L4B2BTools = () => {
   const isMobile = useIsMobile();
   if (isMobile) {
     return (
