@@ -8,6 +8,22 @@ from models.dataclasses import (
 )
 from .base import call_agent
 
+
+def _safe_int(v: Any, default: int = 0) -> int:
+    """Coerce a possibly-string/float/None LLM value to int without crashing.
+    Pulls the first integer out of strings like '70/100' or 'score: 65'."""
+    if isinstance(v, bool):
+        return default
+    if isinstance(v, (int, float)):
+        return int(v)
+    try:
+        import re as _re
+        m = _re.search(r"-?\d+", str(v))
+        return int(m.group()) if m else default
+    except Exception:
+        return default
+
+
 SYSTEM_PROMPT = (
     "You are a PMF analyst giving a founder an honest, clear-eyed assessment of their idea. "
     "Score this startup on 9 axes (0-100 each). "
@@ -124,11 +140,17 @@ class ScorerAgent:
 
         axes = []
         for a in data.get("axes", []):
-            axis_name = a["axis"]
+            # Defensive: the LLM occasionally returns a non-dict entry, omits the
+            # `axis` key, or gives a non-numeric `score` ("high", "70/100"). Skip
+            # rather than crash the whole scorer (which would silently drop the
+            # entire run to default 50/100 via the pipeline's try/except).
+            if not isinstance(a, dict) or not a.get("axis"):
+                continue
+            axis_name = str(a["axis"])
             axes.append(
                 PMFAxisScore(
                     axis=axis_name,
-                    score=int(a["score"]),
+                    score=_safe_int(a.get("score"), 50),
                     weight=WEIGHTS.get(axis_name, 0.0),
                     reasoning=a.get("reasoning", ""),
                 )

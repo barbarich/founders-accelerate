@@ -7,11 +7,11 @@ models:
     orchestrator: "gemini-2.0-flash"
     research: "gemini-2.0-flash"
     pivot: "gemini-2.0-flash"
-  # Anthropic (production quality)
+  # Anthropic (production quality) — IDs match src/lib/llmModels.ts
   anthropic:
-    orchestrator: "claude-opus-4-5-20250514"
-    research: "claude-sonnet-4-6-20250514"
-    pivot: "claude-opus-4-5-20250514"
+    orchestrator: "claude-opus-4-7"
+    research: "claude-sonnet-4-6"
+    pivot: "claude-opus-4-7"
 
 # Available Gemini models for UI selector (as of March 14, 2026)
 gemini_models:

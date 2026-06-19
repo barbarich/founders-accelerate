@@ -106,6 +106,7 @@ class ResearchStatusResponse(BaseModel):
     created_at: str
     completed_at: Optional[str] = None
     report_ready: bool = False
+    error: Optional[str] = None  # human-readable failure reason when status == "failed"
 
 
 # ---------------------------------------------------------------------------
@@ -314,6 +315,17 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, 
         log.exception("run %s: pipeline crashed", run_id)
         status = "failed"
         final_state = initial_state
+        # Surface WHY it failed — otherwise the SSE 'done' event only carries
+        # status="failed" and the user sees no reason at all.
+        try:
+            with get_conn() as conn:
+                conn.execute(
+                    "INSERT INTO events (run_id, ts, phase, kind, message) VALUES (?, ?, 'pipeline', 'error', ?)",
+                    (run_id, datetime.now(timezone.utc).isoformat(),
+                     f"Исследование прервалось: {type(e).__name__}: {e}"[:400]),
+                )
+        except Exception:
+            log.exception("run %s: failed to record crash event", run_id)
 
     final_state.cost = cost.snapshot()
     duration_ms = int((datetime.now(timezone.utc) - started).total_seconds() * 1000)
@@ -403,6 +415,17 @@ async def research_events(run_id: str):
 
             if run_row and run_row["status"] in ("completed", "failed", "aborted"):
                 if run_finished:
+                    # On failure, surface the latest error message so the UI shows
+                    # WHY instead of a generic "status: failed".
+                    err_msg = None
+                    if run_row["status"] != "completed":
+                        with get_conn() as conn:
+                            erow = conn.execute(
+                                "SELECT message FROM events WHERE run_id = ? AND kind = 'error' "
+                                "ORDER BY id DESC LIMIT 1",
+                                (run_id,),
+                            ).fetchone()
+                        err_msg = erow["message"] if erow else None
                     # Stream the summary event and close
                     yield {
                         "event": "done",
@@ -411,7 +434,8 @@ async def research_events(run_id: str):
                             "verdict": run_row["verdict"],
                             "quality_score": run_row["quality_score"],
                             "total_cost_usd": run_row["total_cost_usd"],
-                        }),
+                            "error": err_msg,
+                        }, ensure_ascii=False),
                     }
                     break
                 run_finished = True
@@ -432,6 +456,15 @@ async def research_status(run_id: str) -> ResearchStatusResponse:
     if row is None:
         raise HTTPException(status_code=404, detail="run not found")
     report_path = config.RUNS_DIR / run_id / "report.html"
+    err_msg = None
+    if row["status"] not in ("completed", "running"):
+        with get_conn() as conn:
+            erow = conn.execute(
+                "SELECT message FROM events WHERE run_id = ? AND kind = 'error' "
+                "ORDER BY id DESC LIMIT 1",
+                (run_id,),
+            ).fetchone()
+        err_msg = erow["message"] if erow else None
     return ResearchStatusResponse(
         run_id=row["run_id"],
         status=row["status"],
@@ -442,6 +475,7 @@ async def research_status(run_id: str) -> ResearchStatusResponse:
         created_at=row["created_at"],
         completed_at=row["completed_at"],
         report_ready=report_path.exists(),
+        error=err_msg,
     )
 
 
@@ -477,7 +511,14 @@ async def research_report_pdf(run_id: str):
             from weasyprint import HTML
         except Exception as e:
             log.exception("weasyprint import failed")
-            raise HTTPException(status_code=500, detail=f"pdf engine unavailable: {e}")
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "PDF-движок временно недоступен на сервере. "
+                    "Веб-версия отчёта работает и доступна по ссылке выше. "
+                    f"(детали: {e})"
+                ),
+            )
 
         html_text = html_path.read_text(encoding="utf-8")
         run_dir_url = html_path.parent.resolve().as_uri() + "/"

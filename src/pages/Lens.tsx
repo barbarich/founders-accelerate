@@ -281,7 +281,7 @@ export default function Lens() {
           if (data.status === "completed") {
             setStage("report");
           } else {
-            setErrorMsg(`Pipeline завершился со статусом: ${data.status}`);
+            setErrorMsg(data.error || `Pipeline завершился со статусом: ${data.status}`);
             setStage("error");
           }
         } catch {}
@@ -321,7 +321,7 @@ export default function Lens() {
             total_cost_usd: s.total_cost_usd || 0,
           });
           if (s.status === "completed") setStage("report");
-          else { setErrorMsg(`Pipeline завершился со статусом: ${s.status}`); setStage("error"); }
+          else { setErrorMsg(s.error || `Pipeline завершился со статусом: ${s.status}`); setStage("error"); }
           clearInterval(statusPoll);
         }
       } catch {}

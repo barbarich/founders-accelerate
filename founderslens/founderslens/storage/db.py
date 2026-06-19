@@ -31,9 +31,13 @@ def init_schema() -> None:
 @contextlib.contextmanager
 def get_conn() -> Iterator[sqlite3.Connection]:
     """Context-managed connection. Returns row_factory=sqlite3.Row for dict-like access."""
-    conn = sqlite3.connect(config.DB_PATH, isolation_level=None)  # autocommit
+    # timeout + busy_timeout: under concurrent runs (5–20 BYOK users) a writer
+    # can otherwise hit "database is locked" immediately. WAL + a 30s busy wait
+    # lets short transactions queue instead of erroring.
+    conn = sqlite3.connect(config.DB_PATH, isolation_level=None, timeout=30)  # autocommit
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA busy_timeout = 30000")
     try:
         yield conn
     finally:
