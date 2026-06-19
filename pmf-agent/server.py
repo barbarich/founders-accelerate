@@ -594,6 +594,7 @@ class ResearchStatusResponse(BaseModel):
     created_at: str
     completed_at: Optional[str] = None
     report_ready: bool = False
+    error: Optional[str] = None  # human-readable failure reason when status == "failed"
 
 
 # ---------------------------------------------------------------------------
@@ -877,6 +878,7 @@ async def research_status(run_id: str) -> ResearchStatusResponse:
         created_at=state.started_at.isoformat(),
         completed_at=state.completed_at.isoformat() if state.completed_at else None,
         report_ready=state.report is not None,
+        error=state.error if state.status == "failed" else None,
     )
 
 
@@ -908,7 +910,11 @@ async def research_events(run_id: str):
                         "verdict": state.report.pmf_score.verdict if state.report else None,
                         "quality_score": int(state.report.pmf_score.weighted_total) if state.report else None,
                         "total_cost_usd": 0.0,
-                    }),
+                        # Carry the human-readable failure reason so the UI shows
+                        # WHY it failed (bad key / unsupported model / timeout)
+                        # instead of a generic "status: failed".
+                        "error": state.error if state.status == "failed" else None,
+                    }, ensure_ascii=False),
                 }
                 break
             await asyncio.sleep(1.2)
