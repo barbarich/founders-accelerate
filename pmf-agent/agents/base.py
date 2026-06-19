@@ -7,17 +7,82 @@ from google import genai
 from google.genai import types as genai_types
 from openai import AsyncOpenAI
 
+from json_extract import loads_lenient, JSONSalvageError
+
+
+# Per-request timeout to the provider (seconds). Generous because premium
+# reasoning models with large max_tokens legitimately take minutes; this is a
+# safety ceiling against a hung socket, NOT a per-agent budget.
+REQUEST_TIMEOUT_S = 240.0
+
+
+class LLMConfigError(Exception):
+    """A non-retryable provider error caused by the user's configuration
+    (bad API key, unsupported / unknown model, malformed request). Carries a
+    short, user-facing Russian message; retrying it is pointless."""
+
+    def __init__(self, message: str, *, status: int | None = None, detail: str | None = None):
+        super().__init__(message)
+        self.status = status
+        self.detail = detail
+
+
+# HTTP statuses that mean "the request itself is wrong" — never worth retrying.
+_NON_RETRYABLE_STATUS = {400, 401, 403, 404, 422}
+
+
+def _http_status(e: Exception) -> int | None:
+    """Best-effort HTTP status extraction across anthropic / openai / google-genai
+    SDK exception shapes. Classifying on status (not class identity) survives SDK
+    version bumps."""
+    for attr in ("status_code", "status", "code"):
+        v = getattr(e, attr, None)
+        if isinstance(v, int):
+            return v
+    resp = getattr(e, "response", None)
+    if resp is not None:
+        v = getattr(resp, "status_code", None)
+        if isinstance(v, int):
+            return v
+    return None
+
+
+def _as_config_error(e: Exception) -> LLMConfigError | None:
+    """Return an LLMConfigError if `e` is a non-retryable provider error, else None.
+    JSON-parse failures have no HTTP status → None → caller retries them."""
+    if isinstance(e, LLMConfigError):
+        return e
+    status = _http_status(e)
+    if status is None or status not in _NON_RETRYABLE_STATUS:
+        return None
+    if status in (401, 403):
+        msg = "API-ключ отклонён провайдером — проверь ключ и его доступ к выбранной модели."
+    elif status == 404:
+        msg = "Модель не найдена у провайдера — проверь ID модели."
+    else:  # 400 / 422
+        msg = "Провайдер отклонил запрос — возможно, модель не поддерживается или передан неверный параметр."
+    return LLMConfigError(msg, status=status, detail=str(e)[:300])
+
 
 def is_gemini(model: str) -> bool:
     return model.startswith("gemini")
 
 
 def is_openai(model: str) -> bool:
-    return model.startswith(("gpt-", "o1", "o3", "o4", "chatgpt"))
+    return model.startswith(("gpt-", "o1", "o3", "o4", "chatgpt", "codex"))
 
 
 def is_anthropic(model: str) -> bool:
     return model.startswith("claude")
+
+
+def _anthropic_max_tokens(model: str) -> int:
+    """Conservative output cap per model family — 16384 overflows Haiku-class
+    output limits and triggers a 400."""
+    m = model.lower()
+    if "haiku" in m:
+        return 8192
+    return 16384
 
 
 def build_client(provider: str, api_key: str):
@@ -26,11 +91,17 @@ def build_client(provider: str, api_key: str):
     if not api_key:
         raise ValueError("api_key is required")
     if provider == "gemini":
-        return genai.Client(api_key=api_key)
+        try:
+            return genai.Client(
+                api_key=api_key,
+                http_options=genai_types.HttpOptions(timeout=int(REQUEST_TIMEOUT_S * 1000)),
+            )
+        except Exception:
+            return genai.Client(api_key=api_key)
     if provider == "anthropic":
-        return anthropic.AsyncAnthropic(api_key=api_key)
+        return anthropic.AsyncAnthropic(api_key=api_key, timeout=REQUEST_TIMEOUT_S)
     if provider == "openai":
-        return AsyncOpenAI(api_key=api_key)
+        return AsyncOpenAI(api_key=api_key, timeout=REQUEST_TIMEOUT_S)
     raise ValueError(f"Unknown provider: {provider}")
 
 
@@ -64,7 +135,7 @@ async def _call_anthropic(
 
     kwargs: dict[str, Any] = {
         "model": model,
-        "max_tokens": 16384,
+        "max_tokens": _anthropic_max_tokens(model),
         "system": system_prompt,
         "messages": messages,
     }
@@ -73,6 +144,11 @@ async def _call_anthropic(
 
     response = await client.messages.create(**kwargs)
 
+    # Cap the tool-use loop: our tool_result is a canned acknowledgement that
+    # never actually answers the model's query, so a model that keeps asking to
+    # search would loop forever (hang + burn the user's key). After a few rounds,
+    # force a final no-tools turn so it must produce the JSON.
+    tool_rounds = 0
     while response.stop_reason == "tool_use":
         tool_results = []
         for block in response.content:
@@ -84,11 +160,17 @@ async def _call_anthropic(
                 })
         messages.append({"role": "assistant", "content": response.content})
         messages.append({"role": "user", "content": tool_results})
+        tool_rounds += 1
+        if tool_rounds >= 3:
+            final_kwargs = {k: v for k, v in kwargs.items() if k != "tools"}
+            final_kwargs["messages"] = messages
+            response = await client.messages.create(**final_kwargs)
+            break
         response = await client.messages.create(**kwargs)
 
     for block in response.content:
         if block.type == "text":
-            return _extract_json(block.text)
+            return loads_lenient(block.text)
 
     raise ValueError("No text in Anthropic response")
 
@@ -127,7 +209,7 @@ async def _call_gemini(
         text = None
 
     if text:
-        return _extract_json(text)
+        return loads_lenient(text)
 
     # Fallback: try to get text from parts
     if response.candidates:
@@ -136,7 +218,7 @@ async def _call_gemini(
                 for part in candidate.content.parts:
                     try:
                         if part.text:
-                            return _extract_json(part.text)
+                            return loads_lenient(part.text)
                     except Exception:
                         continue
 
@@ -149,7 +231,7 @@ async def _call_gemini(
             if chunks and isinstance(chunks, list):
                 combined = " ".join(getattr(c, "text", str(c)) for c in chunks if c)
                 if combined.strip():
-                    return _extract_json(combined)
+                    return loads_lenient(combined)
 
     finish = "unknown"
     try:
@@ -170,27 +252,39 @@ async def _call_openai(
     No web-search grounding — GoogleSearch and Anthropic web_search don't have
     direct equivalents here; for OpenAI we rely on the model's own knowledge.
     """
+    from openai import BadRequestError
+
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt},
     ]
+    # `max_completion_tokens` is the modern param accepted by ALL current OpenAI
+    # chat models (gpt-4o/4.1, gpt-5.x, o-series). The old `max_tokens` is
+    # rejected by gpt-5*/o-series with a 400 — never branch on model name.
     kwargs: dict[str, Any] = {
         "model": model,
         "messages": messages,
+        "max_completion_tokens": 16384,
+        "response_format": {"type": "json_object"},
     }
-    # Reasoning models (o1/o3/o4) have different param requirements.
-    is_reasoning = model.startswith(("o1", "o3", "o4"))
-    if is_reasoning:
-        kwargs["max_completion_tokens"] = 16384
-    else:
-        kwargs["max_tokens"] = 16384
-        kwargs["response_format"] = {"type": "json_object"}
 
-    response = await client.chat.completions.create(**kwargs)
+    try:
+        response = await client.chat.completions.create(**kwargs)
+    except BadRequestError as e:
+        # Some models reject `response_format` (or it's otherwise unsupported).
+        # Prompts already say "Return ONLY valid JSON", so retry once without it
+        # rather than failing the whole run.
+        msg = str(e).lower()
+        if "response_format" in msg or "json" in msg or "unsupported" in msg:
+            kwargs.pop("response_format", None)
+            response = await client.chat.completions.create(**kwargs)
+        else:
+            raise
+
     text = response.choices[0].message.content or ""
     if not text.strip():
         raise ValueError("Empty response from OpenAI")
-    return _extract_json(text)
+    return loads_lenient(text)
 
 
 async def call_agent(
@@ -223,17 +317,23 @@ async def call_agent(
             else:
                 return await _call_anthropic(client, model, system_prompt, current_prompt, tools)
 
-        except (json.JSONDecodeError, ValueError) as e:
+        except Exception as e:
             last_error = e
+
+            # Non-retryable config errors (bad key / unknown model / bad request):
+            # fail FAST with a clear message instead of burning the backoff budget
+            # on a request that can never succeed.
+            cfg = _as_config_error(e)
+            if cfg is not None:
+                raise cfg
+
+            # Everything else — JSON-parse failures, rate limits (429), Anthropic
+            # overloaded (529), 5xx, connection/timeout — is transient: retry.
             if attempt < max_retries - 1:
                 await asyncio.sleep(base_delay * (3 ** attempt))  # 2s, 6s, 18s
                 continue
-            raise RuntimeError(f"Failed to parse JSON after {max_retries} attempts: {e}")
-        except Exception as e:
-            last_error = e
-            if attempt < max_retries - 1:
-                await asyncio.sleep(base_delay * (3 ** attempt))
-                continue
+            if isinstance(e, (json.JSONDecodeError, ValueError, JSONSalvageError)):
+                raise RuntimeError(f"Failed to parse JSON after {max_retries} attempts: {e}")
             raise
 
 

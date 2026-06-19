@@ -55,8 +55,10 @@ MODEL_SONNET = "claude-sonnet-4-5"
 MODEL_OPUS = "claude-opus-4-7"
 MODEL_GPT_4O = "gpt-4o"
 MODEL_GPT_4O_MINI = "gpt-4o-mini"
-MODEL_GEMINI_FLASH = "gemini-2.0-flash-exp"
-MODEL_GEMINI_PRO = "gemini-1.5-pro"
+# gemini-2.0-flash-exp / gemini-1.5-pro are retired — a dead default ID makes any
+# node using it fail every run. Use current stable IDs (match pmf-agent config).
+MODEL_GEMINI_FLASH = "gemini-2.5-flash"
+MODEL_GEMINI_PRO = "gemini-2.5-pro"
 
 # (input_per_1m_usd, output_per_1m_usd)
 MODEL_PRICING: dict[str, tuple[float, float]] = {

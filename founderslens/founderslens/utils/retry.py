@@ -19,6 +19,27 @@ log = logging.getLogger(__name__)
 
 T = TypeVar("T")
 
+# HTTP statuses that mean "the request itself is wrong" (bad key / unknown model
+# / malformed request). Retrying them just wastes the backoff budget and burns
+# the user's quota, so we short-circuit and re-raise immediately.
+_NON_RETRYABLE_STATUS = frozenset({400, 401, 403, 404, 422})
+
+
+def _is_non_retryable(e: BaseException) -> bool:
+    """Detect a non-retryable provider error by HTTP status across anthropic /
+    openai / google-genai SDK exception shapes (status-based, so it survives SDK
+    version bumps)."""
+    for attr in ("status_code", "status", "code"):
+        v = getattr(e, attr, None)
+        if isinstance(v, int):
+            return v in _NON_RETRYABLE_STATUS
+    resp = getattr(e, "response", None)
+    if resp is not None:
+        v = getattr(resp, "status_code", None)
+        if isinstance(v, int):
+            return v in _NON_RETRYABLE_STATUS
+    return False
+
 
 def retry_async(
     attempts: int = config.TOOL_RETRY_ATTEMPTS,
@@ -40,6 +61,11 @@ def retry_async(
                     return await fn(*args, **kwargs)
                 except exceptions as e:  # noqa: PERF203
                     last_exc = e
+                    # Bad key / unknown model / malformed request: fail fast
+                    # instead of retrying a request that can never succeed.
+                    if _is_non_retryable(e):
+                        log.warning("retry %s: non-retryable error, re-raising: %s", fn.__name__, e)
+                        raise
                     if attempt == attempts:
                         break
                     delay = min(base_delay * (2 ** (attempt - 1)), max_delay)

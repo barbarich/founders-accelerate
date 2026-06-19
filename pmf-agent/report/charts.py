@@ -55,10 +55,29 @@ def create_gauge_chart(score: float, verdict: str, output_path: str) -> str:
     return output_path
 
 
+def _num(v, default: float = 0.0) -> float:
+    """Coerce a possibly-string/None LLM value to float without crashing."""
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return default
+
+
 def create_radar_chart(axes_data: list[dict], output_path: str) -> str:
     """Create radar chart with 6 PMF axes."""
-    labels = [a["axis"].replace("_", " ").title() for a in axes_data]
-    values = [a["score"] for a in axes_data]
+    axes_data = [a for a in (axes_data or []) if isinstance(a, dict)]
+    if not axes_data:
+        # Nothing to plot — emit a small placeholder so the page still renders.
+        fig, ax = plt.subplots(figsize=(6, 6))
+        ax.text(0.5, 0.5, "Недостаточно данных для диаграммы",
+                ha="center", va="center", fontsize=11, color="gray")
+        ax.axis("off")
+        plt.savefig(output_path, dpi=150, bbox_inches="tight")
+        plt.close()
+        return output_path
+
+    labels = [str(a.get("axis", "")).replace("_", " ").title() for a in axes_data]
+    values = [_num(a.get("score")) for a in axes_data]
 
     num_vars = len(labels)
     angles = np.linspace(0, 2 * np.pi, num_vars, endpoint=False).tolist()
@@ -127,10 +146,15 @@ def create_competitor_scatter(competitors: list[dict], output_path: str) -> str:
     threat_colors = {"High": "#FF4444", "Medium": "#FFB800", "Low": "#00C853"}
 
     for c in competitors:
+        if not isinstance(c, dict):
+            continue
         color = threat_colors.get(c.get("threat_level", "Medium"), "#999999")
-        ax.scatter(c["reach_score"], c["value_score"], s=200, c=color, alpha=0.7,
+        reach = _num(c.get("reach_score"), 50)
+        value = _num(c.get("value_score"), 50)
+        name = str(c.get("name", ""))
+        ax.scatter(reach, value, s=200, c=color, alpha=0.7,
                   edgecolors="white", linewidth=2, zorder=5)
-        ax.annotate(c["name"], (c["reach_score"], c["value_score"]),
+        ax.annotate(name, (reach, value),
                    textcoords="offset points", xytext=(8, 8), fontsize=8)
 
     # Quadrant lines

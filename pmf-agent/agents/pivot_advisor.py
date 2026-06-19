@@ -7,6 +7,21 @@ from models.dataclasses import (
 )
 from .base import call_agent, WEB_SEARCH_TOOL
 
+
+def _safe_int(v: Any, default: int = 0) -> int:
+    """Coerce a possibly-string/float/None LLM value to int without crashing."""
+    if isinstance(v, bool):
+        return default
+    if isinstance(v, (int, float)):
+        return int(v)
+    try:
+        import re as _re
+        m = _re.search(r"-?\d+", str(v))
+        return int(m.group()) if m else default
+    except Exception:
+        return default
+
+
 SYSTEM_PROMPT = (
     "You are a startup pivot advisor helping a founder find a better path forward. The idea scored below 50 on PMF. "
     "Generate 3-5 pivot scenarios. Types: P1=customer_segment_pivot, P2=problem_pivot, "
@@ -69,16 +84,18 @@ class PivotAdvisorAgent:
 
         scenarios = []
         for s in data.get("scenarios", []):
+            if not isinstance(s, dict):
+                continue
             scenarios.append(
                 PivotScenario(
                     pivot_type=s.get("pivot_type", ""),
                     hypothesis=s.get("hypothesis", ""),
                     validation_experiment=s.get("validation_experiment", ""),
                     success_metric=s.get("success_metric", ""),
-                    timeline_days=int(s.get("timeline_days", 14)),
+                    timeline_days=_safe_int(s.get("timeline_days"), 14),
                     risk=s.get("risk", ""),
                     company_inspiration=s.get("company_inspiration", ""),
-                    confidence_score=int(s.get("confidence_score", 50)),
+                    confidence_score=_safe_int(s.get("confidence_score"), 50),
                 )
             )
 

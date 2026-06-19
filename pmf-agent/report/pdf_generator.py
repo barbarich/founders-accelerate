@@ -1,5 +1,7 @@
 import os
+import re
 import tempfile
+import logging
 from datetime import date
 
 from reportlab.lib.pagesizes import letter
@@ -7,7 +9,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Image, Table, TableStyle,
+    SimpleDocTemplate, Paragraph as _RLParagraph, Spacer, Image, Table, TableStyle,
     PageBreak, KeepTogether,
 )
 from reportlab.lib.colors import HexColor
@@ -15,6 +17,52 @@ from reportlab.lib.colors import HexColor
 from models.dataclasses import IdeaReport
 from . import charts
 from .templates import *
+
+log = logging.getLogger("pmf.pdf")
+
+# ReportLab parses Paragraph text as XML markup, so raw LLM text containing
+# `&`, `<`, or `>` (e.g. "AT&T", "users < 30", a stray "<thing>") raises
+# ParagraphError and aborts the ENTIRE PDF. We can't just escape everything —
+# the templates intentionally use a small set of tags (<b>, <i>, <font>, <br/>).
+# So: stash the allowed tags, escape the rest, restore the tags.
+_ALLOWED_TAG = re.compile(
+    r"</?(?:b|i|u|br|font|sub|super|strong|em)(?:\s[^<>]*?)?/?>",
+    re.IGNORECASE,
+)
+_PLACEHOLDER = re.compile(r"\x00(\d+)\x00")
+
+
+def _safe_markup(text) -> str:
+    """Escape raw &/</> in (LLM-derived) text while preserving the intentional
+    ReportLab markup tags the templates emit. Never raises."""
+    try:
+        s = str(text)
+    except Exception:
+        return ""
+    stash: list[str] = []
+
+    def _hide(m):
+        stash.append(m.group(0))
+        return f"\x00{len(stash) - 1}\x00"
+
+    s = _ALLOWED_TAG.sub(_hide, s)
+    s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    s = _PLACEHOLDER.sub(lambda m: stash[int(m.group(1))], s)
+    return s
+
+
+def Paragraph(text, *args, **kwargs):
+    """Drop-in replacement for reportlab's Paragraph that sanitizes the text so
+    unescaped LLM output can't crash the whole document. Falls back to a fully
+    escaped, tag-free render if the sanitized markup is still somehow invalid."""
+    try:
+        return _RLParagraph(_safe_markup(text), *args, **kwargs)
+    except Exception:
+        from xml.sax.saxutils import escape as _xesc
+        try:
+            return _RLParagraph(_xesc(str(text)), *args, **kwargs)
+        except Exception:
+            return _RLParagraph("", *args, **kwargs)
 
 
 def _page_footer(canvas, doc):
@@ -93,43 +141,76 @@ class PDFReportGenerator:
             topMargin=PAGE_MARGIN, bottomMargin=PAGE_MARGIN,
         )
 
-        story = []
-        self._page_cover(story, report)
-        story.append(PageBreak())
-        self._page_radar(story, report)
-        story.append(PageBreak())
-        self._page_market(story, report)
-        story.append(PageBreak())
-        if report.demand:
-            self._page_demand(story, report)
-            story.append(PageBreak())
-        self._page_competitors(story, report)
-        story.append(PageBreak())
-        self._page_competitors_strategy(story, report)
-        story.append(PageBreak())
-        self._page_pain(story, report)
-        story.append(PageBreak())
-        self._page_pain_quotes(story, report)
-        story.append(PageBreak())
-        self._page_trends(story, report)
-        story.append(PageBreak())
-        if report.unit_economics:
-            self._page_unit_economics(story, report)
-            story.append(PageBreak())
-        if report.regulatory:
-            self._page_regulatory(story, report)
-            story.append(PageBreak())
-        self._page_risk_matrix(story, report)
-        story.append(PageBreak())
-        self._page_recommendations(story, report)
-        if report.pivot_plan and report.pmf_score.verdict == "PIVOT":
-            story.append(PageBreak())
-            self._page_pivots(story, report)
-        story.append(PageBreak())
-        self._page_sources(story, report)
+        # Build each page in isolation: a page that raises (bad chart, malformed
+        # data) is skipped instead of taking down the whole PDF. Each builder
+        # writes into its own sub-list so a half-appended broken page can't leave
+        # a poisoned flowable in the final story.
+        pages = [
+            ("cover", self._page_cover, True),
+            ("radar", self._page_radar, True),
+            ("market", self._page_market, True),
+            ("demand", self._page_demand, bool(report.demand)),
+            ("competitors", self._page_competitors, True),
+            ("competitors_strategy", self._page_competitors_strategy, True),
+            ("pain", self._page_pain, True),
+            ("pain_quotes", self._page_pain_quotes, True),
+            ("trends", self._page_trends, True),
+            ("unit_economics", self._page_unit_economics, bool(report.unit_economics)),
+            ("regulatory", self._page_regulatory, bool(report.regulatory)),
+            ("risk_matrix", self._page_risk_matrix, True),
+            ("recommendations", self._page_recommendations, True),
+            ("pivots", self._page_pivots,
+             bool(report.pivot_plan) and report.pmf_score.verdict == "PIVOT"),
+            ("sources", self._page_sources, True),
+        ]
 
-        doc.build(story, onFirstPage=_page_footer, onLaterPages=_page_footer)
+        story = []
+        for name, builder, include in pages:
+            if not include:
+                continue
+            page_story: list = []
+            try:
+                builder(page_story, report)
+            except Exception:
+                log.exception("PDF page %r failed for idea %s — skipping", name, report.idea.id)
+                continue
+            if story:
+                story.append(PageBreak())
+            story.extend(page_story)
+
+        try:
+            doc.build(story, onFirstPage=_page_footer, onLaterPages=_page_footer)
+        except Exception:
+            log.exception("PDF build failed for idea %s — emitting minimal fallback", report.idea.id)
+            self._build_fallback(filepath, report)
         return filepath
+
+    def _build_fallback(self, filepath: str, report: IdeaReport) -> None:
+        """Last-resort scalars-only PDF when the full build fails. Guarantees the
+        user gets *something* downloadable rather than a 500."""
+        doc = SimpleDocTemplate(
+            filepath, pagesize=letter,
+            leftMargin=PAGE_MARGIN, rightMargin=PAGE_MARGIN,
+            topMargin=PAGE_MARGIN, bottomMargin=PAGE_MARGIN,
+        )
+        story = [
+            Paragraph("PMF Research Report", self.styles["Title2"]),
+            Paragraph(str(getattr(report.idea, "title", "")), self.styles["Subtitle2"]),
+            Spacer(1, 16),
+        ]
+        try:
+            story.append(Paragraph(
+                f"PMF Score: {report.pmf_score.weighted_total:.0f}/100 — {report.pmf_score.verdict}",
+                self.styles["Heading2Custom"],
+            ))
+            story.append(Paragraph(str(report.pmf_score.summary), self.styles["BodyCustom"]))
+        except Exception:
+            story.append(Paragraph(
+                "Подробный отчёт не удалось отрисовать из-за ошибки данных. "
+                "Базовая сводка доступна в веб-версии.",
+                self.styles["BodyCustom"],
+            ))
+        doc.build(story)
 
     def generate_comparison(self, reports: list[IdeaReport]) -> str:
         filepath = os.path.join(self.output_dir, f"comparison_{date.today().strftime('%Y%m%d')}.pdf")

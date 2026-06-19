@@ -48,7 +48,7 @@ load_dotenv(Path(__file__).parent / ".env")
 from json_extract import loads_lenient
 
 # Pipeline imports — use existing PMF agents untouched
-from agents.base import build_client
+from agents.base import build_client, LLMConfigError
 from agents.competitors import CompetitorAgent
 from agents.customer_pain import CustomerPainAgent
 from agents.demand_signals import DemandSignalAgent
@@ -300,9 +300,23 @@ async def run_analysis_api(
     depth = config.get("research_depth", {})
 
     # 1 — Orchestrator
+    # This is the one true single point of failure: all 7 research agents depend
+    # on `plan`. We deliberately FAIL FAST here rather than fall back to an empty
+    # plan — an empty plan would yield a polished but meaningless "completed"
+    # report (a PMF verdict computed on nothing), which is worse than an honest
+    # failure. Transient errors are already retried inside call_agent; a config
+    # error (bad key/model) propagates as LLMConfigError with a clear message.
     emitter.agent_start("Orchestrator", "Breaking down idea into comprehensive research plan...")
     orchestrator = OrchestratorAgent(client, models["orchestrator"])
-    plan = await orchestrator.run(idea)
+    try:
+        plan = await orchestrator.run(idea)
+    except LLMConfigError:
+        raise
+    except Exception as e:
+        raise RuntimeError(
+            "Не удалось построить план исследования (шаг «Оркестратор»). "
+            f"Причина: {type(e).__name__}: {e}"
+        ) from e
     emitter.agent_done("Orchestrator", "Research plan ready — 35+ queries generated")
     emitter.finding(f"Core problem: {plan.core_problem[:120]}")
     emitter.finding(f"Target: {plan.target_segment[:120]}")
@@ -476,10 +490,25 @@ class RunState:
 _RUNS: dict[str, RunState] = {}
 _RUNS_LOCK = threading.Lock()
 
+# Cap retained runs so a long-lived process serving 5–20 BYOK users doesn't leak
+# memory (each RunState holds a full IdeaReport + all events) until OOM/restart.
+_RUNS_MAX = 200
+
 
 def _put_run(state: RunState) -> None:
     with _RUNS_LOCK:
         _RUNS[state.run_id] = state
+        if len(_RUNS) > _RUNS_MAX:
+            # Evict oldest finished runs first (insertion order = creation order);
+            # never evict a still-running run.
+            removable = [
+                rid for rid, s in _RUNS.items()
+                if s.status in ("completed", "failed") and rid != state.run_id
+            ]
+            for rid in removable[: len(_RUNS) - _RUNS_MAX]:
+                evicted = _RUNS.pop(rid, None)
+                if evicted is not None:
+                    _evict_pdf(rid)
 
 
 def _get_run(run_id: str) -> Optional[RunState]:
@@ -598,6 +627,11 @@ Prior_questions + prior_answers учитывай, не повторяй.
 # a charge — non-reasoning models still stop after a few hundred tokens.
 INTAKE_MAX_TOKENS = 8192
 
+# Hard wall-clock ceiling for a single research run (seconds). Generous — a deep
+# multi-round run on a premium model is legitimately minutes — but bounded so a
+# hung provider can't pin a run slot forever.
+PIPELINE_TIMEOUT_S = 1200
+
 
 def _idea_input_from_raw(req: "IntakeEvaluateRequest") -> "IdeaInputPayload":
     """Build a usable idea_input from the raw idea + the founder's clarifying
@@ -674,13 +708,18 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
             resp = await client.chat.completions.create(**kwargs)
             raw_text = resp.choices[0].message.content or "{}"
         elif provider == "gemini":
-            mdl = client.models
-            resp = mdl.generate_content(
+            # Use the ASYNC client — the sync client.models.generate_content blocks
+            # the event loop and stalls every other concurrent user's request.
+            resp = await client.aio.models.generate_content(
                 model=model_id,
                 contents=EVALUATOR_SYSTEM + "\n\n" + user_text + "\n\nReturn JSON only.",
                 config={"response_mime_type": "application/json", "max_output_tokens": INTAKE_MAX_TOKENS},
             )
-            raw_text = resp.text or "{}"
+            # response.text can raise in google-genai (not just return None).
+            try:
+                raw_text = resp.text or "{}"
+            except Exception:
+                raw_text = "{}"
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"LLM intake call failed: {e}")
 
@@ -763,15 +802,39 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider: str, api_k
     # User-chosen model takes precedence; fall back to config default
     model = model or _pick_model(provider, CONFIG) or "claude-sonnet-4-5"
     try:
-        report = await run_analysis_api(
-            idea=idea_input, config=CONFIG, emitter=state.emitter,
-            provider=provider, api_key=api_key, model=model,
+        # Hard ceiling on a single run. A full deep-research run is minutes of
+        # work, but per-call provider timeouts can still chain into a much longer
+        # wall-clock; this guarantees the run terminates and frees its slot.
+        report = await asyncio.wait_for(
+            run_analysis_api(
+                idea=idea_input, config=CONFIG, emitter=state.emitter,
+                provider=provider, api_key=api_key, model=model,
+            ),
+            timeout=PIPELINE_TIMEOUT_S,
         )
         state.report = report
         state.status = "completed"
+    except asyncio.TimeoutError:
+        log.warning("pipeline timed out for run %s after %ss", run_id, PIPELINE_TIMEOUT_S)
+        state.error = (
+            "Исследование заняло слишком много времени и было остановлено. "
+            "Попробуй ещё раз — обычно это временная нагрузка на провайдера."
+        )
+        state.status = "failed"
+        state.emitter.error("Pipeline", state.error)
+    except LLMConfigError as e:
+        # Bad key / unknown model / rejected request — a clear, actionable cause.
+        # Surface the human-readable Russian message as-is (no exception-type noise).
+        log.warning("pipeline config error for run %s: %s (status=%s)", run_id, e, e.status)
+        state.error = str(e)
+        state.status = "failed"
+        state.emitter.error("Pipeline", state.error[:300])
     except Exception as e:
         log.exception("pipeline crashed for run %s", run_id)
-        state.error = f"{type(e).__name__}: {e}"
+        state.error = (
+            "Не удалось завершить исследование из-за ошибки провайдера. "
+            f"Технические детали: {type(e).__name__}: {e}"
+        )
         state.status = "failed"
         state.emitter.error("Pipeline", state.error[:300])
     finally:
@@ -1263,6 +1326,18 @@ async def research_report(run_id: str):
 # PDF (each run triggers ~12 charts + heavy reportlab layout — 5–15s of work).
 _PDF_CACHE: dict[str, str] = {}
 _PDF_LOCK = threading.Lock()
+
+
+def _evict_pdf(run_id: str) -> None:
+    """Drop a run's cached PDF (and its file) — called when its RunState is
+    evicted so the on-disk PDF dir doesn't grow without bound."""
+    with _PDF_LOCK:
+        path = _PDF_CACHE.pop(run_id, None)
+    if path:
+        try:
+            Path(path).unlink(missing_ok=True)
+        except Exception:
+            pass
 
 
 @app.get("/api/research/report/{run_id}/pdf")

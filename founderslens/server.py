@@ -314,6 +314,17 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, 
         log.exception("run %s: pipeline crashed", run_id)
         status = "failed"
         final_state = initial_state
+        # Surface WHY it failed — otherwise the SSE 'done' event only carries
+        # status="failed" and the user sees no reason at all.
+        try:
+            with get_conn() as conn:
+                conn.execute(
+                    "INSERT INTO events (run_id, ts, phase, kind, message) VALUES (?, ?, 'pipeline', 'error', ?)",
+                    (run_id, datetime.now(timezone.utc).isoformat(),
+                     f"Исследование прервалось: {type(e).__name__}: {e}"[:400]),
+                )
+        except Exception:
+            log.exception("run %s: failed to record crash event", run_id)
 
     final_state.cost = cost.snapshot()
     duration_ms = int((datetime.now(timezone.utc) - started).total_seconds() * 1000)
@@ -477,7 +488,14 @@ async def research_report_pdf(run_id: str):
             from weasyprint import HTML
         except Exception as e:
             log.exception("weasyprint import failed")
-            raise HTTPException(status_code=500, detail=f"pdf engine unavailable: {e}")
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "PDF-движок временно недоступен на сервере. "
+                    "Веб-версия отчёта работает и доступна по ссылке выше. "
+                    f"(детали: {e})"
+                ),
+            )
 
         html_text = html_path.read_text(encoding="utf-8")
         run_dir_url = html_path.parent.resolve().as_uri() + "/"
