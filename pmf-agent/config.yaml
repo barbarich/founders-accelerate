@@ -65,9 +65,13 @@ retry:
   max_retries: 3
   base_delay: 1.0
 
+# Rounds only apply to the GROUNDED (Gemini) path now — for OpenAI/Anthropic the
+# deep-research loop collapses to a single call (no real web search to enrich).
+# Trimmed market/competitor 3->2 to bound Gemini latency; quality stays (each
+# round still does grounded gap-filling).
 research_depth:
-  market_rounds: 3
-  competitor_rounds: 3
+  market_rounds: 2
+  competitor_rounds: 2
   pain_rounds: 2
   trends_rounds: 2
   demand_rounds: 2
