@@ -628,10 +628,11 @@ Prior_questions + prior_answers учитывай, не повторяй.
 # a charge — non-reasoning models still stop after a few hundred tokens.
 INTAKE_MAX_TOKENS = 8192
 
-# Hard wall-clock ceiling for a single research run (seconds). Generous — a deep
-# multi-round run on a premium model is legitimately minutes — but bounded so a
-# hung provider can't pin a run slot forever.
-PIPELINE_TIMEOUT_S = 1200
+# Hard wall-clock ceiling for a single research run (seconds). After collapsing
+# the ungrounded multi-round loop a typical run finishes in ~5–8 min; this is a
+# safety net for slow premium/reasoning models, bounded so a hung provider can't
+# pin a run slot forever.
+PIPELINE_TIMEOUT_S = 1800
 
 
 def _idea_input_from_raw(req: "IntakeEvaluateRequest") -> "IdeaInputPayload":

@@ -99,9 +99,12 @@ def build_client(provider: str, api_key: str):
         except Exception:
             return genai.Client(api_key=api_key)
     if provider == "anthropic":
-        return anthropic.AsyncAnthropic(api_key=api_key, timeout=REQUEST_TIMEOUT_S)
+        return anthropic.AsyncAnthropic(api_key=api_key, timeout=REQUEST_TIMEOUT_S, max_retries=0)
     if provider == "openai":
-        return AsyncOpenAI(api_key=api_key, timeout=REQUEST_TIMEOUT_S)
+        # max_retries=0: rely on our own retry/backoff in call_agent. The SDK's
+        # default internal retries would stack on top, multiplying latency on a
+        # slow/transient call (each layer waits before re-trying).
+        return AsyncOpenAI(api_key=api_key, timeout=REQUEST_TIMEOUT_S, max_retries=0)
     raise ValueError(f"Unknown provider: {provider}")
 
 
@@ -396,7 +399,18 @@ async def call_agent_deep(
     max_retries: int = 3,
     base_delay: float = 1.0,
 ) -> dict[str, Any]:
-    """Multi-round research: initial search → gap analysis → deep dive → synthesis."""
+    """Multi-round research: initial search → gap analysis → deep dive → synthesis.
+
+    The extra rounds only add value when each round can fetch NEW web data — i.e.
+    Gemini with Google Search grounding. For OpenAI/Anthropic the WEB_SEARCH_TOOL
+    is a no-op (no real search), so the gap-analysis/deep-dive/synthesis rounds
+    just re-prompt the model over its own knowledge at 3–4× the latency — which is
+    exactly what pushed runs past the timeout. So when there's no real grounding,
+    collapse to a single high-quality call.
+    """
+    grounded = is_gemini(model) and bool(tools)
+    if not grounded:
+        rounds = 1
 
     # Round 1: Initial research
     round1 = await call_agent(client, model, system_prompt, user_prompt, tools, max_retries, base_delay)
