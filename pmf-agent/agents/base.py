@@ -126,56 +126,97 @@ def _extract_json(text: str) -> dict:
     raise ValueError("No valid JSON found in response")
 
 
+# Appended to the system prompt on grounded calls so the model actually searches
+# and reports real sources instead of guessing from training data.
+GROUNDING_HINT = (
+    "\n\nIMPORTANT: Use web search to gather CURRENT, REAL data (market sizes, "
+    "competitors, prices, statistics, dates). Base every number on real search "
+    "results, not memory. Include the real source URLs you used in the JSON "
+    "\"sources\" field. Still return ONLY valid JSON."
+)
+
+# Anthropic native server-side web search tool (verified against docs 2026-06).
+# Runs server-side automatically; results + citations come back in the response.
+_ANTHROPIC_WEB_SEARCH = {"type": "web_search_20250305", "name": "web_search", "max_uses": 5}
+
+
+def _dedupe(seq: list[str]) -> list[str]:
+    return list(dict.fromkeys([s for s in seq if s]))
+
+
+def _merge_sources(result: Any, urls: list[str]) -> Any:
+    """Fold real cited source URLs from web search into the parsed JSON's
+    `sources` field so they surface in the report's Sources appendix."""
+    if not isinstance(result, dict) or not urls:
+        return result
+    urls = _dedupe(urls)
+    existing = result.get("sources")
+    if isinstance(existing, list):
+        result["sources"] = existing + [u for u in urls if u not in existing]
+    elif not existing:
+        result["sources"] = urls
+    return result
+
+
 async def _call_anthropic(
     client: anthropic.AsyncAnthropic,
     model: str,
     system_prompt: str,
     user_prompt: str,
     tools: list[dict] | None = None,
+    use_search: bool = False,
 ) -> dict[str, Any]:
-    """Call Claude API and return parsed JSON."""
+    """Call Claude and return parsed JSON. When use_search is set, attaches the
+    native server-side web_search tool so the answer is grounded in real,
+    cited web data — with a graceful fallback to an ungrounded call if the
+    model/org doesn't support web search."""
     messages = [{"role": "user", "content": user_prompt}]
-
+    system = system_prompt + (GROUNDING_HINT if use_search else "")
     kwargs: dict[str, Any] = {
         "model": model,
         "max_tokens": _anthropic_max_tokens(model),
-        "system": system_prompt,
+        "system": system,
         "messages": messages,
     }
-    if tools:
-        kwargs["tools"] = tools
+    if use_search:
+        kwargs["tools"] = [_ANTHROPIC_WEB_SEARCH]
 
-    response = await client.messages.create(**kwargs)
-
-    # Cap the tool-use loop: our tool_result is a canned acknowledgement that
-    # never actually answers the model's query, so a model that keeps asking to
-    # search would loop forever (hang + burn the user's key). After a few rounds,
-    # force a final no-tools turn so it must produce the JSON.
-    tool_rounds = 0
-    while response.stop_reason == "tool_use":
-        tool_results = []
-        for block in response.content:
-            if block.type == "tool_use":
-                tool_results.append({
-                    "type": "tool_result",
-                    "tool_use_id": block.id,
-                    "content": "Search completed. Use the results provided in context to continue your analysis.",
-                })
-        messages.append({"role": "assistant", "content": response.content})
-        messages.append({"role": "user", "content": tool_results})
-        tool_rounds += 1
-        if tool_rounds >= 3:
-            final_kwargs = {k: v for k, v in kwargs.items() if k != "tools"}
-            final_kwargs["messages"] = messages
-            response = await client.messages.create(**final_kwargs)
-            break
+    try:
+        response = await client.messages.create(**kwargs)
+        # Long searches can yield stop_reason="pause_turn"; continue the turn.
+        guard = 0
+        while getattr(response, "stop_reason", None) == "pause_turn" and guard < 4:
+            messages.append({"role": "assistant", "content": response.content})
+            response = await client.messages.create(**{**kwargs, "messages": messages})
+            guard += 1
+    except anthropic.BadRequestError:
+        if not use_search:
+            raise
+        # web search unsupported (model or org not enabled) → ungrounded retry
+        kwargs.pop("tools", None)
+        kwargs["system"] = system_prompt
         response = await client.messages.create(**kwargs)
 
+    texts: list[str] = []
+    urls: list[str] = []
     for block in response.content:
-        if block.type == "text":
-            return loads_lenient(block.text)
+        btype = getattr(block, "type", None)
+        if btype == "text":
+            texts.append(block.text)
+            for cit in (getattr(block, "citations", None) or []):
+                u = getattr(cit, "url", None)
+                if u:
+                    urls.append(u)
+        elif btype == "web_search_tool_result":
+            for r in (getattr(block, "content", None) or []):
+                u = getattr(r, "url", None)
+                if u:
+                    urls.append(u)
 
-    raise ValueError("No text in Anthropic response")
+    full = "\n".join(texts).strip()
+    if not full:
+        raise ValueError("No text in Anthropic response")
+    return _merge_sources(loads_lenient(full), urls)
 
 
 async def _call_gemini(
@@ -244,18 +285,49 @@ async def _call_gemini(
     raise ValueError(f"No text in Gemini response. Finish reason: {finish}")
 
 
+def _extract_openai_citations(resp: Any) -> list[str]:
+    """Pull url_citation annotations out of a Responses API result."""
+    urls: list[str] = []
+    for item in (getattr(resp, "output", None) or []):
+        if getattr(item, "type", None) != "message":
+            continue
+        for content in (getattr(item, "content", None) or []):
+            for ann in (getattr(content, "annotations", None) or []):
+                if getattr(ann, "type", None) == "url_citation":
+                    u = getattr(ann, "url", None)
+                    if u:
+                        urls.append(u)
+    return urls
+
+
 async def _call_openai(
     client: AsyncOpenAI,
     model: str,
     system_prompt: str,
     user_prompt: str,
+    use_search: bool = False,
 ) -> dict[str, Any]:
-    """Call OpenAI Chat Completions API and return parsed JSON.
-
-    No web-search grounding — GoogleSearch and Anthropic web_search don't have
-    direct equivalents here; for OpenAI we rely on the model's own knowledge.
-    """
+    """Call OpenAI and return parsed JSON. When use_search is set, uses the
+    Responses API with the native web_search tool so the answer is grounded in
+    real, cited web data — falling back to an ungrounded Chat Completions call
+    if the model doesn't support web search."""
     from openai import BadRequestError
+
+    if use_search:
+        try:
+            resp = await client.responses.create(
+                model=model,
+                instructions=system_prompt + GROUNDING_HINT,
+                input=user_prompt,
+                tools=[{"type": "web_search"}],
+            )
+            text = (getattr(resp, "output_text", None) or "").strip()
+            if text:
+                return _merge_sources(loads_lenient(text), _extract_openai_citations(resp))
+            # empty grounded output → fall through to the ungrounded path
+        except BadRequestError:
+            # model/tool doesn't support web search → ungrounded fallback
+            pass
 
     messages = [
         {"role": "system", "content": system_prompt},
@@ -311,14 +383,18 @@ async def call_agent(
                 "Return ONLY valid JSON.]"
             )
 
+        # Real web-search grounding is requested whenever the agent passes tools.
+        # Each provider grounds natively now (Gemini: Google Search; OpenAI:
+        # Responses web_search; Anthropic: web_search server tool).
+        use_search = tools is not None and len(tools) > 0
+
         try:
             if is_gemini(model):
-                use_search = tools is not None and len(tools) > 0
                 return await _call_gemini(client, model, system_prompt, current_prompt, use_search)
             elif is_openai(model):
-                return await _call_openai(client, model, system_prompt, current_prompt)
+                return await _call_openai(client, model, system_prompt, current_prompt, use_search)
             else:
-                return await _call_anthropic(client, model, system_prompt, current_prompt, tools)
+                return await _call_anthropic(client, model, system_prompt, current_prompt, tools, use_search)
 
         except Exception as e:
             last_error = e
