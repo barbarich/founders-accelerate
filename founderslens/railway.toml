@@ -1,12 +1,18 @@
 [build]
-# Dockerfile build — see ./Dockerfile. WeasyPrint's native GTK/glib stack is
-# unreachable under Nixpacks (it failed with `cannot load library
-# 'libgobject-2.0-0'`); a Debian image loads it from the standard path.
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
+# NOTE: the lens-api service is pinned to the Nixpacks builder at the Railway
+# dashboard level, which OVERRIDES a `builder = "DOCKERFILE"` here — so we stay
+# on Nixpacks and make WeasyPrint's native GTK/glib stack loadable at runtime
+# (see the startCommand below + the apt libs in nixpacks.toml). The ./Dockerfile
+# remains as the cleaner option if the dashboard builder is ever set to Docker.
+builder = "NIXPACKS"
 
 [deploy]
-startCommand = "uvicorn server:app --host 0.0.0.0 --port $PORT"
+# WeasyPrint dlopen()s libgobject/pango/cairo. Under Nixpacks the apt-installed
+# libs (nixpacks.toml) aren't on the dynamic-loader path, which caused
+# `cannot load library 'libgobject-2.0-0'`. Rebuild the ldconfig cache (so
+# ctypes.util.find_library works) and add the multiarch dir to LD_LIBRARY_PATH
+# (so the dlopen fallback works) before starting uvicorn.
+startCommand = "bash -c 'ldconfig 2>/dev/null || true; export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}; exec uvicorn server:app --host 0.0.0.0 --port $PORT'"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
 
