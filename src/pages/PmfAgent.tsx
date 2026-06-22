@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
-import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, type Provider as ProviderLib } from "@/lib/llmModels";
+import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, RESEARCH_TIP, MODEL_GUIDANCE, SEARCH_BADGE, modelSupportsSearch, type Provider as ProviderLib } from "@/lib/llmModels";
 import { SEO } from "@/components/SEO";
 
 const C = {
@@ -501,6 +501,12 @@ function SetupCard(props: any) {
         <Label style={{ fontSize: 14, fontWeight: 600, marginBottom: 8, display: "block" }}>
           Модель ({PROVIDER_LABELS[provider as Provider].title})
         </Label>
+        <div style={{
+          fontSize: 12.5, lineHeight: 1.5, color: C.text, background: C.sageBg,
+          border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", marginBottom: 10,
+        }}>
+          {RESEARCH_TIP}
+        </div>
         <select
           value={model}
           onChange={(e) => setModel(e.target.value)}
@@ -513,7 +519,7 @@ function SetupCard(props: any) {
         >
           {MODELS[provider as Provider].map((m) => (
             <option key={m.id} value={m.id}>
-              {m.label} — {m.note}
+              {m.search ? `${SEARCH_BADGE} ` : ""}{m.label} — {m.note}
             </option>
           ))}
         </select>
@@ -521,9 +527,17 @@ function SetupCard(props: any) {
           <Input
             value={customModel}
             onChange={(e) => setCustomModel(e.target.value)}
-            placeholder={`например: ${provider === "anthropic" ? "claude-opus-5-20260301" : provider === "openai" ? "gpt-5.1" : "gemini-3.1-pro"}`}
+            placeholder={`например: ${provider === "anthropic" ? "claude-opus-4-8" : provider === "openai" ? "gpt-5.5" : "gemini-3.5-flash"}`}
             style={{ marginTop: 10, fontSize: 14, fontFamily: "ui-monospace, monospace" }}
           />
+        )}
+        <p style={{ fontSize: 12, color: C.muted, marginTop: 8 }}>
+          {MODEL_GUIDANCE[provider as Provider]}
+        </p>
+        {model !== CUSTOM_MODEL_ID && !modelSupportsSearch(provider as Provider, model) && (
+          <p style={{ fontSize: 12, color: "#b45309", marginTop: 6 }}>
+            ⚠️ Эта модель без веб-поиска — ресерч будет на знаниях модели, без актуальных источников. Для ресерча с источниками выбери модель с {SEARCH_BADGE}.
+          </p>
         )}
         <p style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>
           Дороже модель = точнее скоринг, но и дольше прогон + больше трат с твоего ключа.
