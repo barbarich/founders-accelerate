@@ -11,8 +11,11 @@ import L1BlockHeader from "./L1BlockHeader";
 import L1Slide04CompetitorLevels from "./L1Slide04CompetitorLevels";
 import L1Slide05WhatToCheck from "./L1Slide05WhatToCheck";
 import L1Slide06MetaMinder from "./L1Slide06MetaMinder";
-import L1Slide07Perplexity from "./L1Slide07Perplexity";
-import L1Slide08PerplexityPrompts from "./L1Slide08PerplexityPrompts";
+import L1Slide07DeepResearch from "./L1Slide07DeepResearch";
+import L1Slide08DeepResearchPrompt from "./L1Slide08DeepResearchPrompt";
+import L1Slide08bNotebookLM from "./L1Slide08bNotebookLM";
+import L1Slide08cValidateProblem from "./L1Slide08cValidateProblem";
+import L1Slide13bSmokeTest from "./L1Slide13bSmokeTest";
 import L1Slide09SimilarWeb from "./L1Slide09SimilarWeb";
 import L1Slide10MetaAdLibrary from "./L1Slide10MetaAdLibrary";
 import L1Slide10bGoogleTrends from "./L1Slide10bGoogleTrends";
@@ -48,14 +51,17 @@ export const slideNames = [
   "Три уровня конкурентов",
   "Что смотреть",
   "Пример: MetaMinder",
-  "Perplexity.ai",
-  "Запросы Perplexity",
+  "Deep Research",
+  "Промпт Deep Research",
+  "NotebookLM",
+  "Валидируй проблему",
   "SimilarWeb",
   "Meta Ad Library",
   "Google Trends",
   "Отзывы конкурентов",
   "Продуктовый teardown",
   "Бизнес-модель",
+  "Smoke-test спроса",
   "Блок 2: Пошаговый план",
   "5 шагов · конкуренты",
   "Блок 3: Задание",
@@ -75,27 +81,30 @@ export function getSlideContent(index: number) {
     case 4: return <L1Slide04CompetitorLevels />;
     case 5: return <L1Slide05WhatToCheck />;
     case 6: return <L1Slide06MetaMinder />;
-    case 7: return <L1Slide07Perplexity />;
-    case 8: return <L1Slide08PerplexityPrompts />;
-    case 9: return <L1Slide09SimilarWeb />;
-    case 10: return <L1Slide10MetaAdLibrary />;
-    case 11: return <L1Slide10bGoogleTrends />;
-    case 12: return <L1Slide11Reviews />;
-    case 13: return <L1Slide12Teardown />;
-    case 14: return <L1Slide13BusinessModel />;
-    case 15: return <L1BlockHeader blockNumber={2} title="Пошаговый план" subtitle="открой Claude или ChatGPT и пройди 5 шагов" />;
-    case 16: return <L1Slide22Step1 />;
-    case 17: return <L1BlockHeader blockNumber={3} title="Задание на неделю" />;
-    case 18: return <L1Slide26HWCompetitors />;
-    case 19: return <L1BlockHeader blockNumber={4} title="Набор инструментов" />;
-    case 20: return <L1Slide30Toolkit />;
-    case 21: return <L1SlideLessonSummary />;
-    case 22: return <L1Slide31Closing />;
+    case 7: return <L1Slide07DeepResearch />;
+    case 8: return <L1Slide08DeepResearchPrompt />;
+    case 9: return <L1Slide08bNotebookLM />;
+    case 10: return <L1Slide08cValidateProblem />;
+    case 11: return <L1Slide09SimilarWeb />;
+    case 12: return <L1Slide10MetaAdLibrary />;
+    case 13: return <L1Slide10bGoogleTrends />;
+    case 14: return <L1Slide11Reviews />;
+    case 15: return <L1Slide12Teardown />;
+    case 16: return <L1Slide13BusinessModel />;
+    case 17: return <L1Slide13bSmokeTest />;
+    case 18: return <L1BlockHeader blockNumber={2} title="Пошаговый план" subtitle="открой Claude или ChatGPT и пройди 5 шагов" />;
+    case 19: return <L1Slide22Step1 />;
+    case 20: return <L1BlockHeader blockNumber={3} title="Задание на неделю" />;
+    case 21: return <L1Slide26HWCompetitors />;
+    case 22: return <L1BlockHeader blockNumber={4} title="Набор инструментов" />;
+    case 23: return <L1Slide30Toolkit />;
+    case 24: return <L1SlideLessonSummary />;
+    case 25: return <L1Slide31Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 23;
+export const TOTAL = 26;
 
 export default function Lesson1PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

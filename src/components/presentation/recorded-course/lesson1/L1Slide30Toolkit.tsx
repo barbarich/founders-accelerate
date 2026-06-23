@@ -2,7 +2,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function L1Slide30Toolkit() {
   const tools = [
-    { name: "Perplexity.ai", desc: "Анализ рынка с источниками" },
+    { name: "Deep Research", desc: "Анализ рынка с источниками (ChatGPT / Claude / Gemini)" },
+    { name: "NotebookLM", desc: "Ресёрч → аудио-подкаст" },
     { name: "SimilarWeb", desc: "Трафик конкурентов" },
     { name: "Meta Ad Library", desc: "Рекламные креативы" },
     { name: "Google Trends", desc: "Динамика спроса" },
