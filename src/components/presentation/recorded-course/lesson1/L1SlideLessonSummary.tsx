@@ -14,7 +14,7 @@ const insights = [
   {
     num: "3",
     title: "AI делает анализ конкурентов в 10 раз быстрее",
-    body: "Perplexity, SimilarWeb, Meta Ad Library, Google Trends — каждый закрывает свой кусок. То, на что раньше уходила неделя, теперь делается за вечер.",
+    body: "Deep Research, NotebookLM, SimilarWeb, Meta Ad Library, Google Trends — каждый закрывает свой кусок. То, на что раньше уходила неделя, теперь делается за вечер.",
   },
   {
     num: "4",
