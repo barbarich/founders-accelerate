@@ -52,6 +52,9 @@ export default function L2Slide15Interview() {
             ))}
           </div>
         </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[8px] mt-[8px]">
+          <p className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">🖼️ <span className="font-semibold">Прототип — в самом конце.</span> Сначала вытяни прошлый опыт; экран в начале собьёт на оценку идеи. В конце: «вот что собрал — что не так?»</p>
+        </div>
       </div>
     );
   }
@@ -97,6 +100,11 @@ export default function L2Slide15Interview() {
             ))}
           </div>
         </div>
+      </div>
+      <div className="mt-[32px] bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[12px] px-[32px] py-[20px]">
+        <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.45]">
+          🖼️ <span className="font-semibold">Прототип — в самом конце интервью, не раньше.</span> Сначала вытяни реальный прошлый опыт. Покажешь экран в начале — собьёшь человека на оценку твоей идеи вместо его опыта. В конце — самое время: «вот что я собрал, что здесь не так?»
+        </p>
       </div>
     </div>
   );

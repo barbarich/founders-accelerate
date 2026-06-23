@@ -16,7 +16,7 @@ export default function L2SlidePassFail() {
           <div className="border-l-2 border-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[10px]">
             <p className="text-[11px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-bold mb-[4px]">✓ PASS — строй</p>
             <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-              7 из 10 интервью подтвердили боль <span className="font-bold">+</span> {`>=`}60% из 100 опрошенных назвали ту же боль в топ-3 <span className="font-bold">+</span> {`>=`}30% готовы платить указанную тобой цену
+              {`>=`}60% из 100 опрошенных назвали ту же боль в топ-3 <span className="font-bold">+</span> 7 из 10 интервью подтвердили её живьём <span className="font-bold">+</span> {`>=`}30% готовы платить указанную тобой цену
             </p>
           </div>
           <div className="border-l-2 border-[hsl(var(--slide-text-muted)/0.4)] px-[14px] py-[10px]">
@@ -47,7 +47,7 @@ export default function L2SlidePassFail() {
         <div className="border-l-[4px] border-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[32px] py-[22px]">
           <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-bold mb-[10px]">✓ PASS — строй</p>
           <p className="text-[24px] text-[hsl(var(--slide-text))] leading-[1.5]">
-            <span className="font-bold">7 из 10</span> интервью подтвердили боль · <span className="font-bold">{`>=`}60%</span> из 100 опрошенных назвали ту же боль в топ-3 · <span className="font-bold">{`>=`}30%</span> готовы платить указанную тобой цену
+            <span className="font-bold">{`>=`}60%</span> из 100 опрошенных назвали ту же боль в топ-3 · <span className="font-bold">7 из 10</span> интервью подтвердили её живьём · <span className="font-bold">{`>=`}30%</span> готовы платить указанную тобой цену
           </p>
         </div>
         <div className="border-l-[4px] border-[hsl(var(--slide-text-muted)/0.4)] px-[32px] py-[22px]">

@@ -15,6 +15,7 @@ import L2SlideSurveysIntro from "./L2SlideSurveysIntro";
 import L2SlideSurveysStack from "./L2SlideSurveysStack";
 import L2SlideSurveysDistribution from "./L2SlideSurveysDistribution";
 import L2SlidePassFail from "./L2SlidePassFail";
+import L2SlideCustdevPrompt from "./L2SlideCustdevPrompt";
 import L2Slide04CompetitorLevels from "./L2Slide04CompetitorLevels";
 import L2Slide05WhatToCheck from "./L2Slide05WhatToCheck";
 import L2Slide06MetaMinder from "./L2Slide06MetaMinder";
@@ -54,21 +55,22 @@ export const slideNames = [
   "Зачем прототип ДО кастдева",
   "Стек прототипа · Lovable / Claude Code / Codex",
   "Три вещи",
-  "Блок 1: Кто заплатит и как с ним поговорить",
+  "Блок 1: Количественные опросы",
   "Кто заплатит",
-  "Customer-интервью",
-  "Гипотеза для custdev",
-  "Где найти людей",
-  "tl;dv · запись интервью",
-  "Блок 2: Количественные опросы",
-  "Зачем 100 опросов после 10 интервью",
+  "Зачем количественные опросы",
   "Стек: Tally / Typeform / Google Forms",
   "4 канала дистрибуции",
+  "Блок 2: Кастдев-интервью",
+  "Гипотеза для валидации",
+  "Customer-интервью",
+  "Где найти людей + Calendly",
+  "Запись: tl;dv / Granola",
+  "Промпт: вопросы для custdev",
   "PASS / FAIL критерий + Action gate",
   "Блок 3: Пошаговый план",
   "5 шагов · вопросы для custdev",
   "Блок 4: Задание",
-  "ДЗ: 10 интервью + 100 опросов",
+  "ДЗ: 100 опросов + 10 интервью",
   "Саммари · 5 мыслей",
   "Закрытие",
 ];
@@ -81,28 +83,29 @@ export function getSlideContent(index: number) {
     case 3: return <L2SlideWhyPrototype />;
     case 4: return <L2SlidePrototypeStack />;
     case 5: return <L2Slide03ThreeThings />;
-    case 6: return <L2BlockHeader blockNumber={1} title="Кто заплатит и как с ним поговорить" subtitle="качественный custdev: 10 интервью" />;
+    case 6: return <L2BlockHeader blockNumber={1} title="Количественные опросы" subtitle="100+ ответов: суть и масштаб проблемы → гипотезы" />;
     case 7: return <L2Slide14WhoWillPay />;
-    case 8: return <L2Slide15Interview />;
-    case 9: return <L2Slide15bHypothesis />;
-    case 10: return <L2Slide16FindPeople />;
-    case 11: return <L2Slide17Tldv />;
-    case 12: return <L2BlockHeader blockNumber={2} title="Количественные опросы" subtitle="100+ ответов: измеряем размер боли" />;
-    case 13: return <L2SlideSurveysIntro />;
-    case 14: return <L2SlideSurveysStack />;
-    case 15: return <L2SlideSurveysDistribution />;
-    case 16: return <L2SlidePassFail />;
-    case 17: return <L2BlockHeader blockNumber={3} title="Пошаговый план" subtitle="открой Claude или ChatGPT и составь свой custdev" />;
-    case 18: return <L2Slide23Step2 />;
-    case 19: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
-    case 20: return <L2Slide27HWCustdev />;
-    case 21: return <L2SlideLessonSummary />;
-    case 22: return <L2Slide31Closing />;
+    case 8: return <L2SlideSurveysIntro />;
+    case 9: return <L2SlideSurveysStack />;
+    case 10: return <L2SlideSurveysDistribution />;
+    case 11: return <L2BlockHeader blockNumber={2} title="Кастдев-интервью" subtitle="10 интервью: лично валидируем гипотезы" />;
+    case 12: return <L2Slide15bHypothesis />;
+    case 13: return <L2Slide15Interview />;
+    case 14: return <L2Slide16FindPeople />;
+    case 15: return <L2Slide17Tldv />;
+    case 16: return <L2SlideCustdevPrompt />;
+    case 17: return <L2SlidePassFail />;
+    case 18: return <L2BlockHeader blockNumber={3} title="Пошаговый план" subtitle="открой Claude или ChatGPT и составь свой custdev" />;
+    case 19: return <L2Slide23Step2 />;
+    case 20: return <L2BlockHeader blockNumber={4} title="Задание на эту неделю" />;
+    case 21: return <L2Slide27HWCustdev />;
+    case 22: return <L2SlideLessonSummary />;
+    case 23: return <L2Slide31Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 23;
+export const TOTAL = 24;
 
 export default function Lesson2PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

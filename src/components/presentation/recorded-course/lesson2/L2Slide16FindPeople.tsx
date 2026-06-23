@@ -44,6 +44,9 @@ export default function L2Slide16FindPeople() {
             </div>
           ))}
         </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.06)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[10px] py-[8px] mb-[6px]">
+          <p className="text-[9px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">📅 Дай ссылку на календарь — Calendly (альт. TidyCal). Люди сами бронируют время, ноль переписки.</p>
+        </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[6px] px-[10px] py-[8px]">
           <p className="text-[9px] text-[hsl(var(--slide-text-muted))]">
             📊 Нетворк ~50% конверсия, холодные ~10%. Начни с тёплых.
@@ -97,6 +100,11 @@ export default function L2Slide16FindPeople() {
             </div>
           ))}
         </div>
+      </div>
+      <div className="mb-[16px] bg-[hsl(var(--slide-gold)/0.06)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[32px] py-[16px]">
+        <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.45]">
+          📅 <span className="font-semibold">Дай ссылку на свой календарь</span> — Calendly (или альтернатива TidyCal). Человек сам бронирует удобное время, ноль переписки «когда тебе удобно».
+        </p>
       </div>
       <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[10px] px-[32px] py-[16px]">
         <p className="text-[20px] text-[hsl(var(--slide-text-muted))]">

@@ -8,10 +8,10 @@ export default function L2Slide15bHypothesis() {
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Customer Development</p>
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[4px]">
-          Сначала гипотеза — потом интервью
+          Из опросов — гипотеза. Валидируй её лично.
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mb-[12px]">
-          Без гипотезы интервью превращается в болтовню.
+          Цифры показали массовую боль — теперь проверь её живьём.
         </p>
 
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.4)] rounded-[8px] p-[12px] mb-[10px]">
@@ -51,10 +51,10 @@ export default function L2Slide15bHypothesis() {
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[100px]">
       <p className="text-[20px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">Customer Development</p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px]">
-        Сначала гипотеза — потом интервью
+        Из опросов — гипотеза. Теперь валидируй её лично.
       </h2>
       <p className="text-[22px] text-[hsl(var(--slide-text-muted))] mb-[44px]">
-        Без гипотезы интервью превращается в болтовню. Ты должен знать, что проверяешь — до того, как откроешь рот.
+        Опросы показали массовую боль и сегменты. Кастдев проверяет, та ли это боль на самом деле — и за что человек реально готов платить.
       </p>
       <div className="flex gap-[32px]">
         <div className="flex-[1.3]">
