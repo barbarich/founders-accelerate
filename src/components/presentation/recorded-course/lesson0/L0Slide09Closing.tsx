@@ -13,10 +13,10 @@ export default function L0Slide09Closing() {
           Тогда —<br /><span className="text-[hsl(var(--slide-gold))]">в Урок 1.</span>
         </h2>
         <p className="text-[15px] font-medium text-[hsl(var(--slide-text))] leading-[1.5] mb-[8px]">
-          Анализ рынка и конкурентов
+          Блок 1 · Валидация и ресерч
         </p>
         <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[20px]">
-          Ничего не пропускай. Каждый урок строит на предыдущем.<br />Action gate после Урока 2 — обязателен.
+          Начинаем с самого начала — что вообще строить.<br />Дальше каждый урок строит на предыдущем.
         </p>
         <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))]" />
       </div>
@@ -32,10 +32,10 @@ export default function L0Slide09Closing() {
         Тогда —<br /><span className="text-[hsl(var(--slide-gold))]">в Урок 1.</span>
       </h2>
       <p className="text-[36px] font-medium text-[hsl(var(--slide-text))] leading-[1.3] mb-[16px]">
-        Анализ рынка и конкурентов
+        Блок 1 · Валидация и ресерч
       </p>
       <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1300px] mb-[40px]">
-        Ничего не пропускай. Каждый урок строит на предыдущем.<br />Action gate после Урока 2 — обязателен.
+        Начинаем с самого начала — что вообще строить.<br />Дальше каждый урок строит на предыдущем.
       </p>
       <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))]" />
     </div>

@@ -5,37 +5,37 @@ import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
 import L0Slide01Welcome from "./L0Slide01Welcome";
-import L0Slide02Intro from "./L0Slide02Intro";
-import L0Slide03Truth1 from "./L0Slide03Truth1";
-import L0Slide04Truth2 from "./L0Slide04Truth2";
-import L0Slide05Truth3 from "./L0Slide05Truth3";
-import L0Slide06Truth4 from "./L0Slide06Truth4";
-import L0Slide07Truth5 from "./L0Slide07Truth5";
-import L0Slide08CourseMap from "./L0Slide08CourseMap";
+import L0Slide02CoreIdea from "./L0Slide02CoreIdea";
+import L0Slide03WhoAmI from "./L0Slide03WhoAmI";
+import L0Slide04Goal from "./L0Slide04Goal";
+import L0Slide05Blocks from "./L0Slide05Blocks";
+import L0Slide06Block1 from "./L0Slide06Block1";
+import L0Slide07Block2 from "./L0Slide07Block2";
+import L0Slide08Block3 from "./L0Slide08Block3";
 import L0Slide09Closing from "./L0Slide09Closing";
 
 export const slideNames = [
-  "Заглавный · 5 правд",
-  "Зачем эта правда",
-  "Правда 1 · Сначала строишь — теряешь полгода",
-  "Правда 2 · Идея ничего не стоит без действия",
-  "Правда 3 · AI усиливает, но не заменяет",
-  "Правда 4 · Кофаундер · первый месяц решает всё",
-  "Правда 5 · «Я не маркетолог» = не запускаю",
-  "Карта курса · 17 уроков",
+  "Заглавный · Вводный урок",
+  "Главная мысль · Построить продукт легко",
+  "Кто я · Михаэль Барбарич",
+  "Цель курса · Прототип → бизнес",
+  "Структура · Три блока",
+  "Блок 1 · Валидация и ресерч",
+  "Блок 2 · Построение продукта",
+  "Блок 3 · Маркетинг и продажи",
   "Готов? В Урок 1",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L0Slide01Welcome />;
-    case 1: return <L0Slide02Intro />;
-    case 2: return <L0Slide03Truth1 />;
-    case 3: return <L0Slide04Truth2 />;
-    case 4: return <L0Slide05Truth3 />;
-    case 5: return <L0Slide06Truth4 />;
-    case 6: return <L0Slide07Truth5 />;
-    case 7: return <L0Slide08CourseMap />;
+    case 1: return <L0Slide02CoreIdea />;
+    case 2: return <L0Slide03WhoAmI />;
+    case 3: return <L0Slide04Goal />;
+    case 4: return <L0Slide05Blocks />;
+    case 5: return <L0Slide06Block1 />;
+    case 6: return <L0Slide07Block2 />;
+    case 7: return <L0Slide08Block3 />;
     case 8: return <L0Slide09Closing />;
     default: return null;
   }
@@ -105,7 +105,7 @@ export default function Lesson0PresentationShell({ backTo = "/admin/meetings" }:
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 0 — 5 правд</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 0 — Вводный</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

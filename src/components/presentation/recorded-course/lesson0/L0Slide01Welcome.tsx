@@ -14,13 +14,13 @@ export default function L0Slide01Welcome() {
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
           <p className="text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-            Урок 0 · Открытие курса
+            Урок 0 · Вводный
           </p>
           <h1 className="font-display text-[32px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em]">
-            5 правд,<br />которые убивают<br />90% соло-фаундеров
+            От прототипа<br />до бизнеса,<br />который покупают
           </h1>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.5]">
-            5 правд, которые я бы хотел знать<br />в начале своего первого стартапа.
+            За 5 минут расскажу, о чём весь курс<br />и какой путь мы пройдём вместе.
           </p>
         </div>
       </div>
@@ -36,13 +36,13 @@ export default function L0Slide01Welcome() {
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1400px]">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[40px]" />
         <p className="text-[20px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[28px]">
-          Урок 0 · Открытие курса
+          Урок 0 · Вводный
         </p>
         <h1 className="font-display text-[82px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          5 правд, которые убивают<br />90% соло-фаундеров
+          От прототипа до бизнеса,<br />который покупают
         </h1>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[32px] leading-[1.4] max-w-[1100px]">
-          5 правд, которые я бы хотел знать<br />в начале своего первого стартапа.
+          За 5 минут расскажу, о чём весь курс<br />и какой путь мы пройдём вместе.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
