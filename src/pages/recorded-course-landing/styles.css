@@ -236,18 +236,17 @@
   border-radius: var(--mcl-radius-pill);
   text-transform: uppercase;
 }
-.rcl-tier-launch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+/* Inline savings chip in the price row (replaces the floating launch pill) */
+.rcl-tier-save {
+  align-self: center;
   font-family: var(--mcl-font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--mcl-green);
-  background: var(--mcl-sage-bg);
-  border: 1px solid var(--mcl-sage-border);
-  padding: 5px 9px;
-  border-radius: var(--mcl-radius-pill);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--mcl-text);
+  background: var(--mcl-accent);
+  padding: 3px 8px;
+  border-radius: 6px;
 }
 .rcl-tier-name {
   font-family: var(--mcl-font-display);
@@ -266,7 +265,8 @@
 .rcl-tier-price {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   margin-bottom: 4px;
 }
 .rcl-tier-price-cur {

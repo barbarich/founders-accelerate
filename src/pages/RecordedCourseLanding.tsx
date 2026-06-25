@@ -583,15 +583,15 @@ function Pricing() {
         <div className="rcl-tiers">
           {/* Tier 1 — Recorded */}
           <div className="rcl-tier">
-            <span className="rcl-tier-launch">старт первой волны</span>
             <div className="rcl-tier-name">Курс в записи</div>
             <p className="rcl-tier-tagline">Вся программа в своём темпе. Учишься сам.</p>
             <div className="rcl-tier-price">
               <span className="rcl-tier-price-cur">$</span>
               <span className="rcl-tier-price-new">{TIER_RECORDED.price}</span>
               <span className="rcl-tier-price-old">${TIER_RECORDED.futurePrice}</span>
+              <span className="rcl-tier-save">−${TIER_RECORDED.futurePrice - TIER_RECORDED.price}</span>
             </div>
-            <p className="rcl-tier-note">Единоразовый платёж · доступ навсегда</p>
+            <p className="rcl-tier-note">Цена первой волны · потом ${TIER_RECORDED.futurePrice}</p>
             <ul className="rcl-tier-features">
               <li>Все 17 уроков (вводный + 3 месяца), ~15+ часов видео</li>
               <li>Задания, шаблоны и промпты к каждому уроку</li>
@@ -620,8 +620,9 @@ function Pricing() {
               <span className="rcl-tier-price-cur">$</span>
               <span className="rcl-tier-price-new">{TIER_MENTOR.price}</span>
               <span className="rcl-tier-price-old">${TIER_MENTOR.futurePrice}</span>
+              <span className="rcl-tier-save">−${TIER_MENTOR.futurePrice - TIER_MENTOR.price}</span>
             </div>
-            <p className="rcl-tier-note">Единоразовый платёж · доступ навсегда</p>
+            <p className="rcl-tier-note">Цена первой волны · потом ${TIER_MENTOR.futurePrice}</p>
             <ul className="rcl-tier-features">
               <li className="rcl-tier-feature--hero">Всё из тарифа «Курс в записи»</li>
               <li className="rcl-tier-feature--hero">3 личные часовые консультации 1:1</li>
