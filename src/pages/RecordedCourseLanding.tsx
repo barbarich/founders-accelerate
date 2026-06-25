@@ -761,7 +761,8 @@ function ManagerHelp() {
   );
 }
 
-/** Persistent button — keeps the manager reachable from anywhere on the page. */
+/** Persistent button — keeps the manager reachable from anywhere on the page.
+ *  Shows who you're writing to (avatar + name + role) so it's not a mystery icon. */
 function FloatingManager() {
   return (
     <a
@@ -770,10 +771,15 @@ function FloatingManager() {
       rel="noopener noreferrer"
       className="rcl-fab"
       onClick={onManagerClick}
-      aria-label="Написать менеджеру в Telegram"
+      aria-label="Написать менеджеру Елизавете в Telegram"
     >
-      {TG_ICON}
-      <span className="rcl-fab-label">Вопрос?</span>
+      <span className="rcl-fab-avatar" aria-hidden="true">
+        Е<i className="rcl-fab-dot" />
+      </span>
+      <span className="rcl-fab-text">
+        <span className="rcl-fab-text-top">Есть вопрос?</span>
+        <span className="rcl-fab-text-main">Менеджер Елизавета</span>
+      </span>
     </a>
   );
 }
