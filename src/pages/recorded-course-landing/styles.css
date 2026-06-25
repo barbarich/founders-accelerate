@@ -712,33 +712,33 @@
   .rcl-manager-cta { width: 100%; justify-content: center; box-sizing: border-box; }
 }
 
-/* Floating manager button — reachable from anywhere (custom, not a generic bubble) */
+/* Floating manager button — compact icon-only circle */
 .rcl-fab {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 18px;
+  bottom: 18px;
   z-index: 60;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   background: var(--mcl-text);
-  color: #fff;
-  padding: 12px 17px;
-  border-radius: var(--mcl-radius-pill);
   text-decoration: none;
-  font-family: var(--mcl-font-display);
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 8px 24px rgba(13, 13, 13, 0.28);
+  box-shadow: 0 6px 18px rgba(13, 13, 13, 0.26);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.rcl-fab svg { color: var(--mcl-accent); width: 20px; height: 20px; flex-shrink: 0; }
-.rcl-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(13, 13, 13, 0.34); }
-.rcl-fab-label { white-space: nowrap; }
+.rcl-fab svg { color: var(--mcl-accent); width: 22px; height: 22px; flex-shrink: 0; }
+.rcl-fab:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(13, 13, 13, 0.32); }
+.rcl-fab-label { display: none; }
 @media (max-width: 480px) {
-  .rcl-fab { right: 14px; bottom: 14px; padding: 11px 15px; font-size: 13px; }
+  .rcl-fab { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+  .rcl-fab svg { width: 20px; height: 20px; }
 }
 
 /* Override base .mcl-root h2 color so the dark-card title stays white */
 .rcl-page .rcl-manager-title { color: #fff; }
 .rcl-page .rcl-manager-text { color: rgba(255, 255, 255, 0.74); }
+/* Beat the base .mcl-root a link color so the lime CTA text stays dark/legible */
+.rcl-page .rcl-manager-cta { color: var(--mcl-text); }
