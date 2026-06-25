@@ -712,7 +712,8 @@
   .rcl-manager-cta { width: 100%; justify-content: center; box-sizing: border-box; }
 }
 
-/* Floating manager button — avatar + name so it's clear who you're writing to */
+/* Floating manager button — compact Telegram icon by default; the label
+ * expands on hover (desktop) or on .rcl-fab--open (first tap on touch). */
 .rcl-fab {
   position: fixed;
   right: 18px;
@@ -720,10 +721,9 @@
   z-index: 60;
   display: inline-flex;
   align-items: center;
-  gap: 11px;
   background: var(--mcl-text);
-  padding: 9px 18px 9px 9px;
-  border-radius: var(--mcl-radius-pill);
+  padding: 7px;
+  border-radius: 100px;
   text-decoration: none;
   box-shadow: 0 8px 22px rgba(13, 13, 13, 0.28);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -732,8 +732,8 @@
 .rcl-fab-avatar {
   position: relative;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--mcl-accent);
   color: var(--mcl-text);
@@ -741,7 +741,7 @@
   align-items: center;
   justify-content: center;
 }
-.rcl-fab-avatar svg { width: 19px; height: 19px; }
+.rcl-fab-avatar svg { width: 20px; height: 20px; }
 .rcl-fab-dot {
   position: absolute;
   right: -1px;
@@ -753,18 +753,30 @@
   border: 2px solid var(--mcl-text);
 }
 .rcl-fab-text {
+  max-width: 0;
+  opacity: 0;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: hidden;
+  white-space: nowrap;
   font-family: var(--mcl-font-display);
   font-size: 14px;
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
-  white-space: nowrap;
+  transition: max-width 0.26s ease, opacity 0.2s ease, margin 0.26s ease;
+}
+.rcl-fab:hover .rcl-fab-text,
+.rcl-fab--open .rcl-fab-text {
+  max-width: 150px;
+  opacity: 1;
+  margin-left: 10px;
+  margin-right: 8px;
 }
 @media (max-width: 480px) {
-  .rcl-fab { right: 12px; bottom: 12px; gap: 10px; padding: 8px 15px 8px 8px; }
-  .rcl-fab-avatar { width: 34px; height: 34px; }
-  .rcl-fab-avatar svg { width: 18px; height: 18px; }
-  .rcl-fab-text { font-size: 13.5px; }
+  .rcl-fab { right: 14px; bottom: 14px; }
+  .rcl-fab-avatar { width: 36px; height: 36px; }
+  .rcl-fab-avatar svg { width: 19px; height: 19px; }
 }
 
 /* Override base .mcl-root h2 color so the dark-card title stays white */

@@ -761,16 +761,38 @@ function ManagerHelp() {
   );
 }
 
-/** Persistent button — keeps the manager reachable from anywhere on the page.
- *  Shows who you're writing to (avatar + name + role) so it's not a mystery icon. */
+/** Persistent button — compact Telegram icon by default to save screen space.
+ *  Touch: first tap reveals "Задай вопрос", second tap opens Telegram.
+ *  Desktop: expands on hover, single click opens Telegram. */
 function FloatingManager() {
+  const [open, setOpen] = useState(false);
+  const canHover =
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(hover: hover)").matches;
+
+  // Auto-collapse on touch if the second tap doesn't come.
+  useEffect(() => {
+    if (!open) return;
+    const id = window.setTimeout(() => setOpen(false), 4000);
+    return () => window.clearTimeout(id);
+  }, [open]);
+
   return (
     <a
       href={MANAGER_TG}
       target="_blank"
       rel="noopener noreferrer"
-      className="rcl-fab"
-      onClick={onManagerClick}
+      className={`rcl-fab${open ? " rcl-fab--open" : ""}`}
+      onClick={(e) => {
+        // Touch devices: first tap only reveals the label.
+        if (!canHover && !open) {
+          e.preventDefault();
+          setOpen(true);
+          return;
+        }
+        onManagerClick();
+      }}
       aria-label="Задать вопрос в Telegram"
     >
       <span className="rcl-fab-avatar" aria-hidden="true">
