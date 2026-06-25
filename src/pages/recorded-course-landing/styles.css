@@ -624,3 +624,121 @@
   margin-top: 20px;
   line-height: 1.6;
 }
+
+/* ===================================================================== *
+ * MANAGER HELP — "talk to a human" decision-helper for hesitant visitors
+ * ===================================================================== */
+.rcl-manager-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  background: var(--mcl-text);
+  color: #fff;
+  border-radius: var(--mcl-radius-lg);
+  padding: 32px 34px;
+  box-shadow: 0 18px 44px rgba(13, 13, 13, 0.18);
+}
+.rcl-manager-card::before {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -50px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(202, 255, 0, 0.2), transparent 70%);
+  pointer-events: none;
+}
+.rcl-manager-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rcl-manager-icon svg { width: 26px; height: 26px; }
+.rcl-manager-body { flex: 1; min-width: 0; position: relative; z-index: 1; }
+.rcl-manager-kicker {
+  font-family: var(--mcl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mcl-accent);
+  margin-bottom: 7px;
+}
+.rcl-manager-title {
+  font-family: var(--mcl-font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 9px;
+  line-height: 1.15;
+}
+.rcl-manager-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+  margin: 0;
+  max-width: 48ch;
+}
+.rcl-manager-cta {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
+  font-family: var(--mcl-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 22px;
+  border-radius: var(--mcl-radius-pill);
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.rcl-manager-cta:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.rcl-manager-cta svg { width: 18px; height: 18px; }
+
+@media (max-width: 700px) {
+  .rcl-manager-card { flex-direction: column; align-items: flex-start; gap: 18px; padding: 28px 24px; }
+  .rcl-manager-cta { width: 100%; justify-content: center; box-sizing: border-box; }
+}
+
+/* Floating manager button — reachable from anywhere (custom, not a generic bubble) */
+.rcl-fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--mcl-text);
+  color: #fff;
+  padding: 12px 17px;
+  border-radius: var(--mcl-radius-pill);
+  text-decoration: none;
+  font-family: var(--mcl-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(13, 13, 13, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rcl-fab svg { color: var(--mcl-accent); width: 20px; height: 20px; flex-shrink: 0; }
+.rcl-fab:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(13, 13, 13, 0.34); }
+.rcl-fab-label { white-space: nowrap; }
+@media (max-width: 480px) {
+  .rcl-fab { right: 14px; bottom: 14px; padding: 11px 15px; font-size: 13px; }
+}
+
+/* Override base .mcl-root h2 color so the dark-card title stays white */
+.rcl-page .rcl-manager-title { color: #fff; }
+.rcl-page .rcl-manager-text { color: rgba(255, 255, 255, 0.74); }

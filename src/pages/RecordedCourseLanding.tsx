@@ -1,6 +1,6 @@
 import { type MouseEvent, useEffect, useRef, useState } from "react";
 import { SEO, breadcrumb } from "@/components/SEO";
-import { trackBeginCheckout, trackViewItem, trackViewItemList } from "@/lib/analytics";
+import { trackBeginCheckout, trackSelectContent, trackViewItem, trackViewItemList } from "@/lib/analytics";
 import "./mini-course-landing/styles.css";
 import "./recorded-course-landing/styles.css";
 
@@ -41,9 +41,21 @@ function onBuyClick(cta: string, value: number): void {
   trackBeginCheckout(cta, value);
 }
 
+// Support manager — Telegram. The "talk to a human" button for hesitant visitors.
+const MANAGER_TG = "https://t.me/yelyzaveta96";
+function onManagerClick(): void {
+  trackSelectContent("manager_telegram", "yelyzaveta96");
+}
+
 const CHECK_ICON = (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
     <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
+const TG_ICON = (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M21.94 4.66a1.2 1.2 0 0 0-1.27-.2L3.36 11.3c-.86.34-.83 1.58.04 1.88l4.3 1.47 1.64 5.02c.24.74 1.17.96 1.72.4l2.4-2.42 4.2 3.1c.6.44 1.46.12 1.62-.6l3.07-14.2c.1-.45-.06-.9-.41-1.17ZM9.7 14.13l8.2-5.1c.16-.1.33.12.19.25l-6.62 6.16c-.23.22-.38.51-.43.83l-.23 1.5c-.03.2-.31.22-.37.03l-.86-2.8a.86.86 0 0 1 .35-1.04Z" />
   </svg>
 );
 
@@ -718,11 +730,60 @@ function FinalCTA() {
   );
 }
 
+/* ------------------------------------------------------------------ *
+ * Manager help — the "talk to a human" decision-helper for hesitant visitors
+ * ------------------------------------------------------------------ */
+function ManagerHelp() {
+  return (
+    <section className="rcl-manager">
+      <div className="mcl-container">
+        <div className="rcl-manager-card">
+          <div className="rcl-manager-icon" aria-hidden="true">{TG_ICON}</div>
+          <div className="rcl-manager-body">
+            <div className="rcl-manager-kicker">Остались вопросы?</div>
+            <h2 className="rcl-manager-title">Сомневаешься, подойдёт ли тебе?</h2>
+            <p className="rcl-manager-text">
+              Напиши Елизавете, моему менеджеру — она ответит на любые вопросы и поможет выбрать тариф. Спокойно, без давления и продаж.
+            </p>
+          </div>
+          <a
+            href={MANAGER_TG}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rcl-manager-cta"
+            onClick={onManagerClick}
+          >
+            {TG_ICON} Написать менеджеру
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Persistent button — keeps the manager reachable from anywhere on the page. */
+function FloatingManager() {
+  return (
+    <a
+      href={MANAGER_TG}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="rcl-fab"
+      onClick={onManagerClick}
+      aria-label="Написать менеджеру в Telegram"
+    >
+      {TG_ICON}
+      <span className="rcl-fab-label">Вопрос?</span>
+    </a>
+  );
+}
+
 function Footer() {
   return (
     <footer className="mcl-footer">
       <div className="mcl-container">
         <div className="mcl-footer-links">
+          <a href={MANAGER_TG} target="_blank" rel="noopener noreferrer" onClick={onManagerClick}>Написать менеджеру</a>
           <a href="mailto:michael.barbarych@gmail.com">michael.barbarych@gmail.com</a>
           <a href="/ru/privacy">Privacy Policy</a>
           <a href="/ru/terms">Terms of Service</a>
@@ -825,9 +886,11 @@ function RecordedCourseLandingInner() {
       <Cases />
       <SocialProof />
       <Pricing />
+      <ManagerHelp />
       <FAQ />
       <FinalCTA />
       <Footer />
+      <FloatingManager />
     </div>
   );
 }
