@@ -309,148 +309,189 @@
   transform: translateY(-1px);
 }
 
-/* ---- Hero price cards — compact, selling first-screen presentation --- */
-.rcl-hero-tiers {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin: 28px 0 20px;
-  text-align: left;
-}
-@media (min-width: 600px) {
-  .rcl-hero-tiers { grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
-}
-
-.rcl-hero-tier {
-  position: relative;
-  background: var(--mcl-surface);
-  border: 1px solid var(--mcl-border-strong);
-  border-radius: var(--mcl-radius);
-  padding: 22px 20px 18px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--mcl-shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.rcl-hero-tier--featured {
-  border: 2px solid var(--mcl-accent);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-}
-.rcl-hero-tier:hover { transform: translateY(-2px); box-shadow: var(--mcl-shadow-md); }
-
-.rcl-hero-tier-badge {
+/* ===================================================================== *
+ * CUSTOM HERO — distinctive first screen (no generic pill / no 2 cards).
+ * Stays in the brand palette but builds bespoke elements: an atmospheric
+ * backdrop, a mono meta-line, a "Прототип → Бизнес" transformation rail,
+ * and one strong CTA. Animated reveal on load.
+ * ===================================================================== */
+.rcl-hero { position: relative; overflow: hidden; }
+.rcl-hero::before {
+  content: '';
   position: absolute;
-  top: -11px;
-  left: 18px;
-  background: var(--mcl-accent);
-  color: var(--mcl-text);
-  font-family: var(--mcl-font-display);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
+  inset: -10% -10% 0;
+  background:
+    radial-gradient(50% 42% at 50% 16%, rgba(202, 255, 0, 0.22), transparent 72%),
+    radial-gradient(circle at 1px 1px, rgba(13, 13, 13, 0.055) 1px, transparent 0);
+  background-size: auto, 24px 24px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 88%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 88%);
+  pointer-events: none;
+}
+.rcl-hero > .mcl-container { position: relative; z-index: 1; }
+
+/* staggered load reveal */
+.rcl-hero-rise { opacity: 0; transform: translateY(14px); animation: rcl-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.rcl-hero-rise.d1 { animation-delay: 0.05s; }
+.rcl-hero-rise.d2 { animation-delay: 0.13s; }
+.rcl-hero-rise.d3 { animation-delay: 0.22s; }
+.rcl-hero-rise.d4 { animation-delay: 0.32s; }
+.rcl-hero-rise.d5 { animation-delay: 0.42s; }
+@keyframes rcl-rise { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .rcl-hero-rise { animation: none; opacity: 1; transform: none; }
+}
+
+/* custom mono meta-line — replaces the pill eyebrow */
+.rcl-metaline {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 26px;
+  font-family: var(--mcl-font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 4px 11px;
-  border-radius: var(--mcl-radius-pill);
-}
-.rcl-hero-tier-name {
-  font-family: var(--mcl-font-display);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--mcl-text);
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-}
-.rcl-hero-tier-price {
-  display: flex;
-  align-items: baseline;
-  gap: 9px;
-  margin-bottom: 14px;
-}
-.rcl-hero-tier-price b {
-  font-family: var(--mcl-font-display);
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.045em;
-  color: var(--mcl-text);
-}
-.rcl-hero-tier-price s {
-  font-family: var(--mcl-font-display);
-  font-size: 17px;
-  font-weight: 500;
-  color: var(--mcl-hint);
-  text-decoration: line-through;
-}
-.rcl-hero-tier-feats {
-  list-style: none;
-  margin: 0 0 18px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  flex: 1;
-}
-.rcl-hero-tier-feats li {
-  font-size: 13.5px;
   color: var(--mcl-secondary);
-  line-height: 1.4;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
 }
-.rcl-hero-tier-feats li::before {
-  content: '✓';
-  color: var(--mcl-green);
-  font-weight: 700;
+.rcl-metaline span { white-space: nowrap; }
+.rcl-metaline i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--mcl-accent);
   flex-shrink: 0;
 }
-.rcl-hero-tier-feats li.rcl-hl {
-  color: var(--mcl-text);
-  font-weight: 600;
-}
-.rcl-hero-tier-feats li.rcl-hl::before { color: var(--mcl-text); }
 
-.rcl-hero-tier-cta {
-  display: inline-flex;
+/* selling subline (tighter than mcl-lede, no max-width quirk) */
+.rcl-hero-sub {
+  font-size: clamp(16px, 2.2vw, 19px);
+  line-height: 1.6;
+  color: var(--mcl-secondary);
+  max-width: 600px;
+  margin: 18px auto 0;
+}
+.rcl-hero-sub strong { color: var(--mcl-text); font-weight: 600; }
+
+/* ---- Transformation rail: Прототип →→→ Бизнес с платящими ---------- */
+.rcl-transform {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  max-width: 540px;
+  margin: 34px auto 0;
+  text-align: left;
+}
+.rcl-transform-node {
+  flex: 1;
+  padding: 16px 18px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+.rcl-transform-node--from {
+  border: 1.5px dashed var(--mcl-border-strong);
+  background: rgba(255, 255, 255, 0.5);
+}
+.rcl-transform-node--to {
+  background: var(--mcl-text);
+  color: #fff;
+  box-shadow: 0 16px 38px rgba(13, 13, 13, 0.22);
+}
+.rcl-transform-kicker {
+  font-family: var(--mcl-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mcl-muted);
+}
+.rcl-transform-node--to .rcl-transform-kicker { color: var(--mcl-accent); }
+.rcl-transform-label {
+  font-family: var(--mcl-font-display);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* connector with a lime label sitting on the line */
+.rcl-transform-link {
+  position: relative;
+  flex: 0 0 64px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 13px 16px;
-  font-family: var(--mcl-font-display);
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: var(--mcl-radius-pill);
-  text-decoration: none;
-  transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
 }
-.rcl-hero-tier-cta--primary {
+.rcl-transform-link::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--mcl-border-strong), var(--mcl-text));
+}
+.rcl-transform-link::after {
+  content: '';
+  position: absolute;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid var(--mcl-text);
+  border-right: 2px solid var(--mcl-text);
+  transform: rotate(45deg);
+}
+.rcl-transform-link-label {
+  position: relative;
+  z-index: 1;
   background: var(--mcl-accent);
   color: var(--mcl-text);
-  border: 1.5px solid var(--mcl-accent);
+  font-family: var(--mcl-font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
-.rcl-hero-tier-cta--primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
-.rcl-hero-tier-cta--outline {
-  background: var(--mcl-surface);
-  color: var(--mcl-text);
-  border: 1.5px solid var(--mcl-border-strong);
-}
-.rcl-hero-tier-cta--outline:hover { border-color: var(--mcl-text); transform: translateY(-1px); }
 
-/* Subtle scroll-down link under the hero cards */
-.rcl-hero-more {
+@media (max-width: 559px) {
+  .rcl-transform { flex-direction: column; gap: 0; max-width: 320px; }
+  .rcl-transform-node { text-align: center; align-items: center; }
+  .rcl-transform-link { flex: 0 0 48px; flex-direction: column; }
+  .rcl-transform-link::before { left: 50%; right: auto; top: -2px; bottom: -2px; width: 2px; height: auto; background: linear-gradient(180deg, var(--mcl-border-strong), var(--mcl-text)); }
+  .rcl-transform-link::after { right: auto; bottom: -2px; top: auto; transform: rotate(135deg); }
+}
+
+/* ---- CTA cluster ---------------------------------------------------- */
+.rcl-hero-cta-wrap { margin-top: 32px; }
+.rcl-hero-cta-sub {
+  margin-top: 14px;
+  font-family: var(--mcl-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--mcl-muted);
+}
+.rcl-hero-cta-sub b { color: var(--mcl-text); font-weight: 600; }
+
+/* custom slim social-proof (no avatar cliché) */
+.rcl-hero-proof {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-family: var(--mcl-font-display);
-  font-size: 14px;
-  font-weight: 600;
+  gap: 10px;
+  margin-top: 20px;
+  font-size: 13.5px;
   color: var(--mcl-secondary);
-  text-decoration: none;
-  transition: color 0.2s ease;
 }
-.rcl-hero-more:hover { color: var(--mcl-text); }
+.rcl-hero-proof b { color: var(--mcl-text); font-weight: 700; }
+.rcl-hero-proof-stars { color: #f5a623; letter-spacing: 1px; font-size: 13px; }
+.rcl-hero-proof i {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--mcl-border-strong); flex-shrink: 0;
+}
 
 /* Value-stack reuse tweak: keep it readable on the recorded landing */
 .rcl-tier-foot-note {
