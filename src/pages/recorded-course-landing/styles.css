@@ -493,6 +493,56 @@
   background: var(--mcl-border-strong); flex-shrink: 0;
 }
 
+/* ===================================================================== *
+ * PAGE COHESION — lift the inherited mini-course sections to match the
+ * bespoke hero. Scoped under .rcl-page so the shared mcl-* classes used by
+ * the actual mini-course landing stay untouched.
+ * ===================================================================== */
+
+/* Section eyebrows: generic lime pill -> custom mono kicker + lime diamond */
+.rcl-page .mcl-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-family: var(--mcl-font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mcl-secondary);
+}
+.rcl-page .mcl-section-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--mcl-accent);
+  flex-shrink: 0;
+}
+/* Dark consultations section — keep the kicker legible on the deep bg */
+.rcl-page .rcl-consult .mcl-section-label { color: rgba(255, 255, 255, 0.74); }
+/* Sage ForWhom section — readable on the light-green backdrop */
+.rcl-page .mcl-pain .mcl-section-label { color: var(--mcl-sage-text); }
+
+/* Content cards: subtle crafted hover lift (was static / template-flat) */
+.rcl-page .mcl-bonus-item,
+.rcl-page .mcl-case-card,
+.rcl-page .mcl-testimonial {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.rcl-page .mcl-bonus-item:hover,
+.rcl-page .mcl-case-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--mcl-shadow-md);
+  border-color: var(--mcl-border-strong);
+}
+
+/* Founder strip: a hairline lime accent ties it to the hero below the fold */
+.rcl-page .mcl-founder-strip { border-top: 2px solid var(--mcl-accent); }
+
 /* Value-stack reuse tweak: keep it readable on the recorded landing */
 .rcl-tier-foot-note {
   text-align: center;

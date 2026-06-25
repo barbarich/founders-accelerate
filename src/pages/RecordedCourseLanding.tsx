@@ -750,7 +750,7 @@ function RecordedCourseLandingInner() {
   }, []);
 
   return (
-    <div className="mcl-root">
+    <div className="mcl-root rcl-page">
       <SEO
         path="/ru/course"
         title="Большая программа — акселератор в записи · Михаэль Барбарич"
