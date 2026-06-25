@@ -99,20 +99,53 @@ function Hero() {
         <div className="mcl-eyebrow">Большая программа в записи · 17 уроков · 3 месяца</div>
         <h1>От прототипа до бизнеса, <em>который покупают</em></h1>
         <p className="mcl-lede">
-          Построить продукт сегодня легко. Построить продукт, который <strong>покупают</strong> — это настоящая работа. Полная программа моего акселератора в записи: 17 уроков, от валидации идеи до первых платящих клиентов, привлечения средств и каналов роста. Мой реальный воркфлоу из живых стартапов с двумя экзитами и 50,000+ платящими пользователями.
+          Акселератор в записи: от валидации идеи до первых платящих клиентов, запуска и роста. Свой темп, доступ навсегда.
         </p>
         <TrustStrip />
-        <div className="rcl-hero-pricehint">
-          <b>$397</b><span>курс в записи</span>
-          <b>$997</b><span>курс + 3 личные консультации 1:1</span>
+        <div className="rcl-hero-tiers">
+          <div className="rcl-hero-tier">
+            <div className="rcl-hero-tier-name">Курс в записи</div>
+            <div className="rcl-hero-tier-price">
+              <b>${TIER_RECORDED.price}</b>
+              <s>${TIER_RECORDED.futurePrice}</s>
+            </div>
+            <ul className="rcl-hero-tier-feats">
+              <li>Все 17 уроков + материалы</li>
+              <li>Свой темп, доступ навсегда</li>
+            </ul>
+            <a
+              href={TIER_RECORDED.checkoutUrl}
+              className="rcl-hero-tier-cta rcl-hero-tier-cta--outline"
+              onClick={() => onBuyClick("hero_recorded", TIER_RECORDED.price)}
+            >
+              Купить за ${TIER_RECORDED.price}
+            </a>
+          </div>
+          <div className="rcl-hero-tier rcl-hero-tier--featured">
+            <span className="rcl-hero-tier-badge">Рекомендую</span>
+            <div className="rcl-hero-tier-name">Курс + работа лично</div>
+            <div className="rcl-hero-tier-price">
+              <b>${TIER_MENTOR.price}</b>
+              <s>${TIER_MENTOR.futurePrice}</s>
+            </div>
+            <ul className="rcl-hero-tier-feats">
+              <li className="rcl-hl">Всё из тарифа рядом</li>
+              <li className="rcl-hl">+ 3 личные консультации 1:1</li>
+            </ul>
+            <a
+              href={TIER_MENTOR.checkoutUrl}
+              className="rcl-hero-tier-cta rcl-hero-tier-cta--primary"
+              onClick={() => onBuyClick("hero_mentor", TIER_MENTOR.price)}
+            >
+              Купить за ${TIER_MENTOR.price}
+            </a>
+          </div>
         </div>
-        <div>
-          <a href="#buy" className="mcl-cta-primary" onClick={scrollToBuy}>Посмотреть тарифы</a>
-        </div>
-        <div className="mcl-hero-meta">
+        <a href="#buy" className="rcl-hero-more" onClick={scrollToBuy}>Что входит в программу ↓</a>
+        <div className="mcl-hero-meta" style={{ marginTop: 22 }}>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Stripe · безопасная оплата</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
-          <span className="mcl-hero-meta-item">{CHECK_ICON} Свой темп</span>
+          <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
         </div>
       </div>
     </header>

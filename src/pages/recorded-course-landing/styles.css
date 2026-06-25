@@ -309,26 +309,148 @@
   transform: translateY(-1px);
 }
 
-/* Dual-price hint under the hero headline */
-.rcl-hero-pricehint {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  align-items: baseline;
-  margin: 8px 0 4px;
+/* ---- Hero price cards — compact, selling first-screen presentation --- */
+.rcl-hero-tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 28px 0 20px;
+  text-align: left;
+}
+@media (min-width: 600px) {
+  .rcl-hero-tiers { grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+}
+
+.rcl-hero-tier {
+  position: relative;
+  background: var(--mcl-surface);
+  border: 1px solid var(--mcl-border-strong);
+  border-radius: var(--mcl-radius);
+  padding: 22px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--mcl-shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rcl-hero-tier--featured {
+  border: 2px solid var(--mcl-accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.rcl-hero-tier:hover { transform: translateY(-2px); box-shadow: var(--mcl-shadow-md); }
+
+.rcl-hero-tier-badge {
+  position: absolute;
+  top: -11px;
+  left: 18px;
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
   font-family: var(--mcl-font-display);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: var(--mcl-radius-pill);
+}
+.rcl-hero-tier-name {
+  font-family: var(--mcl-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--mcl-text);
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+.rcl-hero-tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+.rcl-hero-tier-price b {
+  font-family: var(--mcl-font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
   color: var(--mcl-text);
 }
-.rcl-hero-pricehint b {
-  font-size: 26px;
+.rcl-hero-tier-price s {
+  font-family: var(--mcl-font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--mcl-hint);
+  text-decoration: line-through;
+}
+.rcl-hero-tier-feats {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+.rcl-hero-tier-feats li {
+  font-size: 13.5px;
+  color: var(--mcl-secondary);
+  line-height: 1.4;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.rcl-hero-tier-feats li::before {
+  content: '✓';
+  color: var(--mcl-green);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
-.rcl-hero-pricehint span {
+.rcl-hero-tier-feats li.rcl-hl {
+  color: var(--mcl-text);
+  font-weight: 600;
+}
+.rcl-hero-tier-feats li.rcl-hl::before { color: var(--mcl-text); }
+
+.rcl-hero-tier-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 16px;
+  font-family: var(--mcl-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: var(--mcl-radius-pill);
+  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+}
+.rcl-hero-tier-cta--primary {
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
+  border: 1.5px solid var(--mcl-accent);
+}
+.rcl-hero-tier-cta--primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.rcl-hero-tier-cta--outline {
+  background: var(--mcl-surface);
+  color: var(--mcl-text);
+  border: 1.5px solid var(--mcl-border-strong);
+}
+.rcl-hero-tier-cta--outline:hover { border-color: var(--mcl-text); transform: translateY(-1px); }
+
+/* Subtle scroll-down link under the hero cards */
+.rcl-hero-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mcl-font-display);
   font-size: 14px;
-  color: var(--mcl-muted);
-  font-family: var(--mcl-font-body);
+  font-weight: 600;
+  color: var(--mcl-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
+.rcl-hero-more:hover { color: var(--mcl-text); }
 
 /* Value-stack reuse tweak: keep it readable on the recorded landing */
 .rcl-tier-foot-note {
