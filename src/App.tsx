@@ -93,6 +93,8 @@ const MiniCourseLesson2 = lazy(() => import("./pages/MiniCourseLesson2"));
 const MiniCourseLesson3 = lazy(() => import("./pages/MiniCourseLesson3"));
 const MiniCourseLesson4 = lazy(() => import("./pages/MiniCourseLesson4"));
 const MiniCourseThankYou = lazy(() => import("./pages/MiniCourseThankYou"));
+const RecordedCourseLanding = lazy(() => import("./pages/RecordedCourseLanding"));
+const CourseThankYou = lazy(() => import("./pages/CourseThankYou"));
 
 const queryClient = new QueryClient();
 
@@ -262,6 +264,10 @@ const App = () => (
           <Route path="/mini-course/lesson3" element={<MiniCourseLesson3 />} />
           <Route path="/mini-course/lesson4" element={<MiniCourseLesson4 />} />
           <Route path="/mini-course/thank-you" element={<MiniCourseThankYou />} />
+          <Route path="/course" element={<RecordedCourseLanding />} />
+          <Route path="/ru/course" element={<RecordedCourseLanding />} />
+          <Route path="/course/thank-you" element={<CourseThankYou />} />
+          <Route path="/ru/course/thank-you" element={<CourseThankYou />} />
           <Route path="/:lang/privacy" element={<LangPrivacy />} />
           <Route path="/:lang/terms" element={<LangTerms />} />
           <Route path="/:lang/contact" element={<LangContact />} />

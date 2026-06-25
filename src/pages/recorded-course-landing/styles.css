@@ -1,0 +1,340 @@
+/*
+ * Recorded-course landing — supplementary layer on top of the mini-course
+ * design system (mini-course-landing/styles.css). Reuses every --mcl-* token,
+ * the `mcl-` component classes and the `.mcl-root` shell. Only the pieces that
+ * the mini-course landing does not have live here, namely:
+ *   - the 3-month grouped curriculum (month dividers)
+ *   - the live-consultations explainer block
+ *   - the two-tier pricing grid ($397 recorded / $997 recorded + 1:1)
+ * Class prefix: `rcl-` so nothing collides with `mcl-`.
+ */
+
+/* ---- Program: month grouping ---------------------------------------- */
+.rcl-month {
+  margin: 0 0 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-top: 40px;
+}
+.rcl-month:first-of-type { padding-top: 8px; }
+.rcl-month-num {
+  font-family: var(--mcl-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--mcl-text);
+  background: var(--mcl-accent);
+  padding: 5px 10px;
+  border-radius: var(--mcl-radius-pill);
+  flex-shrink: 0;
+}
+.rcl-month-title {
+  font-family: var(--mcl-font-display);
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--mcl-text);
+}
+.rcl-month-sub {
+  font-size: 14px;
+  color: var(--mcl-muted);
+  margin: 0 0 6px;
+}
+
+/* Compact lesson rows inside the program (denser than mini-course cards) */
+.rcl-lesson-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--mcl-border);
+}
+.rcl-lesson-row:last-child { border-bottom: none; }
+.rcl-lesson-row-num {
+  font-family: var(--mcl-font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mcl-muted);
+  width: 28px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.rcl-lesson-row-body { flex: 1; }
+.rcl-lesson-row-title {
+  font-family: var(--mcl-font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--mcl-text);
+  margin: 0 0 3px;
+}
+.rcl-lesson-row-desc {
+  font-size: 14.5px;
+  color: var(--mcl-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+.rcl-lesson-row--intro .rcl-lesson-row-num { color: var(--mcl-text); }
+
+/* ---- Live consultations explainer ----------------------------------- */
+.rcl-consult {
+  background: var(--mcl-sage-text);
+  color: #f4f8ef;
+}
+.rcl-consult .mcl-section-label {
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
+}
+.rcl-consult .mcl-section-title { color: #ffffff; }
+.rcl-consult .mcl-section-intro { color: rgba(255,255,255,0.78); }
+.rcl-consult-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+.rcl-consult-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--mcl-radius);
+  padding: 24px;
+}
+.rcl-consult-card-num {
+  font-family: var(--mcl-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--mcl-accent);
+  margin-bottom: 10px;
+}
+.rcl-consult-card-title {
+  font-family: var(--mcl-font-display);
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+.rcl-consult-card-desc {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.74);
+  margin: 0;
+}
+.rcl-consult-note {
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  padding: 16px 18px;
+  border-left: 3px solid var(--mcl-accent);
+  background: rgba(255,255,255,0.04);
+  border-radius: 0 var(--mcl-radius-sm) var(--mcl-radius-sm) 0;
+}
+.rcl-consult-note strong { color: #ffffff; }
+
+@media (min-width: 760px) {
+  .rcl-consult-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---- Two-tier pricing grid ------------------------------------------ */
+.rcl-tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  margin-top: 36px;
+  align-items: start;
+}
+@media (min-width: 860px) {
+  .rcl-tiers { grid-template-columns: 1fr 1fr; gap: 26px; }
+}
+
+.rcl-tier {
+  background: var(--mcl-surface);
+  border: 1px solid var(--mcl-border-strong);
+  border-radius: var(--mcl-radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--mcl-shadow-sm);
+}
+.rcl-tier--featured {
+  border: 2px solid var(--mcl-accent);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.14);
+}
+@media (min-width: 860px) {
+  .rcl-tier--featured { transform: translateY(-12px); }
+}
+
+.rcl-tier-badge {
+  position: absolute;
+  top: -13px;
+  left: 28px;
+  background: var(--mcl-accent);
+  color: var(--mcl-text);
+  font-family: var(--mcl-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: var(--mcl-radius-pill);
+  text-transform: uppercase;
+}
+.rcl-tier-launch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: var(--mcl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--mcl-green);
+  background: var(--mcl-sage-bg);
+  border: 1px solid var(--mcl-sage-border);
+  padding: 5px 9px;
+  border-radius: var(--mcl-radius-pill);
+}
+.rcl-tier-name {
+  font-family: var(--mcl-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 6px 0 6px;
+  color: var(--mcl-text);
+}
+.rcl-tier-tagline {
+  font-size: 14px;
+  color: var(--mcl-muted);
+  margin: 0 0 22px;
+  min-height: 40px;
+}
+.rcl-tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.rcl-tier-price-cur {
+  font-family: var(--mcl-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--mcl-text);
+  align-self: flex-start;
+  margin-top: 8px;
+}
+.rcl-tier-price-new {
+  font-family: var(--mcl-font-display);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--mcl-text);
+}
+.rcl-tier-price-old {
+  font-family: var(--mcl-font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--mcl-hint);
+  text-decoration: line-through;
+}
+.rcl-tier-note {
+  font-size: 13px;
+  color: var(--mcl-muted);
+  margin: 6px 0 0;
+}
+.rcl-tier-features {
+  list-style: none;
+  margin: 24px 0;
+  padding: 22px 0;
+  border-top: 1px solid var(--mcl-border);
+  border-bottom: 1px solid var(--mcl-border);
+  flex: 1;
+}
+.rcl-tier-features li {
+  padding: 7px 0;
+  font-size: 15px;
+  color: var(--mcl-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.45;
+}
+.rcl-tier-features li::before {
+  content: '✓';
+  color: var(--mcl-text);
+  background: var(--mcl-accent);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.rcl-tier-features li.rcl-tier-feature--hero {
+  font-weight: 600;
+}
+.rcl-tier-features li.rcl-tier-feature--hero::before {
+  background: var(--mcl-green);
+  color: #fff;
+}
+.rcl-tier-features li.rcl-tier-feature--muted {
+  color: var(--mcl-muted);
+}
+.rcl-tier-features li.rcl-tier-feature--muted::before {
+  background: var(--mcl-surface-alt);
+  color: var(--mcl-muted);
+  content: '–';
+}
+
+/* Secondary (outline) CTA for the cheaper tier */
+.mcl-root .rcl-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px 28px;
+  font-family: var(--mcl-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--mcl-radius-pill);
+  background: var(--mcl-surface);
+  color: var(--mcl-text);
+  border: 1.5px solid var(--mcl-border-strong);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+.mcl-root .rcl-cta-secondary:hover {
+  border-color: var(--mcl-text);
+  transform: translateY(-1px);
+}
+
+/* Dual-price hint under the hero headline */
+.rcl-hero-pricehint {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: baseline;
+  margin: 8px 0 4px;
+  font-family: var(--mcl-font-display);
+  color: var(--mcl-text);
+}
+.rcl-hero-pricehint b {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.rcl-hero-pricehint span {
+  font-size: 14px;
+  color: var(--mcl-muted);
+  font-family: var(--mcl-font-body);
+}
+
+/* Value-stack reuse tweak: keep it readable on the recorded landing */
+.rcl-tier-foot-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--mcl-muted);
+  margin-top: 20px;
+  line-height: 1.6;
+}
