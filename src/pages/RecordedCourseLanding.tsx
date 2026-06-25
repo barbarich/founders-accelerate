@@ -771,12 +771,12 @@ function FloatingManager() {
       rel="noopener noreferrer"
       className="rcl-fab"
       onClick={onManagerClick}
-      aria-label="Написать менеджеру Елизавете в Telegram"
+      aria-label="Задать вопрос в Telegram"
     >
       <span className="rcl-fab-avatar" aria-hidden="true">
         {TG_ICON}<i className="rcl-fab-dot" />
       </span>
-      <span className="rcl-fab-text">Задай вопрос менеджеру</span>
+      <span className="rcl-fab-text">Задай вопрос</span>
     </a>
   );
 }
