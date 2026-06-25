@@ -591,6 +591,12 @@
 }
 /* Dark consultations section — keep the kicker legible on the deep bg */
 .rcl-page .rcl-consult .mcl-section-label { color: rgba(255, 255, 255, 0.74); }
+/* On the dark bg a lime highlight block reads heavy/poorly — use lime text */
+.rcl-page .rcl-consult .mcl-section-title em {
+  background: none;
+  color: var(--mcl-accent);
+  padding: 0;
+}
 /* Sage ForWhom section — readable on the light-green backdrop */
 .rcl-page .mcl-pain .mcl-section-label { color: var(--mcl-sage-text); }
 
