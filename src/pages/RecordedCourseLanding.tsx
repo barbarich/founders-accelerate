@@ -774,12 +774,9 @@ function FloatingManager() {
       aria-label="Написать менеджеру Елизавете в Telegram"
     >
       <span className="rcl-fab-avatar" aria-hidden="true">
-        Е<i className="rcl-fab-dot" />
+        {TG_ICON}<i className="rcl-fab-dot" />
       </span>
-      <span className="rcl-fab-text">
-        <span className="rcl-fab-text-top">Есть вопрос?</span>
-        <span className="rcl-fab-text-main">Менеджер Елизавета</span>
-      </span>
+      <span className="rcl-fab-text">Задай вопрос менеджеру</span>
     </a>
   );
 }
