@@ -9,73 +9,128 @@
  * Class prefix: `rcl-` so nothing collides with `mcl-`.
  */
 
-/* ---- Program: month grouping ---------------------------------------- */
-.rcl-month {
-  margin: 0 0 14px;
+/* ---- Program: visual phase blocks + lesson cards -------------------- */
+.rcl-program-head { max-width: var(--mcl-max); margin: 0 auto 8px; }
+
+.rcl-phase { margin-top: 46px; }
+.rcl-phase:first-of-type { margin-top: 28px; }
+
+.rcl-phase-head {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
-  padding-top: 40px;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--mcl-border);
 }
-.rcl-month:first-of-type { padding-top: 8px; }
-.rcl-month-num {
-  font-family: var(--mcl-font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--mcl-text);
-  background: var(--mcl-accent);
-  padding: 5px 10px;
-  border-radius: var(--mcl-radius-pill);
+.rcl-phase-icon {
   flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  background: var(--mcl-surface);
+  border: 1px solid var(--mcl-border-strong);
+  box-shadow: var(--mcl-shadow-sm);
 }
-.rcl-month-title {
+.rcl-phase-headtext { min-width: 0; }
+.rcl-phase-kicker {
+  font-family: var(--mcl-font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mcl-green);
+  margin-bottom: 5px;
+}
+.rcl-phase-title {
   font-family: var(--mcl-font-display);
-  font-size: clamp(20px, 3vw, 26px);
+  font-size: clamp(21px, 3vw, 27px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--mcl-text);
+  margin: 0;
+  line-height: 1.1;
 }
-.rcl-month-sub {
-  font-size: 14px;
+.rcl-phase-sub {
+  font-size: 14.5px;
   color: var(--mcl-muted);
-  margin: 0 0 6px;
+  margin: 4px 0 0;
 }
 
-/* Compact lesson rows inside the program (denser than mini-course cards) */
-.rcl-lesson-row {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--mcl-border);
+.rcl-lesson-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
 }
-.rcl-lesson-row:last-child { border-bottom: none; }
-.rcl-lesson-row-num {
+@media (min-width: 720px) {
+  .rcl-lesson-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rcl-lesson-grid--single { grid-template-columns: 1fr; }
+}
+
+.rcl-lcard {
+  position: relative;
+  background: var(--mcl-surface);
+  border: 1px solid var(--mcl-border);
+  border-radius: var(--mcl-radius);
+  padding: 22px 22px 20px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.rcl-lcard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--mcl-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.25s ease;
+}
+.rcl-lcard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--mcl-shadow-md);
+  border-color: var(--mcl-border-strong);
+}
+.rcl-lcard:hover::before { transform: scaleY(1); }
+.rcl-lcard-num {
+  display: inline-block;
   font-family: var(--mcl-font-mono);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--mcl-muted);
-  width: 28px;
-  flex-shrink: 0;
-  padding-top: 2px;
+  color: var(--mcl-text);
+  background: var(--mcl-accent);
+  padding: 3px 9px;
+  border-radius: 7px;
+  margin-bottom: 13px;
 }
-.rcl-lesson-row-body { flex: 1; }
-.rcl-lesson-row-title {
+.rcl-lcard-title {
   font-family: var(--mcl-font-display);
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--mcl-text);
-  margin: 0 0 3px;
+  margin: 0 0 7px;
+  line-height: 1.25;
 }
-.rcl-lesson-row-desc {
+.rcl-lcard-desc {
   font-size: 14.5px;
   color: var(--mcl-secondary);
   line-height: 1.55;
   margin: 0;
 }
-.rcl-lesson-row--intro .rcl-lesson-row-num { color: var(--mcl-text); }
+/* Intro lesson reads as a wide highlighted strip */
+.rcl-lcard--intro {
+  background: var(--mcl-sage-bg);
+  border-color: var(--mcl-sage-border);
+}
+.rcl-lcard--intro .rcl-lcard-title { color: var(--mcl-sage-text); }
+.rcl-lcard--intro .rcl-lcard-desc { color: var(--mcl-sage-text); opacity: 0.82; }
 
 /* ---- Live consultations explainer ----------------------------------- */
 .rcl-consult {
@@ -373,27 +428,29 @@
 }
 .rcl-hero-sub strong { color: var(--mcl-text); font-weight: 600; }
 
-/* ---- Transformation rail: Прототип →→→ Бизнес с платящими ---------- */
+/* ---- Transformation: Прототип → Бизнес с платящими (clean) --------- */
 .rcl-transform {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  max-width: 540px;
-  margin: 34px auto 0;
+  gap: 0;
+  max-width: 600px;
+  margin: 36px auto 0;
   text-align: left;
 }
 .rcl-transform-node {
-  flex: 1;
-  padding: 16px 18px;
+  flex: 1 1 0;
+  padding: 20px 22px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
   min-width: 0;
 }
 .rcl-transform-node--from {
   border: 1.5px dashed var(--mcl-border-strong);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
 }
 .rcl-transform-node--to {
   background: var(--mcl-text);
@@ -411,60 +468,70 @@
 .rcl-transform-label {
   font-family: var(--mcl-font-display);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
-/* connector with a lime label sitting on the line */
-.rcl-transform-link {
+/* clean arrow connector — no label, so it never collides with a node */
+.rcl-transform-arrow {
+  flex: 0 0 60px;
+  align-self: center;
   position: relative;
-  flex: 0 0 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.rcl-transform-link::before {
-  content: '';
-  position: absolute;
-  left: -2px;
-  right: -2px;
   height: 2px;
-  background: linear-gradient(90deg, var(--mcl-border-strong), var(--mcl-text));
 }
-.rcl-transform-link::after {
+.rcl-transform-arrow::before {
   content: '';
   position: absolute;
-  right: -2px;
+  left: 8px;
+  right: 13px;
+  top: 0;
+  height: 2px;
+  background: var(--mcl-text);
+}
+.rcl-transform-arrow::after {
+  content: '';
+  position: absolute;
+  right: 9px;
+  top: -4px;
   width: 9px;
   height: 9px;
   border-top: 2px solid var(--mcl-text);
   border-right: 2px solid var(--mcl-text);
   transform: rotate(45deg);
 }
-.rcl-transform-link-label {
-  position: relative;
-  z-index: 1;
-  background: var(--mcl-accent);
-  color: var(--mcl-text);
+
+/* caption under the rail (mono, lime diamonds) */
+.rcl-transform-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 16px;
   font-family: var(--mcl-font-mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 100px;
-  white-space: nowrap;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  color: var(--mcl-secondary);
+}
+.rcl-transform-cap i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--mcl-accent);
+  flex-shrink: 0;
 }
 
 @media (max-width: 559px) {
   .rcl-transform { flex-direction: column; gap: 0; max-width: 320px; }
   .rcl-transform-node { text-align: center; align-items: center; }
-  .rcl-transform-link { flex: 0 0 48px; flex-direction: column; }
-  .rcl-transform-link::before { left: 50%; right: auto; top: -2px; bottom: -2px; width: 2px; height: auto; background: linear-gradient(180deg, var(--mcl-border-strong), var(--mcl-text)); }
-  .rcl-transform-link::after { right: auto; bottom: -2px; top: auto; transform: rotate(135deg); }
+  .rcl-transform-arrow { flex: 0 0 42px; width: 2px; height: auto; align-self: center; }
+  .rcl-transform-arrow::before { left: 0; right: auto; top: 8px; bottom: 7px; width: 2px; height: auto; }
+  .rcl-transform-arrow::after { right: auto; left: -4px; top: auto; bottom: 8px; transform: rotate(135deg); }
 }
+
+/* tame the hero headline on desktop (scoped — mini-course untouched) */
+.rcl-page .mcl-hero h1 { font-size: clamp(34px, 5.2vw, 52px); max-width: 17ch; }
+.rcl-page .mcl-hero h1 em { padding: 0 10px; }
 
 /* ---- CTA cluster ---------------------------------------------------- */
 .rcl-hero-cta-wrap { margin-top: 32px; }

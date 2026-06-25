@@ -87,13 +87,14 @@ function Hero() {
             <span className="rcl-transform-kicker">сейчас</span>
             <span className="rcl-transform-label">Прототип / MVP</span>
           </div>
-          <div className="rcl-transform-link" aria-hidden="true">
-            <span className="rcl-transform-link-label">3 фазы · 17 уроков</span>
-          </div>
+          <div className="rcl-transform-arrow" aria-hidden="true" />
           <div className="rcl-transform-node rcl-transform-node--to">
             <span className="rcl-transform-kicker">результат</span>
             <span className="rcl-transform-label">Бизнес с платящими</span>
           </div>
+        </div>
+        <div className="rcl-transform-cap rcl-hero-rise d3" aria-hidden="true">
+          <span>3 фазы</span><i /><span>17 уроков</span><i /><span>3 месяца</span>
         </div>
 
         <div className="rcl-hero-cta-wrap rcl-hero-rise d4">
@@ -253,13 +254,14 @@ function About() {
  * Curriculum — 17 lessons grouped into 3 months
  * ------------------------------------------------------------------ */
 type Row = { num: string; title: string; desc: string; intro?: boolean };
-type Month = { num: string; title: string; sub: string; rows: Row[] };
+type Month = { num: string; title: string; sub: string; icon: string; rows: Row[] };
 
 const PROGRAM: readonly Month[] = [
   {
     num: "Старт",
     title: "Вводный урок",
     sub: "О чём программа и как из неё выжать максимум",
+    icon: "✦",
     rows: [
       { num: "00", title: "От прототипа до бизнеса, который покупают", desc: "Карта всей программы и главная идея: построить продукт легко, построить продукт, который покупают — настоящая работа. Три блока пути и как с ними работать.", intro: true },
     ],
@@ -268,6 +270,7 @@ const PROGRAM: readonly Month[] = [
     num: "Месяц 1",
     title: "Валидация и фундамент",
     sub: "Что строить — и для кого",
+    icon: "🔍",
     rows: [
       { num: "01", title: "Конкурентный анализ и проверка идеи", desc: "Карта конкурентов с AI и Deep Research, их слабые места, реальные боли рынка, smoke-тест спроса и одно узкое позиционирование." },
       { num: "02", title: "Customer development", desc: "Сначала количественные опросы — понять суть и масштаб проблемы и родить гипотезы. Потом кастдев-интервью по The Mom Test, чтобы лично их провалидировать. Action-gate." },
@@ -280,6 +283,7 @@ const PROGRAM: readonly Month[] = [
     num: "Месяц 2",
     title: "Построение продукта",
     sub: "Что и как строить — и как удержать юзера",
+    icon: "🛠",
     rows: [
       { num: "06", title: "Claude Code как AI-кофаундер", desc: "Agentic engineering: MCP, skills, plan mode. Как управлять AI как джуном и собирать фичи за часы, а не недели." },
       { num: "07", title: "Aha-moment и первый экран", desc: "Момент, в который юзер понимает ценность. Как спроектировать первый экран так, чтобы до него дошли." },
@@ -292,6 +296,7 @@ const PROGRAM: readonly Month[] = [
     num: "Месяц 3",
     title: "Запуск, продажи, рост",
     sub: "Как продать то, что построил",
+    icon: "🚀",
     rows: [
       { num: "11", title: "Метрики, воронка и PMF", desc: "9-axis PMF, тест Sean Ellis, что измерять и как читать воронку без самообмана." },
       { num: "12", title: "Упаковка и запуск", desc: "Три кита запуска (позиционирование, визуал, креативы) и три воркшопа сборки." },
@@ -305,31 +310,42 @@ const PROGRAM: readonly Month[] = [
 
 function Curriculum() {
   return (
-    <section>
-      <div className="mcl-container">
-        <div className="mcl-section-label">Программа</div>
-        <h2 className="mcl-section-title">17 уроков. <em>От идеи до первого платящего клиента.</em></h2>
-        <p className="mcl-section-intro">
-          Три месяца, три блока. Каждый урок — конкретный навык с заданиями, шаблонами и промптами. Проходишь в своём темпе, доступ остаётся навсегда.
-        </p>
-        {PROGRAM.map((m) => (
-          <div key={m.num}>
-            <div className="rcl-month">
-              <span className="rcl-month-num">{m.num}</span>
-              <span className="rcl-month-title">{m.title}</span>
-            </div>
-            <p className="rcl-month-sub">{m.sub}</p>
-            {m.rows.map((r) => (
-              <div key={r.num} className={`rcl-lesson-row${r.intro ? " rcl-lesson-row--intro" : ""}`}>
-                <div className="rcl-lesson-row-num">{r.num}</div>
-                <div className="rcl-lesson-row-body">
-                  <h3 className="rcl-lesson-row-title">{r.title}</h3>
-                  <p className="rcl-lesson-row-desc">{r.desc}</p>
+    <section className="rcl-program">
+      <div className="mcl-container-wide">
+        <div className="rcl-program-head">
+          <div className="mcl-section-label">Программа</div>
+          <h2 className="mcl-section-title">17 уроков. <em>От идеи до первого платящего клиента.</em></h2>
+          <p className="mcl-section-intro">
+            Вводный урок плюс три фазы. Каждый урок — конкретный навык с заданиями, шаблонами и промптами. Свой темп, доступ навсегда.
+          </p>
+        </div>
+
+        {PROGRAM.map((m, i) => {
+          const kicker = m.rows[0]?.intro
+            ? "Вводный урок"
+            : `Фаза ${i} · ${m.rows.length} ${m.rows.length === 1 ? "урок" : "уроков"}`;
+          return (
+            <div className="rcl-phase" key={m.num}>
+              <div className="rcl-phase-head">
+                <div className="rcl-phase-icon" aria-hidden="true">{m.icon}</div>
+                <div className="rcl-phase-headtext">
+                  <div className="rcl-phase-kicker">{kicker}</div>
+                  <h3 className="rcl-phase-title">{m.title}</h3>
+                  <p className="rcl-phase-sub">{m.sub}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        ))}
+              <div className={`rcl-lesson-grid${m.rows[0]?.intro ? " rcl-lesson-grid--single" : ""}`}>
+                {m.rows.map((r) => (
+                  <article className={`rcl-lcard${r.intro ? " rcl-lcard--intro" : ""}`} key={r.num}>
+                    <span className="rcl-lcard-num">{r.num}</span>
+                    <h4 className="rcl-lcard-title">{r.title}</h4>
+                    <p className="rcl-lcard-desc">{r.desc}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
