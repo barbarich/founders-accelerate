@@ -201,13 +201,13 @@ function HeroCountdown() {
   if (!o.timerActive) return null;
   const head =
     o.phase === "pre" ? (
-      <>Цена вырастет до ${POST_PRICE} — 1 июля</>
+      <>Цена вырастет до ${POST_PRICE} — 2 июля</>
     ) : (
       <>Старт-предложение действует ещё</>
     );
   const aria =
     o.phase === "pre"
-      ? `Цена вырастет до ${POST_PRICE} долларов 1 июля. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`
+      ? `Цена вырастет до ${POST_PRICE} долларов 2 июля. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`
       : `Старт-предложение действует ещё ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`;
   return (
     <div className="mcl-hero-timer" role="timer" aria-label={aria}>
@@ -251,10 +251,10 @@ function TopBar() {
     return (
       <div className="mcl-top-bar">
         <span className="mcl-top-bar-full">
-          <span className="mcl-top-bar-dot" aria-hidden="true" /> Цена вырастет до ${POST_PRICE} — 1 июля · успей за ${PRE_PRICE} · <CountdownInline />
+          <span className="mcl-top-bar-dot" aria-hidden="true" /> Цена вырастет до ${POST_PRICE} — 2 июля · успей за ${PRE_PRICE} · <CountdownInline />
         </span>
         <span className="mcl-top-bar-short">
-          <span className="mcl-top-bar-dot" aria-hidden="true" /> ${PRE_PRICE} → ${POST_PRICE} с 1 июля · <CountdownInline />
+          <span className="mcl-top-bar-dot" aria-hidden="true" /> ${PRE_PRICE} → ${POST_PRICE} со 2 июля · <CountdownInline />
         </span>
       </div>
     );
@@ -729,11 +729,11 @@ function Pricing() {
         <h2 className="mcl-section-title">Один раз. <em>${offer.price}. Доступ навсегда.</em></h2>
         <p className="mcl-section-intro">
           {offer.phase === "pre"
-            ? <>Сейчас курс стоит ${PRE_PRICE}. С 1 июля цена вырастет до ${POST_PRICE} - и останется такой. Купи сейчас и зафиксируй полный доступ навсегда по самой низкой цене.</>
+            ? <>Сейчас курс стоит ${PRE_PRICE}. Со 2 июля цена вырастет до ${POST_PRICE} - и дальше будет только расти. Купи сейчас и зафиксируй полный доступ навсегда по самой низкой цене.</>
             : <>Курс стоит ${POST_PRICE} - вместо ${POST_OLD_PRICE} полной ценности всего, что внутри. Единоразовый платёж, доступ навсегда.</>}
         </p>
         <div className="mcl-pricing-card">
-          <div className="mcl-pricing-badge">{offer.phase === "pre" ? "Цена вырастет 1 июля" : `−${POST_DISCOUNT}% от $${POST_OLD_PRICE}`}</div>
+          <div className="mcl-pricing-badge">{offer.phase === "pre" ? "Цена вырастет 2 июля" : `−${POST_DISCOUNT}% от $${POST_OLD_PRICE}`}</div>
           <div className="mcl-pricing-name">AI-продукт, который покупают</div>
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
           {offer.phase === "pre" ? (
