@@ -13,10 +13,11 @@ const michaelPhoto = "/images/michael.jpg";
 const STRIPE_PRE_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 — до 1 июля
 const STRIPE_POST_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — с 1 июля
 
-// --- Цена меняется глобально в ночь на 1 июля по Израилю -------------------
-// 2026-07-01 00:00 Israel (IDT, UTC+3) === 2026-06-30 21:00 UTC.
+// --- Цена меняется глобально в ночь на 2 июля по Израилю -------------------
+// 2026-07-02 00:00 Israel (IDT, UTC+3) === 2026-07-01 21:00 UTC.
+// $19 действует по 1 июля включительно; в ночь на 2 июля — переход на следующую цену.
 // Один фиксированный момент → у всех посетителей цена переключается одновременно.
-const PRICE_FLIP_AT = Date.UTC(2026, 5, 30, 21, 0, 0);
+const PRICE_FLIP_AT = Date.UTC(2026, 6, 1, 21, 0, 0);
 
 const PRE_PRICE = 19; // действующая цена до 1 июля
 const POST_PRICE = 37; // цена с 1 июля
