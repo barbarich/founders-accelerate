@@ -9,26 +9,22 @@ import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
 
-// Stripe Payment Links — Mini-Course AI-Founder, both redirect to /mini-course/thank-you
-const STRIPE_PRE_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 — до 1 июля
-const STRIPE_POST_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — с 1 июля
+// Stripe Payment Links — Mini-Course AI-Founder, all redirect to /mini-course/thank-you
+const STRIPE_PRE_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 — по 1 июля
+const STRIPE_MID_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — 2–6 июля
+// TODO($49): создать Payment Link на $49 в Stripe и вставить сюда ДО 7 июля.
+// Пока заглушка на $37-ссылку — фаза $49 включается только в ночь на 7 июля.
+const STRIPE_FINAL_URL = STRIPE_MID_URL; // $49 — с 7 июля (ЗАГЛУШКА, заменить!)
 
-// --- Цена меняется глобально в ночь на 2 июля по Израилю -------------------
-// 2026-07-02 00:00 Israel (IDT, UTC+3) === 2026-07-01 21:00 UTC.
-// $19 действует по 1 июля включительно; в ночь на 2 июля — переход на следующую цену.
-// Один фиксированный момент → у всех посетителей цена переключается одновременно.
-const PRICE_FLIP_AT = Date.UTC(2026, 6, 1, 21, 0, 0);
+// --- Честная лестница цен: два глобальных перехода по Израилю (IDT, UTC+3) ---
+// $19 → $37 в ночь на 2 июля; $37 → $49 в ночь на 7 июля.
+// Фиксированные моменты → у всех посетителей цена и таймеры переключаются одновременно.
+const PRICE_FLIP_1 = Date.UTC(2026, 6, 1, 21, 0, 0); // 2026-07-02 00:00 IDT
+const PRICE_FLIP_2 = Date.UTC(2026, 6, 6, 21, 0, 0); // 2026-07-07 00:00 IDT
 
-const PRE_PRICE = 19; // действующая цена до 1 июля
-const POST_PRICE = 37; // цена с 1 июля
-const POST_OLD_PRICE = 249; // зачёркнутый якорь после 1 июля
-const PRE_DISCOUNT = Math.round(((POST_PRICE - PRE_PRICE) / POST_PRICE) * 100); // экономия против будущей цены ≈ 49%
-const POST_DISCOUNT = Math.round(((POST_OLD_PRICE - POST_PRICE) / POST_OLD_PRICE) * 100); // ≈ 85%
-
-// После 1 июля — 7-дневный таймер срочности на посетителя. Цена при этом НЕ меняется
-// (остаётся $37, как и было изначально с «мёртвым» 7-дневным таймером).
-const POST_TIMER_MS = 7 * 24 * 60 * 60 * 1000;
-const POST_DEADLINE_KEY = "mc_post_deadline_v1";
+const PRICE_PRE = 19; // по 1 июля включительно
+const PRICE_MID = 37; // 2–6 июля включительно
+const PRICE_FINAL = 49; // с 7 июля
 
 // Social proof — deterministic: every visitor sees the same number on a given day, +30/day
 const PURCHASE_BASE = 1037;
@@ -41,16 +37,15 @@ function purchaseCount(): number {
   return PURCHASE_BASE + PURCHASE_PER_DAY * Math.max(0, days);
 }
 
-type Phase = "pre" | "post";
+type Phase = "pre" | "mid" | "final"; // $19 / $37 / $49
 
 type Offer = {
-  phase: Phase; // pre = до 1 июля ($19), post = с 1 июля ($37)
+  phase: Phase;
   price: number; // current buyable price
-  oldPrice: number | null; // struck anchor price (только в post — $249)
-  discountLabel: string | null; // pill у цены: pre = "скоро $37", post = "−85%"
-  discount: number; // % для коротких подписей
+  nextPrice: number | null; // следующая цена в лестнице (null на финале)
+  flipDate: string | null; // дата следующего повышения ("2 июля" / "7 июля")
   checkoutUrl: string;
-  timerActive: boolean; // есть ли живой обратный отсчёт
+  timerActive: boolean; // идёт ли обратный отсчёт до повышения
   d: string;
   h: string;
   m: string;
@@ -70,58 +65,46 @@ function split(ms: number): { d: string; h: string; m: string; s: string } {
   };
 }
 
-/** Read (or lazily create) this browser's personal 7-day post-flip deadline. */
-function readPostDeadline(now: number): number {
-  try {
-    const raw = localStorage.getItem(POST_DEADLINE_KEY);
-    const d = raw ? parseInt(raw, 10) : NaN;
-    if (!raw || Number.isNaN(d)) {
-      const fresh = now + POST_TIMER_MS;
-      localStorage.setItem(POST_DEADLINE_KEY, String(fresh));
-      return fresh;
-    }
-    return d;
-  } catch {
-    // private mode — keep a fresh urgency window rather than locking them out
-    return now + POST_TIMER_MS;
-  }
-}
-
-function computeOffer(now: number, postDeadline: number): Offer {
-  // --- ДО 1 июля: цена $19, отсчёт до повышения ---------------------------
-  if (now < PRICE_FLIP_AT) {
+function computeOffer(now: number): Offer {
+  // --- По 1 июля включительно: $19, честный отсчёт до повышения 2 июля -----
+  if (now < PRICE_FLIP_1) {
     return {
       phase: "pre",
-      price: PRE_PRICE,
-      oldPrice: null,
-      discountLabel: `скоро $${POST_PRICE}`,
-      discount: PRE_DISCOUNT,
+      price: PRICE_PRE,
+      nextPrice: PRICE_MID,
+      flipDate: "2 июля",
       checkoutUrl: STRIPE_PRE_URL,
       timerActive: true,
-      ...split(PRICE_FLIP_AT - now),
+      ...split(PRICE_FLIP_1 - now),
     };
   }
-  // --- С 1 июля: цена $37 (зачёркнуто $249), 7-дневный таймер срочности ----
-  const ms = postDeadline - now;
-  const timerActive = ms > 0;
+  // --- 2–6 июля: $37, честный отсчёт до повышения до $49 7 июля ------------
+  if (now < PRICE_FLIP_2) {
+    return {
+      phase: "mid",
+      price: PRICE_MID,
+      nextPrice: PRICE_FINAL,
+      flipDate: "7 июля",
+      checkoutUrl: STRIPE_MID_URL,
+      timerActive: true,
+      ...split(PRICE_FLIP_2 - now),
+    };
+  }
+  // --- С 7 июля: финальная цена $49, без таймера --------------------------
   return {
-    phase: "post",
-    price: POST_PRICE,
-    oldPrice: POST_OLD_PRICE,
-    discountLabel: `−${POST_DISCOUNT}%`,
-    discount: POST_DISCOUNT,
-    checkoutUrl: STRIPE_POST_URL,
-    timerActive, // по истечении таймер исчезает, но цена остаётся $37
-    ...split(timerActive ? ms : 0),
+    phase: "final",
+    price: PRICE_FINAL,
+    nextPrice: null,
+    flipDate: null,
+    checkoutUrl: STRIPE_FINAL_URL,
+    timerActive: false,
+    ...split(0),
   };
 }
 
-/** SSR/first-paint safe snapshot. localStorage only touched on the client. */
+/** First-paint/SSR safe — зависит только от часов, без localStorage. */
 function snapshot(): Offer {
-  const now = Date.now();
-  if (now < PRICE_FLIP_AT) return computeOffer(now, 0);
-  const dl = typeof window !== "undefined" ? readPostDeadline(now) : now + POST_TIMER_MS;
-  return computeOffer(now, dl);
+  return computeOffer(Date.now());
 }
 
 const OfferContext = createContext<Offer>(snapshot());
@@ -131,18 +114,9 @@ function useOffer(): Offer {
 
 /** Single source of truth: one 1s interval, every widget flips together. */
 function OfferProvider({ children }: { children: ReactNode }) {
-  const postDeadlineRef = useRef<number | null>(null);
   const [offer, setOffer] = useState<Offer>(snapshot);
   useEffect(() => {
-    const update = () => {
-      const now = Date.now();
-      if (now < PRICE_FLIP_AT) {
-        setOffer(computeOffer(now, 0));
-        return;
-      }
-      if (postDeadlineRef.current === null) postDeadlineRef.current = readPostDeadline(now);
-      setOffer(computeOffer(now, postDeadlineRef.current));
-    };
+    const update = () => setOffer(computeOffer(Date.now()));
     update();
     const id = window.setInterval(update, 1000);
     return () => window.clearInterval(id);
@@ -199,16 +173,8 @@ function ClockTiles({ d, h, m, s }: { d: string; h: string; m: string; s: string
 function HeroCountdown() {
   const o = useOffer();
   if (!o.timerActive) return null;
-  const head =
-    o.phase === "pre" ? (
-      <>Цена вырастет до ${POST_PRICE} — 2 июля</>
-    ) : (
-      <>Старт-предложение действует ещё</>
-    );
-  const aria =
-    o.phase === "pre"
-      ? `Цена вырастет до ${POST_PRICE} долларов 2 июля. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`
-      : `Старт-предложение действует ещё ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`;
+  const head = <>Цена вырастет до ${o.nextPrice} — {o.flipDate}</>;
+  const aria = `Цена вырастет до ${o.nextPrice} долларов ${o.flipDate}. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`;
   return (
     <div className="mcl-hero-timer" role="timer" aria-label={aria}>
       <span className="mcl-hero-timer-head">
@@ -247,33 +213,21 @@ function TrustStrip() {
 
 function TopBar() {
   const o = useOffer();
-  if (o.phase === "pre") {
-    return (
-      <div className="mcl-top-bar">
-        <span className="mcl-top-bar-full">
-          <span className="mcl-top-bar-dot" aria-hidden="true" /> Цена вырастет до ${POST_PRICE} — 2 июля · успей за ${PRE_PRICE} · <CountdownInline />
-        </span>
-        <span className="mcl-top-bar-short">
-          <span className="mcl-top-bar-dot" aria-hidden="true" /> ${PRE_PRICE} → ${POST_PRICE} со 2 июля · <CountdownInline />
-        </span>
-      </div>
-    );
-  }
   if (!o.timerActive) {
     return (
       <div className="mcl-top-bar mcl-top-bar--ended">
-        <span className="mcl-top-bar-full">Полный курс за ${POST_PRICE} вместо ${POST_OLD_PRICE} · доступ навсегда</span>
-        <span className="mcl-top-bar-short">Курс ${POST_PRICE} вместо ${POST_OLD_PRICE}</span>
+        <span className="mcl-top-bar-full">Финальная цена ${o.price} · единоразово · доступ навсегда</span>
+        <span className="mcl-top-bar-short">Курс ${o.price} · навсегда</span>
       </div>
     );
   }
   return (
     <div className="mcl-top-bar">
       <span className="mcl-top-bar-full">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> Старт-цена ${POST_PRICE} вместо ${POST_OLD_PRICE} · предложение ещё <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> Цена вырастет до ${o.nextPrice} — {o.flipDate} · успей за ${o.price} · <CountdownInline />
       </span>
       <span className="mcl-top-bar-short">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${POST_PRICE} вместо ${POST_OLD_PRICE} · ещё <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} → ${o.nextPrice} · ещё <CountdownInline />
       </span>
     </div>
   );
@@ -286,14 +240,11 @@ function MobileBuyBar() {
     <div className="mcl-mobile-buybar">
       <div className="mcl-mobile-buybar-info">
         <div className="mcl-mobile-buybar-price">
-          {offer.oldPrice != null && <span className="mcl-mbb-old">${offer.oldPrice}</span>}
           <span className="mcl-mbb-new">${offer.price}</span>
         </div>
         <div className="mcl-mobile-buybar-timer">
-          {offer.phase === "pre" ? (
-            <>до ${POST_PRICE} · {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}</>
-          ) : offer.timerActive ? (
-            <>−{offer.discount}% ещё {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}</>
+          {offer.timerActive ? (
+            <>до ${offer.nextPrice} · {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}</>
           ) : (
             "доступ навсегда"
           )}
@@ -318,9 +269,8 @@ function Hero() {
         </p>
         <TrustStrip />
         <div className="mcl-price-block">
-          {offer.oldPrice != null && <span className="mcl-price-old">${offer.oldPrice}</span>}
           <span className="mcl-price-new">${offer.price}</span>
-          {offer.discountLabel && <span className="mcl-price-discount">{offer.discountLabel}</span>}
+          {offer.nextPrice != null && <span className="mcl-price-discount">скоро ${offer.nextPrice}</span>}
         </div>
         <HeroCountdown />
         <div>
@@ -728,34 +678,31 @@ function Pricing() {
         <div className="mcl-section-label">Цена</div>
         <h2 className="mcl-section-title">Один раз. <em>${offer.price}. Доступ навсегда.</em></h2>
         <p className="mcl-section-intro">
-          {offer.phase === "pre"
-            ? <>Сейчас курс стоит ${PRE_PRICE}. Со 2 июля цена вырастет до ${POST_PRICE} - и дальше будет только расти. Купи сейчас и зафиксируй полный доступ навсегда по самой низкой цене.</>
-            : <>Курс стоит ${POST_PRICE} - вместо ${POST_OLD_PRICE} полной ценности всего, что внутри. Единоразовый платёж, доступ навсегда.</>}
+          {offer.phase === "pre" ? (
+            <>Сейчас курс стоит ${PRICE_PRE}. Со 2 июля — ${PRICE_MID}, с 7 июля — ${PRICE_FINAL}. Честная лестница: чем раньше берёшь, тем дешевле фиксируешь полный доступ навсегда.</>
+          ) : offer.phase === "mid" ? (
+            <>Сейчас курс стоит ${PRICE_MID}. С 7 июля цена вырастет до ${PRICE_FINAL} - и останется такой. Купи сейчас и зафиксируй доступ навсегда дешевле.</>
+          ) : (
+            <>Курс стоит ${PRICE_FINAL}. Единоразовый платёж, доступ навсегда - со всеми будущими обновлениями.</>
+          )}
         </p>
         <div className="mcl-pricing-card">
-          <div className="mcl-pricing-badge">{offer.phase === "pre" ? "Цена вырастет 2 июля" : `−${POST_DISCOUNT}% от $${POST_OLD_PRICE}`}</div>
+          <div className="mcl-pricing-badge">{offer.timerActive ? `Цена вырастет ${offer.flipDate}` : "Финальная цена"}</div>
           <div className="mcl-pricing-name">AI-продукт, который покупают</div>
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
-          {offer.phase === "pre" ? (
+          {offer.timerActive ? (
             <div className="mcl-pricing-timer">
               <span className="mcl-pricing-timer-dot" aria-hidden="true" />
-              <span className="mcl-pricing-timer-label">Цена вырастет до ${POST_PRICE} через</span>
-              <span className="mcl-pricing-timer-value">{offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}:{offer.s}</span>
-            </div>
-          ) : offer.timerActive ? (
-            <div className="mcl-pricing-timer">
-              <span className="mcl-pricing-timer-dot" aria-hidden="true" />
-              <span className="mcl-pricing-timer-label">Предложение действует ещё</span>
+              <span className="mcl-pricing-timer-label">Цена вырастет до ${offer.nextPrice} через</span>
               <span className="mcl-pricing-timer-value">{offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}:{offer.s}</span>
             </div>
           ) : (
             <div className="mcl-pricing-timer mcl-pricing-timer--ended">
-              <span className="mcl-pricing-timer-label">Цена ${POST_PRICE} · доступ навсегда</span>
+              <span className="mcl-pricing-timer-label">Цена ${offer.price} · доступ навсегда</span>
             </div>
           )}
           <div className="mcl-pricing-price">
             <span className="mcl-pricing-price-currency">$</span>
-            {offer.oldPrice != null && <span className="mcl-pricing-price-old">{offer.oldPrice}</span>}
             <span className="mcl-pricing-price-new">{offer.price}</span>
           </div>
           <div className="mcl-pricing-note">Единоразовый платёж · никаких подписок</div>
