@@ -20,7 +20,7 @@ export default function L3Slide01Welcome() {
             Урок 3
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Позиционирование, цена и MVP.<br />Глубокий разбор + downloadable артефакт
+            Позиционирование, цена и MVP.<br />Глубокий разбор и практика
           </p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export default function L3Slide01Welcome() {
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[800px]">
           Позиционирование, цена и что должен делать ваш MVP.<br />
-          Глубокий разбор + downloadable артефакт
+          Глубокий разбор и практика
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />

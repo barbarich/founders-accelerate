@@ -38,20 +38,20 @@ export default function L3Slide14HowToChoose() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Монетизация</p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[40px]">Как выбрать модель</h2>
-      <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[32px] py-[20px] mb-[24px] max-w-[1100px]">
-        <p className="text-[14px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-semibold mb-[8px]">Главная мысль</p>
-        <p className="text-[22px] text-[hsl(var(--slide-text))] leading-[1.4]">
-          Модель цены — это <span className="font-semibold">не про деньги, а про привычку клиента</span>. Люди платят так, как им удобно покупать: каждый день, время от времени или один раз.
+      <p className="text-[16px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">Монетизация</p>
+      <h2 className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px]">Как выбрать модель</h2>
+      <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[26px] py-[14px] mb-[14px] max-w-[1640px]">
+        <p className="text-[13px] uppercase tracking-[0.18em] text-[hsl(var(--slide-gold))] font-semibold mb-[5px]">Главная мысль</p>
+        <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.35]">
+          Модель цены - это <span className="font-semibold">не про деньги, а про привычку клиента</span>. Люди платят так, как им удобно покупать: каждый день, время от времени или один раз.
         </p>
       </div>
-      <p className="text-[18px] text-[hsl(var(--slide-text)/0.7)] leading-[1.5] mb-[16px] max-w-[1100px]">Ответьте на 5 вопросов — и модель выберется сама:</p>
-      <div className="space-y-[16px] max-w-[1100px]">
+      <p className="text-[15px] text-[hsl(var(--slide-text)/0.7)] leading-[1.4] mb-[12px] max-w-[1640px]">Ответьте на 5 вопросов - и модель выберется сама:</p>
+      <div className="grid grid-cols-2 gap-x-[20px] gap-y-[12px] max-w-[1640px]">
         {questions.map((q, i) => (
-          <div key={i} className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[12px] px-[28px] py-[18px] ${i === questions.length - 1 ? "border-[hsl(var(--slide-gold)/0.4)] bg-[hsl(var(--slide-gold)/0.04)]" : "border-[hsl(var(--slide-border)/0.3)]"}`}>
-            <p className="text-[20px] font-semibold text-[hsl(var(--slide-gold))] mb-[6px]">{q.q}</p>
-            <p className="text-[18px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">{q.a}</p>
+          <div key={i} className={`bg-[hsl(var(--slide-bg-alt))] border rounded-[10px] px-[22px] py-[13px] ${i === questions.length - 1 ? "border-[hsl(var(--slide-gold)/0.4)] bg-[hsl(var(--slide-gold)/0.04)]" : "border-[hsl(var(--slide-border)/0.3)]"}`}>
+            <p className="text-[17px] font-semibold text-[hsl(var(--slide-gold))] mb-[4px]">{q.q}</p>
+            <p className="text-[15px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{q.a}</p>
           </div>
         ))}
       </div>

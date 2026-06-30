@@ -1,12 +1,13 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
+const steps = [
+  { time: "0–3", timeFull: "0–3 мин", action: "Возьми универсальный промпт со слайда и заполни 3 поля: продукт, кто платит, главная боль клиента" },
+  { time: "3–6", timeFull: "3–6 мин", action: "Вставь промпт в Claude/ChatGPT. Если AI задаёт уточняющие вопросы - ответь, позиционирование станет точнее" },
+  { time: "6–8", timeFull: "6–8 мин", action: "Из ответа выбери лучший вариант: суть в одном предложении, заголовок лендинга и питч на 30 секунд" },
+  { time: "8–10", timeFull: "8–10 мин", action: "Проверь на живом человеке: «Отыграй роль моего клиента, дай реакцию и 3 вопроса». Перепиши с учётом фидбека" },
+];
+
 export default function L3Slide22Step1() {
-  const steps = [
-    { time: "0–3", action: "Сформулируй результат клиента: [Кто] получает [результат] с помощью [продукт], без [боль]" },
-    { time: "3–5", action: "Адаптируй в три формата: лендинг, холодное сообщение, 30-сек питч" },
-    { time: "5–8", action: "Открой Claude/ChatGPT. Промпт: «Отыграй роль моего клиента. Я говорю питч 30 сек, ты — реакция и 3 вопроса»" },
-    { time: "8–10", action: "Перепиши с учётом фидбека AI. Спроси: «сколько бы ты заплатил за этот результат?»" },
-  ];
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -28,7 +29,7 @@ export default function L3Slide22Step1() {
           ))}
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[8px]">
-          <p className="text-[10px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование через результат + три формулировки</p>
+          <p className="text-[10px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование, которое продаёт - суть, заголовок и питч</p>
         </div>
       </div>
     );
@@ -42,20 +43,15 @@ export default function L3Slide22Step1() {
       </div>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[48px]">Пишем позиционирование</h2>
       <div className="space-y-[20px] max-w-[1100px]">
-        {[
-          { time: "0–3 мин", action: "Сформулируй результат клиента по формуле: [Кто] получает [результат] с помощью [продукт], без [боль]" },
-          { time: "3–5 мин", action: "Адаптируй в три формата: заголовок лендинга, холодное сообщение, 30-секундный питч" },
-          { time: "5–8 мин", action: "Открой Claude/ChatGPT. Промпт: «Отыграй роль моего клиента. Я говорю питч 30 сек, ты — даёшь реакцию + 3 уточняющих вопроса»" },
-          { time: "8–10 мин", action: "Перепиши с учётом фидбека AI. Спроси: «сколько бы ты заплатил за этот результат?»" },
-        ].map((s, i) => (
+        {steps.map((s, i) => (
           <div key={i} className="flex items-start gap-[16px]">
-            <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[8px] rounded shrink-0 min-w-[90px] text-center">{s.time}</span>
+            <span className="font-mono text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[14px] py-[8px] rounded shrink-0 min-w-[90px] text-center">{s.timeFull}</span>
             <p className="text-[22px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5]">{s.action}</p>
           </div>
         ))}
       </div>
       <div className="mt-[44px] bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[28px] py-[18px]">
-        <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование через результат + три формулировки (лендинг, DM, питч)</p>
+        <p className="text-[20px] text-[hsl(var(--slide-text))] font-semibold">Результат: позиционирование, которое продаёт - суть в одном предложении, заголовок лендинга и питч на 30 секунд</p>
       </div>
     </div>
   );

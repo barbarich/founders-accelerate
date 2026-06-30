@@ -66,19 +66,30 @@ export default function L3SlideLessonSummary() {
         Саммари · <span className="text-[hsl(var(--slide-gold))]">5 главных мыслей</span>
       </h2>
 
-      <div className="grid grid-cols-5 gap-[14px] max-w-[1700px]">
-        {insights.map((i) => (
-          <div key={i.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[18px] py-[16px] flex flex-col">
-            <span className="font-mono text-[14px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] w-[28px] h-[28px] flex items-center justify-center rounded-full font-bold mb-[10px]">{i.num}</span>
-            <p className="text-[16.5px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mb-[8px]">{i.title}</p>
-            <p className="text-[13px] text-[hsl(var(--slide-text-muted))] leading-[1.55]">{i.body}</p>
-          </div>
-        ))}
+      <div className="flex flex-col gap-[18px] max-w-[1700px]">
+        <div className="flex gap-[18px]">
+          {insights.slice(0, 3).map((i) => (
+            <div key={i.num} className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[26px] py-[22px] flex flex-col">
+              <span className="font-mono text-[18px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] w-[34px] h-[34px] flex items-center justify-center rounded-full font-bold mb-[12px]">{i.num}</span>
+              <p className="text-[23px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">{i.title}</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{i.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-[18px]">
+          {insights.slice(3).map((i) => (
+            <div key={i.num} className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[14px] px-[26px] py-[22px] flex flex-col">
+              <span className="font-mono text-[18px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] w-[34px] h-[34px] flex items-center justify-center rounded-full font-bold mb-[12px]">{i.num}</span>
+              <p className="text-[23px] font-bold text-[hsl(var(--slide-text))] leading-[1.2] mb-[10px]">{i.title}</p>
+              <p className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{i.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[26px] py-[14px] max-w-[1700px] mt-[20px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          Дальше — конкретные действия чтобы упаковать позиционирование, цену и MVP до следующего урока.
+          Дальше - конкретные действия чтобы упаковать позиционирование, цену и MVP до следующего урока.
         </p>
       </div>
     </div>
