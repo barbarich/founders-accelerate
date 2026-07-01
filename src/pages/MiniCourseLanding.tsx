@@ -262,7 +262,7 @@ function Hero() {
   return (
     <header className="mcl-hero">
       <div className="mcl-container">
-        <div className="mcl-eyebrow">Мини-курс · 5 уроков</div>
+        <div className="mcl-eyebrow">Курс · 5 уроков</div>
         <h1>Как построить продукт с помощью AI, <em>который покупают</em></h1>
         <p className="mcl-lede">
           5 уроков, ~4 часа. От первого интервью до первых платящих клиентов. Не теория из YouTube — мой реальный воркфлоу из живых стартапов с двумя экзитами и 50,000+ платящими пользователями в 107 странах.
@@ -811,7 +811,7 @@ function MiniCourseLandingInner() {
   const viewItemFired = useRef(false);
 
   useEffect(() => {
-    document.title = "AI-продукт, который покупают — мини-курс Михаэля Барбарича";
+    document.title = "AI-продукт, который покупают — курс Михаэля Барбарича";
     document.body.classList.add("mcl-body");
 
     // Top-of-funnel signal: landing rendered.
@@ -846,8 +846,8 @@ function MiniCourseLandingInner() {
     <div className="mcl-root">
       <SEO
         path="/ru"
-        title="AI-продукт, который покупают — мини-курс Михаэля Барбарича"
-        description={`Мини-курс соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $${offer.price}, единоразовый платёж через Stripe.`}
+        title="AI-продукт, который покупают — курс Михаэля Барбарича"
+        description={`Курс для соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $${offer.price}, единоразовый платёж через Stripe.`}
         alternates={[
           { lang: "ru", path: "/ru" },
           { lang: "en", path: "/en" },
@@ -858,7 +858,7 @@ function MiniCourseLandingInner() {
           {
             "@context": "https://schema.org",
             "@type": "Course",
-            name: "AI-продукт, который покупают — мини-курс",
+            name: "AI-продукт, который покупают — курс",
             description:
               "5 уроков, около 4 часов, от первого интервью до первых платящих клиентов.",
             provider: {
@@ -887,7 +887,7 @@ function MiniCourseLandingInner() {
           },
           breadcrumb([
             { name: "Главная", path: "/" },
-            { name: "Мини-курс", path: "/ru" },
+            { name: "Курс", path: "/ru" },
           ]),
         ]}
       />

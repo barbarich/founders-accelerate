@@ -51,7 +51,7 @@ export default function MiniCourseThankYou() {
       <SEO
         path="/mini-course/thank-you"
         title="Спасибо за покупку - AI-продукт, который покупают"
-        description="Подтверждение покупки мини-курса. Дальше - бот в Telegram для активации."
+        description="Подтверждение покупки курса. Дальше - бот в Telegram для активации."
         noindex
       />
       <section style={{ padding: "80px 0" }}>
