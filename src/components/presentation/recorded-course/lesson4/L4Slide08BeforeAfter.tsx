@@ -17,7 +17,7 @@ const paths = [
   {
     icon: "🤖",
     title: "Claude Code",
-    desc: "Подключаете GitHub → даёте доступ Claude → он берёт дизайн из Lovable и имплементирует в продакшн",
+    desc: "Подключаете GitHub → даёте доступ Claude → он берёт готовый прототип и имплементирует в продакшн",
   },
   {
     icon: "👨‍💻",
@@ -134,7 +134,7 @@ export default function L4Slide08BeforeAfter() {
 
       {/* Paths after Lovable */}
       <div className="mt-[24px] max-w-[1200px] bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[10px] px-[32px] py-[18px]">
-        <p className="text-[12px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-semibold mb-[14px]">Что делать с прототипом из Lovable?</p>
+        <p className="text-[12px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-semibold mb-[14px]">Что делать с прототипом дальше?</p>
         <div className="grid grid-cols-2 gap-[32px]">
           {paths.map((p, i) => (
             <div key={i} className="flex items-start gap-[12px]">

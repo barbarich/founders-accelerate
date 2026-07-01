@@ -1,25 +1,31 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function L4Slide06AIStack() {
-  const roles = [
+  const steps = [
     {
-      emoji: "🧠",
-      role: "Продакт-менеджер",
-      tools: "Claude / GPT / Gemini",
-      tasks: ["Анализ конкурентов и аудитории", "Стратегия и приоритизация фич", "Тексты, офферы, позиционирование"],
+      emoji: "🖼️",
+      num: "01",
+      title: "Визуализируй идею",
+      text: "Опиши продукт словами или покажи скриншот, набросок, референс. AI превращает это в первый экран.",
     },
     {
-      emoji: "🎨",
-      role: "Дизайнер + Фронтенд",
-      tools: "Lovable",
-      tasks: ["UI с нуля по описанию или скриншоту", "Быстрые итерации интерфейса", "Лендинги, дашборды, формы"],
+      emoji: "🧩",
+      num: "02",
+      title: "Собери прототип",
+      text: "Экран за экраном - кликабельный поток от входа до результата. Реальные тексты, единый стиль.",
     },
     {
-      emoji: "⚙️",
-      role: "Fullstack-разработчик",
-      tools: "Claude Code",
-      tasks: ["Доработка существующего кода", "Интеграции: API, базы, оплата", "Баги, рефакторинг, деплой"],
+      emoji: "🔍",
+      num: "03",
+      title: "Доработай",
+      text: "Пройди прототип как пользователь. Правь, пока за 10 секунд не ясно: что это, кому и зачем.",
     },
+  ];
+
+  const tools = [
+    { name: "Lovable", desc: "визуальный сборщик, деплой в 1 клик" },
+    { name: "Claude Design", desc: "прототип из описания прямо в чате" },
+    { name: "Codex", desc: "для тех, кто работает с кодом" },
   ];
 
   const isMobile = useIsMobile();
@@ -27,29 +33,32 @@ export default function L4Slide06AIStack() {
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[28px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Ваш AI-стек</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Прототип за 3 шага</p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[6px]">
-          Не один инструмент, а конвейер
+          От идеи к рабочему прототипу
         </h2>
-        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[16px]">AI не заменяет вас — AI умножает вас</p>
-        <div className="space-y-[10px]">
-          {roles.map((r, i) => (
-            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[10px]">
-              <div className="flex items-center gap-[8px] mb-[6px]">
-                <span className="text-[18px]">{r.emoji}</span>
-                <span className="text-[12px] font-semibold text-[hsl(var(--slide-text))]">{r.role}</span>
-                <span className="text-[9px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[6px] py-[2px] rounded ml-auto">{r.tools}</span>
+        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[14px]">Ты думаешь и решаешь - AI собирает</p>
+        <div className="space-y-[8px]">
+          {steps.map((s, i) => (
+            <div key={i} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[12px] py-[9px]">
+              <div className="flex items-center gap-[8px] mb-[3px]">
+                <span className="text-[16px]">{s.emoji}</span>
+                <span className="font-mono text-[9px] text-[hsl(var(--slide-gold)/0.6)]">{s.num}</span>
+                <span className="text-[12px] font-semibold text-[hsl(var(--slide-text))]">{s.title}</span>
               </div>
-              <div className="space-y-[2px]">
-                {r.tasks.map((t, j) => (
-                  <div key={j} className="flex items-start gap-[6px]">
-                    <span className="w-[3px] h-[3px] rounded-full bg-[hsl(var(--slide-gold))] shrink-0 mt-[5px]" />
-                    <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{t}</p>
-                  </div>
-                ))}
-              </div>
+              <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{s.text}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-[12px] bg-[hsl(var(--slide-gold)/0.06)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[8px] px-[12px] py-[8px]">
+          <p className="text-[9px] uppercase tracking-widest text-[hsl(var(--slide-gold))] font-medium mb-[6px]">Чем собрать - на выбор</p>
+          <div className="space-y-[3px]">
+            {tools.map((t, i) => (
+              <p key={i} className="text-[10px] text-[hsl(var(--slide-text-muted))]">
+                <span className="text-[hsl(var(--slide-text))] font-semibold">{t.name}</span> - {t.desc}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -57,33 +66,35 @@ export default function L4Slide06AIStack() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Ваш AI-стек</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Прототип за 3 шага</p>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px]">
-        Не один инструмент, а конвейер
+        От идеи к рабочему прототипу
       </h2>
-      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[48px]">
-        AI не заменяет вас — AI умножает вас. Вы думаете, AI исполняет.
+      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[40px]">
+        Не всё сразу, а по шагам. Ты думаешь и решаешь - AI собирает.
       </p>
-      <div className="flex gap-[32px]">
-        {roles.map((r, i) => (
+      <div className="flex gap-[32px] mb-[28px]">
+        {steps.map((s, i) => (
           <div key={i} className="flex-1 bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[16px] p-[32px]">
-            <div className="flex items-center gap-[12px] mb-[24px]">
-              <span className="text-[40px]">{r.emoji}</span>
-              <div>
-                <h3 className="text-[24px] font-semibold text-[hsl(var(--slide-text))]">{r.role}</h3>
-                <span className="text-[16px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.1)] px-[10px] py-[4px] rounded inline-block mt-[6px]">{r.tools}</span>
-              </div>
+            <div className="flex items-center gap-[12px] mb-[16px]">
+              <span className="text-[40px]">{s.emoji}</span>
+              <span className="font-mono text-[18px] text-[hsl(var(--slide-gold)/0.5)]">{s.num}</span>
             </div>
-            <div className="space-y-[12px]">
-              {r.tasks.map((t, j) => (
-                <div key={j} className="flex items-start gap-[10px]">
-                  <span className="w-[5px] h-[5px] rounded-full bg-[hsl(var(--slide-gold))] shrink-0 mt-[8px]" />
-                  <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{t}</p>
-                </div>
-              ))}
-            </div>
+            <h3 className="text-[24px] font-semibold text-[hsl(var(--slide-text))] mb-[12px]">{s.title}</h3>
+            <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">{s.text}</p>
           </div>
         ))}
+      </div>
+      <div className="flex items-center gap-[20px] bg-[hsl(var(--slide-gold)/0.05)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[18px]">
+        <span className="text-[15px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-semibold shrink-0">Чем собрать · на выбор</span>
+        <div className="flex gap-[28px] flex-1">
+          {tools.map((t, i) => (
+            <div key={i} className="flex items-baseline gap-[8px]">
+              <span className="text-[19px] font-semibold text-[hsl(var(--slide-text))]">{t.name}</span>
+              <span className="text-[16px] text-[hsl(var(--slide-text-muted))]">- {t.desc}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

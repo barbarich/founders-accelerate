@@ -20,10 +20,10 @@ export default function L4Slide16Closing() {
           </div>
           <div className="bg-[hsl(var(--slide-gold)/0.15)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[10px] px-[16px] py-[10px] mb-[14px]">
             <p className="text-[13px] text-[hsl(var(--slide-text))] font-bold">
-              Встреча 4 = ДЕМО-ДЕНЬ
+              Ваше демо - 5 минут
             </p>
             <p className="text-[10px] text-[hsl(var(--slide-text-muted))] mt-[4px]">
-              5 минут: продукт + лендинг + метрики + что написали
+              Запишите видео: продукт + лендинг + метрики + что написали
             </p>
           </div>
           <p className="text-[12px] text-[hsl(var(--slide-gold))] font-medium">
@@ -54,10 +54,10 @@ export default function L4Slide16Closing() {
 
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border border-[hsl(var(--slide-gold)/0.25)] rounded-[16px] px-[48px] py-[28px] mb-[40px] inline-block">
           <p className="text-[32px] text-[hsl(var(--slide-text))] font-bold leading-[1.3]">
-            Встреча 4 = ДЕМО-ДЕНЬ
+            Ваше демо - запишите 5 минут
           </p>
           <p className="text-[20px] text-[hsl(var(--slide-text-muted))] mt-[8px]">
-            5 минут: продукт вживую + лендинг + метрики + что опубликовали
+            Видео: продукт вживую + лендинг + метрики + что опубликовали
           </p>
         </div>
 

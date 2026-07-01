@@ -4,21 +4,21 @@ export default function L4Slide05MetaMinderCase() {
   const isMobile = useIsMobile();
 
   const steps = [
-    { icon: "📸", label: "Шаг 1", title: "Перенёс экраны в Lovable", text: "Все экраны реального продукта — скриншоты в AI, воссоздал 1 в 1" },
-    { icon: "🔄", label: "Шаг 2", title: "Итерировал через AI", text: "Новые фичи + интерфейс — высокое качество, быстрые итерации" },
-    { icon: "👨‍💻", label: "Шаг 3", title: "Передавал разработчикам", text: "Lovable генерит код → экспорт → разработчик доводит до прода" },
-    { icon: "⚡", label: "Сейчас", title: "Claude Code", text: "Доработка продукта прямо в коде, без промежуточных шагов" },
+    { icon: "📊", label: "Шаг 1", title: "Анализ рынка", text: "Изучил конкурентов и взял лучшее у каждого - фичи, механики, тексты" },
+    { icon: "🔍", label: "Шаг 2", title: "Свой ресёрч", text: "Custdev с читателями - что важно именно им и чего не хватает у других" },
+    { icon: "🧩", label: "Шаг 3", title: "Собрал прототип в Claude", text: "Кликабельный прототип Bookswap - экраны, поток, реальные тексты" },
+    { icon: "🚀", label: "Шаг 4", title: "Отдал в разработку", text: "Передал команде - или пошёл делать продукт сам" },
   ];
 
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[28px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Кейс</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[4px]">Пример · Bookswap</p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-          Как я убрал продакта и дизайнера
+          Bookswap: от рынка до прототипа
         </h2>
         <p className="text-[11px] text-[hsl(var(--slide-text-muted))] mb-[16px] leading-[1.5]">
-          MetaMinder: один фаундер = целая продуктовая команда
+          Сервис обмена книгами - путь от анализа рынка до готового прототипа
         </p>
         <div className="space-y-[10px]">
           {steps.map((s, i) => (
@@ -40,12 +40,12 @@ export default function L4Slide05MetaMinderCase() {
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Кейс MetaMinder</p>
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Пример · Bookswap</p>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[12px]">
-        Как я убрал продакта и дизайнера
+        Bookswap: от рынка до прототипа
       </h2>
       <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mb-[48px]">
-        Один фаундер = целая продуктовая команда
+        Сервис обмена книгами - путь от анализа рынка до готового прототипа
       </p>
       <div className="flex gap-[32px]">
         {steps.map((s, i) => (

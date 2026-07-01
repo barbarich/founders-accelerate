@@ -21,6 +21,16 @@ export default function L4SlidePaymentLink() {
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
           От 0 до приёма платежей <span className="text-[hsl(var(--slide-gold))]">за 10 минут</span>
         </h2>
+        <div className="bg-[hsl(var(--slide-gold)/0.12)] border border-[hsl(var(--slide-gold)/0.4)] rounded-[10px] px-[12px] py-[10px] mb-[12px] flex items-start gap-[8px]">
+          <span className="text-[16px] shrink-0">🤖</span>
+          <div>
+            <p className="text-[11px] font-bold text-[hsl(var(--slide-gold))] mb-[2px]">Самый быстрый путь - через Claude</p>
+            <p className="text-[10px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45]">
+              Дай Claude доступ к Stripe через коннекторы - он сам создаст продукты, настроит чекаут и выдаст ссылку. 5 минут, без ручной работы.
+            </p>
+          </div>
+        </div>
+        <p className="text-[9px] uppercase tracking-[0.15em] text-[hsl(var(--slide-text-muted))] mb-[6px]">Или вручную - по шагам</p>
         <div className="space-y-[8px]">
           {steps.map((s) => (
             <div key={s.n} className="flex items-start gap-[10px]">
@@ -46,9 +56,19 @@ export default function L4SlidePaymentLink() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
         Stripe Payment Link · без бэкенда
       </p>
-      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[36px] tracking-[-0.01em]">
+      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px] tracking-[-0.01em]">
         От 0 до приёма платежей <span className="text-[hsl(var(--slide-gold))]">за 10 минут</span>
       </h2>
+      <div className="bg-[hsl(var(--slide-gold)/0.12)] border border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] px-[32px] py-[20px] max-w-[1800px] mb-[28px] flex items-start gap-[18px]">
+        <span className="text-[34px] shrink-0 leading-none">🤖</span>
+        <div>
+          <p className="text-[22px] font-bold text-[hsl(var(--slide-gold))] mb-[4px]">Самый быстрый путь - через Claude</p>
+          <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
+            Дай Claude доступ к Stripe через коннекторы - он сам создаст продукты, настроит чекаут и выдаст ссылку. 5 минут, без ручной работы.
+          </p>
+        </div>
+      </div>
+      <p className="text-[15px] uppercase tracking-[0.15em] text-[hsl(var(--slide-text-muted))] mb-[14px]">Или вручную - по шагам</p>
       <div className="grid grid-cols-2 gap-x-[40px] gap-y-[16px] max-w-[1800px] mb-[24px]">
         {steps.map((s) => (
           <div key={s.n} className="flex items-start gap-[18px]">

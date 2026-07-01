@@ -20,7 +20,6 @@ import L4Slide12AuthPayments from "./L4Slide12AuthPayments";
 import L4Slide13Analytics from "./L4Slide13Analytics";
 import L4SlideStripeWhy from "./L4SlideStripeWhy";
 import L4SlidePaymentLink from "./L4SlidePaymentLink";
-import L4SlideRefundFlow from "./L4SlideRefundFlow";
 import L4SlideStripeAtlas from "./L4SlideStripeAtlas";
 import L4Slide14Workshop from "./L4Slide14Workshop";
 import L4Slide15Homework from "./L4Slide15Homework";
@@ -30,10 +29,10 @@ import L4SlideLessonSummary from "./L4SlideLessonSummary";
 export const slideNames = [
   "Добро пожаловать",
   "Три вещи",
-  "Блок 1: AI = продуктовая команда",
-  "Кейс MetaMinder",
-  "Ваш AI-стек",
-  "Промпты, которые работают",
+  "Блок 1: Соберите прототип",
+  "Пример: Bookswap",
+  "Прототип за 3 шага",
+  "Промпт прототипа",
   "До / После",
   "Блок 2: Лендинг за 30 минут",
   "8 блоков лендинга",
@@ -45,7 +44,6 @@ export const slideNames = [
   "Блок 4: Stripe · берём первые деньги",
   "Зачем Stripe именно",
   "Payment Link за 10 минут",
-  "Refund vs Chargeback",
   "Stripe Atlas · для нерезидентов США",
   "Блок 5: Два пути запуска",
   "Лендинг с нуля или улучшение",
@@ -59,7 +57,7 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L4Slide01Welcome />;
     case 1: return <L4Slide03ThreeThings />;
-    case 2: return <L4BlockHeader blockNumber={1} title="AI заменяет продакта и дизайнера" />;
+    case 2: return <L4BlockHeader blockNumber={1} title="Соберите прототип продукта" subtitle="визуализируй идею → собери → доработай" />;
     case 3: return <L4Slide05MetaMinderCase />;
     case 4: return <L4Slide06AIStack />;
     case 5: return <L4Slide07AdvancedPrompts />;
@@ -74,19 +72,18 @@ export function getSlideContent(index: number) {
     case 14: return <L4BlockHeader blockNumber={4} title="Stripe · берём первые деньги" subtitle="платежи без бэкенда + Stripe Atlas для нерезидентов" />;
     case 15: return <L4SlideStripeWhy />;
     case 16: return <L4SlidePaymentLink />;
-    case 17: return <L4SlideRefundFlow />;
-    case 18: return <L4SlideStripeAtlas />;
-    case 19: return <L4BlockHeader blockNumber={5} title="Два пути запуска" subtitle="лендинг с нуля или улучшение существующего" />;
-    case 20: return <L4Slide14Workshop />;
-    case 21: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 22: return <L4Slide15Homework />;
-    case 23: return <L4SlideLessonSummary />;
-    case 24: return <L4Slide16Closing />;
+    case 17: return <L4SlideStripeAtlas />;
+    case 18: return <L4BlockHeader blockNumber={5} title="Два пути запуска" subtitle="лендинг с нуля или улучшение существующего" />;
+    case 19: return <L4Slide14Workshop />;
+    case 20: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
+    case 21: return <L4Slide15Homework />;
+    case 22: return <L4SlideLessonSummary />;
+    case 23: return <L4Slide16Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 24;
 
 export default function Lesson4PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
