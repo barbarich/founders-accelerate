@@ -87,7 +87,7 @@ export default function CourseThankYou() {
             className="mcl-section-intro"
             style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 36 }}
           >
-            Все 17 уроков большого курса открываются через нашего Telegram-бота. Нажми кнопку ниже, открой бота - и получишь доступ ко всему курсу.
+            Уроки большого курса приходят прямо в наш Telegram-бот по графику - два раза в неделю. Первые уроки ты получишь сразу после входа, остальные будут приходить по мере выхода. Нажми кнопку ниже и открой бота.
           </p>
 
           <a
@@ -121,11 +121,11 @@ export default function CourseThankYou() {
               <li>Нажми кнопку «Открыть Telegram-бота» выше.</li>
               <li>
                 <strong>Если ты впервые в этом боте:</strong> нажми <strong>Start</strong> и пришли{" "}
-                <strong>email, которым ты только что оплачивал</strong>. Бот найдёт покупку и сразу откроет все 17 уроков.
+                <strong>email, которым ты только что оплачивал</strong>. Бот найдёт покупку и сразу пришлёт первые уроки, а дальше они будут приходить по графику.
               </li>
               <li>
                 <strong>Если ты уже проходил мини-курс в этом боте:</strong> просто отправь команду{" "}
-                <strong>/course</strong> - и доступ к большому курсу откроется сразу.
+                <strong>/course</strong> - большой курс откроется, первые уроки придут сразу.
               </li>
             </ol>
             <p style={{ marginTop: 14, marginBottom: 0, fontSize: 14, color: "var(--mcl-muted, #666)", lineHeight: 1.6 }}>
