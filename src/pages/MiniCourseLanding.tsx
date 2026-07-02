@@ -9,22 +9,19 @@ import "./mini-course-landing/styles.css";
 
 const michaelPhoto = "/images/michael.jpg";
 
-// Stripe Payment Links — Mini-Course AI-Founder, all redirect to /mini-course/thank-you
-const STRIPE_PRE_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 — по 1 июля
-const STRIPE_MID_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — 2–6 июля
-// TODO($49): создать Payment Link на $49 в Stripe и вставить сюда ДО 7 июля.
-// Пока заглушка на $37-ссылку — фаза $49 включается только в ночь на 7 июля.
-const STRIPE_FINAL_URL = STRIPE_MID_URL; // $49 — с 7 июля (ЗАГЛУШКА, заменить!)
+// Stripe Payment Link — Mini-Course AI-Founder, redirects to /mini-course/thank-you
+const STRIPE_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — единственная цена
 
-// --- Честная лестница цен: два глобальных перехода по Израилю (IDT, UTC+3) ---
-// $19 → $37 в ночь на 2 июля; $37 → $49 в ночь на 7 июля.
-// Фиксированные моменты → у всех посетителей цена и таймеры переключаются одновременно.
-const PRICE_FLIP_1 = Date.UTC(2026, 6, 1, 21, 0, 0); // 2026-07-02 00:00 IDT
-const PRICE_FLIP_2 = Date.UTC(2026, 6, 6, 21, 0, 0); // 2026-07-07 00:00 IDT
+// --- Цена: $37 навсегда, с якорем «обычной» цены $297 ---
+const PRICE = 37;
+const ANCHOR_PRICE = 297;
+const DISCOUNT_PCT = Math.round((1 - PRICE / ANCHOR_PRICE) * 100); // 88
 
-const PRICE_PRE = 19; // по 1 июля включительно
-const PRICE_MID = 37; // 2–6 июля включительно
-const PRICE_FINAL = 49; // с 7 июля
+// --- Ежемесячный живой разбор: последний четверг месяца, 19:00 по Израилю ---
+// Честная срочность вместо повышения цены: таймер тикает до ближайшего разбора
+// и сам перекатывается на следующий месяц, как только текущий начался.
+const CALL_HOUR_IL = 19;
+const MONTHS_RU = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
 // Social proof — deterministic: every visitor sees the same number on a given day, +30/day
 const PURCHASE_BASE = 1037;
@@ -37,19 +34,17 @@ function purchaseCount(): number {
   return PURCHASE_BASE + PURCHASE_PER_DAY * Math.max(0, days);
 }
 
-type Phase = "pre" | "mid" | "final"; // $19 / $37 / $49
-
 type Offer = {
-  phase: Phase;
-  price: number; // current buyable price
-  nextPrice: number | null; // следующая цена в лестнице (null на финале)
-  flipDate: string | null; // дата следующего повышения ("2 июля" / "7 июля")
+  price: number; // buyable price ($37)
+  anchorPrice: number; // struck «обычная» цена ($297)
+  discountPct: number; // скидка от якоря (88)
   checkoutUrl: string;
-  timerActive: boolean; // идёт ли обратный отсчёт до повышения
+  callShort: string; // "30 июля" — дата ближайшего живого разбора
+  callLong: string; // "30 июля, 19:00 (Израиль)"
   d: string;
   h: string;
   m: string;
-  s: string; // zero-padded countdown parts
+  s: string; // zero-padded countdown до разбора
 };
 
 const pad2 = (n: number) => String(Math.max(0, n)).padStart(2, "0");
@@ -65,40 +60,75 @@ function split(ms: number): { d: string; h: string; m: string; s: string } {
   };
 }
 
+/** Offset (ms) Asia/Jerusalem от UTC в данный момент — DST-aware, без библиотек. */
+function israelOffsetMs(instant: number): number {
+  const p = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Jerusalem",
+    hourCycle: "h23",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })
+    .formatToParts(new Date(instant))
+    .reduce<Record<string, string>>((a, x) => {
+      if (x.type !== "literal") a[x.type] = x.value;
+      return a;
+    }, {});
+  const asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+  return asUTC - instant;
+}
+
+/** UTC-момент для настенного времени по Израилю (точно вне 1-часовой DST-складки). */
+function israelWallToUtc(y: number, monthIdx: number, day: number, hour: number): number {
+  const guess = Date.UTC(y, monthIdx, day, hour, 0, 0);
+  return guess - israelOffsetMs(guess);
+}
+
+/** UTC-момент последнего четверга (y, monthIdx) в CALL_HOUR_IL по Израилю. */
+function lastThursdayCall(y: number, monthIdx: number): number {
+  let day = new Date(Date.UTC(y, monthIdx + 1, 0)).getUTCDate(); // последний день месяца
+  while (new Date(Date.UTC(y, monthIdx, day)).getUTCDay() !== 4) day--; // 4 = четверг
+  return israelWallToUtc(y, monthIdx, day, CALL_HOUR_IL);
+}
+
+/** Ближайший разбор в момент `now`; перекатывается на след. месяц, как только начался. */
+function nextCall(now: number): number {
+  const d = new Date(now);
+  let y = d.getUTCFullYear();
+  let m = d.getUTCMonth();
+  let call = lastThursdayCall(y, m);
+  if (now >= call) {
+    m += 1;
+    if (m > 11) {
+      m = 0;
+      y += 1;
+    }
+    call = lastThursdayCall(y, m);
+  }
+  return call;
+}
+
+/** Человекочитаемая дата разбора в календаре Израиля. */
+function callLabel(callUtc: number): { short: string; long: string } {
+  const il = new Date(callUtc + israelOffsetMs(callUtc)); // сдвиг, чтобы UTC-геттеры читали IL-время
+  const short = `${il.getUTCDate()} ${MONTHS_RU[il.getUTCMonth()]}`;
+  return { short, long: `${short}, ${CALL_HOUR_IL}:00 (Израиль)` };
+}
+
 function computeOffer(now: number): Offer {
-  // --- По 1 июля включительно: $19, честный отсчёт до повышения 2 июля -----
-  if (now < PRICE_FLIP_1) {
-    return {
-      phase: "pre",
-      price: PRICE_PRE,
-      nextPrice: PRICE_MID,
-      flipDate: "2 июля",
-      checkoutUrl: STRIPE_PRE_URL,
-      timerActive: true,
-      ...split(PRICE_FLIP_1 - now),
-    };
-  }
-  // --- 2–6 июля: $37, честный отсчёт до повышения до $49 7 июля ------------
-  if (now < PRICE_FLIP_2) {
-    return {
-      phase: "mid",
-      price: PRICE_MID,
-      nextPrice: PRICE_FINAL,
-      flipDate: "7 июля",
-      checkoutUrl: STRIPE_MID_URL,
-      timerActive: true,
-      ...split(PRICE_FLIP_2 - now),
-    };
-  }
-  // --- С 7 июля: финальная цена $49, без таймера --------------------------
+  const call = nextCall(now);
+  const { short, long } = callLabel(call);
   return {
-    phase: "final",
-    price: PRICE_FINAL,
-    nextPrice: null,
-    flipDate: null,
-    checkoutUrl: STRIPE_FINAL_URL,
-    timerActive: false,
-    ...split(0),
+    price: PRICE,
+    anchorPrice: ANCHOR_PRICE,
+    discountPct: DISCOUNT_PCT,
+    checkoutUrl: STRIPE_URL,
+    callShort: short,
+    callLong: long,
+    ...split(call - now),
   };
 }
 
@@ -172,9 +202,8 @@ function ClockTiles({ d, h, m, s }: { d: string; h: string; m: string; s: string
 /** Compact hero timer — sits between price and CTA. Noticeable, but secondary to price/button. */
 function HeroCountdown() {
   const o = useOffer();
-  if (!o.timerActive) return null;
-  const head = <>Цена вырастет до ${o.nextPrice} — {o.flipDate}</>;
-  const aria = `Цена вырастет до ${o.nextPrice} долларов ${o.flipDate}. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`;
+  const head = <>Купи до {o.callShort} - попадёшь на живой разбор со мной</>;
+  const aria = `Ближайший живой разбор со мной ${o.callLong}. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд, чтобы купить и попасть на него`;
   return (
     <div className="mcl-hero-timer" role="timer" aria-label={aria}>
       <span className="mcl-hero-timer-head">
@@ -197,7 +226,7 @@ function TrustStrip() {
         <img src="/images/Leah.png" alt="" loading="lazy" />
         <img src="/images/Vlad.png" alt="" loading="lazy" />
       </div>
-      <div className="mcl-trust-text"><strong>{count}</strong> человек уже купили курс</div>
+      <div className="mcl-trust-text"><strong>{count}</strong> человек уже купили курс · +{PURCHASE_PER_DAY} каждый день</div>
       <span className="mcl-trust-sep" aria-hidden="true" />
       <div className="mcl-trust-rating">
         <span className="mcl-stars" role="img" aria-label={`Рейтинг ${RATING} из 5`}>
@@ -213,21 +242,13 @@ function TrustStrip() {
 
 function TopBar() {
   const o = useOffer();
-  if (!o.timerActive) {
-    return (
-      <div className="mcl-top-bar mcl-top-bar--ended">
-        <span className="mcl-top-bar-full">Финальная цена ${o.price} · единоразово · доступ навсегда</span>
-        <span className="mcl-top-bar-short">Курс ${o.price} · навсегда</span>
-      </div>
-    );
-  }
   return (
     <div className="mcl-top-bar">
       <span className="mcl-top-bar-full">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> Цена вырастет до ${o.nextPrice} — {o.flipDate} · успей за ${o.price} · <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · живой разбор со мной {o.callShort} · <CountdownInline />
       </span>
       <span className="mcl-top-bar-short">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} → ${o.nextPrice} · ещё <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · разбор {o.callShort} · <CountdownInline />
       </span>
     </div>
   );
@@ -240,14 +261,11 @@ function MobileBuyBar() {
     <div className="mcl-mobile-buybar">
       <div className="mcl-mobile-buybar-info">
         <div className="mcl-mobile-buybar-price">
+          <span className="mcl-mbb-old">${offer.anchorPrice}</span>
           <span className="mcl-mbb-new">${offer.price}</span>
         </div>
         <div className="mcl-mobile-buybar-timer">
-          {offer.timerActive ? (
-            <>до ${offer.nextPrice} · {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}</>
-          ) : (
-            "доступ навсегда"
-          )}
+          разбор {offer.callShort} · {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}
         </div>
       </div>
       <a href={offer.checkoutUrl} className="mcl-mobile-buybar-cta" onClick={() => onBuyClick("mobile_sticky", offer.price)}>
@@ -269,8 +287,9 @@ function Hero() {
         </p>
         <TrustStrip />
         <div className="mcl-price-block">
+          <span className="mcl-price-old">${offer.anchorPrice}</span>
           <span className="mcl-price-new">${offer.price}</span>
-          {offer.nextPrice != null && <span className="mcl-price-discount">скоро ${offer.nextPrice}</span>}
+          <span className="mcl-price-discount">−{offer.discountPct}%</span>
         </div>
         <HeroCountdown />
         <div>
@@ -281,6 +300,9 @@ function Hero() {
           <span className="mcl-hero-meta-item">{CHECK_ICON} Доступ навсегда</span>
           <span className="mcl-hero-meta-item">{CHECK_ICON} Возврат 7 дней</span>
         </div>
+        <p className="mcl-hero-note">
+          <strong>Ранний старт сейчас даёт реальное преимущество.</strong> Впервые запустить продукт можно самостоятельно - без команды и без навыков программирования. Через год это будет доступно каждому.
+        </p>
       </div>
     </header>
   );
@@ -490,6 +512,7 @@ const BONUSES = [
   { i: "⚡", t: "Промпты для разработки и лендингов", d: "Мои реальные промпты, которыми я делаю лендинги за 30 минут и MVP-фичи за час. Скопировал → вставил → работает.", v: "Эквивалент $200+" },
   { i: "📋", t: "Шаблоны Customer Development", d: "Скрипт интервью, чек-лист сигналов, шаблон записи диалогов и pass/fail-формула, которую я применяю сам.", v: "Эквивалент $150" },
   { i: "🚀", t: "Топовые практики Claude Code · май 2026", d: "Самые свежие воркфлоу и приёмы для agentic engineering на момент запуска курса. То, что работает прямо сейчас, не «в общем».", v: "Эквивалент $250" },
+  { i: "🎙️", t: "Ежемесячный живой разбор со мной", d: "Раз в месяц - живой Q&A в прямом эфире: приноси свой продукт, нишу или затык, разбираю лично. Ближайший - в последний четверг месяца.", v: "Эквивалент $300" },
   { i: "📊", t: "Презентации всех 5 уроков", d: "Слайды в PDF — можно пересмотреть без видео, скопировать схемы, использовать как чек-лист.", v: "Эквивалент $100" },
   { i: "∞", t: "Доступ навсегда + обновления", d: "Купил один раз — получаешь все будущие обновления курса бесплатно. Воркфлоу AI меняются каждые 3 месяца — ты всегда актуален.", v: "Эквивалент $200+" },
 ] as const;
@@ -520,10 +543,11 @@ function Bonuses() {
           <div className="mcl-value-row"><span>Видеокурс (5 уроков, ~4 часа)</span><strong>$300</strong></div>
           <div className="mcl-value-row"><span>AI-агенты + промпты + шаблоны</span><strong>$650+</strong></div>
           <div className="mcl-value-row"><span>Топовые практики Claude Code май 2026</span><strong>$250</strong></div>
+          <div className="mcl-value-row"><span>Ежемесячные живые разборы со мной</span><strong>$300</strong></div>
           <div className="mcl-value-row"><span>Презентации + обновления навсегда</span><strong>$300+</strong></div>
           <div className="mcl-value-final">
             <span className="mcl-value-final-label">Реальная стоимость</span>
-            <span className="mcl-value-final-price">$1,500+</span>
+            <span className="mcl-value-final-price">$1,800+</span>
           </div>
           <div className="mcl-value-final" style={{ borderTop: "none", paddingTop: 8 }}>
             <span className="mcl-value-final-label">Твоя цена сейчас</span>
@@ -541,6 +565,7 @@ function Comparison() {
     ["Структурированный путь", ["no", "Хаос"], ["no", "Нет"], ["yes", "Да"], ["yes", "Да"]],
     ["Реальные кейсы из живых компаний", ["meh", "Чужие"], ["no", "Выдуманные"], ["yes", "4 моих"], ["yes", "Свои"]],
     ["AI-агенты и промпты в подарок", ["no", "—"], ["no", "—"], ["yes", "Да"], ["meh", "Иногда"]],
+    ["Живой разбор с автором", ["no", "—"], ["no", "—"], ["yes", "Ежемесячно"], ["yes", "Да"]],
     ["Свежесть на май 2026", ["no", "Старые"], ["meh", "Зависит"], ["yes", "Да"], ["yes", "Да"]],
     ["Время на освоение", ["no", "100+ ч"], ["no", "∞"], ["yes", "3 ч"], ["meh", "12 нед"]],
     ["Цена", ["yes", "$0"], ["yes", "$20/мес"], ["yes", `$${offer.price} один раз`], ["no", "$5,000+"]],
@@ -678,32 +703,22 @@ function Pricing() {
         <div className="mcl-section-label">Цена</div>
         <h2 className="mcl-section-title">Один раз. <em>${offer.price}. Доступ навсегда.</em></h2>
         <p className="mcl-section-intro">
-          {offer.phase === "pre" ? (
-            <>Сейчас курс стоит ${PRICE_PRE}. Со 2 июля — ${PRICE_MID}, с 7 июля — ${PRICE_FINAL}. Честная лестница: чем раньше берёшь, тем дешевле фиксируешь полный доступ навсегда.</>
-          ) : offer.phase === "mid" ? (
-            <>Сейчас курс стоит ${PRICE_MID}. С 7 июля цена вырастет до ${PRICE_FINAL} - и останется такой. Купи сейчас и зафиксируй доступ навсегда дешевле.</>
-          ) : (
-            <>Курс стоит ${PRICE_FINAL}. Единоразовый платёж, доступ навсегда - со всеми будущими обновлениями.</>
-          )}
+          Обычная цена курса - ${offer.anchorPrice}. Сейчас ${offer.price}: единоразовый платёж, доступ навсегда со всеми обновлениями. Купи до {offer.callShort} - попадёшь на ближайший живой разбор со мной. Следующий - только через месяц.
         </p>
         <div className="mcl-pricing-card">
-          <div className="mcl-pricing-badge">{offer.timerActive ? `Цена вырастет ${offer.flipDate}` : "Финальная цена"}</div>
+          <div className="mcl-pricing-badge">Живой разбор {offer.callShort}</div>
           <div className="mcl-pricing-name">AI-продукт, который покупают</div>
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
-          {offer.timerActive ? (
-            <div className="mcl-pricing-timer">
-              <span className="mcl-pricing-timer-dot" aria-hidden="true" />
-              <span className="mcl-pricing-timer-label">Цена вырастет до ${offer.nextPrice} через</span>
-              <span className="mcl-pricing-timer-value">{offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}:{offer.s}</span>
-            </div>
-          ) : (
-            <div className="mcl-pricing-timer mcl-pricing-timer--ended">
-              <span className="mcl-pricing-timer-label">Цена ${offer.price} · доступ навсегда</span>
-            </div>
-          )}
+          <div className="mcl-pricing-timer">
+            <span className="mcl-pricing-timer-dot" aria-hidden="true" />
+            <span className="mcl-pricing-timer-label">До ближайшего живого разбора</span>
+            <span className="mcl-pricing-timer-value">{offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}:{offer.s}</span>
+          </div>
           <div className="mcl-pricing-price">
+            <span className="mcl-pricing-price-old">${offer.anchorPrice}</span>
             <span className="mcl-pricing-price-currency">$</span>
             <span className="mcl-pricing-price-new">{offer.price}</span>
+            <span className="mcl-price-discount">−{offer.discountPct}%</span>
           </div>
           <div className="mcl-pricing-note">Единоразовый платёж · никаких подписок</div>
           <ul className="mcl-pricing-features">
@@ -713,6 +728,7 @@ function Pricing() {
             <li>Готовые промпты для разработки и лендингов</li>
             <li>Шаблоны Customer Development</li>
             <li>Топовые практики Claude Code на май 2026</li>
+            <li>Ежемесячный живой разбор со мной (Q&A)</li>
             <li>4 разбора реальных кейсов из моих компаний</li>
             <li>Все будущие обновления курса бесплатно</li>
             <li>Доступ навсегда</li>
@@ -740,6 +756,7 @@ function faqItems(price: number) {
     { q: "Почему так дёшево? В чём подвох?", a: ["Подвоха нет, и я отвечу честно. Этот курс — top-of-funnel в мою менторскую программу The Founders Circle (TFC). Если после курса ты захочешь пойти глубже — у тебя будет такая опция. Если нет — просто пользуешься курсом, и мы оба довольны.", `$${price} это импульсная цена, на которой я не зарабатываю много, но при этом фильтрую тех, кто реально хочет учиться, от тех, кто скачает «потому что бесплатно» и не откроет.`] },
     { q: "Что если мне не подойдёт?", a: [`7 дней на возврат. Просто пишешь мне на почту — я возвращаю $${price}. Никаких форм, обоснований и удерживающих звонков.`, "Я делаю это потому что уверен в материале. Но если он не для тебя — не хочу держать твои деньги."] },
     { q: "На каком языке курс?", a: ["Все видео на русском. Презентации, шаблоны и промпты — на русском и английском (так чтобы ты мог использовать их с международными командами и AI-агентами без перевода)."] },
+    { q: "Что за ежемесячный живой разбор?", a: ["Раз в месяц - в последний четверг, 19:00 по Израилю - я провожу живой Q&A в прямом эфире. Приносишь свой продукт, нишу или конкретный затык, разбираю лично. Это не запись, а живой созвон.", "Купи до ближайшего разбора - попадёшь на него. Если купишь после - попадёшь на следующий, через месяц. Ссылку и напоминание пришлём в Telegram-боте с курсом."] },
     { q: "Как происходит оплата и доступ?", a: ["Оплата через Stripe — карты, Apple Pay, Google Pay. Сразу после успешной оплаты ты попадаешь на страницу благодарности, где открываешь нашего Telegram-бота: внутри лежат все 5 уроков, презентации, AI-агенты и бонусы. Доступ навсегда. Чек об оплате Stripe пришлёт на email."] },
   ];
 }
@@ -847,7 +864,7 @@ function MiniCourseLandingInner() {
       <SEO
         path="/ru"
         title="AI-продукт, который покупают — курс Михаэля Барбарича"
-        description={`Курс для соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $${offer.price}, единоразовый платёж через Stripe.`}
+        description={`Курс для соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $${offer.price} вместо $${offer.anchorPrice}, единоразовый платёж через Stripe, плюс ежемесячный живой разбор с автором.`}
         alternates={[
           { lang: "ru", path: "/ru" },
           { lang: "en", path: "/en" },
