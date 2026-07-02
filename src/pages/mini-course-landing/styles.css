@@ -215,9 +215,9 @@ body.mcl-body { background: #f8f8f4; }
 }
 .mcl-hero-meta-item { display: inline-flex; align-items: center; gap: 6px; }
 .mcl-hero-meta-item svg { color: var(--mcl-green); flex-shrink: 0; }
-.mcl-hero-note {
+.mcl-hero .mcl-hero-note {
   display: inline-block; text-align: left;
-  max-width: 540px; margin-top: 18px;
+  max-width: 540px; margin-top: 30px;
   padding: 11px 16px; border-radius: var(--mcl-radius);
   background: var(--mcl-accent-soft);
   border: 1px solid var(--mcl-accent);
