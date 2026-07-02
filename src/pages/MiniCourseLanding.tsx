@@ -10,12 +10,12 @@ import "./mini-course-landing/styles.css";
 const michaelPhoto = "/images/michael.jpg";
 
 // Stripe Payment Link — Mini-Course AI-Founder, redirects to /mini-course/thank-you
-const STRIPE_URL = "https://buy.stripe.com/28E28reDCfaO4c57Dx8k80d"; // $37 — единственная цена
+const STRIPE_URL = "https://buy.stripe.com/28E14n2UU1jYaAtbTN8k80e"; // $29 — единственная цена
 
-// --- Цена: $37 навсегда, с якорем «обычной» цены $297 ---
-const PRICE = 37;
-const ANCHOR_PRICE = 297;
-const DISCOUNT_PCT = Math.round((1 - PRICE / ANCHOR_PRICE) * 100); // 88
+// --- Цена: $29 навсегда, с якорем «обычной» цены $89 ---
+const PRICE = 29;
+const ANCHOR_PRICE = 89;
+const DISCOUNT_PCT = Math.round((1 - PRICE / ANCHOR_PRICE) * 100); // 67
 
 // --- Ежемесячный живой разбор: последний четверг месяца, 19:00 по Израилю ---
 // Честная срочность вместо повышения цены: таймер тикает до ближайшего разбора
@@ -35,8 +35,8 @@ function purchaseCount(): number {
 }
 
 type Offer = {
-  price: number; // buyable price ($37)
-  anchorPrice: number; // struck «обычная» цена ($297)
+  price: number; // buyable price ($29)
+  anchorPrice: number; // struck «обычная» цена ($89)
   discountPct: number; // скидка от якоря (88)
   checkoutUrl: string;
   callShort: string; // "30 июля" — дата ближайшего живого разбора
