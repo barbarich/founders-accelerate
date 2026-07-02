@@ -1135,18 +1135,18 @@ a.mcl-linkedin-link:hover::after {
 /* Hero timer — compact, crafted: clock + dark mono tiles. Secondary to price + button. */
 .mcl-hero-timer {
   display: flex; width: fit-content; max-width: 100%;
-  flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px;
+  flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 14px;
   margin: 0 auto 24px;
-  padding: 7px 10px 7px 16px;
+  padding: 10px 20px;
   background: var(--mcl-surface);
   border: 1px solid var(--mcl-border-strong);
-  border-radius: var(--mcl-radius-pill);
+  border-radius: var(--mcl-radius);
   box-shadow: var(--mcl-shadow-sm);
 }
 .mcl-hero-timer-head {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 13.5px; font-weight: 600; color: var(--mcl-secondary);
-  white-space: nowrap;
+  white-space: nowrap; text-align: center;
 }
 .mcl-hero-timer-icon { display: inline-flex; color: var(--mcl-danger); animation: mcl-pulse 1.6s ease-in-out infinite; }
 .mcl-hero-timer-clock { display: inline-flex; align-items: center; gap: 3px; }
@@ -1158,8 +1158,8 @@ a.mcl-linkedin-link:hover::after {
 }
 .mcl-hero-timer-clock i { font-style: normal; color: var(--mcl-hint); font-weight: 700; font-size: 14px; }
 @media (max-width: 540px) {
-  .mcl-hero-timer { gap: 6px 8px; padding: 6px 8px 6px 13px; margin-bottom: 18px; }
-  .mcl-hero-timer-head { font-size: 11.5px; gap: 6px; }
+  .mcl-hero-timer { gap: 8px 10px; padding: 10px 14px; margin-bottom: 18px; }
+  .mcl-hero-timer-head { font-size: 12px; gap: 6px; white-space: normal; }
   .mcl-hero-timer-icon svg { width: 13px; height: 13px; }
   .mcl-hero-timer-clock { gap: 2px; }
   .mcl-hero-timer-clock b { font-size: 12px; padding: 3px 5px; min-width: 23px; border-radius: 5px; letter-spacing: 0.3px; }
