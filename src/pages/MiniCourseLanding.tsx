@@ -864,6 +864,7 @@ function MiniCourseLandingInner() {
       <SEO
         path="/ru"
         title="AI-продукт, который покупают — курс Михаэля Барбарича"
+        ogImage="/og-mini-course.jpg"
         description={`Курс для соло-фаундера: 5 уроков, около 4 часов, от первого интервью до первых платящих клиентов. Цена $${offer.price} вместо $${offer.anchorPrice}, единоразовый платёж через Stripe, плюс ежемесячный живой разбор с автором.`}
         alternates={[
           { lang: "ru", path: "/ru" },

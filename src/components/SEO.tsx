@@ -20,7 +20,7 @@ export function SEO({
   title,
   description,
   path,
-  ogImage = "/og-image.png",
+  ogImage = "/og-image.jpg",
   ogType = "website",
   canonical,
   alternates,
@@ -81,7 +81,7 @@ export const ORGANIZATION_LD = {
   "@type": "Organization",
   name: "The Founders Circle",
   url: SITE,
-  logo: `${SITE}/og-image.png`,
+  logo: `${SITE}/og-image.jpg`,
   email: "hello@founders-circle.space",
   founder: {
     "@type": "Person",
