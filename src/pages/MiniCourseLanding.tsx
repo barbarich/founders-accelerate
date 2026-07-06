@@ -10,16 +10,27 @@ import "./mini-course-landing/styles.css";
 const michaelPhoto = "/images/michael.jpg";
 
 // Stripe Payment Link — Mini-Course AI-Founder, redirects to /mini-course/thank-you
-const STRIPE_URL = "https://buy.stripe.com/28E14n2UU1jYaAtbTN8k80e"; // $29 — единственная цена
+const STRIPE_URL = "https://buy.stripe.com/cNibJ1gLKfaObEx3nh8k803"; // $19 — единственная цена
 
-// --- Цена: $29 навсегда, с якорем «обычной» цены $89 ---
-const PRICE = 29;
-const ANCHOR_PRICE = 89;
-const DISCOUNT_PCT = Math.round((1 - PRICE / ANCHOR_PRICE) * 100); // 67
+// --- Цена: $19 навсегда, с якорем «обычной» цены $129 ---
+const PRICE = 19;
+const ANCHOR_PRICE = 129;
+const DISCOUNT_PCT = Math.round((1 - PRICE / ANCHOR_PRICE) * 100); // 85
+
+// --- Таймер предложения: катящееся 3-дневное окно ---
+// Детерминированный отсчёт от общего якоря (SSR-safe, без localStorage).
+// Когда окно закрывается, цена НЕ меняется — отсчёт просто начинается заново.
+const OFFER_WINDOW_MS = 3 * 86400000;
+const OFFER_ANCHOR = Date.UTC(2026, 6, 6); // 2026-07-06 — старт первого окна
+
+/** Ms до конца текущего 3-дневного окна (на границе — полное окно заново). */
+function offerRemaining(now: number): number {
+  const elapsed = Math.max(0, now - OFFER_ANCHOR);
+  return OFFER_WINDOW_MS - (elapsed % OFFER_WINDOW_MS);
+}
 
 // --- Ежемесячный живой разбор: последний четверг месяца, 19:00 по Израилю ---
-// Честная срочность вместо повышения цены: таймер тикает до ближайшего разбора
-// и сам перекатывается на следующий месяц, как только текущий начался.
+// Дата используется в копирайте (бейдж, интро цены); таймер к ней не привязан.
 const CALL_HOUR_IL = 19;
 const MONTHS_RU = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
@@ -35,16 +46,16 @@ function purchaseCount(): number {
 }
 
 type Offer = {
-  price: number; // buyable price ($29)
-  anchorPrice: number; // struck «обычная» цена ($89)
-  discountPct: number; // скидка от якоря (88)
+  price: number; // buyable price ($19)
+  anchorPrice: number; // struck «обычная» цена ($129)
+  discountPct: number; // скидка от якоря (85)
   checkoutUrl: string;
   callShort: string; // "30 июля" — дата ближайшего живого разбора
   callLong: string; // "30 июля, 19:00 (Израиль)"
   d: string;
   h: string;
   m: string;
-  s: string; // zero-padded countdown до разбора
+  s: string; // zero-padded countdown до конца 3-дневного окна
 };
 
 const pad2 = (n: number) => String(Math.max(0, n)).padStart(2, "0");
@@ -128,7 +139,7 @@ function computeOffer(now: number): Offer {
     checkoutUrl: STRIPE_URL,
     callShort: short,
     callLong: long,
-    ...split(call - now),
+    ...split(offerRemaining(now)),
   };
 }
 
@@ -202,8 +213,8 @@ function ClockTiles({ d, h, m, s }: { d: string; h: string; m: string; s: string
 /** Compact hero timer — sits between price and CTA. Noticeable, but secondary to price/button. */
 function HeroCountdown() {
   const o = useOffer();
-  const head = <>Купи до {o.callShort} - попадёшь на живой разбор со мной</>;
-  const aria = `Ближайший живой разбор со мной ${o.callLong}. Осталось ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд, чтобы купить и попасть на него`;
+  const head = <>Цена ${o.price} вместо ${o.anchorPrice} действует ещё</>;
+  const aria = `Цена ${o.price} долларов вместо ${o.anchorPrice} действует ещё ${parseInt(o.d, 10)} дней ${o.h} часов ${o.m} минут ${o.s} секунд`;
   return (
     <div className="mcl-hero-timer" role="timer" aria-label={aria}>
       <span className="mcl-hero-timer-head">
@@ -245,10 +256,10 @@ function TopBar() {
   return (
     <div className="mcl-top-bar">
       <span className="mcl-top-bar-full">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · живой разбор со мной {o.callShort} · <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · −{o.discountPct}% · цена действует ещё <CountdownInline />
       </span>
       <span className="mcl-top-bar-short">
-        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · разбор {o.callShort} · <CountdownInline />
+        <span className="mcl-top-bar-dot" aria-hidden="true" /> ${o.price} вместо ${o.anchorPrice} · ещё <CountdownInline />
       </span>
     </div>
   );
@@ -265,7 +276,7 @@ function MobileBuyBar() {
           <span className="mcl-mbb-new">${offer.price}</span>
         </div>
         <div className="mcl-mobile-buybar-timer">
-          разбор {offer.callShort} · {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}
+          цена ещё {offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}
         </div>
       </div>
       <a href={offer.checkoutUrl} className="mcl-mobile-buybar-cta" onClick={() => onBuyClick("mobile_sticky", offer.price)}>
@@ -711,7 +722,7 @@ function Pricing() {
           <div className="mcl-pricing-tagline">Полный доступ ко всему курсу + бонусам</div>
           <div className="mcl-pricing-timer">
             <span className="mcl-pricing-timer-dot" aria-hidden="true" />
-            <span className="mcl-pricing-timer-label">До ближайшего живого разбора</span>
+            <span className="mcl-pricing-timer-label">Цена ${offer.price} действует ещё</span>
             <span className="mcl-pricing-timer-value">{offer.d !== "00" ? `${parseInt(offer.d, 10)}д ` : ""}{offer.h}:{offer.m}:{offer.s}</span>
           </div>
           <div className="mcl-pricing-price">
