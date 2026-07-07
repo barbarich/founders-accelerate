@@ -9,10 +9,12 @@ import L4Slide02Recap from "./L4Slide02Recap";
 import L4Slide03ThreeThings from "./L4Slide03ThreeThings";
 import L4BlockHeader from "./L4BlockHeader";
 import L4Slide04ShowProgress from "./L4Slide04ShowProgress";
-import L4Slide05MetaMinderCase from "./L4Slide05MetaMinderCase";
-import L4Slide06AIStack from "./L4Slide06AIStack";
+import L4SlideFeedbackLoop from "./L4SlideFeedbackLoop";
+import L4SlideWhoToAsk from "./L4SlideWhoToAsk";
 import L4Slide07AdvancedPrompts from "./L4Slide07AdvancedPrompts";
+import L4Slide05MetaMinderCase from "./L4Slide05MetaMinderCase";
 import L4Slide08BeforeAfter from "./L4Slide08BeforeAfter";
+import L4SlideReadyGate from "./L4SlideReadyGate";
 import L4Slide09LandingFromFrameworks from "./L4Slide09LandingFromFrameworks";
 import L4Slide10LandingAnatomy from "./L4Slide10LandingAnatomy";
 import L4Slide11LovableDemo from "./L4Slide11LovableDemo";
@@ -29,11 +31,13 @@ import L4SlideLessonSummary from "./L4SlideLessonSummary";
 export const slideNames = [
   "Добро пожаловать",
   "Три вещи",
-  "Блок 1: Соберите прототип",
+  "Блок 1: Прототип",
+  "Петля фидбэка",
+  "Кому показывать",
+  "По одному экрану",
   "Пример: Bookswap",
-  "Прототип за 3 шага",
-  "Промпт прототипа",
-  "До / После",
+  "Прототип-плейграунд",
+  "Когда в разработку",
   "Блок 2: Лендинг за 30 минут",
   "8 блоков лендинга",
   "Промпт для Lovable",
@@ -57,33 +61,35 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L4Slide01Welcome />;
     case 1: return <L4Slide03ThreeThings />;
-    case 2: return <L4BlockHeader blockNumber={1} title="Соберите прототип продукта" subtitle="визуализируй идею → собери → доработай" />;
-    case 3: return <L4Slide05MetaMinderCase />;
-    case 4: return <L4Slide06AIStack />;
+    case 2: return <L4BlockHeader blockNumber={1} title="Прототип: собирай и оттачивай на людях" subtitle="визуализируй → покажи людям → доработай → повтори" />;
+    case 3: return <L4SlideFeedbackLoop />;
+    case 4: return <L4SlideWhoToAsk />;
     case 5: return <L4Slide07AdvancedPrompts />;
-    case 6: return <L4Slide08BeforeAfter />;
-    case 7: return <L4BlockHeader blockNumber={2} title="Лендинг за 30 минут" subtitle="Lovable + промпт + стиль" />;
-    case 8: return <L4Slide09LandingFromFrameworks />;
-    case 9: return <L4Slide10LandingAnatomy />;
-    case 10: return <L4Slide11LovableDemo />;
-    case 11: return <L4BlockHeader blockNumber={3} title="Подключаем без разработчика" subtitle="auth + analytics" />;
-    case 12: return <L4Slide12AuthPayments />;
-    case 13: return <L4Slide13Analytics />;
-    case 14: return <L4BlockHeader blockNumber={4} title="Stripe · берём первые деньги" subtitle="платежи без бэкенда + Stripe Atlas для нерезидентов" />;
-    case 15: return <L4SlideStripeWhy />;
-    case 16: return <L4SlidePaymentLink />;
-    case 17: return <L4SlideStripeAtlas />;
-    case 18: return <L4BlockHeader blockNumber={5} title="Два пути запуска" subtitle="лендинг с нуля или улучшение существующего" />;
-    case 19: return <L4Slide14Workshop />;
-    case 20: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
-    case 21: return <L4Slide15Homework />;
-    case 22: return <L4SlideLessonSummary />;
-    case 23: return <L4Slide16Closing />;
+    case 6: return <L4Slide05MetaMinderCase />;
+    case 7: return <L4Slide08BeforeAfter />;
+    case 8: return <L4SlideReadyGate />;
+    case 9: return <L4BlockHeader blockNumber={2} title="Лендинг за 30 минут" subtitle="Lovable + промпт + стиль" />;
+    case 10: return <L4Slide09LandingFromFrameworks />;
+    case 11: return <L4Slide10LandingAnatomy />;
+    case 12: return <L4Slide11LovableDemo />;
+    case 13: return <L4BlockHeader blockNumber={3} title="Подключаем без разработчика" subtitle="auth + analytics" />;
+    case 14: return <L4Slide12AuthPayments />;
+    case 15: return <L4Slide13Analytics />;
+    case 16: return <L4BlockHeader blockNumber={4} title="Stripe · берём первые деньги" subtitle="платежи без бэкенда + Stripe Atlas для нерезидентов" />;
+    case 17: return <L4SlideStripeWhy />;
+    case 18: return <L4SlidePaymentLink />;
+    case 19: return <L4SlideStripeAtlas />;
+    case 20: return <L4BlockHeader blockNumber={5} title="Два пути запуска" subtitle="лендинг с нуля или улучшение существующего" />;
+    case 21: return <L4Slide14Workshop />;
+    case 22: return <L4BlockHeader blockNumber={6} title="Задание на неделю" />;
+    case 23: return <L4Slide15Homework />;
+    case 24: return <L4SlideLessonSummary />;
+    case 25: return <L4Slide16Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 24;
+export const TOTAL = 26;
 
 export default function Lesson4PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
