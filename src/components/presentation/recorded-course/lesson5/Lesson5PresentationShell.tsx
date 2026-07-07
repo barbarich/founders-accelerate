@@ -14,12 +14,14 @@ import L5Slide06NoCustomers from "./L5Slide06NoCustomers";
 import L5Slide07ThreeChannels from "./L5Slide07ThreeChannels";
 import L5Slide08MyCase from "./L5Slide08MyCase";
 import L5Slide10WhereAudience from "./L5Slide10WhereAudience";
+import L5SlideStoryWhyDistribution from "./L5SlideStoryWhyDistribution";
 import L5SlideStoryFind from "./L5SlideStoryFind";
 import L5SlideStoryHero from "./L5SlideStoryHero";
 import L5SlideStoryConflict from "./L5SlideStoryConflict";
 import L5SlideStoryShift from "./L5SlideStoryShift";
 import L5SlideStoryDetail from "./L5SlideStoryDetail";
 import L5SlideStoryPackage from "./L5SlideStoryPackage";
+import L5SlideStoryAllTheWay from "./L5SlideStoryAllTheWay";
 import L5Slide16Homework from "./L5Slide16Homework";
 import L5Slide17Closing from "./L5Slide17Closing";
 import L5SlideWhyPresale from "./L5SlideWhyPresale";
@@ -38,12 +40,14 @@ export const slideNames = [
   "Waitlist · Mikey 500 за неделю",
   "Где живёт твоя аудитория",
   "Блок 3: Сторителлинг",
+  "Продукт не продаётся сам",
   "Найди историю в продукте",
   "Клиент — герой, ты — проводник",
   "Конфликт = боль клиента",
   "Трансформация: до / после",
   "Деталь = доверие",
   "Хук + структура + удержание",
+  "Рассказывай весь путь · пре-сейл",
   "Блок 4: Сделай сейчас",
   "Напиши пост-историю · 60 минут",
   "Блок 5: Задание на неделю",
@@ -63,24 +67,26 @@ export function getSlideContent(index: number) {
     case 6: return <L5Slide07ThreeChannels />;
     case 7: return <L5SlideWaitlist />;
     case 8: return <L5Slide10WhereAudience />;
-    case 9: return <L5BlockHeader blockNumber={3} title="Сторителлинг" subtitle="история, которую пересказывают и покупают" />;
-    case 10: return <L5SlideStoryFind />;
-    case 11: return <L5SlideStoryHero />;
-    case 12: return <L5SlideStoryConflict />;
-    case 13: return <L5SlideStoryShift />;
-    case 14: return <L5SlideStoryDetail />;
-    case 15: return <L5SlideStoryPackage />;
-    case 16: return <L5BlockHeader blockNumber={4} title="Сделай сейчас" subtitle="не план — действие сегодня" />;
-    case 17: return <L5SlideActionNow />;
-    case 18: return <L5BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 19: return <L5Slide16Homework />;
-    case 20: return <L5SlideLessonSummary />;
-    case 21: return <L5Slide17Closing />;
+    case 9: return <L5BlockHeader blockNumber={3} title="Сторителлинг" subtitle="дистрибуция — работа фаундера с первого дня, а не после релиза" />;
+    case 10: return <L5SlideStoryWhyDistribution />;
+    case 11: return <L5SlideStoryFind />;
+    case 12: return <L5SlideStoryHero />;
+    case 13: return <L5SlideStoryConflict />;
+    case 14: return <L5SlideStoryShift />;
+    case 15: return <L5SlideStoryDetail />;
+    case 16: return <L5SlideStoryPackage />;
+    case 17: return <L5SlideStoryAllTheWay />;
+    case 18: return <L5BlockHeader blockNumber={4} title="Сделай сейчас" subtitle="не план — действие сегодня" />;
+    case 19: return <L5SlideActionNow />;
+    case 20: return <L5BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 21: return <L5Slide16Homework />;
+    case 22: return <L5SlideLessonSummary />;
+    case 23: return <L5Slide17Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 22;
+export const TOTAL = 24;
 
 export default function Lesson5PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
