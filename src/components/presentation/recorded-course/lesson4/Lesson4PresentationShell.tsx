@@ -11,7 +11,7 @@ import L4BlockHeader from "./L4BlockHeader";
 import L4Slide04ShowProgress from "./L4Slide04ShowProgress";
 import L4SlideFeedbackLoop from "./L4SlideFeedbackLoop";
 import L4SlideWhoToAsk from "./L4SlideWhoToAsk";
-import L4Slide07AdvancedPrompts from "./L4Slide07AdvancedPrompts";
+import L4SlideShowPrototype from "./L4SlideShowPrototype";
 import L4Slide05MetaMinderCase from "./L4Slide05MetaMinderCase";
 import L4Slide08BeforeAfter from "./L4Slide08BeforeAfter";
 import L4SlideReadyGate from "./L4SlideReadyGate";
@@ -34,7 +34,7 @@ export const slideNames = [
   "Блок 1: Прототип",
   "Петля фидбэка",
   "Кому показывать",
-  "По одному экрану",
+  "Покажи прототип",
   "Пример: Bookswap",
   "Прототип-плейграунд",
   "Когда в разработку",
@@ -64,7 +64,7 @@ export function getSlideContent(index: number) {
     case 2: return <L4BlockHeader blockNumber={1} title="Прототип: собирай и оттачивай на людях" subtitle="визуализируй → покажи людям → доработай → повтори" />;
     case 3: return <L4SlideFeedbackLoop />;
     case 4: return <L4SlideWhoToAsk />;
-    case 5: return <L4Slide07AdvancedPrompts />;
+    case 5: return <L4SlideShowPrototype />;
     case 6: return <L4Slide05MetaMinderCase />;
     case 7: return <L4Slide08BeforeAfter />;
     case 8: return <L4SlideReadyGate />;
