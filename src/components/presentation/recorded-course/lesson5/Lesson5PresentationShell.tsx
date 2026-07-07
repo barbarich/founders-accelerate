@@ -13,11 +13,13 @@ import L5Slide05DemoTime from "./L5Slide05DemoTime";
 import L5Slide06NoCustomers from "./L5Slide06NoCustomers";
 import L5Slide07ThreeChannels from "./L5Slide07ThreeChannels";
 import L5Slide08MyCase from "./L5Slide08MyCase";
-import L5Slide09OutreachAnatomy from "./L5Slide09OutreachAnatomy";
 import L5Slide10WhereAudience from "./L5Slide10WhereAudience";
-import L5Slide11AITools from "./L5Slide11AITools";
-import L5Slide11bMassOutreach from "./L5Slide11bMassOutreach";
-import L5Slide11cEmailChain from "./L5Slide11cEmailChain";
+import L5SlideStoryFind from "./L5SlideStoryFind";
+import L5SlideStoryHero from "./L5SlideStoryHero";
+import L5SlideStoryConflict from "./L5SlideStoryConflict";
+import L5SlideStoryShift from "./L5SlideStoryShift";
+import L5SlideStoryDetail from "./L5SlideStoryDetail";
+import L5SlideStoryPackage from "./L5SlideStoryPackage";
 import L5Slide16Homework from "./L5Slide16Homework";
 import L5Slide17Closing from "./L5Slide17Closing";
 import L5SlideWhyPresale from "./L5SlideWhyPresale";
@@ -35,13 +37,15 @@ export const slideNames = [
   "3 канала без бюджета",
   "Waitlist · Mikey 500 за неделю",
   "Где живёт твоя аудитория",
-  "Блок 3: Cold outreach templates",
-  "Сообщение которое не игнорируют",
-  "3 инструмента: Apollo + Instantly + LinkedIn",
-  "Плохое vs хорошее письмо",
-  "Цепочка из 3 писем",
+  "Блок 3: Сторителлинг",
+  "Найди историю в продукте",
+  "Клиент — герой, ты — проводник",
+  "Конфликт = боль клиента",
+  "Трансформация: до / после",
+  "Деталь = доверие",
+  "Хук + структура + удержание",
   "Блок 4: Сделай сейчас",
-  "Напиши 10 outreach-сообщений · 60 минут",
+  "Напиши пост-историю · 60 минут",
   "Блок 5: Задание на неделю",
   "Домашка",
   "Саммари · 5 мыслей",
@@ -55,26 +59,28 @@ export function getSlideContent(index: number) {
     case 2: return <L5SlideWhyPresale />;
     case 3: return <L5Slide06NoCustomers />;
     case 4: return <L5Slide08MyCase />;
-    case 5: return <L5BlockHeader blockNumber={2} title="3 канала первых клиентов" subtitle="cold outreach · waitlist · warm intro" />;
+    case 5: return <L5BlockHeader blockNumber={2} title="3 канала первых клиентов" subtitle="3F · нетворкинг · комьюнити" />;
     case 6: return <L5Slide07ThreeChannels />;
     case 7: return <L5SlideWaitlist />;
     case 8: return <L5Slide10WhereAudience />;
-    case 9: return <L5BlockHeader blockNumber={3} title="Cold outreach templates" subtitle="что работает и что не работает в 2026" />;
-    case 10: return <L5Slide09OutreachAnatomy />;
-    case 11: return <L5Slide11AITools />;
-    case 12: return <L5Slide11bMassOutreach />;
-    case 13: return <L5Slide11cEmailChain />;
-    case 14: return <L5BlockHeader blockNumber={4} title="Сделай сейчас" subtitle="не план — действие сегодня" />;
-    case 15: return <L5SlideActionNow />;
-    case 16: return <L5BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 17: return <L5Slide16Homework />;
-    case 18: return <L5SlideLessonSummary />;
-    case 19: return <L5Slide17Closing />;
+    case 9: return <L5BlockHeader blockNumber={3} title="Сторителлинг" subtitle="история, которую пересказывают и покупают" />;
+    case 10: return <L5SlideStoryFind />;
+    case 11: return <L5SlideStoryHero />;
+    case 12: return <L5SlideStoryConflict />;
+    case 13: return <L5SlideStoryShift />;
+    case 14: return <L5SlideStoryDetail />;
+    case 15: return <L5SlideStoryPackage />;
+    case 16: return <L5BlockHeader blockNumber={4} title="Сделай сейчас" subtitle="не план — действие сегодня" />;
+    case 17: return <L5SlideActionNow />;
+    case 18: return <L5BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 19: return <L5Slide16Homework />;
+    case 20: return <L5SlideLessonSummary />;
+    case 21: return <L5Slide17Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 20;
+export const TOTAL = 22;
 
 export default function Lesson5PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

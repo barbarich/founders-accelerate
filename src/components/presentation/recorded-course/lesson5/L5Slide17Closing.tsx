@@ -16,7 +16,7 @@ export default function L5Slide17Closing() {
           </p>
           <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.2)] rounded-[10px] px-[16px] py-[10px] mb-[12px] text-left">
             <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
-              <span className="text-[hsl(var(--slide-text))] font-semibold">На этой неделе:</span> 20 outreach-сообщений, первый пост, показать продукт 10 людям, список 50 мест.
+              <span className="text-[hsl(var(--slide-text))] font-semibold">На этой неделе:</span> первые продажи через 3F, пост-история, показать продукт 10 людям, список 50 мест.
             </p>
           </div>
           <div className="bg-[hsl(var(--slide-gold)/0.15)] border border-[hsl(var(--slide-gold)/0.3)] rounded-[10px] px-[16px] py-[10px] mb-[14px]">
@@ -48,7 +48,7 @@ export default function L5Slide17Closing() {
 
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[16px] px-[48px] py-[28px] mb-[32px] inline-block text-left">
           <p className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.6]">
-            <span className="text-[hsl(var(--slide-text))] font-semibold">На этой неделе:</span> 20 outreach-сообщений, первый пост,<br />
+            <span className="text-[hsl(var(--slide-text))] font-semibold">На этой неделе:</span> продажи через 3F + окружение, пост-история,<br />
             показать продукт 10 новым людям, список 50 мест.
           </p>
         </div>

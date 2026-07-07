@@ -20,7 +20,7 @@ export default function L5Slide01Welcome() {
             Урок 5
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Первые 10 клиентов до того, как продукт готов.<br />К концу: 10 outreach-сообщений отправлено.
+            Первые 10 клиентов до того, как продукт готов.<br />К концу: первый пост-история опубликован.
           </p>
         </div>
       </div>
@@ -43,7 +43,7 @@ export default function L5Slide01Welcome() {
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[800px]">
           Первые 10 клиентов до того, как продукт готов.<br />
-          К концу: 10 outreach-сообщений отправлено + waitlist собирается.
+          К концу: первый пост-история опубликован + waitlist собирается.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />

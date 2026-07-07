@@ -1,12 +1,12 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const steps = [
-  { time: "0–10", action: "Открой LinkedIn / Apollo. Выпиши 10 человек из твоего ICP. Имя · компания · роль" },
-  { time: "10–20", action: "Для каждого найди триггер за последние 30 дней: пост, найм, раунд, новость, изменение в продукте" },
-  { time: "20–35", action: "Напиши первое сообщение по формуле: повод (про них) + ценность (что меняется у них) + CTA (1 строка). 2-3 предложения, не больше" },
-  { time: "35–45", action: "Открой Claude/ChatGPT. Промпт: «Я [твоя роль]. Отправляю это сообщение [роль контакта] в [индустрия]. Скажи: открыл бы / удалил бы / ответил бы. Что переписать?»" },
-  { time: "45–55", action: "Перепиши с учётом AI-фидбека. Сделай каждое сообщение уникальным (не одинаковый шаблон)" },
-  { time: "55–60", action: "Отправь все 10 сегодня. Не завтра. Завтра ты их перечитаешь и удалишь" },
+  { time: "0–10", action: "Вспомни момент из шага 1: что тебя бесило до продукта. Дата, место, деталь — одна конкретная сцена, а не абстрактная проблема" },
+  { time: "10–25", action: "Напиши по структуре: Хук (1–2 строки) → Сцена с деталью → Инсайт, что ты понял → CTA (1 вопрос). 150–250 слов, не больше" },
+  { time: "25–35", action: "Проверь: клиент — герой (не ты), есть конфликт (его боль), есть трансформация до/после. Ни одной сухой фичи" },
+  { time: "35–45", action: "Открой Claude/ChatGPT. Промпт: «Вот мой пост-история. Зацепит ли хук? Верю ли я сцене? Где провисает? Перепиши слабые места»" },
+  { time: "45–55", action: "Перепиши с учётом фидбека. Заголовок-хук выбери из 5 типов: парадокс / цифра / контр-интуитивно / вопрос / сцена" },
+  { time: "55–60", action: "Опубликуй сегодня в LinkedIn / Facebook / Telegram. Не завтра. Building in public начинается с первого поста" },
 ];
 
 export default function L5SlideActionNow() {
@@ -20,7 +20,7 @@ export default function L5SlideActionNow() {
           <span className="text-[10px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium">Сделай сейчас</span>
         </div>
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-          Напиши и отправь <span className="text-[hsl(var(--slide-gold))]">10 outreach-сообщений</span>
+          Напиши и опубликуй <span className="text-[hsl(var(--slide-gold))]">пост-историю</span>
         </h2>
         <div className="space-y-[8px] mb-[12px]">
           {steps.map((s, i) => (
@@ -32,7 +32,7 @@ export default function L5SlideActionNow() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[8px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-            Результат: 10 отправленных сообщений сегодня. Не план — действие.
+            Результат: 1 опубликованная пост-история сегодня. Не план — действие.
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function L5SlideActionNow() {
         <span className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium">Сделай сейчас</span>
       </div>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em] max-w-[1700px]">
-        Напиши и отправь <span className="text-[hsl(var(--slide-gold))]">10 outreach-сообщений</span>
+        Напиши и опубликуй <span className="text-[hsl(var(--slide-gold))]">пост-историю</span>
       </h2>
       <div className="space-y-[16px] max-w-[1700px] mb-[28px]">
         {steps.map((s, i) => (
@@ -58,7 +58,7 @@ export default function L5SlideActionNow() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[20px] max-w-[1700px]">
         <p className="text-[22px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-          Результат: <span className="text-[hsl(var(--slide-gold))]">10 отправленных сообщений сегодня</span>. Не план — действие.
+          Результат: <span className="text-[hsl(var(--slide-gold))]">1 опубликованная история сегодня</span>. Не план — действие.
         </p>
       </div>
     </div>

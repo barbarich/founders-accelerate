@@ -19,11 +19,11 @@ export default function L5SlideWhyPresale() {
           </div>
           <div className="border-l-2 border-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.08)] px-[12px] py-[8px]">
             <p className="text-[10px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">2026 way</p>
-            <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">Прототип за выходные → показываешь → берёшь первые $19 как «commit to be first» → строишь дальше с подтверждённым рынком.</p>
+            <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">Прототип за выходные → показываешь → берёшь предоплату или подписанный интент как «commit to be first» → строишь дальше с подтверждённым рынком.</p>
           </div>
         </div>
         <p className="text-[11px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[12px]">
-          <span className="text-[hsl(var(--slide-text))] font-medium">Pre-sale не значит обманывать.</span> Значит: показал прототип, объяснил roadmap, попросил $19. Кто платит — твой настоящий ICP.
+          <span className="text-[hsl(var(--slide-text))] font-medium">Pre-sale не значит обманывать.</span> Значит: показал прототип, объяснил roadmap, попросил commit. B2B — минимум 3 подписанных контракта заранее. B2C — минимум 20 платных предрегистраций. Кто платит — твой настоящий ICP: значит, продукт востребован.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
@@ -52,12 +52,12 @@ export default function L5SlideWhyPresale() {
         <div className="border-l-[4px] border-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.08)] px-[28px] py-[22px]">
           <p className="text-[15px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">2026 way</p>
           <p className="text-[22px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5]">
-            Прототип за выходные → показываешь → берёшь первые $19 как «commit to be first» → строишь дальше с подтверждённым рынком.
+            Прототип за выходные → показываешь → берёшь предоплату или подписанный интент как «commit to be first» → строишь дальше с подтверждённым рынком.
           </p>
         </div>
       </div>
       <p className="text-[24px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] max-w-[1700px] mb-[28px]">
-        <span className="text-[hsl(var(--slide-text))] font-semibold">Pre-sale не значит обманывать.</span> Значит: показал прототип, объяснил roadmap, попросил $19. Кто платит — твой настоящий ICP.
+        <span className="text-[hsl(var(--slide-text))] font-semibold">Pre-sale не значит обманывать.</span> Значит: показал прототип, объяснил roadmap, попросил commit. B2B — минимум 3 подписанных контракта заранее. B2C — минимум 20 платных предрегистраций. Кто платит — твой настоящий ICP: значит, продукт востребован.
       </p>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[22px] max-w-[1700px]">
         <p className="text-[26px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">

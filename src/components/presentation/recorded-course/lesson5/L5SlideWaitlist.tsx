@@ -14,7 +14,7 @@ export default function L5SlideWaitlist() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px] py-[24px] overflow-y-auto">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-          Канал #2 — waitlist параллельно с outreach
+          Канал #2 — waitlist параллельно с прямыми продажами
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
           Mikey: <span className="text-[hsl(var(--slide-gold))]">500 человек за неделю</span> через личные посты
@@ -45,7 +45,7 @@ export default function L5SlideWaitlist() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px] py-[50px] overflow-y-auto">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
-        Канал #2 — waitlist параллельно с outreach
+        Канал #2 — waitlist параллельно с прямыми продажами
       </p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[14px] tracking-[-0.01em]">
         Mikey: <span className="text-[hsl(var(--slide-gold))]">500 человек за неделю</span> через личные посты
