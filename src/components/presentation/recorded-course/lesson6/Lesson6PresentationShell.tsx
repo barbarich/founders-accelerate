@@ -21,7 +21,6 @@ import L6Slide12PlanModeAdvanced from "./L6Slide12PlanModeAdvanced";
 import L6Slide13SecondModelReview from "./L6Slide13SecondModelReview";
 import L6Slide16FiveUnblockTechniques from "./L6Slide16FiveUnblockTechniques";
 import L6Slide17ObservabilityStack from "./L6Slide17ObservabilityStack";
-import L6Slide18RealProductionCase from "./L6Slide18RealProductionCase";
 import L6Slide19ProductionChecklist from "./L6Slide19ProductionChecklist";
 import L6Slide20LessonSummary from "./L6Slide20LessonSummary";
 import L6Slide21HomeworkChecklist from "./L6Slide21HomeworkChecklist";
@@ -48,7 +47,6 @@ export const slideNames = [
   "Блок 4 — Когда ломается",
   "3 техники unblock",
   "Sentry + Claude видит прод",
-  "Кейс: белый экран",
   "Чек-лист перед запуском",
   "Саммари · 5 мыслей",
   "Домашка · 5 действий",
@@ -77,16 +75,15 @@ export function getSlideContent(index: number) {
     case 17: return <L6BlockHeader blockNumber={4} title="Когда что-то ломается" subtitle="Как разблокироваться и довести продукт до прода" />;
     case 18: return <L6Slide16FiveUnblockTechniques />;
     case 19: return <L6Slide17ObservabilityStack />;
-    case 20: return <L6Slide18RealProductionCase />;
-    case 21: return <L6Slide19ProductionChecklist />;
-    case 22: return <L6Slide20LessonSummary />;
-    case 23: return <L6Slide21HomeworkChecklist />;
-    case 24: return <L6Slide22Closing />;
+    case 20: return <L6Slide19ProductionChecklist />;
+    case 21: return <L6Slide20LessonSummary />;
+    case 22: return <L6Slide21HomeworkChecklist />;
+    case 23: return <L6Slide22Closing />;
     default: return null;
   }
 }
 
-export const TOTAL = 25;
+export const TOTAL = 24;
 
 export default function Lesson6PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

@@ -20,7 +20,7 @@ export default function L6Slide22Closing() {
             Теперь Claude работает как <span className="text-[hsl(var(--slide-gold))]">сеньор-инженер.</span>
           </h2>
           <p className="text-[11px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] mb-[10px]">
-            Production CLAUDE.md, MCP, Plan Mode, second-model review, sub-agents, worktrees — это твой production stack. Дальше — как сделать так, чтобы продукт цеплял с первой минуты.
+            Production CLAUDE.md, MCP, Plan Mode, second-model review, observability, чек-лист перед запуском — это твой production stack. Дальше — как сделать так, чтобы продукт цеплял с первой минуты.
           </p>
           <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[6px] px-[12px] py-[10px] mb-[10px]">
             <p className="text-[10px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.4]">
@@ -56,7 +56,7 @@ export default function L6Slide22Closing() {
           как <span className="text-[hsl(var(--slide-gold))]">сеньор-инженер.</span>
         </h2>
         <p className="text-[24px] text-[hsl(var(--slide-text)/0.9)] leading-[1.5] max-w-[1500px] mb-[28px]">
-          Production CLAUDE.md, MCP под капотом, Plan Mode, second-model review, sub-agents, worktrees, observability — это твой production stack. Код больше не узкое место.
+          Production CLAUDE.md, MCP под капотом, Plan Mode, second-model review, observability, чек-лист перед запуском — это твой production stack. Код больше не узкое место.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[36px] py-[22px] max-w-[1500px] mb-[28px]">
           <p className="text-[28px] italic font-semibold text-[hsl(var(--slide-gold))] leading-[1.35]">

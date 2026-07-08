@@ -28,6 +28,9 @@ export default function L6Slide06SkillsLibrary() {
         <p className="text-[8px] text-[hsl(var(--slide-text-muted))] mb-[6px] leading-[1.4]">
           Скилл — это специализация Claude. Когда задача похожа на маркетинг — Claude автоматически думает как маркетолог. Включаешь один раз в настройках.
         </p>
+        <p className="text-[7px] text-[hsl(var(--slide-text-muted)/0.8)] italic mb-[4px] leading-[1.35]">
+          Скиллы — это claude.ai, чат в браузере. Дальше в уроке — Claude Code: тот же Claude, но у тебя в терминале, с доступом к твоим файлам и сервисам.
+        </p>
         <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] mb-[3px]">
           claude.ai → Settings → Skills → Включить все 10
         </p>
@@ -53,6 +56,9 @@ export default function L6Slide06SkillsLibrary() {
       </h2>
       <p className="text-[19px] text-[hsl(var(--slide-text-muted))] mb-[10px] max-w-[1500px] leading-[1.45]">
         Скилл — это специализация Claude. Когда задача про маркетинг — Claude автоматически думает как маркетолог. Когда про код — как разработчик. Не нужно писать «играй роль...» — он сам подхватывает нужный режим.
+      </p>
+      <p className="text-[14px] text-[hsl(var(--slide-text-muted)/0.8)] italic mb-[10px] max-w-[1500px] leading-[1.4]">
+        Скиллы включаются в claude.ai — чат в браузере. Дальше в уроке речь пойдёт про Claude Code: тот же Claude, но у тебя в терминале, с доступом к твоим файлам и сервисам.
       </p>
       <p className="text-[16px] font-mono text-[hsl(var(--slide-gold))] mb-[18px]">
         Включить: claude.ai → Settings → Skills → все 10
