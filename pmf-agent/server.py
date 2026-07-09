@@ -936,6 +936,25 @@ async def research_events(run_id: str):
 # HTML report renderer (matches Founders Circle palette)
 # Minimal but information-dense. Could be upgraded later.
 # ---------------------------------------------------------------------------
+def _collect_report_sources(report) -> list[str]:
+    """Every source URL anywhere in the report. Grounded web-search citations get
+    stored on section .sources fields (e.g. MarketData.sources) but were never
+    rendered — surface them so the report is verifiable, not just plausible."""
+    import re
+    from dataclasses import asdict, is_dataclass
+    url_re = re.compile(r'https?://[^\s"\'<>)\]]+')
+    try:
+        blob = json.dumps(asdict(report), ensure_ascii=False, default=str) if is_dataclass(report) else str(report)
+    except Exception:
+        blob = str(report)
+    seen: list[str] = []
+    for u in url_re.findall(blob):
+        u = u.rstrip('.,;)"\'')
+        if u and u not in seen:
+            seen.append(u)
+    return seen
+
+
 def _render_html_report(report: IdeaReport, run_id: str = "") -> str:
     import html as _html
 
@@ -1182,6 +1201,18 @@ def _render_html_report(report: IdeaReport, run_id: str = "") -> str:
             if market.som_methodology else ""
         )
         market_extra_block = drivers_block + segs_block + meth_block
+    _src_urls = _collect_report_sources(report)
+    sources_block = ""
+    if _src_urls:
+        _src_items = "".join(
+            f'<li><a href="{esc(u)}" target="_blank" rel="noopener">{esc(u)}</a></li>'
+            for u in _src_urls[:60]
+        )
+        sources_block = (
+            f'<h2>Источники ({len(_src_urls)})</h2>'
+            f'<ul class="sources" style="font-size:13px;word-break:break-all;line-height:1.7;">{_src_items}</ul>'
+        )
+
     return f"""<!doctype html>
 <html lang="ru">
 <head>
@@ -1283,6 +1314,8 @@ def _render_html_report(report: IdeaReport, run_id: str = "") -> str:
 {reg_block}
 
 {pivot_block}
+
+{sources_block}
 
 <div class="footer">PMF Agent · Founders Circle · {datetime.now(timezone.utc).strftime("%Y-%m-%d")} · run {esc(report.idea.id)}</div>
 </body>
