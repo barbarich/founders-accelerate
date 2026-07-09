@@ -133,7 +133,7 @@ class Agent(ABC, Generic[TOut]):
                 schema=schema, system=system, user=user, model=resolved, max_tokens=max_tokens,
             )
         except Exception as e:  # noqa: BLE001
-            log.info("%s: grounded_extract failed (%s) — falling back to Tavily", self.name, type(e).__name__)
+            log.warning("%s: grounded_extract failed (%s) — falling back to Tavily", self.name, type(e).__name__)
             return None
         try:
             await self.cost.record_llm(self.name, resp.model, resp.tokens_in, resp.tokens_out)
@@ -142,8 +142,9 @@ class Agent(ABC, Generic[TOut]):
         if not sources:
             # No real sources means the model answered from memory, not the web —
             # don't trust it; fall back to the Tavily path.
-            log.info("%s: grounded answer had no sources — falling back to Tavily", self.name)
+            log.warning("%s: grounded answer had no sources — falling back to Tavily", self.name)
             return None
+        log.warning("%s: GROUNDED on the user's key — %d sources (no shared Tavily)", self.name, len(sources))
         return parsed, sources
 
     # ---------- Events ----------
