@@ -1,0 +1,43 @@
+name: agents-canary
+
+# Black-box health check of lens-api + pmf-api. Alerts Telegram on failure so we
+# learn about breakage before students do. See scripts/canary.py.
+#
+# Required repo secrets (Settings -> Secrets and variables -> Actions):
+#   CANARY_GEMINI_KEY, CANARY_OPENAI_KEY, CANARY_ANTHROPIC_KEY  (any subset — a
+#       provider is skipped if its key is absent; at least one recommended)
+#   CANARY_TELEGRAM_BOT_TOKEN, CANARY_TELEGRAM_CHAT_ID          (for alerts)
+# Without keys it still runs a health-only check (stays green).
+
+on:
+  schedule:
+    - cron: "0 * * * *"     # hourly — light (health + intake per provider)
+    - cron: "17 6 * * *"    # daily 06:17 UTC — full (a real research run per provider)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "light | full"
+        default: "light"
+
+concurrency:
+  group: agents-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: run canary
+        env:
+          CANARY_MODE: ${{ github.event.schedule == '17 6 * * *' && 'full' || github.event.inputs.mode || 'light' }}
+          CANARY_GEMINI_KEY: ${{ secrets.CANARY_GEMINI_KEY }}
+          CANARY_OPENAI_KEY: ${{ secrets.CANARY_OPENAI_KEY }}
+          CANARY_ANTHROPIC_KEY: ${{ secrets.CANARY_ANTHROPIC_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.CANARY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.CANARY_TELEGRAM_CHAT_ID }}
+        run: python scripts/canary.py
