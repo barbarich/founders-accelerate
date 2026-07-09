@@ -109,6 +109,43 @@ class Agent(ABC, Generic[TOut]):
         await self.cost.record_llm(self.name, resp.model, resp.tokens_in, resp.tokens_out)
         return parsed
 
+    async def try_grounded(
+        self,
+        *,
+        schema: Type[TSchema],
+        system: str,
+        user: str,
+        max_tokens: int = 8192,
+    ) -> tuple[TSchema, list[str]] | None:
+        """Best-effort web-grounded structured extraction on the USER's key.
+
+        Returns (parsed, source_urls) when the provider supports grounding AND real
+        cited sources came back; returns None otherwise so the caller falls back to
+        its Tavily path. NEVER raises — grounding is PRIMARY, Tavily is the safety
+        net, so a grounding miss can only degrade to the current working behavior
+        (nothing breaks).
+        """
+        if not getattr(self.provider, "supports_grounding", False):
+            return None  # e.g. Gemini — keep the Tavily path
+        resolved = self.provider.resolve_model(self.model_tier)
+        try:
+            parsed, sources, resp = await self.provider.grounded_extract(
+                schema=schema, system=system, user=user, model=resolved, max_tokens=max_tokens,
+            )
+        except Exception as e:  # noqa: BLE001
+            log.info("%s: grounded_extract failed (%s) — falling back to Tavily", self.name, type(e).__name__)
+            return None
+        try:
+            await self.cost.record_llm(self.name, resp.model, resp.tokens_in, resp.tokens_out)
+        except Exception:  # noqa: BLE001
+            pass
+        if not sources:
+            # No real sources means the model answered from memory, not the web —
+            # don't trust it; fall back to the Tavily path.
+            log.info("%s: grounded answer had no sources — falling back to Tavily", self.name)
+            return None
+        return parsed, sources
+
     # ---------- Events ----------
 
     def emit(self, kind: str, message: str, payload: Optional[dict] = None) -> None:

@@ -38,6 +38,11 @@ class LLMProvider(abc.ABC):
 
     provider_name: str = "unknown"
 
+    #: True if this provider implements grounded_extract (web-search grounding on
+    #: the user's key). Agents use it as PRIMARY with Tavily as fallback. Default
+    #: False so a provider without it (e.g. Gemini here) safely keeps the Tavily path.
+    supports_grounding: bool = False
+
     #: Which model the provider picks by default for each agent tier.
     #: Tier "main" = agents like intake/classifier/marketing/trends.
     #: Tier "premium" = Strategist (higher-quality reasoning model).

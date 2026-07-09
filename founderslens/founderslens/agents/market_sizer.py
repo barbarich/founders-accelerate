@@ -53,6 +53,30 @@ class MarketSizerAgent(Agent[MarketSize]):
 
         cls = state.classification
         idea = state.idea_input
+        prompt = self.load_prompt(state.language)
+
+        # Provider-native grounding first (OpenAI/Anthropic) — real market data on
+        # the user's OWN key, no shared search quota. Falls through to the Tavily
+        # path below on any miss (incl. Gemini), so nothing breaks.
+        grounded = await self.try_grounded(
+            schema=MarketSize, system=prompt,
+            user=(
+                "Идея:\n```json\n" + idea.model_dump_json(indent=2)
+                + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)
+                + "\n```\n\nНайди в вебе реальные данные о размере рынка (TAM/SAM/SOM), "
+                "росте (CAGR), трендах и why-now; синтезируй MarketSize с реальными "
+                "источниками в полях sources."
+            ),
+        )
+        if grounded is not None:
+            ms, sources = grounded
+            state.market_size = ms
+            self.emit(
+                "finding", f"Market Sizer (grounded): {len(sources)} источников",
+                payload={"tam_usd": ms.tam_usd, "grounded": True},
+            )
+            return ms
+
         queries = _build_queries(cls.industry, cls.sub_industry, cls.segment, idea.raw_idea)
 
         self.emit("finding", f"Market Sizer: {len(queries)} research queries")
@@ -83,7 +107,6 @@ class MarketSizerAgent(Agent[MarketSize]):
                     deduped.append(r)
             blocks.append({"query": q, "answer": ans, "results": deduped[:6]})
 
-        prompt = self.load_prompt(state.language)
         user = (
             "Идея:\n```json\n" + idea.model_dump_json(indent=2)
             + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)

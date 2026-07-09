@@ -57,6 +57,7 @@ def _inline_refs(schema: dict[str, Any]) -> dict[str, Any]:
 
 class AnthropicProvider(LLMProvider):
     provider_name = "anthropic"
+    supports_grounding = True
     default_models = {
         "main": "claude-sonnet-4-5",
         "premium": "claude-opus-4-7",
@@ -174,3 +175,81 @@ class AnthropicProvider(LLMProvider):
             f"anthropic extract_json: no tool_use block for {schema.__name__} "
             f"(stop={getattr(last_msg, 'stop_reason', None)}, budget={budget})"
         )
+
+    async def grounded_extract(
+        self, *, schema: Type[T], system: str, user: str,
+        model: Optional[str] = None, max_tokens: int = 8192, temperature: float = 0.0,
+    ) -> tuple[T, list[str], LLMResponse]:
+        """Web-grounded structured extraction on the USER's key: run a web_search-
+        enabled call so market/competitor data comes from real, cited web results
+        (no shared search infra), then parse the model's JSON answer + return the
+        cited source URLs.
+
+        Per Anthropic docs (web_search_20250305) you cannot force a JSON tool_choice
+        AND web_search in one request, so we prompt for JSON and parse the text.
+        NOT retry-wrapped: any failure (400 web-search-disabled, empty, parse) just
+        raises so the caller falls back to its Tavily path. Handles pause_turn.
+        """
+        from founderslens.utils.json_extract import loads_lenient
+
+        model = model or self.default_models["main"]
+        schema_hint = json.dumps(_inline_refs(schema.model_json_schema()), ensure_ascii=False)
+        grounded_system = (
+            system
+            + "\n\nКРИТИЧНО: используй web search, чтобы найти РЕАЛЬНЫЕ, СВЕЖИЕ данные "
+              "(размер рынка, конкуренты, цены, статистика, даты). Каждое число — из "
+              "реального источника, не из памяти. Указывай реальные URL источников в "
+              "полях sources схемы. В КОНЦЕ верни ТОЛЬКО валидный JSON по схеме "
+              "(без пояснений и без markdown-ограждений):\n" + schema_hint
+        )
+        # max_uses=12: Anthropic docs recommend 15-20 for research agents; 12 bounds
+        # cost (web search is $10/1k searches, billed to the user's key) while giving
+        # enough breadth for market/competitor research.
+        tools = [{"type": "web_search_20250305", "name": "web_search", "max_uses": 12}]
+        budget = max(max_tokens, config.LLM_JSON_MIN_TOKENS)
+        messages: list[dict[str, Any]] = [{"role": "user", "content": user}]
+
+        msg = await self._create(
+            model=model, temperature=temperature, system=grounded_system,
+            max_tokens=budget, tools=tools, messages=messages,
+        )
+        # Long searches can pause the turn (stop_reason == "pause_turn"); continue.
+        guard = 0
+        while getattr(msg, "stop_reason", None) == "pause_turn" and guard < 4:
+            messages.append({"role": "assistant", "content": msg.content})
+            msg = await self._create(
+                model=model, temperature=temperature, system=grounded_system,
+                max_tokens=budget, tools=tools, messages=messages,
+            )
+            guard += 1
+
+        texts: list[str] = []
+        urls: list[str] = []
+        for b in msg.content:
+            bt = getattr(b, "type", None)
+            if bt == "text":
+                texts.append(getattr(b, "text", "") or "")
+                for c in (getattr(b, "citations", None) or []):
+                    u = getattr(c, "url", None)
+                    if u:
+                        urls.append(u)
+            elif bt == "web_search_tool_result":
+                content = getattr(b, "content", None)
+                # content is a list of results, or a single error object on failure.
+                if isinstance(content, list):
+                    for r in content:
+                        u = getattr(r, "url", None)
+                        if u:
+                            urls.append(u)
+        full = "\n".join(t for t in texts if t).strip()
+        if not full:
+            raise RuntimeError("anthropic grounded_extract: no text in response")
+        parsed = schema.model_validate(loads_lenient(full))
+        resp = LLMResponse(
+            text=full,
+            tokens_in=getattr(msg.usage, "input_tokens", 0),
+            tokens_out=getattr(msg.usage, "output_tokens", 0),
+            model=getattr(msg, "model", model), provider=self.provider_name,
+            stop_reason=getattr(msg, "stop_reason", None),
+        )
+        return parsed, list(dict.fromkeys(urls)), resp
