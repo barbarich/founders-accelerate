@@ -19,7 +19,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card } from "@/components/ui/card";
 import { Eye, EyeOff, Loader2, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
-import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, RESEARCH_TIP, MODEL_GUIDANCE, SEARCH_BADGE, modelSupportsSearch, type Provider as ProviderLib } from "@/lib/llmModels";
+import { MODELS, DEFAULT_MODEL, PROVIDER_LABELS, CUSTOM_MODEL_ID, RESEARCH_TIP, MODEL_GUIDANCE, SEARCH_BADGE, modelSupportsSearch, RECOMMENDED_PROVIDER, type Provider as ProviderLib } from "@/lib/llmModels";
 import { SEO } from "@/components/SEO";
 
 const C = {
@@ -71,8 +71,8 @@ export default function Lens() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Setup form
-  const [provider, setProvider] = useState<Provider>("anthropic");
-  const [model, setModel] = useState<string>(DEFAULT_MODEL["anthropic"]);
+  const [provider, setProvider] = useState<Provider>(RECOMMENDED_PROVIDER);
+  const [model, setModel] = useState<string>(DEFAULT_MODEL[RECOMMENDED_PROVIDER]);
   const [customModel, setCustomModel] = useState<string>("");
   const [apiKey, setApiKey] = useState("");
   const [showKey, setShowKey] = useState(false);
@@ -305,11 +305,40 @@ export default function Lens() {
 
     // Poll status as a safety net — if the run finished while SSE was down,
     // we'd otherwise hang on the progress screen forever.
+    const startedAt = Date.now();
+    const HARD_TIMEOUT_MS = 2100 * 1000; // 35 min — MUST exceed the server's 30-min cap
+    let missing404 = 0;                  // consecutive 404s (transient during a redeploy)
     const statusPoll = setInterval(async () => {
       if (stopped) { clearInterval(statusPoll); return; }
+
+      // Absolute client-side ceiling. The server force-fails at 30 min, so this
+      // only fires if the backend went away entirely — never leave a dead spinner.
+      if (Date.now() - startedAt > HARD_TIMEOUT_MS) {
+        stopped = true;
+        eventSourceRef.current?.close();
+        setErrorMsg("Исследование идёт слишком долго и, похоже, прервалось. Запусти его заново.");
+        setStage("error");
+        clearInterval(statusPoll);
+        return;
+      }
+
       try {
         const r = await fetch(`${API_BASE}/api/research/status/${rid}`);
-        if (!r.ok) return;
+        if (r.status === 404) {
+          // A single 404 is usually a transient routing blip during a redeploy
+          // (the run still lives on the old replica). Only give up after several
+          // in a row — otherwise we'd kill a run that's actually alive.
+          if (++missing404 >= 3) {
+            stopped = true;
+            eventSourceRef.current?.close();
+            setErrorMsg("Прогон не найден — вероятно, сервер перезапустился. Запусти исследование заново.");
+            setStage("error");
+            clearInterval(statusPoll);
+          }
+          return;
+        }
+        if (!r.ok) return;   // other transient (5xx) — keep waiting
+        missing404 = 0;      // healthy response resets the 404 streak
         const s = await r.json();
         if (s.status === "completed" || s.status === "failed" || s.status === "aborted") {
           stopped = true;

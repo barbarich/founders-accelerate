@@ -219,55 +219,52 @@ async def _call_anthropic(
     return _merge_sources(loads_lenient(full), urls)
 
 
-async def _call_gemini(
-    client: genai.Client,
-    model: str,
-    system_prompt: str,
-    user_prompt: str,
-    use_search: bool = False,
-) -> dict[str, Any]:
-    """Call Gemini API and return parsed JSON."""
-    tools = []
-    if use_search:
-        tools.append(genai_types.Tool(google_search=genai_types.GoogleSearch()))
+# Floor Gemini's output budget so a "thinking" model (2.5/3.x) has room for
+# hidden reasoning AND the JSON answer, then escalate on MAX_TOKENS truncation.
+# Without this the model can burn the default cap on reasoning and return empty
+# → the agent silently falls back to a hollow section. Mirrors the founderslens
+# gemini_provider budget loop.
+GEMINI_MIN_OUTPUT_TOKENS = 8192
+GEMINI_MAX_OUTPUT_TOKENS = 32768
 
-    config = genai_types.GenerateContentConfig(
-        system_instruction=system_prompt,
-    )
-    # Gemini doesn't support response_mime_type with Search tool
-    if not use_search:
-        config.response_mime_type = "application/json"
-    if tools:
-        config.tools = tools
 
-    response = await client.aio.models.generate_content(
-        model=model,
-        contents=user_prompt,
-        config=config,
-    )
+def _gemini_truncated(response: Any) -> bool:
+    """True if Gemini stopped at max_output_tokens (finish_reason == MAX_TOKENS).
+    Defensive across the enum/int/str shapes the SDK has used across versions."""
+    try:
+        cands = getattr(response, "candidates", None)
+        if not cands:
+            return False
+        fr = getattr(cands[0], "finish_reason", None)
+        if fr is None:
+            return False
+        name = getattr(fr, "name", None) or str(fr)
+        return "MAX_TOKEN" in name.upper()
+    except Exception:
+        return False
 
+
+def _gemini_text(response: Any) -> str:
+    """Pull text out of a Gemini response across the SDK's shapes: response.text,
+    then candidate parts, then grounding metadata. Returns '' if nothing usable."""
     # response.text can throw in google-genai SDK, not just return None
     try:
-        text = response.text
+        if response.text:
+            return response.text
     except Exception:
-        text = None
-
-    if text:
-        return loads_lenient(text)
-
-    # Fallback: try to get text from parts
-    if response.candidates:
+        pass
+    if getattr(response, "candidates", None):
         for candidate in response.candidates:
-            if candidate.content and candidate.content.parts:
-                for part in candidate.content.parts:
+            content = getattr(candidate, "content", None)
+            if content and getattr(content, "parts", None):
+                for part in content.parts:
                     try:
                         if part.text:
-                            return loads_lenient(part.text)
+                            return part.text
                     except Exception:
                         continue
-
-    # Last resort: try grounding metadata
-    if response.candidates:
+    # Last resort: grounding metadata chunks
+    if getattr(response, "candidates", None):
         candidate = response.candidates[0]
         gm = getattr(candidate, "grounding_metadata", None)
         if gm:
@@ -275,11 +272,62 @@ async def _call_gemini(
             if chunks and isinstance(chunks, list):
                 combined = " ".join(getattr(c, "text", str(c)) for c in chunks if c)
                 if combined.strip():
-                    return loads_lenient(combined)
+                    return combined
+    return ""
+
+
+async def _call_gemini(
+    client: genai.Client,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    use_search: bool = False,
+) -> dict[str, Any]:
+    """Call Gemini API and return parsed JSON, flooring + escalating the output
+    budget so thinking-model truncation can't silently yield an empty section."""
+    tools = []
+    if use_search:
+        tools.append(genai_types.Tool(google_search=genai_types.GoogleSearch()))
+
+    budget = GEMINI_MIN_OUTPUT_TOKENS
+    last_text = ""
+    response = None
+    while True:
+        cfg = genai_types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            max_output_tokens=budget,
+        )
+        # Gemini doesn't support response_mime_type with Search tool
+        if not use_search:
+            cfg.response_mime_type = "application/json"
+        if tools:
+            cfg.tools = tools
+
+        response = await client.aio.models.generate_content(
+            model=model,
+            contents=user_prompt,
+            config=cfg,
+        )
+
+        text = _gemini_text(response)
+        if text:
+            last_text = text
+            # Only trust the answer as complete if it wasn't cut off. A truncated
+            # answer escalates the budget instead of parsing garbage.
+            if not _gemini_truncated(response):
+                return loads_lenient(text)
+
+        if budget >= GEMINI_MAX_OUTPUT_TOKENS:
+            break
+        budget = min(budget * 2, GEMINI_MAX_OUTPUT_TOKENS)
+
+    # Budget exhausted — salvage the best (partial) text we got, else fail loudly.
+    if last_text:
+        return loads_lenient(last_text)
 
     finish = "unknown"
     try:
-        finish = getattr(response.candidates[0], "finish_reason", "unknown") if response.candidates else "no candidates"
+        finish = getattr(response.candidates[0], "finish_reason", "unknown") if response and response.candidates else "no candidates"
     except Exception:
         pass
     raise ValueError(f"No text in Gemini response. Finish reason: {finish}")

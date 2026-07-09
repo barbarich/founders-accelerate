@@ -18,7 +18,7 @@ import asyncio
 import json
 import logging
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Literal, Optional
 
@@ -44,6 +44,43 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 setup_logging()
 init_schema()
+
+# Overall wall-clock ceiling for one pipeline run. A run exceeding this is
+# force-failed with a clear reason instead of spinning forever (Lens had no cap).
+# The client-side timeout MUST be larger so the server always terminates first.
+PIPELINE_TIMEOUT_S = 1800  # 30 min
+
+
+def _reconcile_orphaned_runs() -> None:
+    """Fail runs stuck in 'running' from a process that died mid-pipeline (Railway
+    redeploy/restart) so the UI stops spinning forever. Age-guarded (only runs
+    older than the pipeline ceiling) so a live run on another replica during a
+    rolling deploy is never touched."""
+    cutoff = (datetime.now(timezone.utc) - timedelta(seconds=PIPELINE_TIMEOUT_S)).isoformat()
+    try:
+        with get_conn() as conn:
+            rows = conn.execute(
+                "SELECT run_id FROM runs WHERE status = 'running' AND created_at < ?",
+                (cutoff,),
+            ).fetchall()
+            for row in rows:
+                rid = row[0]
+                conn.execute(
+                    "UPDATE runs SET status = 'failed', completed_at = ? WHERE run_id = ?",
+                    (datetime.now(timezone.utc).isoformat(), rid),
+                )
+                conn.execute(
+                    "INSERT INTO events (run_id, ts, phase, kind, message) VALUES (?, ?, 'startup', 'error', ?)",
+                    (rid, datetime.now(timezone.utc).isoformat(),
+                     "Прогон прервался из-за перезапуска сервера. Запусти исследование заново."),
+                )
+            if rows:
+                log.info("reconciled %d orphaned run(s) → failed", len(rows))
+    except Exception:
+        log.exception("orphan reconcile failed (non-fatal)")
+
+
+_reconcile_orphaned_runs()
 
 app = FastAPI(
     title="FoundersLens API",
@@ -309,8 +346,25 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, 
     graph = build_graph(cost, provider, raw_input_for_intake)
     status = "completed"
     try:
-        result = await graph.ainvoke(initial_state.model_dump())
+        result = await asyncio.wait_for(
+            graph.ainvoke(initial_state.model_dump()),
+            timeout=PIPELINE_TIMEOUT_S,
+        )
         final_state = ResearchState.model_validate(result)
+    except asyncio.TimeoutError:
+        log.error("run %s: pipeline timed out after %ds", run_id, PIPELINE_TIMEOUT_S)
+        status = "failed"
+        final_state = initial_state
+        try:
+            with get_conn() as conn:
+                conn.execute(
+                    "INSERT INTO events (run_id, ts, phase, kind, message) VALUES (?, ?, 'pipeline', 'error', ?)",
+                    (run_id, datetime.now(timezone.utc).isoformat(),
+                     f"Исследование заняло больше {PIPELINE_TIMEOUT_S // 60} минут и было остановлено. "
+                     "Попробуй более быструю модель (например, Gemini 2.5 Flash) или запусти снова."),
+                )
+        except Exception:
+            log.exception("run %s: failed to record timeout event", run_id)
     except Exception as e:
         log.exception("run %s: pipeline crashed", run_id)
         status = "failed"
@@ -326,6 +380,23 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider_name: str, 
                 )
         except Exception:
             log.exception("run %s: failed to record crash event", run_id)
+
+    # H3 gate: the compiler is the last graph node and writes report.html
+    # unguarded; if it threw, base.execute() swallowed it — status stays
+    # "completed" but no report file exists → the user sees "done" then a 404.
+    # Treat a missing report as a failure so the UI shows an honest error.
+    if status == "completed" and not (config.RUNS_DIR / run_id / "report.html").exists():
+        log.error("run %s: completed but report.html missing → marking failed", run_id)
+        status = "failed"
+        try:
+            with get_conn() as conn:
+                conn.execute(
+                    "INSERT INTO events (run_id, ts, phase, kind, message) VALUES (?, ?, 'compile', 'error', ?)",
+                    (run_id, datetime.now(timezone.utc).isoformat(),
+                     "Не удалось собрать финальный отчёт (ошибка компиляции). Запусти исследование заново."),
+                )
+        except Exception:
+            log.exception("run %s: failed to record missing-report event", run_id)
 
     final_state.cost = cost.snapshot()
     duration_ms = int((datetime.now(timezone.utc) - started).total_seconds() * 1000)

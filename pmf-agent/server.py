@@ -92,19 +92,19 @@ def load_config() -> dict:
             "provider": "anthropic",
             "models": {
                 "anthropic": {
-                    "orchestrator": "claude-sonnet-4-5",
-                    "research": "claude-sonnet-4-5",
-                    "pivot": "claude-sonnet-4-5",
+                    "orchestrator": "claude-opus-4-8",
+                    "research": "claude-sonnet-5",
+                    "pivot": "claude-opus-4-8",
                 },
                 "openai": {
-                    "orchestrator": "gpt-4o",
-                    "research": "gpt-4o",
-                    "pivot": "gpt-4o",
+                    "orchestrator": "gpt-5.4",
+                    "research": "gpt-5.4",
+                    "pivot": "gpt-5.4",
                 },
                 "gemini": {
-                    "orchestrator": "gemini-2.0-flash-exp",
-                    "research": "gemini-2.0-flash-exp",
-                    "pivot": "gemini-1.5-pro",
+                    "orchestrator": "gemini-2.5-flash",
+                    "research": "gemini-2.5-flash",
+                    "pivot": "gemini-2.5-pro",
                 },
             },
             "thresholds": {"go": 70, "validate_min": 45, "pivot_trigger": 50},
@@ -678,10 +678,10 @@ async def _evaluate_intake(req: IntakeEvaluateRequest) -> IntakeEvaluateResponse
     # robust as founderslens (tool-calling); good enough for intake.
     # Resolve model: user's choice or sensible default per provider
     model_id = req.model or {
-        "anthropic": "claude-sonnet-4-5",
-        "openai": "gpt-4o",
-        "gemini": "gemini-2.0-flash-exp",
-    }.get(provider, "claude-sonnet-4-5")
+        "anthropic": "claude-sonnet-5",
+        "openai": "gpt-5.4",
+        "gemini": "gemini-2.5-flash",
+    }.get(provider, "claude-sonnet-5")
 
     raw_text = ""
     try:

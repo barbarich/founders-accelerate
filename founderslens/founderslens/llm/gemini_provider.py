@@ -93,8 +93,11 @@ def _prepare_gemini_schema(schema_cls: Type) -> dict:
 class GeminiProvider(LLMProvider):
     provider_name = "gemini"
     default_models = {
-        "main": "gemini-2.0-flash-exp",
-        "premium": "gemini-1.5-pro",
+        # gemini-2.0-flash-exp / gemini-1.5-pro are RETIRED — a dead default ID
+        # 404s every call that doesn't pass an explicit model. Use current stable
+        # IDs from config (single source of truth, matches pmf-agent).
+        "main": config.MODEL_GEMINI_FLASH,
+        "premium": config.MODEL_GEMINI_PRO,
     }
 
     def __init__(self, api_key: str):

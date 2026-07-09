@@ -2,16 +2,16 @@
 provider: "gemini"
 
 models:
-  # Gemini (cheap for testing)
+  # Gemini (cheap, always grounds) — 2.0-flash is RETIRED, use current stable 2.5
   gemini:
-    orchestrator: "gemini-2.0-flash"
-    research: "gemini-2.0-flash"
-    pivot: "gemini-2.0-flash"
+    orchestrator: "gemini-2.5-flash"
+    research: "gemini-2.5-flash"
+    pivot: "gemini-2.5-pro"
   # Anthropic (production quality) — IDs match src/lib/llmModels.ts
   anthropic:
-    orchestrator: "claude-opus-4-7"
-    research: "claude-sonnet-4-6"
-    pivot: "claude-opus-4-7"
+    orchestrator: "claude-opus-4-8"
+    research: "claude-sonnet-5"
+    pivot: "claude-opus-4-8"
 
 # Available Gemini models for UI selector (as of March 14, 2026)
 gemini_models:

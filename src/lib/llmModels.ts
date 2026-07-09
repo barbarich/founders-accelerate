@@ -1,12 +1,15 @@
 /**
  * LLM model catalog — kept in one place so Lens.tsx and PmfAgent.tsx share it.
- * Last synced 2026-05-12 from:
- *   - docs.anthropic.com/en/docs/about-claude/models/overview
- *   - openai-python SDK ChatModel literal type (main branch)
+ * Last synced 2026-07-09 from authoritative sources:
+ *   - platform.claude.com/docs/en/docs/about-claude/models/overview
+ *   - openai-python SDK ChatModel literal + developers.openai.com/tools-web-search
  *   - ai.google.dev/gemini-api/docs/models
  *
- * Model IDs are sent verbatim to provider SDKs. Adding a model = one line.
- * Anything not listed can still be used via the "Другая модель" (CUSTOM_MODEL_ID) option.
+ * HARD REQUIREMENT: only models that do real web-search grounding are listed —
+ * research needs live, cited sources, so a "blind" model must never be selectable.
+ * Model IDs are sent verbatim to provider SDKs. Anything not listed can still be
+ * used via the "Другая модель" (CUSTOM_MODEL_ID) option, which the backend's
+ * grounded pre-flight validates (real sources must come back) before a run.
  */
 
 export type Provider = "anthropic" | "openai" | "gemini";
@@ -30,78 +33,49 @@ export const PROVIDER_LABELS: Record<Provider, { title: string; subtitle: string
 
 export const MODELS: Record<Provider, ModelChoice[]> = {
   // =========================================================================
-  // Anthropic — current + legacy. Source: docs.anthropic.com (2026-04-20)
+  // Anthropic — current lineup. Source: platform.claude.com (verified 2026-07-09).
+  // All Claude models CAN web_search, but it's an ORG-level toggle
+  // (console.anthropic.com → Settings → Privacy → Web Search). The backend
+  // grounded pre-flight verifies it per key and guides the user if it's off.
   // =========================================================================
   anthropic: [
-    // Current / latest (all support the web_search tool — must be enabled once in
-    // the Anthropic Console: Settings → Privacy → Web Search)
+    // Current
     { id: "claude-fable-5",               label: "Claude Fable 5",         note: "новейший флагман (2026-06), 1M контекст",      tier: "premium",  search: true },
-    { id: "claude-opus-4-8",              label: "Claude Opus 4.8",        note: "топ Opus, сложные рассуждения, 1M",            tier: "premium",  search: true },
-    { id: "claude-sonnet-4-6",            label: "Claude Sonnet 4.6",      note: "баланс скорость/качество (дефолт), 1M",        tier: "balanced", search: true },
+    { id: "claude-opus-4-8",              label: "Claude Opus 4.8",        note: "топ для сложных задач, 1M контекст",           tier: "premium",  search: true },
+    { id: "claude-sonnet-5",              label: "Claude Sonnet 5",        note: "лучший баланс скорость/качество (дефолт), 1M", tier: "balanced", search: true },
     { id: "claude-haiku-4-5",             label: "Claude Haiku 4.5",       note: "быстро и дёшево, 200k контекст",               tier: "fast",     search: true },
-    // Legacy (still accessible, lower price or stability)
+    // Legacy (still accessible — older / sometimes cheaper)
     { id: "claude-opus-4-7",              label: "Claude Opus 4.7",        note: "предыдущий флагман, 1M",                       tier: "legacy",   search: true },
     { id: "claude-opus-4-6",              label: "Claude Opus 4.6",        note: "предыдущий Opus, 1M контекст",                 tier: "legacy",   search: true },
-    { id: "claude-sonnet-4-5",            label: "Claude Sonnet 4.5",      note: "предыдущий Sonnet, 200k контекст",             tier: "legacy",   search: true },
-    { id: "claude-opus-4-5",              label: "Claude Opus 4.5",        note: "legacy Opus, 200k",                            tier: "legacy",   search: true },
+    { id: "claude-sonnet-4-6",            label: "Claude Sonnet 4.6",      note: "предыдущий Sonnet, 1M контекст",               tier: "legacy",   search: true },
+    { id: "claude-sonnet-4-5",            label: "Claude Sonnet 4.5",      note: "старый Sonnet, 200k контекст",                 tier: "legacy",   search: true },
     { id: CUSTOM_MODEL_ID,                label: "Другая модель",          note: "введи ID вручную",                             tier: "balanced" },
   ],
 
   // =========================================================================
-  // OpenAI — source: openai-python SDK ChatModel type (2026-05-12)
-  // Skipped audio/search/tts/vision preview variants (не нужны для research flow).
+  // OpenAI — ONLY models that support the Responses web_search tool.
+  // Source: developers.openai.com/tools-web-search + SDK ChatModel (2026-07-09).
+  // o-series / gpt-4o / older DON'T web_search for research → excluded on purpose.
   // =========================================================================
   openai: [
-    // GPT-5.5 / 5.4 — newest generation; these support the Responses web_search tool
-    { id: "gpt-5.5",                      label: "GPT-5.5",                note: "новейший флагман (2026), веб-поиск",           tier: "premium",  search: true },
-    { id: "gpt-5.4",                      label: "GPT-5.4",                note: "баланс цены + веб-поиск (дефолт)",              tier: "premium",  search: true },
-    { id: "gpt-5.4-mini",                 label: "GPT-5.4 mini",           note: "дешевле, с веб-поиском",                       tier: "balanced", search: true },
-    { id: "gpt-5.4-nano",                 label: "GPT-5.4 nano",           note: "самый быстрый и дешёвый 5.4",                  tier: "fast"     },
-    // GPT-5.3 / 5.2
-    { id: "gpt-5.3-chat-latest",          label: "GPT-5.3 chat (latest)",  note: "всегда-свежий 5.3 для чата",                   tier: "balanced" },
-    { id: "gpt-5.2-pro",                  label: "GPT-5.2 pro",            note: "премиум 5.2",                                  tier: "premium"  },
-    { id: "gpt-5.2",                      label: "GPT-5.2",                note: "стабильный 5.2",                               tier: "balanced" },
-    { id: "gpt-5.2-chat-latest",          label: "GPT-5.2 chat (latest)",  note: "всегда-свежий 5.2 для чата",                   tier: "balanced" },
-    // GPT-5.1
-    { id: "gpt-5.1",                      label: "GPT-5.1",                note: "улучшенный 5.0, 2025-11",                      tier: "balanced" },
-    { id: "gpt-5.1-codex",                label: "GPT-5.1 codex",          note: "специализирован для кода",                     tier: "balanced" },
-    { id: "gpt-5.1-mini",                 label: "GPT-5.1 mini",           note: "младший 5.1",                                  tier: "balanced" },
-    { id: "gpt-5.1-chat-latest",          label: "GPT-5.1 chat (latest)",  note: "всегда-свежий 5.1 для чата",                   tier: "balanced" },
-    // GPT-5 (original)
-    { id: "gpt-5",                        label: "GPT-5",                  note: "оригинальный 5.0, 2025-08 (дефолт)",           tier: "balanced" },
-    { id: "gpt-5-mini",                   label: "GPT-5 mini",             note: "младший GPT-5",                                tier: "fast"     },
-    { id: "gpt-5-nano",                   label: "GPT-5 nano",             note: "самый дешёвый GPT-5",                          tier: "fast"     },
-    { id: "gpt-5-chat-latest",            label: "GPT-5 chat (latest)",    note: "всегда-свежий GPT-5 для чата",                 tier: "balanced" },
-    // GPT-4.1 family — long context, supports web search
+    { id: "gpt-5.5",                      label: "GPT-5.5",                note: "максимум охвата и точности + веб-поиск",       tier: "premium",  search: true },
+    { id: "gpt-5.4",                      label: "GPT-5.4",                note: "баланс цены/скорости + веб-поиск (дефолт)",    tier: "balanced", search: true },
+    { id: "gpt-5.4-mini",                 label: "GPT-5.4 mini",           note: "дешевле, с веб-поиском",                       tier: "fast",     search: true },
     { id: "gpt-4.1",                      label: "GPT-4.1",                note: "1M контекст + веб-поиск",                      tier: "balanced", search: true },
     { id: "gpt-4.1-mini",                 label: "GPT-4.1 mini",           note: "длинный контекст + веб-поиск, дешевле",        tier: "fast",     search: true },
-    { id: "gpt-4.1-nano",                 label: "GPT-4.1 nano",           note: "минимальный 4.1",                              tier: "fast"     },
-    // o-series reasoning models
-    { id: "o4-mini",                      label: "o4-mini",                note: "reasoning, следующее поколение",               tier: "balanced" },
-    { id: "o3",                           label: "o3",                     note: "reasoning, high quality",                      tier: "premium"  },
-    { id: "o3-mini",                      label: "o3-mini",                note: "reasoning + дешевле o3",                       tier: "balanced" },
-    { id: "o1",                           label: "o1",                     note: "первое поколение reasoning",                   tier: "legacy"   },
-    { id: "o1-mini",                      label: "o1-mini",                note: "legacy reasoning, дешевле",                    tier: "legacy"   },
-    // GPT-4o — legacy but still widely used
-    { id: "gpt-4o",                       label: "GPT-4o",                 note: "legacy балансовый, стабилен",                  tier: "legacy"   },
-    { id: "gpt-4o-mini",                  label: "GPT-4o mini",            note: "legacy дешёвый",                               tier: "legacy"   },
-    { id: "chatgpt-4o-latest",            label: "ChatGPT-4o (latest)",    note: "всегда-свежий ChatGPT-4o",                     tier: "legacy"   },
-    { id: "codex-mini-latest",            label: "Codex mini (latest)",    note: "специализирован для кода",                     tier: "legacy"   },
-    { id: CUSTOM_MODEL_ID,                label: "Другая модель",          note: "введи ID вручную",                             tier: "balanced" },
+    { id: CUSTOM_MODEL_ID,                label: "Другая модель",          note: "введи ID вручную (должна уметь веб-поиск)",    tier: "balanced" },
   ],
 
   // =========================================================================
-  // Google Gemini — source: ai.google.dev/gemini-api/docs/models (2026-05-12)
-  // Skipped realtime-voice + TTS + native-audio variants.
+  // Google Gemini — every text 2.5/3.x model grounds via Google Search
+  // automatically. Source: ai.google.dev/models (verified 2026-07-09).
+  // (image / TTS / audio / embedding / veo / lyria variants excluded — not research.)
   // =========================================================================
-  // Every Gemini model grounds via Google Search automatically → best for research.
   gemini: [
-    // Gemini 3.x family — current frontier
-    { id: "gemini-3.5-flash",             label: "Gemini 3.5 Flash",       note: "новейший stable, самый умный, веб-поиск",      tier: "premium",  search: true },
+    { id: "gemini-3.5-flash",             label: "Gemini 3.5 Flash",       note: "новейший stable, умный + быстрый, веб-поиск",  tier: "premium",  search: true },
     { id: "gemini-3.1-pro-preview",       label: "Gemini 3.1 Pro",         note: "глубокие рассуждения (preview), веб-поиск",    tier: "premium",  search: true },
     { id: "gemini-3-flash-preview",       label: "Gemini 3 Flash",         note: "скорость 3.x (preview), веб-поиск",            tier: "balanced", search: true },
     { id: "gemini-3.1-flash-lite",        label: "Gemini 3.1 Flash Lite",  note: "самый дешёвый 3.x (stable), веб-поиск",        tier: "fast",     search: true },
-    // Gemini 2.5 family — production-stable
     { id: "gemini-2.5-pro",               label: "Gemini 2.5 Pro",         note: "стабильный флагман (дефолт), веб-поиск",       tier: "premium",  search: true },
     { id: "gemini-2.5-flash",             label: "Gemini 2.5 Flash",       note: "баланс цены / качества, веб-поиск",            tier: "balanced", search: true },
     { id: "gemini-2.5-flash-lite",        label: "Gemini 2.5 Flash Lite",  note: "самый дешёвый, веб-поиск",                     tier: "fast",     search: true },
@@ -110,11 +84,11 @@ export const MODELS: Record<Provider, ModelChoice[]> = {
 };
 
 /** Default model per provider when the user hasn't picked one yet.
- *  All three defaults support real web-search grounding (research with sources). */
+ *  All three defaults do real web-search grounding (research with sources). */
 export const DEFAULT_MODEL: Record<Provider, string> = {
-  anthropic: "claude-sonnet-4-6",  // grounded (needs Web Search enabled in console)
-  openai:    "gpt-5.4",            // grounded via Responses web_search (plain gpt-5 is NOT)
-  gemini:    "gemini-2.5-pro",     // grounded out of the box
+  anthropic: "claude-sonnet-5",    // grounded (needs Web Search enabled in console)
+  openai:    "gpt-5.4",            // grounded via Responses web_search
+  gemini:    "gemini-2.5-pro",     // grounded out of the box — zero setup
 };
 
 /** Provider we recommend for the best out-of-the-box research quality. */
@@ -125,8 +99,8 @@ export const SEARCH_BADGE = "🔍";
 
 /** One-line cross-provider recommendation shown above the model picker. */
 export const RESEARCH_TIP =
-  "💡 Для самого качественного ресерча с реальными источниками рекомендуем Gemini — " +
-  "веб-поиск включён сразу. На OpenAI выбирай модели с 🔍, на Claude — включи веб-поиск в консоли.";
+  "💡 Для качественного ресерча с реальными источниками рекомендуем Gemini — " +
+  "веб-поиск включён сразу, без настройки. Все модели в списке умеют веб-поиск.";
 
 /** Per-provider guidance shown under the model picker (depends on chosen provider). */
 export const MODEL_GUIDANCE: Record<Provider, string> = {
@@ -134,11 +108,11 @@ export const MODEL_GUIDANCE: Record<Provider, string> = {
     "Gemini ищет в интернете автоматически — лучший выбор для качественного ресерча с " +
     "реальными источниками «из коробки». Подойдёт любая модель Gemini.",
   openai:
-    "Веб-поиск работает только на моделях с пометкой 🔍 (GPT-5.5 / 5.4 / 4.1). Обычный GPT-5 " +
-    "отвечает без поиска — для ресерча с источниками выбери модель с 🔍.",
+    "Все показанные модели OpenAI умеют веб-поиск (🔍). GPT-5.5 — максимум охвата, " +
+    "GPT-5.4 / 4.1 — дешевле и быстрее.",
   anthropic:
     "Claude умеет искать в вебе (🔍), но это нужно один раз включить: console.anthropic.com → " +
-    "Settings → Privacy → Web Search. Без этого ответит без источников.",
+    "Settings → Privacy → Web Search. Мы проверим это перед запуском и подскажем, если выключено.",
 };
 
 /** True if the picked model id does real web-search grounding. */
