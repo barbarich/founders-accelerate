@@ -49,6 +49,7 @@ from json_extract import loads_lenient
 
 # Pipeline imports — use existing PMF agents untouched
 from agents.base import build_client, LLMConfigError
+from preflight import validate_key, PreflightError
 from agents.competitors import CompetitorAgent
 from agents.customer_pain import CustomerPainAgent
 from agents.demand_signals import DemandSignalAgent
@@ -846,11 +847,19 @@ async def _run_pipeline(run_id: str, idea_input: IdeaInput, provider: str, api_k
 @app.post("/api/research/start", response_model=ResearchStartResponse)
 async def research_start(req: ResearchStartRequest) -> ResearchStartResponse:
     provider = _canon_provider(req.provider)
-    # Validate key early so we don't fire off an 8-min pipeline with bad credentials
+    # Grounded pre-flight: prove the key + model authenticate (and, for OpenAI /
+    # Anthropic, actually web-search) BEFORE committing to a 5-30 min run.
+    # validate_key fails OPEN internally (a transient blip never blocks a working
+    # key); only definitive, user-fixable problems raise PreflightError.
+    model_for_preflight = req.model or {
+        "anthropic": "claude-sonnet-5", "openai": "gpt-5.4", "gemini": "gemini-2.5-flash",
+    }.get(provider, "gemini-2.5-flash")
     try:
-        build_client(provider, req.api_key)
+        await validate_key(provider, req.api_key, model_for_preflight)
+    except PreflightError as e:
+        raise HTTPException(status_code=400, detail=e.message)
     except Exception as e:
-        raise HTTPException(status_code=401, detail=f"provider init: {e}")
+        log.warning("preflight unexpected error (proceeding): %s", e)
 
     idea_input = IdeaInput(**req.idea_input.model_dump())
     run_id = f"pmfrun_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}"

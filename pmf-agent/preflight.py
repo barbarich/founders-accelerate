@@ -16,7 +16,7 @@ from __future__ import annotations
 from google.genai import types as genai_types
 
 from reliability import ErrorClass, classify
-from base import build_client, _ANTHROPIC_WEB_SEARCH
+from agents.base import build_client, _ANTHROPIC_WEB_SEARCH
 
 # A tiny prompt that forces a real web lookup so the probe exercises grounding.
 _PROBE = ("Use web search to find one current fact about a well-known consumer "
@@ -52,11 +52,14 @@ async def _probe_openai(client, model: str) -> None:
 
 
 async def _probe_gemini(client, model: str) -> None:
-    cfg = genai_types.GenerateContentConfig(
-        tools=[genai_types.Tool(google_search=genai_types.GoogleSearch())],
-        max_output_tokens=256,
+    # Gemini grounds via Google Search automatically for every text model (no
+    # org-level toggle like Anthropic), so a cheap auth/model check is enough — no
+    # need to exercise the search tool. This also removes false-block risk on the
+    # default provider (most students), which we can't live-test without a key.
+    await client.aio.models.generate_content(
+        model=model, contents="ping",
+        config=genai_types.GenerateContentConfig(max_output_tokens=8),
     )
-    await client.aio.models.generate_content(model=model, contents=_PROBE, config=cfg)
 
 
 async def validate_key(provider: str, api_key: str, model: str) -> None:
