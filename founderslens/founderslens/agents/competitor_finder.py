@@ -65,6 +65,35 @@ class CompetitorFinderAgent(Agent[CompetitorUniverse]):
 
         cls = state.classification
         idea = state.idea_input
+        prompt = self.load_prompt(state.language)
+
+        # Provider-native grounding first (OpenAI/Anthropic) — real competitor data
+        # on the user's OWN key, no shared Tavily quota. Falls through to the Tavily
+        # path below on any miss (incl. Gemini), so nothing breaks.
+        grounded = await self.try_grounded(
+            schema=CompetitorUniverse, system=prompt,
+            user=(
+                "Идея фаундера:\n```json\n" + idea.model_dump_json(indent=2)
+                + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)
+                + "\n```\n\nНайди в вебе как можно больше реальных конкурентов (прямых, "
+                "непрямых, субститутов, в разных гео), затем синтезируй CompetitorUniverse "
+                "с реальными URL в полях sources."
+            ),
+            max_tokens=6000,
+        )
+        if grounded is not None:
+            universe, _sources = grounded
+            all_names = {c.name for c in universe.all_competitors}
+            universe.top_deep_dive = [n for n in universe.top_deep_dive if n in all_names][:7]
+            if not universe.top_deep_dive and universe.all_competitors:
+                universe.top_deep_dive = [c.name for c in universe.all_competitors[:5]]
+            state.competitors = universe
+            self.emit(
+                "finding",
+                f"Competitor Finder (grounded): {len(universe.all_competitors)} конкурентов",
+                payload={"total": len(universe.all_competitors), "top_deep_dive": universe.top_deep_dive},
+            )
+            return universe
 
         queries = _build_queries(idea.raw_idea, cls.industry, cls.sub_industry, cls.segment)
         # Add reference_products if fan-out needs a boost
@@ -108,7 +137,6 @@ class CompetitorFinderAgent(Agent[CompetitorUniverse]):
 
         self.emit("finding", f"Tavily returned {len(seen_urls)} unique URLs for synthesis")
 
-        prompt = self.load_prompt(state.language)
         user = (
             "Идея фаундера:\n```json\n"
             + idea.model_dump_json(indent=2)

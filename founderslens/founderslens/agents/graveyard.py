@@ -53,6 +53,31 @@ class GraveyardAgent(Agent[Graveyard]):
 
         cls = state.classification
         idea = state.idea_input
+        prompt = self.load_prompt(state.language)
+
+        # Provider-native grounding first (OpenAI/Anthropic) — real failure/regulatory
+        # data on the user's OWN key. Falls through to the Tavily path below on any miss.
+        grounded = await self.try_grounded(
+            schema=Graveyard, system=prompt,
+            user=(
+                "Идея:\n```json\n" + idea.model_dump_json(indent=2)
+                + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)
+                + "\n```\n\nНайди в вебе реальные закрытые/провалившиеся стартапы в категории, "
+                "регуляторные риски (PESTEL) и эволюцию смежных рынков, затем синтезируй "
+                "Graveyard с реальными источниками в полях sources."
+            ),
+        )
+        if grounded is not None:
+            gy, _sources = grounded
+            state.graveyard = gy
+            pestel_filled = sum(1 for v in gy.pestel.values() if v)
+            self.emit(
+                "finding",
+                f"Graveyard (grounded): {len(gy.failed_startups)} провалов · {pestel_filled}/6 PESTEL",
+                payload={"failed_count": len(gy.failed_startups), "pestel_filled": pestel_filled},
+            )
+            return gy
+
         queries = _build_queries(cls.industry, cls.sub_industry, idea.raw_idea)
 
         self.emit("finding", f"Graveyard: {len(queries)} post-mortem queries")
@@ -82,7 +107,6 @@ class GraveyardAgent(Agent[Graveyard]):
                     deduped.append(r)
             blocks.append({"query": q, "results": deduped[:5]})
 
-        prompt = self.load_prompt(state.language)
         user = (
             "Идея:\n```json\n" + idea.model_dump_json(indent=2)
             + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)

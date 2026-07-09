@@ -81,6 +81,31 @@ class TrendsAgent(Agent[Trends]):
 
         cls = state.classification
         idea = state.idea_input
+        prompt = self.load_prompt(state.language)
+
+        # Provider-native grounding first (OpenAI/Anthropic) — real trend data on the
+        # user's OWN key. Falls through to the Tavily+HN path below on any miss.
+        grounded = await self.try_grounded(
+            schema=Trends, system=prompt,
+            user=(
+                "Идея:\n```json\n" + idea.model_dump_json(indent=2)
+                + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)
+                + "\n```\n\nНайди в вебе актуальные тренды рынка (направление роста/спада, "
+                "субкатегории, культурные сигналы), затем синтезируй Trends с реальными "
+                "источниками в полях sources."
+            ),
+        )
+        if grounded is not None:
+            tr, _sources = grounded
+            state.trends = tr
+            arrows = "".join({"up": "↑", "flat": "→", "down": "↓"}.get(t.direction, "?") for t in tr.google_trends[:5])
+            self.emit(
+                "finding",
+                f"Trends (grounded): {len(tr.google_trends)} точек [{arrows}], {len(tr.cultural_signals)} сигналов",
+                payload={"trend_directions": [t.direction for t in tr.google_trends]},
+            )
+            return tr
+
         queries = _build_queries(cls.industry, cls.sub_industry, idea.raw_idea)
 
         self.emit("finding", f"Trends: {len(queries)} queries + HN top-30")
@@ -130,7 +155,6 @@ class TrendsAgent(Agent[Trends]):
 
         self.emit("finding", f"Trends: {len(seen)} unique URLs + {len(hn_matches)} HN matches")
 
-        prompt = self.load_prompt(state.language)
         user = (
             "Идея:\n```json\n" + idea.model_dump_json(indent=2)
             + "\n```\n\nКлассификация:\n```json\n" + cls.model_dump_json(indent=2)
