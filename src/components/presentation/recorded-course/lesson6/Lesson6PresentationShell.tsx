@@ -12,7 +12,7 @@ import L6Slide03HubVsHelper from "./L6Slide03HubVsHelper";
 import L6Slide04ClaudeMdHierarchy from "./L6Slide04ClaudeMdHierarchy";
 import L6Slide05ProductionTemplates from "./L6Slide05ProductionTemplates";
 import L6Slide06SkillsLibrary from "./L6Slide06SkillsLibrary";
-import L6Slide07SlashCommands from "./L6Slide07SlashCommands";
+import L6Slide07FirstSteps from "./L6Slide07FirstSteps";
 import L6Slide08McpUnderHood from "./L6Slide08McpUnderHood";
 import L6Slide09StripeMcpWalkthrough from "./L6Slide09StripeMcpWalkthrough";
 import L6Slide10SupabaseMcpWalkthrough from "./L6Slide10SupabaseMcpWalkthrough";
@@ -33,9 +33,9 @@ export const slideNames = [
   "Блок 1 — Настройка один раз",
   "Lovable vs Claude",
   "Файл CLAUDE.md · 2 уровня",
-  "Готовый шаблон CLAUDE.md",
+  "CLAUDE.md · Claude создаёт сам",
   "10 скиллов Claude",
-  "4 slash-команды",
+  "С чего начать · 4 привычки",
   "Блок 2 — Подключи к сервисам",
   "Что такое MCP",
   "Stripe через MCP",
@@ -63,7 +63,7 @@ export function getSlideContent(index: number) {
     case 5: return <L6Slide04ClaudeMdHierarchy />;
     case 6: return <L6Slide05ProductionTemplates />;
     case 7: return <L6Slide06SkillsLibrary />;
-    case 8: return <L6Slide07SlashCommands />;
+    case 8: return <L6Slide07FirstSteps />;
     case 9: return <L6BlockHeader blockNumber={2} title="Подключи Claude к своим сервисам" subtitle="Платежи, базы, аналитика — Claude работает в них напрямую" />;
     case 10: return <L6Slide08McpUnderHood />;
     case 11: return <L6Slide09StripeMcpWalkthrough />;
