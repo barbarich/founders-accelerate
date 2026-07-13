@@ -22,17 +22,17 @@ export default function L8Slide25Homework() {
           Домашнее задание
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
-          К M8 у каждого: три новых экрана в проде.
+          К концу недели: три новых экрана в проде.
         </h2>
         <div className="space-y-[6px] mb-[10px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[7px] px-[10px] py-[6px]">
-            <p className="text-[9px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[3px]">До среды</p>
+            <p className="text-[9px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[3px]">Сначала</p>
             {wednesdayTasks.map((t, i) => (
               <p key={i} className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.4]">→ {t}</p>
             ))}
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[7px] px-[10px] py-[6px]">
-            <p className="text-[9px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[3px]">До понедельника</p>
+            <p className="text-[9px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[3px]">Потом</p>
             {mondayTasks.map((t, i) => (
               <p key={i} className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.4]">→ {t}</p>
             ))}
@@ -48,11 +48,11 @@ export default function L8Slide25Homework() {
         Домашнее задание
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px]">
-        К M8 у каждого: три новых экрана в проде.
+        К концу недели: три новых экрана в проде.
       </h2>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1600px] mb-[28px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border-[2px] border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] px-[32px] py-[24px]">
-          <p className="text-[18px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[14px]">До среды</p>
+          <p className="text-[18px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[14px]">Сначала</p>
           <div className="space-y-[8px]">
             {wednesdayTasks.map((t, i) => (
               <p key={i} className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.4]">
@@ -62,7 +62,7 @@ export default function L8Slide25Homework() {
           </div>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border-[2px] border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] px-[32px] py-[24px]">
-          <p className="text-[18px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[14px]">До понедельника</p>
+          <p className="text-[18px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))] font-bold mb-[14px]">Потом</p>
           <div className="space-y-[8px]">
             {mondayTasks.map((t, i) => (
               <p key={i} className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.4]">

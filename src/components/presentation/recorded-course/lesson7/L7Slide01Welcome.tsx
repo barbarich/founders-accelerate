@@ -20,7 +20,7 @@ export default function L7Slide01Welcome() {
             Урок 7
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Aha-moment и первый экран. К концу: твой Aha найден и спроектирован путь к нему.
+            Продукт, который активирует с первого сеанса. Три экрана: объясни ценность, доведи до результата, верни завтра.
           </p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function L7Slide01Welcome() {
           Урок 7
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Aha-moment и первый экран.<br />
-          К концу урока: твой Aha найден и спроектирован путь к нему.
+          Продукт, который активирует с первого сеанса.<br />
+          Три экрана: объясни ценность, доведи до результата, верни завтра.
         </p>
       </div>
     </div>

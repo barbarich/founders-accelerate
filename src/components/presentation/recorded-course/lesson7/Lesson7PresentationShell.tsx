@@ -5,73 +5,94 @@ import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
 import L7Slide01Welcome from "./L7Slide01Welcome";
-import L7Slide02MainThesis from "./L7Slide02MainThesis";
-import L7BlockHeader from "./L7BlockHeader";
 import L7SlideAhaExamples from "./L7SlideAhaExamples";
 import L7SlideAhaTypes from "./L7SlideAhaTypes";
-import L7Slide60SecRule from "./L7Slide60SecRule";
-import L7SlideFindAhaPrompt from "./L7SlideFindAhaPrompt";
-import L7SlideSetupLevers from "./L7SlideSetupLevers";
 import L7SlideMetaminderTeardown from "./L7SlideMetaminderTeardown";
 import L7SlideAhaDone from "./L7SlideAhaDone";
-import L7SlideFirstScreen from "./L7SlideFirstScreen";
-import L7SlideActionNow from "./L7SlideActionNow";
-import L7SlideHomework from "./L7SlideHomework";
-import L7SlideClosing from "./L7SlideClosing";
-import L7SlideLessonSummary from "./L7SlideLessonSummary";
+import L8Slide02MainThesis from "./L8Slide02MainThesis";
+import L8Slide04FourReasons from "./L8Slide04FourReasons";
+import L8Slide05ThreeScreensRule from "./L8Slide05ThreeScreensRule";
+import L8Slide06Screen1Intro from "./L8Slide06Screen1Intro";
+import L8Slide07PromiseFormula from "./L8Slide07PromiseFormula";
+import L8Slide08FiveGoodFirstScreens from "./L8Slide08FiveGoodFirstScreens";
+import L8Slide09FiveBadFirstScreens from "./L8Slide09FiveBadFirstScreens";
+import L8Slide10FiveSecondTest from "./L8Slide10FiveSecondTest";
+import L8Slide11Exercise1 from "./L8Slide11Exercise1";
+import L8Slide12Screen2Intro from "./L8Slide12Screen2Intro";
+import L8Slide13SkipTheWall from "./L8Slide13SkipTheWall";
+import L8Slide15WhenToAsk from "./L8Slide15WhenToAsk";
+import L8Slide16EmptyStates from "./L8Slide16EmptyStates";
+import L8Slide17Exercise2 from "./L8Slide17Exercise2";
+import L8Slide18Screen3Intro from "./L8Slide18Screen3Intro";
+import L8Slide19FiveMechanisms from "./L8Slide19FiveMechanisms";
+import L8Slide20MechanismExamples from "./L8Slide20MechanismExamples";
+import L8Slide21PushEmail from "./L8Slide21PushEmail";
+import L8Slide22Exercise3 from "./L8Slide22Exercise3";
+import L8Slide25Homework from "./L8Slide25Homework";
+import L8SlideLessonSummary from "./L8SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Блок 1: Что такое Aha",
-  "Aha на 3 примерах · Notion / Canva / Duolingo",
+  "Главная мысль · уходят за минуту",
+  "4 причины ухода",
+  "Что такое Aha · 3 примера",
   "4 типа Aha · какой у твоего продукта",
-  "Блок 2: Где живёт Aha",
-  "Правило 60 секунд",
-  "Блок 3: Как найти свой Aha",
-  "Универсальный промпт · Aha-detector",
-  "Блок 4: Как настроить Aha в продукте",
-  "3 рычага · убрать всё между открыл и результат",
-  "Разбор · MetaMinder: флоу за руку к персональному результату",
+  "Правило трёх экранов",
+  "Экран 1 · Одно обещание",
+  "Формула обещания",
+  "5 хороших первых экранов",
+  "5 ошибок первого экрана",
+  "Тест на 5 секунд",
+  "Упражнение 1 · обещание",
+  "Экран 2 · Одно действие",
+  "Снеси стену · результат до регистрации",
+  "Разбор · MetaMinder: за руку к персональному результату",
+  "Что и когда спрашивать",
+  "Empty states",
+  "Упражнение 2 · действие",
+  "Экран 3 · Причина вернуться",
+  "5 механизмов возврата",
+  "Примеры механизмов",
+  "Push и email",
+  "Упражнение 3 · возврат",
   "Aha настроен, если...",
-  "Блок 5: Первый экран = путь к Aha",
-  "5 правил первого экрана",
-  "Блок 6: Пошаговый план",
-  "Найди свой Aha · 5 шагов",
-  "Блок 7: Задание",
-  "Домашка",
+  "Домашнее задание",
   "Саммари · 5 мыслей",
-  "Закрытие",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L7Slide01Welcome />;
-    case 1: return <L7Slide02MainThesis />;
-    case 2: return <L7BlockHeader blockNumber={1} title="Что такое Aha" subtitle="«О, я понял зачем мне это»" />;
+    case 1: return <L8Slide02MainThesis />;
+    case 2: return <L8Slide04FourReasons />;
     case 3: return <L7SlideAhaExamples />;
     case 4: return <L7SlideAhaTypes />;
-    case 5: return <L7BlockHeader blockNumber={2} title="Где живёт Aha" subtitle="первая минута, не первый час" />;
-    case 6: return <L7Slide60SecRule />;
-    case 7: return <L7BlockHeader blockNumber={3} title="Как найти свой Aha" subtitle="AI-detector + 60-second тест" />;
-    case 8: return <L7SlideFindAhaPrompt />;
-    case 9: return <L7BlockHeader blockNumber={4} title="Как настроить Aha в продукте" subtitle="убрать всё между «открыл» и «увидел результат»" />;
-    case 10: return <L7SlideSetupLevers />;
-    case 11: return <L7SlideMetaminderTeardown />;
-    case 12: return <L7SlideAhaDone />;
-    case 13: return <L7BlockHeader blockNumber={5} title="Первый экран = путь к Aha" subtitle="5 правил, чтобы добраться за 60 сек" />;
-    case 14: return <L7SlideFirstScreen />;
-    case 15: return <L7BlockHeader blockNumber={6} title="Пошаговый план" subtitle="как найти Aha и спроектировать экран" />;
-    case 16: return <L7SlideActionNow />;
-    case 17: return <L7BlockHeader blockNumber={7} title="Задание на эту неделю" />;
-    case 18: return <L7SlideHomework />;
-    case 19: return <L7SlideLessonSummary />;
-    case 20: return <L7SlideClosing />;
+    case 5: return <L8Slide05ThreeScreensRule />;
+    case 6: return <L8Slide06Screen1Intro />;
+    case 7: return <L8Slide07PromiseFormula />;
+    case 8: return <L8Slide08FiveGoodFirstScreens />;
+    case 9: return <L8Slide09FiveBadFirstScreens />;
+    case 10: return <L8Slide10FiveSecondTest />;
+    case 11: return <L8Slide11Exercise1 />;
+    case 12: return <L8Slide12Screen2Intro />;
+    case 13: return <L8Slide13SkipTheWall />;
+    case 14: return <L7SlideMetaminderTeardown />;
+    case 15: return <L8Slide15WhenToAsk />;
+    case 16: return <L8Slide16EmptyStates />;
+    case 17: return <L8Slide17Exercise2 />;
+    case 18: return <L8Slide18Screen3Intro />;
+    case 19: return <L8Slide19FiveMechanisms />;
+    case 20: return <L8Slide20MechanismExamples />;
+    case 21: return <L8Slide21PushEmail />;
+    case 22: return <L8Slide22Exercise3 />;
+    case 23: return <L7SlideAhaDone />;
+    case 24: return <L8Slide25Homework />;
+    case 25: return <L8SlideLessonSummary />;
     default: return null;
   }
 }
 
-export const TOTAL = 21;
+export const TOTAL = 26;
 
 export default function Lesson7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -135,7 +156,7 @@ export default function Lesson7PresentationShell({ backTo = "/admin/meetings" }:
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 7 — Aha-moment и первый экран</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 7 — Продукт, который активирует с первого экрана</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

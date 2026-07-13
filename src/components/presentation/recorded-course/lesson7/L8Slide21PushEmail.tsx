@@ -38,7 +38,7 @@ export default function L8Slide21PushEmail() {
           ))}
         </div>
         <p className="text-[9px] text-[hsl(var(--slide-gold))] font-semibold mt-[8px] leading-[1.4]">
-          L9 — целая встреча про push и email. Сегодня — заложить фундамент.
+          Урок 9 - целиком про push и email. Сегодня — заложить фундамент.
         </p>
       </div>
     );
@@ -65,7 +65,7 @@ export default function L8Slide21PushEmail() {
         ))}
       </div>
       <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1500px] leading-[1.4]">
-        L9 — целая встреча про push и email. Сегодня важнее: проверьте, есть ли в продукте сам механизм. Без него L9 будет бесполезной.
+        Урок 9 - целиком про push и email. Сегодня важнее: проверьте, есть ли в продукте сам механизм. Без него урок 9 будет бесполезным.
       </p>
     </div>
   );

@@ -50,7 +50,7 @@ export default function L8Slide09FiveBadFirstScreens() {
           ))}
         </div>
         <p className="text-[9px] text-[hsl(var(--slide-gold))] font-semibold mt-[6px] leading-[1.4]">
-          Какая из 5 ошибок есть на вашем экране? Не вслух — пометьте.
+          Какая из 5 ошибок есть на вашем экране? Отметь у себя.
         </p>
       </div>
     );

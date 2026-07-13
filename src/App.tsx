@@ -65,7 +65,6 @@ const PublicLesson4Shell = lazy(() => import("@/components/presentation/recorded
 const PublicLesson5Shell = lazy(() => import("@/components/presentation/recorded-course/lesson5/PublicLesson5Shell"));
 const PublicLesson6Shell = lazy(() => import("@/components/presentation/recorded-course/lesson6/PublicLesson6Shell"));
 const PublicLesson7Shell = lazy(() => import("@/components/presentation/recorded-course/lesson7/PublicLesson7Shell"));
-const PublicLesson8Shell = lazy(() => import("@/components/presentation/recorded-course/lesson8/PublicLesson8Shell"));
 const PublicLesson9Shell = lazy(() => import("@/components/presentation/recorded-course/lesson9/PublicLesson9Shell"));
 const PublicLesson10Shell = lazy(() => import("@/components/presentation/recorded-course/lesson10/PublicLesson10Shell"));
 const PublicLesson11Shell = lazy(() => import("@/components/presentation/recorded-course/lesson11/PublicLesson11Shell"));
@@ -236,7 +235,6 @@ const App = () => (
           <Route path="/recorded-course/lesson5" element={<PublicLesson5Shell />} />
           <Route path="/recorded-course/lesson6" element={<PublicLesson6Shell />} />
           <Route path="/recorded-course/lesson7" element={<PublicLesson7Shell />} />
-          <Route path="/recorded-course/lesson8" element={<PublicLesson8Shell />} />
           <Route path="/recorded-course/lesson9" element={<PublicLesson9Shell />} />
           <Route path="/recorded-course/lesson10" element={<PublicLesson10Shell />} />
           <Route path="/recorded-course/lesson11" element={<PublicLesson11Shell />} />

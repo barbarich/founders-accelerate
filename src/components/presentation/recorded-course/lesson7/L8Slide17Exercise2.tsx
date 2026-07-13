@@ -13,13 +13,13 @@ export default function L8Slide17Exercise2() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Упражнение · 3 минуты · в чат
+          Упражнение · 3 минуты
         </p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px]">
           Опиши первое действие в своём продукте. Прямо сейчас.
         </h2>
         <p className="text-[10px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[10px]">
-          Открой чат встречи. Ответь на 3 вопроса по своему продукту в одном сообщении.
+          Ответь на 3 вопроса по своему продукту — письменно, для себя.
         </p>
         <div className="space-y-[5px] mb-[12px]">
           {questions.map((q, i) => (
@@ -42,13 +42,13 @@ export default function L8Slide17Exercise2() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
-        Упражнение · 3 минуты · в чат встречи
+        Упражнение · 3 минуты
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px] tracking-[-0.02em]">
         Опиши первое действие в своём продукте. Прямо сейчас.
       </h2>
       <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[22px] max-w-[1600px]">
-        Открой чат встречи. Ответь на 3 вопроса по своему продукту в одном сообщении. Коротко, без воды — одно действие, один результат, одно решение про регистрацию.
+        Ответь на 3 вопроса по своему продукту - письменно, для себя. Коротко, без воды: одно действие, один результат, одно решение про регистрацию.
       </p>
       <div className="space-y-[12px] max-w-[1600px] mb-[22px]">
         {questions.map((q, i) => (
@@ -59,7 +59,7 @@ export default function L8Slide17Exercise2() {
         ))}
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border border-[hsl(var(--slide-gold)/0.4)] rounded-[12px] px-[28px] py-[16px] max-w-[1600px]">
-        <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[6px]">Формат ответа в чат</p>
+        <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-semibold mb-[6px]">Формат ответа</p>
         <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.4]">
           <span className="text-[hsl(var(--slide-gold))] font-semibold">1)</span> действие · <span className="text-[hsl(var(--slide-gold))] font-semibold">2)</span> что видит сразу после · <span className="text-[hsl(var(--slide-gold))] font-semibold">3)</span> регистрация: да/нет и почему
         </p>

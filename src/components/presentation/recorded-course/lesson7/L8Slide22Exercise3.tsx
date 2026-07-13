@@ -10,7 +10,7 @@ export default function L8Slide22Exercise3() {
           Упражнение · 2 минуты
         </p>
         <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px]">
-          Твоя причина вернуться. В чат.
+          Твоя причина вернуться.
         </h2>
         <div className="space-y-[6px] mb-[12px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[7px] px-[12px] py-[8px]">
@@ -37,7 +37,7 @@ export default function L8Slide22Exercise3() {
         Упражнение · 2 минуты
       </p>
       <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.0] mb-[32px] tracking-[-0.02em]">
-        Твоя причина вернуться. В чат.
+        Твоя причина вернуться.
       </h2>
       <div className="space-y-[14px] max-w-[1500px] mb-[28px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[32px] py-[20px] flex gap-[20px] items-center">
