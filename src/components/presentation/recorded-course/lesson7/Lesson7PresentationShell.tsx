@@ -11,6 +11,9 @@ import L7SlideAhaExamples from "./L7SlideAhaExamples";
 import L7SlideAhaTypes from "./L7SlideAhaTypes";
 import L7Slide60SecRule from "./L7Slide60SecRule";
 import L7SlideFindAhaPrompt from "./L7SlideFindAhaPrompt";
+import L7SlideSetupLevers from "./L7SlideSetupLevers";
+import L7SlideMetaminderTeardown from "./L7SlideMetaminderTeardown";
+import L7SlideAhaDone from "./L7SlideAhaDone";
 import L7SlideFirstScreen from "./L7SlideFirstScreen";
 import L7SlideActionNow from "./L7SlideActionNow";
 import L7SlideHomework from "./L7SlideHomework";
@@ -27,11 +30,15 @@ export const slideNames = [
   "Правило 60 секунд",
   "Блок 3: Как найти свой Aha",
   "Универсальный промпт · Aha-detector",
-  "Блок 4: Первый экран = путь к Aha",
+  "Блок 4: Как настроить Aha в продукте",
+  "3 рычага · убрать всё между открыл и результат",
+  "Разбор · MetaMinder было → стало",
+  "Aha настроен, если...",
+  "Блок 5: Первый экран = путь к Aha",
   "5 правил первого экрана",
-  "Блок 5: Пошаговый план",
+  "Блок 6: Пошаговый план",
   "Найди свой Aha · 5 шагов",
-  "Блок 6: Задание",
+  "Блок 7: Задание",
   "Домашка",
   "Саммари · 5 мыслей",
   "Закрытие",
@@ -48,19 +55,23 @@ export function getSlideContent(index: number) {
     case 6: return <L7Slide60SecRule />;
     case 7: return <L7BlockHeader blockNumber={3} title="Как найти свой Aha" subtitle="AI-detector + 60-second тест" />;
     case 8: return <L7SlideFindAhaPrompt />;
-    case 9: return <L7BlockHeader blockNumber={4} title="Первый экран = путь к Aha" subtitle="5 правил, чтобы добраться за 60 сек" />;
-    case 10: return <L7SlideFirstScreen />;
-    case 11: return <L7BlockHeader blockNumber={5} title="Пошаговый план" subtitle="как найти Aha и спроектировать экран" />;
-    case 12: return <L7SlideActionNow />;
-    case 13: return <L7BlockHeader blockNumber={6} title="Задание на эту неделю" />;
-    case 14: return <L7SlideHomework />;
-    case 15: return <L7SlideLessonSummary />;
-    case 16: return <L7SlideClosing />;
+    case 9: return <L7BlockHeader blockNumber={4} title="Как настроить Aha в продукте" subtitle="убрать всё между «открыл» и «увидел результат»" />;
+    case 10: return <L7SlideSetupLevers />;
+    case 11: return <L7SlideMetaminderTeardown />;
+    case 12: return <L7SlideAhaDone />;
+    case 13: return <L7BlockHeader blockNumber={5} title="Первый экран = путь к Aha" subtitle="5 правил, чтобы добраться за 60 сек" />;
+    case 14: return <L7SlideFirstScreen />;
+    case 15: return <L7BlockHeader blockNumber={6} title="Пошаговый план" subtitle="как найти Aha и спроектировать экран" />;
+    case 16: return <L7SlideActionNow />;
+    case 17: return <L7BlockHeader blockNumber={7} title="Задание на эту неделю" />;
+    case 18: return <L7SlideHomework />;
+    case 19: return <L7SlideLessonSummary />;
+    case 20: return <L7SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 17;
+export const TOTAL = 21;
 
 export default function Lesson7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
