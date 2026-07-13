@@ -1,11 +1,11 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const items = [
-  { n: "1", t: "1 история клиента", d: "Возьми реального клиента (или себя как клиента). 4 элемента: клиент-герой · конфликт-боль · трансформация · конкретная деталь. Запиши в Notion/Doc" },
-  { n: "2", t: "5 форматов из 1 истории", d: "Long-form post (LinkedIn) + carousel (Instagram) + 60-сек reel + newsletter section + 1 ключевой инсайт для Twitter" },
-  { n: "3", t: "AI-стек подключён", d: "Минимум: ChatGPT/Claude + Canva + 1 видео-инструмент (Opus Clip или HeyGen). Free-tier'ы достаточны для старта" },
-  { n: "4", t: "Cadence на 4 недели запланирован", d: "Когда публикуешь — день/время. Какой формат в какой день. Без расписания — забросишь через 2 недели" },
-  { n: "5", t: "Первый long-form опубликован", d: "Сегодня. Не завтра. С твоей реальной аудитории — реальный фидбек о том, что зашло" },
+  { n: "1", t: "Стек подключён", d: "GA4 + Mixpanel + Clarity + Sentry — все 4 шлют события" },
+  { n: "2", t: "Воронка AARRR настроена", d: "5 ключевых событий в Mixpanel: Acquisition / Activation / Retention / Revenue / Referral" },
+  { n: "3", t: "Sean Ellis запущен", d: "Минимум 30 ответов собрано. Знаешь свой % «очень расстроюсь»" },
+  { n: "4", t: "9-axis score посчитан", d: "По каждой из 9 осей: зелёный / жёлтый / красный. Знаешь свой verdict: GO / VALIDATE / PIVOT" },
+  { n: "5", t: "План на следующую неделю", d: "Если GO — готовишься к L12 Meta-рекламе. Если VALIDATE — список 2-3 осей, которые чинишь. Если PIVOT — назад в L1-L2" },
 ];
 
 export default function L10SlideHomework() {
@@ -18,7 +18,7 @@ export default function L10SlideHomework() {
           Домашка на эту неделю
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          5 пунктов · запусти контент-систему
+          5 пунктов · готовишься к Meta или пивотишь
         </h2>
         <div className="space-y-[8px]">
           {items.map((i) => (
@@ -40,8 +40,8 @@ export default function L10SlideHomework() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
         Домашка на эту неделю
       </p>
-      <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
-        5 пунктов · запусти контент-систему
+      <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
+        5 пунктов · готовишься к Meta или пивотишь
       </h2>
       <div className="grid grid-cols-2 gap-x-[40px] gap-y-[18px] max-w-[1800px]">
         {items.map((i) => (

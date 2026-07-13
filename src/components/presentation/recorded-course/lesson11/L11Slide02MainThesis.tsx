@@ -5,21 +5,24 @@ export default function L11Slide02MainThesis() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px] py-[40px] overflow-y-auto">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">
-          Главная мысль
+          Главная мысль сегодня
         </p>
-        <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-          Без метрик ты не понимаешь — <span className="text-[hsl(var(--slide-gold))]">продукт плохой или маркетинг плохой</span>.
+        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] tracking-[-0.01em]">
+          Хороший продукт без упаковки проигрывает плохому продукту в красивой коробке.
         </h2>
-        <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[12px]">
-          $30/день в Meta без метрик = $900/месяц либо <span className="text-[hsl(var(--slide-text))] font-medium">в учение</span>, либо <span className="text-[hsl(var(--slide-text))] font-medium">в мусор</span>. Ты не отличишь.
-        </p>
-        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px]">
-          <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-            Сегодня заложим базу: <span className="text-[hsl(var(--slide-gold))]">стек</span> + <span className="text-[hsl(var(--slide-gold))]">9-axis PMF score</span> + <span className="text-[hsl(var(--slide-gold))]">матрица «что чинить»</span>.
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[12px] mb-[12px]">
+          <p className="text-[13px] font-bold text-[hsl(var(--slide-text))] leading-[1.35] mb-[6px]">
+            Первые сто клиентов покупают не продукт.
+          </p>
+          <p className="text-[13px] font-bold text-[hsl(var(--slide-text))] leading-[1.35]">
+            Они покупают то, что увидели и поняли за пять секунд.
           </p>
         </div>
+        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
+          На старте у тебя есть только коробка. Сегодня собираем её — и сразу же на ваших продуктах.
+        </p>
       </div>
     );
   }
@@ -27,19 +30,22 @@ export default function L11Slide02MainThesis() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">
-        Главная мысль
+        Главная мысль сегодня
       </p>
-      <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em] max-w-[1700px]">
-        Без метрик ты не понимаешь — <span className="text-[hsl(var(--slide-gold))]">продукт плохой или маркетинг плохой</span>.
+      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] max-w-[1500px] tracking-[-0.01em]">
+        Хороший продукт без упаковки проигрывает плохому продукту в красивой коробке.
       </h2>
-      <p className="text-[26px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] max-w-[1700px] mb-[32px]">
-        $30/день в Meta без метрик = $900/месяц либо <span className="text-[hsl(var(--slide-text))] font-semibold">в учение</span>, либо <span className="text-[hsl(var(--slide-text))] font-semibold">в мусор</span>. Ты не отличишь — и не знаешь что чинить.
-      </p>
-      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[22px] max-w-[1700px]">
-        <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-          Сегодня заложим базу: <span className="text-[hsl(var(--slide-gold))]">стек измерений</span> · <span className="text-[hsl(var(--slide-gold))]">9-axis PMF score</span> · <span className="text-[hsl(var(--slide-gold))]">матрица «что чинить»</span>.
+      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[28px] max-w-[1500px] mb-[28px]">
+        <p className="text-[36px] font-bold text-[hsl(var(--slide-text))] leading-[1.25] mb-[10px]">
+          Первые сто клиентов покупают не продукт.
+        </p>
+        <p className="text-[36px] font-bold text-[hsl(var(--slide-text))] leading-[1.25]">
+          Они покупают то, что увидели и поняли за пять секунд.
         </p>
       </div>
+      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1500px]">
+        На старте у тебя есть только коробка. Сегодня собираем её — и сразу же на ваших продуктах.
+      </p>
     </div>
   );
 }

@@ -7,61 +7,88 @@ import ScaledSlide from "../../ScaledSlide";
 import L11Slide01Welcome from "./L11Slide01Welcome";
 import L11Slide02MainThesis from "./L11Slide02MainThesis";
 import L11BlockHeader from "./L11BlockHeader";
-import L11SlideStack from "./L11SlideStack";
-import L11SlideFunnel from "./L11SlideFunnel";
-import L11SlidePMFNineAxis from "./L11SlidePMFNineAxis";
-import L11SlideSeanEllis from "./L11SlideSeanEllis";
-import L11SlideVerdict from "./L11SlideVerdict";
-import L11SlideWhatToFix from "./L11SlideWhatToFix";
-import L11SlideActionNow from "./L11SlideActionNow";
-import L11SlideHomework from "./L11SlideHomework";
-import L11SlideClosing from "./L11SlideClosing";
+import L11Slide03Stats from "./L11Slide03Stats";
+import L11Slide04SoloFounders from "./L11Slide04SoloFounders";
+import L11Slide05ThreePillars from "./L11Slide05ThreePillars";
+import L11Slide06PositioningFormula from "./L11Slide06PositioningFormula";
+import L11Slide07PositioningExamples from "./L11Slide07PositioningExamples";
+import L11Slide08Workshop1 from "./L11Slide08Workshop1";
+import L11Slide09VisualStack from "./L11Slide09VisualStack";
+import L11Slide10UrlToAds from "./L11Slide10UrlToAds";
+import L11Slide11OneStyleRule from "./L11Slide11OneStyleRule";
+import L11Slide13OldVsNew from "./L11Slide13OldVsNew";
+import L11Slide14AdAnatomy from "./L11Slide14AdAnatomy";
+import L11Slide16Funnel from "./L11Slide16Funnel";
+import L11Slide17Metrics from "./L11Slide17Metrics";
+import L11Slide18B2BPath from "./L11Slide18B2BPath";
+import L11Slide19B2CPath from "./L11Slide19B2CPath";
+import L11Slide20FullStack from "./L11Slide20FullStack";
+import L11Slide22Homework from "./L11Slide22Homework";
+import L11Slide23NextWeek from "./L11Slide23NextWeek";
 import L11SlideLessonSummary from "./L11SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
   "Главная мысль",
-  "Блок 1: Стек измерений",
-  "4 инструмента: GA4 / Mixpanel / Clarity / Sentry",
-  "Воронка AARRR · 5 этапов",
-  "Блок 2: PMF score",
-  "9 осей PMF",
-  "Sean Ellis test · 40% порог",
-  "GO / VALIDATE / PIVOT",
-  "Блок 3: Что чинить",
-  "Матрица: продукт или маркетинг",
-  "Блок 4: Пошаговый план",
-  "Подключи стек + запусти Sean Ellis · 6 шагов",
-  "Блок 5: Задание",
-  "Домашка",
+  "Блок 1 · Зачем упаковка",
+  "Цифры 2026 + мой счёт",
+  "Одиночки-фаундеры 2026",
+  "Framework · 3 кита",
+  "Блок 2 · Позиционирование",
+  "Формула + 3 теста",
+  "Шесть примеров формул",
+  "Блок 3 · Визуалы",
+  "AI-стек 2026",
+  "Canva · AI-дизайн без дизайнера",
+  "Правило одного стиля",
+  "Блок 4 · Креативы 2026",
+  "Что сломалось · 2024 vs 2026",
+  "Анатомия креатива",
+  "Блок 5 · Каналы и воронка",
+  "Воронка 101",
+  "Метрики 2026",
+  "Блок 6 · Два пути запуска",
+  "B2B путь · бренд фаундера",
+  "B2C путь · Mikey",
+  "Полный стек с ценами",
+  "Домашка к L12",
   "Саммари · 5 мыслей",
-  "Закрытие",
+  "Что дальше · L12 и L13",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L11Slide01Welcome />;
     case 1: return <L11Slide02MainThesis />;
-    case 2: return <L11BlockHeader blockNumber={1} title="Стек измерений" subtitle="4 инструмента бесплатно на старте" />;
-    case 3: return <L11SlideStack />;
-    case 4: return <L11SlideFunnel />;
-    case 5: return <L11BlockHeader blockNumber={2} title="PMF score" subtitle="9 осей + Sean Ellis · твой verdict" />;
-    case 6: return <L11SlidePMFNineAxis />;
-    case 7: return <L11SlideSeanEllis />;
-    case 8: return <L11SlideVerdict />;
-    case 9: return <L11BlockHeader blockNumber={3} title="Что чинить — продукт или маркетинг" subtitle="не угадывай · читай по цифрам" />;
-    case 10: return <L11SlideWhatToFix />;
-    case 11: return <L11BlockHeader blockNumber={4} title="Пошаговый план" subtitle="подключи стек и запусти первый Sean Ellis опрос" />;
-    case 12: return <L11SlideActionNow />;
-    case 13: return <L11BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 14: return <L11SlideHomework />;
-    case 15: return <L11SlideLessonSummary />;
-    case 16: return <L11SlideClosing />;
+    case 2: return <L11BlockHeader blockNumber={1} title="Зачем упаковка" subtitle="после продукта, но до продаж" />;
+    case 3: return <L11Slide03Stats />;
+    case 4: return <L11Slide04SoloFounders />;
+    case 5: return <L11Slide05ThreePillars />;
+    case 6: return <L11BlockHeader blockNumber={2} title="Кит 1 · Позиционирование" subtitle="одна фраза, на которой держится всё" />;
+    case 7: return <L11Slide06PositioningFormula />;
+    case 8: return <L11Slide07PositioningExamples />;
+    case 9: return <L11BlockHeader blockNumber={3} title="Кит 2 · Визуалы" subtitle="AI-стек 2026" />;
+    case 10: return <L11Slide09VisualStack />;
+    case 11: return <L11Slide10UrlToAds />;
+    case 12: return <L11Slide11OneStyleRule />;
+    case 13: return <L11BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
+    case 14: return <L11Slide13OldVsNew />;
+    case 15: return <L11Slide14AdAnatomy />;
+    case 16: return <L11BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
+    case 17: return <L11Slide16Funnel />;
+    case 18: return <L11Slide17Metrics />;
+    case 19: return <L11BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
+    case 20: return <L11Slide18B2BPath />;
+    case 21: return <L11Slide19B2CPath />;
+    case 22: return <L11Slide20FullStack />;
+    case 23: return <L11Slide22Homework />;
+    case 24: return <L11SlideLessonSummary />;
+    case 25: return <L11Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 17;
+export const TOTAL = 26;
 
 export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -125,7 +152,7 @@ export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 11 — Метрики, воронка, PMF</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 11 — Все слайды</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

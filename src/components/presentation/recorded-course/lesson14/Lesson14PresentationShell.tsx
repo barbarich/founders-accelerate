@@ -7,88 +7,52 @@ import ScaledSlide from "../../ScaledSlide";
 import L14Slide01Welcome from "./L14Slide01Welcome";
 import L14Slide02MainThesis from "./L14Slide02MainThesis";
 import L14BlockHeader from "./L14BlockHeader";
-import L14Slide03MotionMap from "./L14Slide03MotionMap";
-import L14Slide03bCRM from "./L14Slide03bCRM";
-import L14Slide04KillerICP from "./L14Slide04KillerICP";
-import L14Slide04bWhatIsICP from "./L14Slide04bWhatIsICP";
-import L14Slide05Dream50 from "./L14Slide05Dream50";
-import L14Slide06Multithreading from "./L14Slide06Multithreading";
-import L14Slide07ChannelPriority from "./L14Slide07ChannelPriority";
-import L14Slide08MetaMinderB2B from "./L14Slide08MetaMinderB2B";
-import L14Slide09TriggerOutreach from "./L14Slide09TriggerOutreach";
-import L14Slide10Discovery from "./L14Slide10Discovery";
-import L14Slide11PreCallPrompt from "./L14Slide11PreCallPrompt";
-import L14Slide12DemoThatCloses from "./L14Slide12DemoThatCloses";
-import L14Slide13Objections from "./L14Slide13Objections";
-import L14Slide14Closing from "./L14Slide14Closing";
-import L14Slide15MAPPilot from "./L14Slide15MAPPilot";
-import L14Slide16ExpansionLoop from "./L14Slide16ExpansionLoop";
-import L14Slide17LiveExercise from "./L14Slide17LiveExercise";
-import L14Slide18NextWeek from "./L14Slide18NextWeek";
+import L14SlideBootstrapVsRaise from "./L14SlideBootstrapVsRaise";
+import L14SlidePitchDeck from "./L14SlidePitchDeck";
+import L14SlideOutreach from "./L14SlideOutreach";
+import L14SlideTermSheet from "./L14SlideTermSheet";
+import L14SlideHomework from "./L14SlideHomework";
+import L14SlideClosing from "./L14SlideClosing";
 import L14SlideLessonSummary from "./L14SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Блок 1 · Карта motion",
-  "7 этапов · один путь",
-  "CRM · первые дни",
-  "Блок 2 · ICP + List",
-  "Что такое ICP и почему это критично",
-  "Killer ICP · 7 фильтров",
-  "Dream 50 · target list",
-  "Multithreading · 4 роли",
-  "Блок 3 · Outreach",
-  "Приоритет каналов",
-  "🔥 Кейс MetaMinder · события",
-  "Trigger-based outreach",
-  "Блок 4 · The Call",
-  "Demo flow · 6 шагов структуры",
-  "🔥 Главный промпт · Pre-call research",
-  "Demo that closes · 6 правил",
-  "3 возражения · знай ответ заранее",
-  "Closing · 3 фразы + next step",
-  "Блок 5 · After close",
-  "🔥 MAP · Mutual Action Plan",
-  "Expansion loop · 1 сделка → 4",
-  "Блок 6 · Финал",
+  "Главная мысль · деньги = инструмент",
+  "Блок 1: Bootstrap или Raise",
+  "Когда что · конкретные сценарии",
+  "Блок 2: Pitch deck",
+  "10 слайдов · Sequoia format",
+  "Блок 3: Investor outreach",
+  "4 канала по убывающей",
+  "Блок 4: Term sheet basics",
+  "SAFE / Convertible / Priced round",
+  "Блок 5: Задание",
+  "Домашка · pitch deck v1",
   "Саммари · 5 мыслей",
-  "Домашнее задание · 1 компания · 5 строк",
+  "Закрытие",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L14Slide01Welcome />;
     case 1: return <L14Slide02MainThesis />;
-    case 2: return <L14BlockHeader blockNumber={1} title="Карта motion" subtitle="7 этапов от пустого CRM до подписанной сделки" />;
-    case 3: return <L14Slide03MotionMap />;
-    case 4: return <L14Slide03bCRM />;
-    case 5: return <L14BlockHeader blockNumber={2} title="ICP + Target list" subtitle="на ком фокусируешься — определяет всё, что ниже" />;
-    case 6: return <L14Slide04bWhatIsICP />;
-    case 7: return <L14Slide04KillerICP />;
-    case 8: return <L14Slide05Dream50 />;
-    case 9: return <L14Slide06Multithreading />;
-    case 10: return <L14BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
-    case 11: return <L14Slide07ChannelPriority />;
-    case 12: return <L14Slide08MetaMinderB2B />;
-    case 13: return <L14Slide09TriggerOutreach />;
-    case 14: return <L14BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
-    case 15: return <L14Slide10Discovery />;
-    case 16: return <L14Slide11PreCallPrompt />;
-    case 17: return <L14Slide12DemoThatCloses />;
-    case 18: return <L14Slide13Objections />;
-    case 19: return <L14Slide14Closing />;
-    case 20: return <L14BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
-    case 21: return <L14Slide15MAPPilot />;
-    case 22: return <L14Slide16ExpansionLoop />;
-    case 23: return <L14BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что дальше" />;
-    case 24: return <L14SlideLessonSummary />;
-    case 25: return <L14Slide17LiveExercise />;
+    case 2: return <L14BlockHeader blockNumber={1} title="Bootstrap или Raise" subtitle="осознанный выбор пути под цели" />;
+    case 3: return <L14SlideBootstrapVsRaise />;
+    case 4: return <L14BlockHeader blockNumber={2} title="Pitch deck" subtitle="10 слайдов · Sequoia format" />;
+    case 5: return <L14SlidePitchDeck />;
+    case 6: return <L14BlockHeader blockNumber={3} title="Investor outreach" subtitle="как искать первого инвестора" />;
+    case 7: return <L14SlideOutreach />;
+    case 8: return <L14BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
+    case 9: return <L14SlideTermSheet />;
+    case 10: return <L14BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 11: return <L14SlideHomework />;
+    case 12: return <L14SlideLessonSummary />;
+    case 13: return <L14SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 14;
 
 export default function Lesson14PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -152,7 +116,7 @@ export default function Lesson14PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 14 — Все слайды</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 14 — Привлечение средств</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

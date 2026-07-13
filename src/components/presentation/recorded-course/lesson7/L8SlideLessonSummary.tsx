@@ -78,7 +78,7 @@ export default function L8SlideLessonSummary() {
 
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[26px] py-[14px] max-w-[1700px] mt-[20px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          Дальше — Урок 9: третий экран, механизмы возврата и D1/D3/D7 уведомления, чтобы удержать активированных.
+          Дальше — Урок 8: третий экран, механизмы возврата и D1/D3/D7 уведомления, чтобы удержать активированных.
         </p>
       </div>
     </div>

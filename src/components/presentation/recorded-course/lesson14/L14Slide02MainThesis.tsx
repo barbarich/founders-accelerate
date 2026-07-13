@@ -5,24 +5,21 @@ export default function L14Slide02MainThesis() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px] py-[40px] overflow-y-auto">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">
-          Главная мысль сегодня
+          Главная мысль
         </p>
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px] tracking-[-0.01em]">
-          Побеждает не тот, кто больше пишет.<br /><span className="text-[hsl(var(--slide-gold))]">50 точных клиентов и 5 хороших разговоров важнее, чем 5000 шаблонных писем.</span>
+        <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
+          Деньги — <span className="text-[hsl(var(--slide-gold))]">инструмент</span>. Не цель.
         </h2>
-        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[14px] py-[12px] mb-[12px]">
-          <p className="text-[12px] font-bold text-[hsl(var(--slide-text))] leading-[1.4] mb-[5px]">
-            В 2026 рассыльщиков писем полно. "Напиши всем подряд" больше не работает.
-          </p>
-          <p className="text-[12px] font-bold text-[hsl(var(--slide-text))] leading-[1.4]">
-            Преимущество — найти тех, кому точно нужно, и поговорить с ними лично.
+        <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[12px]">
+          Бери инвестиции <span className="text-[hsl(var(--slide-text))] font-medium">когда они приближают к цели</span>. Не бери — когда отдаляют. Большинство соло-фаундеров в 2026 могут дойти до $10K MRR без денег извне.
+        </p>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px]">
+          <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
+            Bootstrapping не круче fundraising'а и наоборот. Круче — <span className="text-[hsl(var(--slide-gold))]">осознанно выбранный путь под цели</span>.
           </p>
         </div>
-        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] leading-[1.5]">
-          Сегодня покажу путь от пустой таблицы клиентов до первой продажи. Без рекламы, без групп в соцсетях, без десятки каналов одновременно. Одна цепочка шагов от знакомства до денег.
-        </p>
       </div>
     );
   }
@@ -30,22 +27,19 @@ export default function L14Slide02MainThesis() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">
-        Главная мысль сегодня
+        Главная мысль
       </p>
-      <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[28px] max-w-[1700px] tracking-[-0.01em]">
-        Побеждает не тот, кто больше пишет. <span className="text-[hsl(var(--slide-gold))]">50 точных клиентов и 5 хороших разговоров важнее, чем 5000 шаблонных писем.</span>
+      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em] max-w-[1700px]">
+        Деньги — <span className="text-[hsl(var(--slide-gold))]">инструмент</span>. Не цель.
       </h2>
-      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[36px] py-[28px] max-w-[1700px] mb-[28px]">
-        <p className="text-[34px] font-bold text-[hsl(var(--slide-text))] leading-[1.3] mb-[10px]">
-          В 2026 рассыльщиков писем полно. "Напиши всем подряд" больше не работает.
-        </p>
-        <p className="text-[34px] font-bold text-[hsl(var(--slide-text))] leading-[1.3]">
-          Преимущество — найти тех, кому точно нужно, и поговорить с ними лично.
+      <p className="text-[26px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] max-w-[1700px] mb-[32px]">
+        Бери инвестиции <span className="text-[hsl(var(--slide-text))] font-semibold">когда они приближают к цели</span>. Не бери — когда отдаляют. Большинство соло-фаундеров в 2026 могут дойти до $10K MRR без денег извне.
+      </p>
+      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[22px] max-w-[1700px]">
+        <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
+          Bootstrapping не круче fundraising'а и наоборот. Круче — <span className="text-[hsl(var(--slide-gold))]">осознанно выбранный путь под цели</span>.
         </p>
       </div>
-      <p className="text-[22px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1700px]">
-        Сегодня покажу путь от пустой таблицы клиентов до первой продажи. Без рекламы, без групп в соцсетях, без десятки каналов одновременно. Одна цепочка шагов от знакомства до денег.
-      </p>
     </div>
   );
 }

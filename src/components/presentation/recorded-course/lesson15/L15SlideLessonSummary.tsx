@@ -3,28 +3,28 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const insights = [
   {
     num: "1",
-    title: "Pitch deck — 10 слайдов, не больше",
-    body: "Инвестор смотрит дек 3 минуты. 10 слайдов = 18 секунд на слайд. Sequoia template — стандарт. Если не помещается — твоя история не сформирована.",
+    title: "Партнёрства — самый дешёвый канал дистрибуции",
+    body: "Один правильный партнёр с твоей аудиторией = тысячи юзеров без бюджета. Дешевле любого маркетинга. Но требует времени на отношения, не на сделки.",
   },
   {
     num: "2",
-    title: "SAFE vs Priced round — два разных мира",
-    body: "SAFE = договор без оценки, для pre-seed. Подписал за неделю. Priced round = с оценкой, для Series A+. Подготовка 2-3 месяца. Не путай — это решает скорость.",
+    title: "Tier 1-3 — распределяй усилия по приоритетам",
+    body: "Tier 1 (2-3 партнёра): глубокие отношения, совместный продукт. Tier 2 (10-15): регулярные акции и кампании. Tier 3 (50+): разовые сделки и affiliate.",
   },
   {
     num: "3",
-    title: "Investor list — твой главный артефакт",
-    body: "100 инвесторов в pipeline, не 10. Из 100 → 30 встреч → 10 follow-up → 3 серьёзных интереса → 1 чек. Это математика, не магия. Меньше = нет шансов.",
+    title: "Revenue share vs flat fee — разные модели под разные цели",
+    body: "Revenue share = партнёр заинтересован в твоём росте. Flat fee = быстрее закрыть, но партнёр не вкладывается. Используй revenue share для Tier 1.",
   },
   {
     num: "4",
-    title: "Term sheet — это договор, не формальность",
-    body: "Cap, дисконт, MFN, pro-rata, board control. Каждое слово влияет на твой контроль и долю. Не подписывай без юриста и не первое предложение от инвестора.",
+    title: "Moat — что мешает конкуренту тебя обогнать",
+    body: "Network effects (Cluely), data moat (Mikey AI), brand (Cursor), distribution lock-in (Linear). Без moat — любая фича копируется за месяц.",
   },
   {
     num: "5",
-    title: "Cold email инвестору работает — если он короткий и с цифрой",
-    body: "Один абзац: что ты делаешь + одна цифра роста + почему сейчас + CTA. Никаких pitch deck в первом письме. Цель — встреча, не сделка.",
+    title: "Co-marketing сильнее affiliate",
+    body: "Affiliate = «дай мне ссылку, я её брошу». Co-marketing = «делаем кампанию вместе, оба обещаем результат». Второе даёт в 5-10× больше конверсии.",
   },
 ];
 
@@ -78,7 +78,7 @@ export default function L15SlideLessonSummary() {
 
       <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[26px] py-[14px] max-w-[1700px] mt-[20px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          Дальше — собрать pitch deck, список 100 инвесторов и шаблон cold email.
+          Дальше — найти 5 партнёров и написать первые сообщения. Это финал курса.
         </p>
       </div>
     </div>

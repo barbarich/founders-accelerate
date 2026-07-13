@@ -20,7 +20,7 @@ export default function L10Slide01Welcome() {
             Урок 10
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Сторителлинг и контент для первой аудитории. К концу: контент-система запущена.
+            Метрики, воронка, PMF. К концу урока: знаешь что чинить — продукт или маркетинг.
           </p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function L10Slide01Welcome() {
           Урок 10
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Сторителлинг и контент для первой аудитории.<br />
-          К концу урока: контент-система запущена.
+          Метрики, воронка, PMF.<br />
+          К концу урока: знаешь что чинить — продукт или маркетинг.
         </p>
       </div>
     </div>

@@ -6,90 +6,51 @@ import ScaledSlide from "../../ScaledSlide";
 
 import L9Slide01Welcome from "./L9Slide01Welcome";
 import L9Slide02MainThesis from "./L9Slide02MainThesis";
-import L9Slide03ShockNumber from "./L9Slide03ShockNumber";
-import L9Slide04FourReasons from "./L9Slide04FourReasons";
-import L9Slide05JargonTranslator from "./L9Slide05JargonTranslator";
 import L9BlockHeader from "./L9BlockHeader";
-import L9Slide06Principle from "./L9Slide06Principle";
-import L9Slide10NotificationLast from "./L9Slide10NotificationLast";
-import L9Slide11Mechanic1Streak from "./L9Slide11Mechanic1Streak";
-import L9Slide12Mechanic2Unfinished from "./L9Slide12Mechanic2Unfinished";
-import L9Slide13Mechanic3Social from "./L9Slide13Mechanic3Social";
-import L9Slide14Mechanic4FreshContent from "./L9Slide14Mechanic4FreshContent";
-import L9Slide15Mechanic5Deadline from "./L9Slide15Mechanic5Deadline";
-import L9Slide13bWorkshop from "./L9Slide13bWorkshop";
-import L9Slide16NoCodeStack from "./L9Slide16NoCodeStack";
-import L9Slide17AIPrompt from "./L9Slide17AIPrompt";
-import L9Slide18LiveDemo from "./L9Slide18LiveDemo";
-import L9Slide18bMessageFromInsight from "./L9Slide18bMessageFromInsight";
-import L9Slide20RetentionStackFree from "./L9Slide20RetentionStackFree";
-import L9Slide22ReactivationInsights from "./L9Slide22ReactivationInsights";
-import L9Slide24Homework from "./L9Slide24Homework";
-import L9Slide25NextWeek from "./L9Slide25NextWeek";
+import L9SlideStoryArc from "./L9SlideStoryArc";
+import L9SlideOneToFive from "./L9SlideOneToFive";
+import L9SlideAIStack from "./L9SlideAIStack";
+import L9SlideBuildingInPublic from "./L9SlideBuildingInPublic";
+import L9SlideHomework from "./L9SlideHomework";
+import L9SlideClosing from "./L9SlideClosing";
 import L9SlideLessonSummary from "./L9SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Цифра-удар: 77%",
-  "4 причины невозврата",
-  "Переводчик жаргона D1/D7/D30",
-  "Принцип возврата · одна петля",
-  "Блок 3 · 5 механик",
-  "Уведомление — это финал",
-  "Механика 1 · Streak",
-  "Механика 2 · Незаконченное",
-  "Механика 3 · Социальный долг",
-  "Механика 4 · Свежий контент",
-  "Механика 5 · Дедлайн",
-  "Шаблон · карта возврата",
-  "Блок 4 · Wow-инструменты",
-  "No-code стек",
-  "AI-промпт: 7 писем",
-  "Кейс: Claude + Mixpanel",
-  "Промпт: инсайт → сообщение",
-  "Блок 5 · Стек и чек-лист",
-  "Retention-стек за $0 на старте",
-  "Блок 6 · Реактивация и задание",
-  "Реактивация · 6 инсайтов",
-  "Задание",
+  "Главная мысль · контент = доверие",
+  "Блок 1: Сторителлинг",
+  "Анатомия истории · 4 элемента",
+  "Блок 2: Контент-система",
+  "1 идея → 5 форматов",
+  "AI-стек контента · 5 инструментов",
+  "Блок 3: Building in public",
+  "4 правила · делись путём, не результатом",
+  "Блок 4: Задание",
+  "Домашка · запусти контент-систему",
   "Саммари · 5 мыслей",
-  "Неделя 9",
+  "Закрытие",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L9Slide01Welcome />;
     case 1: return <L9Slide02MainThesis />;
-    case 2: return <L9Slide03ShockNumber />;
-    case 3: return <L9Slide04FourReasons />;
-    case 4: return <L9Slide05JargonTranslator />;
-    case 5: return <L9Slide06Principle />;
-    case 6: return <L9BlockHeader blockNumber={2} title="5 механик возврата" subtitle="встроенных в продукт" />;
-    case 7: return <L9Slide10NotificationLast />;
-    case 8: return <L9Slide11Mechanic1Streak />;
-    case 9: return <L9Slide12Mechanic2Unfinished />;
-    case 10: return <L9Slide13Mechanic3Social />;
-    case 11: return <L9Slide14Mechanic4FreshContent />;
-    case 12: return <L9Slide15Mechanic5Deadline />;
-    case 13: return <L9Slide13bWorkshop />;
-    case 14: return <L9BlockHeader blockNumber={3} title="Wow-инструменты без кода" />;
-    case 15: return <L9Slide16NoCodeStack />;
-    case 16: return <L9Slide17AIPrompt />;
-    case 17: return <L9Slide18LiveDemo />;
-    case 18: return <L9Slide18bMessageFromInsight />;
-    case 19: return <L9BlockHeader blockNumber={4} title="Стек и чек-лист" subtitle="запусти всё за вечер" />;
-    case 20: return <L9Slide20RetentionStackFree />;
-    case 21: return <L9BlockHeader blockNumber={5} title="Реактивация и задание" />;
-    case 22: return <L9Slide22ReactivationInsights />;
-    case 23: return <L9Slide24Homework />;
-    case 24: return <L9SlideLessonSummary />;
-    case 25: return <L9Slide25NextWeek />;
+    case 2: return <L9BlockHeader blockNumber={1} title="Сторителлинг" subtitle="как рассказывать истории, которые продают" />;
+    case 3: return <L9SlideStoryArc />;
+    case 4: return <L9BlockHeader blockNumber={2} title="Контент-система" subtitle="1 идея → 5 форматов · AI-стек" />;
+    case 5: return <L9SlideOneToFive />;
+    case 6: return <L9SlideAIStack />;
+    case 7: return <L9BlockHeader blockNumber={3} title="Building in public" subtitle="публикация пути как маркетинг" />;
+    case 8: return <L9SlideBuildingInPublic />;
+    case 9: return <L9BlockHeader blockNumber={4} title="Задание на эту неделю" />;
+    case 10: return <L9SlideHomework />;
+    case 11: return <L9SlideLessonSummary />;
+    case 12: return <L9SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 13;
 
 export default function Lesson9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -153,7 +114,7 @@ export default function Lesson9PresentationShell({ backTo = "/admin/meetings" }:
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 9 — Все слайды</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 9 — Сторителлинг и контент</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

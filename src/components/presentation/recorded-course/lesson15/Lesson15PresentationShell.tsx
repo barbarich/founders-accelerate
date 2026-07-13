@@ -7,52 +7,47 @@ import ScaledSlide from "../../ScaledSlide";
 import L15Slide01Welcome from "./L15Slide01Welcome";
 import L15Slide02MainThesis from "./L15Slide02MainThesis";
 import L15BlockHeader from "./L15BlockHeader";
-import L15SlideBootstrapVsRaise from "./L15SlideBootstrapVsRaise";
-import L15SlidePitchDeck from "./L15SlidePitchDeck";
-import L15SlideOutreach from "./L15SlideOutreach";
-import L15SlideTermSheet from "./L15SlideTermSheet";
+import L15SlideTypes from "./L15SlideTypes";
+import L15SlideFindPartner from "./L15SlideFindPartner";
+import L15SlideMoats from "./L15SlideMoats";
 import L15SlideHomework from "./L15SlideHomework";
 import L15SlideClosing from "./L15SlideClosing";
 import L15SlideLessonSummary from "./L15SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · деньги = инструмент",
-  "Блок 1: Bootstrap или Raise",
-  "Когда что · конкретные сценарии",
-  "Блок 2: Pitch deck",
-  "10 слайдов · Sequoia format",
-  "Блок 3: Investor outreach",
-  "4 канала по убывающей",
-  "Блок 4: Term sheet basics",
-  "SAFE / Convertible / Priced round",
-  "Блок 5: Задание",
-  "Домашка · pitch deck v1",
+  "Главная мысль · 1 партнёр = 100 outreach",
+  "Блок 1: 4 типа партнёрств",
+  "Channel · Integration · Co-marketing · Referral",
+  "Блок 2: Где искать партнёра",
+  "4 критерия + 4 канала",
+  "Блок 3: Distribution moats",
+  "Network · Data · Brand moats",
+  "Блок 4: Финальное задание",
+  "Домашка · 5 партнёров + moat-стратегия",
   "Саммари · 5 мыслей",
-  "Закрытие",
+  "Закрытие · 16 уроков пройдены",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L15Slide01Welcome />;
     case 1: return <L15Slide02MainThesis />;
-    case 2: return <L15BlockHeader blockNumber={1} title="Bootstrap или Raise" subtitle="осознанный выбор пути под цели" />;
-    case 3: return <L15SlideBootstrapVsRaise />;
-    case 4: return <L15BlockHeader blockNumber={2} title="Pitch deck" subtitle="10 слайдов · Sequoia format" />;
-    case 5: return <L15SlidePitchDeck />;
-    case 6: return <L15BlockHeader blockNumber={3} title="Investor outreach" subtitle="как искать первого инвестора" />;
-    case 7: return <L15SlideOutreach />;
-    case 8: return <L15BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
-    case 9: return <L15SlideTermSheet />;
-    case 10: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 11: return <L15SlideHomework />;
-    case 12: return <L15SlideLessonSummary />;
-    case 13: return <L15SlideClosing />;
+    case 2: return <L15BlockHeader blockNumber={1} title="4 типа партнёрств" subtitle="какой подходит твоему продукту" />;
+    case 3: return <L15SlideTypes />;
+    case 4: return <L15BlockHeader blockNumber={2} title="Где искать партнёра" subtitle="критерии идеального + каналы поиска" />;
+    case 5: return <L15SlideFindPartner />;
+    case 6: return <L15BlockHeader blockNumber={3} title="Distribution moats" subtitle="долгосрочное конкурентное преимущество" />;
+    case 7: return <L15SlideMoats />;
+    case 8: return <L15BlockHeader blockNumber={4} title="Финальное задание" subtitle="5 партнёров + первые сообщения" />;
+    case 9: return <L15SlideHomework />;
+    case 10: return <L15SlideLessonSummary />;
+    case 11: return <L15SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 14;
+export const TOTAL = 12;
 
 export default function Lesson15PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -116,7 +111,7 @@ export default function Lesson15PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 15 — Привлечение средств</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 15 — Партнёрства и distribution moats</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

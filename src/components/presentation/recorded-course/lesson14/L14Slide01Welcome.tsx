@@ -13,14 +13,14 @@ export default function L14Slide01Welcome() {
         </div>
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
-          <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.08] tracking-[-0.02em]">
-            B2B Sales Motion для соло-фаундера.<br />От ICP до первой сделки за один путь.
+          <h1 className="font-display text-[36px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.02em]">
+            The Founders<br />Circle
           </h1>
-          <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 14 · Личные продажи без рекламы
+          <p className="text-[18px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
+            Урок 14
           </p>
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Одна нить: ICP → Dream 50 → multi-touch → discovery → demo → close → expand. Уходишь с motion, готовым к запуску завтра. Не с конспектом.
+          <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
+            Привлечение средств. К концу: знаешь bootstrap vs fundraising + готов pitch deck.
           </p>
         </div>
       </div>
@@ -33,21 +33,19 @@ export default function L14Slide01Welcome() {
         <img src={titleBg} alt="" className="w-full h-full object-cover opacity-[0.06]" />
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--slide-bg))] via-[hsl(var(--slide-bg)/0.85)] to-transparent" />
       </div>
-      <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1500px]">
+      <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1200px]">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
-        <h1 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          B2B Sales Motion для соло-фаундера.<br />
-          От ICP до первой сделки за один путь.
+        <h1 className="font-display text-[86px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
+          The Founders<br />Circle
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 14 · Личные продажи без рекламы
+          Урок 14
         </p>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1200px]">
-          Одна нить: ICP → Dream 50 → multi-touch → discovery → demo → close → expand.<br />
-          Уходишь с motion, готовым к запуску завтра. Не с конспектом.
+        <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
+          Привлечение средств.<br />
+          К концу: знаешь bootstrap vs fundraising + готов pitch deck.
         </p>
       </div>
-      <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
     </div>
   );
 }

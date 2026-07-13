@@ -65,6 +65,7 @@ const PublicLesson4Shell = lazy(() => import("@/components/presentation/recorded
 const PublicLesson5Shell = lazy(() => import("@/components/presentation/recorded-course/lesson5/PublicLesson5Shell"));
 const PublicLesson6Shell = lazy(() => import("@/components/presentation/recorded-course/lesson6/PublicLesson6Shell"));
 const PublicLesson7Shell = lazy(() => import("@/components/presentation/recorded-course/lesson7/PublicLesson7Shell"));
+const PublicLesson8Shell = lazy(() => import("@/components/presentation/recorded-course/lesson8/PublicLesson8Shell"));
 const PublicLesson9Shell = lazy(() => import("@/components/presentation/recorded-course/lesson9/PublicLesson9Shell"));
 const PublicLesson10Shell = lazy(() => import("@/components/presentation/recorded-course/lesson10/PublicLesson10Shell"));
 const PublicLesson11Shell = lazy(() => import("@/components/presentation/recorded-course/lesson11/PublicLesson11Shell"));
@@ -72,7 +73,6 @@ const PublicLesson12Shell = lazy(() => import("@/components/presentation/recorde
 const PublicLesson13Shell = lazy(() => import("@/components/presentation/recorded-course/lesson13/PublicLesson13Shell"));
 const PublicLesson14Shell = lazy(() => import("@/components/presentation/recorded-course/lesson14/PublicLesson14Shell"));
 const PublicLesson15Shell = lazy(() => import("@/components/presentation/recorded-course/lesson15/PublicLesson15Shell"));
-const PublicLesson16Shell = lazy(() => import("@/components/presentation/recorded-course/lesson16/PublicLesson16Shell"));
 const PublicFOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/PublicFOM1Shell"));
 const FOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/FOM1Shell"));
 const PublicFOM2Shell = lazy(() => import("@/components/presentation/founderOsMini2/PublicFOM2Shell"));
@@ -235,6 +235,7 @@ const App = () => (
           <Route path="/recorded-course/lesson5" element={<PublicLesson5Shell />} />
           <Route path="/recorded-course/lesson6" element={<PublicLesson6Shell />} />
           <Route path="/recorded-course/lesson7" element={<PublicLesson7Shell />} />
+          <Route path="/recorded-course/lesson8" element={<PublicLesson8Shell />} />
           <Route path="/recorded-course/lesson9" element={<PublicLesson9Shell />} />
           <Route path="/recorded-course/lesson10" element={<PublicLesson10Shell />} />
           <Route path="/recorded-course/lesson11" element={<PublicLesson11Shell />} />
@@ -242,7 +243,6 @@ const App = () => (
           <Route path="/recorded-course/lesson13" element={<PublicLesson13Shell />} />
           <Route path="/recorded-course/lesson14" element={<PublicLesson14Shell />} />
           <Route path="/recorded-course/lesson15" element={<PublicLesson15Shell />} />
-          <Route path="/recorded-course/lesson16" element={<PublicLesson16Shell />} />
           <Route path="/founder-os-mini-session1" element={<PublicFOM1Shell />} />
           <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
           <Route path="/founder-os-mini-session2" element={<PublicFOM2Shell />} />

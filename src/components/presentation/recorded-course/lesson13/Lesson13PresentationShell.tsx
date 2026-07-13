@@ -7,81 +7,88 @@ import ScaledSlide from "../../ScaledSlide";
 import L13Slide01Welcome from "./L13Slide01Welcome";
 import L13Slide02MainThesis from "./L13Slide02MainThesis";
 import L13BlockHeader from "./L13BlockHeader";
-import L13Slide03PreFlightChecklist from "./L13Slide03PreFlightChecklist";
-import L13Slide16EventsSetup from "./L13Slide16EventsSetup";
-import L13Slide17EventsBestPractices from "./L13Slide17EventsBestPractices";
-import L13Slide04OldVsNewMeta from "./L13Slide04OldVsNewMeta";
-import L13Slide05Andromeda from "./L13Slide05Andromeda";
-import L13Slide06BudgetLearningPhase from "./L13Slide06BudgetLearningPhase";
-import L13Slide07WorkshopCampaign from "./L13Slide07WorkshopCampaign";
-import L13Slide08WorkshopAdSet from "./L13Slide08WorkshopAdSet";
-import L13Slide09WorkshopAd from "./L13Slide09WorkshopAd";
-import L13Slide10WorkshopPublish from "./L13Slide10WorkshopPublish";
-import L13Slide11WorkshopAfterLaunch from "./L13Slide11WorkshopAfterLaunch";
-import L13Slide12CohortAdaptation from "./L13Slide12CohortAdaptation";
-import L13Slide13Top7Mistakes from "./L13Slide13Top7Mistakes";
-import L13Slide14Homework from "./L13Slide14Homework";
-import L13Slide15NextWeek from "./L13Slide15NextWeek";
+import L13Slide03MotionMap from "./L13Slide03MotionMap";
+import L13Slide03bCRM from "./L13Slide03bCRM";
+import L13Slide04KillerICP from "./L13Slide04KillerICP";
+import L13Slide04bWhatIsICP from "./L13Slide04bWhatIsICP";
+import L13Slide05Dream50 from "./L13Slide05Dream50";
+import L13Slide06Multithreading from "./L13Slide06Multithreading";
+import L13Slide07ChannelPriority from "./L13Slide07ChannelPriority";
+import L13Slide08MetaMinderB2B from "./L13Slide08MetaMinderB2B";
+import L13Slide09TriggerOutreach from "./L13Slide09TriggerOutreach";
+import L13Slide10Discovery from "./L13Slide10Discovery";
+import L13Slide11PreCallPrompt from "./L13Slide11PreCallPrompt";
+import L13Slide12DemoThatCloses from "./L13Slide12DemoThatCloses";
+import L13Slide13Objections from "./L13Slide13Objections";
+import L13Slide14Closing from "./L13Slide14Closing";
+import L13Slide15MAPPilot from "./L13Slide15MAPPilot";
+import L13Slide16ExpansionLoop from "./L13Slide16ExpansionLoop";
+import L13Slide17LiveExercise from "./L13Slide17LiveExercise";
+import L13Slide18NextWeek from "./L13Slide18NextWeek";
 import L13SlideLessonSummary from "./L13SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
   "Главная мысль",
-  "Блок 1 · Перед запуском",
-  "Pre-flight · 6 пунктов готовности",
-  "События на пикселе · что и куда",
-  "Топ-практики событий · 2026",
-  "Блок 2 · Meta-реклама 2026",
-  "Старый vs новый Meta",
-  "Andromeda + Advantage+",
-  "Бюджет и learning phase",
-  "Блок 3 · Walkthrough Meta-кампании",
-  "Шаг 1 · Business Manager → Campaign",
-  "Шаг 2 · Ad Set · Advantage+ Audience",
-  "Шаг 3 · Ad · Dynamic Creative",
-  "Шаг 4 · Review → Publish",
-  "Шаг 5 · After launch · метрики",
-  "Блок 4 · Когорта",
-  "Адаптация под каждого",
-  "Блок 5 · Ошибки",
-  "Семь ошибок одиночек",
-  "Блок 6 · Домашнее задание",
-  "Домашнее задание к L14",
+  "Блок 1 · Карта motion",
+  "7 этапов · один путь",
+  "CRM · первые дни",
+  "Блок 2 · ICP + List",
+  "Что такое ICP и почему это критично",
+  "Killer ICP · 7 фильтров",
+  "Dream 50 · target list",
+  "Multithreading · 4 роли",
+  "Блок 3 · Outreach",
+  "Приоритет каналов",
+  "🔥 Кейс MetaMinder · события",
+  "Trigger-based outreach",
+  "Блок 4 · The Call",
+  "Demo flow · 6 шагов структуры",
+  "🔥 Главный промпт · Pre-call research",
+  "Demo that closes · 6 правил",
+  "3 возражения · знай ответ заранее",
+  "Closing · 3 фразы + next step",
+  "Блок 5 · After close",
+  "🔥 MAP · Mutual Action Plan",
+  "Expansion loop · 1 сделка → 4",
+  "Блок 6 · Финал",
   "Саммари · 5 мыслей",
-  "L14 + L15",
+  "Домашнее задание · 1 компания · 5 строк",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L13Slide01Welcome />;
     case 1: return <L13Slide02MainThesis />;
-    case 2: return <L13BlockHeader blockNumber={1} title="Перед запуском" subtitle="что должно быть готово ДО Ads Manager" />;
-    case 3: return <L13Slide03PreFlightChecklist />;
-    case 4: return <L13Slide16EventsSetup />;
-    case 5: return <L13Slide17EventsBestPractices />;
-    case 6: return <L13BlockHeader blockNumber={2} title="Meta-реклама 2026" subtitle="алгоритм работает за тебя — если ты ему даёшь работать" />;
-    case 7: return <L13Slide04OldVsNewMeta />;
-    case 8: return <L13Slide05Andromeda />;
-    case 9: return <L13Slide06BudgetLearningPhase />;
-    case 10: return <L13BlockHeader blockNumber={3} title="Walkthrough · настройка кампании" subtitle="пошагово на моём кабинете — повторяешь у себя" />;
-    case 11: return <L13Slide07WorkshopCampaign />;
-    case 12: return <L13Slide08WorkshopAdSet />;
-    case 13: return <L13Slide09WorkshopAd />;
-    case 14: return <L13Slide10WorkshopPublish />;
-    case 15: return <L13Slide11WorkshopAfterLaunch />;
-    case 16: return <L13BlockHeader blockNumber={4} title="Адаптация под когорту" subtitle="схема одна — objective и креативы разные" />;
-    case 17: return <L13Slide12CohortAdaptation />;
-    case 18: return <L13BlockHeader blockNumber={5} title="Семь ошибок" subtitle="на которых ломаются первые кампании" />;
-    case 19: return <L13Slide13Top7Mistakes />;
-    case 20: return <L13BlockHeader blockNumber={6} title="Домашнее задание" subtitle="кампания запущена, данные собираются" />;
-    case 21: return <L13Slide14Homework />;
-    case 22: return <L13SlideLessonSummary />;
-    case 23: return <L13Slide15NextWeek />;
+    case 2: return <L13BlockHeader blockNumber={1} title="Карта motion" subtitle="7 этапов от пустого CRM до подписанной сделки" />;
+    case 3: return <L13Slide03MotionMap />;
+    case 4: return <L13Slide03bCRM />;
+    case 5: return <L13BlockHeader blockNumber={2} title="ICP + Target list" subtitle="на ком фокусируешься — определяет всё, что ниже" />;
+    case 6: return <L13Slide04bWhatIsICP />;
+    case 7: return <L13Slide04KillerICP />;
+    case 8: return <L13Slide05Dream50 />;
+    case 9: return <L13Slide06Multithreading />;
+    case 10: return <L13BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
+    case 11: return <L13Slide07ChannelPriority />;
+    case 12: return <L13Slide08MetaMinderB2B />;
+    case 13: return <L13Slide09TriggerOutreach />;
+    case 14: return <L13BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
+    case 15: return <L13Slide10Discovery />;
+    case 16: return <L13Slide11PreCallPrompt />;
+    case 17: return <L13Slide12DemoThatCloses />;
+    case 18: return <L13Slide13Objections />;
+    case 19: return <L13Slide14Closing />;
+    case 20: return <L13BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
+    case 21: return <L13Slide15MAPPilot />;
+    case 22: return <L13Slide16ExpansionLoop />;
+    case 23: return <L13BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что дальше" />;
+    case 24: return <L13SlideLessonSummary />;
+    case 25: return <L13Slide17LiveExercise />;
     default: return null;
   }
 }
 
-export const TOTAL = 24;
+export const TOTAL = 26;
 
 export default function Lesson13PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

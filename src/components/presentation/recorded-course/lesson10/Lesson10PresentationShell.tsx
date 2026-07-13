@@ -7,26 +7,33 @@ import ScaledSlide from "../../ScaledSlide";
 import L10Slide01Welcome from "./L10Slide01Welcome";
 import L10Slide02MainThesis from "./L10Slide02MainThesis";
 import L10BlockHeader from "./L10BlockHeader";
-import L10SlideStoryArc from "./L10SlideStoryArc";
-import L10SlideOneToFive from "./L10SlideOneToFive";
-import L10SlideAIStack from "./L10SlideAIStack";
-import L10SlideBuildingInPublic from "./L10SlideBuildingInPublic";
+import L10SlideStack from "./L10SlideStack";
+import L10SlideFunnel from "./L10SlideFunnel";
+import L10SlidePMFNineAxis from "./L10SlidePMFNineAxis";
+import L10SlideSeanEllis from "./L10SlideSeanEllis";
+import L10SlideVerdict from "./L10SlideVerdict";
+import L10SlideWhatToFix from "./L10SlideWhatToFix";
+import L10SlideActionNow from "./L10SlideActionNow";
 import L10SlideHomework from "./L10SlideHomework";
 import L10SlideClosing from "./L10SlideClosing";
 import L10SlideLessonSummary from "./L10SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · контент = доверие",
-  "Блок 1: Сторителлинг",
-  "Анатомия истории · 4 элемента",
-  "Блок 2: Контент-система",
-  "1 идея → 5 форматов",
-  "AI-стек контента · 5 инструментов",
-  "Блок 3: Building in public",
-  "4 правила · делись путём, не результатом",
-  "Блок 4: Задание",
-  "Домашка · запусти контент-систему",
+  "Главная мысль",
+  "Блок 1: Стек измерений",
+  "4 инструмента: GA4 / Mixpanel / Clarity / Sentry",
+  "Воронка AARRR · 5 этапов",
+  "Блок 2: PMF score",
+  "9 осей PMF",
+  "Sean Ellis test · 40% порог",
+  "GO / VALIDATE / PIVOT",
+  "Блок 3: Что чинить",
+  "Матрица: продукт или маркетинг",
+  "Блок 4: Пошаговый план",
+  "Подключи стек + запусти Sean Ellis · 6 шагов",
+  "Блок 5: Задание",
+  "Домашка",
   "Саммари · 5 мыслей",
   "Закрытие",
 ];
@@ -35,22 +42,26 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L10Slide01Welcome />;
     case 1: return <L10Slide02MainThesis />;
-    case 2: return <L10BlockHeader blockNumber={1} title="Сторителлинг" subtitle="как рассказывать истории, которые продают" />;
-    case 3: return <L10SlideStoryArc />;
-    case 4: return <L10BlockHeader blockNumber={2} title="Контент-система" subtitle="1 идея → 5 форматов · AI-стек" />;
-    case 5: return <L10SlideOneToFive />;
-    case 6: return <L10SlideAIStack />;
-    case 7: return <L10BlockHeader blockNumber={3} title="Building in public" subtitle="публикация пути как маркетинг" />;
-    case 8: return <L10SlideBuildingInPublic />;
-    case 9: return <L10BlockHeader blockNumber={4} title="Задание на эту неделю" />;
-    case 10: return <L10SlideHomework />;
-    case 11: return <L10SlideLessonSummary />;
-    case 12: return <L10SlideClosing />;
+    case 2: return <L10BlockHeader blockNumber={1} title="Стек измерений" subtitle="4 инструмента бесплатно на старте" />;
+    case 3: return <L10SlideStack />;
+    case 4: return <L10SlideFunnel />;
+    case 5: return <L10BlockHeader blockNumber={2} title="PMF score" subtitle="9 осей + Sean Ellis · твой verdict" />;
+    case 6: return <L10SlidePMFNineAxis />;
+    case 7: return <L10SlideSeanEllis />;
+    case 8: return <L10SlideVerdict />;
+    case 9: return <L10BlockHeader blockNumber={3} title="Что чинить — продукт или маркетинг" subtitle="не угадывай · читай по цифрам" />;
+    case 10: return <L10SlideWhatToFix />;
+    case 11: return <L10BlockHeader blockNumber={4} title="Пошаговый план" subtitle="подключи стек и запусти первый Sean Ellis опрос" />;
+    case 12: return <L10SlideActionNow />;
+    case 13: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 14: return <L10SlideHomework />;
+    case 15: return <L10SlideLessonSummary />;
+    case 16: return <L10SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 13;
+export const TOTAL = 17;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -114,7 +125,7 @@ export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 10 — Сторителлинг и контент</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 10 — Метрики, воронка, PMF</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

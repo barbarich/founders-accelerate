@@ -20,7 +20,7 @@ export default function L15Slide01Welcome() {
             Урок 15
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Привлечение средств. К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+            Партнёрства и distribution moats. Финал курса.
           </p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function L15Slide01Welcome() {
           Урок 15
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Привлечение средств.<br />
-          К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+          Партнёрства и distribution moats.<br />
+          Финал курса.
         </p>
       </div>
     </div>

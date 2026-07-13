@@ -14,14 +14,14 @@ export default function L12Slide01Welcome() {
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
           <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.08] tracking-[-0.02em]">
-            Упаковка и запуск.<br />Как сделать так, чтобы первые сто человек нажали «Купить».
+            Реклама в Meta.<br />От пустого Ads Manager до запущенной кампании за один урок.
           </h1>
           <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 12 · Финальный блок маркетинга
+            Урок 12 · Платный трафик B2C + B2B
           </p>
           <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Три кита упаковки. Два пути запуска. Три воркшопа.<br />
-            Уходишь с переупакованным лендингом и 7-дневным планом — не с конспектом.
+            Один большой воркшоп вживую. Настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
+            Уходишь со своей первой активной Meta-кампанией. Не с конспектом.
           </p>
         </div>
       </div>
@@ -37,15 +37,15 @@ export default function L12Slide01Welcome() {
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1500px]">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
         <h1 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          Упаковка и запуск.<br />
-          Как сделать так, чтобы первые сто человек нажали «Купить».
+          Реклама в Meta.<br />
+          От пустого Ads Manager до запущенной кампании за один урок.
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 12 · Финальный блок маркетинга
+          Урок 12 · Платный трафик B2C + B2B
         </p>
-        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1100px]">
-          Три кита упаковки. Два пути запуска. Три воркшопа.<br />
-          Уходишь с переупакованным лендингом и 7-дневным планом — не с конспектом.
+        <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1200px]">
+          Один большой воркшоп вживую. Настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
+          Уходишь со своей первой активной Meta-кампанией. Не с конспектом.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
