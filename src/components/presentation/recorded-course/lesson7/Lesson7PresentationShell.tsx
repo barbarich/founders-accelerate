@@ -23,11 +23,6 @@ import L8Slide13SkipTheWall from "./L8Slide13SkipTheWall";
 import L8Slide15WhenToAsk from "./L8Slide15WhenToAsk";
 import L8Slide16EmptyStates from "./L8Slide16EmptyStates";
 import L8Slide17Exercise2 from "./L8Slide17Exercise2";
-import L8Slide18Screen3Intro from "./L8Slide18Screen3Intro";
-import L8Slide19FiveMechanisms from "./L8Slide19FiveMechanisms";
-import L8Slide20MechanismExamples from "./L8Slide20MechanismExamples";
-import L8Slide21PushEmail from "./L8Slide21PushEmail";
-import L8Slide22Exercise3 from "./L8Slide22Exercise3";
 import L8Slide25Homework from "./L8Slide25Homework";
 import L8SlideLessonSummary from "./L8SlideLessonSummary";
 
@@ -50,11 +45,6 @@ export const slideNames = [
   "Что и когда спрашивать",
   "Empty states",
   "Упражнение 2 · действие",
-  "Экран 3 · Причина вернуться",
-  "5 механизмов возврата",
-  "Примеры механизмов",
-  "Push и email",
-  "Упражнение 3 · возврат",
   "Aha настроен, если...",
   "Домашнее задание",
   "Саммари · 5 мыслей",
@@ -80,19 +70,14 @@ export function getSlideContent(index: number) {
     case 15: return <L8Slide15WhenToAsk />;
     case 16: return <L8Slide16EmptyStates />;
     case 17: return <L8Slide17Exercise2 />;
-    case 18: return <L8Slide18Screen3Intro />;
-    case 19: return <L8Slide19FiveMechanisms />;
-    case 20: return <L8Slide20MechanismExamples />;
-    case 21: return <L8Slide21PushEmail />;
-    case 22: return <L8Slide22Exercise3 />;
-    case 23: return <L7SlideAhaDone />;
-    case 24: return <L8Slide25Homework />;
-    case 25: return <L8SlideLessonSummary />;
+    case 18: return <L7SlideAhaDone />;
+    case 19: return <L8Slide25Homework />;
+    case 20: return <L8SlideLessonSummary />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 21;
 
 export default function Lesson7PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

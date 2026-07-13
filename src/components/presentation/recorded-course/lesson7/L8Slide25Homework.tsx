@@ -3,12 +3,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const wednesdayTasks = [
   "Переписан и выкачен Экран 1 — одно обещание",
   "Переписан и выкачен Экран 2 — одно действие, без стены",
-  "Добавлен или починен Экран 3 — один механизм возврата",
+  "Empty state экрана 2 заполнен примером, а не пустотой",
 ];
 
 const mondayTasks = [
   "5 новых юзеров прошли через новые экраны",
-  "Цифры: сколько прошли все 3, где выпали остальные",
+  "Цифры: сколько прошли оба экрана, где выпали остальные",
   "2 цитаты юзеров: что было понятно, что — нет",
 ];
 
@@ -22,7 +22,7 @@ export default function L8Slide25Homework() {
           Домашнее задание
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px]">
-          К концу недели: три новых экрана в проде.
+          К концу недели: два новых экрана в проде.
         </h2>
         <div className="space-y-[6px] mb-[10px]">
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[7px] px-[10px] py-[6px]">
@@ -48,7 +48,7 @@ export default function L8Slide25Homework() {
         Домашнее задание
       </p>
       <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[28px]">
-        К концу недели: три новых экрана в проде.
+        К концу недели: два новых экрана в проде.
       </h2>
       <div className="grid grid-cols-2 gap-[20px] max-w-[1600px] mb-[28px]">
         <div className="bg-[hsl(var(--slide-bg-alt))] border-[2px] border-[hsl(var(--slide-gold)/0.4)] rounded-[14px] px-[32px] py-[24px]">
