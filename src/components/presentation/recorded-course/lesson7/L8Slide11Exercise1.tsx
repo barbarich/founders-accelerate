@@ -47,7 +47,7 @@ export default function L8Slide11Exercise1() {
         </p>
       </div>
       <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1400px] mb-[20px]">
-        Кидай в чат. Я зачитаю 2-3 вслух — вместе доведём до формулы.
+        Запиши и переписывай, пока не уложится в одну строку по формуле.
       </p>
       <p className="text-[24px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1400px] leading-[1.4]">
         Не делаешь сейчас — упустишь всё остальное. Просто одну строку.

@@ -2,16 +2,16 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const principles = [
   {
-    t: "Ведём за руку",
-    d: "Не бросаем юзера в пустой продукт. Флоу подсказывает каждый следующий шаг — он ни разу не думает «а что теперь?».",
+    t: "Ничего не отвлекает",
+    d: "На первом экране — одна кнопка «начать». Ни меню, ни настроек, ни тура: онбординг убирает с пути всё лишнее.",
   },
   {
-    t: "Результат — персональный",
-    d: "Не демо-пример, а ответ про самого юзера. «Это про меня» цепляет сильнее любого общего вау.",
+    t: "Быстрый путь к результату",
+    d: "Флоу ведёт за руку прямо к готовому курсу — без обходных шагов и лишних вопросов.",
   },
   {
-    t: "Максимально быстро",
-    d: "Флоу спроектирован так, что персональный результат случается в первые секунды, а не в конце пути.",
+    t: "Вау — персональный результат",
+    d: "«Курс создан за 1 минуту, персонально под мои потребности». Не демо, а результат про самого юзера.",
   },
 ];
 
@@ -22,7 +22,7 @@ export default function L7SlideMetaminderTeardown() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px] py-[22px] overflow-y-auto">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-          Разбор вживую · MetaMinder
+          Разбор кейса · MetaMinder
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
           Как мы настроили Aha в MetaMinder
@@ -48,7 +48,7 @@ export default function L7SlideMetaminderTeardown() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px] py-[40px] overflow-y-auto">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
-        Разбор вживую · MetaMinder
+        Разбор кейса · MetaMinder
       </p>
       <h2 className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.01em]">
         Как мы настроили <span className="text-[hsl(var(--slide-gold))]">Aha</span> в MetaMinder
