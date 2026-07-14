@@ -200,7 +200,11 @@ export default function Lesson5PresentationShell({ backTo = "/admin/meetings" }:
             else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) next();
           }}>
           <div className={`absolute inset-0 transition-opacity duration-200 ease-in-out ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
-            <ScaledSlide>{getSlideContent(displayed)}</ScaledSlide>
+            <ScaledSlide>
+              <div className={`w-full h-full bg-[hsl(var(--slide-bg))] ${isMobile ? '' : 'pr-[540px]'}`}>
+                {getSlideContent(displayed)}
+              </div>
+            </ScaledSlide>
           </div>
         </div>
 
