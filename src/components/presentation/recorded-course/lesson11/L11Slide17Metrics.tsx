@@ -1,12 +1,20 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const metrics = [
-  { stage: "TOFU · реклама", m: "CPM", good: "$5–25", body: "Cost per 1000 impressions. Дорогая B2B-ниша = $20+, нишевая B2C = $5–10." },
-  { stage: "TOFU · реклама", m: "CTR", good: "1–3%", body: "Click-through rate. <1% — креатив слабый или аудитория не та. >3% — кампания живая." },
-  { stage: "MOFU · email", m: "Open rate", good: "30–50%", body: "При правильном warmup и теме до 50 символов. <20% — попал в спам или тема мусорная." },
-  { stage: "MOFU · email", m: "Reply rate", good: "1–3%", body: "Норма 2026. >3% — отличный hit. 0% — переделывай тему и первую строку." },
-  { stage: "BOFU · продажи", m: "Trial → paid", good: "10–25%", body: "Какой процент triala конвертится в платящих. <10% — продукт не показывает ценность за trial." },
-  { stage: "Всё · юнит-экономика", m: "CAC : LTV", good: "1 : 3+", body: "Customer Acquisition Cost vs Lifetime Value. LTV должна быть минимум втрое больше CAC, иначе бизнеса нет." },
+const cards = [
+  {
+    type: "B2C",
+    sub: "интернет-магазины, приложения для людей",
+    price: "$30 – 100",
+    avg: "в среднем ~$70",
+    why: "Решение принимают за минуты, один человек, дешёвый охват через ленту. Поэтому привести платящего дёшево.",
+  },
+  {
+    type: "B2B",
+    sub: "продажа бизнесу, SaaS",
+    price: "$400 – 1500+",
+    avg: "бывает и $5000",
+    why: "Длинный цикл, решают несколько человек, дороже каждый шаг. Зато один клиент платит дольше и больше.",
+  },
 ];
 
 export default function L11Slide17Metrics() {
@@ -16,25 +24,26 @@ export default function L11Slide17Metrics() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Метрики 2026 · ориентиры
+          Сколько стоит один платящий клиент
         </p>
-        <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          6 цифр, которые надо знать <span className="text-[hsl(var(--slide-gold))]">наизусть</span>
+        <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px]">
+          B2C - десятки долларов. B2B - <span className="text-[hsl(var(--slide-gold))]">сотни</span>.
         </h2>
-        <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-          Бенчмарки 2026 для AI-стартапов и B2B SaaS. Падаешь ниже — копаешь почему.
-        </p>
-        <div className="space-y-[3px]">
-          {metrics.map((m) => (
-            <div key={m.m + m.stage} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[8px] py-[3px]">
-              <div className="flex items-baseline justify-between gap-[4px]">
-                <p className="text-[8.5px] font-bold text-[hsl(var(--slide-text))]">{m.m}</p>
-                <p className="text-[8.5px] font-bold text-[hsl(var(--slide-gold))]">{m.good}</p>
-              </div>
-              <p className="text-[6.5px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold)/0.85)]">{m.stage}</p>
-              <p className="text-[7.5px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">{m.body}</p>
+        <div className="grid grid-cols-2 gap-[8px] mb-[8px]">
+          {cards.map((c) => (
+            <div key={c.type} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[8px] px-[10px] py-[8px]">
+              <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))]">{c.type}</p>
+              <p className="text-[7px] text-[hsl(var(--slide-text-muted))] mb-[4px] leading-[1.3]">{c.sub}</p>
+              <p className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.05]">{c.price}</p>
+              <p className="text-[7.5px] text-[hsl(var(--slide-gold)/0.85)] mb-[4px]">{c.avg}</p>
+              <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4]">{c.why}</p>
             </div>
           ))}
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[7px]">
+          <p className="text-[8.5px] text-[hsl(var(--slide-text))] leading-[1.45]">
+            Честно: это средние по рынку. Твои <b>первые кампании будут дороже</b>, пока учишься. Правило одно: за всё время клиент должен принести <b className="text-[hsl(var(--slide-gold))]">минимум втрое больше</b>, чем стоил.
+          </p>
         </div>
       </div>
     );
@@ -43,29 +52,31 @@ export default function L11Slide17Metrics() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Метрики 2026 · ориентиры по стадиям воронки
+        Сколько стоит привести одного платящего клиента
       </p>
-      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.02em]">
-        6 цифр, которые надо знать <span className="text-[hsl(var(--slide-gold))]">наизусть</span>
+      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[10px] tracking-[-0.02em]">
+        B2C - десятки долларов. B2B - <span className="text-[hsl(var(--slide-gold))]">сотни</span>. Вот почему.
       </h2>
-      <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[22px] max-w-[1600px]">
-        Бенчмарки 2026 для AI-стартапов и B2B SaaS на холодную аудиторию. Падаешь сильно ниже — копаешь, почему.
+      <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[24px] max-w-[1600px]">
+        Средние по рынку 2024. Не бенчмарк, чтобы гнаться, а порядок цифр - чтобы понимать, во что ввязываешься.
       </p>
-      <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] overflow-hidden max-w-[1700px]">
-        <div className="grid grid-cols-[200px_140px_140px_1fr] gap-[16px] px-[28px] py-[12px] bg-[hsl(var(--slide-gold)/0.08)] text-[13px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-medium">
-          <span>Стадия</span>
-          <span>Метрика</span>
-          <span>Норма</span>
-          <span>Что это значит</span>
-        </div>
-        {metrics.map((m) => (
-          <div key={m.m + m.stage} className="grid grid-cols-[200px_140px_140px_1fr] gap-[16px] px-[28px] py-[12px] border-t border-[hsl(var(--slide-border)/0.2)] items-baseline">
-            <span className="text-[14px] text-[hsl(var(--slide-text-muted))] uppercase tracking-[0.1em]">{m.stage}</span>
-            <span className="text-[20px] text-[hsl(var(--slide-text))] font-bold">{m.m}</span>
-            <span className="text-[20px] text-[hsl(var(--slide-gold))] font-mono font-bold">{m.good}</span>
-            <span className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{m.body}</span>
+      <div className="grid grid-cols-2 gap-[22px] max-w-[1600px] mb-[22px]">
+        {cards.map((c) => (
+          <div key={c.type} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[16px] px-[32px] py-[24px]">
+            <div className="flex items-baseline gap-[14px] mb-[2px]">
+              <p className="font-display text-[34px] font-bold text-[hsl(var(--slide-gold))] leading-none">{c.type}</p>
+              <p className="text-[15px] text-[hsl(var(--slide-text-muted))]">{c.sub}</p>
+            </div>
+            <p className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mt-[10px]">{c.price}</p>
+            <p className="text-[16px] text-[hsl(var(--slide-gold)/0.9)] mb-[12px]">{c.avg} за одного платящего</p>
+            <p className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5]">{c.why}</p>
           </div>
         ))}
+      </div>
+      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[14px] px-[32px] py-[18px] max-w-[1600px]">
+        <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.5]">
+          Честно: это средние у зрелых компаний. Твои <b>первые кампании будут дороже</b> - пока учишься. Правило одно, простое: за всё время клиент должен принести <b className="text-[hsl(var(--slide-gold))]">минимум втрое больше, чем стоил</b>. Иначе бизнеса нет.
+        </p>
       </div>
     </div>
   );

@@ -15,13 +15,19 @@ import L11Slide07PositioningExamples from "./L11Slide07PositioningExamples";
 import L11Slide08Workshop1 from "./L11Slide08Workshop1";
 import L11Slide09VisualStack from "./L11Slide09VisualStack";
 import L11Slide10UrlToAds from "./L11Slide10UrlToAds";
+import L11SlideMemesAds from "./L11SlideMemesAds";
 import L11Slide11OneStyleRule from "./L11Slide11OneStyleRule";
 import L11Slide13OldVsNew from "./L11Slide13OldVsNew";
 import L11Slide14AdAnatomy from "./L11Slide14AdAnatomy";
 import L11Slide16Funnel from "./L11Slide16Funnel";
 import L11Slide17Metrics from "./L11Slide17Metrics";
-import L11Slide18B2BPath from "./L11Slide18B2BPath";
-import L11Slide19B2CPath from "./L11Slide19B2CPath";
+import L11SlideStoryInPackaging from "./L11SlideStoryInPackaging";
+import L11SlideVideoProduction from "./L11SlideVideoProduction";
+import L11SlideFunnelTypes from "./L11SlideFunnelTypes";
+import L11SlideReadiness from "./L11SlideReadiness";
+import L11SlideForexFunnel from "./L11SlideForexFunnel";
+import L11SlideOffer from "./L11SlideOffer";
+import L11SlidePackagePrompt from "./L11SlidePackagePrompt";
 import L11Slide20FullStack from "./L11Slide20FullStack";
 import L11Slide22Homework from "./L11Slide22Homework";
 import L11Slide23NextWeek from "./L11Slide23NextWeek";
@@ -31,64 +37,62 @@ export const slideNames = [
   "Заглавный",
   "Главная мысль",
   "Блок 1 · Зачем упаковка",
-  "Цифры 2026 + мой счёт",
-  "Одиночки-фаундеры 2026",
-  "Framework · 3 кита",
-  "Блок 2 · Позиционирование",
-  "Формула + 3 теста",
+  "Кейсы · упаковка победила продукт",
+  "5 шагов упаковки · одна линия",
+  "Блок 2 · Сообщение",
+  "Формула позиционирования + 3 теста",
   "Шесть примеров формул",
-  "Блок 3 · Визуалы",
-  "AI-стек 2026",
-  "Canva · AI-дизайн без дизайнера",
-  "Правило одного стиля",
-  "Блок 4 · Креативы 2026",
-  "Что сломалось · 2024 vs 2026",
-  "Анатомия креатива",
-  "Блок 5 · Каналы и воронка",
-  "Воронка 101",
-  "Метрики 2026",
-  "Блок 6 · Два пути запуска",
-  "B2B путь · бренд фаундера",
-  "B2C путь · Mikey",
-  "Полный стек с ценами",
-  "Домашка к L12",
+  "История в упаковке",
+  "Блок 3 · Визуал",
+  "Один стиль на AI",
+  "AI-дизайн · Canva + Memes",
+  "Блок 4 · Креативы: видео, баннеры, реклама",
+  "Алгоритм выбирает — ты даёшь объём",
+  "Съёмка видео · фаундер + UGC",
+  "Блок 5 · Воронка → продажи",
+  "Какие воронки бывают · 6 типов",
+  "Forex Tester · воронка как одно целое",
+  "Твой оффер, а не просто продукт",
+  "Сколько стоит платящий клиент · B2B/B2C",
+  "Готов к запуску · не сжигай деньги",
+  "Промпт · упакуй мой продукт",
+  "Домашка · упаковка к запуску",
   "Саммари · 5 мыслей",
-  "Что дальше · L12 и L13",
+  "Что дальше · Урок 12",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L11Slide01Welcome />;
     case 1: return <L11Slide02MainThesis />;
-    case 2: return <L11BlockHeader blockNumber={1} title="Зачем упаковка" subtitle="после продукта, но до продаж" />;
-    case 3: return <L11Slide03Stats />;
-    case 4: return <L11Slide04SoloFounders />;
-    case 5: return <L11Slide05ThreePillars />;
-    case 6: return <L11BlockHeader blockNumber={2} title="Кит 1 · Позиционирование" subtitle="одна фраза, на которой держится всё" />;
-    case 7: return <L11Slide06PositioningFormula />;
-    case 8: return <L11Slide07PositioningExamples />;
-    case 9: return <L11BlockHeader blockNumber={3} title="Кит 2 · Визуалы" subtitle="AI-стек 2026" />;
+    case 2: return <L11BlockHeader blockNumber={1} title="Зачем упаковка" subtitle="сделать продукт таким, чтобы захотелось купить" />;
+    case 3: return <L11Slide04SoloFounders />;
+    case 4: return <L11Slide05ThreePillars />;
+    case 5: return <L11BlockHeader blockNumber={2} title="Сообщение" subtitle="позиционирование + история" />;
+    case 6: return <L11Slide06PositioningFormula />;
+    case 7: return <L11Slide07PositioningExamples />;
+    case 8: return <L11SlideStoryInPackaging />;
+    case 9: return <L11BlockHeader blockNumber={3} title="Визуал" subtitle="один стиль везде, собран на AI" />;
     case 10: return <L11Slide09VisualStack />;
     case 11: return <L11Slide10UrlToAds />;
-    case 12: return <L11Slide11OneStyleRule />;
-    case 13: return <L11BlockHeader blockNumber={4} title="Кит 3 · Креативы 2026" subtitle="алгоритм выбирает — ты даёшь объём" />;
-    case 14: return <L11Slide13OldVsNew />;
-    case 15: return <L11Slide14AdAnatomy />;
-    case 16: return <L11BlockHeader blockNumber={5} title="Каналы и воронка" subtitle="базовое понимание перед запуском" />;
-    case 17: return <L11Slide16Funnel />;
-    case 18: return <L11Slide17Metrics />;
-    case 19: return <L11BlockHeader blockNumber={6} title="Два пути запуска" subtitle="B2B и B2C — выбираешь свой" />;
-    case 20: return <L11Slide18B2BPath />;
-    case 21: return <L11Slide19B2CPath />;
-    case 22: return <L11Slide20FullStack />;
-    case 23: return <L11Slide22Homework />;
-    case 24: return <L11SlideLessonSummary />;
-    case 25: return <L11Slide23NextWeek />;
+    case 12: return <L11BlockHeader blockNumber={4} title="Креативы: видео, баннеры, реклама" subtitle="алгоритм выбирает — ты даёшь объём" />;
+    case 13: return <L11Slide13OldVsNew />;
+    case 14: return <L11SlideVideoProduction />;
+    case 15: return <L11BlockHeader blockNumber={5} title="Воронка → продажи" subtitle="собрана так, чтобы конвертило" />;
+    case 16: return <L11SlideFunnelTypes />;
+    case 17: return <L11SlideForexFunnel />;
+    case 18: return <L11SlideOffer />;
+    case 19: return <L11Slide17Metrics />;
+    case 20: return <L11SlideReadiness />;
+    case 21: return <L11SlidePackagePrompt />;
+    case 22: return <L11Slide22Homework />;
+    case 23: return <L11SlideLessonSummary />;
+    case 24: return <L11Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 25;
 
 export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

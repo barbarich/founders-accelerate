@@ -11,11 +11,10 @@ const creation = [
 ];
 
 const launch = [
-  { name: "Apollo", body: "B2B · 500 ICP-контактов", price: "$49/мес" },
-  { name: "Instantly", body: "B2B · warmup + отправка cold email", price: "$37/мес" },
-  { name: "LinkedIn Helper", body: "B2B · второй канал outreach", price: "$15/мес" },
-  { name: "Meta Ads · Advantage+", body: "B2C · холодный трафик", price: "от $20/день" },
-  { name: "TikTok Smart+", body: "B2C · если ICP молодой", price: "от $20/день" },
+  { name: "Higgsfield / Kling / Sora", body: "видео-креативы", price: "$9–29/мес" },
+  { name: "HeyGen", body: "AI-аватар, UGC-видео", price: "$24+/мес" },
+  { name: "Memes AI Studio", body: "мем-креативы из лендинга", price: "$0–20/мес" },
+  { name: "Вейтлист-форма", body: "Tally / Typeform — сбор до запуска", price: "$0" },
   { name: "Mixpanel + GA4", body: "аналитика · must-have", price: "$0" },
   { name: "Meta + TikTok + Google пиксели", body: "ставятся до первого клика", price: "$0" },
 ];
@@ -45,7 +44,7 @@ export default function L11Slide20FullStack() {
             </div>
           </div>
           <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[6px] py-[5px]">
-            <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Запуск · трафик</p>
+            <p className="text-[7.5px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.12em] mb-[3px]">Видео · воронка · трекинг</p>
             <div className="space-y-[2px]">
               {launch.map((t) => (
                 <div key={t.name}>
@@ -66,7 +65,7 @@ export default function L11Slide20FullStack() {
         Полный стек одиночки-фаундера 2026 · с ценами
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[16px] tracking-[-0.02em]">
-        Всё, чем я <span className="text-[hsl(var(--slide-gold))]">пользуюсь сегодня</span> для упаковки и запуска
+        Всё, чем я <span className="text-[hsl(var(--slide-gold))]">пользуюсь сегодня</span> для упаковки и подготовки запуска
       </h2>
       <p className="text-[18px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[20px] max-w-[1600px]">
         Полный стек за ~$300/мес. Без команды. Без агентств. Применить руками за 90 минут — реально.
@@ -87,7 +86,7 @@ export default function L11Slide20FullStack() {
           </div>
         </div>
         <div className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[28px] py-[20px]">
-          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Запуск · трафик · аналитика</p>
+          <p className="text-[14px] font-bold text-[hsl(var(--slide-gold))] uppercase tracking-[0.18em] mb-[12px]">Видео · воронка · трекинг</p>
           <div className="space-y-[8px]">
             {launch.map((t) => (
               <div key={t.name} className="flex items-baseline justify-between gap-[12px] pb-[6px] border-b border-[hsl(var(--slide-border)/0.15)]">
