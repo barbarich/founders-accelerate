@@ -7,13 +7,13 @@ export default function L9SlideClosing() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-          Готов?
+          Блок про продукт закрыт
         </p>
         <h2 className="font-display text-[32px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] tracking-[-0.02em]">
-          В Урок 10: <span className="text-[hsl(var(--slide-gold))]">Метрики и PMF</span>
+          В Урок 10: <span className="text-[hsl(var(--slide-gold))]">маркетинг</span>
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[16px]">
-          У тебя есть аудитория и контент. Теперь — измеряем что работает, готовим к платному трафику.
+          Продукт вовлекает, удерживает, возвращает - и ты это измеряешь. Дальше самое интересное: как о тебе узнают.
         </p>
         <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))]" />
       </div>
@@ -23,13 +23,14 @@ export default function L9SlideClosing() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[20px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[28px]">
-        Готов?
+        Блок про продукт закрыт
       </p>
       <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[40px] tracking-[-0.02em]">
-        В Урок 10: <span className="text-[hsl(var(--slide-gold))]">Метрики и PMF</span>
+        В Урок 10: <span className="text-[hsl(var(--slide-gold))]">маркетинг</span>
       </h2>
-      <p className="text-[28px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1500px] mb-[40px]">
-        У тебя есть аудитория и контент. Теперь — измеряем что работает, готовим к платному трафику.
+      <p className="text-[28px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1300px] mb-[40px]">
+        Продукт вовлекает, удерживает, возвращает - и ты это измеряешь.<br />
+        Дальше самое интересное: как о тебе узнают.
       </p>
       <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))]" />
     </div>

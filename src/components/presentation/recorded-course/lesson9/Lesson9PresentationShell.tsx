@@ -7,50 +7,85 @@ import ScaledSlide from "../../ScaledSlide";
 import L9Slide01Welcome from "./L9Slide01Welcome";
 import L9Slide02MainThesis from "./L9Slide02MainThesis";
 import L9BlockHeader from "./L9BlockHeader";
-import L9SlideStoryArc from "./L9SlideStoryArc";
-import L9SlideOneToFive from "./L9SlideOneToFive";
-import L9SlideAIStack from "./L9SlideAIStack";
-import L9SlideBuildingInPublic from "./L9SlideBuildingInPublic";
-import L9SlideHomework from "./L9SlideHomework";
+import L9Slide03BlindCost from "./L9Slide03BlindCost";
+import L9Slide04VanityVsReal from "./L9Slide04VanityVsReal";
+import L9Slide05NorthStarWhat from "./L9Slide05NorthStarWhat";
+import L9Slide06NorthStarExamples from "./L9Slide06NorthStarExamples";
+import L9Slide07FindYourNSM from "./L9Slide07FindYourNSM";
+import L9Slide08NSMExercise from "./L9Slide08NSMExercise";
+import L9Slide09FiveQuestions from "./L9Slide09FiveQuestions";
+import L9Slide10HowToAnalyze from "./L9Slide10HowToAnalyze";
+import L9Slide11OneTool from "./L9Slide11OneTool";
+import L9Slide12SeanEllis from "./L9Slide12SeanEllis";
+import L9Slide13Verdict from "./L9Slide13Verdict";
+import L9Slide14MayaCase from "./L9Slide14MayaCase";
+import L9Slide15AgentAnatomy from "./L9Slide15AgentAnatomy";
+import L9Slide16Colleagues from "./L9Slide16Colleagues";
+import L9Slide17AgentPrompt from "./L9Slide17AgentPrompt";
+import L9Slide18Checklist from "./L9Slide18Checklist";
 import L9SlideClosing from "./L9SlideClosing";
 import L9SlideLessonSummary from "./L9SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · контент = доверие",
-  "Блок 1: Сторителлинг",
-  "Анатомия истории · 4 элемента",
-  "Блок 2: Контент-система",
-  "1 идея → 5 форматов",
-  "AI-стек контента · 5 инструментов",
-  "Блок 3: Building in public",
-  "4 правила · делись путём, не результатом",
-  "Блок 4: Задание",
-  "Домашка · запусти контент-систему",
+  "Главная мысль · чинить то, что измеряешь",
+  "Блок 1 · Решай по данным",
+  "Цена решения вслепую · 3 решения",
+  "Метрики тщеславия против честных",
+  "Блок 2 · Одна метрика важнее всех",
+  "Что такое North Star · и почему одна",
+  "North Star известных компаний",
+  "Как найти свою · Aha × частота",
+  "Упражнение · сформулируй + 3 теста",
+  "Блок 3 · Куда смотреть и как анализировать",
+  "Пять вопросов к продукту",
+  "Как анализировать · изменение и срез",
+  "Поставь одно, не четыре",
+  "Блок 4 · Готов продукт или нет",
+  "Тест · 40% порог",
+  "Вердикт · где рвётся, то и чини",
+  "Блок 5 · Бонус: нанять специалиста",
+  "Кейс · Мая и система лояльности",
+  "Из чего собирается агент · 5 элементов",
+  "Совет оппонентов",
+  "Промпт · построй своего специалиста",
+  "Домашка · гейт блока, 7 пунктов",
   "Саммари · 5 мыслей",
-  "Закрытие",
+  "Закрытие · в маркетинг",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L9Slide01Welcome />;
     case 1: return <L9Slide02MainThesis />;
-    case 2: return <L9BlockHeader blockNumber={1} title="Сторителлинг" subtitle="как рассказывать истории, которые продают" />;
-    case 3: return <L9SlideStoryArc />;
-    case 4: return <L9BlockHeader blockNumber={2} title="Контент-система" subtitle="1 идея → 5 форматов · AI-стек" />;
-    case 5: return <L9SlideOneToFive />;
-    case 6: return <L9SlideAIStack />;
-    case 7: return <L9BlockHeader blockNumber={3} title="Building in public" subtitle="публикация пути как маркетинг" />;
-    case 8: return <L9SlideBuildingInPublic />;
-    case 9: return <L9BlockHeader blockNumber={4} title="Задание на эту неделю" />;
-    case 10: return <L9SlideHomework />;
-    case 11: return <L9SlideLessonSummary />;
-    case 12: return <L9SlideClosing />;
+    case 2: return <L9BlockHeader blockNumber={1} title="Решай по данным" subtitle="а не по ощущениям" />;
+    case 3: return <L9Slide03BlindCost />;
+    case 4: return <L9Slide04VanityVsReal />;
+    case 5: return <L9BlockHeader blockNumber={2} title="Одна метрика важнее всех" subtitle="North Star · полярная звезда продукта" />;
+    case 6: return <L9Slide05NorthStarWhat />;
+    case 7: return <L9Slide06NorthStarExamples />;
+    case 8: return <L9Slide07FindYourNSM />;
+    case 9: return <L9Slide08NSMExercise />;
+    case 10: return <L9BlockHeader blockNumber={3} title="Куда смотреть и как анализировать" subtitle="пять вопросов · один инструмент" />;
+    case 11: return <L9Slide09FiveQuestions />;
+    case 12: return <L9Slide10HowToAnalyze />;
+    case 13: return <L9Slide11OneTool />;
+    case 14: return <L9BlockHeader blockNumber={4} title="Готов продукт или нет" subtitle="тест и вердикт" />;
+    case 15: return <L9Slide12SeanEllis />;
+    case 16: return <L9Slide13Verdict />;
+    case 17: return <L9BlockHeader blockNumber={5} title="Бонус" subtitle="как нанять специалиста, которого у тебя нет" />;
+    case 18: return <L9Slide14MayaCase />;
+    case 19: return <L9Slide15AgentAnatomy />;
+    case 20: return <L9Slide16Colleagues />;
+    case 21: return <L9Slide17AgentPrompt />;
+    case 22: return <L9Slide18Checklist />;
+    case 23: return <L9SlideLessonSummary />;
+    case 24: return <L9SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 13;
+export const TOTAL = 25;
 
 export default function Lesson9PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -114,7 +149,7 @@ export default function Lesson9PresentationShell({ backTo = "/admin/meetings" }:
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 9 — Сторителлинг и контент</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 9 · Метрики: куда смотреть и как решать</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

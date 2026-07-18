@@ -20,7 +20,7 @@ export default function L9Slide01Welcome() {
             Урок 9
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Сторителлинг и контент для первой аудитории. К концу: контент-система запущена.
+            Метрики: куда смотреть и как решать. К концу: North Star сформулирована, блок про продукт закрыт.
           </p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function L9Slide01Welcome() {
           Урок 9
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Сторителлинг и контент для первой аудитории.<br />
-          К концу урока: контент-система запущена.
+          Метрики: куда смотреть и как решать.<br />
+          К концу урока: North Star сформулирована, блок про продукт закрыт.
         </p>
       </div>
     </div>
