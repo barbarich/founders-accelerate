@@ -10,6 +10,9 @@ import L10BlockHeader from "./L10BlockHeader";
 import L10SlideWhyFounder from "./L10SlideWhyFounder";
 import L10SlideWhatDoesntWork from "./L10SlideWhatDoesntWork";
 import L10SlideStoryRecap from "./L10SlideStoryRecap";
+import L10SlideCases from "./L10SlideCases";
+import L10SlideMikeyCase from "./L10SlideMikeyCase";
+import L10SlidePractices from "./L10SlidePractices";
 import L10SlideFounderStory from "./L10SlideFounderStory";
 import L10SlideTwoPaths from "./L10SlideTwoPaths";
 import L10SlideB2BTruth from "./L10SlideB2BTruth";
@@ -28,6 +31,9 @@ export const slideNames = [
   "Что не работает на старте",
   "Блок 2 · История, которую хочется купить",
   "Анатомия истории · напоминание из урока 5",
+  "Кейсы · истории, которые построили компании",
+  "Мой кейс · как история запустила Mikey",
+  "Топ-практики · как собрать продающую историю",
   "Твоя история основателя · почему ты",
   "Две дороги · B2B и B2C",
   "Блок 3 · B2B: продаёшь лично",
@@ -51,23 +57,26 @@ export function getSlideContent(index: number) {
     case 4: return <L10SlideWhatDoesntWork />;
     case 5: return <L10BlockHeader blockNumber={2} title="История, которую хочется купить" subtitle="люди покупают «почему ты»" />;
     case 6: return <L10SlideStoryRecap />;
-    case 7: return <L10SlideFounderStory />;
-    case 8: return <L10SlideTwoPaths />;
-    case 9: return <L10BlockHeader blockNumber={3} title="B2B: продаёшь лично" subtitle="руками, пока нет 10 клиентов" />;
-    case 10: return <L10SlideB2BTruth />;
-    case 11: return <L10SlideB2BHow />;
-    case 12: return <L10BlockHeader blockNumber={4} title="B2C: история + малый бюджет" subtitle="тест по $30-50 в день" />;
-    case 13: return <L10SlideB2CTruth />;
-    case 14: return <L10SlideB2CTest />;
-    case 15: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 16: return <L10SlideHomework />;
-    case 17: return <L10SlideLessonSummary />;
-    case 18: return <L10SlideClosing />;
+    case 7: return <L10SlideCases />;
+    case 8: return <L10SlideMikeyCase />;
+    case 9: return <L10SlidePractices />;
+    case 10: return <L10SlideFounderStory />;
+    case 11: return <L10SlideTwoPaths />;
+    case 12: return <L10BlockHeader blockNumber={3} title="B2B: продаёшь лично" subtitle="руками, пока нет 10 клиентов" />;
+    case 13: return <L10SlideB2BTruth />;
+    case 14: return <L10SlideB2BHow />;
+    case 15: return <L10BlockHeader blockNumber={4} title="B2C: история + малый бюджет" subtitle="тест по $30-50 в день" />;
+    case 16: return <L10SlideB2CTruth />;
+    case 17: return <L10SlideB2CTest />;
+    case 18: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 19: return <L10SlideHomework />;
+    case 20: return <L10SlideLessonSummary />;
+    case 21: return <L10SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 19;
+export const TOTAL = 22;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
