@@ -10,20 +10,20 @@ const examples = [
     why: "История от первого лица + честный юмор = доверие с первой секунды.",
   },
   {
-    title: "Squatty Potty",
-    sub: "«This Unicorn Changed the Way I Poop» · 2015",
-    what: "Неловкую тему превратили в сказку с единорогом. Смотрится как история, а не как реклама.",
-    reach: "100М+ просмотров · продажи +600%",
-    url: "youtube.com/watch?v=YbYWhdLO43Q",
-    why: "Стыдная проблема, поданная через персонажа, - её не стыдно смотреть и пересылать.",
+    title: "CeraVe",
+    sub: "«Michael CeraVe» · Super Bowl 2024",
+    what: "Актёр Майкл Сера на голубом глазу доказывает, что это ОН придумал CeraVe. Пародия на историю основателя, сыгранная всерьёз.",
+    reach: "Super Bowl 2024 · «лучший ролик за годы», №1 по эффективности в TikTok",
+    url: "youtube.com/watch?v=EVePyMTFciI",
+    why: "Одна абсурдная идея, доведённая до конца на 100%, + созвучие имени и бренда - невозможно забыть.",
   },
   {
-    title: "Dove",
-    sub: "«Real Beauty Sketches» · 2013",
-    what: "Ни одной фичи продукта. Только эмоция: женщины видят себя хуже, чем есть на самом деле.",
-    reach: "163М просмотров · самый просматриваемый ролик своего времени",
-    url: "youtube.com/watch?v=CSWanX7UTVk",
-    why: "История про боль зрителя, а не про продукт. Клиент - герой.",
+    title: "Nike",
+    sub: "«Winning Isn't For Everyone» · 2024",
+    what: "Уиллем Дефо за кадром говорит неудобную правду: чемпионы одержимы, эгоистичны, никогда не довольны. Провокация вместо пафоса.",
+    reach: "Кампания Олимпиады-2024 · разошлась по всем спортивным СМИ",
+    url: "youtube.com/watch?v=pwLergHG81c",
+    why: "Сказали то, что вслух говорить не принято. Честная провокация цепляет сильнее вдохновляющих клише.",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function L10SlideStoryExamples() {
           Хороший сторителлинг · посмотри сам
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[9px]">
-          Три истории с <span className="text-[hsl(var(--slide-gold))]">десятками миллионов</span> просмотров
+          Открой каждую и разбери, <span className="text-[hsl(var(--slide-gold))]">как сделана история</span>
         </h2>
         <div className="space-y-[6px]">
           {examples.map((e) => (
@@ -61,7 +61,7 @@ export default function L10SlideStoryExamples() {
         Хороший сторителлинг · посмотри сам
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[24px] tracking-[-0.01em]">
-        Три истории с <span className="text-[hsl(var(--slide-gold))]">десятками миллионов</span> просмотров
+        Открой каждую и разбери, <span className="text-[hsl(var(--slide-gold))]">как сделана история</span>
       </h2>
       <div className="grid grid-cols-3 gap-[20px] max-w-[1800px]">
         {examples.map((e) => (
