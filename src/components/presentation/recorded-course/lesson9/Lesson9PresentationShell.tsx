@@ -16,7 +16,7 @@ import L9Slide08NSMExercise from "./L9Slide08NSMExercise";
 import L9Slide09FiveQuestions from "./L9Slide09FiveQuestions";
 import L9Slide10HowToAnalyze from "./L9Slide10HowToAnalyze";
 import L9Slide11OneTool from "./L9Slide11OneTool";
-import L9Slide12SeanEllis from "./L9Slide12SeanEllis";
+import L9Slide12ValueTest from "./L9Slide12ValueTest";
 import L9Slide13Verdict from "./L9Slide13Verdict";
 import L9Slide14MayaCase from "./L9Slide14MayaCase";
 import L9Slide15AgentAnatomy from "./L9Slide15AgentAnatomy";
@@ -42,7 +42,7 @@ export const slideNames = [
   "Как анализировать · изменение и срез",
   "Поставь одно, не четыре",
   "Блок 4 · Готов продукт или нет",
-  "Тест · 40% порог",
+  "Тест · порекомендуешь? 1-10",
   "Вердикт · где рвётся, то и чини",
   "Блок 5 · Бонус: нанять специалиста",
   "Кейс · Мая и система лояльности",
@@ -71,7 +71,7 @@ export function getSlideContent(index: number) {
     case 12: return <L9Slide10HowToAnalyze />;
     case 13: return <L9Slide11OneTool />;
     case 14: return <L9BlockHeader blockNumber={4} title="Готов продукт или нет" subtitle="тест и вердикт" />;
-    case 15: return <L9Slide12SeanEllis />;
+    case 15: return <L9Slide12ValueTest />;
     case 16: return <L9Slide13Verdict />;
     case 17: return <L9BlockHeader blockNumber={5} title="Бонус" subtitle="как нанять специалиста, которого у тебя нет" />;
     case 18: return <L9Slide14MayaCase />;
