@@ -10,7 +10,7 @@ import L10BlockHeader from "./L10BlockHeader";
 import L10SlideWhyFounder from "./L10SlideWhyFounder";
 import L10SlideWhatDoesntWork from "./L10SlideWhatDoesntWork";
 import L10SlideStoryRecap from "./L10SlideStoryRecap";
-import L10SlideCases from "./L10SlideCases";
+import L10SlideStoryExamples from "./L10SlideStoryExamples";
 import L10SlideMikeyCase from "./L10SlideMikeyCase";
 import L10SlidePractices from "./L10SlidePractices";
 import L10SlideFounderStory from "./L10SlideFounderStory";
@@ -31,7 +31,7 @@ export const slideNames = [
   "Что не работает на старте",
   "Блок 2 · История, которую хочется купить",
   "Анатомия истории · напоминание из урока 5",
-  "Кейсы · истории, которые построили компании",
+  "Примеры · истории с миллионными охватами",
   "Мой кейс · как история запустила Mikey",
   "Топ-практики · как собрать продающую историю",
   "Твоя история основателя · почему ты",
@@ -57,7 +57,7 @@ export function getSlideContent(index: number) {
     case 4: return <L10SlideWhatDoesntWork />;
     case 5: return <L10BlockHeader blockNumber={2} title="История, которую хочется купить" subtitle="люди покупают «почему ты»" />;
     case 6: return <L10SlideStoryRecap />;
-    case 7: return <L10SlideCases />;
+    case 7: return <L10SlideStoryExamples />;
     case 8: return <L10SlideMikeyCase />;
     case 9: return <L10SlidePractices />;
     case 10: return <L10SlideFounderStory />;

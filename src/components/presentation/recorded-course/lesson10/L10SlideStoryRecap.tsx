@@ -22,13 +22,18 @@ export default function L10SlideStoryRecap() {
         <p className="text-[10px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5] mb-[10px]">
           Здесь - коротко, чтобы применить к продаже себя. Нужны детали - вернись к уроку 5.
         </p>
-        <div className="grid grid-cols-2 gap-[7px]">
+        <div className="grid grid-cols-2 gap-[7px] mb-[9px]">
           {parts.map((p) => (
             <div key={p.el} className="border border-[hsl(var(--slide-gold)/0.2)] rounded-[6px] px-[10px] py-[7px] bg-[hsl(var(--slide-gold)/0.04)]">
               <p className="text-[10px] font-bold text-[hsl(var(--slide-gold))] leading-[1.25] mb-[2px]">{p.el}</p>
               <p className="text-[9px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{p.body}</p>
             </div>
           ))}
+        </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[11px] py-[8px]">
+          <p className="text-[9.5px] text-[hsl(var(--slide-text))] font-semibold leading-[1.45]">
+            Одно исключение - <span className="text-[hsl(var(--slide-gold))]">история основателя</span>: там герой ты. И это не спор с правилом - ты сам был своим клиентом (дальше в уроке).
+          </p>
         </div>
       </div>
     );
@@ -45,13 +50,18 @@ export default function L10SlideStoryRecap() {
       <p className="text-[20px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5] max-w-[1800px] mb-[26px]">
         Здесь - коротко, чтобы применить к продаже себя. Нужны детали - вернись к уроку 5.
       </p>
-      <div className="grid grid-cols-2 gap-[20px] max-w-[1800px]">
+      <div className="grid grid-cols-2 gap-[20px] max-w-[1800px] mb-[22px]">
         {parts.map((p) => (
           <div key={p.el} className="border border-[hsl(var(--slide-gold)/0.2)] rounded-[12px] px-[28px] py-[18px] bg-[hsl(var(--slide-gold)/0.04)]">
             <p className="text-[24px] font-bold text-[hsl(var(--slide-gold))] leading-[1.2] mb-[6px]">{p.el}</p>
             <p className="text-[18px] text-[hsl(var(--slide-text)/0.8)] leading-[1.5]">{p.body}</p>
           </div>
         ))}
+      </div>
+      <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[16px] max-w-[1800px]">
+        <p className="text-[21px] text-[hsl(var(--slide-text))] font-semibold leading-[1.45]">
+          Одно исключение - <span className="text-[hsl(var(--slide-gold))]">история основателя</span>: там герой ты. И это не спор с правилом - ты сам был своим клиентом (дальше в уроке).
+        </p>
       </div>
     </div>
   );
