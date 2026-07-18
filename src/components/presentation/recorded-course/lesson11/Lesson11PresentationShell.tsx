@@ -8,6 +8,7 @@ import L11Slide01Welcome from "./L11Slide01Welcome";
 import L11Slide02MainThesis from "./L11Slide02MainThesis";
 import L11BlockHeader from "./L11BlockHeader";
 import L11SlideAudience from "./L11SlideAudience";
+import L11SlideCustDev from "./L11SlideCustDev";
 import L11SlidePeraOne from "./L11SlidePeraOne";
 import L11SlideWhereMethod from "./L11SlideWhereMethod";
 import L11SlideWhereCases from "./L11SlideWhereCases";
@@ -26,9 +27,10 @@ export const slideNames = [
   "Главная мысль",
   "Блок 1 · Кто твоя аудитория",
   "Портрет сегмента · 5 полей",
+  "Понять, кто они · поговори с людьми",
   "Кейс PERA · покупают подарок ребёнку",
   "Блок 2 · Где они живут",
-  "Как найти их место · 4 способа",
+  "Где искать · 6 мест + конкретный ход",
   "Где сидят мои две аудитории",
   "Блок 3 · Как найти свой путь",
   "Кейс PERA · как я нашёл свой путь",
@@ -50,27 +52,28 @@ export function getSlideContent(index: number) {
     case 1: return <L11Slide02MainThesis />;
     case 2: return <L11BlockHeader blockNumber={1} title="Кто твоя аудитория" subtitle="один сегмент, а не «все»" />;
     case 3: return <L11SlideAudience />;
-    case 4: return <L11SlidePeraOne />;
-    case 5: return <L11BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
-    case 6: return <L11SlideWhereMethod />;
-    case 7: return <L11SlideWhereCases />;
-    case 8: return <L11BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="тестируй каналы руками, потом масштабируй" />;
-    case 9: return <L11SlidePeraPath />;
-    case 10: return <L11SlideHowEnter />;
-    case 11: return <L11SlideMetaMinder />;
-    case 12: return <L11BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
-    case 13: return <L11SlideMarketingPlan />;
-    case 14: return <L11SlideGtm2026 />;
-    case 15: return <L11BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
-    case 16: return <L11SlideGtmPrompt />;
-    case 17: return <L11Slide22Homework />;
-    case 18: return <L11SlideLessonSummary />;
-    case 19: return <L11Slide23NextWeek />;
+    case 4: return <L11SlideCustDev />;
+    case 5: return <L11SlidePeraOne />;
+    case 6: return <L11BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
+    case 7: return <L11SlideWhereMethod />;
+    case 8: return <L11SlideWhereCases />;
+    case 9: return <L11BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="тестируй каналы руками, потом масштабируй" />;
+    case 10: return <L11SlidePeraPath />;
+    case 11: return <L11SlideHowEnter />;
+    case 12: return <L11SlideMetaMinder />;
+    case 13: return <L11BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
+    case 14: return <L11SlideMarketingPlan />;
+    case 15: return <L11SlideGtm2026 />;
+    case 16: return <L11BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
+    case 17: return <L11SlideGtmPrompt />;
+    case 18: return <L11Slide22Homework />;
+    case 19: return <L11SlideLessonSummary />;
+    case 20: return <L11Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 20;
+export const TOTAL = 21;
 
 export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
