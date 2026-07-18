@@ -13,7 +13,7 @@ import L11SlideWhereMethod from "./L11SlideWhereMethod";
 import L11SlideWhereCases from "./L11SlideWhereCases";
 import L11SlideHowEnter from "./L11SlideHowEnter";
 import L11SlideMetaMinder from "./L11SlideMetaMinder";
-import L11SlidePeraTwo from "./L11SlidePeraTwo";
+import L11SlidePeraPath from "./L11SlidePeraPath";
 import L11SlideMarketingPlan from "./L11SlideMarketingPlan";
 import L11SlideGtm2026 from "./L11SlideGtm2026";
 import L11SlideGtmPrompt from "./L11SlideGtmPrompt";
@@ -30,10 +30,10 @@ export const slideNames = [
   "Блок 2 · Где они живут",
   "Как найти их место · 4 способа",
   "Где сидят мои две аудитории",
-  "Блок 3 · Как войти — руками",
+  "Блок 3 · Как найти свой путь",
+  "Кейс PERA · как я нашёл свой путь",
   "Первое касание без бюджета · 4 канала",
   "Кейс MetaMinder · B2B руками",
-  "Кейс PERA · масштаб по порядку",
   "Блок 4 · План и стратегия",
   "Маркетинг-план с активностями",
   "Что работает в GTM · середина 2026",
@@ -54,10 +54,10 @@ export function getSlideContent(index: number) {
     case 5: return <L11BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
     case 6: return <L11SlideWhereMethod />;
     case 7: return <L11SlideWhereCases />;
-    case 8: return <L11BlockHeader blockNumber={3} title="Как войти — руками, без бюджета" subtitle="первое касание не рекламой" />;
-    case 9: return <L11SlideHowEnter />;
-    case 10: return <L11SlideMetaMinder />;
-    case 11: return <L11SlidePeraTwo />;
+    case 8: return <L11BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="тестируй каналы руками, потом масштабируй" />;
+    case 9: return <L11SlidePeraPath />;
+    case 10: return <L11SlideHowEnter />;
+    case 11: return <L11SlideMetaMinder />;
     case 12: return <L11BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
     case 13: return <L11SlideMarketingPlan />;
     case 14: return <L11SlideGtm2026 />;
