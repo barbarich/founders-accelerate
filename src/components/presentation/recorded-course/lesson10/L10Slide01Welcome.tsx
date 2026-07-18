@@ -17,10 +17,10 @@ export default function L10Slide01Welcome() {
             The Founders<br />Circle
           </h1>
           <p className="text-[18px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 10
+            Урок 10 · старт блока маркетинг
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Метрики, воронка, PMF. К концу урока: знаешь что чинить — продукт или маркетинг.
+            Сторителлинг: первые продажи через себя. К концу: история, которую хочется купить, и путь B2B или B2C.
           </p>
         </div>
       </div>
@@ -39,11 +39,11 @@ export default function L10Slide01Welcome() {
           The Founders<br />Circle
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 10
+          Урок 10 · старт блока маркетинг
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Метрики, воронка, PMF.<br />
-          К концу урока: знаешь что чинить — продукт или маркетинг.
+          Сторителлинг: первые продажи через себя.<br />
+          К концу урока: история, которую хочется купить, и твой путь - B2B или B2C.
         </p>
       </div>
     </div>

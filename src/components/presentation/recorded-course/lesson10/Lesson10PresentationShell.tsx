@@ -7,61 +7,67 @@ import ScaledSlide from "../../ScaledSlide";
 import L10Slide01Welcome from "./L10Slide01Welcome";
 import L10Slide02MainThesis from "./L10Slide02MainThesis";
 import L10BlockHeader from "./L10BlockHeader";
-import L10SlideStack from "./L10SlideStack";
-import L10SlideFunnel from "./L10SlideFunnel";
-import L10SlidePMFNineAxis from "./L10SlidePMFNineAxis";
-import L10SlideSeanEllis from "./L10SlideSeanEllis";
-import L10SlideVerdict from "./L10SlideVerdict";
-import L10SlideWhatToFix from "./L10SlideWhatToFix";
-import L10SlideActionNow from "./L10SlideActionNow";
+import L10SlideWhyFounder from "./L10SlideWhyFounder";
+import L10SlideWhatDoesntWork from "./L10SlideWhatDoesntWork";
+import L10SlideStoryRecap from "./L10SlideStoryRecap";
+import L10SlideFounderStory from "./L10SlideFounderStory";
+import L10SlideTwoPaths from "./L10SlideTwoPaths";
+import L10SlideB2BTruth from "./L10SlideB2BTruth";
+import L10SlideB2BHow from "./L10SlideB2BHow";
+import L10SlideB2CTruth from "./L10SlideB2CTruth";
+import L10SlideB2CTest from "./L10SlideB2CTest";
 import L10SlideHomework from "./L10SlideHomework";
 import L10SlideClosing from "./L10SlideClosing";
 import L10SlideLessonSummary from "./L10SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Блок 1: Стек измерений",
-  "4 инструмента: GA4 / Mixpanel / Clarity / Sentry",
-  "Воронка AARRR · 5 этапов",
-  "Блок 2: PMF score",
-  "9 осей PMF",
-  "Sean Ellis test · 40% порог",
-  "GO / VALIDATE / PIVOT",
-  "Блок 3: Что чинить",
-  "Матрица: продукт или маркетинг",
-  "Блок 4: Пошаговый план",
-  "Подключи стек + запусти Sean Ellis · 6 шагов",
-  "Блок 5: Задание",
-  "Домашка",
+  "Главная мысль · продаёт фаундер",
+  "Блок 1 · Первые продажи делает фаундер",
+  "Почему именно ты · 3 причины",
+  "Что не работает на старте",
+  "Блок 2 · История, которую хочется купить",
+  "Анатомия истории · напоминание из урока 5",
+  "Твоя история основателя · почему ты",
+  "Две дороги · B2B и B2C",
+  "Блок 3 · B2B: продаёшь лично",
+  "B2B · пока нет 10 клиентов",
+  "B2B · как фаундер продаёт руками",
+  "Блок 4 · B2C: история + малый бюджет",
+  "B2C · первая активность и проверка",
+  "B2C · тест по $30-50 в день",
+  "Блок 5 · Задание",
+  "Домашка · B2B или B2C",
   "Саммари · 5 мыслей",
-  "Закрытие",
+  "Закрытие · в маркетинг",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L10Slide01Welcome />;
     case 1: return <L10Slide02MainThesis />;
-    case 2: return <L10BlockHeader blockNumber={1} title="Стек измерений" subtitle="4 инструмента бесплатно на старте" />;
-    case 3: return <L10SlideStack />;
-    case 4: return <L10SlideFunnel />;
-    case 5: return <L10BlockHeader blockNumber={2} title="PMF score" subtitle="9 осей + Sean Ellis · твой verdict" />;
-    case 6: return <L10SlidePMFNineAxis />;
-    case 7: return <L10SlideSeanEllis />;
-    case 8: return <L10SlideVerdict />;
-    case 9: return <L10BlockHeader blockNumber={3} title="Что чинить — продукт или маркетинг" subtitle="не угадывай · читай по цифрам" />;
-    case 10: return <L10SlideWhatToFix />;
-    case 11: return <L10BlockHeader blockNumber={4} title="Пошаговый план" subtitle="подключи стек и запусти первый Sean Ellis опрос" />;
-    case 12: return <L10SlideActionNow />;
-    case 13: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 14: return <L10SlideHomework />;
-    case 15: return <L10SlideLessonSummary />;
-    case 16: return <L10SlideClosing />;
+    case 2: return <L10BlockHeader blockNumber={1} title="Первые продажи делает фаундер" subtitle="лично, а не отделом продаж" />;
+    case 3: return <L10SlideWhyFounder />;
+    case 4: return <L10SlideWhatDoesntWork />;
+    case 5: return <L10BlockHeader blockNumber={2} title="История, которую хочется купить" subtitle="люди покупают «почему ты»" />;
+    case 6: return <L10SlideStoryRecap />;
+    case 7: return <L10SlideFounderStory />;
+    case 8: return <L10SlideTwoPaths />;
+    case 9: return <L10BlockHeader blockNumber={3} title="B2B: продаёшь лично" subtitle="руками, пока нет 10 клиентов" />;
+    case 10: return <L10SlideB2BTruth />;
+    case 11: return <L10SlideB2BHow />;
+    case 12: return <L10BlockHeader blockNumber={4} title="B2C: история + малый бюджет" subtitle="тест по $30-50 в день" />;
+    case 13: return <L10SlideB2CTruth />;
+    case 14: return <L10SlideB2CTest />;
+    case 15: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 16: return <L10SlideHomework />;
+    case 17: return <L10SlideLessonSummary />;
+    case 18: return <L10SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 17;
+export const TOTAL = 19;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -125,7 +131,7 @@ export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 10 — Метрики, воронка, PMF</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 10 · Сторителлинг: первые продажи через себя</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>
