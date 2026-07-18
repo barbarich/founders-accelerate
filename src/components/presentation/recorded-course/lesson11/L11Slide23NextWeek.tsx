@@ -1,58 +1,38 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const topics = [
-  "Meta Business Manager: кампания за 20 минут",
-  "Advantage+ — отдаёшь таргет алгоритму, заливаешь пачку креативов",
-  "Бюджеты и learning phase: сколько и как долго",
-  "Что читать в метриках и когда выключать креатив",
-];
-
 export default function L11Slide23NextWeek() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">Дальше · Урок 12</p>
-        <h2 className="font-display text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
-          Запуск: <span className="text-[hsl(var(--slide-gold))]">платный трафик</span>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
+          Дальше
+        </p>
+        <h2 className="font-display text-[32px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[20px] tracking-[-0.02em]">
+          Упаковка и запуск <span className="text-[hsl(var(--slide-gold))]">под твою аудиторию</span>
         </h2>
-        <p className="text-[11px] text-[hsl(var(--slide-text-muted))] leading-[1.5] mb-[10px]">
-          Упаковка и воронка готовы. Теперь заводим Meta и запускаем рекламу на холодную аудиторию.
+        <p className="text-[12px] text-[hsl(var(--slide-text-muted))] leading-[1.6] mb-[16px]">
+          Ты знаешь, кто твои люди и где они. Дальше упаковываем продукт под них: позиционирование, визуал, креативы, воронка - и запуск.
         </p>
-        <div className="space-y-[5px] mb-[8px]">
-          {topics.map((t, i) => (
-            <p key={i} className="text-[9px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
-              <span className="text-[hsl(var(--slide-gold))] mr-[6px]">→</span>{t}
-            </p>
-          ))}
-        </div>
-        <p className="text-[10px] text-[hsl(var(--slide-gold))] font-semibold leading-[1.4]">
-          Приносишь готовую упаковку - в L12 запускаем твою реальную кампанию.
-        </p>
+        <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))]" />
       </div>
     );
   }
 
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">Дальше · Урок 12</p>
-      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[20px] tracking-[-0.02em]">
-        Запуск: <span className="text-[hsl(var(--slide-gold))]">платный трафик</span>
+      <p className="text-[20px] uppercase tracking-[0.25em] text-[hsl(var(--slide-gold))] font-medium mb-[28px]">
+        Дальше
+      </p>
+      <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[40px] tracking-[-0.02em]">
+        Упаковка и запуск <span className="text-[hsl(var(--slide-gold))]">под твою аудиторию</span>
       </h2>
-      <p className="text-[24px] text-[hsl(var(--slide-text-muted))] leading-[1.45] mb-[28px] max-w-[1500px]">
-        Упаковка и воронка готовы. Теперь заводим Meta и запускаем рекламу на холодную аудиторию - без слитого бюджета.
+      <p className="text-[28px] text-[hsl(var(--slide-text-muted))] leading-[1.5] max-w-[1400px] mb-[40px]">
+        Ты знаешь, кто твои люди и где они.<br />
+        Дальше упаковываем продукт под них: позиционирование, визуал, креативы, воронка - и запуск.
       </p>
-      <div className="space-y-[10px] max-w-[1600px] mb-[28px]">
-        {topics.map((t, i) => (
-          <p key={i} className="text-[20px] text-[hsl(var(--slide-text-muted))] leading-[1.4]">
-            <span className="text-[hsl(var(--slide-gold))] mr-[12px]">→</span>{t}
-          </p>
-        ))}
-      </div>
-      <p className="text-[22px] text-[hsl(var(--slide-gold))] font-semibold max-w-[1600px] leading-[1.4]">
-        Приносишь готовую упаковку - в уроке 12 запускаем твою реальную кампанию вживую.
-      </p>
+      <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))]" />
     </div>
   );
 }

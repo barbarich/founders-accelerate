@@ -1,11 +1,10 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const tasks = [
-  { n: "1", t: "Позиционирование + история", d: "Перепиши H1 лендинга по формуле «кому · что · чем отличаешься». Вшей свою историю из урока 10 в H1 и первый экран." },
-  { n: "2", t: "Один визуальный стиль", d: "Приведи лендинг, соцсети и будущие креативы к одному стилю: шрифт, палитра, тон. Собирается на AI за вечер." },
-  { n: "3", t: "10–20 креативов", d: "Видео (Higgsfield / HeyGen) + баннеры (Canva / Memes) + тексты. Не один «идеальный», а пачка вариантов." },
-  { n: "4", t: "Собери воронку", d: "Выбери тип воронки под свой продукт, собери путь клик → оплата целиком и пройди его сам как клиент." },
-  { n: "5", t: "Пиксели и аналитика", d: "Meta / TikTok / Google пиксели + GA4 на лендинг. До первого клика, иначе первый трафик уйдёт вслепую." },
+  { n: "1", t: "Опиши один сегмент", d: "Кто конкретно, повод покупки, боль их словами. Один человек, не «рынок»." },
+  { n: "2", t: "Найди, где они сидят", d: "3-5 конкретных мест: сообщества, площадки, события, где сегмент уже собран." },
+  { n: "3", t: "Сделай 3 бесплатных касания", d: "На этой неделе: зайти в сообщество, написать 5 знакомых по ICP, договориться о выступлении или демо." },
+  { n: "4", t: "Собери маркетинг-план", d: "Таблица: 2 канала × активность × частота × метрика на 30 дней. Можно через промпт с прошлого слайда." },
 ];
 
 export default function L11Slide22Homework() {
@@ -15,10 +14,10 @@ export default function L11Slide22Homework() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px] py-[14px] overflow-y-auto">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Домашка · упаковка к запуску
+          Домашка · твой go-to-market
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[8px]">
-          Собрать упаковку и воронку так, чтобы можно было запускать
+          Определи аудиторию, место и план - за неделю
         </h2>
         <div className="space-y-[4px] mb-[6px]">
           {tasks.map((t) => (
@@ -33,8 +32,7 @@ export default function L11Slide22Homework() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[6px]">
           <p className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-            к L12 упаковка и воронка готовы, пиксели стоят - можно запускать рекламу, не сжигая деньги.
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план - с этим идёшь в упаковку.
           </p>
         </div>
       </div>
@@ -42,26 +40,25 @@ export default function L11Slide22Homework() {
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px] py-[34px]">
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px] py-[36px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Домашка · упаковка к запуску
+        Домашка · твой go-to-market
       </p>
-      <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[22px] tracking-[-0.02em] max-w-[1650px]">
-        Собрать упаковку и воронку так, чтобы можно было запускать
+      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[24px] tracking-[-0.02em]">
+        Определи аудиторию, место и план - за одну неделю
       </h2>
-      <div className="space-y-[10px] max-w-[1700px] mb-[20px]">
+      <div className="space-y-[12px] max-w-[1700px] mb-[22px]">
         {tasks.map((t) => (
-          <div key={t.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[26px] py-[12px] flex items-center gap-[22px]">
+          <div key={t.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[28px] py-[14px] flex items-center gap-[22px]">
             <span className="font-display text-[30px] font-bold text-[hsl(var(--slide-gold))] leading-none w-[36px] shrink-0">{t.n}</span>
-            <span className="text-[21px] font-bold text-[hsl(var(--slide-text))] w-[340px] shrink-0">{t.t}</span>
+            <span className="text-[21px] font-bold text-[hsl(var(--slide-text))] w-[360px] shrink-0">{t.t}</span>
             <span className="text-[17px] text-[hsl(var(--slide-text-muted))] leading-[1.4] flex-1">{t.d}</span>
           </div>
         ))}
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[16px] max-w-[1700px]">
         <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">Цель: </span>
-          к уроку 12 упаковка и воронка готовы, пиксели стоят - можно запускать рекламу, не сжигая деньги на сыром.
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план на 30 дней - именно с этим ты идёшь в упаковку и запуск.
         </p>
       </div>
     </div>
