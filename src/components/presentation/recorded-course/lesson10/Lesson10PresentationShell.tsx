@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
 import L10Slide01Welcome from "./L10Slide01Welcome";
+import L10SlideWhatIsMarketing from "./L10SlideWhatIsMarketing";
+import L10SlideGlossary from "./L10SlideGlossary";
+import L10SlideNoBudget from "./L10SlideNoBudget";
 import L10Slide02MainThesis from "./L10Slide02MainThesis";
 import L10BlockHeader from "./L10BlockHeader";
 import L10SlideAudience from "./L10SlideAudience";
@@ -24,6 +27,9 @@ import L10Slide23NextWeek from "./L10Slide23NextWeek";
 
 export const slideNames = [
   "Заглавный",
+  "Что такое маркетинг · воронка",
+  "Словарь · без жаргона",
+  "Не нужен бюджет / агентство / диплом",
   "Главная мысль",
   "Блок 1 · Кто твоя аудитория",
   "Портрет сегмента · 5 полей",
@@ -49,31 +55,34 @@ export const slideNames = [
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L10Slide01Welcome />;
-    case 1: return <L10Slide02MainThesis />;
-    case 2: return <L10BlockHeader blockNumber={1} title="Кто твоя аудитория" subtitle="один сегмент, а не «все»" />;
-    case 3: return <L10SlideAudience />;
-    case 4: return <L10SlideCustDev />;
-    case 5: return <L10SlidePeraOne />;
-    case 6: return <L10BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
-    case 7: return <L10SlideWhereMethod />;
-    case 8: return <L10SlideWhereCases />;
-    case 9: return <L10BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="три реальных пути к первым продажам" />;
-    case 10: return <L10SlidePeraPath />;
-    case 11: return <L10SlideRunEverywhere />;
-    case 12: return <L10SlideMetaMinder />;
-    case 13: return <L10BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
-    case 14: return <L10SlideMarketingPlan />;
-    case 15: return <L10SlideGtm2026 />;
-    case 16: return <L10BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
-    case 17: return <L10SlideGtmPrompt />;
-    case 18: return <L10Slide22Homework />;
-    case 19: return <L10SlideLessonSummary />;
-    case 20: return <L10Slide23NextWeek />;
+    case 1: return <L10SlideWhatIsMarketing />;
+    case 2: return <L10SlideGlossary />;
+    case 3: return <L10SlideNoBudget />;
+    case 4: return <L10Slide02MainThesis />;
+    case 5: return <L10BlockHeader blockNumber={1} title="Кто твоя аудитория" subtitle="один сегмент, а не «все»" />;
+    case 6: return <L10SlideAudience />;
+    case 7: return <L10SlideCustDev />;
+    case 8: return <L10SlidePeraOne />;
+    case 9: return <L10BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
+    case 10: return <L10SlideWhereMethod />;
+    case 11: return <L10SlideWhereCases />;
+    case 12: return <L10BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="три реальных пути к первым продажам" />;
+    case 13: return <L10SlidePeraPath />;
+    case 14: return <L10SlideRunEverywhere />;
+    case 15: return <L10SlideMetaMinder />;
+    case 16: return <L10BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
+    case 17: return <L10SlideMarketingPlan />;
+    case 18: return <L10SlideGtm2026 />;
+    case 19: return <L10BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
+    case 20: return <L10SlideGtmPrompt />;
+    case 21: return <L10Slide22Homework />;
+    case 22: return <L10SlideLessonSummary />;
+    case 23: return <L10Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 21;
+export const TOTAL = 24;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
