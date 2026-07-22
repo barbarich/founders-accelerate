@@ -7,7 +7,7 @@ const tasks = [
   { n: "4", t: "Собери маркетинг-план", d: "Таблица: 2 канала × активность × частота × метрика на 30 дней. Можно через промпт с прошлого слайда." },
 ];
 
-export default function L11Slide22Homework() {
+export default function L10Slide22Homework() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -32,7 +32,7 @@ export default function L11Slide22Homework() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[6px]">
           <p className="text-[9px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план - с этим идёшь в упаковку.
+            <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план - с этим идёшь продавать.
           </p>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default function L11Slide22Homework() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[16px] max-w-[1700px]">
         <p className="text-[20px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план на 30 дней - именно с этим ты идёшь в упаковку и запуск.
+          <span className="text-[hsl(var(--slide-gold))] font-semibold">Готово: </span>у тебя есть аудитория, каналы и план на 30 дней - именно с этим ты идёшь в следующий урок - продавать через сторителлинг.
         </p>
       </div>
     </div>

@@ -18,7 +18,7 @@ const reasons = [
   },
 ];
 
-export default function L10SlideWhyFounder() {
+export default function L11SlideWhyFounder() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

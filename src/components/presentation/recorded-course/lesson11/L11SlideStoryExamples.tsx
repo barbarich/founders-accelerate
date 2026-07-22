@@ -27,7 +27,7 @@ const examples = [
   },
 ];
 
-export default function L10SlideStoryExamples() {
+export default function L11SlideStoryExamples() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

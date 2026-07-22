@@ -6,7 +6,7 @@ const checks = [
   { q: "Доходят до ценности?", a: "Проверяешь, что продукт удерживает, а не только привлекает." },
 ];
 
-export default function L10SlideB2CTest() {
+export default function L11SlideB2CTest() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

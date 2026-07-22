@@ -7,7 +7,7 @@ const parts = [
   { el: "Деталь - доверие", body: "«Вторник, 2 ночи, 47 непрочитанных». Конкретная деталь превращает текст в историю." },
 ];
 
-export default function L10SlideStoryRecap() {
+export default function L11SlideStoryRecap() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

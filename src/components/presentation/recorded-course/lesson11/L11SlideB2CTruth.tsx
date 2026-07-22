@@ -6,7 +6,7 @@ const signals = [
   { s: "Воронка работает", body: "Виден весь путь: клик → регистрация → активация. Ясно, где именно теряешь людей." },
 ];
 
-export default function L10SlideB2CTruth() {
+export default function L11SlideB2CTruth() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

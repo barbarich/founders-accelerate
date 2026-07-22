@@ -13,7 +13,7 @@ const cases = [
   },
 ];
 
-export default function L11SlideWhereCases() {
+export default function L10SlideWhereCases() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

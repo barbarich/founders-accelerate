@@ -17,7 +17,7 @@ const b2c = [
   "Сделано = видишь цифры клик → регистрация → активация и знаешь, где рвётся.",
 ];
 
-export default function L10SlideHomework() {
+export default function L11SlideHomework() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

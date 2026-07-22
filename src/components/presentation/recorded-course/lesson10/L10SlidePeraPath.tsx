@@ -8,7 +8,7 @@ const steps = [
   { n: "05", t: "Таргет + офферы на ретаргете", d: "Подключил Meta. Реклама + спецпредложения и скидки в ретаргетинге = стабильные продажи." },
 ];
 
-export default function L11SlidePeraPath() {
+export default function L10SlidePeraPath() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

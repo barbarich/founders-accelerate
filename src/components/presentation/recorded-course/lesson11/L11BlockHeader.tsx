@@ -1,45 +1,47 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function L11BlockHeader({
-  blockNumber,
-  title,
-  subtitle,
-}: {
+interface Props {
   blockNumber: number;
   title: string;
   subtitle?: string;
-}) {
+}
+
+export default function L11BlockHeader({ blockNumber, title, subtitle }: Props) {
   const isMobile = useIsMobile();
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-          Блок {blockNumber}
-        </p>
-        <h2 className="font-display text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em]">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px]">{subtitle}</p>
-        )}
-        <div className="w-[40px] h-[2px] bg-[hsl(var(--slide-gold))] mt-[16px]" />
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-[40px] h-[40px] rounded-full border-2 border-[hsl(var(--slide-gold)/0.3)] flex items-center justify-center mx-auto mb-[16px]">
+            <span className="font-mono text-[18px] text-[hsl(var(--slide-gold))]">{blockNumber}</span>
+          </div>
+          <h2 className="font-display text-[32px] font-bold text-[hsl(var(--slide-text))] leading-tight">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-[14px] text-[hsl(var(--slide-text-muted))] mt-[10px]">{subtitle}</p>
+          )}
+          <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mx-auto mt-[16px]" />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
-      <p className="text-[20px] uppercase tracking-[0.3em] text-[hsl(var(--slide-gold))] font-medium mb-[20px]">
-        Блок {blockNumber}
-      </p>
-      <h2 className="font-display text-[96px] font-bold text-[hsl(var(--slide-text))] leading-[1.0] tracking-[-0.02em] max-w-[1500px]">
-        {title}
-      </h2>
-      {subtitle && (
-        <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[28px]">{subtitle}</p>
-      )}
-      <div className="w-[120px] h-[2px] bg-[hsl(var(--slide-gold))] mt-[40px]" />
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-[80px] h-[80px] rounded-full border-2 border-[hsl(var(--slide-gold)/0.3)] flex items-center justify-center mx-auto mb-[48px]">
+          <span className="font-mono text-[32px] text-[hsl(var(--slide-gold))]">{blockNumber}</span>
+        </div>
+        <h2 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-tight">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[24px]">{subtitle}</p>
+        )}
+        <div className="w-[60px] h-[2px] bg-[hsl(var(--slide-gold))] mx-auto mt-[48px]" />
+      </div>
     </div>
   );
 }

@@ -8,7 +8,7 @@ const insights = [
   { t: "Живые события + тёплый outbound", d: "Интимные оффлайн-встречи и точечный тёплый аутрич дают лучший ROI, чем холодные массовые рассылки." },
 ];
 
-export default function L11SlideGtm2026() {
+export default function L10SlideGtm2026() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

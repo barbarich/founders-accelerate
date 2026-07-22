@@ -7,7 +7,7 @@ const asks = [
   "Где ты обычно ищешь такие продукты и с кем советуешься?",
 ];
 
-export default function L11SlideCustDev() {
+export default function L10SlideCustDev() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

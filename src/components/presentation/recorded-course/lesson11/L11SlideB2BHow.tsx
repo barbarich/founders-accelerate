@@ -6,7 +6,7 @@ const steps = [
   { num: "3", title: "Ручное закрытие", body: "Ты сам доводишь до оплаты, подстраивая предложение под конкретного клиента. Медленно, зато ты видишь, что реально двигает сделку." },
 ];
 
-export default function L10SlideB2BHow() {
+export default function L11SlideB2BHow() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

@@ -7,7 +7,7 @@ const breakdown = [
   { el: "Честность", val: "Рассказывал это от первого лица, как есть. Это и привлекло первую аудиторию." },
 ];
 
-export default function L10SlideMikeyCase() {
+export default function L11SlideMikeyCase() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

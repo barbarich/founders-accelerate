@@ -15,7 +15,7 @@ const traps = [
   },
 ];
 
-export default function L10SlideWhatDoesntWork() {
+export default function L11SlideWhatDoesntWork() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

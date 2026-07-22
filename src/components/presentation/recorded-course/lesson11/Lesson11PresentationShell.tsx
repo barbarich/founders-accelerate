@@ -7,73 +7,76 @@ import ScaledSlide from "../../ScaledSlide";
 import L11Slide01Welcome from "./L11Slide01Welcome";
 import L11Slide02MainThesis from "./L11Slide02MainThesis";
 import L11BlockHeader from "./L11BlockHeader";
-import L11SlideAudience from "./L11SlideAudience";
-import L11SlideCustDev from "./L11SlideCustDev";
-import L11SlidePeraOne from "./L11SlidePeraOne";
-import L11SlideWhereMethod from "./L11SlideWhereMethod";
-import L11SlideWhereCases from "./L11SlideWhereCases";
-import L11SlideHowEnter from "./L11SlideHowEnter";
-import L11SlideMetaMinder from "./L11SlideMetaMinder";
-import L11SlidePeraPath from "./L11SlidePeraPath";
-import L11SlideMarketingPlan from "./L11SlideMarketingPlan";
-import L11SlideGtm2026 from "./L11SlideGtm2026";
-import L11SlideGtmPrompt from "./L11SlideGtmPrompt";
-import L11Slide22Homework from "./L11Slide22Homework";
+import L11SlideWhyFounder from "./L11SlideWhyFounder";
+import L11SlideWhatDoesntWork from "./L11SlideWhatDoesntWork";
+import L11SlideStoryRecap from "./L11SlideStoryRecap";
+import L11SlideStoryExamples from "./L11SlideStoryExamples";
+import L11SlideMikeyCase from "./L11SlideMikeyCase";
+import L11SlidePractices from "./L11SlidePractices";
+import L11SlideFounderStory from "./L11SlideFounderStory";
+import L11SlideTwoPaths from "./L11SlideTwoPaths";
+import L11SlideB2BTruth from "./L11SlideB2BTruth";
+import L11SlideB2BHow from "./L11SlideB2BHow";
+import L11SlideB2CTruth from "./L11SlideB2CTruth";
+import L11SlideB2CTest from "./L11SlideB2CTest";
+import L11SlideHomework from "./L11SlideHomework";
+import L11SlideClosing from "./L11SlideClosing";
 import L11SlideLessonSummary from "./L11SlideLessonSummary";
-import L11Slide23NextWeek from "./L11Slide23NextWeek";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Блок 1 · Кто твоя аудитория",
-  "Портрет сегмента · 5 полей",
-  "Понять, кто они · поговори с людьми",
-  "Кейс PERA · покупают подарок ребёнку",
-  "Блок 2 · Где они живут",
-  "Где искать · 6 мест + конкретный ход",
-  "Где сидят мои две аудитории",
-  "Блок 3 · Как найти свой путь",
-  "Кейс PERA · как я нашёл свой путь",
-  "Первое касание без бюджета · 4 канала",
-  "Кейс MetaMinder · B2B руками",
-  "Блок 4 · План и стратегия",
-  "Маркетинг-план с активностями",
-  "Что работает в GTM · середина 2026",
-  "Блок 5 · Собери свой GTM",
-  "Промпт · собери мой go-to-market",
-  "Домашка · твой GTM за неделю",
+  "Главная мысль · продаёт фаундер",
+  "Блок 1 · Первые продажи делает фаундер",
+  "Почему именно ты · 3 причины",
+  "Что не работает на старте",
+  "Блок 2 · История, которую хочется купить",
+  "Анатомия истории · напоминание из урока 5",
+  "Примеры · сильный сторителлинг на видео",
+  "Мой кейс · как история запустила Mikey",
+  "Топ-практики · как собрать продающую историю",
+  "Твоя история основателя · почему ты",
+  "Две дороги · B2B и B2C",
+  "Блок 3 · B2B: продаёшь лично",
+  "B2B · пока нет 10 клиентов",
+  "B2B · как фаундер продаёт руками",
+  "Блок 4 · B2C: история + малый бюджет",
+  "B2C · первая активность и проверка",
+  "B2C · тест по $30-50 в день",
+  "Блок 5 · Задание",
+  "Домашка · B2B или B2C",
   "Саммари · 5 мыслей",
-  "Что дальше · упаковка",
+  "Закрытие · в платный трафик",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L11Slide01Welcome />;
     case 1: return <L11Slide02MainThesis />;
-    case 2: return <L11BlockHeader blockNumber={1} title="Кто твоя аудитория" subtitle="один сегмент, а не «все»" />;
-    case 3: return <L11SlideAudience />;
-    case 4: return <L11SlideCustDev />;
-    case 5: return <L11SlidePeraOne />;
-    case 6: return <L11BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
-    case 7: return <L11SlideWhereMethod />;
-    case 8: return <L11SlideWhereCases />;
-    case 9: return <L11BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="тестируй каналы руками, потом масштабируй" />;
-    case 10: return <L11SlidePeraPath />;
-    case 11: return <L11SlideHowEnter />;
-    case 12: return <L11SlideMetaMinder />;
-    case 13: return <L11BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
-    case 14: return <L11SlideMarketingPlan />;
-    case 15: return <L11SlideGtm2026 />;
-    case 16: return <L11BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
-    case 17: return <L11SlideGtmPrompt />;
-    case 18: return <L11Slide22Homework />;
-    case 19: return <L11SlideLessonSummary />;
-    case 20: return <L11Slide23NextWeek />;
+    case 2: return <L11BlockHeader blockNumber={1} title="Первые продажи делает фаундер" subtitle="лично, а не отделом продаж" />;
+    case 3: return <L11SlideWhyFounder />;
+    case 4: return <L11SlideWhatDoesntWork />;
+    case 5: return <L11BlockHeader blockNumber={2} title="История, которую хочется купить" subtitle="люди покупают «почему ты»" />;
+    case 6: return <L11SlideStoryRecap />;
+    case 7: return <L11SlideStoryExamples />;
+    case 8: return <L11SlideMikeyCase />;
+    case 9: return <L11SlidePractices />;
+    case 10: return <L11SlideFounderStory />;
+    case 11: return <L11SlideTwoPaths />;
+    case 12: return <L11BlockHeader blockNumber={3} title="B2B: продаёшь лично" subtitle="руками, пока нет 10 клиентов" />;
+    case 13: return <L11SlideB2BTruth />;
+    case 14: return <L11SlideB2BHow />;
+    case 15: return <L11BlockHeader blockNumber={4} title="B2C: история + малый бюджет" subtitle="тест по $30-50 в день" />;
+    case 16: return <L11SlideB2CTruth />;
+    case 17: return <L11SlideB2CTest />;
+    case 18: return <L11BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 19: return <L11SlideHomework />;
+    case 20: return <L11SlideLessonSummary />;
+    case 21: return <L11SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 21;
+export const TOTAL = 22;
 
 export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -137,7 +140,7 @@ export default function Lesson11PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 11 · Go-To-Market</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 11 · Сторителлинг: первые продажи через себя</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

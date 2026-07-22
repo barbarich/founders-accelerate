@@ -1,6 +1,6 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function L10SlideFounderStory() {
+export default function L11SlideFounderStory() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

@@ -1,6 +1,6 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function L11SlidePeraOne() {
+export default function L10SlidePeraOne() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

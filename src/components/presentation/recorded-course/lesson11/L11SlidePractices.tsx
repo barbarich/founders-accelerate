@@ -28,7 +28,7 @@ const rules = [
   },
 ];
 
-export default function L10SlidePractices() {
+export default function L11SlidePractices() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

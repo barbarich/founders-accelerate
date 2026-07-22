@@ -21,7 +21,7 @@ const paths = [
   },
 ];
 
-export default function L10SlideTwoPaths() {
+export default function L11SlideTwoPaths() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

@@ -8,7 +8,7 @@ const fields = [
   { k: "Что уже пробовали", v: "чем решают проблему сегодня - это твой настоящий конкурент" },
 ];
 
-export default function L11SlideAudience() {
+export default function L10SlideAudience() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

@@ -7,76 +7,73 @@ import ScaledSlide from "../../ScaledSlide";
 import L10Slide01Welcome from "./L10Slide01Welcome";
 import L10Slide02MainThesis from "./L10Slide02MainThesis";
 import L10BlockHeader from "./L10BlockHeader";
-import L10SlideWhyFounder from "./L10SlideWhyFounder";
-import L10SlideWhatDoesntWork from "./L10SlideWhatDoesntWork";
-import L10SlideStoryRecap from "./L10SlideStoryRecap";
-import L10SlideStoryExamples from "./L10SlideStoryExamples";
-import L10SlideMikeyCase from "./L10SlideMikeyCase";
-import L10SlidePractices from "./L10SlidePractices";
-import L10SlideFounderStory from "./L10SlideFounderStory";
-import L10SlideTwoPaths from "./L10SlideTwoPaths";
-import L10SlideB2BTruth from "./L10SlideB2BTruth";
-import L10SlideB2BHow from "./L10SlideB2BHow";
-import L10SlideB2CTruth from "./L10SlideB2CTruth";
-import L10SlideB2CTest from "./L10SlideB2CTest";
-import L10SlideHomework from "./L10SlideHomework";
-import L10SlideClosing from "./L10SlideClosing";
+import L10SlideAudience from "./L10SlideAudience";
+import L10SlideCustDev from "./L10SlideCustDev";
+import L10SlidePeraOne from "./L10SlidePeraOne";
+import L10SlideWhereMethod from "./L10SlideWhereMethod";
+import L10SlideWhereCases from "./L10SlideWhereCases";
+import L10SlideRunEverywhere from "./L10SlideRunEverywhere";
+import L10SlideMetaMinder from "./L10SlideMetaMinder";
+import L10SlidePeraPath from "./L10SlidePeraPath";
+import L10SlideMarketingPlan from "./L10SlideMarketingPlan";
+import L10SlideGtm2026 from "./L10SlideGtm2026";
+import L10SlideGtmPrompt from "./L10SlideGtmPrompt";
+import L10Slide22Homework from "./L10Slide22Homework";
 import L10SlideLessonSummary from "./L10SlideLessonSummary";
+import L10Slide23NextWeek from "./L10Slide23NextWeek";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · продаёт фаундер",
-  "Блок 1 · Первые продажи делает фаундер",
-  "Почему именно ты · 3 причины",
-  "Что не работает на старте",
-  "Блок 2 · История, которую хочется купить",
-  "Анатомия истории · напоминание из урока 5",
-  "Примеры · сильный сторителлинг на видео",
-  "Мой кейс · как история запустила Mikey",
-  "Топ-практики · как собрать продающую историю",
-  "Твоя история основателя · почему ты",
-  "Две дороги · B2B и B2C",
-  "Блок 3 · B2B: продаёшь лично",
-  "B2B · пока нет 10 клиентов",
-  "B2B · как фаундер продаёт руками",
-  "Блок 4 · B2C: история + малый бюджет",
-  "B2C · первая активность и проверка",
-  "B2C · тест по $30-50 в день",
-  "Блок 5 · Задание",
-  "Домашка · B2B или B2C",
+  "Главная мысль",
+  "Блок 1 · Кто твоя аудитория",
+  "Портрет сегмента · 5 полей",
+  "Понять, кто они · поговори с людьми",
+  "Кейс PERA · покупают подарок ребёнку",
+  "Блок 2 · Где они живут",
+  "Где живёт аудитория · B2B и B2C",
+  "Где сидят мои две аудитории",
+  "Блок 3 · Как найти свой путь",
+  "Кейс PERA · как я нашёл свой путь",
+  "Кейс RunEverywhere · сразу в бой",
+  "Кейс MetaMinder · B2B руками",
+  "Блок 4 · План и стратегия",
+  "Маркетинг-план на 30 дней · 5 шагов",
+  "Что работает в GTM · середина 2026",
+  "Блок 5 · Собери свой GTM",
+  "Промпт · собери мой go-to-market",
+  "Домашка · твой GTM за неделю",
   "Саммари · 5 мыслей",
-  "Закрытие · в маркетинг",
+  "Что дальше · сторителлинг",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L10Slide01Welcome />;
     case 1: return <L10Slide02MainThesis />;
-    case 2: return <L10BlockHeader blockNumber={1} title="Первые продажи делает фаундер" subtitle="лично, а не отделом продаж" />;
-    case 3: return <L10SlideWhyFounder />;
-    case 4: return <L10SlideWhatDoesntWork />;
-    case 5: return <L10BlockHeader blockNumber={2} title="История, которую хочется купить" subtitle="люди покупают «почему ты»" />;
-    case 6: return <L10SlideStoryRecap />;
-    case 7: return <L10SlideStoryExamples />;
-    case 8: return <L10SlideMikeyCase />;
-    case 9: return <L10SlidePractices />;
-    case 10: return <L10SlideFounderStory />;
-    case 11: return <L10SlideTwoPaths />;
-    case 12: return <L10BlockHeader blockNumber={3} title="B2B: продаёшь лично" subtitle="руками, пока нет 10 клиентов" />;
-    case 13: return <L10SlideB2BTruth />;
-    case 14: return <L10SlideB2BHow />;
-    case 15: return <L10BlockHeader blockNumber={4} title="B2C: история + малый бюджет" subtitle="тест по $30-50 в день" />;
-    case 16: return <L10SlideB2CTruth />;
-    case 17: return <L10SlideB2CTest />;
-    case 18: return <L10BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 19: return <L10SlideHomework />;
-    case 20: return <L10SlideLessonSummary />;
-    case 21: return <L10SlideClosing />;
+    case 2: return <L10BlockHeader blockNumber={1} title="Кто твоя аудитория" subtitle="один сегмент, а не «все»" />;
+    case 3: return <L10SlideAudience />;
+    case 4: return <L10SlideCustDev />;
+    case 5: return <L10SlidePeraOne />;
+    case 6: return <L10BlockHeader blockNumber={2} title="Где они живут" subtitle="приходи туда, где они уже собраны" />;
+    case 7: return <L10SlideWhereMethod />;
+    case 8: return <L10SlideWhereCases />;
+    case 9: return <L10BlockHeader blockNumber={3} title="Как найти свой путь" subtitle="три реальных пути к первым продажам" />;
+    case 10: return <L10SlidePeraPath />;
+    case 11: return <L10SlideRunEverywhere />;
+    case 12: return <L10SlideMetaMinder />;
+    case 13: return <L10BlockHeader blockNumber={4} title="План и стратегия" subtitle="маркетинг-план + практики 2026" />;
+    case 14: return <L10SlideMarketingPlan />;
+    case 15: return <L10SlideGtm2026 />;
+    case 16: return <L10BlockHeader blockNumber={5} title="Собери свой GTM" subtitle="промпт и задание" />;
+    case 17: return <L10SlideGtmPrompt />;
+    case 18: return <L10Slide22Homework />;
+    case 19: return <L10SlideLessonSummary />;
+    case 20: return <L10Slide23NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 22;
+export const TOTAL = 21;
 
 export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -140,7 +137,7 @@ export default function Lesson10PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 10 · Сторителлинг: первые продажи через себя</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 10 · Go-To-Market</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

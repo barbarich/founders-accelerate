@@ -6,7 +6,7 @@ const missing = [
   { what: "Нет кейсов", body: "Нечем доказать, что продукт работает. Продавать пустоту невозможно." },
 ];
 
-export default function L10SlideB2BTruth() {
+export default function L11SlideB2BTruth() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
