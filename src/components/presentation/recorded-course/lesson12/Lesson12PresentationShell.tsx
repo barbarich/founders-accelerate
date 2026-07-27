@@ -10,6 +10,11 @@ import L12BlockHeader from "./L12BlockHeader";
 import L12Slide03PreFlightChecklist from "./L12Slide03PreFlightChecklist";
 import L12Slide16EventsSetup from "./L12Slide16EventsSetup";
 import L12Slide17EventsBestPractices from "./L12Slide17EventsBestPractices";
+import L12SlideCreativeAnatomy from "./L12SlideCreativeAnatomy";
+import L12SlideCreativePrompt from "./L12SlideCreativePrompt";
+import L12SlideCreativeToolsImages from "./L12SlideCreativeToolsImages";
+import L12SlideCreativeToolsVideo from "./L12SlideCreativeToolsVideo";
+import L12SlideCreativeOneStyle from "./L12SlideCreativeOneStyle";
 import L12Slide04OldVsNewMeta from "./L12Slide04OldVsNewMeta";
 import L12Slide05Andromeda from "./L12Slide05Andromeda";
 import L12Slide06BudgetLearningPhase from "./L12Slide06BudgetLearningPhase";
@@ -31,24 +36,30 @@ export const slideNames = [
   "Pre-flight · 6 пунктов готовности",
   "События на пикселе · что и куда",
   "Топ-практики событий · 2026",
-  "Блок 2 · Meta-реклама 2026",
+  "Блок 2 · Креативы",
+  "Анатомия рабочего креатива",
+  "Промпт · 30 креативов пачкой",
+  "Инструменты · картинки и тексты",
+  "Инструменты · видео",
+  "Один стиль везде · реклама ↔ лендинг",
+  "Блок 3 · Meta-реклама 2026",
   "Старый vs новый Meta",
   "Andromeda + Advantage+",
   "Бюджет и learning phase",
-  "Блок 3 · Walkthrough Meta-кампании",
+  "Блок 4 · Walkthrough Meta-кампании",
   "Шаг 1 · Business Manager → Campaign",
   "Шаг 2 · Ad Set · Advantage+ Audience",
   "Шаг 3 · Ad · Dynamic Creative",
   "Шаг 4 · Review → Publish",
   "Шаг 5 · After launch · метрики",
-  "Блок 4 · Когорта",
-  "Адаптация под каждого",
-  "Блок 5 · Ошибки",
+  "Блок 5 · Твой продукт",
+  "Адаптация под тип продукта",
+  "Блок 6 · Ошибки",
   "Семь ошибок одиночек",
-  "Блок 6 · Домашнее задание",
+  "Блок 7 · Домашнее задание",
   "Домашнее задание к L13",
   "Саммари · 5 мыслей",
-  "L13 + L14",
+  "Дальше · урок 13 · B2B-продажи",
 ];
 
 export function getSlideContent(index: number) {
@@ -59,29 +70,35 @@ export function getSlideContent(index: number) {
     case 3: return <L12Slide03PreFlightChecklist />;
     case 4: return <L12Slide16EventsSetup />;
     case 5: return <L12Slide17EventsBestPractices />;
-    case 6: return <L12BlockHeader blockNumber={2} title="Meta-реклама 2026" subtitle="алгоритм работает за тебя — если ты ему даёшь работать" />;
-    case 7: return <L12Slide04OldVsNewMeta />;
-    case 8: return <L12Slide05Andromeda />;
-    case 9: return <L12Slide06BudgetLearningPhase />;
-    case 10: return <L12BlockHeader blockNumber={3} title="Walkthrough · настройка кампании" subtitle="пошагово на моём кабинете — повторяешь у себя" />;
-    case 11: return <L12Slide07WorkshopCampaign />;
-    case 12: return <L12Slide08WorkshopAdSet />;
-    case 13: return <L12Slide09WorkshopAd />;
-    case 14: return <L12Slide10WorkshopPublish />;
-    case 15: return <L12Slide11WorkshopAfterLaunch />;
-    case 16: return <L12BlockHeader blockNumber={4} title="Адаптация под когорту" subtitle="схема одна — objective и креативы разные" />;
-    case 17: return <L12Slide12CohortAdaptation />;
-    case 18: return <L12BlockHeader blockNumber={5} title="Семь ошибок" subtitle="на которых ломаются первые кампании" />;
-    case 19: return <L12Slide13Top7Mistakes />;
-    case 20: return <L12BlockHeader blockNumber={6} title="Домашнее задание" subtitle="кампания запущена, данные собираются" />;
-    case 21: return <L12Slide14Homework />;
-    case 22: return <L12SlideLessonSummary />;
-    case 23: return <L12Slide15NextWeek />;
+    case 6: return <L12BlockHeader blockNumber={2} title="Креативы" subtitle="картинки и видео на AI — до того, как открыть Ads Manager" />;
+    case 7: return <L12SlideCreativeAnatomy />;
+    case 8: return <L12SlideCreativePrompt />;
+    case 9: return <L12SlideCreativeToolsImages />;
+    case 10: return <L12SlideCreativeToolsVideo />;
+    case 11: return <L12SlideCreativeOneStyle />;
+    case 12: return <L12BlockHeader blockNumber={3} title="Meta-реклама 2026" subtitle="алгоритм работает за тебя — если ты ему даёшь работать" />;
+    case 13: return <L12Slide04OldVsNewMeta />;
+    case 14: return <L12Slide05Andromeda />;
+    case 15: return <L12Slide06BudgetLearningPhase />;
+    case 16: return <L12BlockHeader blockNumber={4} title="Walkthrough · настройка кампании" subtitle="пошагово на моём кабинете — повторяешь у себя" />;
+    case 17: return <L12Slide07WorkshopCampaign />;
+    case 18: return <L12Slide08WorkshopAdSet />;
+    case 19: return <L12Slide09WorkshopAd />;
+    case 20: return <L12Slide10WorkshopPublish />;
+    case 21: return <L12Slide11WorkshopAfterLaunch />;
+    case 22: return <L12BlockHeader blockNumber={5} title="Адаптация под свой продукт" subtitle="схема одна - objective и креативы разные" />;
+    case 23: return <L12Slide12CohortAdaptation />;
+    case 24: return <L12BlockHeader blockNumber={6} title="Семь ошибок" subtitle="на которых ломаются первые кампании" />;
+    case 25: return <L12Slide13Top7Mistakes />;
+    case 26: return <L12BlockHeader blockNumber={7} title="Домашнее задание" subtitle="кампания запущена, данные собираются" />;
+    case 27: return <L12Slide14Homework />;
+    case 28: return <L12SlideLessonSummary />;
+    case 29: return <L12Slide15NextWeek />;
     default: return null;
   }
 }
 
-export const TOTAL = 24;
+export const TOTAL = 30;
 
 export default function Lesson12PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

@@ -24,7 +24,7 @@ const items = [
   {
     n: "05",
     t: "5–10 креативов готовы",
-    body: "Из L11 workshop'а — половина статика, половина видео. Если креативов нет, в следующем уроке нечего публиковать. Из тех ассистентов: Higgsfield, Nano Banana, Canva.",
+    body: "Половина статика, половина видео. Делаем их прямо в следующем блоке — на AI, без дизайнера. К шагу Ads Manager должны быть на руках. Инструменты: Higgsfield, Nano Banana, Canva.",
   },
   {
     n: "06",
@@ -46,7 +46,7 @@ export default function L12Slide03PreFlightChecklist() {
           Шесть пунктов. Без них реклама — <span className="text-[hsl(var(--slide-gold))]">сжигание денег</span>
         </h2>
         <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-          Этот чек-лист = домашка из L11. Если что-то не закрыто — закрываем прямо сейчас, до Ads Manager.
+          Шесть пунктов готовности. Что не закрыто — закрываем прямо сейчас, до Ads Manager. Креативы (п. 05) собираем в следующем блоке.
         </p>
         <div className="grid grid-cols-2 gap-[4px]">
           {items.map((it) => (
@@ -71,7 +71,7 @@ export default function L12Slide03PreFlightChecklist() {
         Шесть пунктов. Без них реклама — <span className="text-[hsl(var(--slide-gold))]">сжигание денег</span>
       </h2>
       <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[24px] max-w-[1600px]">
-        Этот чек-лист = домашка из L11. Если что-то не закрыто — закрываем прямо сейчас, до Ads Manager.
+        Шесть пунктов готовности. Что не закрыто — закрываем прямо сейчас, до Ads Manager. Креативы (п. 05) собираем в следующем блоке.
       </p>
       <div className="grid grid-cols-3 gap-[20px] max-w-[1700px]">
         {items.map((it) => (

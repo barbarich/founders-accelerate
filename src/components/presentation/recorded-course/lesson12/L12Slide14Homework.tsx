@@ -8,13 +8,13 @@ const tasks = [
 ];
 
 const b2b = {
-  who: "B2B trek · Maker E",
-  body: "Пришли мне к концу недели: pitch + offer + список 50 target accounts. На L13 разбираем твой стек — Apollo + Instantly + LinkedIn outreach с нуля.",
+  who: "Если у тебя B2B",
+  body: "Баннеры «купи продукт» не твой инструмент. Вместо этого подготовь к концу недели: pitch, offer и список 50 target accounts. На уроке 13 собираем из этого рабочий sales motion.",
 };
 
-const dira = {
-  who: "WhatsApp-бот аренды",
-  body: "Включи Special Ad Category = Housing. Тестовая кампания на click-to-WhatsApp на 1–2 района. Бюджет $15/день. К L13 покажешь первые сообщения.",
+const sensitive = {
+  who: "Если категория чувствительная",
+  body: "Жильё, финансы, работа, медицина: включи Special Ad Category, иначе аккаунт заблокируют. Начни с $15 в день на одном узком сегменте - и смотри, доходят ли люди до целевого действия.",
 };
 
 export default function L12Slide14Homework() {
@@ -24,7 +24,7 @@ export default function L12Slide14Homework() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[20px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Домашка · к встрече 11
+          Домашка · к уроку 13
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[10px]">
           Кампания запущена, <span className="text-[hsl(var(--slide-gold))]">данные собираются</span>
@@ -45,8 +45,8 @@ export default function L12Slide14Homework() {
           <p className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{b2b.body}</p>
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[5px] px-[8px] py-[4px]">
-          <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))]">{dira.who}</p>
-          <p className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{dira.body}</p>
+          <p className="text-[8px] font-bold text-[hsl(var(--slide-gold))]">{sensitive.who}</p>
+          <p className="text-[8px] text-[hsl(var(--slide-text)/0.9)] leading-[1.4]">{sensitive.body}</p>
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ export default function L12Slide14Homework() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
-        Домашка · к встрече 11
+        Домашка · к уроку 13
       </p>
       <h2 className="font-display text-[56px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[24px] tracking-[-0.02em]">
         Кампания запущена, <span className="text-[hsl(var(--slide-gold))]">данные собираются</span>
@@ -77,8 +77,8 @@ export default function L12Slide14Homework() {
           <p className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{b2b.body}</p>
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[24px] py-[14px]">
-          <p className="text-[13px] uppercase tracking-[0.14em] text-[hsl(var(--slide-gold))] font-bold mb-[6px]">{dira.who}</p>
-          <p className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{dira.body}</p>
+          <p className="text-[13px] uppercase tracking-[0.14em] text-[hsl(var(--slide-gold))] font-bold mb-[6px]">{sensitive.who}</p>
+          <p className="text-[16px] text-[hsl(var(--slide-text)/0.9)] leading-[1.45]">{sensitive.body}</p>
         </div>
       </div>
     </div>
