@@ -4,7 +4,7 @@ const channels = [
   { rank: "1", name: "Warm intro", reply: "30–40%", effort: "Высокий — нужно построить сеть", when: "Tier A счета · CXO роли · large enterprise", how: "Map mutual connections в LinkedIn · double opt-in запрос интро" },
   { rank: "2", name: "Event-met", reply: "25–30%", effort: "Высокий — выезд + время", when: "Когда твоя ICP концентрируется на нишевом эвенте", how: "Pre-conference scheduler (Brella/Swapcard) · холл · демо букается в моменте" },
   { rank: "3", name: "LinkedIn DM на trigger", reply: "8–12%", effort: "Средний — 15 мин на персонализацию", when: "Tier B/C счета · средний размер · конкретный триггер", how: "Конкретный signal: hiring, funding, tech stack — 1 строка + question, не pitch" },
-  { rank: "4", name: "Cold email на trigger", reply: "3–5%", effort: "Низкий — масштабируется через Instantly", when: "Tier C · широкий охват · если без trigger — не делай вообще", how: "4-touch sequence · personalized opener из Clay · gentle bump через 5 дней" },
+  { rank: "4", name: "Cold email адресно", reply: "3–5%", effort: "Низкий — масштабируется через Instantly", when: "Tier C · широкий охват · пишешь, зная кому и почему актуально; trigger — плюс к reply", how: "4-touch sequence · персональный opener под роль и боль · gentle bump через 5 дней" },
   { rank: "5", name: "Cold call", reply: "1–3%", effort: "Низкий-средний", when: "Когда у тебя 5 свободных часов и нечего больше делать", how: "Не рекомендую в 2026 для соло-фаундера — твоё время дороже" },
 ];
 

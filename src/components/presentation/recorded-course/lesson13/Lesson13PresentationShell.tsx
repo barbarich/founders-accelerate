@@ -14,6 +14,7 @@ import L13Slide04bWhatIsICP from "./L13Slide04bWhatIsICP";
 import L13Slide05Dream50 from "./L13Slide05Dream50";
 import L13Slide06Multithreading from "./L13Slide06Multithreading";
 import L13Slide07ChannelPriority from "./L13Slide07ChannelPriority";
+import L13Slide07bOutreachTools from "./L13Slide07bOutreachTools";
 import L13Slide08MetaMinderB2B from "./L13Slide08MetaMinderB2B";
 import L13Slide09TriggerOutreach from "./L13Slide09TriggerOutreach";
 import L13Slide10Discovery from "./L13Slide10Discovery";
@@ -40,6 +41,7 @@ export const slideNames = [
   "Multithreading · 4 роли",
   "Блок 3 · Outreach",
   "Приоритет каналов",
+  "Инструменты аутрича · стек за $100",
   "🔥 Кейс MetaMinder · события",
   "Trigger-based outreach",
   "Блок 4 · The Call",
@@ -70,25 +72,26 @@ export function getSlideContent(index: number) {
     case 9: return <L13Slide06Multithreading />;
     case 10: return <L13BlockHeader blockNumber={3} title="Multi-touch outreach" subtitle="warm intro > event > DM > email — не наоборот" />;
     case 11: return <L13Slide07ChannelPriority />;
-    case 12: return <L13Slide08MetaMinderB2B />;
-    case 13: return <L13Slide09TriggerOutreach />;
-    case 14: return <L13BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
-    case 15: return <L13Slide10Discovery />;
-    case 16: return <L13Slide11PreCallPrompt />;
-    case 17: return <L13Slide12DemoThatCloses />;
-    case 18: return <L13Slide13Objections />;
-    case 19: return <L13Slide14Closing />;
-    case 20: return <L13BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
-    case 21: return <L13Slide15MAPPilot />;
-    case 22: return <L13Slide16ExpansionLoop />;
-    case 23: return <L13BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что дальше" />;
-    case 24: return <L13SlideLessonSummary />;
-    case 25: return <L13Slide17LiveExercise />;
+    case 12: return <L13Slide07bOutreachTools />;
+    case 13: return <L13Slide08MetaMinderB2B />;
+    case 14: return <L13Slide09TriggerOutreach />;
+    case 15: return <L13BlockHeader blockNumber={4} title="The Call" subtitle="discovery · demo · objections · close — здесь решаются деньги" />;
+    case 16: return <L13Slide10Discovery />;
+    case 17: return <L13Slide11PreCallPrompt />;
+    case 18: return <L13Slide12DemoThatCloses />;
+    case 19: return <L13Slide13Objections />;
+    case 20: return <L13Slide14Closing />;
+    case 21: return <L13BlockHeader blockNumber={5} title="After close" subtitle="то, чего соло-фаундеры просто не делают — и теряют 70% сделок" />;
+    case 22: return <L13Slide15MAPPilot />;
+    case 23: return <L13Slide16ExpansionLoop />;
+    case 24: return <L13BlockHeader blockNumber={6} title="Финал" subtitle="домашка · что дальше" />;
+    case 25: return <L13SlideLessonSummary />;
+    case 26: return <L13Slide17LiveExercise />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 27;
 
 export default function Lesson13PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

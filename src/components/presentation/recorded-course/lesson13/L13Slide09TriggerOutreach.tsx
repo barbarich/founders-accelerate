@@ -24,9 +24,12 @@ export default function L13Slide09TriggerOutreach() {
         <p className="text-[8.5px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[3px]">
           Trigger-based outreach
         </p>
-        <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
-          Не «вы наш ICP» — <span className="text-[hsl(var(--slide-gold))]">конкретный сигнал прямо сейчас</span>
+        <h2 className="font-display text-[16px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
+          База — адресность. <span className="text-[hsl(var(--slide-gold))]">Триггер — усилитель</span>
         </h2>
+        <p className="text-[7px] text-[hsl(var(--slide-text-muted))] mb-[5px] leading-[1.4]">
+          Писать можно и без повода — если знаешь, кому и почему это актуально. Но свежий сигнал поднимает ответы в разы.
+        </p>
         <div className="space-y-[2px] mb-[5px]">
           {triggers.map((t) => (
             <div key={t.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[3px] px-[5px] py-[2px]">
@@ -53,9 +56,12 @@ export default function L13Slide09TriggerOutreach() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
         Trigger-based outreach
       </p>
-      <h2 className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px] tracking-[-0.02em]">
-        Не «вы наш ICP» — <span className="text-[hsl(var(--slide-gold))]">конкретный сигнал прямо сейчас</span>
+      <h2 className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[10px] tracking-[-0.02em]">
+        База — адресность. <span className="text-[hsl(var(--slide-gold))]">Триггер — усилитель</span>
       </h2>
+      <p className="text-[18px] text-[hsl(var(--slide-text-muted))] mb-[16px] max-w-[1700px] leading-[1.45]">
+        Писать можно и без повода — если знаешь, кому пишешь и почему это актуально именно ему. Но свежий сигнал у компании поднимает ответы в разы: письмо приходит в момент, когда проблема горит.
+      </p>
       <div className="grid grid-cols-1 gap-[8px] mb-[16px] max-w-[1700px]">
         {triggers.map((t) => (
           <div key={t.name} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[8px] px-[20px] py-[8px]">
