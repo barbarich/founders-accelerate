@@ -14,7 +14,7 @@ const where = [
   { t: "Conferences / podcasts", d: "Гости в подкастах по твоей теме — уже фильтрованные публичные founders. Слушаешь, потом пишешь" },
 ];
 
-export default function L15SlideFindPartner() {
+export default function L16SlideFindPartner() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

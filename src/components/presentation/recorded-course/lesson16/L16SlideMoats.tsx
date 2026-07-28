@@ -18,7 +18,7 @@ const moats = [
   },
 ];
 
-export default function L15SlideMoats() {
+export default function L16SlideMoats() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

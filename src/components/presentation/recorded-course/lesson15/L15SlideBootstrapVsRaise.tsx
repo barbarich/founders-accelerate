@@ -14,7 +14,7 @@ const raise = [
   "Готов делать unicorn — нужны деньги + связи + опыт инвесторов",
 ];
 
-export default function L14SlideBootstrapVsRaise() {
+export default function L15SlideBootstrapVsRaise() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

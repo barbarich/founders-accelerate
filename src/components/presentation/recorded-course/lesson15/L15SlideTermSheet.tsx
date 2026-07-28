@@ -18,7 +18,7 @@ const instruments = [
   },
 ];
 
-export default function L14SlideTermSheet() {
+export default function L15SlideTermSheet() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

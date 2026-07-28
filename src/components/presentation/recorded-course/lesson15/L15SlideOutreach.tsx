@@ -23,7 +23,7 @@ const channels = [
   },
 ];
 
-export default function L14SlideOutreach() {
+export default function L15SlideOutreach() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

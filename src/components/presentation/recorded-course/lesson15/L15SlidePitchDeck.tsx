@@ -13,7 +13,7 @@ const slides = [
   { n: "10", t: "Ask + Use of funds", d: "Сколько просишь · на что · какие milestones закроешь. Один слайд" },
 ];
 
-export default function L14SlidePitchDeck() {
+export default function L15SlidePitchDeck() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

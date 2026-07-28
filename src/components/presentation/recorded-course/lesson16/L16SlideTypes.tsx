@@ -23,7 +23,7 @@ const types = [
   },
 ];
 
-export default function L15SlideTypes() {
+export default function L16SlideTypes() {
   const isMobile = useIsMobile();
 
   if (isMobile) {

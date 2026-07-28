@@ -1,7 +1,7 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 import titleBg from "@/assets/slides/title-bg.jpg";
 
-export default function L15Slide01Welcome() {
+export default function L16Slide01Welcome() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -17,10 +17,10 @@ export default function L15Slide01Welcome() {
             The Founders<br />Circle
           </h1>
           <p className="text-[18px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 15
+            Урок 16
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Привлечение средств. К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+            Партнёрства и distribution moats. Финал курса.
           </p>
         </div>
       </div>
@@ -39,11 +39,11 @@ export default function L15Slide01Welcome() {
           The Founders<br />Circle
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 15
+          Урок 16
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Привлечение средств.<br />
-          К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+          Партнёрства и distribution moats.<br />
+          Финал курса.
         </p>
       </div>
     </div>

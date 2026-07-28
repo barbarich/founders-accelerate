@@ -20,7 +20,7 @@ export default function L14Slide01Welcome() {
             Урок 14
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Привлечение средств. К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+            Юнит-экономика. К концу: считаешь CAC, LTV и payback по каждому каналу и знаешь, что масштабировать, а что остановить.
           </p>
         </div>
       </div>
@@ -42,8 +42,8 @@ export default function L14Slide01Welcome() {
           Урок 14
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Привлечение средств.<br />
-          К концу: знаешь bootstrap vs fundraising + готов pitch deck.
+          Юнит-экономика.<br />
+          К концу: считаешь CAC, LTV и payback по каждому каналу и знаешь, что масштабировать, а что остановить.
         </p>
       </div>
     </div>

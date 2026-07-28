@@ -4,93 +4,52 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
-import L14Slide01Welcome from "./L14Slide01Welcome";
-import L14Slide02MainThesis from "./L14Slide02MainThesis";
-import L14BlockHeader from "./L14BlockHeader";
-import L14Slide03WhatIsUnit from "./L14Slide03WhatIsUnit";
-import L14Slide04Glossary from "./L14Slide04Glossary";
-import L14Slide05CAC from "./L14Slide05CAC";
-import L14Slide06COGS from "./L14Slide06COGS";
-import L14Slide07LTV from "./L14Slide07LTV";
-import L14Slide07bNoDataLTV from "./L14Slide07bNoDataLTV";
-import L14Slide08TwoNumbers from "./L14Slide08TwoNumbers";
-import L14Slide09Napkin from "./L14Slide09Napkin";
-import L14Slide10Cases2026 from "./L14Slide10Cases2026";
-import L14Slide11MoviePass from "./L14Slide11MoviePass";
-import L14Slide12ChannelCAC from "./L14Slide12ChannelCAC";
-import L14Slide13DecisionRule from "./L14Slide13DecisionRule";
-import L14Slide14FourLevers from "./L14Slide14FourLevers";
-import L14Slide15PriceLever from "./L14Slide15PriceLever";
-import L14Slide16AICosts from "./L14Slide16AICosts";
-import L14Slide17Prompt from "./L14Slide17Prompt";
-import L14Slide18Homework from "./L14Slide18Homework";
-import L14SlideLessonSummary from "./L14SlideLessonSummary";
-import L14Slide19NextLesson from "./L14Slide19NextLesson";
+import L16Slide01Welcome from "./L16Slide01Welcome";
+import L16Slide02MainThesis from "./L16Slide02MainThesis";
+import L16BlockHeader from "./L16BlockHeader";
+import L16SlideTypes from "./L16SlideTypes";
+import L16SlideFindPartner from "./L16SlideFindPartner";
+import L16SlideMoats from "./L16SlideMoats";
+import L16SlideHomework from "./L16SlideHomework";
+import L16SlideClosing from "./L16SlideClosing";
+import L16SlideLessonSummary from "./L16SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль",
-  "Блок 1 · База",
-  "Юнит = один платящий клиент",
-  "Словарь · 7 терминов",
-  "CAC · честный расчёт",
-  "Себестоимость и маржа",
-  "LTV · без самообмана",
-  "Продукт новый · что считать вместо LTV",
-  "Блок 2 · Формула решения",
-  "Два числа · LTV:CAC и payback",
-  "Салфетка · сквозной расчёт",
-  "🔥 Кейсы 2026 · Cursor и AI-маржа",
-  "Антикейс · MoviePass",
-  "Блок 3 · Экономика каналов",
-  "CAC по каналам · раздельно",
-  "Светофор решений по каналу",
-  "Блок 4 · Четыре рычага",
-  "4 рычага · что даёт каждый",
-  "Цена · самый быстрый рычаг",
-  "AI-косты под контролем",
-  "Блок 5 · Финал",
-  "🔥 Промпт · калькулятор экономики",
-  "Домашнее задание · твоя таблица",
+  "Главная мысль · 1 партнёр = 100 outreach",
+  "Блок 1: 4 типа партнёрств",
+  "Channel · Integration · Co-marketing · Referral",
+  "Блок 2: Где искать партнёра",
+  "4 критерия + 4 канала",
+  "Блок 3: Distribution moats",
+  "Network · Data · Brand moats",
+  "Блок 4: Финальное задание",
+  "Домашка · 5 партнёров + moat-стратегия",
   "Саммари · 5 мыслей",
-  "Следующий урок · привлечение средств",
+  "Закрытие · 16 уроков пройдены",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
-    case 0: return <L14Slide01Welcome />;
-    case 1: return <L14Slide02MainThesis />;
-    case 2: return <L14BlockHeader blockNumber={1} title="База" subtitle="один клиент под микроскопом: CAC, себестоимость, LTV" />;
-    case 3: return <L14Slide03WhatIsUnit />;
-    case 4: return <L14Slide04Glossary />;
-    case 5: return <L14Slide05CAC />;
-    case 6: return <L14Slide06COGS />;
-    case 7: return <L14Slide07LTV />;
-    case 8: return <L14Slide07bNoDataLTV />;
-    case 9: return <L14BlockHeader blockNumber={2} title="Формула решения" subtitle="два числа, салфетка и кейсы рынка 2026" />;
-    case 10: return <L14Slide08TwoNumbers />;
-    case 11: return <L14Slide09Napkin />;
-    case 12: return <L14Slide10Cases2026 />;
-    case 13: return <L14Slide11MoviePass />;
-    case 14: return <L14BlockHeader blockNumber={3} title="Экономика каналов" subtitle="Meta, аутрич, контент - у каждого свой CAC и свой вердикт" />;
-    case 15: return <L14Slide12ChannelCAC />;
-    case 16: return <L14Slide13DecisionRule />;
-    case 17: return <L14BlockHeader blockNumber={4} title="Четыре рычага" subtitle="что делать, когда экономика не сходится" />;
-    case 18: return <L14Slide14FourLevers />;
-    case 19: return <L14Slide15PriceLever />;
-    case 20: return <L14Slide16AICosts />;
-    case 21: return <L14BlockHeader blockNumber={5} title="Финал" subtitle="промпт-калькулятор · домашка · что дальше" />;
-    case 22: return <L14Slide17Prompt />;
-    case 23: return <L14Slide18Homework />;
-    case 24: return <L14SlideLessonSummary />;
-    case 25: return <L14Slide19NextLesson />;
+    case 0: return <L16Slide01Welcome />;
+    case 1: return <L16Slide02MainThesis />;
+    case 2: return <L16BlockHeader blockNumber={1} title="4 типа партнёрств" subtitle="какой подходит твоему продукту" />;
+    case 3: return <L16SlideTypes />;
+    case 4: return <L16BlockHeader blockNumber={2} title="Где искать партнёра" subtitle="критерии идеального + каналы поиска" />;
+    case 5: return <L16SlideFindPartner />;
+    case 6: return <L16BlockHeader blockNumber={3} title="Distribution moats" subtitle="долгосрочное конкурентное преимущество" />;
+    case 7: return <L16SlideMoats />;
+    case 8: return <L16BlockHeader blockNumber={4} title="Финальное задание" subtitle="5 партнёров + первые сообщения" />;
+    case 9: return <L16SlideHomework />;
+    case 10: return <L16SlideLessonSummary />;
+    case 11: return <L16SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 12;
 
-export default function Lesson14PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
+export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
@@ -152,7 +111,7 @@ export default function Lesson14PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 14 — Все слайды</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 16 — Партнёрства и distribution moats</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>
