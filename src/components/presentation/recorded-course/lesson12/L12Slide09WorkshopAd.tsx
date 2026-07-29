@@ -23,7 +23,7 @@ const blocks = [
   },
   {
     t: "CTA",
-    body: "Sign Up / Shop Now / Learn More / Send Message. Одно действие, без «или». Send Message — для WhatsApp-бот аренды (click-to-WhatsApp).",
+    body: "Sign Up / Shop Now / Learn More / Send Message. Одно действие, без «или». Send Message - если целевое действие диалог в мессенджере (click-to-message).",
   },
   {
     t: "Tracking · UTM в URL",
@@ -42,7 +42,7 @@ export default function L12Slide09WorkshopAd() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Walkthrough · Шаг 3 · Ad · Dynamic Creative
+          Воркшоп · Шаг 4 · Ad · Dynamic Creative
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
           5–10 креативов в одну группу. <span className="text-[hsl(var(--slide-gold))]">Meta микширует.</span>
@@ -62,7 +62,7 @@ export default function L12Slide09WorkshopAd() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Walkthrough · Шаг 3 · Ad · Dynamic Creative
+        Воркшоп · Шаг 4 · Ad · Dynamic Creative
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
         5–10 креативов в одну группу. <span className="text-[hsl(var(--slide-gold))]">Meta микширует.</span>

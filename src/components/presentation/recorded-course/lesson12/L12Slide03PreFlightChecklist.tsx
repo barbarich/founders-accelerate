@@ -3,33 +3,23 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const items = [
   {
     n: "01",
-    t: "Лендинг с измеримой целью",
-    body: "Sign up / Buy / Get demo — одно действие, одна кнопка. Если цель — «узнать о продукте», рекламу запускать рано.",
+    t: "Лендинг с одним измеримым действием",
+    body: "Sign up, Buy или Get demo - одно действие, одна кнопка. Если цель страницы «узнать о продукте», рекламу запускать рано: алгоритму нечего оптимизировать.",
   },
   {
     n: "02",
-    t: "Meta Pixel · живой и стреляет",
-    body: "Установлен на лендинге. В Events Manager видны свежие события (PageView, AddToCart, Lead, Purchase). Без пикселя оптимизировать нечего.",
+    t: "Пиксель живой и проверен",
+    body: "Поставили и прогнали через Test Events в прошлой части. В Events Manager видны свежие события. Не видны - возвращаемся туда, а не идём дальше.",
   },
   {
     n: "03",
-    t: "Business Manager + Page + Instagram",
-    body: "Facebook Page существует и привязана к Business Manager. Instagram аккаунт подключён. На странице 5+ постов и аватарка — иначе low quality score.",
+    t: "Целевое событие выбрано",
+    body: "Purchase, если продажа происходит на сайте. Lead, если собираешь контакты. CompleteRegistration для бесплатного входа. ViewContent - временно, пока событий мало.",
   },
   {
     n: "04",
-    t: "Платёжный метод привязан",
-    body: "Карта в Ad Account. Лимит установлен (страховка). Без warmup аккаунта НЕ заливать $100/день — заблокируют.",
-  },
-  {
-    n: "05",
-    t: "5–10 креативов готовы",
-    body: "Половина статика, половина видео. Делаем их прямо в следующем блоке — на AI, без дизайнера. К шагу Ads Manager должны быть на руках. Инструменты: Higgsfield, Nano Banana, Canva.",
-  },
-  {
-    n: "06",
-    t: "Conversion event выбран осознанно",
-    body: "Что считаем «успехом»? Purchase, если есть продажи. Lead — если собираешь email. ViewContent — если объём событий пока маленький.",
+    t: "5-10 креативов лежат в папке",
+    body: "Половина статика, половина видео, все в одном стиле с лендингом. Собрали на AI в прошлой части. Один креатив - это не запуск, это лотерея.",
   },
 ];
 
@@ -40,18 +30,18 @@ export default function L12Slide03PreFlightChecklist() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Pre-flight · что должно быть готово ДО
+          Чек-лист перед кабинетом
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
-          Шесть пунктов. Без них реклама — <span className="text-[hsl(var(--slide-gold))]">сжигание денег</span>
+          Четыре пункта. Нет хотя бы одного - <span className="text-[hsl(var(--slide-gold))]">Ads Manager не открываем</span>
         </h2>
-        <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[6px]">
-          Шесть пунктов готовности. Что не закрыто — закрываем прямо сейчас, до Ads Manager. Креативы (п. 05) собираем в следующем блоке.
+        <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.85)] leading-[1.45] mb-[8px]">
+          Оба рычага мы только что собрали. Это последняя сверка перед экраном - дальше всё в кабинете.
         </p>
-        <div className="grid grid-cols-2 gap-[4px]">
+        <div className="grid grid-cols-2 gap-[5px]">
           {items.map((it) => (
             <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[8px] py-[5px]">
-              <p className="text-[8.5px] font-bold text-[hsl(var(--slide-text))]">
+              <p className="text-[8.5px] font-bold text-[hsl(var(--slide-text))] leading-[1.2]">
                 <span className="text-[hsl(var(--slide-gold))]">{it.n}.</span> {it.t}
               </p>
               <p className="text-[7px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] ml-[12px]">{it.body}</p>
@@ -65,22 +55,22 @@ export default function L12Slide03PreFlightChecklist() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Pre-flight · что должно быть готово ДО первой кнопки Publish
+        Чек-лист перед кабинетом
       </p>
-      <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
-        Шесть пунктов. Без них реклама — <span className="text-[hsl(var(--slide-gold))]">сжигание денег</span>
+      <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
+        Четыре пункта. Нет хотя бы одного - <span className="text-[hsl(var(--slide-gold))]">Ads Manager не открываем</span>
       </h2>
-      <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[24px] max-w-[1600px]">
-        Шесть пунктов готовности. Что не закрыто — закрываем прямо сейчас, до Ads Manager. Креативы (п. 05) собираем в следующем блоке.
+      <p className="text-[20px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[26px] max-w-[1600px]">
+        Оба рычага мы только что собрали. Это последняя сверка перед экраном - дальше всё происходит в кабинете.
       </p>
-      <div className="grid grid-cols-3 gap-[20px] max-w-[1700px]">
+      <div className="grid grid-cols-2 gap-[20px] max-w-[1700px]">
         {items.map((it) => (
-          <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[24px] py-[18px]">
+          <div key={it.n} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-gold)/0.3)] rounded-[14px] px-[26px] py-[20px]">
             <div className="flex items-baseline gap-[12px] mb-[6px]">
               <span className="font-display text-[30px] font-bold text-[hsl(var(--slide-gold))] leading-none">{it.n}</span>
-              <span className="text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.15]">{it.t}</span>
+              <span className="text-[21px] font-bold text-[hsl(var(--slide-text))] leading-[1.15]">{it.t}</span>
             </div>
-            <p className="text-[15px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] ml-[44px]">{it.body}</p>
+            <p className="text-[16px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] ml-[44px]">{it.body}</p>
           </div>
         ))}
       </div>

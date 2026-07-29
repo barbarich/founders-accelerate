@@ -15,7 +15,7 @@ export default function L12BlockHeader({
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[24px]">
         <p className="text-[10px] uppercase tracking-[0.3em] text-[hsl(var(--slide-gold))] font-medium mb-[8px]">
-          Блок {blockNumber}
+          Часть {blockNumber}
         </p>
         <h2 className="font-display text-[28px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] tracking-[-0.01em]">
           {title}
@@ -31,7 +31,7 @@ export default function L12BlockHeader({
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[20px] uppercase tracking-[0.3em] text-[hsl(var(--slide-gold))] font-medium mb-[20px]">
-        Блок {blockNumber}
+        Часть {blockNumber}
       </p>
       <h2 className="font-display text-[96px] font-bold text-[hsl(var(--slide-text))] leading-[1.0] tracking-[-0.02em] max-w-[1500px]">
         {title}

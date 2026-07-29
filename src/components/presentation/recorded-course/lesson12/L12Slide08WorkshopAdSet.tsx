@@ -1,7 +1,7 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const fields = [
-  { label: "Conversion location", val: "Website (или Messenger — для WhatsApp-бот аренды)" },
+  { label: "Conversion location", val: "Website · или Messenger / WhatsApp, если целевое действие - диалог" },
   { label: "Performance goal", val: "Maximize number of conversions" },
   { label: "Pixel + Event", val: "Pixel выбран · Event = Purchase / Lead / CompleteRegistration" },
   { label: "Budget", val: "$20–30/день · Daily · НЕ Lifetime" },
@@ -18,7 +18,7 @@ export default function L12Slide08WorkshopAdSet() {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px]">
         <p className="text-[10px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[6px]">
-          Walkthrough · Шаг 2 · Ad Set
+          Воркшоп · Шаг 3 · Ad Set
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px]">
           Advantage+ Audience и широкий вход. <span className="text-[hsl(var(--slide-gold))]">Не сужаешь.</span>
@@ -44,7 +44,7 @@ export default function L12Slide08WorkshopAdSet() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[140px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[14px]">
-        Walkthrough · Шаг 2 · Ad Set · Advantage+ Audience
+        Воркшоп · Шаг 3 · Ad Set · Advantage+ Audience
       </p>
       <h2 className="font-display text-[50px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[14px] tracking-[-0.02em]">
         Широкий вход. <span className="text-[hsl(var(--slide-gold))]">Не сужаешь руками.</span>

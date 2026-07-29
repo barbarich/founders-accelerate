@@ -14,14 +14,14 @@ export default function L12Slide01Welcome() {
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
           <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.08] tracking-[-0.02em]">
-            Креативы + реклама в Meta.<br />От пустого холста до запущенной кампании за один урок.
+            Реклама в Meta 2026.<br />Собираем креативы и запускаем кампанию - на моём экране.
           </h1>
           <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
             Урок 12 · Платный трафик B2C + B2B
           </p>
           <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Один большой воркшоп вживую. Сначала собираем креативы на AI, потом настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
-            Уходишь со своими креативами и первой активной Meta-кампанией. Не с конспектом.
+            Это воркшоп, а не лекция. Сначала собираем креативы на AI и ставим пиксель, потом я открываю свой рекламный кабинет и настраиваю кампанию с нуля.<br />
+            Ты ставишь на паузу и повторяешь у себя. Уходишь с активной кампанией, а не с конспектом.
           </p>
         </div>
       </div>
@@ -37,15 +37,15 @@ export default function L12Slide01Welcome() {
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1500px]">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
         <h1 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          Креативы + реклама в Meta.<br />
-          От пустого холста до запущенной кампании за один урок.
+          Реклама в Meta 2026.<br />
+          Собираем креативы и запускаем кампанию - на моём экране.
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
           Урок 12 · Платный трафик B2C + B2B
         </p>
         <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1200px]">
-          Один большой воркшоп вживую. Сначала собираем креативы на AI, потом настраиваем кампанию на моём кабинете — ты повторяешь у себя.<br />
-          Уходишь со своими креативами и первой активной Meta-кампанией. Не с конспектом.
+          Это воркшоп, а не лекция. Сначала собираем креативы на AI и ставим пиксель, потом я открываю свой рекламный кабинет и настраиваю кампанию с нуля.<br />
+          Ты ставишь на паузу и повторяешь у себя. Уходишь с активной кампанией, а не с конспектом.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
