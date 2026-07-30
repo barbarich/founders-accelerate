@@ -14,13 +14,13 @@ export default function L13Slide01Welcome() {
         <div className="relative z-10 flex flex-col justify-center px-[28px]">
           <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[20px]" />
           <h1 className="font-display text-[26px] font-bold text-[hsl(var(--slide-text))] leading-[1.08] tracking-[-0.02em]">
-            B2B Sales Motion для соло-фаундера.<br />От ICP до первой сделки за один путь.
+            Продажи как система.<br />Чтобы деньги приходили не только в удачный месяц.
           </h1>
           <p className="text-[15px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 13 · Личные продажи без рекламы
+            Урок 13 · Продажи компаниям, руками фаундера
           </p>
           <p className="text-[12px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Одна нить: ICP → Dream 50 → multi-touch → discovery → demo → close → expand. Уходишь с motion, готовым к запуску завтра. Не с конспектом.
+            Одна нить: сколько нужно → кому пишем → откуда лиды → разговор → цикл сделки → после сделки → что автоматизировать. Уходишь со своей таблицей, а не с конспектом.
           </p>
         </div>
       </div>
@@ -36,15 +36,15 @@ export default function L13Slide01Welcome() {
       <div className="relative z-10 flex flex-col justify-center px-[140px] max-w-[1500px]">
         <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))] mb-[48px]" />
         <h1 className="font-display text-[72px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] tracking-[-0.02em]">
-          B2B Sales Motion для соло-фаундера.<br />
-          От ICP до первой сделки за один путь.
+          Продажи как система.<br />
+          Чтобы деньги приходили не только в удачный месяц.
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 13 · Личные продажи без рекламы
+          Урок 13 · Продажи компаниям, руками фаундера
         </p>
         <p className="text-[24px] text-[hsl(var(--slide-text-muted))] mt-[20px] leading-[1.4] max-w-[1200px]">
-          Одна нить: ICP → Dream 50 → multi-touch → discovery → demo → close → expand.<br />
-          Уходишь с motion, готовым к запуску завтра. Не с конспектом.
+          Одна нить: сколько нужно → кому пишем → откуда берём лидов → разговор → цикл сделки → после сделки → что автоматизировать.<br />
+          Уходишь со своей таблицей сделок, а не с конспектом.
         </p>
       </div>
       <div className="absolute right-[200px] top-[200px] bottom-[200px] w-[1px] bg-gradient-to-b from-transparent via-[hsl(var(--slide-gold)/0.2)] to-transparent" />
