@@ -26,10 +26,10 @@ export default function L15SlidePitchDeckPrompt() {
           🔥 Главный промпт блока
         </p>
         <h2 className="font-display text-[20px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[3px]">
-          Черновик дека <span className="text-[hsl(var(--slide-gold))]">за один заход</span>
+          Готовый дек в дизайне, <span className="text-[hsl(var(--slide-gold))]">не просто текст</span>
         </h2>
         <p className="text-[8px] text-[hsl(var(--slide-text-muted))] mb-[6px] leading-[1.4]">
-          Применяет правила акцентов и топ-5 ошибок с предыдущих слайдов. Ищет актуальные данные в интернете, если чего-то не знаешь — не выдумывает.
+          Выдаёт один HTML-файл — открываешь в браузере и сразу показываешь. Применяет правила акцентов и топ-5 ошибок с предыдущих слайдов, ищет актуальные данные в интернете, если чего-то не знаешь.
         </p>
         <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[6px] px-[8px] py-[5px] flex-1 min-h-0 flex flex-col">
           <div className="flex items-center justify-between mb-[3px] pb-[3px] border-b border-[hsl(var(--slide-border)/0.25)]">
@@ -55,14 +55,14 @@ export default function L15SlidePitchDeckPrompt() {
           🔥 Главный промпт блока
         </p>
         <p className="text-[16px] text-[hsl(var(--slide-text-muted))]">
-          Работает в Claude · Perplexity · GPT-5 · Gemini 2.5
+          Claude / GPT-5 показывают превью сразу · в остальных — сохрани .html и открой в браузере
         </p>
       </div>
-      <h2 className="font-display text-[58px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[6px]">
-        Черновик дека <span className="text-[hsl(var(--slide-gold))]">за один заход</span>
+      <h2 className="font-display text-[54px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[6px]">
+        Готовый дек в дизайне, <span className="text-[hsl(var(--slide-gold))]">не просто текст</span>
       </h2>
       <p className="text-[21px] text-[hsl(var(--slide-text-muted))] mb-[22px] max-w-[1700px] leading-[1.4]">
-        Применяет правила акцентов и топ-5 ошибок с предыдущих слайдов. Если чего-то не знаешь — ищет актуальные данные в интернете, а не выдумывает.
+        Выдаёт один HTML-файл — открываешь в браузере и сразу показываешь. Применяет правила акцентов и топ-5 ошибок с предыдущих слайдов, ищет актуальные данные в интернете, если чего-то не знаешь.
       </p>
       <div className="bg-[hsl(var(--slide-bg))] border border-[hsl(var(--slide-gold)/0.35)] rounded-[14px] px-[28px] py-[20px] flex-1 min-h-0 flex flex-col max-w-[1700px] w-full">
         <div className="flex items-start justify-between gap-[16px] mb-[12px] pb-[12px] border-b border-[hsl(var(--slide-border)/0.25)]">
