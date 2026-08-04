@@ -237,7 +237,7 @@ function TrustStrip() {
         <img src="/images/Leah.png" alt="" loading="lazy" />
         <img src="/images/Vlad.png" alt="" loading="lazy" />
       </div>
-      <div className="mcl-trust-text"><strong>{count}</strong> человек уже купили курс · +{PURCHASE_PER_DAY} каждый день</div>
+      <div className="mcl-trust-text"><strong>{count}</strong> человек уже купили курс</div>
       <span className="mcl-trust-sep" aria-hidden="true" />
       <div className="mcl-trust-rating">
         <span className="mcl-stars" role="img" aria-label={`Рейтинг ${RATING} из 5`}>
