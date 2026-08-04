@@ -8,7 +8,9 @@ import L15Slide01Welcome from "./L15Slide01Welcome";
 import L15Slide02MainThesis from "./L15Slide02MainThesis";
 import L15BlockHeader from "./L15BlockHeader";
 import L15SlideBootstrapVsRaise from "./L15SlideBootstrapVsRaise";
+import L15SlideStartupPrograms from "./L15SlideStartupPrograms";
 import L15SlidePitchDeck from "./L15SlidePitchDeck";
+import L15SlidePitchDeckExamples from "./L15SlidePitchDeckExamples";
 import L15SlideOutreach from "./L15SlideOutreach";
 import L15SlideTermSheet from "./L15SlideTermSheet";
 import L15SlideHomework from "./L15SlideHomework";
@@ -20,8 +22,10 @@ export const slideNames = [
   "Главная мысль · деньги = инструмент",
   "Блок 1: Bootstrap или Raise",
   "Когда что · конкретные сценарии",
+  "Стартап-кредиты · закрой косты бесплатно",
   "Блок 2: Pitch deck",
   "10 слайдов · Sequoia format",
+  "Образцовые деки · Airbnb и Front",
   "Блок 3: Investor outreach",
   "4 канала по убывающей",
   "Блок 4: Term sheet basics",
@@ -38,21 +42,23 @@ export function getSlideContent(index: number) {
     case 1: return <L15Slide02MainThesis />;
     case 2: return <L15BlockHeader blockNumber={1} title="Bootstrap или Raise" subtitle="осознанный выбор пути под цели" />;
     case 3: return <L15SlideBootstrapVsRaise />;
-    case 4: return <L15BlockHeader blockNumber={2} title="Pitch deck" subtitle="10 слайдов · Sequoia format" />;
-    case 5: return <L15SlidePitchDeck />;
-    case 6: return <L15BlockHeader blockNumber={3} title="Investor outreach" subtitle="как искать первого инвестора" />;
-    case 7: return <L15SlideOutreach />;
-    case 8: return <L15BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
-    case 9: return <L15SlideTermSheet />;
-    case 10: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 11: return <L15SlideHomework />;
-    case 12: return <L15SlideLessonSummary />;
-    case 13: return <L15SlideClosing />;
+    case 4: return <L15SlideStartupPrograms />;
+    case 5: return <L15BlockHeader blockNumber={2} title="Pitch deck" subtitle="10 слайдов · Sequoia format" />;
+    case 6: return <L15SlidePitchDeck />;
+    case 7: return <L15SlidePitchDeckExamples />;
+    case 8: return <L15BlockHeader blockNumber={3} title="Investor outreach" subtitle="как искать первого инвестора" />;
+    case 9: return <L15SlideOutreach />;
+    case 10: return <L15BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
+    case 11: return <L15SlideTermSheet />;
+    case 12: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 13: return <L15SlideHomework />;
+    case 14: return <L15SlideLessonSummary />;
+    case 15: return <L15SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 14;
+export const TOTAL = 16;
 
 export default function Lesson15PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
