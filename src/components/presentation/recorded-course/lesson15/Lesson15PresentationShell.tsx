@@ -12,6 +12,8 @@ import L15SlideStartupPrograms from "./L15SlideStartupPrograms";
 import L15SlidePitchDeck from "./L15SlidePitchDeck";
 import L15SlidePitchDeckExamples from "./L15SlidePitchDeckExamples";
 import L15SlideOutreach from "./L15SlideOutreach";
+import L15SlideAccelerators from "./L15SlideAccelerators";
+import L15SlideInvestorFit from "./L15SlideInvestorFit";
 import L15SlideTermSheet from "./L15SlideTermSheet";
 import L15SlideHomework from "./L15SlideHomework";
 import L15SlideClosing from "./L15SlideClosing";
@@ -25,9 +27,11 @@ export const slideNames = [
   "Стартап-кредиты · закрой косты бесплатно",
   "Блок 2: Pitch deck",
   "10 слайдов · Sequoia format",
-  "Образцовые деки · Airbnb и Front",
+  "Образцовые деки · Airbnb, Front, ElevenLabs",
   "Блок 3: Investor outreach",
   "4 канала по убывающей",
+  "Акселераторы · YC, Techstars и не только",
+  "У кого брать деньги, у кого — нет",
   "Блок 4: Term sheet basics",
   "SAFE / Convertible / Priced round",
   "Блок 5: Задание",
@@ -48,17 +52,19 @@ export function getSlideContent(index: number) {
     case 7: return <L15SlidePitchDeckExamples />;
     case 8: return <L15BlockHeader blockNumber={3} title="Investor outreach" subtitle="как искать первого инвестора" />;
     case 9: return <L15SlideOutreach />;
-    case 10: return <L15BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
-    case 11: return <L15SlideTermSheet />;
-    case 12: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
-    case 13: return <L15SlideHomework />;
-    case 14: return <L15SlideLessonSummary />;
-    case 15: return <L15SlideClosing />;
+    case 10: return <L15SlideAccelerators />;
+    case 11: return <L15SlideInvestorFit />;
+    case 12: return <L15BlockHeader blockNumber={4} title="Term sheet basics" subtitle="SAFE · Convertible · Priced round" />;
+    case 13: return <L15SlideTermSheet />;
+    case 14: return <L15BlockHeader blockNumber={5} title="Задание на эту неделю" />;
+    case 15: return <L15SlideHomework />;
+    case 16: return <L15SlideLessonSummary />;
+    case 17: return <L15SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 16;
+export const TOTAL = 18;
 
 export default function Lesson15PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();

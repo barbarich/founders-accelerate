@@ -15,6 +15,13 @@ const decks = [
     url: "https://collinmathilde.medium.com/front-series-a-deck-f2e2775a419b",
     label: "collinmathilde.medium.com/front-series-a-deck",
   },
+  {
+    name: "ElevenLabs",
+    tag: "2023 PRE-SEED → 2026 $11B",
+    body: "Свежий и живой пример: voice AI, тот же самый пре-сид дек привёл компанию к $180M в январе 2025 и $500M при $11B в феврале 2026. Показан их оригинальный 11-слайдовый пре-сид дек — деки поздних раундов нигде не публикуют.",
+    url: "https://bestpitchdeck.com/eleven-labs",
+    label: "bestpitchdeck.com/eleven-labs",
+  },
 ];
 
 export default function L15SlidePitchDeckExamples() {
@@ -27,7 +34,7 @@ export default function L15SlidePitchDeckExamples() {
           Живые примеры — не шаблон, а реальные раунды
         </p>
         <h2 className="font-display text-[19px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[12px]">
-          Два дека, на которые стоит равняться
+          Три дека, на которые стоит равняться
         </h2>
         <div className="space-y-[10px]">
           {decks.map((d) => (
@@ -52,18 +59,18 @@ export default function L15SlidePitchDeckExamples() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[16px]">
         Живые примеры — не шаблон, а реальные раунды
       </p>
-      <h2 className="font-display text-[48px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
-        Два дека, на которые стоит равняться
+      <h2 className="font-display text-[46px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[30px] tracking-[-0.01em]">
+        Три дека, на которые стоит равняться
       </h2>
-      <div className="grid grid-cols-2 gap-[28px] max-w-[1900px]">
+      <div className="grid grid-cols-3 gap-[22px] max-w-[1900px]">
         {decks.map((d) => (
-          <div key={d.name} className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[28px] py-[24px] bg-[hsl(var(--slide-gold)/0.04)]">
-            <div className="flex items-baseline gap-[14px] mb-[8px]">
-              <p className="text-[26px] font-bold text-[hsl(var(--slide-text))]">{d.name}</p>
-              <p className="text-[14px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))]">{d.tag}</p>
+          <div key={d.name} className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[14px] px-[24px] py-[22px] bg-[hsl(var(--slide-gold)/0.04)]">
+            <div className="flex flex-col gap-[2px] mb-[8px]">
+              <p className="text-[22px] font-bold text-[hsl(var(--slide-text))] leading-[1.15]">{d.name}</p>
+              <p className="text-[12px] uppercase tracking-[0.12em] text-[hsl(var(--slide-gold))]">{d.tag}</p>
             </div>
-            <p className="text-[17px] text-[hsl(var(--slide-text)/0.88)] leading-[1.5] mb-[14px]">{d.body}</p>
-            <a href={d.url} target="_blank" rel="noopener noreferrer" className="text-[15px] text-[hsl(var(--slide-gold))] underline underline-offset-2">
+            <p className="text-[14.5px] text-[hsl(var(--slide-text)/0.88)] leading-[1.45] mb-[12px]">{d.body}</p>
+            <a href={d.url} target="_blank" rel="noopener noreferrer" className="text-[12.5px] text-[hsl(var(--slide-gold))] underline underline-offset-2 break-all">
               {d.label}
             </a>
           </div>
