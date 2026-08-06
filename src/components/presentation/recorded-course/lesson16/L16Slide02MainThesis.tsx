@@ -13,7 +13,7 @@ export default function L16Slide02MainThesis() {
           Канал считается рабочим, только когда <span className="text-[hsl(var(--slide-gold))]">кто-то заплатил</span>.
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[12px]">
-          Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск с 300 голосами дал 91 платящего, другой с 612 голосами - <span className="text-[hsl(var(--slide-text))] font-medium">одного</span>.
+          Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск на площадке для стартапов набрал 300 лайков от других пользователей и дал 91 платящего, другой - 612 лайков и <span className="text-[hsl(var(--slide-text))] font-medium">одного</span> платящего.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
@@ -33,7 +33,7 @@ export default function L16Slide02MainThesis() {
         Канал считается рабочим, только когда <span className="text-[hsl(var(--slide-gold))]">кто-то заплатил</span>.
       </h2>
       <p className="text-[26px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] max-w-[1700px] mb-[32px]">
-        Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск с 300 голосами дал 91 платящего, другой, с 612 голосами, - <span className="text-[hsl(var(--slide-text))] font-semibold">одного</span>.
+        Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск на площадке для стартапов набрал 300 лайков от других пользователей и дал 91 платящего, другой - 612 лайков и <span className="text-[hsl(var(--slide-text))] font-semibold">одного</span> платящего.
       </p>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[22px] max-w-[1700px]">
         <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
