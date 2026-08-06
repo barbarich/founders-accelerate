@@ -41,7 +41,7 @@ export default function L16SlideHomework() {
         Финальное задание курса
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[32px] tracking-[-0.01em]">
-        5 пунктов · от типа партнёрства к первым сообщениям
+        5 пунктов - выбрал два канала и запустил
       </h2>
       <div className="grid grid-cols-2 gap-x-[40px] gap-y-[18px] max-w-[1800px]">
         {items.map((i) => (

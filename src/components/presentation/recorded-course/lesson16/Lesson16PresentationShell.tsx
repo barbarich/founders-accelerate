@@ -14,14 +14,17 @@ import L16SlideWinWin from "./L16SlideWinWin";
 import L16SlideNegotiation from "./L16SlideNegotiation";
 import L16SlideAfterYes from "./L16SlideAfterYes";
 import L16SlideChannelMap from "./L16SlideChannelMap";
+import L16SlideCreatorsWhy from "./L16SlideCreatorsWhy";
 import L16SlideCreatorsWho from "./L16SlideCreatorsWho";
+import L16SlideCreatorsTools from "./L16SlideCreatorsTools";
 import L16SlideCreatorsPay from "./L16SlideCreatorsPay";
 import L16SlideCreatorsCheck from "./L16SlideCreatorsCheck";
 import L16SlideCommunities from "./L16SlideCommunities";
+import L16SlideCommunityExpert from "./L16SlideCommunityExpert";
 import L16SlideLaunches from "./L16SlideLaunches";
-import L16SlideCatalogs from "./L16SlideCatalogs";
-import L16SlideAiSearch from "./L16SlideAiSearch";
-import L16SlideAiSearchWeek from "./L16SlideAiSearchWeek";
+import L16SlideSeoGeoWhat from "./L16SlideSeoGeoWhat";
+import L16SlideSeoGeoTools from "./L16SlideSeoGeoTools";
+import L16SlideSeoGeoActions from "./L16SlideSeoGeoActions";
 import L16SlideChooseChannels from "./L16SlideChooseChannels";
 import L16SlideHomework from "./L16SlideHomework";
 import L16SlideClosing from "./L16SlideClosing";
@@ -39,16 +42,19 @@ export const slideNames = [
   "О чём договариваться · 5 ответов",
   "Партнёр сказал да · пакет и 60 дней",
   "Блок 2: Инфлюенсеры",
-  "Кого брать · математика одного поста",
+  "Зачем и когда · чужое доверие",
+  "Кого выбирать · один пост - не результат",
+  "Где искать · 3 сервиса",
   "Сколько платить · цена за просмотр",
-  "Проверка за 10 минут · и как считать",
+  "Проверка и деньги · 10 минут",
   "Блок 3: Комьюнити и запуски",
   "Комментарии, а не посты",
-  "Запуски · рейтинг это не деньги",
-  "Блок 4: Каталоги и AI-поиск",
-  "Каталоги · усилитель, не источник",
-  "AI-ответы · кого цитирует модель",
-  "AI-видимость · неделя работы",
+  "Кейс MetaMinder · эксперт внутри",
+  "Product Hunt · что это и как выйти в топ",
+  "Блок 4: SEO и GEO",
+  "Что это · тебя находят сами",
+  "Инструменты · TrySORO + Otterly",
+  "4 действия на первую неделю",
   "Блок 5: Выбери и запусти",
   "Два канала на 90 дней",
   "Домашка · выбрал и запустил",
@@ -69,26 +75,29 @@ export function getSlideContent(index: number) {
     case 8: return <L16SlideNegotiation />;
     case 9: return <L16SlideAfterYes />;
     case 10: return <L16BlockHeader blockNumber={2} title="Инфлюенсеры и креаторы" subtitle="покупаешь чужую аудиторию - считай, за что платишь" />;
-    case 11: return <L16SlideCreatorsWho />;
-    case 12: return <L16SlideCreatorsPay />;
-    case 13: return <L16SlideCreatorsCheck />;
-    case 14: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
-    case 15: return <L16SlideCommunities />;
-    case 16: return <L16SlideLaunches />;
-    case 17: return <L16BlockHeader blockNumber={4} title="Каталоги и AI-поиск" subtitle="чтобы находили без тебя" />;
-    case 18: return <L16SlideCatalogs />;
-    case 19: return <L16SlideAiSearch />;
-    case 20: return <L16SlideAiSearchWeek />;
-    case 21: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
-    case 22: return <L16SlideChooseChannels />;
-    case 23: return <L16SlideHomework />;
-    case 24: return <L16SlideLessonSummary />;
-    case 25: return <L16SlideClosing />;
+    case 11: return <L16SlideCreatorsWhy />;
+    case 12: return <L16SlideCreatorsWho />;
+    case 13: return <L16SlideCreatorsTools />;
+    case 14: return <L16SlideCreatorsPay />;
+    case 15: return <L16SlideCreatorsCheck />;
+    case 16: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
+    case 17: return <L16SlideCommunities />;
+    case 18: return <L16SlideCommunityExpert />;
+    case 19: return <L16SlideLaunches />;
+    case 20: return <L16BlockHeader blockNumber={4} title="SEO и GEO" subtitle="тебя находят сами, когда ищут" />;
+    case 21: return <L16SlideSeoGeoWhat />;
+    case 22: return <L16SlideSeoGeoTools />;
+    case 23: return <L16SlideSeoGeoActions />;
+    case 24: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
+    case 25: return <L16SlideChooseChannels />;
+    case 26: return <L16SlideHomework />;
+    case 27: return <L16SlideLessonSummary />;
+    case 28: return <L16SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 26;
+export const TOTAL = 29;
 
 export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
