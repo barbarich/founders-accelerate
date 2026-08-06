@@ -17,9 +17,9 @@ export default function L16SlideClosing() {
         </p>
         <p className="text-[11px] text-[hsl(var(--slide-gold))] leading-[1.5] mb-[16px]">
           За первый месяц после курса:<br />
-          · 1 платящий клиент<br />
-          · 5 партнёрских ситуаций<br />
-          · 1 moat в строительстве
+          · 2 канала выбраны и запущены<br />
+          · 40 касаний сделано<br />
+          · 1 платящий клиент из нового канала
         </p>
         <div className="w-[30px] h-[2px] bg-[hsl(var(--slide-gold))]" />
       </div>
@@ -39,7 +39,7 @@ export default function L16SlideClosing() {
       </p>
       <p className="text-[22px] text-[hsl(var(--slide-gold))] leading-[1.6] max-w-[1500px] mb-[48px]">
         За первый месяц после курса:<br />
-        · 1 платящий клиент · 5 партнёрских ситуаций · 1 moat в строительстве
+        · 2 канала выбраны и запущены · 40 касаний сделано · 1 платящий из нового канала
       </p>
       <div className="w-[80px] h-[2px] bg-[hsl(var(--slide-gold))]" />
     </div>

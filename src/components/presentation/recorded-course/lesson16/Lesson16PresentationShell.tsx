@@ -7,47 +7,88 @@ import ScaledSlide from "../../ScaledSlide";
 import L16Slide01Welcome from "./L16Slide01Welcome";
 import L16Slide02MainThesis from "./L16Slide02MainThesis";
 import L16BlockHeader from "./L16BlockHeader";
-import L16SlideTypes from "./L16SlideTypes";
 import L16SlideFindPartner from "./L16SlideFindPartner";
-import L16SlideMoats from "./L16SlideMoats";
+import L16SlideVendorMap from "./L16SlideVendorMap";
+import L16SlidePitchAnatomy from "./L16SlidePitchAnatomy";
+import L16SlideWinWin from "./L16SlideWinWin";
+import L16SlideNegotiation from "./L16SlideNegotiation";
+import L16SlideAfterYes from "./L16SlideAfterYes";
+import L16SlideChannelMap from "./L16SlideChannelMap";
+import L16SlideCreatorsWho from "./L16SlideCreatorsWho";
+import L16SlideCreatorsPay from "./L16SlideCreatorsPay";
+import L16SlideCreatorsCheck from "./L16SlideCreatorsCheck";
+import L16SlideCommunities from "./L16SlideCommunities";
+import L16SlideLaunches from "./L16SlideLaunches";
+import L16SlideCatalogs from "./L16SlideCatalogs";
+import L16SlideAiSearch from "./L16SlideAiSearch";
+import L16SlideAiSearchWeek from "./L16SlideAiSearchWeek";
+import L16SlideChooseChannels from "./L16SlideChooseChannels";
 import L16SlideHomework from "./L16SlideHomework";
 import L16SlideClosing from "./L16SlideClosing";
 import L16SlideLessonSummary from "./L16SlideLessonSummary";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · 1 партнёр = 100 outreach",
-  "Блок 1: 4 типа партнёрств",
-  "Channel · Integration · Co-marketing · Referral",
-  "Блок 2: Где искать партнёра",
-  "4 критерия + 4 канала",
-  "Блок 3: Distribution moats",
-  "Network · Data · Brand moats",
-  "Блок 4: Финальное задание",
-  "Домашка · 5 партнёров + moat-стратегия",
+  "Главная мысль · канал = деньги, а не охват",
+  "Карта урока · 4 канала",
+  "Блок 1: Партнёрства",
+  "Кого искать · B2B и B2C",
+  "Где искать · 3 действия",
+  "Win-win · выгода обоих сторон",
+  "Первое сообщение · что писать",
+  "О чём договариваться · 5 ответов",
+  "Партнёр сказал да · пакет и 60 дней",
+  "Блок 2: Инфлюенсеры",
+  "Кого брать · математика одного поста",
+  "Сколько платить · цена за просмотр",
+  "Проверка за 10 минут · и как считать",
+  "Блок 3: Комьюнити и запуски",
+  "Комментарии, а не посты",
+  "Запуски · рейтинг это не деньги",
+  "Блок 4: Каталоги и AI-поиск",
+  "Каталоги · усилитель, не источник",
+  "AI-ответы · кого цитирует модель",
+  "AI-видимость · неделя работы",
+  "Блок 5: Выбери и запусти",
+  "Два канала на 90 дней",
+  "Домашка · выбрал и запустил",
   "Саммари · 5 мыслей",
-  "Закрытие · 16 уроков пройдены",
+  "Закрытие · курс пройден",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L16Slide01Welcome />;
     case 1: return <L16Slide02MainThesis />;
-    case 2: return <L16BlockHeader blockNumber={1} title="4 типа партнёрств" subtitle="какой подходит твоему продукту" />;
-    case 3: return <L16SlideTypes />;
-    case 4: return <L16BlockHeader blockNumber={2} title="Где искать партнёра" subtitle="критерии идеального + каналы поиска" />;
-    case 5: return <L16SlideFindPartner />;
-    case 6: return <L16BlockHeader blockNumber={3} title="Distribution moats" subtitle="долгосрочное конкурентное преимущество" />;
-    case 7: return <L16SlideMoats />;
-    case 8: return <L16BlockHeader blockNumber={4} title="Финальное задание" subtitle="5 партнёров + первые сообщения" />;
-    case 9: return <L16SlideHomework />;
-    case 10: return <L16SlideLessonSummary />;
-    case 11: return <L16SlideClosing />;
+    case 2: return <L16SlideChannelMap />;
+    case 3: return <L16BlockHeader blockNumber={1} title="Партнёрства" subtitle="тебя продаёт тот, кому уже доверяют" />;
+    case 4: return <L16SlideFindPartner />;
+    case 5: return <L16SlideVendorMap />;
+    case 6: return <L16SlideWinWin />;
+    case 7: return <L16SlidePitchAnatomy />;
+    case 8: return <L16SlideNegotiation />;
+    case 9: return <L16SlideAfterYes />;
+    case 10: return <L16BlockHeader blockNumber={2} title="Инфлюенсеры и креаторы" subtitle="покупаешь чужую аудиторию - считай, за что платишь" />;
+    case 11: return <L16SlideCreatorsWho />;
+    case 12: return <L16SlideCreatorsPay />;
+    case 13: return <L16SlideCreatorsCheck />;
+    case 14: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
+    case 15: return <L16SlideCommunities />;
+    case 16: return <L16SlideLaunches />;
+    case 17: return <L16BlockHeader blockNumber={4} title="Каталоги и AI-поиск" subtitle="чтобы находили без тебя" />;
+    case 18: return <L16SlideCatalogs />;
+    case 19: return <L16SlideAiSearch />;
+    case 20: return <L16SlideAiSearchWeek />;
+    case 21: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
+    case 22: return <L16SlideChooseChannels />;
+    case 23: return <L16SlideHomework />;
+    case 24: return <L16SlideLessonSummary />;
+    case 25: return <L16SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 12;
+export const TOTAL = 26;
 
 export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
@@ -111,7 +152,7 @@ export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 16 — Партнёрства и distribution moats</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 16 - Каналы продвижения: что ещё работает</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

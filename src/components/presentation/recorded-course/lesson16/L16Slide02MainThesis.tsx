@@ -10,14 +10,14 @@ export default function L16Slide02MainThesis() {
           Главная мысль
         </p>
         <h2 className="font-display text-[24px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[14px]">
-          <span className="text-[hsl(var(--slide-gold))]">1 партнёр</span> = 100 outreach-сообщений.
+          Канал считается рабочим, только когда <span className="text-[hsl(var(--slide-gold))]">кто-то заплатил</span>.
         </h2>
         <p className="text-[12px] text-[hsl(var(--slide-text)/0.85)] leading-[1.6] mb-[12px]">
-          Партнёр приводит свою аудиторию <span className="text-[hsl(var(--slide-text))] font-medium">бесплатно и доверчиво</span>. Cold outreach даёт 1-3% reply rate. Партнёрский referral — 20-40% conversion rate.
+          Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск с 300 голосами дал 91 платящего, другой с 612 голосами - <span className="text-[hsl(var(--slide-text))] font-medium">одного</span>.
         </p>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[12px] py-[10px]">
           <p className="text-[11px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-            После $10K MRR партнёрства — <span className="text-[hsl(var(--slide-gold))]">самый эффективный канал роста</span>, который сложнее всего скопировать конкурентам.
+            У каждого канала спрашивай одно: <span className="text-[hsl(var(--slide-gold))]">сколько человек заплатили</span>. Всё остальное - красивые цифры, на которые нельзя жить.
           </p>
         </div>
       </div>
@@ -29,15 +29,15 @@ export default function L16Slide02MainThesis() {
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[24px]">
         Главная мысль
       </p>
-      <h2 className="font-display text-[64px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em] max-w-[1700px]">
-        <span className="text-[hsl(var(--slide-gold))]">1 партнёр</span> = 100 outreach-сообщений.
+      <h2 className="font-display text-[60px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[36px] tracking-[-0.01em] max-w-[1700px]">
+        Канал считается рабочим, только когда <span className="text-[hsl(var(--slide-gold))]">кто-то заплатил</span>.
       </h2>
       <p className="text-[26px] text-[hsl(var(--slide-text)/0.85)] leading-[1.5] max-w-[1700px] mb-[32px]">
-        Партнёр приводит свою аудиторию <span className="text-[hsl(var(--slide-text))] font-semibold">бесплатно и доверчиво</span>. Cold outreach даёт 1-3% reply rate. Партнёрский referral — 20-40% conversion rate.
+        Подписчики, установки, регистрации и место в рейтинге - это не результат. Реальный пример: один запуск с 300 голосами дал 91 платящего, другой, с 612 голосами, - <span className="text-[hsl(var(--slide-text))] font-semibold">одного</span>.
       </p>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[32px] py-[22px] max-w-[1700px]">
         <p className="text-[24px] text-[hsl(var(--slide-text))] font-semibold leading-[1.4]">
-          После $10K MRR партнёрства — <span className="text-[hsl(var(--slide-gold))]">самый эффективный канал роста</span>, который сложнее всего скопировать конкурентам.
+          У каждого канала спрашивай одно: <span className="text-[hsl(var(--slide-gold))]">сколько человек заплатили</span>. Всё остальное - красивые цифры, на которые нельзя жить.
         </p>
       </div>
     </div>

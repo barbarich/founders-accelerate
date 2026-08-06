@@ -20,7 +20,7 @@ export default function L16Slide01Welcome() {
             Урок 16
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Партнёрства и distribution moats. Финал курса.
+            Каналы продвижения: что ещё работает. Финал курса.
           </p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function L16Slide01Welcome() {
           Урок 16
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Партнёрства и distribution moats.<br />
+          Каналы продвижения: что ещё работает.<br />
           Финал курса.
         </p>
       </div>
