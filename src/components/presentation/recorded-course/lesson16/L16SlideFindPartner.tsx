@@ -1,20 +1,23 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const b2b = [
-  { t: "Агентства и консультанты", d: "Уже обслуживают твоих клиентов, но решают другую задачу. У них доверие и прямой выход на того, кто решает." },
-  { t: "Интеграторы и IT-подрядчики", d: "Приходят ставить клиенту систему. Твой продукт добавляется в тот же разговор, а не требует отдельной продажи." },
-  { t: "Смежные сервисы для того же бизнеса", d: "Клиент пользуется их продуктом, и следом у него возникает задача, которую решаешь ты." },
-];
+const b2b = {
+  who: "Агентства и консультанты · интеграторы и IT-подрядчики · смежные сервисы для того же бизнеса",
+  how: [
+    { t: "Спроси своих клиентов", d: "«Кто вам настраивал систему?» · «С каким агентством работаете?»" },
+    { t: "Загугли, кто зарабатывает на твоём клиенте", d: "«[твоя ниша] агентство», «[твоя ниша] внедрение». Первая страница выдачи - твой список." },
+    { t: "Открой Integrations у конкурентов", d: "Страницы Integrations или Partners у 2-3 конкурентов. Выпиши всех, кто там перечислен." },
+  ],
+  case: "MetaMinder: маркетинговые агентства отелей вели клиента и сами закрывали сделку. Плюс интеграторы софта - ставили систему и параллельно нас.",
+};
 
-const b2c = [
-  { t: "Авторы, блогеры, подкастеры", d: "Смотри не на охват, а на доверие: кого твоя аудитория реально слушает и кому верит на слово." },
-  { t: "Админы сообществ и чатов", d: "Твоя аудитория уже собралась в одном месте. Договариваться нужно с тем, кто это место ведёт." },
-  { t: "Сервисы рядом в жизни клиента", d: "Тот же человек, другая задача в той же ситуации. Приложение для бега и магазин кроссовок." },
-];
-
-const cases = {
-  b2b: "MetaMinder: маркетинговые агентства отелей вели клиента и сами закрывали сделку. Плюс интеграторы софта - ставили систему и параллельно нас.",
-  b2c: "Сервис доставки еды и фитнес-приложение: один и тот же человек, совместная акция, оба получают юзеров дешевле рекламы.",
+const b2c = {
+  who: "Авторы, блогеры, подкастеры · админы сообществ и чатов · сервисы рядом в жизни клиента",
+  how: [
+    { t: "Спроси своих юзеров", d: "«Где вы про такое читаете?» · «В каких чатах сидите?»" },
+    { t: "Посмотри, на кого подписана аудитория", d: "Соцсети, рассылки, подкасты. Ищи не самых крупных, а тех, кому верят на слово." },
+    { t: "Найди сервисы рядом в жизни клиента", d: "Чем он пользуется до и после тебя в той же ситуации. С ними делается совместная акция." },
+  ],
+  case: "Сервис доставки еды и фитнес-приложение: один и тот же человек, совместная акция, оба получают юзеров дешевле рекламы.",
 };
 
 export default function L16SlideFindPartner() {
@@ -22,9 +25,9 @@ export default function L16SlideFindPartner() {
 
   if (isMobile) {
     return (
-      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px] py-[16px] overflow-y-auto">
+      <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[18px] py-[15px] overflow-y-auto">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[5px]">
-          Кого искать
+          Кого и где искать
         </p>
         <h2 className="font-display text-[17px] font-bold text-[hsl(var(--slide-text))] leading-[1.15] mb-[3px]">
           Зависит от того, кто твой клиент
@@ -32,68 +35,54 @@ export default function L16SlideFindPartner() {
         <p className="text-[8.5px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[7px]">
           Правило одно: у партнёра уже есть доступ к твоему клиенту, но он не продаёт то же, что ты.
         </p>
-        <div className="space-y-[7px]">
-          <div className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[9px] py-[7px] bg-[hsl(var(--slide-gold)/0.05)]">
-            <p className="text-[9.5px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold">B2B · клиент - компания</p>
-            {b2b.map((x) => (
-              <div key={x.t} className="mt-[3px]">
-                <p className="text-[9.5px] font-bold text-[hsl(var(--slide-text))]">{x.t}</p>
-                <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.35]">{x.d}</p>
+        <div className="space-y-[6px]">
+          {[{ h: "B2B · клиент - компания", x: b2b }, { h: "B2C · клиент - человек", x: b2c }].map(({ h, x }) => (
+            <div key={h} className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[9px] py-[7px] bg-[hsl(var(--slide-gold)/0.05)]">
+              <p className="text-[9.5px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold mb-[2px]">{h}</p>
+              <p className="text-[8px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] mb-[4px]">{x.who}</p>
+              <div className="space-y-[3px] mb-[4px]">
+                {x.how.map((s) => (
+                  <div key={s.t} className="border-l-2 border-[hsl(var(--slide-gold)/0.4)] pl-[7px]">
+                    <p className="text-[8.5px] font-bold text-[hsl(var(--slide-text))]">{s.t}</p>
+                    <p className="text-[7.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.35]">{s.d}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-            <p className="text-[8px] italic text-[hsl(var(--slide-text-muted))] leading-[1.35] mt-[4px]">{cases.b2b}</p>
-          </div>
-          <div className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[5px] px-[9px] py-[7px] bg-[hsl(var(--slide-gold)/0.05)]">
-            <p className="text-[9.5px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold">B2C · клиент - человек</p>
-            {b2c.map((x) => (
-              <div key={x.t} className="mt-[3px]">
-                <p className="text-[9.5px] font-bold text-[hsl(var(--slide-text))]">{x.t}</p>
-                <p className="text-[8.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.35]">{x.d}</p>
-              </div>
-            ))}
-            <p className="text-[8px] italic text-[hsl(var(--slide-text-muted))] leading-[1.35] mt-[4px]">{cases.b2c}</p>
-          </div>
+              <p className="text-[7.5px] italic text-[hsl(var(--slide-text-muted))] leading-[1.35] pt-[3px] border-t border-[hsl(var(--slide-border)/0.3)]">{x.case}</p>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   return (
-    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[120px] py-[34px] overflow-y-auto">
-      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[12px]">
-        Кого искать
+    <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[110px] py-[28px] overflow-y-auto">
+      <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">
+        Кого и где искать
       </p>
-      <h2 className="font-display text-[42px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[8px] tracking-[-0.01em]">
+      <h2 className="font-display text-[38px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[6px] tracking-[-0.01em]">
         Зависит от того, <span className="text-[hsl(var(--slide-gold))]">кто твой клиент</span>
       </h2>
-      <p className="text-[18px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[20px] max-w-[1800px]">
+      <p className="text-[16px] text-[hsl(var(--slide-text-muted))] leading-[1.4] mb-[14px] max-w-[1800px]">
         Правило одно для всех: у партнёра уже есть доступ к твоему клиенту, но он не продаёт то же, что ты.
       </p>
-      <div className="grid grid-cols-2 gap-[24px] max-w-[1900px]">
-        <div className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[26px] py-[20px] bg-[hsl(var(--slide-gold)/0.05)] flex flex-col">
-          <p className="text-[15px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-bold mb-[12px]">B2B · твой клиент - компания</p>
-          <div className="space-y-[10px] flex-1">
-            {b2b.map((x) => (
-              <div key={x.t}>
-                <p className="text-[18px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{x.t}</p>
-                <p className="text-[14.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{x.d}</p>
-              </div>
-            ))}
+      <div className="grid grid-cols-2 gap-[20px] max-w-[1900px]">
+        {[{ h: "B2B · твой клиент - компания", x: b2b }, { h: "B2C · твой клиент - человек", x: b2c }].map(({ h, x }) => (
+          <div key={h} className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[22px] py-[16px] bg-[hsl(var(--slide-gold)/0.05)] flex flex-col">
+            <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-bold mb-[4px]">{h}</p>
+            <p className="text-[14px] text-[hsl(var(--slide-text)/0.85)] leading-[1.4] mb-[10px]">{x.who}</p>
+            <div className="space-y-[8px] flex-1">
+              {x.how.map((s) => (
+                <div key={s.t}>
+                  <p className="text-[15.5px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{s.t}</p>
+                  <p className="text-[13px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{s.d}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-[12.5px] italic text-[hsl(var(--slide-text-muted))] leading-[1.4] mt-[10px] pt-[8px] border-t border-[hsl(var(--slide-border)/0.3)]">{x.case}</p>
           </div>
-          <p className="text-[13.5px] italic text-[hsl(var(--slide-text-muted))] leading-[1.4] mt-[12px] pt-[10px] border-t border-[hsl(var(--slide-border)/0.3)]">{cases.b2b}</p>
-        </div>
-        <div className="border border-[hsl(var(--slide-gold)/0.25)] rounded-[12px] px-[26px] py-[20px] bg-[hsl(var(--slide-gold)/0.05)] flex flex-col">
-          <p className="text-[15px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-bold mb-[12px]">B2C · твой клиент - человек</p>
-          <div className="space-y-[10px] flex-1">
-            {b2c.map((x) => (
-              <div key={x.t}>
-                <p className="text-[18px] font-bold text-[hsl(var(--slide-text))] mb-[1px]">{x.t}</p>
-                <p className="text-[14.5px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4]">{x.d}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-[13.5px] italic text-[hsl(var(--slide-text-muted))] leading-[1.4] mt-[12px] pt-[10px] border-t border-[hsl(var(--slide-border)/0.3)]">{cases.b2c}</p>
-        </div>
+        ))}
       </div>
     </div>
   );

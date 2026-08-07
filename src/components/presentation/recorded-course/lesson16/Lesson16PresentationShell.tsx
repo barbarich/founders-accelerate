@@ -8,7 +8,6 @@ import L16Slide01Welcome from "./L16Slide01Welcome";
 import L16Slide02MainThesis from "./L16Slide02MainThesis";
 import L16BlockHeader from "./L16BlockHeader";
 import L16SlideFindPartner from "./L16SlideFindPartner";
-import L16SlideVendorMap from "./L16SlideVendorMap";
 import L16SlidePitchAnatomy from "./L16SlidePitchAnatomy";
 import L16SlideWinWin from "./L16SlideWinWin";
 import L16SlideNegotiation from "./L16SlideNegotiation";
@@ -35,8 +34,7 @@ export const slideNames = [
   "Главная мысль · канал = деньги, а не охват",
   "Карта урока · 4 канала",
   "Блок 1: Партнёрства",
-  "Кого искать · B2B и B2C",
-  "Где искать · 3 действия",
+  "Кого и где искать · B2B и B2C",
   "Win-win · выгода обоих сторон",
   "Первое сообщение · что писать",
   "О чём договариваться · 5 ответов",
@@ -69,35 +67,34 @@ export function getSlideContent(index: number) {
     case 2: return <L16SlideChannelMap />;
     case 3: return <L16BlockHeader blockNumber={1} title="Партнёрства" subtitle="тебя продаёт тот, кому уже доверяют" />;
     case 4: return <L16SlideFindPartner />;
-    case 5: return <L16SlideVendorMap />;
-    case 6: return <L16SlideWinWin />;
-    case 7: return <L16SlidePitchAnatomy />;
-    case 8: return <L16SlideNegotiation />;
-    case 9: return <L16SlideAfterYes />;
-    case 10: return <L16BlockHeader blockNumber={2} title="Инфлюенсеры и креаторы" subtitle="покупаешь чужую аудиторию - считай, за что платишь" />;
-    case 11: return <L16SlideCreatorsWhy />;
-    case 12: return <L16SlideCreatorsWho />;
-    case 13: return <L16SlideCreatorsTools />;
-    case 14: return <L16SlideCreatorsPay />;
-    case 15: return <L16SlideCreatorsCheck />;
-    case 16: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
-    case 17: return <L16SlideCommunities />;
-    case 18: return <L16SlideCommunityExpert />;
-    case 19: return <L16SlideLaunches />;
-    case 20: return <L16BlockHeader blockNumber={4} title="SEO и GEO" subtitle="тебя находят сами, когда ищут" />;
-    case 21: return <L16SlideSeoGeoWhat />;
-    case 22: return <L16SlideSeoGeoTools />;
-    case 23: return <L16SlideSeoGeoActions />;
-    case 24: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
-    case 25: return <L16SlideChooseChannels />;
-    case 26: return <L16SlideHomework />;
-    case 27: return <L16SlideLessonSummary />;
-    case 28: return <L16SlideClosing />;
+    case 5: return <L16SlideWinWin />;
+    case 6: return <L16SlidePitchAnatomy />;
+    case 7: return <L16SlideNegotiation />;
+    case 8: return <L16SlideAfterYes />;
+    case 9: return <L16BlockHeader blockNumber={2} title="Инфлюенсеры и креаторы" subtitle="покупаешь чужую аудиторию - считай, за что платишь" />;
+    case 10: return <L16SlideCreatorsWhy />;
+    case 11: return <L16SlideCreatorsWho />;
+    case 12: return <L16SlideCreatorsTools />;
+    case 13: return <L16SlideCreatorsPay />;
+    case 14: return <L16SlideCreatorsCheck />;
+    case 15: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
+    case 16: return <L16SlideCommunities />;
+    case 17: return <L16SlideCommunityExpert />;
+    case 18: return <L16SlideLaunches />;
+    case 19: return <L16BlockHeader blockNumber={4} title="SEO и GEO" subtitle="тебя находят сами, когда ищут" />;
+    case 20: return <L16SlideSeoGeoWhat />;
+    case 21: return <L16SlideSeoGeoTools />;
+    case 22: return <L16SlideSeoGeoActions />;
+    case 23: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
+    case 24: return <L16SlideChooseChannels />;
+    case 25: return <L16SlideHomework />;
+    case 26: return <L16SlideLessonSummary />;
+    case 27: return <L16SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 29;
+export const TOTAL = 28;
 
 export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
