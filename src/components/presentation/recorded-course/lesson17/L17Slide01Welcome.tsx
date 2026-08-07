@@ -1,7 +1,7 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 import titleBg from "@/assets/slides/title-bg.jpg";
 
-export default function L16Slide01Welcome() {
+export default function L17Slide01Welcome() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
@@ -17,10 +17,10 @@ export default function L16Slide01Welcome() {
             The Founders<br />Circle
           </h1>
           <p className="text-[18px] font-light text-[hsl(var(--slide-gold))] mt-[12px] tracking-[0.02em]">
-            Урок 16
+            Урок 17 · Финал курса
           </p>
           <p className="text-[13px] text-[hsl(var(--slide-text-muted))] mt-[10px] leading-[1.5]">
-            Каналы продвижения: что ещё работает. Предпоследний урок.
+            Всё, что ты теперь умеешь - и план на 30 и 90 дней.
           </p>
         </div>
       </div>
@@ -39,11 +39,11 @@ export default function L16Slide01Welcome() {
           The Founders<br />Circle
         </h1>
         <p className="text-[36px] font-light text-[hsl(var(--slide-gold))] mt-[24px] tracking-[0.02em]">
-          Урок 16
+          Урок 17 · Финал курса
         </p>
         <p className="text-[28px] text-[hsl(var(--slide-text-muted))] mt-[16px] leading-[1.4] max-w-[1100px]">
-          Каналы продвижения: что ещё работает.<br />
-          Предпоследний урок курса.
+          Всё, что ты теперь умеешь -<br />
+          и план на 30 и 90 дней.
         </p>
       </div>
     </div>

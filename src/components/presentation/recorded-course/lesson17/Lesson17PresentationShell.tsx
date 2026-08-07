@@ -4,99 +4,96 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useNavigate } from "react-router-dom";
 import ScaledSlide from "../../ScaledSlide";
 
-import L16Slide01Welcome from "./L16Slide01Welcome";
-import L16Slide02MainThesis from "./L16Slide02MainThesis";
-import L16BlockHeader from "./L16BlockHeader";
-import L16SlideFindPartner from "./L16SlideFindPartner";
-import L16SlidePitchAnatomy from "./L16SlidePitchAnatomy";
-import L16SlideWinWin from "./L16SlideWinWin";
-import L16SlideNegotiation from "./L16SlideNegotiation";
-import L16SlideAfterYes from "./L16SlideAfterYes";
-import L16SlideChannelMap from "./L16SlideChannelMap";
-import L16SlideCreatorsWhy from "./L16SlideCreatorsWhy";
-import L16SlideCreatorsWho from "./L16SlideCreatorsWho";
-import L16SlideCreatorsTools from "./L16SlideCreatorsTools";
-import L16SlideCreatorsPay from "./L16SlideCreatorsPay";
-import L16SlideCreatorsCheck from "./L16SlideCreatorsCheck";
-import L16SlideCommunities from "./L16SlideCommunities";
-import L16SlideCommunityExpert from "./L16SlideCommunityExpert";
-import L16SlideLaunches from "./L16SlideLaunches";
-import L16SlideSeoGeoWhat from "./L16SlideSeoGeoWhat";
-import L16SlideSeoGeoTools from "./L16SlideSeoGeoTools";
-import L16SlideSeoGeoActions from "./L16SlideSeoGeoActions";
-import L16SlideChooseChannels from "./L16SlideChooseChannels";
-import L16SlideHomework from "./L16SlideHomework";
-import L16SlideClosing from "./L16SlideClosing";
-import L16SlideLessonSummary from "./L16SlideLessonSummary";
+import L17Slide01Welcome from "./L17Slide01Welcome";
+import L17Slide02MainThesis from "./L17Slide02MainThesis";
+import L17SlideRoadmap from "./L17SlideRoadmap";
+import L17BlockHeader from "./L17BlockHeader";
+import L17SlidePathRecap from "./L17SlidePathRecap";
+import L17SlideAssets from "./L17SlideAssets";
+import L17SlideWhatChanged from "./L17SlideWhatChanged";
+import L17SlideWhereYouAre from "./L17SlideWhereYouAre";
+import L17SlideBehindIsFine from "./L17SlideBehindIsFine";
+import L17SlideMonth1Goal from "./L17SlideMonth1Goal";
+import L17SlideMonth1Plan from "./L17SlideMonth1Plan";
+import L17SlideWeeklyRhythm from "./L17SlideWeeklyRhythm";
+import L17SlideOneNumber from "./L17SlideOneNumber";
+import L17SlideQuarterPlan from "./L17SlideQuarterPlan";
+import L17SlideMilestones from "./L17SlideMilestones";
+import L17SlideWhenToPivot from "./L17SlideWhenToPivot";
+import L17SlideRealCurve from "./L17SlideRealCurve";
+import L17SlideRules from "./L17SlideRules";
+import L17SlideFounderNote from "./L17SlideFounderNote";
+import L17SlideStayInTouch from "./L17SlideStayInTouch";
+import L17SlideHomework from "./L17SlideHomework";
+import L17SlideLessonSummary from "./L17SlideLessonSummary";
+import L17SlideClosing from "./L17SlideClosing";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · канал = деньги, а не охват",
-  "Карта урока · 4 канала",
-  "Блок 1: Партнёрства",
-  "Кого и где искать · B2B и B2C",
-  "Win-win · выгода обоих сторон",
-  "Первое сообщение · что писать",
-  "О чём договариваться · 5 ответов",
-  "Партнёр сказал да · пакет и 60 дней",
-  "Блок 2: Инфлюенсеры и креаторы",
-  "Зачем и когда · чужое доверие",
-  "Кого выбирать · один пост - не результат",
-  "Где искать · 3 сервиса",
-  "Сколько платить · цена за просмотр",
-  "Проверка и деньги · 10 минут",
-  "Блок 3: Комьюнити и запуски",
-  "Комментарии, а не посты",
-  "Кейс MetaMinder · эксперт внутри",
-  "Product Hunt · что это и как выйти в топ",
-  "Блок 4: SEO и GEO",
-  "Что это · тебя находят сами",
-  "Инструменты · TrySORO + Otterly",
-  "4 действия на первую неделю",
-  "Блок 5: Выбери и запусти",
-  "Два канала на 90 дней",
-  "Домашка · выбрал и запустил",
+  "Главная мысль · решает не знание",
+  "Карта урока · пять частей",
+  "Блок 1: Что у тебя теперь есть",
+  "Три фазы, которые ты прошёл",
+  "Что у тебя на руках · 12 вещей",
+  "Было и стало",
+  "Блок 2: Где ты сейчас",
+  "Три точки · А, Б, В",
+  "Отстал - не значит проиграл",
+  "Блок 3: Первые 30 дней",
+  "Цель первого месяца - одна",
+  "30 дней по неделям",
+  "Ритм недели · 6 часов",
+  "Одно число, которое ты держишь",
+  "Блок 4: Следующие 90 дней",
+  "Три месяца - три задачи",
+  "Чек-точки · 30, 60, 90 день",
+  "Что менять · одна переменная за раз",
+  "Блок 5: Как не сдаться",
+  "Как это выглядит на самом деле",
+  "5 правил, которые держат",
+  "От меня лично",
+  "Остаёмся на связи",
+  "Финальное задание · 7 пунктов",
   "Саммари · 5 мыслей",
-  "Закрытие · дальше урок 17",
+  "Закрытие · курс пройден",
 ];
 
 export function getSlideContent(index: number) {
   switch (index) {
-    case 0: return <L16Slide01Welcome />;
-    case 1: return <L16Slide02MainThesis />;
-    case 2: return <L16SlideChannelMap />;
-    case 3: return <L16BlockHeader blockNumber={1} title="Партнёрства" subtitle="тебя продаёт тот, кому уже доверяют" />;
-    case 4: return <L16SlideFindPartner />;
-    case 5: return <L16SlideWinWin />;
-    case 6: return <L16SlidePitchAnatomy />;
-    case 7: return <L16SlideNegotiation />;
-    case 8: return <L16SlideAfterYes />;
-    case 9: return <L16BlockHeader blockNumber={2} title="Инфлюенсеры и креаторы" subtitle="покупаешь чужую аудиторию - считай, за что платишь" />;
-    case 10: return <L16SlideCreatorsWhy />;
-    case 11: return <L16SlideCreatorsWho />;
-    case 12: return <L16SlideCreatorsTools />;
-    case 13: return <L16SlideCreatorsPay />;
-    case 14: return <L16SlideCreatorsCheck />;
-    case 15: return <L16BlockHeader blockNumber={3} title="Комьюнити и запуски" subtitle="туда, где о проблеме уже спрашивают" />;
-    case 16: return <L16SlideCommunities />;
-    case 17: return <L16SlideCommunityExpert />;
-    case 18: return <L16SlideLaunches />;
-    case 19: return <L16BlockHeader blockNumber={4} title="SEO и GEO" subtitle="тебя находят сами, когда ищут" />;
-    case 20: return <L16SlideSeoGeoWhat />;
-    case 21: return <L16SlideSeoGeoTools />;
-    case 22: return <L16SlideSeoGeoActions />;
-    case 23: return <L16BlockHeader blockNumber={5} title="Выбери и запусти" subtitle="два канала, 90 дней, один показатель" />;
-    case 24: return <L16SlideChooseChannels />;
-    case 25: return <L16SlideHomework />;
-    case 26: return <L16SlideLessonSummary />;
-    case 27: return <L16SlideClosing />;
+    case 0: return <L17Slide01Welcome />;
+    case 1: return <L17Slide02MainThesis />;
+    case 2: return <L17SlideRoadmap />;
+    case 3: return <L17BlockHeader blockNumber={1} title="Что у тебя теперь есть" subtitle="не знания на слайдах, а сделанные вещи" />;
+    case 4: return <L17SlidePathRecap />;
+    case 5: return <L17SlideAssets />;
+    case 6: return <L17SlideWhatChanged />;
+    case 7: return <L17BlockHeader blockNumber={2} title="Где ты сейчас" subtitle="одна честная точка - и план под неё" />;
+    case 8: return <L17SlideWhereYouAre />;
+    case 9: return <L17SlideBehindIsFine />;
+    case 10: return <L17BlockHeader blockNumber={3} title="Первые 30 дней" subtitle="по неделям, с ритмом и одним числом" />;
+    case 11: return <L17SlideMonth1Goal />;
+    case 12: return <L17SlideMonth1Plan />;
+    case 13: return <L17SlideWeeklyRhythm />;
+    case 14: return <L17SlideOneNumber />;
+    case 15: return <L17BlockHeader blockNumber={4} title="Следующие 90 дней" subtitle="три месяца - три разные задачи" />;
+    case 16: return <L17SlideQuarterPlan />;
+    case 17: return <L17SlideMilestones />;
+    case 18: return <L17SlideWhenToPivot />;
+    case 19: return <L17BlockHeader blockNumber={5} title="Как не сдаться" subtitle="что происходит на самом деле и что с этим делать" />;
+    case 20: return <L17SlideRealCurve />;
+    case 21: return <L17SlideRules />;
+    case 22: return <L17SlideFounderNote />;
+    case 23: return <L17SlideStayInTouch />;
+    case 24: return <L17SlideHomework />;
+    case 25: return <L17SlideLessonSummary />;
+    case 26: return <L17SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 28;
+export const TOTAL = 27;
 
-export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
+export default function Lesson17PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
@@ -158,7 +155,7 @@ export default function Lesson16PresentationShell({ backTo = "/admin/meetings" }
     return (
       <div className="w-full h-screen bg-[hsl(var(--background))] overflow-auto p-8">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-semibold text-foreground">Урок 16 - Каналы продвижения: что ещё работает</h2>
+          <h2 className="text-2xl font-semibold text-foreground">Урок 17 - Что дальше: план на 30 и 90 дней</h2>
           <button onClick={() => setShowGrid(false)} className="p-2 text-muted-foreground hover:text-foreground transition-colors"><X size={24} /></button>
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4 gap-4'}`}>

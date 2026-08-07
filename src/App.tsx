@@ -74,6 +74,7 @@ const PublicLesson13Shell = lazy(() => import("@/components/presentation/recorde
 const PublicLesson14Shell = lazy(() => import("@/components/presentation/recorded-course/lesson14/PublicLesson14Shell"));
 const PublicLesson15Shell = lazy(() => import("@/components/presentation/recorded-course/lesson15/PublicLesson15Shell"));
 const PublicLesson16Shell = lazy(() => import("@/components/presentation/recorded-course/lesson16/PublicLesson16Shell"));
+const PublicLesson17Shell = lazy(() => import("@/components/presentation/recorded-course/lesson17/PublicLesson17Shell"));
 const PublicFOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/PublicFOM1Shell"));
 const FOM1Shell = lazy(() => import("@/components/presentation/founderOsMini1/FOM1Shell"));
 const PublicFOM2Shell = lazy(() => import("@/components/presentation/founderOsMini2/PublicFOM2Shell"));
@@ -245,6 +246,7 @@ const App = () => (
           <Route path="/recorded-course/lesson14" element={<PublicLesson14Shell />} />
           <Route path="/recorded-course/lesson15" element={<PublicLesson15Shell />} />
           <Route path="/recorded-course/lesson16" element={<PublicLesson16Shell />} />
+          <Route path="/recorded-course/lesson17" element={<PublicLesson17Shell />} />
           <Route path="/founder-os-mini-session1" element={<PublicFOM1Shell />} />
           <Route path="/admin/founder-os-mini-session1" element={<FOM1Shell />} />
           <Route path="/founder-os-mini-session2" element={<PublicFOM2Shell />} />

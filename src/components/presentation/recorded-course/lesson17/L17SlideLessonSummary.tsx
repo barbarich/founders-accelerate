@@ -3,39 +3,39 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const insights = [
   {
     num: "1",
-    title: "Канал меряется оплатами, а не охватом",
-    body: "Подписчики, регистрации и место в рейтинге к деньгам не приводят. Один вопрос к любому каналу: сколько человек заплатили.",
+    title: "Знания у тебя уже есть - все",
+    body: "Курс дал всё, что нужно, чтобы довести продукт до платящих. Дальше результат зависит от количества недель, в которые ты продолжаешь делать одно и то же.",
   },
   {
     num: "2",
-    title: "Партнёр - тот, кому клиент уже доверяет",
-    body: "B2B: агентства, интеграторы, смежные сервисы. B2C: авторы, админы сообществ, соседние сервисы. Нет выгоды обоим - партнёрства не будет, и дело не в проценте.",
+    title: "Начинай с того места, где ты есть",
+    body: "А, Б или В. Одна точка, один следующий шаг, один урок, к которому вернуться. Курс заново не проходишь - это способ отложить работу.",
   },
   {
     num: "3",
-    title: "Креаторов берут пачкой и считают по продажам",
-    body: "Один пост - лотерея: 1-12 оплат. Тест - 10-15 микро сразу. Цена = просмотры × $0.03-0.05, модель - маленький фикс плюс процент, каждому свой промокод.",
+    title: "Цель месяца проверяется цифрой в пятницу",
+    body: "Не «запустить бизнес», а одно число: разговоры, оплаты или стоимость клиента. Что нельзя проверить - то не цель.",
   },
   {
     num: "4",
-    title: "В комьюнити продают комментарии, а не посты",
-    body: "90 минут в неделю, 10-20 тредов, где спрашивают о твоей проблеме. Ссылки в первом сообщении нет. Деньги случаются в личке и на звонке.",
+    title: "Меняй одну переменную за раз",
+    body: "Канал, сообщение, цена, сегмент, продукт - именно в этом порядке. Продукт трогаешь последним, и никогда - от тишины.",
   },
   {
     num: "5",
-    title: "SEO и GEO работают одинаково - тебя находят сами",
-    body: "И Google, и ChatGPT ведут туда, где уже есть ответ. Попасть в чужие подборки «лучшие X» - это почти половина того, что цитирует ChatGPT. Небыстро, зато бесплатно.",
+    title: "Тишина - это часть процесса",
+    body: "Недели с третьей по шестую почти всегда тихие. Это не сигнал остановиться, это то, как работа выглядит изнутри.",
   },
 ];
 
-export default function L16SlideLessonSummary() {
+export default function L17SlideLessonSummary() {
   const isMobile = useIsMobile();
 
   if (isMobile) {
     return (
       <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[14px]">
         <p className="text-[9px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[2px]">
-          Что унести из этого урока
+          Что унести из финала
         </p>
         <h2 className="font-display text-[18px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[5px]">
           Саммари · <span className="text-[hsl(var(--slide-gold))]">5 главных мыслей</span>
@@ -55,7 +55,7 @@ export default function L16SlideLessonSummary() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[4px] px-[8px] py-[5px] mt-[6px]">
           <p className="text-[7.5px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            Дальше - выбрать два канала и сделать 10 касаний за неделю. А в уроке 17 соберём из всего курса план на 30 и 90 дней.
+            Дальше - выбрать точку, поставить три блока в календарь и сделать первое касание за 48 часов.
           </p>
         </div>
       </div>
@@ -65,13 +65,13 @@ export default function L16SlideLessonSummary() {
   return (
     <div className="w-full h-full bg-[hsl(var(--slide-bg))] flex flex-col justify-center px-[100px]">
       <p className="text-[18px] uppercase tracking-[0.2em] text-[hsl(var(--slide-gold))] font-medium mb-[10px]">
-        Что унести из этого урока
+        Что унести из финала
       </p>
       <h2 className="font-display text-[52px] font-bold text-[hsl(var(--slide-text))] leading-[1.05] mb-[18px]">
         Саммари · <span className="text-[hsl(var(--slide-gold))]">5 главных мыслей</span>
       </h2>
 
-      <div className="grid grid-cols-5 gap-[14px] max-w-[1700px]">
+      <div className="grid grid-cols-5 gap-[14px] max-w-[1600px]">
         {insights.map((i) => (
           <div key={i.num} className="bg-[hsl(var(--slide-bg-alt))] border border-[hsl(var(--slide-border)/0.3)] rounded-[12px] px-[18px] py-[16px] flex flex-col">
             <span className="font-mono text-[14px] text-[hsl(var(--slide-gold))] bg-[hsl(var(--slide-gold)/0.15)] w-[28px] h-[28px] flex items-center justify-center rounded-full font-bold mb-[10px]">{i.num}</span>
@@ -81,9 +81,9 @@ export default function L16SlideLessonSummary() {
         ))}
       </div>
 
-      <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[26px] py-[14px] max-w-[1700px] mt-[20px]">
+      <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-[4px] border-[hsl(var(--slide-gold))] rounded-[10px] px-[26px] py-[14px] max-w-[1600px] mt-[20px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          Дальше - выбрать два канала и сделать 10 касаний за неделю. А в уроке 17 соберём из всего курса план на 30 и 90 дней.
+          Дальше - выбрать точку, поставить три блока в календарь и сделать первое касание за 48 часов.
         </p>
       </div>
     </div>
