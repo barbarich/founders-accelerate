@@ -6,55 +6,35 @@ import ScaledSlide from "../../ScaledSlide";
 
 import L17Slide01Welcome from "./L17Slide01Welcome";
 import L17Slide02MainThesis from "./L17Slide02MainThesis";
-import L17SlideRoadmap from "./L17SlideRoadmap";
-import L17BlockHeader from "./L17BlockHeader";
 import L17SlidePathRecap from "./L17SlidePathRecap";
 import L17SlideAssets from "./L17SlideAssets";
-import L17SlideWhatChanged from "./L17SlideWhatChanged";
 import L17SlideWhereYouAre from "./L17SlideWhereYouAre";
-import L17SlideBehindIsFine from "./L17SlideBehindIsFine";
 import L17SlideMonth1Goal from "./L17SlideMonth1Goal";
 import L17SlideMonth1Plan from "./L17SlideMonth1Plan";
 import L17SlideWeeklyRhythm from "./L17SlideWeeklyRhythm";
-import L17SlideOneNumber from "./L17SlideOneNumber";
 import L17SlideQuarterPlan from "./L17SlideQuarterPlan";
-import L17SlideMilestones from "./L17SlideMilestones";
 import L17SlideWhenToPivot from "./L17SlideWhenToPivot";
 import L17SlideRealCurve from "./L17SlideRealCurve";
-import L17SlideRules from "./L17SlideRules";
 import L17SlideFounderNote from "./L17SlideFounderNote";
 import L17SlideStayInTouch from "./L17SlideStayInTouch";
 import L17SlideHomework from "./L17SlideHomework";
-import L17SlideLessonSummary from "./L17SlideLessonSummary";
 import L17SlideClosing from "./L17SlideClosing";
 
 export const slideNames = [
   "Заглавный",
-  "Главная мысль · решает не знание",
-  "Карта урока · пять частей",
-  "Блок 1: Что у тебя теперь есть",
-  "Три фазы, которые ты прошёл",
+  "Главная мысль · 40 касаний × 3 месяца",
+  "Три фазы · что ты умеешь руками",
   "Что у тебя на руках · 12 вещей",
-  "Было и стало",
-  "Блок 2: Где ты сейчас",
-  "Три точки · А, Б, В",
-  "Отстал - не значит проиграл",
-  "Блок 3: Первые 30 дней",
-  "Цель первого месяца - одна",
+  "Где ты сейчас · А, Б, В",
+  "Цель месяца и чем меряешь",
   "30 дней по неделям",
   "Ритм недели · 6 часов",
-  "Одно число, которое ты держишь",
-  "Блок 4: Следующие 90 дней",
-  "Три месяца - три задачи",
-  "Чек-точки · 30, 60, 90 день",
+  "90 дней · три задачи и условия перехода",
   "Что менять · одна переменная за раз",
-  "Блок 5: Как не сдаться",
   "Как это выглядит на самом деле",
-  "5 правил, которые держат",
   "От меня лично",
   "Остаёмся на связи",
-  "Финальное задание · 7 пунктов",
-  "Саммари · 5 мыслей",
+  "Задание · 5 пунктов",
   "Закрытие · курс пройден",
 ];
 
@@ -62,36 +42,24 @@ export function getSlideContent(index: number) {
   switch (index) {
     case 0: return <L17Slide01Welcome />;
     case 1: return <L17Slide02MainThesis />;
-    case 2: return <L17SlideRoadmap />;
-    case 3: return <L17BlockHeader blockNumber={1} title="Что у тебя теперь есть" subtitle="не знания на слайдах, а сделанные вещи" />;
-    case 4: return <L17SlidePathRecap />;
-    case 5: return <L17SlideAssets />;
-    case 6: return <L17SlideWhatChanged />;
-    case 7: return <L17BlockHeader blockNumber={2} title="Где ты сейчас" subtitle="одна честная точка - и план под неё" />;
-    case 8: return <L17SlideWhereYouAre />;
-    case 9: return <L17SlideBehindIsFine />;
-    case 10: return <L17BlockHeader blockNumber={3} title="Первые 30 дней" subtitle="по неделям, с ритмом и одним числом" />;
-    case 11: return <L17SlideMonth1Goal />;
-    case 12: return <L17SlideMonth1Plan />;
-    case 13: return <L17SlideWeeklyRhythm />;
-    case 14: return <L17SlideOneNumber />;
-    case 15: return <L17BlockHeader blockNumber={4} title="Следующие 90 дней" subtitle="три месяца - три разные задачи" />;
-    case 16: return <L17SlideQuarterPlan />;
-    case 17: return <L17SlideMilestones />;
-    case 18: return <L17SlideWhenToPivot />;
-    case 19: return <L17BlockHeader blockNumber={5} title="Как не сдаться" subtitle="что происходит на самом деле и что с этим делать" />;
-    case 20: return <L17SlideRealCurve />;
-    case 21: return <L17SlideRules />;
-    case 22: return <L17SlideFounderNote />;
-    case 23: return <L17SlideStayInTouch />;
-    case 24: return <L17SlideHomework />;
-    case 25: return <L17SlideLessonSummary />;
-    case 26: return <L17SlideClosing />;
+    case 2: return <L17SlidePathRecap />;
+    case 3: return <L17SlideAssets />;
+    case 4: return <L17SlideWhereYouAre />;
+    case 5: return <L17SlideMonth1Goal />;
+    case 6: return <L17SlideMonth1Plan />;
+    case 7: return <L17SlideWeeklyRhythm />;
+    case 8: return <L17SlideQuarterPlan />;
+    case 9: return <L17SlideWhenToPivot />;
+    case 10: return <L17SlideRealCurve />;
+    case 11: return <L17SlideFounderNote />;
+    case 12: return <L17SlideStayInTouch />;
+    case 13: return <L17SlideHomework />;
+    case 14: return <L17SlideClosing />;
     default: return null;
   }
 }
 
-export const TOTAL = 27;
+export const TOTAL = 15;
 
 export default function Lesson17PresentationShell({ backTo = "/admin/meetings" }: { backTo?: string } = {}) {
   const isMobile = useIsMobile();
