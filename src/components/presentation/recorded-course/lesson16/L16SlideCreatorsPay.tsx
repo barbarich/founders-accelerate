@@ -23,7 +23,7 @@ export default function L16SlideCreatorsPay() {
             Цена = средние просмотры последних 10 роликов × <span className="text-[hsl(var(--slide-gold))]">$0.03-0.05</span>
           </p>
           <p className="text-[8px] text-[hsl(var(--slide-text)/0.8)] leading-[1.35] mt-[2px]">
-            Просит заметно больше - торгуйся этой формулой. Для справки: мелкие берут $20-250, микро $150-1500 за ролик.
+            Просит заметно больше - торгуйся этой формулой. Для справки: до 10 тыс. подписчиков - $20-250 за ролик, 10-150 тыс. - $150-1500.
           </p>
         </div>
         <div className="space-y-[5px] mb-[6px]">
@@ -59,7 +59,7 @@ export default function L16SlideCreatorsPay() {
           Цена = средние просмотры последних 10 роликов × <span className="text-[hsl(var(--slide-gold))]">$0.03-0.05</span>
         </p>
         <p className="text-[16px] text-[hsl(var(--slide-text)/0.8)] leading-[1.4] mt-[6px]">
-          Просит заметно больше - торгуйся этой формулой. Для справки: мелкие берут $20-250 за ролик, микро $150-1500.
+          Просит заметно больше - торгуйся этой формулой. Для справки: до 10 тыс. подписчиков - $20-250 за ролик, 10-150 тыс. - $150-1500.
         </p>
       </div>
       <div className="grid grid-cols-3 gap-[18px] max-w-[1900px] mb-[16px]">
@@ -73,7 +73,7 @@ export default function L16SlideCreatorsPay() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[26px] py-[14px] max-w-[1900px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.4]">
-          <span className="font-semibold">Выкупай права на ролик</span> (+30-100% к цене). Тогда удачное видео крутишь как рекламу месяцами, и это выходит дешевле собственных креативов. Без прав ты купил один показ.
+          <span className="font-semibold">Выкупай права на ролик</span> (+30-100% к цене). Тогда удачное видео крутишь как рекламу месяцами. Без прав ты купил один показ.
         </p>
       </div>
     </div>

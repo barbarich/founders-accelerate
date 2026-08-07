@@ -2,9 +2,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const parts = [
   { n: "1", t: "Личная зацепка", d: "Факт про его бизнес, не комплимент" },
-  { n: "2", t: "Ценность без ask", d: "Что он получает БЕЗ обязательств" },
+  { n: "2", t: "Польза без условий", d: "Что он получает БЕЗ обязательств" },
   { n: "3", t: "Кто ты", d: "1 строка, без истории продукта" },
-  { n: "4", t: "CTA со временем", d: "«15 минут в четверг», не «если интересно»" },
+  { n: "4", t: "Просьба с датой", d: "«15 минут в четверг», не «если интересно»" },
 ];
 
 export default function L16SlidePitchAnatomy() {
@@ -48,7 +48,7 @@ export default function L16SlidePitchAnatomy() {
         Как продать партнёрство
       </p>
       <h2 className="font-display text-[44px] font-bold text-[hsl(var(--slide-text))] leading-[1.1] mb-[26px] tracking-[-0.01em]">
-        Анатомия первого сообщения · <span className="text-[hsl(var(--slide-gold))]">4-5 строк</span>
+        Анатомия первого сообщения · <span className="text-[hsl(var(--slide-gold))]">4 строки</span>
       </h2>
       <div className="grid grid-cols-4 gap-[16px] max-w-[1900px] mb-[26px]">
         {parts.map((p) => (

@@ -78,7 +78,7 @@ export default function L16SlideCommunities() {
         </div>
       </div>
       <p className="text-[16px] text-[hsl(var(--slide-text-muted))] leading-[1.4] max-w-[1900px]">
-        Бонус 2026: ответы на Reddit часто цитируют ChatGPT и Perplexity. Один хороший ответ работает дважды - на человека сейчас и на AI-поиск через полгода.
+        Бонус 2026: ответы на Reddit часто цитируют ChatGPT и Perplexity. Один хороший ответ работает и на людей, и на AI-поиск.
       </p>
     </div>
   );

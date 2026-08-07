@@ -53,6 +53,11 @@ export default function L16SlideLessonSummary() {
             </div>
           ))}
         </div>
+        <div className="bg-[hsl(var(--slide-gold)/0.08)] border-l-2 border-[hsl(var(--slide-gold))] rounded-[4px] px-[8px] py-[5px] mt-[6px]">
+          <p className="text-[7.5px] text-[hsl(var(--slide-text))] leading-[1.4]">
+            Дальше - выбрать два канала и сделать 10 касаний за неделю. Это финал курса.
+          </p>
+        </div>
       </div>
     );
   }

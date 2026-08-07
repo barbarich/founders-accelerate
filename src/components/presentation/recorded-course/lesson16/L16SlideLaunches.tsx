@@ -25,7 +25,7 @@ export default function L16SlideLaunches() {
         </p>
         <div className="border border-[hsl(var(--slide-gold)/0.3)] rounded-[6px] px-[9px] py-[6px] bg-[hsl(var(--slide-gold)/0.06)] mb-[6px]">
           <p className="text-[8px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            Но голоса - не деньги. Один и тот же фаундер: <span className="font-bold text-[hsl(var(--slide-gold))]">300 голосов дали 91 платящего</span>, а через год <span className="font-bold text-[hsl(var(--slide-gold))]">612 голосов дали одного</span>.
+            Помнишь пример с главной мысли урока? Это как раз про Product Hunt. Голоса - не деньги: <span className="font-bold text-[hsl(var(--slide-gold))]">300 голосов дали 91 платящего</span>, а через год <span className="font-bold text-[hsl(var(--slide-gold))]">612 голосов дали одного</span>.
           </p>
         </div>
         <p className="text-[8px] uppercase tracking-[0.1em] text-[hsl(var(--slide-gold))] font-bold mb-[4px]">Правила на август 2026</p>
@@ -57,7 +57,7 @@ export default function L16SlideLaunches() {
       </p>
       <div className="border border-[hsl(var(--slide-gold)/0.3)] rounded-[12px] px-[24px] py-[13px] bg-[hsl(var(--slide-gold)/0.06)] max-w-[1900px] mb-[16px]">
         <p className="text-[16.5px] text-[hsl(var(--slide-text))] leading-[1.4]">
-          Но голоса - не деньги. Один и тот же фаундер: <span className="font-bold text-[hsl(var(--slide-gold))]">300 голосов дали 91 платящего</span>, а через год <span className="font-bold text-[hsl(var(--slide-gold))]">612 голосов дали одного</span>.
+          Помнишь пример с главной мысли урока? Это как раз про Product Hunt. Голоса - не деньги: <span className="font-bold text-[hsl(var(--slide-gold))]">300 голосов дали 91 платящего</span>, а через год <span className="font-bold text-[hsl(var(--slide-gold))]">612 голосов дали одного</span>.
         </p>
       </div>
       <p className="text-[14px] uppercase tracking-[0.15em] text-[hsl(var(--slide-gold))] font-bold mb-[10px]">Правила на август 2026</p>

@@ -33,7 +33,7 @@ export default function L16SlideSeoGeoTools() {
         </div>
         <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-2 border-[hsl(var(--slide-gold))] px-[10px] py-[7px]">
           <p className="text-[8.5px] text-[hsl(var(--slide-text))] leading-[1.4]">
-            Бесплатный старт: Google Search Console + HubSpot AEO Grader (бесплатно проверяет видимость в ИИ). Платное подключай, когда увидишь, что канал даёт результат.
+            Бесплатно перед платным: HubSpot AI Search Grader за 60 секунд без регистрации проверяет, что о тебе знают ChatGPT, Gemini и Perplexity. Платное подключай, когда увидишь, что канал даёт результат.
           </p>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function L16SlideSeoGeoTools() {
       </div>
       <div className="bg-[hsl(var(--slide-gold)/0.1)] border-l-[4px] border-[hsl(var(--slide-gold))] px-[26px] py-[16px] max-w-[1900px]">
         <p className="text-[18px] text-[hsl(var(--slide-text))] leading-[1.45]">
-          Бесплатный старт: Google Search Console + HubSpot AEO Grader (бесплатно проверяет видимость в ИИ). Платное подключай, когда увидишь, что канал даёт результат.
+          Бесплатно перед платным: HubSpot AI Search Grader за 60 секунд без регистрации проверяет, что о тебе знают ChatGPT, Gemini и Perplexity. Платное подключай, когда увидишь, что канал даёт результат.
         </p>
       </div>
     </div>
